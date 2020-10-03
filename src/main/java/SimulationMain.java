@@ -14,5 +14,6 @@ public class SimulationMain {
         System.out.println(database.getProperty("dbuser"));
         System.out.println(database.getProperty("dbpass"));
         System.out.println(database.getProperty("dburl"));
+//        System.out.println();
     }
 }
