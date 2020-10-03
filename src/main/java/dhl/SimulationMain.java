@@ -1,3 +1,5 @@
+package dhl;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +10,7 @@ public class SimulationMain {
         System.out.println("Hello World");
 
         Properties database = new Properties();
-        InputStream input = new FileInputStream("src\\database.properties");
+        InputStream input = new FileInputStream("src/database.properties");
         database.load(input);
         System.out.println(database.getProperty("dbuser"));
         System.out.println(database.getProperty("dbpass"));
