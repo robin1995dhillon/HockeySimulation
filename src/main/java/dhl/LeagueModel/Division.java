@@ -1,3 +1,5 @@
+package dhl.LeagueModel;
+
 public class Division {
 
     String DivisionName = "";

@@ -1,3 +1,5 @@
+package dhl.LeagueModel;
+
 public interface IAllPlayers {
 
     String PlayerName = "";

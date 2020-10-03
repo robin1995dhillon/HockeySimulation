@@ -1,10 +1,14 @@
+package dhl.LeagueModel;
+
+import dhl.LeagueModel.Conference;
+
 public class League {
     String LeagueName = "";
     Conference conference;
     public League(String LeagueName) {
         this.LeagueName = LeagueName;
         System.out.println(this.LeagueName);
-//        conference = new Conference("EasterConference");
+//        conference = new dhl.LeagueModel.Conference("EasterConference");
     }
 
     public String getLeagueName() {
