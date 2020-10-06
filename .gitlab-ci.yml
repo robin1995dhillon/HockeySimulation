@@ -1,8 +1,8 @@
 variables:
   MAVEN_CLI_OPTS: "clean"
-before_script:
-  - eval $(ssh-agent -s)
-  - ssh-add ~/.ssh/gitlab-ci-delivery
+#before_script:
+#  - eval $(ssh-agent -s)
+#  - ssh-add ~/.ssh/gitlab-ci-delivery
 
 stages:
   - build
