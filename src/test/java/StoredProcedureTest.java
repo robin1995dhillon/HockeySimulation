@@ -43,9 +43,9 @@ public class StoredProcedureTest {
 
     @Test
     public void executeProcedure(){
-        StoredProcedure s = new StoredProcedure("create_team");
-        s.addParameter(4, "IronMan", "Tony", "Stark");
-        //s.addParameter(1);
+        StoredProcedure s = new StoredProcedure("get_team_player");
+        //s.addParameter(4, "IronMan", "Tony", "Stark");
+        s.addParameter(1);
         s.executeProcedure();
     }
 }
