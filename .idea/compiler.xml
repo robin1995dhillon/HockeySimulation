@@ -9,8 +9,8 @@
         <module name="csci5308" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="csci5308" target="6" />
+    <bytecodeTargetLevel target="5">
+      <module name="csci5308" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

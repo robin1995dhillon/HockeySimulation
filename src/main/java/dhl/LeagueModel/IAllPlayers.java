@@ -7,5 +7,5 @@ public interface IAllPlayers {
     Boolean Captain = null;
 
 
-
 }
+
