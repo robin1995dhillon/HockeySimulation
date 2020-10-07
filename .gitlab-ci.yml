@@ -1,0 +1,44 @@
+variables:
+  MAVEN_CLI_OPTS: "clean"
+  CI_COMMIT_REF_NAME: developCsci
+  CI_COMMIT_SHORT_SHA: 49875a  
+#before_script:
+#  - eval $(ssh-agent -s)
+#  - ssh-add ~/.ssh/gitlab-ci-delivery
+
+stages:
+  - build
+  - test
+  - deploy
+
+buildStep:
+  stage: build
+  script:
+    - echo "staring build"
+    - mvn $MAVEN_CLI_OPTS compile
+    - echo "build successful"
+  tags:
+    - ugrad
+
+testStep:
+  stage: test
+  script:
+    - echo "starting test"
+    - mvn $MAVEN_CLI_OPTS verify
+    - echo "test complete"
+  tags:
+    - ugrad
+    
+deployStep:
+  stage: deploy
+  tags:
+    - ugrad
+  artifacts:
+    paths:
+      - CSCI5308builds
+  script:
+    - echo "starting deploy"
+    - chmod og-rwx ${DEPLOY_SSH_KEY}
+    - zip -r ${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}.zip target
+    - scp -r -o StrictHostKeyChecking=no -i "${DEPLOY_SSH_KEY}" "${CI_COMMIT_SHORT_SHA}.zip" "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}.zip"
+    - echo "deploy successful"
