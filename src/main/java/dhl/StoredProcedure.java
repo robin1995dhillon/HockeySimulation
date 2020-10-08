@@ -1,11 +1,16 @@
 package dhl;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class StoredProcedure {
-    static final String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_DEVINT?user=CSCI5308_1_DEVINT_USER&serverTimezone=UTC";
-    static final String user = "CSCI5308_1_DEVINT_USER";
-    static final String password = "B6D4tje9aC";
+//    static final String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_DEVINT?user=CSCI5308_1_DEVINT_USER&serverTimezone=UTC";
+//    static final String user = "CSCI5308_1_DEVINT_USER";
+//    static final String password = "B6D4tje9aC";
     private String procedureName;
     private int id;
     private String name;
@@ -95,25 +100,28 @@ public class StoredProcedure {
         this.teamId = teamId;
     }
 
-    public void executeProcedure(){
+    public void executeProcedure() throws IOException {
         Connection conn = null;
         CallableStatement stmt = null;
+        Properties database = new Properties();
+        InputStream input = new FileInputStream("src/database.properties");
+        database.load(input);
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(url, user, password);
-            if(this.procedureName == "create_league" || this.procedureName == "create_conference" || this.procedureName == "create_division"){
+            conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
+            if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
                 sql = "{CALL " + this.procedureName + "(?,?)}";
                 stmt = conn.prepareCall(sql);
                 stmt.setInt(1, this.id);
                 stmt.setString(2, this.name);
-            }else if(this.procedureName == "create_team"){
+            }else if(this.procedureName.equals("create_team")){
                 sql = "{CALL " + this.procedureName + "(?,?,?,?)}";
                 stmt = conn.prepareCall(sql);
                 stmt.setInt(1, this.id);
                 stmt.setString(2, this.name);
                 stmt.setString(3, this.manager);
                 stmt.setString(4, this.coach);
-            }else if(this.procedureName == "create_player" || this.procedureName == "create_free_agent"){
+            }else if(this.procedureName.equals("create_player") || this.procedureName.equals("create_free_agent")){
                 sql = "{CALL " + this.procedureName + "(?,?,?,?,?)}";
                 stmt = conn.prepareCall(sql);
                 stmt.setInt(1, this.id);
@@ -121,7 +129,7 @@ public class StoredProcedure {
                 stmt.setString(3, this.position);
                 stmt.setBoolean(4, this.captain);
                 stmt.setInt(5, this.teamId);
-            }else if(this.procedureName == "create_DHL_table"){
+            }else if(this.procedureName.equals("create_DHL_table")){
                 sql = "{CALL " + this.procedureName + "(?,?,?,?,?)}";
                 stmt = conn.prepareCall(sql);
                 stmt.setInt(1, this.id);
@@ -129,10 +137,10 @@ public class StoredProcedure {
                 stmt.setInt(3, this.conferenceId);
                 stmt.setInt(4, this.divisionId);
                 stmt.setInt(5, this.teamId);
-            }else if(this.procedureName == "get_conference" || this.procedureName == "get_division" || this.procedureName == "get_league" || this.procedureName == "get_team" || this.procedureName == "get_free_agent"){
+            }else if(this.procedureName.equals("get_conference") || this.procedureName.equals("get_division")  || this.procedureName.equals("get_league") || this.procedureName.equals("get_team") || this.procedureName.equals("get_free_agent")){
                 sql = "{CALL " + this.procedureName + "()}";
                 stmt = conn.prepareCall(sql);
-            }else if(this.procedureName == "get_team_player"){
+            }else if(this.procedureName.equals("get_team_player")){
                 sql = "{CALL " + this.procedureName + "(?)}";
                 stmt = conn.prepareCall(sql);
                 stmt.setInt(1, this.teamId);
