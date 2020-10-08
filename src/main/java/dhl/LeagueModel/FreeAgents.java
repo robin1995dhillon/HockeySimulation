@@ -2,37 +2,37 @@ package dhl.LeagueModel;
 
 public class FreeAgents implements IAllPlayers {
 
-    String PlayerName = "";
-    String Position = "";
-    Boolean Captain = null;
+    String playerName = "";
+    String position = "";
+    Boolean captain = null;
 
     public FreeAgents(String playerName, String position, Boolean captain) {
-        PlayerName = playerName;
-        Position = position;
-        Captain = captain;
+        this.playerName = playerName;
+        this.position = position;
+        this.captain = captain;
     }
 
     public String getPlayerName() {
-        return PlayerName;
+        return playerName;
     }
 
     public void setPlayerName(String playerName) {
-        PlayerName = playerName;
+        this.playerName = playerName;
     }
 
     public String getPosition() {
-        return Position;
+        return position;
     }
 
     public void setPosition(String position) {
-        Position = position;
+        this.position = position;
     }
 
     public Boolean getCaptain() {
-        return Captain;
+        return captain;
     }
 
     public void setCaptain(Boolean captain) {
-        Captain = captain;
+        this.captain = captain;
     }
 }

@@ -4,12 +4,16 @@ import java.util.ArrayList;
 
 public class Division {
 
-    String DivisionName = "";
-    ArrayList<Teams> Teams= new ArrayList<>();
+    String divisionName;
+    ArrayList<Teams> Teams;
 
     public Division(String divisionName, ArrayList<dhl.LeagueModel.Teams> teams) {
-        DivisionName = divisionName;
+        this.divisionName = divisionName;
         Teams = teams;
+    }
+
+    public Division() {
+
     }
 
     public ArrayList<dhl.LeagueModel.Teams> getTeams() {
@@ -21,12 +25,15 @@ public class Division {
     }
 
     public String getDivisionName() {
-        return DivisionName;
+        return divisionName;
     }
 
     public void setDivisionName(String divisionName) {
-        DivisionName = divisionName;
+        this.divisionName = divisionName;
     }
 
+    public void addTeam(Teams team) {
+        Teams.add(team);
+    }
 
 }

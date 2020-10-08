@@ -4,32 +4,37 @@ import java.util.ArrayList;
 
 public class Conference {
 
-    String ConferenceName = "";
-    ArrayList<Division> division = new ArrayList<>();
+    String conferenceName;
+    ArrayList<Division> divisions;
+
 
     public Conference(String conferenceName, ArrayList<Division> division) {
-        ConferenceName = conferenceName;
-        this.division = division;
+        this.conferenceName = conferenceName;
+        this.divisions = division;
+    }
+
+    public Conference() {
+
     }
 
     public Conference(String conferenceName) {
-        ConferenceName = conferenceName;
+        this.conferenceName = conferenceName;
     }
 
     public String getConferenceName() {
-        return ConferenceName;
+        return conferenceName;
     }
 
     public void setConferenceName(String conferenceName) {
-        ConferenceName = conferenceName;
+        this.conferenceName = conferenceName;
     }
 
-    public ArrayList<Division> getDivision() {
-        return division;
+    public ArrayList<Division> getDivisions() {
+        return divisions;
     }
 
-    public void setDivision(ArrayList<Division> division) {
-        this.division = division;
+    public void setDivisions(ArrayList<Division> divisions) {
+        this.divisions = divisions;
     }
 
 }

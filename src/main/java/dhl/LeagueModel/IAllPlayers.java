@@ -2,9 +2,9 @@ package dhl.LeagueModel;
 
 public interface IAllPlayers {
 
-    String PlayerName = "";
-    String Position = "";
-    Boolean Captain = null;
+    String playerName = "";
+    String position = "";
+    Boolean captain = null;
 
 
 }

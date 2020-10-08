@@ -3,16 +3,20 @@ package dhl.LeagueModel;
 import java.util.ArrayList;
 
 public class Teams {
-    public String TeamName = "";
-    public String GeneralManager = "";
-    public String HeadCoach = "";
-    ArrayList<Players> Players = new ArrayList<>();
+    public String teamName;
+    public String generalManager;
+    public String headCoach;
+    ArrayList<Players> Players;
 
     public Teams(String teamName, String generalManager, String headCoach, ArrayList<dhl.LeagueModel.Players> players) {
-        TeamName = teamName;
-        GeneralManager = generalManager;
-        HeadCoach = headCoach;
+        this.teamName = teamName;
+        this.generalManager = generalManager;
+        this.headCoach = headCoach;
         Players = players;
+    }
+
+    public Teams() {
+
     }
 
     public ArrayList<dhl.LeagueModel.Players> getPlayers() {
@@ -24,26 +28,27 @@ public class Teams {
     }
 
     public String getTeamName() {
-        return TeamName;
+        return teamName;
     }
 
     public void setTeamName(String teamName) {
-        TeamName = teamName;
+        this.teamName = teamName;
     }
 
     public String getGeneralManager() {
-        return GeneralManager;
+        return generalManager;
     }
 
     public void setGeneralManager(String generalManager) {
-        GeneralManager = generalManager;
+        this.generalManager = generalManager;
     }
 
     public String getHeadCoach() {
-        return HeadCoach;
+        return headCoach;
     }
 
     public void setHeadCoach(String headCoach) {
-        HeadCoach = headCoach;
+        this.headCoach = headCoach;
     }
+
 }

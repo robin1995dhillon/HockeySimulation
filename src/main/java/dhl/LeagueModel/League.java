@@ -1,43 +1,43 @@
 package dhl.LeagueModel;
 
-import dhl.LeagueModel.Conference;
-
 import java.util.ArrayList;
 
 public class League {
-    String LeagueName = "";
-    ArrayList<Conference> conference = new ArrayList<>();
+    String leagueName;
+    ArrayList<Conference> conferences;
 
+    public League(String leagueName, ArrayList<Conference> conferences) {
+        this.leagueName = leagueName;
+        this.conferences = conferences;
+    }
 
-    public League(String leagueName, ArrayList<Conference> conference) {
-        LeagueName = leagueName;
-        this.conference = conference;
+    public League() {
 
     }
 
     public League(String leagueName) {
-        LeagueName = leagueName;
+        this.leagueName = leagueName;
     }
 
-    public ArrayList<Conference> getConference() {
-        return conference;
+    public ArrayList<Conference> getConferences() {
+        return conferences;
     }
 
-    public void setConference(ArrayList<Conference> conference) {
-        this.conference = conference;
+    public void setConferences(ArrayList<Conference> conferences) {
+        this.conferences = conferences;
     }
 
     public String getLeagueName() {
-        return LeagueName;
+        return leagueName;
     }
 
     public void setLeagueName(String leagueName) {
 
-        LeagueName = leagueName;
+        this.leagueName = leagueName;
     }
 
     public boolean isLeagueNamePresent() {
-        if(this.LeagueName.isEmpty()) {
+        if(this.leagueName.isEmpty()) {
             return false;
         }
         else {

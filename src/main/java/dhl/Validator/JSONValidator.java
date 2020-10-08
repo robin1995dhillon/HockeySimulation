@@ -1,4 +1,4 @@
-package dhl.InOut.JSONValidator;
+package dhl.Validator;
 
 import dhl.Validator.Validator;
 import org.json.simple.JSONArray;
@@ -8,7 +8,13 @@ import java.util.Stack;
 
 public class JSONValidator {
 
-    public static JSONObject mainValidator(JSONObject Obj) {
+    Validator validator;
+
+    public JSONValidator() {
+        validator = new Validator();
+    }
+
+    public JSONObject mainValidator(JSONObject Obj) {
         Stack<String> stack = new Stack<>();
         JSONObject return_json = new JSONObject();
 
@@ -30,8 +36,8 @@ public class JSONValidator {
 
     }
 
-    public static Boolean leagueValidator(JSONObject Obj, Stack stack) {
-        if(Validator.valueIsPresent((String)Obj.get("leagueName"))) {
+    public  Boolean leagueValidator(JSONObject Obj, Stack stack) {
+        if(validator.valueIsPresent((String)Obj.get("leagueName"))) {
             conferenceValidator(Obj, stack);
         }
         else {
@@ -41,7 +47,7 @@ public class JSONValidator {
         return true;
     }
 
-    public static Boolean conferenceValidator(JSONObject Obj, Stack stack) {
+    public Boolean conferenceValidator(JSONObject Obj, Stack stack) {
         JSONArray conferenceArray = (JSONArray) (Obj.get("conferences"));
         System.out.println(conferenceArray);
         Iterator conf_arr_iter = conferenceArray.iterator();
@@ -51,7 +57,7 @@ public class JSONValidator {
             String conferenceName = (String) conferenceObject.get("conferenceName");
             System.out.println(conferenceName);
 
-            if (Validator.valueIsPresent(conferenceName)) {
+            if (validator.valueIsPresent(conferenceName)) {
                 divisionValidator(conferenceObject, stack);
 
             } else {
@@ -63,7 +69,7 @@ public class JSONValidator {
         }
         return true;
     }
-    public static Boolean divisionValidator(JSONObject Obj, Stack stack) {
+    public Boolean divisionValidator(JSONObject Obj, Stack stack) {
         JSONArray divisionArray = (JSONArray) (Obj.get("divisions"));
         System.out.println(divisionArray);
         Iterator div_arr_iter = divisionArray.iterator();
@@ -73,7 +79,7 @@ public class JSONValidator {
             String divisionName = (String) divisionObject.get("divisionName");
             System.out.println(divisionName);
 //            teamValidator(divisionObject);
-            if (Validator.valueIsPresent(divisionName)) {
+            if (validator.valueIsPresent(divisionName)) {
                 teamValidator(divisionObject, stack);
 
             } else {
@@ -83,7 +89,7 @@ public class JSONValidator {
         }
         return true;
     }
-    public static Boolean teamValidator(JSONObject Obj, Stack stack) {
+    public Boolean teamValidator(JSONObject Obj, Stack stack) {
         JSONArray teamArray = (JSONArray) (Obj.get("teams"));
         System.out.println(teamArray);
         Iterator team_arr_iter = teamArray.iterator();
@@ -97,9 +103,9 @@ public class JSONValidator {
             System.out.println(headCoach);
             System.out.println(generalManager);
 
-            if (Validator.valueIsPresent(teamName)) {
-                if(Validator.valueIsPresent(headCoach)) {
-                    if(Validator.valueIsPresent(generalManager)) {
+            if (validator.valueIsPresent(teamName)) {
+                if(validator.valueIsPresent(headCoach)) {
+                    if(validator.valueIsPresent(generalManager)) {
                         playerValidator(teamObject, stack);
 
                     }

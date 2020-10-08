@@ -40,7 +40,7 @@
           "divisionName": "Atlantic",
           "teams": [
             {
-              "teamName": "",
+              "teamName": "Boston",
               "generalManager": "Mister Fred",
               "headCoach": "Mary Smith",
               "players": [
@@ -64,24 +64,6 @@
           ]
         }
       ]
-    }
-  ],
-
-  "freeAgents": [
-    {
-      "playerName": "Agent One",
-      "position": "forward",
-      "captain": false
-    },
-    {
-      "playerName": "Agent Two",
-      "position": "defense",
-      "captain": false
-    },
-    {
-      "playerName": "Agent Three",
-      "position": "goalie",
-      "captain": false
     }
   ]
 }
