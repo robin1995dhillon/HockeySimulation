@@ -1,7 +1,9 @@
 import dhl.StoredProcedure;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
-import java.sql.*;
 
 public class StoredProcedureTest {
 
@@ -42,10 +44,10 @@ public class StoredProcedureTest {
     }
 
     @Test
-    public void executeProcedure(){
-        StoredProcedure s = new StoredProcedure("create_team");
-        s.addParameter(4, "IronMan", "Tony", "Stark");
-        //s.addParameter(1);
+    public void executeProcedure() throws IOException {
+        StoredProcedure s = new StoredProcedure("get_team_player");
+        //s.addParameter(4, "IronMan", "Tony", "Stark");
+        s.addParameter(1);
         s.executeProcedure();
     }
 }
