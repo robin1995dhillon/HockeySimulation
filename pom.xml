@@ -65,6 +65,18 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.0</version>
                 </plugin>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>dhl.SimulationMain</mainClass>
+                                <addClasspath>true</addClasspath>
+                            </manifest>
+                        </archive>
+                        <appendAssemblyId>false</appendAssemblyId>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
