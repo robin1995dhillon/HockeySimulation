@@ -90,26 +90,7 @@ public class StoredProcedure {
         Properties database= new Properties();
         CallableStatement stmt = null;
         String file = "application.properties";
-//        try {
-//            Path currentRelativePath = Paths.get("");
-//            String str = currentRelativePath.toAbsolutePath().toString();
-//
-//            str = str.substring(0, str.lastIndexOf("target")+1);
-//
-//            input = new FileInputStream(str+file);
-//
-//            if (input != null) {
-//                System.out.println("fetching remote from "+input);
-//                database.load(input);
-//            } else {
-//                throw new FileNotFoundException("no file present");
-//            }
-//        }
-//        catch(FileNotFoundException files){
-//            input = new FileInputStream("src/"+file);
-//            System.out.println("fetching from "+input);
-//            database.load(input);
-//        }
+
 
         try{
             Path currentRelativePath = Paths.get("");
