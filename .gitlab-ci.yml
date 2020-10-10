@@ -43,9 +43,9 @@ deployProd:
   tags:
     - ugrad
   artifacts:
-    paths:
-      # Change this directory to the path that contains your built executable
-      - target
+#    paths:
+#      # Change this directory to the path that contains your built executable
+#      - target
 
   script:
     - databaseFile="application.properties"
@@ -63,9 +63,9 @@ deployTest:
   stage: deploy_test
   tags:
     - ugrad
-  artifacts:
-    paths:
-      - target
+#  artifacts:
+#    paths:
+#      - target
 
   script:
     - database="application.properties"
