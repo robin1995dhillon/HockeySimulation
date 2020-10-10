@@ -48,7 +48,7 @@ deployProd:
     - echo "beforeScript"
     - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
     - eval $(ssh-agent -s)
-    - ssh-add <(echo "${DEPLOY_SSH_KEY}")
+    - ssh-add <(echo "${DEPLOY_SSH_KEY_PROD}")
 
   script:
     - databaseFile="application.properties"
