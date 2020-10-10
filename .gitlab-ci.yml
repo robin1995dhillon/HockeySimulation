@@ -3,7 +3,6 @@ image: maven:latest
 stages:
   - build
   - test
-  - deploy_dev_int
   - deploy_test
   - deploy_prod
 
@@ -12,6 +11,7 @@ before_script:
   - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
   - eval $(ssh-agent -s)
   - ssh-add <(echo "${DEPLOY_SSH_KEY}")
+
 build:
   image: maven:latest
   stage: build
@@ -48,15 +48,15 @@ deployProd:
       - target
 
   script:
-  - databaseFile="application.properties"
-  - echo "PROD_URL= ${PROD_URL}" >> databaseFile
-  - echo "PROD_USER= ${PROD_USER}" >> databaseFile
-  - echo "PROD_PASS= ${PROD_PASS}" >> databaseFile
-  - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
-  - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
-  - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${CI_COMMIT_SHORT_SHA}.zip"
- only:
-   - release
+    - databaseFile="application.properties"
+    - echo "PROD_URL= ${PROD_URL}" >> databaseFile
+    - echo "PROD_USER= ${PROD_USER}" >> databaseFile
+    - echo "PROD_PASS= ${PROD_PASS}" >> databaseFile
+    - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
+    - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
+    - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${CI_COMMIT_SHORT_SHA}.zip"
+  only:
+    - release
 
 deployTest:
   image: maven:latest
