@@ -8,9 +8,6 @@ import java.nio.file.Paths;
 import java.sql.*;
 import java.util.Properties;
 public class StoredProcedure {
-    //    static final String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_DEVINT?user=CSCI5308_1_DEVINT_USER&serverTimezone=UTC";
-//    static final String user = "CSCI5308_1_DEVINT_USER";
-//    static final String password = "B6D4tje9aC";
     private String procedureName;
     private String name;
     private String manager;
@@ -90,42 +87,10 @@ public class StoredProcedure {
         Properties database= new Properties();
         CallableStatement stmt = null;
         String file = "application.properties";
-//        try {
-//            Path currentRelativePath = Paths.get("");
-//            String str = currentRelativePath.toAbsolutePath().toString();
-//
-//            str = str.substring(0, str.lastIndexOf("target")+1);
-//
-//            input = new FileInputStream(str+file);
-//
-//            if (input != null) {
-//                System.out.println("fetching remote from "+input);
-//                database.load(input);
-//            } else {
-//                throw new FileNotFoundException("no file present");
-//            }
-//        }
-//        catch(FileNotFoundException files){
-//            input = new FileInputStream("src/"+file);
-//            System.out.println("fetching from "+input);
-//            database.load(input);
-//        }
-
         try{
             Path currentRelativePath = Paths.get("");
-            System.out.println("current path is:"+currentRelativePath);
-            String str = currentRelativePath.toAbsolutePath().toString();
-            System.out.println("string before:"+str);
-            str = str.substring(0, str.lastIndexOf("target"));
-            System.out.println("string after:"+str);
-            input = new FileInputStream(str+file);
-          //  input = new FileInputStream(file);
-            System.out.println("fetching remote from "+input);
             database.load(input);
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("database url:"+database.getProperty("dburl"));
-            System.out.println("database user:"+database.getProperty("dbuser"));
-            System.out.println("database password:"+database.getProperty("dbpass"));
             conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
                 sql = "{CALL " + this.procedureName + "(?)}";
@@ -136,8 +101,6 @@ public class StoredProcedure {
                     ResultSet rs = stmt.getResultSet();
                     while(rs.next()){
                         this.insertedId  = rs.getInt("id");
-//                        System.out.print("LAST INSERTED ID = " + this.insertedId);
-//                        System.out.print("\n");
                     }
                     rs.close();
                 }
@@ -152,8 +115,6 @@ public class StoredProcedure {
                     ResultSet rs = stmt.getResultSet();
                     while(rs.next()){
                         this.insertedId  = rs.getInt("id");
-//                        System.out.print("LAST INSERTED ID = " + this.insertedId);
-//                        System.out.print("\n");
                     }
                     rs.close();
                 }
@@ -165,15 +126,6 @@ public class StoredProcedure {
                 stmt.setBoolean(3, this.captain);
                 stmt.setInt(4, this.teamId);
                 stmt.execute();
-//                if(hasResultSet){
-//                    ResultSet rs = stmt.getResultSet();
-//                    while(rs.next()){
-//                        int id  = rs.getInt("id");
-//                        System.out.print("LAST INSERTED ID = " + id);
-//                        System.out.print("\n");
-//                    }
-//                    rs.close();
-//                }
             }else if(this.procedureName.equals("create_DHL_table")){
                 sql = "{CALL " + this.procedureName + "(?,?,?,?)}";
                 stmt = conn.prepareCall(sql);
@@ -193,10 +145,6 @@ public class StoredProcedure {
                         int id  = rs.getInt("id");
                         String name = rs.getString("name");
                         String league = rs.getString("league");
-//                        System.out.print("ID: " + id);
-//                        System.out.print(", Name: " + name);
-//                        System.out.print(", League: " + league);
-//                        System.out.print("\n");
                     }
                     rs.close();
                 }
@@ -212,11 +160,6 @@ public class StoredProcedure {
                         String name = rs.getString("name");
                         String conference = rs.getString("conference");
                         String league = rs.getString("league");
-//                        System.out.print("ID: " + id);
-//                        System.out.print(", Name: " + name);
-//                        System.out.print(", Conference: " + conference);
-//                        System.out.print(", League: " + league);
-//                        System.out.print("\n");
                     }
                     rs.close();
                 }
@@ -230,9 +173,6 @@ public class StoredProcedure {
                     while(rs.next()){
                         int id  = rs.getInt("id");
                         String name = rs.getString("name");
-//                        System.out.print("ID: " + id);
-//                        System.out.print(", Name: " + name);
-//                        System.out.print("\n");
                     }
                     rs.close();
                 }
@@ -251,14 +191,6 @@ public class StoredProcedure {
                         String league = rs.getString("league");
                         String gm = rs.getString("general_manager");
                         String hc = rs.getString("head_coach");
-//                        System.out.print("ID: " + id);
-//                        System.out.print(", Name: " + name);
-//                        System.out.print(", Division: " + division);
-//                        System.out.print(", Conference: " + conference);
-//                        System.out.print(", League: " + league);
-//                        System.out.print(", General Manager: " + gm);
-//                        System.out.print(", Head Coach: " + hc);
-//                        System.out.print("\n");
                     }
                     rs.close();
                 }
@@ -273,11 +205,6 @@ public class StoredProcedure {
                         String name = rs.getString("name");
                         String position = rs.getString("position");
                         boolean captain = rs.getBoolean("captain");
-//                        System.out.print("ID: " + id);
-//                        System.out.print(", Name: " + name);
-//                        System.out.print(", Position: " + position);
-//                        System.out.print(", Captain: " + captain);
-//                        System.out.print("\n");
                     }
                     rs.close();
                 }
@@ -293,11 +220,6 @@ public class StoredProcedure {
                         String name = rs.getString("name");
                         String position = rs.getString("position");
                         boolean captain = rs.getBoolean("captain");
-//                        System.out.print("ID: " + id);
-//                        System.out.print(", Name: " + name);
-//                        System.out.print(", Position: " + position);
-//                        System.out.print(", Captain: " + captain);
-//                        System.out.print("\n");
                     }
                     rs.close();
                 }
