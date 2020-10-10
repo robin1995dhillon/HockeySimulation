@@ -89,6 +89,9 @@ public class StoredProcedure {
         String file = "application.properties";
         try{
             Path currentRelativePath = Paths.get("");
+            String str = currentRelativePath.toAbsolutePath().toString();
+            str = str.substring(0, str.lastIndexOf("target"));
+            input = new FileInputStream(str+file);
             database.load(input);
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
