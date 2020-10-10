@@ -1,5 +1,7 @@
 package dhl.InOut;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,26 +21,12 @@ public class JSONReader {
         try (FileReader reader = new FileReader(Path)) {
             Object obj = jsonParser.parse(reader);
             jsonObject = (JSONObject) obj;
-//            Set Outer_Keys = jsonObject.keySet();
-//            Iterator iter = Outer_Keys.iterator();
-//            String league_name = (String)iter.next();
-
-//            while (iter.hasNext()) {
-//                String Curr_Key = (String) iter.next();
-//                JSONArray freeAgents = (JSONArray) jsonObject.get(Curr_Key);
-//                System.out.println("Inside" +  freeAgents);
-//                Iterator iterator = freeAgents.iterator();
-//                while (iterator.hasNext()) {
-//                    Object free_agent_info = iterator.next();
-//
-//                    JSONObject json_free_agent_info = (JSONObject) free_agent_info;
-//                    System.out.println(json_free_agent_info);
-////                    String free_agent_name = (String) json_free_agent_info.get("playerName");
-//                }
-//            }
+        } catch(JsonProcessingException jp) {
+            System.out.println("Invalid JSON - Parsing");
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
+
         return jsonObject;
     }
 }

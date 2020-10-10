@@ -16,7 +16,12 @@ public class Teams {
     }
 
     public Teams() {
+    }
 
+    public Teams(String teamName, String generalManager, String headCoach) {
+        this.teamName = teamName;
+        this.generalManager = generalManager;
+        this.headCoach = headCoach;
     }
 
     public ArrayList<dhl.LeagueModel.Players> getPlayers() {

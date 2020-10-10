@@ -12,6 +12,9 @@ public class FreeAgents implements IAllPlayers {
         this.captain = captain;
     }
 
+    public FreeAgents() {
+    }
+
     public String getPlayerName() {
         return playerName;
     }

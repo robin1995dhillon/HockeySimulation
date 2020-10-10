@@ -14,28 +14,41 @@ import java.nio.file.Paths;
 public class LeagueCreator {
     static ObjectMapper objectMapper;
     public League league;
+
     public LeagueCreator() {
         objectMapper = new ObjectMapper();
     }
 
-    public League CreateLeague(JSONObject Obj) {
-        System.out.println("Inside Create League");
+    public League CreateLeague(String Path) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            byte[] Data = Files.readAllBytes(Paths.get("src/Data.json"));
+            byte[] Data = Files.readAllBytes(Paths.get(Path));
             JsonNode jsonNodeData = objectMapper.readTree(Data);
-            System.out.println("Data is" + jsonNodeData);
             league = createLeagueFromJSON(jsonNodeData, League.class);
+            System.out.println("League:");
             System.out.println(league.getLeagueName());
-            for(Conference c : league.getConferences()) {
+            System.out.println("\nConferences:");
+            for (Conference c : league.getConferences()) {
                 System.out.println(c.getConferenceName());
             }
+        } catch (JsonProcessingException jp) {
+            System.out.println("Invalid JSON");
+            return null;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         return league;
     }
-    public static <J> J createLeagueFromJSON(JsonNode jsonNode, Class<J> Object) throws JsonProcessingException {
-        return objectMapper.treeToValue(jsonNode, Object);
+
+    public static <J> J createLeagueFromJSON(JsonNode jsonNode, Class<J> Object) {
+        try {
+            return objectMapper.treeToValue(jsonNode, Object);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            System.out.println("Error while processing JSON. Please enter valid JSON");
+            return null;
+        }
     }
+
 }

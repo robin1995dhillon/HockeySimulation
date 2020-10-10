@@ -1,5 +1,6 @@
 package dhl.Validator;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import dhl.Validator.Validator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,7 +23,6 @@ public class JSONValidator {
 //        String missing_val = "";
         leagueValidator(Obj,stack);
         if(stack.isEmpty()) {
-            System.out.println("Missing Value" + stack);
             return_json.put("isValid","True");
             return_json.put("Message","Null");
             return return_json;
@@ -36,9 +36,18 @@ public class JSONValidator {
 
     }
 
+//    public Boolean JSONParserValidator(JSONObject Obj) {
+//
+//        try {
+//            new JSONObject(Obj);
+//        } catch () {
+//        return true;
+//    }
+
     public  Boolean leagueValidator(JSONObject Obj, Stack stack) {
         if(validator.valueIsPresent((String)Obj.get("leagueName"))) {
             conferenceValidator(Obj, stack);
+            freeAgentValidator(Obj, stack);
         }
         else {
             stack.push("League Name Missing");
@@ -49,13 +58,10 @@ public class JSONValidator {
 
     public Boolean conferenceValidator(JSONObject Obj, Stack stack) {
         JSONArray conferenceArray = (JSONArray) (Obj.get("conferences"));
-        System.out.println(conferenceArray);
         Iterator conf_arr_iter = conferenceArray.iterator();
         while (conf_arr_iter.hasNext()) {
             JSONObject conferenceObject = (JSONObject) conf_arr_iter.next();
-            System.out.println("ConferenceObject" + conferenceObject);
             String conferenceName = (String) conferenceObject.get("conferenceName");
-            System.out.println(conferenceName);
 
             if (validator.valueIsPresent(conferenceName)) {
                 divisionValidator(conferenceObject, stack);
@@ -69,15 +75,48 @@ public class JSONValidator {
         }
         return true;
     }
+
+    public Boolean freeAgentValidator(JSONObject Obj, Stack stack) {
+        JSONArray freeAgentArray = (JSONArray) (Obj.get("freeAgents"));
+        if(freeAgentArray == null) {
+            return false;
+        }
+        Iterator free_agent_iter = freeAgentArray.iterator();
+        while (free_agent_iter.hasNext()) {
+            JSONObject freeAgentObject = (JSONObject) free_agent_iter.next();
+            String playerName = (String) freeAgentObject.get("playerName");
+            String position = (String) freeAgentObject.get("position");
+            String captain =  freeAgentObject.get("captain").toString();
+
+            if (validator.valueIsPresent(playerName)) {
+                if(validator.valueIsPresent(position)) {
+                    if(validator.valueIsPresent(captain)) {
+                    }
+                    else{
+                        stack.push("General Manager Missing in Free Agent");
+                        return false;
+                    }
+                }
+                else {
+                    stack.push("Head Coach Missing in Free Agent");
+                    return false;
+                }
+            } else {
+                stack.push("Team Name Missing in Free Agent");
+                return false;
+            }
+        }
+        return true;
+    }
     public Boolean divisionValidator(JSONObject Obj, Stack stack) {
         JSONArray divisionArray = (JSONArray) (Obj.get("divisions"));
-        System.out.println(divisionArray);
+
         Iterator div_arr_iter = divisionArray.iterator();
         while (div_arr_iter.hasNext()) {
             JSONObject divisionObject = (JSONObject) div_arr_iter.next();
-            System.out.println("DivisionObject" + divisionObject);
+
             String divisionName = (String) divisionObject.get("divisionName");
-            System.out.println(divisionName);
+
 //            teamValidator(divisionObject);
             if (validator.valueIsPresent(divisionName)) {
                 teamValidator(divisionObject, stack);
@@ -91,17 +130,15 @@ public class JSONValidator {
     }
     public Boolean teamValidator(JSONObject Obj, Stack stack) {
         JSONArray teamArray = (JSONArray) (Obj.get("teams"));
-        System.out.println(teamArray);
+
         Iterator team_arr_iter = teamArray.iterator();
         while (team_arr_iter.hasNext()) {
             JSONObject teamObject = (JSONObject) team_arr_iter.next();
-            System.out.println("DivisionObject" + teamObject);
+
             String teamName = (String) teamObject.get("teamName");
             String headCoach = (String) teamObject.get("headCoach");
             String generalManager = (String) teamObject.get("generalManager");
-            System.out.println(teamName);
-            System.out.println(headCoach);
-            System.out.println(generalManager);
+
 
             if (validator.valueIsPresent(teamName)) {
                 if(validator.valueIsPresent(headCoach)) {
@@ -125,23 +162,33 @@ public class JSONValidator {
         }
         return true;
     }
-    public static Boolean playerValidator(JSONObject Obj, Stack stack) {
+    public Boolean playerValidator(JSONObject Obj, Stack stack) {
         JSONArray playersArray = (JSONArray) (Obj.get("players"));
-        System.out.println(playersArray);
+
         for (Object o : playersArray) {
             JSONObject playerObject = (JSONObject) o;
-            System.out.println("playerObject" + playerObject);
+
             String playerName = (String) playerObject.get("playerName");
             String position = (String) playerObject.get("position");
-            Boolean captain = (Boolean) playerObject.get("captain");
-            System.out.println(playerName);
-            System.out.println(position);
-            System.out.println(captain);
-//            if (Validator.isEmpty(playerName) && Validator.isEmpty(position) && Validator.isEmpty(generalManager)) {
-//                return false;
-//            } else {
-//                return true;
-//            }
+            String captain =  playerObject.get("captain").toString();
+
+            if (validator.valueIsPresent(playerName)) {
+                if(validator.valueIsPresent(position)) {
+                    if(validator.valueIsPresent(captain)) {
+                    }
+                    else{
+                        stack.push("General Manager Missing");
+                        return false;
+                    }
+                }
+                else {
+                    stack.push("Head Coach Missing");
+                    return false;
+                }
+            } else {
+                stack.push("Team Name Missing");
+                return false;
+            }
         }
         return false;
     }

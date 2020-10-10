@@ -12,6 +12,10 @@ public class Division {
         Teams = teams;
     }
 
+    public Division(String divisionName) {
+        this.divisionName = divisionName;
+    }
+
     public Division() {
 
     }
