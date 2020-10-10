@@ -94,7 +94,7 @@ public class StoredProcedure {
             Path currentRelativePath = Paths.get("");
             String str = currentRelativePath.toAbsolutePath().toString();
 
-            str = str.substring(0, str.lastIndexOf("target") + 1);
+            str = str.substring(0, str.lastIndexOf("target"));
             database = new Properties();
             input = new FileInputStream(str+file);
             if (input != null) {
