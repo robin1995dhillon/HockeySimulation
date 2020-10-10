@@ -113,7 +113,7 @@ public class StoredProcedure {
         try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
+            conn = DriverManager.getConnection(database.getProperty("TEST_URL"), database.getProperty("TEST_USER"), database.getProperty("TEST_PASS"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
                 sql = "{CALL " + this.procedureName + "(?)}";
                 stmt = conn.prepareCall(sql);
