@@ -76,7 +76,7 @@ deployTest:
 
   script:
     - database="application.properties"
-    - echo "dburl=${DB_TEST_URL}" > $database
+    - echo "dburl=${DB_TEST_URL}" >> $database
     - echo "dbuser=${DB_TEST_USER}" >> $database
     - echo "dbpass=${DB_TEST_PASS}" >> $database
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip *
