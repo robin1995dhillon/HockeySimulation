@@ -90,29 +90,36 @@ public class StoredProcedure {
         Properties database= new Properties();;
         CallableStatement stmt = null;
         String file = "application.properties";
-        try {
+//        try {
+//            Path currentRelativePath = Paths.get("");
+//            String str = currentRelativePath.toAbsolutePath().toString();
+//
+//            str = str.substring(0, str.lastIndexOf("target")+1);
+//
+//            input = new FileInputStream(str+file);
+//
+//            if (input != null) {
+//                System.out.println("fetching remote from "+input);
+//                database.load(input);
+//            } else {
+//                throw new FileNotFoundException("no file present");
+//            }
+//        }
+//        catch(FileNotFoundException files){
+//            input = new FileInputStream("src/"+file);
+//            System.out.println("fetching from "+input);
+//            database.load(input);
+//        }
+
+        try{
             Path currentRelativePath = Paths.get("");
             String str = currentRelativePath.toAbsolutePath().toString();
 
-            str = str.substring(0, str.lastIndexOf("target"));
+            str = str.substring(0, str.lastIndexOf("target")+1);
 
             input = new FileInputStream(str+file);
-
-            if (input != null) {
-                System.out.println("fetching remote from "+input);
-                database.load(input);
-            } else {
-                throw new FileNotFoundException("no file present");
-            }
-        }
-        catch(FileNotFoundException files){
-            input = new FileInputStream("src/"+file);
-            System.out.println("fetching from "+input);
+            System.out.println("fetching remote from "+input);
             database.load(input);
-        }
-
-        try{
-
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(database.getProperty("TEST_URL"), database.getProperty("TEST_USER"), database.getProperty("TEST_PASS"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
