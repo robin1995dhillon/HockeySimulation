@@ -55,8 +55,8 @@ deployProd:
     - echo "PROD_URL= ${PROD_URL}" >> databaseFile
     - echo "PROD_USER= ${PROD_USER}" >> databaseFile
     - echo "PROD_PASS= ${PROD_PASS}" >> databaseFile
-    - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
+    - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
     - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${CI_COMMIT_SHORT_SHA}.zip"
   only:
     - release
@@ -81,8 +81,8 @@ deployTest:
     - echo "TEST_URL= ${TEST_URL}" >> $database
     - echo "TEST_USER= ${TEST_USER}" >> $database
     - echo "TEST_PASS= ${TEST_PASS}" >> $database
-    - scp -r -o StrictHostKeyChecking=no ${database} "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${database}"
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
+    - scp -r -o StrictHostKeyChecking=no ${database} "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${database}"
     - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_COMMIT_SHORT_SHA}.zip"
   only:
     - develop
