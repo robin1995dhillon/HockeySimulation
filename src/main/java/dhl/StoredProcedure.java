@@ -116,7 +116,7 @@ public class StoredProcedure {
             System.out.println("current path is:"+currentRelativePath);
             String str = currentRelativePath.toAbsolutePath().toString();
             System.out.println("string before:"+str);
-            str = str.substring(0, str.lastIndexOf("target")+1);
+            str = str.substring(0, str.lastIndexOf("target"));
             System.out.println("string after:"+str);
             input = new FileInputStream(str+file);
             input = new FileInputStream(file);
