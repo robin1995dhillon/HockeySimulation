@@ -42,7 +42,7 @@ deployProd:
   stage: deploy_prod
   tags:
     - ugrad
-  artifacts:
+#  artifacts:
 #    paths:
 #      # Change this directory to the path that contains your built executable
 #      - target
