@@ -50,7 +50,7 @@ deployProd:
 
   script:
     - databaseFile="application.properties"
-    - echo "dburl=${DB_PROD_URL}" > $databaseFile
+    - echo "dburl=${DB_PROD_URL}" >> $databaseFile
     - echo "dbuser=${DB_PROD_USER}" >> $databaseFile
     - echo "dbpass=${DB_PROD_PASS}" >> $databaseFile
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip *
