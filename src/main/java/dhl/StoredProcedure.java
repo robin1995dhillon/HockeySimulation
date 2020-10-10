@@ -123,10 +123,10 @@ public class StoredProcedure {
             System.out.println("fetching remote from "+input);
             database.load(input);
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("database url:"+database.getProperty("TEST_URL"));
-            System.out.println("database user:"+database.getProperty("TEST_USER"));
-            System.out.println("database password:"+database.getProperty("TEST_PASS"));
-            conn = DriverManager.getConnection(database.getProperty("TEST_URL"), database.getProperty("TEST_USER"), database.getProperty("TEST_PASS"));
+            System.out.println("database url:"+database.getProperty("dburl"));
+            System.out.println("database user:"+database.getProperty("dbuser"));
+            System.out.println("database password:"+database.getProperty("dbpass"));
+            conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
                 sql = "{CALL " + this.procedureName + "(?)}";
                 stmt = conn.prepareCall(sql);
