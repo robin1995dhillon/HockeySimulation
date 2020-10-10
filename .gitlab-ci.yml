@@ -1,8 +1,8 @@
-image: docker:18-git
+# image: docker:18-git
 
 # services:
 #   - name: docker:18.09-dind
-# image: maven:latest
+image: maven:latest
 
 stages:
   - build
@@ -14,7 +14,7 @@ build:
   image: maven:latest
   stage: build
   tags:
-    - dalfcs_docker_kvm
+    - ugrad
   script:
     - mvn compile
   artifacts:
@@ -24,7 +24,7 @@ test:
   image: maven:latest
   stage: test
   tags:
-    - dalfcs_docker_kvm
+    - ugrad
   script:
     - mvn clean verify
   artifacts:
@@ -39,7 +39,7 @@ deployProd:
   image: maven:latest
   stage: deploy_prod
   tags:
-    - dalfcs_gitlab_docker_ci
+    - ugrad
   #  artifacts:
   #    paths:
   #      # Change this directory to the path that contains your built executable
@@ -65,7 +65,7 @@ deployTest:
   image: maven:latest
   stage: deploy_test
   tags:
-    - dalfcs_gitlab_docker_ci
+    - ugrad
   artifacts:
     paths:
       - target
