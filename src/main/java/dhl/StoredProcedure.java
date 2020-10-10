@@ -85,12 +85,12 @@ public class StoredProcedure {
     public void executeProcedure() throws IOException {
         Connection conn = null;
         CallableStatement stmt = null;
-        Properties database = new Properties();
-        InputStream input = new FileInputStream("/users/grad/robinder/CSCI5308builds/application.properties");
-        database.load(input);
+//        Properties database = new Properties();
+//        InputStream input = new FileInputStream("src/application.properties");
+//        database.load(input);
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(database.getProperty("TEST_URL"), database.getProperty("TEST_USER"), database.getProperty("TEST_PASS"));
+            conn = DriverManager.getConnection("jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_TEST?user=CSCI5308_1_TEST_USER&serverTimezone=UTC", "CSCI5308_1_TEST_USER", "Uu4mw8bk3q");
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
                 sql = "{CALL " + this.procedureName + "(?)}";
                 stmt = conn.prepareCall(sql);
