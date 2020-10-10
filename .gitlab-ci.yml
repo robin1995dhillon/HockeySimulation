@@ -52,7 +52,7 @@ deployProd:
 
   script:
     - databaseFile="application.properties"
-    - echo "PROD_URL= ${PROD_URL}" >> databaseFile
+    - echo "PROD_URL= ${PROD_URL}" > databaseFile
     - echo "PROD_USER= ${PROD_USER}" >> databaseFile
     - echo "PROD_PASS= ${PROD_PASS}" >> databaseFile
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
@@ -78,7 +78,7 @@ deployTest:
 
   script:
     - database="application.properties"
-    - echo "TEST_URL= ${TEST_URL}" >> $database
+    - echo "TEST_URL= ${TEST_URL}" > $database
     - echo "TEST_USER= ${TEST_USER}" >> $database
     - echo "TEST_PASS= ${TEST_PASS}" >> $database
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
