@@ -90,11 +90,12 @@ public class StoredProcedure {
         Path currentRelativePath = Paths.get("");
         String str = currentRelativePath.toAbsolutePath().toString();
 
-        str= str.substring(0, str.lastIndexOf("target"));
-        Properties database = new Properties();
-        InputStream input = new FileInputStream(str+"application.properties");
-        database.load(input);
         try{
+
+            str= str.substring(0, str.lastIndexOf("target"));
+            Properties database = new Properties();
+            InputStream input = new FileInputStream(str+"application.properties");
+            database.load(input);
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
