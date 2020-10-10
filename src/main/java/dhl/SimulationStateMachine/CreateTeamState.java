@@ -20,6 +20,7 @@ public class CreateTeamState {
         ArrayList<Players> Players;
 
         String leagueName = league.getLeagueName();
+        System.out.println("entering saveLeague Method");   //commenttt
         JSONObject league_obj = saveLeague(leagueName);
         boolean league_bool = (boolean) league_obj.get("Status");
         int league_id = (int) league_obj.get("id");
@@ -70,6 +71,7 @@ public class CreateTeamState {
 
     public JSONObject saveLeague(String leagueName) {
         JSONObject return_obj = new JSONObject();
+        System.out.println("entering stored procedure");
         StoredProcedure SP = new StoredProcedure("create_league");
         SP.addParameter(leagueName);
 
