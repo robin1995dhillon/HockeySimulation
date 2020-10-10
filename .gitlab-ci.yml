@@ -59,7 +59,7 @@ deployProd:
     - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
     - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${CI_COMMIT_SHORT_SHA}.zip"
   only:
-    - release
+    - hotfix
 
 deployTest:
   image: maven:latest
