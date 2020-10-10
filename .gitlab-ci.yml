@@ -63,9 +63,9 @@ deployTest:
   stage: deploy_test
   tags:
     - ugrad
-#  artifacts:
-#    paths:
-#      - target
+  artifacts:
+    paths:
+      - target
 
   script:
     - database="application.properties"
