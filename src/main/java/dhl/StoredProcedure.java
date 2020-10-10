@@ -88,12 +88,19 @@ public class StoredProcedure {
         CallableStatement stmt = null;
         String file = "application.properties";
         try{
-            Path currentRelativePath = Paths.get("");
-            String str = currentRelativePath.toAbsolutePath().toString();
-            str = str.substring(0, str.lastIndexOf("target"));
-            input = new FileInputStream(str+file);
+//            Path currentRelativePath = Paths.get("");
+//            System.out.println("current path is:"+currentRelativePath);
+//            String str = currentRelativePath.toAbsolutePath().toString();
+//            System.out.println("string before:"+str);
+//            str = str.substring(0, str.lastIndexOf("target"));
+//            System.out.println("string after:"+str);
+            input = new FileInputStream(file);
+//            System.out.println("fetching remote from "+input);
             database.load(input);
             Class.forName("com.mysql.cj.jdbc.Driver");
+//            System.out.println("database url:"+database.getProperty("dburl"));
+//            System.out.println("database user:"+database.getProperty("dbuser"));
+//            System.out.println("database password:"+database.getProperty("dbpass"));
             conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
                 sql = "{CALL " + this.procedureName + "(?)}";
