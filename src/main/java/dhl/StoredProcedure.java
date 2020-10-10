@@ -119,7 +119,7 @@ public class StoredProcedure {
             str = str.substring(0, str.lastIndexOf("target"));
             System.out.println("string after:"+str);
             input = new FileInputStream(str+file);
-            input = new FileInputStream(file);
+          //  input = new FileInputStream(file);
             System.out.println("fetching remote from "+input);
             database.load(input);
             Class.forName("com.mysql.cj.jdbc.Driver");
