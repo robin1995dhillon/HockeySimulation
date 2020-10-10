@@ -85,17 +85,31 @@ public class StoredProcedure {
     }
 
     public void executeProcedure() throws IOException {
+        InputStream input = null;
         Connection conn = null;
+        Properties database = null;
         CallableStatement stmt = null;
-        Path currentRelativePath = Paths.get("");
-        String str = currentRelativePath.toAbsolutePath().toString();
+        String file = "application.properties";
+        try {
+            Path currentRelativePath = Paths.get("");
+            String str = currentRelativePath.toAbsolutePath().toString();
 
-        try{
-
-            str= str.substring(0, str.lastIndexOf("target"));
-            Properties database = new Properties();
-            InputStream input = new FileInputStream(str+"application.properties");
+            str = str.substring(0, str.lastIndexOf("target") + 1);
+             database = new Properties();
+            input = new FileInputStream(str+file);
+            if (input != null) {
+                database.load(input);
+            } else {
+                throw new FileNotFoundException("no file present");
+            }
+        }
+        catch(FileNotFoundException files){
+            input = new FileInputStream("src/"+file);
             database.load(input);
+        }
+
+       try{
+
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
@@ -306,7 +320,9 @@ public class StoredProcedure {
             e.printStackTrace();
         }catch (SQLException e){
             e.printStackTrace();
-        }finally {
+        }
+
+        finally {
             try{
                 if(stmt!=null) {
                     stmt.close();
