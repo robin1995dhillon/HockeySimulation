@@ -11,20 +11,20 @@ stages:
 
 
 build:
-  image: maven:latest
+  image: maven:3-jdk-8
   stage: build
   tags:
-    - dalfcs_gitlab_docker_ci
+    - dalfcs_docker_kvm
   script:
     - mvn compile
   artifacts:
     paths:
       - target
 test:
-  image: maven:latest
+  image: maven:3-jdk-8
   stage: test
   tags:
-    - dalfcs_gitlab_docker_ci
+    - dalfcs_docker_kvm
   script:
     - mvn clean verify
   artifacts:
@@ -36,10 +36,10 @@ test:
 
 
 deployProd:
-  image: maven:latest
+  image: maven:3-jdk-8
   stage: deploy_prod
   tags:
-    - dalfcs_gitlab_docker_ci
+    - dalfcs_docker_kvm
   #  artifacts:
   #    paths:
   #      # Change this directory to the path that contains your built executable
@@ -62,10 +62,10 @@ deployProd:
     - release
 
 deployTest:
-  image: maven:latest
+  image: maven:3-jdk-8
   stage: deploy_test
   tags:
-    - dalfcs_gitlab_docker_ci
+    - dalfcs_docker_kvm
   artifacts:
     paths:
       - target

@@ -1,4 +1,4 @@
-import dhl.StoredProcedure;
+/*import dhl.StoredProcedure;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,5 +49,6 @@ public class StoredProcedureTest {
 //        StoredProcedure s3 = new StoredProcedure("get_team_player");
 //        s3.addParameter(1);
 //        s3.executeProcedure();
-    } */
+    }
 }
+*/

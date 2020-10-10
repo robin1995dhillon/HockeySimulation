@@ -95,7 +95,7 @@ public class StoredProcedure {
             String str = currentRelativePath.toAbsolutePath().toString();
 
             str = str.substring(0, str.lastIndexOf("target") + 1);
-             database = new Properties();
+            database = new Properties();
             input = new FileInputStream(str+file);
             if (input != null) {
                 database.load(input);
@@ -108,7 +108,7 @@ public class StoredProcedure {
             database.load(input);
         }
 
-       try{
+        try{
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
