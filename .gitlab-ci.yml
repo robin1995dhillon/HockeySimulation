@@ -6,11 +6,6 @@ stages:
   - deploy_test
   - deploy_prod
 
-before_script:
-  - echo "beforeScript"
-  - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
-  - eval $(ssh-agent -s)
-  - ssh-add <(echo "${DEPLOY_SSH_KEY}")
 
 build:
   image: maven:latest
@@ -46,6 +41,11 @@ deployProd:
 #    paths:
 #      # Change this directory to the path that contains your built executable
 #      - target
+  before_script:
+    - echo "beforeScript"
+    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "${DEPLOY_SSH_KEY}")
 
   script:
     - databaseFile="application.properties"
@@ -66,6 +66,12 @@ deployTest:
   artifacts:
     paths:
       - target
+
+  before_script:
+    - echo "beforeScript"
+    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "${DEPLOY_SSH_KEY}")
 
   script:
     - database="application.properties"

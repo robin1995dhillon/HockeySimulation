@@ -3,6 +3,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.Properties;
 public class StoredProcedure {
@@ -85,8 +87,12 @@ public class StoredProcedure {
     public void executeProcedure() throws IOException {
         Connection conn = null;
         CallableStatement stmt = null;
+        Path currentRelativePath = Paths.get("");
+        String str = currentRelativePath.toAbsolutePath().toString();
+
+        str= str.substring(0, str.lastIndexOf("target"));
         Properties database = new Properties();
-        InputStream input = new FileInputStream("src/database.properties");
+        InputStream input = new FileInputStream(str+"application.properties");
         database.load(input);
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
