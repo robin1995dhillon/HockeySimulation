@@ -87,7 +87,7 @@ public class StoredProcedure {
     public void executeProcedure() throws IOException {
         InputStream input = null;
         Connection conn = null;
-        Properties database = null;
+        Properties database= new Properties();;
         CallableStatement stmt = null;
         String file = "application.properties";
         try {
@@ -95,8 +95,9 @@ public class StoredProcedure {
             String str = currentRelativePath.toAbsolutePath().toString();
 
             str = str.substring(0, str.lastIndexOf("target"));
-            database = new Properties();
+
             input = new FileInputStream(str+file);
+
             if (input != null) {
                 System.out.println("fetching remote from "+input);
                 database.load(input);
