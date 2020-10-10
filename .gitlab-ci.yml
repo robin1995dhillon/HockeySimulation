@@ -52,9 +52,9 @@ deployProd:
 
   script:
     - databaseFile="application.properties"
-    - echo "PROD_URL= ${PROD_URL}" > databaseFile
-    - echo "PROD_USER= ${PROD_USER}" >> databaseFile
-    - echo "PROD_PASS= ${PROD_PASS}" >> databaseFile
+    - echo "PROD_URL= ${DB_PROD_URL}" > databaseFile
+    - echo "PROD_USER= ${DB_PROD_USER}" >> databaseFile
+    - echo "PROD_PASS= ${DB_PROD_PASS}" >> databaseFile
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
     - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
     - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${CI_COMMIT_SHORT_SHA}.zip"
@@ -78,9 +78,9 @@ deployTest:
 
   script:
     - database="application.properties"
-    - echo "TEST_URL= ${TEST_URL}" > $database
-    - echo "TEST_USER= ${TEST_USER}" >> $database
-    - echo "TEST_PASS= ${TEST_PASS}" >> $database
+    - echo "TEST_URL= ${DB_TEST_URL}" > $database
+    - echo "TEST_USER= ${DB_TEST_USER}" >> $database
+    - echo "TEST_PASS= ${DB_TEST_PASS}" >> $database
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
     - scp -r -o StrictHostKeyChecking=no ${database} "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${database}"
     - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_COMMIT_SHORT_SHA}.zip"
