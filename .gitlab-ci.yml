@@ -78,9 +78,9 @@ deployTest:
 
   script:
     - database="application.properties"
-    - echo "TEST_URL= ${TEST_URL}" > $database
-    - echo "TEST_USER= ${TEST_USER}" >> $database
-    - echo "TEST_PASS= ${TEST_PASS}" >> $database
+    - echo "TEST_URL= "${TEST_URL}"" > $database
+    - echo "TEST_USER= "${TEST_USER}"" >> $database
+    - echo "TEST_PASS= "${TEST_PASS}"" >> $database
     - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
     - scp -r -o StrictHostKeyChecking=no ${database} "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${database}"
     - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_COMMIT_SHORT_SHA}.zip"
