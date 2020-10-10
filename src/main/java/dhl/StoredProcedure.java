@@ -98,6 +98,7 @@ public class StoredProcedure {
             database = new Properties();
             input = new FileInputStream(str+file);
             if (input != null) {
+                System.out.println("fetching remote from "+input);
                 database.load(input);
             } else {
                 throw new FileNotFoundException("no file present");
@@ -105,6 +106,7 @@ public class StoredProcedure {
         }
         catch(FileNotFoundException files){
             input = new FileInputStream("src/"+file);
+            System.out.println("fetching from "+input);
             database.load(input);
         }
 
