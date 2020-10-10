@@ -87,7 +87,7 @@ public class StoredProcedure {
     public void executeProcedure() throws IOException {
         InputStream input = null;
         Connection conn = null;
-        Properties database= new Properties();;
+        Properties database= new Properties();
         CallableStatement stmt = null;
         String file = "application.properties";
 //        try {
@@ -113,14 +113,19 @@ public class StoredProcedure {
 
         try{
             Path currentRelativePath = Paths.get("");
+            System.out.println("current path is:"+currentRelativePath);
             String str = currentRelativePath.toAbsolutePath().toString();
-
+            System.out.println("string before:"+str);
             str = str.substring(0, str.lastIndexOf("target")+1);
-
+            System.out.println("string after:"+str);
             input = new FileInputStream(str+file);
+            input = new FileInputStream(file);
             System.out.println("fetching remote from "+input);
             database.load(input);
             Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("database url:"+database.getProperty("TEST_URL"));
+            System.out.println("database user:"+database.getProperty("TEST_USER"));
+            System.out.println("database password:"+database.getProperty("TEST_PASS"));
             conn = DriverManager.getConnection(database.getProperty("TEST_URL"), database.getProperty("TEST_USER"), database.getProperty("TEST_PASS"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
                 sql = "{CALL " + this.procedureName + "(?)}";
