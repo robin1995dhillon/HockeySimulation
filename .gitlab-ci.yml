@@ -37,26 +37,26 @@ test:
 
 
 
-deployProd:
-  image: maven:latest
-  stage: deploy_prod
-  tags:
-    - ugrad
-#  artifacts:
-#    paths:
-#      # Change this directory to the path that contains your built executable
-#      - target
-
-  script:
-    - databaseFile="application.properties"
-    - echo "PROD_URL= ${PROD_URL}" >> databaseFile
-    - echo "PROD_USER= ${PROD_USER}" >> databaseFile
-    - echo "PROD_PASS= ${PROD_PASS}" >> databaseFile
-    - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
-    - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
-    - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${CI_COMMIT_SHORT_SHA}.zip"
-  only:
-    - release
+#deployProd:
+#  image: maven:latest
+#  stage: deploy_prod
+#  tags:
+#    - ugrad
+##  artifacts:
+##    paths:
+##      # Change this directory to the path that contains your built executable
+##      - target
+#
+#  script:
+#    - databaseFile="application.properties"
+#    - echo "PROD_URL= ${PROD_URL}" >> databaseFile
+#    - echo "PROD_USER= ${PROD_USER}" >> databaseFile
+#    - echo "PROD_PASS= ${PROD_PASS}" >> databaseFile
+#    - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
+#    - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
+#    - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${CI_COMMIT_SHORT_SHA}.zip"
+#  only:
+#    - release
 
 deployTest:
   image: maven:latest
