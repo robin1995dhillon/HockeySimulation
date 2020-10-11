@@ -33,8 +33,6 @@ test:
       junit:
         - target/surefire-reports/TEST-*.xml
 
-
-
 deployProd:
   image: maven:latest
   stage: deploy_prod
