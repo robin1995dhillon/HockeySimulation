@@ -1,17 +1,15 @@
+# image: docker:18-git
+
+# services:
+#   - name: docker:18.09-dind
 image: maven:latest
 
 stages:
   - build
   - test
-  - deploy_dev_int
   - deploy_test
   - deploy_prod
 
-before_script:
-  - echo "beforeScript"
-  - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
-  - eval $(ssh-agent -s)
-  - ssh-add <(echo "${DEPLOY_SSH_KEY}")
 build:
   image: maven:latest
   stage: build
@@ -35,47 +33,31 @@ test:
       junit:
         - target/surefire-reports/TEST-*.xml
 
-#deployDevInt:
-#  image: maven:latest
-#  stage: deploy_dev_int
-#  tags:
-#    - ugrad
-#  artifacts:
-#    paths:
-#      # Change this directory to the path that contains your built executable
-#      - target
-#
-#  script:
-#    - database="application.properties"
-#    - echo "DEVINT_URL= ${DEVINT_URL}" >> $database
-#    - echo "DEVINT_USER= ${DEVINT_USER}" >> $database
-#    - echo "DEVINT_PASS= ${DEVINT_PASS}" >> $database
-#    - scp -r -o StrictHostKeyChecking=no ${database} "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${database}"
-#    - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
-#    - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_COMMIT_SHORT_SHA}.zip"
-#  only:
-#    - develop
+deployProd:
+  image: maven:latest
+  stage: deploy_prod
+  tags:
+    - ugrad
+  #  artifacts:
+  #    paths:
+  #      # Change this directory to the path that contains your built executable
+  #      - target
+  before_script:
+    - echo "beforeScript"
+    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "${DEPLOY_SSH_KEY_PROD}")
 
-#deployProd:
-#  image: maven:latest
-#  stage: deploy_prod
-#  tags:
-#    - ugrad
-#  artifacts:
-#    paths:
-#      # Change this directory to the path that contains your built executable
-#      - target
-#
-#  script:
-#  - database="application.properties"
-#  - echo "PROD_URL= ${PROD_URL}" >> $database
-#  - echo "PROD_USER= ${PROD_USER}" >> $database
-#  - echo "PROD_PASS= ${PROD_PASS}" >> $database
-#  - scp -r -o StrictHostKeyChecking=no ${database} "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${database}"
-#  - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
-#  - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_COMMIT_SHORT_SHA}.zip"
-# only:
-#   - master
+  script:
+    - databaseFile="application.properties"
+    - echo "dburl= ${DB_PROD_URL}" > $databaseFile
+    - echo "dbuser= ${DB_PROD_USER}" >> $databaseFile
+    - echo "dbpass= ${DB_PROD_PASS}" >> $databaseFile
+    - zip -r ${CI_COMMIT_SHORT_SHA}.zip *
+    - scp -r -o StrictHostKeyChecking=no ${databaseFile} "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${databaseFile}"
+    - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER_PROD}@${DEPLOY_HOST_PROD}:${DEPLOY_DIR_PROD}/${CI_COMMIT_SHORT_SHA}.zip"
+  only:
+    - release
 
 deployTest:
   image: maven:latest
@@ -86,13 +68,19 @@ deployTest:
     paths:
       - target
 
+  before_script:
+    - echo "beforeScript"
+    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "${DEPLOY_SSH_KEY}")
+
   script:
     - database="application.properties"
-    - echo "TEST_URL= ${TEST_URL}" >> $database
-    - echo "TEST_USER= ${TEST_USER}" >> $database
-    - echo "TEST_PASS= ${TEST_PASS}" >> $database
+    - echo "dburl= ${DB_TEST_URL}" > $database
+    - echo "dbuser= ${DB_TEST_USER}" >> $database
+    - echo "dbpass= ${DB_TEST_PASS}" >> $database
+    - zip -r ${CI_COMMIT_SHORT_SHA}.zip *
     - scp -r -o StrictHostKeyChecking=no ${database} "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${database}"
-    - zip -r ${CI_COMMIT_SHORT_SHA}.zip target
     - scp -r -o StrictHostKeyChecking=no ${CI_COMMIT_SHORT_SHA}.zip "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_DIR}/${CI_COMMIT_SHORT_SHA}.zip"
   only:
     - develop

@@ -3,6 +3,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.Properties;
 public class StoredProcedure {
@@ -83,12 +85,19 @@ public class StoredProcedure {
     }
 
     public void executeProcedure() throws IOException {
+        InputStream input = null;
         Connection conn = null;
+        Properties database= new Properties();
         CallableStatement stmt = null;
-        Properties database = new Properties();
-        InputStream input = new FileInputStream("src/database.properties");
-        database.load(input);
+        String file = "application.properties";
+
+
         try{
+            Path currentRelativePath = Paths.get("");
+            String str = currentRelativePath.toAbsolutePath().toString();
+            str = str.substring(0, str.lastIndexOf("target"));
+            input = new FileInputStream(str+file);
+            database.load(input);
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(database.getProperty("dburl"), database.getProperty("dbuser"), database.getProperty("dbpass"));
             if(this.procedureName.equals("create_league") || this.procedureName.equals("create_conference") || this.procedureName.equals("create_division")){
@@ -299,7 +308,9 @@ public class StoredProcedure {
             e.printStackTrace();
         }catch (SQLException e){
             e.printStackTrace();
-        }finally {
+        }
+
+        finally {
             try{
                 if(stmt!=null) {
                     stmt.close();
