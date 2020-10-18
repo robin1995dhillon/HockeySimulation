@@ -10,6 +10,14 @@ public class FreeAgents2 implements IFreeAgents{
     double saving;
     int age;
 
+    public FreeAgents2() {
+    }
+    public FreeAgents2(String playerName, String position) {
+        this.playerName = playerName;
+        this.position = position;
+
+    }
+
 
     @Override
     public String getPlayerName() {
@@ -24,7 +32,7 @@ public class FreeAgents2 implements IFreeAgents{
 
     @Override
     public String getPosition() {
-        return null;
+        return position;
     }
 
     @Override
@@ -34,7 +42,8 @@ public class FreeAgents2 implements IFreeAgents{
     }
 
     @Override
-    public void getAge() {
+    public int getAge() {
+        return age;
 
     }
 
@@ -45,8 +54,9 @@ public class FreeAgents2 implements IFreeAgents{
     }
 
     @Override
-    public void getSkating() {
+    public double getSkating() {
 
+        return skating;
     }
 
     @Override
@@ -56,8 +66,9 @@ public class FreeAgents2 implements IFreeAgents{
     }
 
     @Override
-    public void getShooting() {
+    public double getShooting() {
 
+        return shooting;
     }
 
     @Override
@@ -67,8 +78,9 @@ public class FreeAgents2 implements IFreeAgents{
     }
 
     @Override
-    public void getChecking() {
+    public double getChecking() {
 
+        return checking;
     }
 
     @Override
@@ -78,8 +90,9 @@ public class FreeAgents2 implements IFreeAgents{
     }
 
     @Override
-    public void getSaving() {
+    public double getSaving() {
 
+        return saving;
     }
 
     @Override

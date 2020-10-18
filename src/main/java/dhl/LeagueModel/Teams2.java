@@ -6,8 +6,24 @@ public class Teams2 implements ITeam2{
 
     public String teamName;
     public String generalManager;
-    public HeadCoach headCoach;
+    public IHeadCoach headCoach;
     ArrayList<IPlayers2> players;
+
+    public Teams2() {
+    }
+
+    public Teams2(String teamName, String generalManager, IHeadCoach headCoach, ArrayList<IPlayers2> players) {
+        this.teamName = teamName;
+        this.generalManager = generalManager;
+        this.headCoach = headCoach;
+        this.players = players;
+    }
+
+    public Teams2(String teamName, String generalManager, IHeadCoach headCoach) {
+        this.teamName = teamName;
+        this.generalManager = generalManager;
+        this.headCoach = headCoach;
+    }
 
     @Override
     public ArrayList<IPlayers2> getPlayers() {
@@ -43,12 +59,12 @@ public class Teams2 implements ITeam2{
     }
 
     @Override
-    public HeadCoach getHeadCoach() {
+    public IHeadCoach getHeadCoach() {
         return headCoach;
     }
 
     @Override
-    public void setHeadCoach(HeadCoach headCoach) {
+    public void setHeadCoach(IHeadCoach headCoach) {
         this.headCoach = headCoach;
 
     }

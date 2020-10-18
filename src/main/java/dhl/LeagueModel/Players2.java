@@ -11,10 +11,19 @@ public class Players2 implements IPlayers2{
     double saving;
     int age;
 
+    public Players2() {
+    }
+
+    public Players2(String playerName, String position, boolean captain) {
+        this.playerName = playerName;
+        this.position = position;
+        this.captain = captain;
+    }
+
 
     @Override
     public String getPlayerName() {
-        return null;
+        return playerName;
     }
 
     @Override
@@ -25,7 +34,7 @@ public class Players2 implements IPlayers2{
 
     @Override
     public String getPosition() {
-        return null;
+        return position;
     }
 
     @Override
@@ -35,8 +44,8 @@ public class Players2 implements IPlayers2{
     }
 
     @Override
-    public Boolean getCaptain() {
-        return null;
+    public boolean getCaptain() {
+        return captain;
     }
 
     @Override
@@ -46,7 +55,8 @@ public class Players2 implements IPlayers2{
     }
 
     @Override
-    public void getAge() {
+    public int getAge() {
+        return age;
 
     }
 
@@ -57,7 +67,8 @@ public class Players2 implements IPlayers2{
     }
 
     @Override
-    public void getSkating() {
+    public double getSkating() {
+        return skating;
 
     }
 
@@ -68,7 +79,8 @@ public class Players2 implements IPlayers2{
     }
 
     @Override
-    public void getShooting() {
+    public double getShooting() {
+        return shooting;
 
     }
 
@@ -79,7 +91,8 @@ public class Players2 implements IPlayers2{
     }
 
     @Override
-    public void getChecking() {
+    public double getChecking() {
+        return checking;
 
     }
 
@@ -90,7 +103,8 @@ public class Players2 implements IPlayers2{
     }
 
     @Override
-    public void getSaving() {
+    public double getSaving() {
+        return saving;
 
     }
 

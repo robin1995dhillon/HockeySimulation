@@ -9,6 +9,22 @@ public class League2 implements ILeague{
     ArrayList<IConference> conferences;
     ArrayList<IFreeAgents> freeAgents;
 
+    public League2() {
+    }
+
+    public League2(String leagueName, ArrayList<IConference> conferences) {
+        this.leagueName = leagueName;
+        this.conferences = conferences;
+    }
+
+    public League2(String leagueName, ArrayList<IConference> conferences, ArrayList<IFreeAgents> freeAgents) {
+        this.leagueName = leagueName;
+        this.conferences = conferences;
+        this.freeAgents = freeAgents;
+    }
+    public League2(String leagueName) {
+        this.leagueName = leagueName;
+    }
 
 
     @Override
@@ -42,5 +58,21 @@ public class League2 implements ILeague{
     public void setfreeAgents(ArrayList<IFreeAgents> freeAgents) {
         this.freeAgents = freeAgents;
 
+    }
+
+    public boolean isValid(ILeague league) {
+        if(league == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isLeagueNamePresent() {
+        if(this.leagueName.isEmpty()) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }

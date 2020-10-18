@@ -7,25 +7,25 @@ public interface IFreeAgents {
     public String getPosition() ;
     public void setPosition(String position);
 
-    public void getAge();
+    public int getAge();
 
     public void setAge(int age);
 
 
-    public void getSkating();
+    public double getSkating();
 
     public void setSkating(double skating);
 
-    public void getShooting();
+    public double getShooting();
 
     public void setShooting(double shooting);
 
-    public void getChecking();
+    public double getChecking();
 
     public void setChecking(double checking);
 
 
-    public void getSaving();
+    public double getSaving();
 
     public void setSaving(double saving);
 

@@ -13,4 +13,6 @@ public interface ILeague {
     public ArrayList<IFreeAgents> getfreeAgents();
 
     public void setfreeAgents(ArrayList<IFreeAgents> freeAgents);
+    public  boolean isValid(ILeague league);
+    public boolean isLeagueNamePresent();
 }
