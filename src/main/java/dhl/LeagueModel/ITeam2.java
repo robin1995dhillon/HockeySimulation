@@ -15,8 +15,8 @@ public interface ITeam2 {
 
     public void setGeneralManager(String generalManager);
 
-    public HeadCoach getHeadCoach();
+    public IHeadCoach getHeadCoach();
 
-    public void setHeadCoach(HeadCoach headCoach);
+    public void setHeadCoach(IHeadCoach headCoach);
 
 }

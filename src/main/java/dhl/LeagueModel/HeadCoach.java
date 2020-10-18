@@ -8,6 +8,9 @@ public class HeadCoach implements IHeadCoach{
     double checking;
     double saving;
 
+    public HeadCoach() {
+    }
+
     @Override
     public String getName() {
         return name;

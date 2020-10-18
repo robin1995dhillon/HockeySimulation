@@ -25,20 +25,12 @@ public class TeamDB implements ITeamDB{
 
     @Override
     public void loadTeamWithLoss(ITeam2 team) throws SQLException {
-        IPlayers2 player = new Players2();
 
-        sql = "{CALL " + this.procedureName + "}";
-        stmt = conn.prepareCall(sql);
-        boolean hasResultSet = stmt.execute();
-        if(hasResultSet){
-            ResultSet rs = stmt.getResultSet();
-            while(rs.next()){
-                int id  = rs.getInt("id");
-                int strength  = rs.getInt("strength");
+        for(IPlayers2 player: team.getPlayers()){
 
-            }
-            rs.close();
         }
+
+
 
 
 

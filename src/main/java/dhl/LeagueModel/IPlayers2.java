@@ -1,7 +1,5 @@
 package dhl.LeagueModel;
 
-import org.apache.commons.io.TaggedIOException;
-
 public interface IPlayers2 {
     public String getPlayerName();
 
@@ -10,29 +8,29 @@ public interface IPlayers2 {
 
     public void setPosition(String position);
 
-    public Boolean getCaptain() ;
+    public boolean getCaptain() ;
 
     public void setCaptain(boolean captain) ;
 
-    public void getAge();
+    public int getAge();
 
     public void setAge(int age);
 
 
-    public void getSkating();
+    public double getSkating();
 
     public void setSkating(double skating);
 
-    public void getShooting();
+    public double getShooting();
 
     public void setShooting(double shooting);
 
-    public void getChecking();
+    public double getChecking();
 
     public void setChecking(double checking);
 
 
-    public void getSaving();
+    public double getSaving();
 
     public void setSaving(double saving);
 
