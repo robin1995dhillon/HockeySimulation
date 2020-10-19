@@ -32,7 +32,7 @@ public class NestedEndStateTest {
     public void forward() {
         context.setState(state);
         context.forward();
-        assertEquals("None", state.getNextStateName());
+        assertEquals("None", state.getNextState());
     }
 
     @Test
@@ -41,9 +41,9 @@ public class NestedEndStateTest {
     }
 
     @Test
-    public void getNextStateName() {
+    public void getNextState() {
         state.forward(context);
-        assertEquals("None", state.getNextStateName());
+        assertEquals("None", state.getNextState());
     }
 
     @Test
