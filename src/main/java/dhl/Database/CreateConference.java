@@ -5,18 +5,20 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CreateTeam implements ICreateStoredProcedure {
+public class CreateConference implements ICreateStoredProcedure{
+
     private String procedureName;
     private String name;
-    private String manager;
-    private String coach;
     private int insertedId;
 
-    public CreateTeam(String name, String manager, String coach){
-        this.procedureName = "create_team";
+    public CreateConference(String name){
+        this.procedureName = "create_conference";
         this.name = name;
-        this.manager = manager;
-        this.coach = coach;
+    }
+
+    @Override
+    public int getInsertedId() {
+        return this.insertedId;
     }
 
     @Override
@@ -24,11 +26,9 @@ public class CreateTeam implements ICreateStoredProcedure {
         IConnect conn = new Connect();
         conn.getConnection();
         ResultSet rs = conn.gerResultSet();
-        String sql = "{CALL " + this.procedureName + "(?,?,?)}";
+        String sql = "{CALL " + this.procedureName + "(?)}";
         CallableStatement stmt = conn.getStatement(sql);
         stmt.setString(1, this.name);
-        stmt.setString(2, this.manager);
-        stmt.setString(3, this.coach);
         boolean hasResultSet = stmt.execute();
         if(hasResultSet){
             rs = stmt.getResultSet();
@@ -37,10 +37,5 @@ public class CreateTeam implements ICreateStoredProcedure {
             }
         }
         conn.closeConnection();
-    }
-
-    @Override
-    public int getInsertedId(){
-        return this.insertedId;
     }
 }

@@ -1,6 +1,9 @@
 package dhl.Database;
 
+
+import java.io.IOException;
 import java.sql.*;
+
 
 public class Connect implements IConnect{
 
@@ -9,7 +12,7 @@ public class Connect implements IConnect{
     private ResultSet rs = null;
 
     @Override
-    public Connection getConnection() {
+    public Connection getConnection() throws IOException {
         String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_DEVINT?user=CSCI5308_1_DEVINT_USER&serverTimezone=UTC";
         String user = "CSCI5308_1_DEVINT_USER";
         String password = "B6D4tje9aC";

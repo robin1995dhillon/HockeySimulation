@@ -1,5 +1,6 @@
 package dhl.Database;
 
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,16 +9,13 @@ public class GetLeague implements IStoredProcedure{
     private String procedureName;
     private String name;
 
-    public GetLeague(String procedureName){
-        this.procedureName = procedureName;
-    }
-
-    public void addParameter(String name){
+    public GetLeague(String name){
+        this.procedureName = "get_league";
         this.name = name;
     }
 
     @Override
-    public void executeProcedure() throws SQLException {
+    public void executeProcedure() throws SQLException, IOException {
         IConnect conn = new Connect();
         conn.getConnection();
         ResultSet rs = conn.gerResultSet();

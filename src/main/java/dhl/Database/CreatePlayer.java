@@ -5,18 +5,26 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CreateTeam implements ICreateStoredProcedure {
+public class CreatePlayer implements ICreateStoredProcedure{
+
     private String procedureName;
     private String name;
-    private String manager;
-    private String coach;
+    private String position;
+    private boolean captain;
+    private int teamId;
     private int insertedId;
 
-    public CreateTeam(String name, String manager, String coach){
-        this.procedureName = "create_team";
+    public CreatePlayer(String name, String position, boolean captain, int teamId){
+        this.procedureName = "create_player";
         this.name = name;
-        this.manager = manager;
-        this.coach = coach;
+        this.position = position;
+        this.captain = captain;
+        this.teamId = teamId;
+    }
+
+    @Override
+    public int getInsertedId() {
+        return this.insertedId;
     }
 
     @Override
@@ -24,11 +32,12 @@ public class CreateTeam implements ICreateStoredProcedure {
         IConnect conn = new Connect();
         conn.getConnection();
         ResultSet rs = conn.gerResultSet();
-        String sql = "{CALL " + this.procedureName + "(?,?,?)}";
+        String sql = "{CALL " + this.procedureName + "(?,?,?,?)}";
         CallableStatement stmt = conn.getStatement(sql);
         stmt.setString(1, this.name);
-        stmt.setString(2, this.manager);
-        stmt.setString(3, this.coach);
+        stmt.setString(2, this.position);
+        stmt.setBoolean(3, this.captain);
+        stmt.setInt(4, this.teamId);
         boolean hasResultSet = stmt.execute();
         if(hasResultSet){
             rs = stmt.getResultSet();
@@ -37,10 +46,5 @@ public class CreateTeam implements ICreateStoredProcedure {
             }
         }
         conn.closeConnection();
-    }
-
-    @Override
-    public int getInsertedId(){
-        return this.insertedId;
     }
 }

@@ -1,5 +1,6 @@
 package dhl.Database;
 
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ public class CreateLeague implements ICreateStoredProcedure {
     }
 
     @Override
-    public void executeProcedure() throws SQLException {
+    public void executeProcedure() throws SQLException, IOException {
         IConnect conn = new Connect();
         conn.getConnection();
         ResultSet rs = conn.gerResultSet();
