@@ -2,6 +2,7 @@ package dhl.Database;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,7 +18,7 @@ public class CreateDHLTableTest {
     }
 
     @Test
-    public void executeProcedureTest() throws SQLException {
+    public void executeProcedureTest() throws SQLException, IOException {
         ICreateStoredProcedure s = new CreateDHLTable(1,1,1, 1);
         s.executeProcedure();
     }

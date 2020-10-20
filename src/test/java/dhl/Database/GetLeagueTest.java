@@ -2,6 +2,7 @@ package dhl.Database;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +19,7 @@ public class GetLeagueTest {
     }
 
     @Test
-    public void executeProcedureTest() throws SQLException {
+    public void executeProcedureTest() throws SQLException, IOException {
         IStoredProcedure s = new GetLeague("DHL");
         s.executeProcedure();
     }
