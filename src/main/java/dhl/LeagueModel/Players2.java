@@ -10,6 +10,7 @@ public class Players2 implements IPlayers2{
     double checking;
     double saving;
     int age;
+    double strength;
 
     public Players2() {
     }
@@ -112,5 +113,15 @@ public class Players2 implements IPlayers2{
     public void setSaving(double saving) {
         this.saving = saving;
 
+    }
+
+    @Override
+    public double getStrength() {
+        return strength;
+    }
+
+    @Override
+    public void setStrength(double strength) {
+    this.strength = strength;
     }
 }

@@ -8,6 +8,8 @@ public class Teams2 implements ITeam2{
     public String generalManager;
     public IHeadCoach headCoach;
     ArrayList<IPlayers2> players;
+    String teamType;
+    int lossPoints;
 
     public Teams2() {
     }
@@ -68,4 +70,26 @@ public class Teams2 implements ITeam2{
         this.headCoach = headCoach;
 
     }
+
+    @Override
+    public String getTeamType() {
+        return teamType;
+    }
+
+    @Override
+    public void setTeamType(String teamType) {
+        this.teamType = teamType;
+    }
+
+    @Override
+    public int getLossPoints() {
+        return lossPoints;
+    }
+
+    @Override
+    public void setLossPoints(int lossPoints) {
+        this.lossPoints = lossPoints;
+
+    }
+
 }

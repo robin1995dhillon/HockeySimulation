@@ -19,4 +19,10 @@ public interface ITeam2 {
 
     public void setHeadCoach(IHeadCoach headCoach);
 
+    public String getTeamType();
+    public void setTeamType(String teamType);
+
+    public int getLossPoints();
+    public void setLossPoints(int teamType);
+
 }

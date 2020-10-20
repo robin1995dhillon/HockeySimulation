@@ -34,5 +34,8 @@ public interface IPlayers2 {
 
     public void setSaving(double saving);
 
+    public double getStrength();
+public void setStrength(double strength);
+
 
 }
