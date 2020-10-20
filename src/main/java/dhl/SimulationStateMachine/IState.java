@@ -1,8 +1,14 @@
 package dhl.SimulationStateMachine;
 
-public interface IState {
-    public void stepForward();
+import dhl.InternalStateMachine.NestedStateContext;
 
-    public void doWork();
+public interface IState {
+    public void forward(StateContext context);
+
+    public void runState();
+
+    public String getStateName();
+
+    public String getNextState();
 }
-//TODO Implement concrete classes implementing this interface.
+
