@@ -20,10 +20,10 @@ public class CreateLeagueTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        ICreateStoredProcedure s = new CreateLeague("DHL");
-        s.executeProcedure();
-        assertEquals(1, s.getInsertedId());
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        ICreateStoredProcedure s = new CreateLeague("DHL");
+//        s.executeProcedure();
+//        assertEquals(1, s.getInsertedId());
+//    }
 }
