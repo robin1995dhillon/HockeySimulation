@@ -1,11 +1,13 @@
 package dhl.LeagueModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface ITeam2 {
-    public ArrayList<IPlayers2> getPlayers();
+    public List<IPlayers2> getPlayers();
 
-    public void setPlayers(ArrayList<IPlayers2> players);
+
+    public void setPlayers(List<IPlayers2> players);
 
     public String getTeamName();
 

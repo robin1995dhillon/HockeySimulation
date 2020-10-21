@@ -1,13 +1,14 @@
 package dhl.LeagueModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Teams2 implements ITeam2{
 
     public String teamName;
     public String generalManager;
     public IHeadCoach headCoach;
-    ArrayList<IPlayers2> players;
+    List<IPlayers2> players;
     String teamType;
     int lossPoints;
 
@@ -28,12 +29,12 @@ public class Teams2 implements ITeam2{
     }
 
     @Override
-    public ArrayList<IPlayers2> getPlayers() {
+    public List<IPlayers2> getPlayers() {
         return players;
     }
 
     @Override
-    public void setPlayers(ArrayList<IPlayers2> players) {
+    public void setPlayers(List<IPlayers2> players) {
         this.players = players;
 
     }
