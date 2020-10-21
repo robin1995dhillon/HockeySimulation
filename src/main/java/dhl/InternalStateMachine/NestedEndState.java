@@ -13,13 +13,13 @@ public class NestedEndState implements ISimulationState {
 
 
     public NestedEndState(IUserInput input, IUserOutput output) {
-        this.input = input;
-        this.output = output;
-        this.stateName = "End";
+        NestedEndState.input = input;
+        NestedEndState.output = output;
+        NestedEndState.stateName = "End";
     }
 
     public void forward(NestedStateContext context) {
-        this.nextStateName = "None";
+        NestedEndState.nextStateName = "None";
         return;
     }
 
@@ -29,10 +29,10 @@ public class NestedEndState implements ISimulationState {
     }
 
     public String getStateName() {
-        return this.stateName;
+        return NestedEndState.stateName;
     }
 
-    public String getNextStateName() {
-        return this.nextStateName;
+    public String getNextState() {
+        return NestedEndState.nextStateName;
     }
 }

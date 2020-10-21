@@ -14,15 +14,16 @@ public class NestedSimulationState implements ISimulationState {
     private static String nextStateName;
 
     public NestedSimulationState(IUserInput input, IUserOutput output, int seasons, String teamName) {
-        this.input = input;
-        this.output = output;
-        this.totalSeasons = seasons;
-        this.teamName = teamName;
-        this.stateName = "Simulate";
+        NestedSimulationState.input = input;
+        NestedSimulationState.output = output;
+        NestedSimulationState.totalSeasons = seasons;
+        NestedSimulationState.teamName = teamName;
+        NestedSimulationState.stateName = "Simulate";
     }
 
     public void forward(NestedStateContext context) {
-        this.nextStateName = "End";
+        //TODO: Hook it up to the nested machine scheduler
+        NestedSimulationState.nextStateName = "End";
         context.setState(new NestedEndState(input, output));
     }
 
@@ -34,7 +35,11 @@ public class NestedSimulationState implements ISimulationState {
     }
 
     public String getStateName() {
-        return this.stateName;
+        return NestedSimulationState.stateName;
+    }
+
+    public String getNextState() {
+        return NestedSimulationState.nextStateName;
     }
 
 }

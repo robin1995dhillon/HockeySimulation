@@ -13,20 +13,20 @@ public class NestedStartState implements ISimulationState {
     private static String stateName;
     private static String nextStateName;
 
-    public NestedStartState(IUserInput input, IUserOutput output, String teamName){
-        this.input = input;
-        this.output = output;
-        this.teamName = teamName;
-        this.stateName = "Start";
+    public NestedStartState(IUserInput input, IUserOutput output, String teamName) {
+        NestedStartState.input = input;
+        NestedStartState.output = output;
+        NestedStartState.teamName = teamName;
+        NestedStartState.stateName = "Start";
         this.numOfSeasons = 0;
     }
 
-    public void forward(NestedStateContext context){
-        this.nextStateName = "Simulate";
+    public void forward(NestedStateContext context) {
+        NestedStartState.nextStateName = "Simulate";
         context.setState(new NestedSimulationState(input, output, numOfSeasons, teamName));
     }
 
-    public void runState(){
+    public void runState() {
         output.setOutput("How many seasons do you want to simulate?");
         output.sendOutput();
 
@@ -34,8 +34,12 @@ public class NestedStartState implements ISimulationState {
         this.numOfSeasons = Integer.parseInt(input.getInput());
     }
 
-    public String getStateName(){
-        return this.stateName;
+    public String getStateName() {
+        return NestedStartState.stateName;
+    }
+
+    public String getNextState() {
+        return NestedStartState.nextStateName;
     }
 
 }
