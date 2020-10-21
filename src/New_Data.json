@@ -1,0 +1,115 @@
+{
+  "leagueName":"Dalhousie Hockey League",
+  "conferences":[
+    {
+      "conferenceName":"Eastern Conference",
+      "divisions":[
+        {
+          "divisionName":"Atlantic",
+          "teams":[
+            {
+              "teamName":"Boston",
+              "generalManager":"Mister Fred",
+              "headCoach":{
+                "name":"Mary Smith",
+                "skating":0.0,
+                "shooting":0.8,
+                "checking":0.3,
+                "saving":0.5
+              },
+              "players":[
+                {
+                  "playerName":"Player One",
+                  "position":"forward",
+                  "captain":true,
+                  "age":27,
+                  "skating":15,
+                  "shooting":18,
+                  "checking":12,
+                  "saving":0
+                },
+                {
+                  "playerName":"Player Two",
+                  "position":"defense",
+                  "captain":false,
+                  "age":20,
+                  "skating":10,
+                  "shooting":10,
+                  "checking":10,
+                  "saving":0
+                },
+                {
+                  "playerName":"Player Three",
+                  "position":"goalie",
+                  "captain":false,
+                  "age":33,
+                  "skating":10,
+                  "shooting":4,
+                  "checking":9,
+                  "saving":18
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "freeAgents":[
+    {
+      "playerName":"Agent One",
+      "position":"forward",
+      "age":25,
+      "skating":10,
+      "shooting":10,
+      "checking":10,
+      "saving":0
+    },
+    {
+      "playerName":"Agent Two",
+      "position":"defense",
+      "age":25,
+      "skating":10,
+      "shooting":10,
+      "checking":10,
+      "saving":0
+    },
+    {
+      "playerName":"Agent Three",
+      "position":"goalie",
+      "age":25,
+      "skating":10,
+      "shooting":5,
+      "checking":5,
+      "saving":10
+    }
+  ],
+  "coaches":[
+    {
+      "name":"Joe Smith",
+      "skating":0.5,
+      "shooting":0.8,
+      "checking":0.3,
+      "saving":1.0
+    },
+    {
+      "name":"Frank Smith",
+      "skating":0.5,
+      "shooting":0.8,
+      "checking":0.3,
+      "saving":0.5
+    },
+    {
+      "name":"Samantha Smith",
+      "skating":1.0,
+      "shooting":0.5,
+      "checking":0.5,
+      "saving":0.0
+    }
+  ],
+  "generalManagers":[
+    "Karen Potam",
+    "Joseph Squidly",
+    "Tom Spaghetti"
+  ]
+}

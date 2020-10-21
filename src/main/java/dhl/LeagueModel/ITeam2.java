@@ -1,13 +1,16 @@
 package dhl.LeagueModel;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonDeserialize(as=Teams.class)
 public interface ITeam2 {
-    public List<IPlayers2> getPlayers();
+    public ArrayList<IPlayers> getPlayers();
 
 
-    public void setPlayers(List<IPlayers2> players);
+    public void setPlayers(ArrayList<IPlayers> players);
 
     public String getTeamName();
 

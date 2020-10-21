@@ -15,7 +15,7 @@ class TradeTest {
     @Test
     public void strengthTestForward(){
 
-        IPlayers2 player = new Players2();
+        IPlayers player = new Players();
         player.setPosition("forward");
         player.setSkating(15);
         player.setShooting(18);
@@ -27,7 +27,7 @@ class TradeTest {
 
     @Test
     public void strengthTestDefense(){
-        IPlayers2 player = new Players2();
+        IPlayers player = new Players();
         player.setPosition("defense");
         player.setSkating(10);
         player.setShooting(10);
@@ -40,7 +40,7 @@ class TradeTest {
 
     @Test
     public void strengthTestGoalie(){
-        IPlayers2 player = new Players2();
+        IPlayers player = new Players();
         player.setPosition("goalie");
         player.setSkating(10);
         player.setShooting(4);
@@ -52,13 +52,13 @@ class TradeTest {
 
     @Test
     public void getPositionTypesOfferingTest(){
-        IPlayers2 player1 = new Players2();
-        IPlayers2 player2 = new Players2();
-        IPlayers2 player3 = new Players2();
-        IPlayers2 player4 = new Players2();
-        IPlayers2 player5 = new Players2();
-        IPlayers2 player6 = new Players2();
-        List<IPlayers2> players = new ArrayList<>();
+        IPlayers player1 = new Players();
+        IPlayers player2 = new Players();
+        IPlayers player3 = new Players();
+        IPlayers player4 = new Players();
+        IPlayers player5 = new Players();
+        IPlayers player6 = new Players();
+        List<IPlayers> players = new ArrayList<>();
         player1.setPosition("forward");
         players.add(player1);
         player2.setPosition("goalie");
@@ -71,13 +71,13 @@ class TradeTest {
         players.add(player5);
         player6.setPosition("forward");
         players.add(player6);
-        for(IPlayers2 p: players)
+        for(IPlayers p: players)
             System.out.println("Original list includes : "+p.getPosition());
 
-        List<IPlayers2> expectedPlayers = new ArrayList<>();
+        List<IPlayers> expectedPlayers = new ArrayList<>();
 
 
-        List<IPlayers2> expectedList = new ArrayList<>();
+        List<IPlayers> expectedList = new ArrayList<>();
         expectedList.add(player1);
         expectedList.add(player4);
         expectedList.add(player6);
@@ -99,15 +99,15 @@ class TradeTest {
 
 
         int weakestCount =2;
-        List<IPlayers2> playersWeak = new ArrayList<>();
-        List<IPlayers2> playersWeakActual = new ArrayList<>();
-        List<IPlayers2> players = new ArrayList<>();
-        IPlayers2 player1 = new Players2();
-        IPlayers2 player2 = new Players2();
-        IPlayers2 player3 = new Players2();
-        IPlayers2 player4 = new Players2();
-        IPlayers2 player5 = new Players2();
-        IPlayers2 player6 = new Players2();
+        List<IPlayers> playersWeak = new ArrayList<>();
+        List<IPlayers> playersWeakActual = new ArrayList<>();
+        List<IPlayers> players = new ArrayList<>();
+        IPlayers player1 = new Players();
+        IPlayers player2 = new Players();
+        IPlayers player3 = new Players();
+        IPlayers player4 = new Players();
+        IPlayers player5 = new Players();
+        IPlayers player6 = new Players();
         player1.setStrength(4.2);
         players.add(player1);
         player2.setStrength(4.5);
@@ -139,15 +139,15 @@ class TradeTest {
         int weakestCount = 2;
         int count=0;
         String positionToTrade = "forward";
-        List<IPlayers2> playersStrong = new ArrayList<>();
-        List<IPlayers2> playersStrongActual = new ArrayList<>();
-        List<IPlayers2> players = new ArrayList<>();
-        IPlayers2 player1 = new Players2();
-        IPlayers2 player2 = new Players2();
-        IPlayers2 player3 = new Players2();
-        IPlayers2 player4 = new Players2();
-        IPlayers2 player5 = new Players2();
-        IPlayers2 player6 = new Players2();
+        List<IPlayers> playersStrong = new ArrayList<>();
+        List<IPlayers> playersStrongActual = new ArrayList<>();
+        List<IPlayers> players = new ArrayList<>();
+        IPlayers player1 = new Players();
+        IPlayers player2 = new Players();
+        IPlayers player3 = new Players();
+        IPlayers player4 = new Players();
+        IPlayers player5 = new Players();
+        IPlayers player6 = new Players();
  //       player1.setStrength(4.2);
         player1.setPosition("forward");
         players.add(player1);
@@ -169,7 +169,7 @@ class TradeTest {
         playersStrongActual.add(player1);
         playersStrongActual.add(player2);
 
-        for (IPlayers2 weakPlayer : players) {
+        for (IPlayers weakPlayer : players) {
             if (weakPlayer.getPosition().equalsIgnoreCase(positionToTrade)) {
                 weakPlayer.setStrength(5.6);
                 playersStrong.add(weakPlayer);
@@ -188,11 +188,11 @@ class TradeTest {
             playersStrong= playersStrong.subList(0,count);
 
 
-            for (IPlayers2 p : playersStrong) {
+            for (IPlayers p : playersStrong) {
                 System.out.println("Player Strong :"+p.getPosition()+" "+p.getStrength());
             }
 
-            for (IPlayers2 p : playersStrongActual) {
+            for (IPlayers p : playersStrongActual) {
                 System.out.println("Player Strong Actual:"+p.getPosition()+" "+p.getStrength());
             }
            assertEquals(playersStrong, playersStrongActual);
@@ -204,23 +204,23 @@ class TradeTest {
         double randomAcceptanceChance = 0.05;
         int maxPlayersPerTrade=2;
         int count =0;
-        ITeam2 offeringTeam = new Teams2();
-        ITeam2 consideringTeam = new Teams2();
-        List<IPlayers2> consideringTeamPlayers = new ArrayList<>();
-        List<IPlayers2> offeringTeamPositionPlayers = new ArrayList<>();
-        List<IPlayers2> consideringFinal = new ArrayList<>();
-        List<IPlayers2> offeringFinal = new ArrayList<>();
-        List<IPlayers2> expectedConsideringTeam = new ArrayList<>();
-        List<IPlayers2> expectedTradingTeam = new ArrayList<>();
+        ITeam2 offeringTeam = new Teams();
+        ITeam2 consideringTeam = new Teams();
+        ArrayList<IPlayers> consideringTeamPlayers = new ArrayList<>();
+        ArrayList<IPlayers> offeringTeamPositionPlayers = new ArrayList<>();
+        ArrayList<IPlayers> consideringFinal = new ArrayList<>();
+        ArrayList<IPlayers> offeringFinal = new ArrayList<>();
+        ArrayList<IPlayers> expectedConsideringTeam = new ArrayList<>();
+        ArrayList<IPlayers> expectedTradingTeam = new ArrayList<>();
 
-        IPlayers2 player1 = new Players2();
-        IPlayers2 player2 = new Players2();
-        IPlayers2 player3 = new Players2();
-        IPlayers2 player4 = new Players2();
-        IPlayers2 player5 = new Players2();
-        IPlayers2 player6 = new Players2();
-        IPlayers2 player7 = new Players2();
-        IPlayers2 player8 = new Players2();
+        IPlayers player1 = new Players();
+        IPlayers player2 = new Players();
+        IPlayers player3 = new Players();
+        IPlayers player4 = new Players();
+        IPlayers player5 = new Players();
+        IPlayers player6 = new Players();
+        IPlayers player7 = new Players();
+        IPlayers player8 = new Players();
 
         player1.setStrength(2.5);
         player2.setStrength(3.9);
@@ -262,18 +262,18 @@ class TradeTest {
 
 
 
-        for(IPlayers2 t:offeringTeam.getPlayers()) {
+        for(IPlayers t:offeringTeam.getPlayers()) {
             System.out.println("team before offering: "+t.getStrength());
         }
 
-        for(IPlayers2 t:consideringTeam.getPlayers()) {
+        for(IPlayers t:consideringTeam.getPlayers()) {
             System.out.println("team before trade considered: "+t.getStrength());
         }
 
 
         outer:
-        for (IPlayers2 offeredPlayer : offeringFinal) {
-            for (IPlayers2 tradePlayer : consideringFinal) {
+        for (IPlayers offeredPlayer : offeringFinal) {
+            for (IPlayers tradePlayer : consideringFinal) {
 
                 if (offeredPlayer.getStrength() < tradePlayer.getStrength() && Math.random() < randomAcceptanceChance) {
                     System.out.println("Rejected");

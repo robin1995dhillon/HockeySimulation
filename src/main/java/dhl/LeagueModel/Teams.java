@@ -2,58 +2,92 @@ package dhl.LeagueModel;
 
 import java.util.ArrayList;
 
-public class Teams {
+public class Teams implements ITeam2{
+
     public String teamName;
     public String generalManager;
-    public String headCoach;
-    ArrayList<Players> Players;
-
-    public Teams(String teamName, String generalManager, String headCoach, ArrayList<dhl.LeagueModel.Players> players) {
-        this.teamName = teamName;
-        this.generalManager = generalManager;
-        this.headCoach = headCoach;
-        Players = players;
-    }
+    public IHeadCoach headCoach;
+    ArrayList<IPlayers> players;
+    String teamType;
+    int lossPoints;
 
     public Teams() {
     }
 
-    public Teams(String teamName, String generalManager, String headCoach) {
+    public Teams(String teamName, String generalManager, IHeadCoach headCoach, ArrayList<IPlayers> players) {
+        this.teamName = teamName;
+        this.generalManager = generalManager;
+        this.headCoach = headCoach;
+        this.players = players;
+    }
+
+    public Teams(String teamName, String generalManager, IHeadCoach headCoach) {
         this.teamName = teamName;
         this.generalManager = generalManager;
         this.headCoach = headCoach;
     }
 
-    public ArrayList<dhl.LeagueModel.Players> getPlayers() {
-        return Players;
+    @Override
+    public ArrayList<IPlayers> getPlayers() {
+        return players;
     }
 
-    public void setPlayers(ArrayList<dhl.LeagueModel.Players> players) {
-        Players = players;
+    @Override
+    public void setPlayers(ArrayList<IPlayers> players) {
+        this.players = players;
+
     }
 
+    @Override
     public String getTeamName() {
         return teamName;
     }
 
+    @Override
     public void setTeamName(String teamName) {
         this.teamName = teamName;
+
     }
 
+    @Override
     public String getGeneralManager() {
         return generalManager;
     }
 
+    @Override
     public void setGeneralManager(String generalManager) {
         this.generalManager = generalManager;
+
     }
 
-    public String getHeadCoach() {
+    @Override
+    public String getTeamType() {
+        return teamType;
+    }
+
+    @Override
+    public void setTeamType(String teamType) {
+        this.teamType = teamType;
+    }
+
+    @Override
+    public IHeadCoach getHeadCoach() {
         return headCoach;
     }
 
-    public void setHeadCoach(String headCoach) {
+    @Override
+    public void setHeadCoach(IHeadCoach headCoach) {
         this.headCoach = headCoach;
+
+    }
+    @Override
+    public int getLossPoints() {
+        return lossPoints;
     }
 
+    @Override
+    public void setLossPoints(int lossPoints) {
+        this.lossPoints = lossPoints;
+
+    }
 }

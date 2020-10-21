@@ -1,29 +1,29 @@
 package dhl.Creator;
 
-import dhl.LeagueModel.Conference;
-import dhl.LeagueModel.Division;
-import dhl.LeagueModel.League;
-import dhl.LeagueModel.Teams;
+import dhl.LeagueModel.*;
 
 import java.util.ArrayList;
 
 public class TeamCreator {
 
-    public League createTeam(String ManagerName, String HeadCoach, League league, String ConferenceName, String DivisionName, String TeamName) {
+    public ILeague createTeam(String ManagerName, String HeadCoach, ILeague ILeague, String ConferenceName, String DivisionName, String TeamName) {
 
-        ArrayList<Conference> Conference;
-        ArrayList<Division> Divisions;
-        ArrayList<Teams> Teams;
-        Conference = league.getConferences();
-        for(Conference c: Conference) {
+        ArrayList<IConference> Conference;
+        ArrayList<IDivision> Divisions;
+        ArrayList<ITeam2> Team2;
+//        ArrayList<ITeam2> Team2;
+        Conference = ILeague.getConferences();
+        for(IConference c: Conference) {
             if(c.getConferenceName().toLowerCase().equals(ConferenceName.toLowerCase())) {
                 Divisions = c.getDivisions();
-                for(Division d: Divisions) {
+                for(IDivision d: Divisions) {
                     if(d.getDivisionName().toLowerCase().equals(DivisionName.toLowerCase())) {
-                        Teams = d.getTeams();
-                        Teams team = new Teams();
+                        Team2 = d.getTeams();
+                        System.out.println(Team2);
+                        ITeam2 team = new Teams();
+                        System.out.println(HeadCoach);
                             team.setGeneralManager(ManagerName);
-                            team.setHeadCoach(HeadCoach);
+//                            team.setHeadCoach(HeadCoach);
                             team.setTeamName(TeamName);
                         d.addTeam(team);
                     }
@@ -43,6 +43,6 @@ public class TeamCreator {
 //                    }
 //                }
 //            }
-        return league;
+        return ILeague;
     }
 }
