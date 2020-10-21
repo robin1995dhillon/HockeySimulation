@@ -2,7 +2,6 @@ package dhl.LeagueModel;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TeamDB implements ITeamDB{
@@ -26,7 +25,7 @@ public class TeamDB implements ITeamDB{
     @Override
     public void loadTeamWithLoss(ITeam2 team) throws SQLException {
 
-        for(IPlayers2 player: team.getPlayers()){
+        for(IPlayers player: team.getPlayers()){
 
         }
 

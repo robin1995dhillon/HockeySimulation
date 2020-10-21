@@ -77,30 +77,30 @@
                         <appendAssemblyId>false</appendAssemblyId>
                     </configuration>
                 </plugin>
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                    <version>3.2</version> &lt;!&ndash; or whatever current version &ndash;&gt;-->
-<!--                    <configuration>-->
-<!--                        <source>1.8</source>-->
-<!--                        <target>1.8</target>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
-<!--                <plugin>-->
-<!--                    &lt;!&ndash; Build an executable JAR &ndash;&gt;-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-jar-plugin</artifactId>-->
-<!--                    <version>3.1.0</version>-->
-<!--                    <configuration>-->
-<!--                        <archive>-->
-<!--                            <manifest>-->
-<!--                                <addClasspath>true</addClasspath>-->
-<!--                                <classpathPrefix>lib/</classpathPrefix>-->
-<!--                                <mainClass>dhl.SimulationMain</mainClass>-->
-<!--                            </manifest>-->
-<!--                        </archive>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
+                <!--                <plugin>-->
+                <!--                    <groupId>org.apache.maven.plugins</groupId>-->
+                <!--                    <artifactId>maven-compiler-plugin</artifactId>-->
+                <!--                    <version>3.2</version> &lt;!&ndash; or whatever current version &ndash;&gt;-->
+                <!--                    <configuration>-->
+                <!--                        <source>1.8</source>-->
+                <!--                        <target>1.8</target>-->
+                <!--                    </configuration>-->
+                <!--                </plugin>-->
+                <!--                <plugin>-->
+                <!--                    &lt;!&ndash; Build an executable JAR &ndash;&gt;-->
+                <!--                    <groupId>org.apache.maven.plugins</groupId>-->
+                <!--                    <artifactId>maven-jar-plugin</artifactId>-->
+                <!--                    <version>3.1.0</version>-->
+                <!--                    <configuration>-->
+                <!--                        <archive>-->
+                <!--                            <manifest>-->
+                <!--                                <addClasspath>true</addClasspath>-->
+                <!--                                <classpathPrefix>lib/</classpathPrefix>-->
+                <!--                                <mainClass>dhl.SimulationMain</mainClass>-->
+                <!--                            </manifest>-->
+                <!--                        </archive>-->
+                <!--                    </configuration>-->
+                <!--                </plugin>-->
             </plugins>
         </pluginManagement>
     </build>

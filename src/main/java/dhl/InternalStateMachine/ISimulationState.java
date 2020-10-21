@@ -7,4 +7,6 @@ public interface ISimulationState {
     public void runState();
 
     public String getStateName();
+
+    public String getNextState();
 }

@@ -13,20 +13,20 @@ public class NestedStateContext {
 
     public NestedStateContext(IUserInput input, IUserOutput output) {
         this.currentStateName = "";
-        this.input = input;
-        this.output = output;
+        NestedStateContext.input = input;
+        NestedStateContext.output = output;
     }
 
     public void runState() {
-        this.currentState.runState();
+        NestedStateContext.currentState.runState();
     }
 
     public void forward() {
-        this.currentState.forward(this);
+        NestedStateContext.currentState.forward(this);
     }
 
     public void setState(ISimulationState state) {
         this.currentStateName = state.getStateName();
-        this.currentState = state;
+        NestedStateContext.currentState = state;
     }
 }

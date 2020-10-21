@@ -1,5 +1,7 @@
 package dhl.SimulationStateMachine;
 
+import dhl.InOut.IUserInput;
+import dhl.InOut.IUserOutput;
 import dhl.LeagueModel.*;
 import dhl.StoredProcedure;
 import org.json.simple.JSONObject;
@@ -7,42 +9,49 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CreateTeamState {
-
-    public CreateTeamState() {
+public class CreateTeamState implements IState{
+    private static IUserInput input;
+    private static IUserOutput output;
+    private static String stateName;
+    private static String nextStateName;
+    private static ILeague league;
+    private static String teamName;
+    public CreateTeamState(IUserInput input, IUserOutput output, String teamName, ILeague league) {
+        CreateTeamState.input = input;
+        CreateTeamState.output = output;
+        CreateTeamState.stateName = "Create Team";
+        CreateTeamState.league = league;
+        this.teamName = teamName;
 
     }
-
-    public boolean SaveToDB(ILeague ILeague) {
-        ArrayList<IConference> IConference;
-        ArrayList<IDivision> IDivisions;
-        ArrayList<ITeam2> ITeam2;
-        ArrayList<IPlayers2> IPlayers2;
-        IHeadCoach IHeadCoach;
-
-        String leagueName = ILeague.getLeagueName();
+    public void runState() {
+        ArrayList<IConference> Conference;
+        ArrayList<IDivision> Divisions;
+        ArrayList<ITeam2> Teams;
+        ArrayList<IPlayers> Players;
+        IHeadCoach HeadCoach;
+        String leagueName = league.getLeagueName();
         System.out.println("entering saveLeague Method");   //commenttt
         JSONObject league_obj = saveLeague(leagueName);
         boolean league_bool = (boolean) league_obj.get("Status");
         int league_id = (int) league_obj.get("id");
         if (league_bool) {
-            IConference = ILeague.getConferences();
-            for (IConference c : IConference) {
+            Conference = league.getConferences();
+            for (IConference c : Conference) {
                 JSONObject conference_obj = saveConference(c.getConferenceName());
                 boolean conference_bool = (boolean) conference_obj.get("Status");
                 int conference_id = (int) conference_obj.get("id");
                 if (conference_bool) {
-                    IDivisions = c.getDivisions();
-                    for (IDivision d : IDivisions) {
+                    Divisions = c.getDivisions();
+                    for (IDivision d : Divisions) {
                         JSONObject division_obj = saveDivision(d.getDivisionName());
                         boolean division_bool = (boolean) division_obj.get("Status");
                         int division_id = (int) division_obj.get("id");
                         if (division_bool) {
-                            ITeam2 = d.getTeams();
-                            for (ITeam2 t : ITeam2) {
-                                IPlayers2 = t.getPlayers();
-                                IHeadCoach = t.getHeadCoach();
-
+                            Teams = d.getTeams();
+                            for (ITeam2 t : Teams) {
+                                Players = t.getPlayers();
+                                HeadCoach = t.getHeadCoach();
                                 JSONObject team_obj = saveTeam(t.getTeamName(), t.getGeneralManager());
                                 boolean team_bool = (boolean) team_obj.get("Status");
                                 int team_id = (int) team_obj.get("id");
@@ -55,20 +64,20 @@ public class CreateTeamState {
                             }
                         } else {
                             System.out.println("Something went wrong in division");
-                            return false;
+                            System.exit(0);
                         }
                     }
                 } else {
                     System.out.println("Something went wrong in conference");
-                    return false;
+                    System.exit(0);
                 }
             }
 
         } else {
             System.out.println("Something went wrong in League");
-            return false;
+            System.exit(0);
         }
-        return false;
+        System.exit(0);
     }
 
     public JSONObject saveLeague(String leagueName) {
@@ -166,5 +175,16 @@ public class CreateTeamState {
             return false;
         }
         return true;
+    }
+    public void forward(StateContext context){
+        CreateTeamState.nextStateName = "Simulate";
+        context.setState(new SimulateLeagueState(input, output, teamName));
+    }
+    public String getStateName(){
+        return CreateTeamState.stateName;
+    }
+
+    public String getNextState(){
+        return CreateTeamState.nextStateName;
     }
 }

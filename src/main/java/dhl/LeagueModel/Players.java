@@ -1,6 +1,6 @@
 package dhl.LeagueModel;
 
-public class Players implements IPlayers2{
+public class Players implements IPlayers {
 
     String playerName;
     String position;
@@ -10,6 +10,7 @@ public class Players implements IPlayers2{
     int checking;
     int saving;
     int age;
+    double strength;
 
     public Players() {
     }
@@ -112,5 +113,15 @@ public class Players implements IPlayers2{
     public void setSaving(int saving) {
         this.saving = saving;
 
+    }
+
+    @Override
+    public double getStrength() {
+        return strength;
+    }
+
+    @Override
+    public void setStrength(double strength) {
+        this.strength = strength;
     }
 }

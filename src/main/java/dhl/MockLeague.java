@@ -9,10 +9,10 @@ public class MockLeague {
     public static ILeague createMock() {
         ILeague l = new League();
         IConference c = new Conference();
-        IPlayers2 p =new Players();
+        IPlayers p =new Players();
         ITeam2 t = new Teams();
         IDivision d = new Division();
-        ArrayList<IPlayers2> players = new ArrayList<>();
+        ArrayList<IPlayers> players = new ArrayList<>();
         p.setCaptain(true);
         p.setPosition("goalie");
         p.setPlayerName("Roger");
@@ -51,11 +51,11 @@ public class MockLeague {
     public static ILeague addTeamMock() {
         ILeague l = new League();
         IConference c = new Conference();
-        IPlayers2 p =new Players();
+        IPlayers p =new Players();
         ITeam2 t = new Teams();
         ITeam2 t2 = new Teams();
         IDivision d = new Division();
-        ArrayList<IPlayers2> players = new ArrayList<>();
+        ArrayList<IPlayers> players = new ArrayList<>();
         p.setCaptain(true);
         p.setPosition("goalie");
         p.setPlayerName("Roger");

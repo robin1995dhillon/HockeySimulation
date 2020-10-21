@@ -9,11 +9,11 @@ public class MockLeague2 {
     public static ILeague createMock() {
         ILeague l = new League();
         IConference c = new Conference();
-        IPlayers2 p =new Players();
+        IPlayers p =new Players();
         ITeam2 t = new Teams();
         IDivision d = new Division();
         HeadCoach h = new HeadCoach();
-        ArrayList<IPlayers2> players = new ArrayList<>();
+        ArrayList<IPlayers> players = new ArrayList<>();
         h.setName("Mary Smith");
         h.setSkating(0.5);
         h.setShooting(0.8);
@@ -56,12 +56,12 @@ public class MockLeague2 {
     public static ILeague addTeamMock() {
         ILeague l = new League();
         IConference c = new Conference();
-        IPlayers2 p =new Players();
+        IPlayers p =new Players();
         ITeam2 t = new Teams();
         ITeam2 t2 = new Teams();
         IDivision d = new Division();
         HeadCoach h = new HeadCoach();
-        ArrayList<IPlayers2> players = new ArrayList<>();
+        ArrayList<IPlayers> players = new ArrayList<>();
         h.setName("Mary Smith");
         h.setSkating(0.5);
         h.setShooting(0.8);
