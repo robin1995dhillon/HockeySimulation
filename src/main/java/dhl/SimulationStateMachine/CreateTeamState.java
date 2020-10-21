@@ -13,35 +13,37 @@ public class CreateTeamState {
 
     }
 
-    public boolean SaveToDB(League league) {
-        ArrayList<Conference> Conference;
-        ArrayList<Division> Divisions;
-        ArrayList<Teams> Teams;
-        ArrayList<Players> Players;
+    public boolean SaveToDB(ILeague ILeague) {
+        ArrayList<IConference> IConference;
+        ArrayList<IDivision> IDivisions;
+        ArrayList<ITeam2> ITeam2;
+        ArrayList<IPlayers2> IPlayers2;
+        IHeadCoach IHeadCoach;
 
-        String leagueName = league.getLeagueName();
+        String leagueName = ILeague.getLeagueName();
         System.out.println("entering saveLeague Method");   //commenttt
         JSONObject league_obj = saveLeague(leagueName);
         boolean league_bool = (boolean) league_obj.get("Status");
         int league_id = (int) league_obj.get("id");
         if (league_bool) {
-            Conference = league.getConferences();
-            for (Conference c : Conference) {
+            IConference = ILeague.getConferences();
+            for (IConference c : IConference) {
                 JSONObject conference_obj = saveConference(c.getConferenceName());
                 boolean conference_bool = (boolean) conference_obj.get("Status");
                 int conference_id = (int) conference_obj.get("id");
                 if (conference_bool) {
-                    Divisions = c.getDivisions();
-                    for (Division d : Divisions) {
+                    IDivisions = c.getDivisions();
+                    for (IDivision d : IDivisions) {
                         JSONObject division_obj = saveDivision(d.getDivisionName());
                         boolean division_bool = (boolean) division_obj.get("Status");
                         int division_id = (int) division_obj.get("id");
                         if (division_bool) {
-                            Teams = d.getTeams();
-                            for (Teams t : Teams) {
-                                Players = t.getPlayers();
+                            ITeam2 = d.getTeams();
+                            for (ITeam2 t : ITeam2) {
+                                IPlayers2 = t.getPlayers();
+                                IHeadCoach = t.getHeadCoach();
 
-                                JSONObject team_obj = saveTeam(t.getTeamName(), t.getGeneralManager(), t.getHeadCoach());
+                                JSONObject team_obj = saveTeam(t.getTeamName(), t.getGeneralManager());
                                 boolean team_bool = (boolean) team_obj.get("Status");
                                 int team_id = (int) team_obj.get("id");
                                 if (team_bool) {
@@ -123,21 +125,21 @@ public class CreateTeamState {
         return return_obj;
     }
 
-    public JSONObject saveTeam(String teamName, String generalManager, String headCoach) {
+    public JSONObject saveTeam(String teamName, String generalManager) {
         JSONObject return_obj = new JSONObject();
         StoredProcedure SP = new StoredProcedure("create_team");
-        SP.addParameter(teamName, generalManager, headCoach);
-
-        try {
-            SP.executeProcedure();
-            int team_id = SP.getInsertedId();
-            return_obj.put("Status", true);
-            return_obj.put("id", team_id);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return_obj.put("Status", false);
-            return_obj.put("id", null);
-        }
+//        SP.addParameter(teamName, generalManager);
+//
+//        try {
+//            SP.executeProcedure();
+//            int team_id = SP.getInsertedId();
+//            return_obj.put("Status", true);
+//            return_obj.put("id", team_id);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return_obj.put("Status", false);
+//            return_obj.put("id", null);
+//        }
         return return_obj;
     }
 

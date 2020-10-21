@@ -2,9 +2,9 @@ package dhl.Creator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import dhl.LeagueModel.Conference;
+import dhl.LeagueModel.IConference;
+import dhl.LeagueModel.ILeague;
 import dhl.LeagueModel.League;
-import org.json.simple.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -13,22 +13,23 @@ import java.nio.file.Paths;
 
 public class LeagueCreator {
     static ObjectMapper objectMapper;
-    public League league;
+    public ILeague league;
 
     public LeagueCreator() {
         objectMapper = new ObjectMapper();
     }
 
-    public League CreateLeague(String Path) {
+    public ILeague CreateLeague(String Path) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             byte[] Data = Files.readAllBytes(Paths.get(Path));
             JsonNode jsonNodeData = objectMapper.readTree(Data);
+            System.out.println(jsonNodeData);
             league = createLeagueFromJSON(jsonNodeData, League.class);
             System.out.println("League:");
             System.out.println(league.getLeagueName());
             System.out.println("\nConferences:");
-            for (Conference c : league.getConferences()) {
+            for (IConference c : league.getConferences()) {
                 System.out.println(c.getConferenceName());
             }
         } catch (JsonProcessingException jp) {

@@ -2,17 +2,16 @@ package dhl;
 
 import dhl.LeagueModel.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MockLeague2 {
 
     public static ILeague createMock() {
-        League2 l = new League2();
-        Conference2 c = new Conference2();
-        Players2 p =new Players2();
-        Teams2 t = new Teams2();
-        Division2 d = new Division2();
+        ILeague l = new League();
+        IConference c = new Conference();
+        IPlayers2 p =new Players();
+        ITeam2 t = new Teams();
+        IDivision d = new Division();
         HeadCoach h = new HeadCoach();
         ArrayList<IPlayers2> players = new ArrayList<>();
         h.setName("Mary Smith");
@@ -55,12 +54,12 @@ public class MockLeague2 {
 
     }
     public static ILeague addTeamMock() {
-        League2 l = new League2();
-        Conference2 c = new Conference2();
-        Players2 p =new Players2();
-        Teams2 t = new Teams2();
-        Teams2 t2 = new Teams2();
-        Division2 d = new Division2();
+        ILeague l = new League();
+        IConference c = new Conference();
+        IPlayers2 p =new Players();
+        ITeam2 t = new Teams();
+        ITeam2 t2 = new Teams();
+        IDivision d = new Division();
         HeadCoach h = new HeadCoach();
         ArrayList<IPlayers2> players = new ArrayList<>();
         h.setName("Mary Smith");

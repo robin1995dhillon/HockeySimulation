@@ -12,21 +12,21 @@ public interface IFreeAgents {
     public void setAge(int age);
 
 
-    public double getSkating();
+    public int getSkating();
 
-    public void setSkating(double skating);
+    public void setSkating(int skating);
 
-    public double getShooting();
+    public int getShooting();
 
-    public void setShooting(double shooting);
+    public void setShooting(int shooting);
 
-    public double getChecking();
+    public int getChecking();
 
-    public void setChecking(double checking);
+    public void setChecking(int checking);
 
 
-    public double getSaving();
+    public int getSaving();
 
-    public void setSaving(double saving);
+    public void setSaving(int saving);
 
 }
