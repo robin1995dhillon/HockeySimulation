@@ -11,4 +11,6 @@ public interface IPlayerTradingCondition {
     public List<IPlayers2> checkWeakestPlayer(ITeam2 tradingTeam , int weakestCount);
     public void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam);
     public double strength(IPlayers2 player);
+    public List<IPlayers2> checkStrongestPlayer(ITeam2 tradingTeam , int weakestCount,String positionToTrade);
+    public List<IPlayers2> getPositionTypesOffering(List<IPlayers2> players);
 }

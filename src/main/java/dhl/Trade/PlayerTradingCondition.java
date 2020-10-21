@@ -32,6 +32,34 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         }
         return playerStrength;
     }
+
+    public List<IPlayers2> getPositionTypesOffering(List<IPlayers2> players){
+        for(int i=1;i<players.size();i++){
+            if(players.get(0).getPosition().equalsIgnoreCase(players.get(i).getPosition())){
+                continue;
+            }
+            else{
+                players.remove(i);
+                i-=1;
+            }
+        }
+        return players;
+    }
+
+//    public List<IPlayers2> getPositionTypesConsidering(String offeredPositionType,List<IPlayers2> consideredType){
+//        for(int i=0;i<consideredType.size();i++){
+//            if(consideredType.get(i).getPosition().equalsIgnoreCase(offeredPositionType)){
+//                continue;
+//            }
+//            else{
+//                consideredType.remove(i);
+//            }
+//        }
+//            return consideredType;
+//
+//    }
+
+
     @Override
     public void tradeCondition(List<ITeam2> allTeams){
 
@@ -56,7 +84,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     @Override
     public List<IPlayers2> checkWeakestPlayer(ITeam2 tradingTeam , int weakestCount) {
 
-        ArrayList<IPlayers2> players = new ArrayList<>();
+        List<IPlayers2> players = new ArrayList<>();
         players = tradingTeam.getPlayers();
 
         for(IPlayers2 weakPlayer: players){
@@ -70,6 +98,33 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         return players.subList(0,weakestCount);
 
     }
+
+    @Override
+    public List<IPlayers2> checkStrongestPlayer(ITeam2 tradingTeam, int weakestCount,String positionToTrade) {
+        List<IPlayers2> players = new ArrayList<>();
+        List<IPlayers2> playersStrong = new ArrayList<>();
+        players = tradingTeam.getPlayers();
+        int count=0;
+
+        for(IPlayers2 weakPlayer: players){
+            if(weakPlayer.getPosition().equalsIgnoreCase(positionToTrade)) {
+              //  double playerStrength = strength(weakPlayer);
+              //  weakPlayer.setStrength(playerStrength);
+                playersStrong.add(weakPlayer);
+                count++;
+            }
+            else{
+                continue;
+            }
+        }
+        Collections.sort(playersStrong,Collections.reverseOrder((p1, p2) -> Double.compare(strength(p1),strength(p2))));
+
+        if(count>weakestCount)
+            return players.subList(0,weakestCount);
+        else
+            return players.subList(0,count);
+    }
+
     @Override
     public void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam) {
         int count = 0;
@@ -81,12 +136,16 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     //    if (flag) {
             List<IPlayers2> offeringTeamPlayers = new ArrayList<>();
             List<IPlayers2> consideringTeamPlayers = new ArrayList<>();
+            List<IPlayers2> offeringTeamPositionPlayers = new ArrayList<>();
+            List<IPlayers2> consideringTeamPosition = new ArrayList<>();
 
             offeringTeamPlayers = checkWeakestPlayer(offeringTeam, maxPlayersPerTrade);
-            consideringTeamPlayers = checkWeakestPlayer(consideringTeam, maxPlayersPerTrade); //strongest
+            offeringTeamPositionPlayers= getPositionTypesOffering(offeringTeamPlayers);
+            String positionToTrade = offeringTeamPositionPlayers.get(0).getPosition();
+            consideringTeamPlayers = checkStrongestPlayer(consideringTeam, maxPlayersPerTrade,positionToTrade); //strongest
 
             outer:
-            for (IPlayers2 offeredPlayer : offeringTeamPlayers) {
+            for (IPlayers2 offeredPlayer : offeringTeamPositionPlayers) {
                 for (IPlayers2 tradePlayer : consideringTeamPlayers) {
 
                     if (offeredPlayer.getStrength() < tradePlayer.getStrength() && Math.random() < randomAcceptanceChance) {
@@ -94,18 +153,18 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
                         break outer;
                     } else {
                         System.out.println("player eligible for trade");
-                        count++;
+                     //   count++;
                     }
                 }
             }
-            if (count == maxPlayersPerTrade) {
+          //  if (count>0 && count <= maxPlayersPerTrade) {
                 offeringTeam.getPlayers().removeAll(offeringTeamPlayers);
                 offeringTeam.getPlayers().addAll(consideringTeamPlayers);
                 consideringTeam.getPlayers().removeAll(consideringTeamPlayers);
                 consideringTeam.getPlayers().addAll(offeringTeamPlayers);
-            } else {
-                System.out.println("Trade failed");
-            }
+//            } else {
+//                System.out.println("Trade failed");
+//            }
 
        // }
     }
