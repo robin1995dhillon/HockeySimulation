@@ -1,7 +1,6 @@
-package dhl.LeagueModel.Players;
+package dhl.LeagueModel.players;
 
 import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.Players.Players;
 
 import java.util.stream.IntStream;
 

@@ -1,4 +1,4 @@
-package dhl.LeagueModel.Teams;
+package dhl.LeagueModel.teams;
 
 import dhl.LeagueModel.IHeadCoach;
 import dhl.LeagueModel.IPlayers;

@@ -1,7 +1,7 @@
 package dhl.Creator;
 
 import dhl.LeagueModel.*;
-import dhl.LeagueModel.Teams.Teams;
+import dhl.LeagueModel.teams.Teams;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
 package dhl.LeagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import dhl.LeagueModel.Teams.Teams;
+import dhl.LeagueModel.teams.Teams;
 
 import java.util.ArrayList;
 

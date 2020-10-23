@@ -1,8 +1,6 @@
-package dhl.LeagueModel.Players;
+package dhl.LeagueModel.players;
 
-import dhl.LeagueModel.ILeague;
 import dhl.LeagueModel.IPlayers;
-import dhl.Mock.MockLeague;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
