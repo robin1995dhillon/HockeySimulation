@@ -4,8 +4,9 @@ public class TrainingState implements ISimulationState {
 
     private static String stateName;
     private static String nextStateName;
-
-    public TrainingState(boolean unPlayedGames, boolean tradeEnded) {
+    private static Boolean unPlayedGames = true;
+    private static Boolean tradeEnded = true;
+    public TrainingState() {
         TrainingState.stateName = "Training";
 
         if (unPlayedGames) {

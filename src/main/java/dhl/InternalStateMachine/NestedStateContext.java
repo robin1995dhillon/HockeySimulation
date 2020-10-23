@@ -10,6 +10,7 @@ public class NestedStateContext {
     public String currentStateName;
     private static IUserOutput output;
     private static IUserInput input;
+    public String currentDate;
 
     public NestedStateContext(IUserInput input, IUserOutput output) {
         this.currentStateName = "";
