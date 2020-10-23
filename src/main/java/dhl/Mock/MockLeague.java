@@ -1,10 +1,12 @@
-package dhl;
+package dhl.Mock;
 
 import dhl.LeagueModel.*;
+import dhl.LeagueModel.Players.Players;
+import dhl.LeagueModel.Teams.Teams;
 
 import java.util.ArrayList;
 
-public class MockLeague2 {
+public class MockLeague {
 
     public static ILeague createMock() {
         ILeague l = new League();
@@ -12,38 +14,33 @@ public class MockLeague2 {
         IPlayers p =new Players();
         ITeam2 t = new Teams();
         IDivision d = new Division();
-        HeadCoach h = new HeadCoach();
         ArrayList<IPlayers> players = new ArrayList<>();
-        h.setName("Mary Smith");
-        h.setSkating(0.5);
-        h.setShooting(0.8);
-        h.setChecking(0.3);
-        h.setSaving(0.5);
         p.setCaptain(true);
         p.setPosition("goalie");
         p.setPlayerName("Roger");
-        p.setAge(33);
-        p.setSkating(10);
-        p.setShooting(4);
-        p.setChecking(9);
-        p.setChecking(18);
         players.add(p);
         t.setPlayers(players);
+        IHeadCoach coach = new HeadCoach();
+        coach.setName("Random1");
+        coach.setChecking(5);
+        coach.setSaving(5);
+        coach.setShooting(5);
+        coach.setSkating(5);
         ArrayList<ITeam2> teams = new ArrayList<>();
-        t.setHeadCoach(h);
+        t.setHeadCoach(coach);
         t.setGeneralManager("John");
         t.setTeamName("HalifaxTigers");
         teams.add(t);
         d.setTeams(teams);
-        ArrayList<IDivision> division = new ArrayList<>();
+        ArrayList<IDivision> IDivision = new ArrayList<>();
         d.setDivisionName("American");
-        division.add(d);
-        ArrayList<IConference> conference = new ArrayList<>();
+        IDivision.add(d);
+        ArrayList<IConference> IConference = new ArrayList<>();
         c.setConferenceName("Eastern Conference");
-        c.setDivisions(division);
-        conference.add(c);
+        c.setDivisions(IDivision);
+        IConference.add(c);
         l.setLeagueName("Dalhousie League");
-        l.setConferences(conference);
+        l.setConferences(IConference);
 
         return l;
 
@@ -60,37 +57,31 @@ public class MockLeague2 {
         ITeam2 t = new Teams();
         ITeam2 t2 = new Teams();
         IDivision d = new Division();
-        HeadCoach h = new HeadCoach();
         ArrayList<IPlayers> players = new ArrayList<>();
-        h.setName("Mary Smith");
-        h.setSkating(0.5);
-        h.setShooting(0.8);
-        h.setChecking(0.3);
-        h.setSaving(0.5);
         p.setCaptain(true);
         p.setPosition("goalie");
         p.setPlayerName("Roger");
         players.add(p);
         t.setPlayers(players);
         ArrayList<ITeam2> teams = new ArrayList<>();
-        t.setHeadCoach(h);
+//        t.setHeadCoach("Mat");
         t.setGeneralManager("John");
         t.setTeamName("HalifaxTigers");
-        t2.setHeadCoach(h);
+//        t2.setHeadCoach("Dev1");
         t2.setTeamName("Hawks");
         t2.setGeneralManager("Rob");
         teams.add(t);
         teams.add(t2);
         d.setTeams(teams);
-        ArrayList<IDivision> division = new ArrayList<>();
+        ArrayList<IDivision> IDivision = new ArrayList<>();
         d.setDivisionName("American");
-        division.add(d);
-        ArrayList<IConference> conference = new ArrayList<>();
+        IDivision.add(d);
+        ArrayList<IConference> IConference = new ArrayList<>();
         c.setConferenceName("Eastern Conference");
-        c.setDivisions(division);
-        conference.add(c);
+        c.setDivisions(IDivision);
+        IConference.add(c);
         l.setLeagueName("Dalhousie League");
-        l.setConferences(conference);
+        l.setConferences(IConference);
 
         return l;
 
@@ -101,4 +92,3 @@ public class MockLeague2 {
 
     }
 }
-

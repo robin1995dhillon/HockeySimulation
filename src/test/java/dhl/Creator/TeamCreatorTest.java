@@ -1,7 +1,7 @@
 //package dhl.Creator;
 //
 //import dhl.LeagueModel.ILeague;
-//import dhl.MockLeague;
+//import dhl.Mock.MockLeague;
 //import org.junit.jupiter.api.Test;
 //
 //import static org.junit.jupiter.api.Assertions.*;

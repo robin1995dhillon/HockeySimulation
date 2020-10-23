@@ -1,8 +1,12 @@
-package dhl.LeagueModel;
+package dhl.LeagueModel.Teams;
+
+import dhl.LeagueModel.IHeadCoach;
+import dhl.LeagueModel.IPlayers;
+import dhl.LeagueModel.ITeam2;
 
 import java.util.ArrayList;
 
-public class Teams implements ITeam2{
+public class Teams implements ITeam2 {
 
     public String teamName;
     public String generalManager;

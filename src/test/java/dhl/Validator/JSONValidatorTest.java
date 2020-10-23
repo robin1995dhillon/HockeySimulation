@@ -1,7 +1,7 @@
 //package dhl.Validator;
 //
 //
-//import dhl.MockJSONObject;
+//import dhl.Mock.MockJSONObject;
 //import org.json.simple.JSONObject;
 //import org.junit.jupiter.api.Test;
 //

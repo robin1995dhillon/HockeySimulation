@@ -1,7 +1,5 @@
 package dhl.LeagueModel;
 
-import dhl.MockLeague2;
-
 import java.sql.SQLException;
 
 public interface ITeamDB {

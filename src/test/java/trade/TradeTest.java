@@ -4,6 +4,8 @@ import dhl.LeagueModel.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import dhl.LeagueModel.Players.Players;
+import dhl.LeagueModel.Teams.Teams;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
