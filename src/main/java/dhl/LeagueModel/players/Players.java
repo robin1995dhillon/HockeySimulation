@@ -1,4 +1,6 @@
-package dhl.LeagueModel;
+package dhl.LeagueModel.players;
+
+import dhl.LeagueModel.IPlayers;
 
 public class Players implements IPlayers {
 

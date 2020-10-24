@@ -1,4 +1,4 @@
-package dhl;
+package dhl.Mock;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

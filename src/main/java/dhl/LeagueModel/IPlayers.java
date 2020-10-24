@@ -1,8 +1,9 @@
 package dhl.LeagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import dhl.LeagueModel.players.Players;
 
-@JsonDeserialize(as=Players.class)
+@JsonDeserialize(as= Players.class)
 public interface IPlayers {
     public String getPlayerName();
 

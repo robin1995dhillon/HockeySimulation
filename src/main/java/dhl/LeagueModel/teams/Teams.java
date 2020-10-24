@@ -1,8 +1,13 @@
-package dhl.LeagueModel;
+package dhl.LeagueModel.teams;
+
+import dhl.LeagueModel.IHeadCoach;
+import dhl.LeagueModel.IPlayers;
+import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.players.PlayersStrength;
 
 import java.util.ArrayList;
 
-public class Teams implements ITeam2{
+public class Teams implements ITeam2 {
 
     public String teamName;
     public String generalManager;
@@ -10,6 +15,7 @@ public class Teams implements ITeam2{
     ArrayList<IPlayers> players;
     String teamType;
     int lossPoints;
+    double teamStrength;
 
     public Teams() {
     }
@@ -88,6 +94,32 @@ public class Teams implements ITeam2{
     @Override
     public void setLossPoints(int lossPoints) {
         this.lossPoints = lossPoints;
-
     }
+
+    @Override
+    public double getTeamStrength() {
+        return teamStrength;
+    }
+
+    @Override
+    public void setTeamStrength(double teamStrength) {
+        this.teamStrength = teamStrength;
+    }
+
+    @Override
+    public double calculateTeamStrength(ITeam2 team) {
+        ArrayList<IPlayers> players;
+        players = team.getPlayers();
+        System.out.println(players);
+        double teamStrength = 0;
+
+        for (IPlayers player: players) {
+            PlayersStrength strength = new PlayersStrength();
+            strength.calculateStrength(player);
+            teamStrength += player.getStrength();
+        }
+        System.out.println(teamStrength);
+        return teamStrength;
+    }
+
 }

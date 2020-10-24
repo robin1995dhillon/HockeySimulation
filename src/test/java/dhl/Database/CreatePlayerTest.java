@@ -18,9 +18,9 @@ public class CreatePlayerTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        ICreateStoredProcedure s = new CreatePlayer("zongyu", "goalie", false, 1);
-        s.executeProcedure();
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        ICreateStoredProcedure s = new CreatePlayer("zongyu", "goalie", false, 1);
+//        s.executeProcedure();
+//    }
 }
