@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 public class PlayersStrength extends Players {
 
 
-
     public PlayersStrength() {
     }
 

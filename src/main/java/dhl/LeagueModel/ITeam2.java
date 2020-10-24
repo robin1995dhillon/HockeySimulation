@@ -27,7 +27,11 @@ public interface ITeam2 {
     public String getTeamType();
     public void setTeamType(String teamType);
 
+    void setTeamStrength(double teamStrength);
+    double getTeamStrength();
+
     public int getLossPoints();
     public void setLossPoints(int teamType);
 
+    double calculateTeamStrength(ITeam2 team);
 }
