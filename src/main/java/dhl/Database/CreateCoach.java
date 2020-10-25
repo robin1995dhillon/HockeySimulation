@@ -5,26 +5,20 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CreatePlayer implements ICreateStoredProcedure{
+public class CreateCoach implements ICreateStoredProcedure{
 
     private String procedureName;
     private String name;
-    private String position;
-    private boolean captain;
-    private int age;
-    private int skating;
-    private int shooting;
-    private int checking;
-    private int saving;
+    private double skating;
+    private double shooting;
+    private double checking;
+    private double saving;
     private int teamId;
     private int insertedId;
 
-    public CreatePlayer(String name, String position, boolean captain, int age, int skating, int shooting, int checking, int saving, int teamId){
-        this.procedureName = "create_player";
+    public CreateCoach(String name, double skating, double shooting, double checking, double saving, int teamId){
+        this.procedureName = "create_coach";
         this.name = name;
-        this.position = position;
-        this.captain = captain;
-        this.age = age;
         this.skating = skating;
         this.shooting = shooting;
         this.checking = checking;
@@ -42,17 +36,14 @@ public class CreatePlayer implements ICreateStoredProcedure{
         IConnect conn = new Connect();
         conn.getConnection();
         ResultSet rs = conn.gerResultSet();
-        String sql = "{CALL " + this.procedureName + "(?,?,?,?,?,?,?,?,?)}";
+        String sql = "{CALL " + this.procedureName + "(?,?,?,?,?,?)}";
         CallableStatement stmt = conn.getStatement(sql);
         stmt.setString(1, this.name);
-        stmt.setString(2, this.position);
-        stmt.setBoolean(3, this.captain);
-        stmt.setInt(4,this.age);
-        stmt.setInt(5,this.skating);
-        stmt.setInt(6, this.shooting);
-        stmt.setInt(7,this.checking);
-        stmt.setInt(8, this.saving);
-        stmt.setInt(9, this.teamId);
+        stmt.setDouble(2,this.skating);
+        stmt.setDouble(3, this.shooting);
+        stmt.setDouble(4,this.checking);
+        stmt.setDouble(5, this.saving);
+        stmt.setInt(6, this.teamId);
         boolean hasResultSet = stmt.execute();
         if(hasResultSet){
             rs = stmt.getResultSet();
