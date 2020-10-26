@@ -32,4 +32,11 @@ public interface IFreeAgents {
 
     public void setSaving(int saving);
 
+    double getStrength();
+
+    void setStrength(double strength);
+
+    double calculateStrength(IFreeAgents freeAgents);
+
+    double strengthCalculator(int[] positionValues);
 }
