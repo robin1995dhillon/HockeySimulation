@@ -11,6 +11,8 @@ public interface ILeague {
 
     public void setLeagueName(String leagueName);
     public ArrayList<IFreeAgents> getfreeAgents();
+    public ArrayList<String> getGeneralManagers();
+    public ArrayList<IHeadCoach> getCoaches();
 
     public void setfreeAgents(ArrayList<IFreeAgents> freeAgents);
     public  boolean isValid(ILeague league);

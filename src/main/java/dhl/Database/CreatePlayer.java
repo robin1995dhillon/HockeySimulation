@@ -11,14 +11,24 @@ public class CreatePlayer implements ICreateStoredProcedure{
     private String name;
     private String position;
     private boolean captain;
+    private int age;
+    private int skating;
+    private int shooting;
+    private int checking;
+    private int saving;
     private int teamId;
     private int insertedId;
 
-    public CreatePlayer(String name, String position, boolean captain, int teamId){
+    public CreatePlayer(String name, String position, boolean captain, int age, int skating, int shooting, int checking, int saving, int teamId){
         this.procedureName = "create_player";
         this.name = name;
         this.position = position;
         this.captain = captain;
+        this.age = age;
+        this.skating = skating;
+        this.shooting = shooting;
+        this.checking = checking;
+        this.saving = saving;
         this.teamId = teamId;
     }
 
@@ -32,12 +42,17 @@ public class CreatePlayer implements ICreateStoredProcedure{
         IConnect conn = new Connect();
         conn.getConnection();
         ResultSet rs = conn.gerResultSet();
-        String sql = "{CALL " + this.procedureName + "(?,?,?,?)}";
+        String sql = "{CALL " + this.procedureName + "(?,?,?,?,?,?,?,?,?)}";
         CallableStatement stmt = conn.getStatement(sql);
         stmt.setString(1, this.name);
         stmt.setString(2, this.position);
         stmt.setBoolean(3, this.captain);
-        stmt.setInt(4, this.teamId);
+        stmt.setInt(4,this.age);
+        stmt.setInt(5,this.skating);
+        stmt.setInt(6, this.shooting);
+        stmt.setInt(7,this.checking);
+        stmt.setInt(8, this.saving);
+        stmt.setInt(9, this.teamId);
         boolean hasResultSet = stmt.execute();
         if(hasResultSet){
             rs = stmt.getResultSet();
