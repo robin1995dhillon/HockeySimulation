@@ -1,8 +1,8 @@
 package dhl.Creator;
 
-import dhl.LeagueModel.League;
+import dhl.LeagueModel.ILeague;
 
 public interface ICreator {
 
-    public League create();
+    public ILeague create();
 }

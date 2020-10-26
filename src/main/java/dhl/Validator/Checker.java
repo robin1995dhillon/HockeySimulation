@@ -4,7 +4,6 @@ package dhl.Validator;
 import dhl.LeagueModel.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Checker {
 
@@ -12,8 +11,8 @@ public class Checker {
 //
 //    }
 
-    public boolean ConferenceChecker(String Conference, League league) {
-        for (Conference c: league.getConferences()) {
+    public boolean ConferenceChecker(String Conference, ILeague ILeague) {
+        for (IConference c: ILeague.getConferences()) {
             if(c.getConferenceName().toLowerCase().equals(Conference.toLowerCase())) {
                 return true;
             }
@@ -21,13 +20,13 @@ public class Checker {
         return false;
     }
 
-    public boolean DivisionChecker(String Division, League league) {
-        ArrayList<Conference> Conference;
-        ArrayList<Division> Divisions;
-        Conference = league.getConferences();
-        for(Conference c: Conference) {
-            Divisions = c.getDivisions();
-            for(Division d: Divisions) {
+    public boolean DivisionChecker(String Division, ILeague ILeague) {
+        ArrayList<IConference> IConference;
+        ArrayList<IDivision> IDivisions;
+        IConference = ILeague.getConferences();
+        for(IConference c: IConference) {
+            IDivisions = c.getDivisions();
+            for(IDivision d: IDivisions) {
                 if(d.getDivisionName().toLowerCase().equals(Division.toLowerCase())) {
                     return true;
                 }
@@ -36,16 +35,16 @@ public class Checker {
         return false;
     }
 
-    public boolean TeamChecker(String Team, League league) {
-        ArrayList<Conference> Conference;
-        ArrayList<Division> Divisions;
-        ArrayList<Teams> Teams;
-        Conference = league.getConferences();
-        for(Conference c: Conference) {
-            Divisions = c.getDivisions();
-            for(Division d: Divisions) {
-                Teams = d.getTeams();
-                for(Teams t: Teams) {
+    public boolean TeamChecker(String Team, ILeague ILeague) {
+        ArrayList<IConference> IConference;
+        ArrayList<IDivision> IDivisions;
+        ArrayList<ITeam2> ITeam2;
+        IConference = ILeague.getConferences();
+        for(IConference c: IConference) {
+            IDivisions = c.getDivisions();
+            for(IDivision d: IDivisions) {
+                ITeam2 = d.getTeams();
+                for(ITeam2 t: ITeam2) {
                     if(t.getTeamName().toLowerCase().equals(Team.toLowerCase())) {
                         return false;
                     }

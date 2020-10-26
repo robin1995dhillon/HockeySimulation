@@ -1,7 +1,7 @@
 package dhl.SimulationStateMachine;
 
 import dhl.Creator.LeagueCreator;
-import dhl.Creator.TeamCreator;
+//import dhl.Creator.TeamCreator;
 import dhl.*;
 import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;

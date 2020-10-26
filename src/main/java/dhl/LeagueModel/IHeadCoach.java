@@ -1,5 +1,8 @@
 package dhl.LeagueModel;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+@JsonDeserialize(as=HeadCoach.class)
 public interface IHeadCoach {
 
     public String getName();

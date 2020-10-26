@@ -2,39 +2,40 @@ package dhl.LeagueModel;
 
 import java.util.ArrayList;
 
-public class Conference {
+public class Conference implements IConference{
 
     String conferenceName;
-    ArrayList<Division> divisions;
-
-
-    public Conference(String conferenceName, ArrayList<Division> division) {
-        this.conferenceName = conferenceName;
-        this.divisions = division;
-    }
+    ArrayList<IDivision> divisions;
 
     public Conference() {
-
     }
 
     public Conference(String conferenceName) {
         this.conferenceName = conferenceName;
     }
 
+    public Conference(String conferenceName, ArrayList<IDivision> division) {
+        this.conferenceName = conferenceName;
+        this.divisions = division;
+    }
+
+    @Override
     public String getConferenceName() {
         return conferenceName;
     }
 
+    @Override
     public void setConferenceName(String conferenceName) {
         this.conferenceName = conferenceName;
     }
 
-    public ArrayList<Division> getDivisions() {
+    @Override
+    public ArrayList<IDivision> getDivisions() {
         return divisions;
     }
 
-    public void setDivisions(ArrayList<Division> divisions) {
+    @Override
+    public void setDivisions(ArrayList<IDivision> divisions) {
         this.divisions = divisions;
     }
-
 }

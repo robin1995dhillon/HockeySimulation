@@ -1,6 +1,6 @@
 package dhl.Trade;
 
-import dhl.LeagueModel.IPlayers2;
+import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.ITeam2;
 
 import java.util.Collections;
@@ -21,7 +21,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
 
 
     @Override
-    public double strength(IPlayers2 player) {
+    public double strength(IPlayers player) {
 
         if (player.getPosition().toLowerCase().equals("forward")) {
             playerStrength = player.getShooting() + player.getSkating() + player.getChecking() / 2.0;
@@ -33,7 +33,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         return playerStrength;
     }
 
-    public List<IPlayers2> getPositionTypesOffering(List<IPlayers2> players){
+    public List<IPlayers> getPositionTypesOffering(List<IPlayers> players){
         for(int i=1;i<players.size();i++){
             if(players.get(0).getPosition().equalsIgnoreCase(players.get(i).getPosition())){
                 continue;
@@ -82,12 +82,12 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
 
 
     @Override
-    public List<IPlayers2> checkWeakestPlayer(ITeam2 tradingTeam , int weakestCount) {
+    public List<IPlayers> checkWeakestPlayer(ITeam2 tradingTeam , int weakestCount) {
 
-        List<IPlayers2> players = new ArrayList<>();
+        List<IPlayers> players = new ArrayList<>();
         players = tradingTeam.getPlayers();
 
-        for(IPlayers2 weakPlayer: players){
+        for(IPlayers weakPlayer: players){
             double playerStrength = strength(weakPlayer);
             weakPlayer.setStrength(playerStrength);
 
@@ -100,13 +100,13 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     }
 
     @Override
-    public List<IPlayers2> checkStrongestPlayer(ITeam2 tradingTeam, int weakestCount,String positionToTrade) {
-        List<IPlayers2> players = new ArrayList<>();
-        List<IPlayers2> playersStrong = new ArrayList<>();
+    public List<IPlayers> checkStrongestPlayer(ITeam2 tradingTeam, int weakestCount, String positionToTrade) {
+        List<IPlayers> players = new ArrayList<>();
+        List<IPlayers> playersStrong = new ArrayList<>();
         players = tradingTeam.getPlayers();
         int count=0;
 
-        for(IPlayers2 weakPlayer: players){
+        for(IPlayers weakPlayer: players){
             if(weakPlayer.getPosition().equalsIgnoreCase(positionToTrade)) {
               //  double playerStrength = strength(weakPlayer);
               //  weakPlayer.setStrength(playerStrength);
@@ -136,10 +136,10 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
 //          boolean flag = tradeCondition(teamsTrading);
 
     //    if (flag) {
-            List<IPlayers2> offeringTeamPlayers = new ArrayList<>();
-            List<IPlayers2> consideringTeamPlayers = new ArrayList<>();
-            List<IPlayers2> offeringTeamPositionPlayers = new ArrayList<>();
-            List<IPlayers2> consideringTeamPosition = new ArrayList<>();
+            List<IPlayers> offeringTeamPlayers = new ArrayList<>();
+            List<IPlayers> consideringTeamPlayers = new ArrayList<>();
+            List<IPlayers> offeringTeamPositionPlayers = new ArrayList<>();
+            List<IPlayers> consideringTeamPosition = new ArrayList<>();
 
             offeringTeamPlayers = checkWeakestPlayer(offeringTeam, maxPlayersPerTrade);
             offeringTeamPositionPlayers= getPositionTypesOffering(offeringTeamPlayers);
@@ -147,8 +147,8 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
             consideringTeamPlayers = checkStrongestPlayer(consideringTeam, maxPlayersPerTrade,positionToTrade); //strongest
 
             outer:
-            for (IPlayers2 offeredPlayer : offeringTeamPositionPlayers) {
-                for (IPlayers2 tradePlayer : consideringTeamPlayers) {
+            for (IPlayers offeredPlayer : offeringTeamPositionPlayers) {
+                for (IPlayers tradePlayer : consideringTeamPlayers) {
 
                     if (offeredPlayer.getStrength() < tradePlayer.getStrength() && Math.random() < randomAcceptanceChance) {
                         System.out.println("Rejected");

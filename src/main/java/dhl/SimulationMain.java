@@ -1,7 +1,7 @@
 package dhl;
 
 import dhl.InOut.*;
-import dhl.LeagueModel.League;
+import dhl.LeagueModel.ILeague;
 import dhl.Creator.TeamCreator;
 import dhl.SimulationStateMachine.LoadTeamState;
 import dhl.SimulationStateMachine.CreateTeamState;
@@ -41,41 +41,46 @@ public class SimulationMain {
             JSONObject JSONValidator = jsonValidator.mainValidator(Object);
             if (JSONValidator.get("isValid").equals("True")) {
                 LeagueCreator leagueCreator = new LeagueCreator();
-                League league = leagueCreator.CreateLeague(Path);
-                if (League.isValid(league)) {
+                ILeague ILeague = leagueCreator.CreateLeague(Path);
+                if (ILeague.isValid(ILeague)) {
                     System.out.println("Valid JSON!\n");
                     System.out.println("\nWelcome to the matrix. We all live in simulation ;)");
                     System.out.println("We are going to create a team. Please enter the following details: ");
                     System.out.println("Enter Conference Name:");
                     String conferenceName = in.nextLine();
                     Checker CC = new Checker();
-                    while(CC.ConferenceChecker(conferenceName, league)==false){
+                    while(CC.ConferenceChecker(conferenceName, ILeague)==false){
                         System.out.println("Invalid input! Please enter the conference you imported:");
                         conferenceName = in.nextLine();
                     }
-                    if (CC.ConferenceChecker(conferenceName, league)) {
+                    if (CC.ConferenceChecker(conferenceName, ILeague)) {
                         System.out.println("Enter Division Name:");
                         String divisionName = in.nextLine();
-                        while(CC.DivisionChecker(divisionName, league)==false){
+                        while(CC.DivisionChecker(divisionName, ILeague)==false){
                             System.out.println("Invalid input! Please enter the division you imported:");
                             divisionName = in.nextLine();
                         }
-                        if (CC.DivisionChecker(divisionName, league)) {
+                        if (CC.DivisionChecker(divisionName, ILeague)) {
                             System.out.println("Enter Your Team Name: ");
                             teamName = in.nextLine();
-                            if (CC.TeamChecker(teamName, league)) {
+                            if (CC.TeamChecker(teamName, ILeague)) {
                                 System.out.println("Enter Manager Name: ");
                                 String managerName = in.nextLine();
                                 System.out.println("Enter Head Coach: ");
                                 String headCoach = in.nextLine();
                                 TeamCreator teamCreator = new TeamCreator();
-                                League updated_league = teamCreator.createTeam(managerName, headCoach, league, conferenceName, divisionName, teamName);
-                                System.out.println("\nTeam created.");
+                                ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName);
                                 context.setState(new CreateTeamState(input, output, teamName, updated_league));
                                 System.out.println("Saving the team. Please wait...");
                                 context.runState();
                                 context.forward(); //simulate state
                                 context.runState();
+//                                CreateTeamState save = new CreateTeamState();
+//                                System.out.println("Saving the team. Please wait...");
+//                                save.SaveToDB(updated_I_league);
+//                                System.out.println("\nTeam created.");
+//                                SimulateLeagueState simulate = new SimulateLeagueState(input, output, teamName);
+//                                simulate.simulateLeague();
                             } else {
                                 System.out.println("Team Already Exists!");
                             }

@@ -14,9 +14,9 @@ public class CreateTeamState implements IState{
     private static IUserOutput output;
     private static String stateName;
     private static String nextStateName;
-    private static League league;
+    private static ILeague league;
     private static String teamName;
-    public CreateTeamState(IUserInput input, IUserOutput output, String teamName, League league) {
+    public CreateTeamState(IUserInput input, IUserOutput output, String teamName, ILeague league) {
         CreateTeamState.input = input;
         CreateTeamState.output = output;
         CreateTeamState.stateName = "Create Team";
@@ -24,13 +24,12 @@ public class CreateTeamState implements IState{
         this.teamName = teamName;
 
     }
-
     public void runState() {
-        ArrayList<Conference> Conference;
-        ArrayList<Division> Divisions;
-        ArrayList<Teams> Teams;
-        ArrayList<Players> Players;
-
+        ArrayList<IConference> Conference;
+        ArrayList<IDivision> Divisions;
+        ArrayList<ITeam2> Teams;
+        ArrayList<IPlayers> Players;
+        IHeadCoach HeadCoach;
         String leagueName = league.getLeagueName();
         System.out.println("entering saveLeague Method");   //commenttt
         JSONObject league_obj = saveLeague(leagueName);
@@ -38,22 +37,22 @@ public class CreateTeamState implements IState{
         int league_id = (int) league_obj.get("id");
         if (league_bool) {
             Conference = league.getConferences();
-            for (Conference c : Conference) {
+            for (IConference c : Conference) {
                 JSONObject conference_obj = saveConference(c.getConferenceName());
                 boolean conference_bool = (boolean) conference_obj.get("Status");
                 int conference_id = (int) conference_obj.get("id");
                 if (conference_bool) {
                     Divisions = c.getDivisions();
-                    for (Division d : Divisions) {
+                    for (IDivision d : Divisions) {
                         JSONObject division_obj = saveDivision(d.getDivisionName());
                         boolean division_bool = (boolean) division_obj.get("Status");
                         int division_id = (int) division_obj.get("id");
                         if (division_bool) {
                             Teams = d.getTeams();
-                            for (Teams t : Teams) {
+                            for (ITeam2 t : Teams) {
                                 Players = t.getPlayers();
-
-                                JSONObject team_obj = saveTeam(t.getTeamName(), t.getGeneralManager(), t.getHeadCoach());
+                                HeadCoach = t.getHeadCoach();
+                                JSONObject team_obj = saveTeam(t.getTeamName(), t.getGeneralManager());
                                 boolean team_bool = (boolean) team_obj.get("Status");
                                 int team_id = (int) team_obj.get("id");
                                 if (team_bool) {
@@ -135,21 +134,21 @@ public class CreateTeamState implements IState{
         return return_obj;
     }
 
-    public JSONObject saveTeam(String teamName, String generalManager, String headCoach) {
+    public JSONObject saveTeam(String teamName, String generalManager) {
         JSONObject return_obj = new JSONObject();
         StoredProcedure SP = new StoredProcedure("create_team");
-        SP.addParameter(teamName, generalManager, headCoach);
-
-        try {
-            SP.executeProcedure();
-            int team_id = SP.getInsertedId();
-            return_obj.put("Status", true);
-            return_obj.put("id", team_id);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return_obj.put("Status", false);
-            return_obj.put("id", null);
-        }
+//        SP.addParameter(teamName, generalManager);
+//
+//        try {
+//            SP.executeProcedure();
+//            int team_id = SP.getInsertedId();
+//            return_obj.put("Status", true);
+//            return_obj.put("id", team_id);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return_obj.put("Status", false);
+//            return_obj.put("id", null);
+//        }
         return return_obj;
     }
 

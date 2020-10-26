@@ -2,42 +2,49 @@ package dhl.LeagueModel;
 
 import java.util.ArrayList;
 
-public class Division {
+public class Division implements IDivision{
+
 
     String divisionName;
-    ArrayList<Teams> Teams;
+    ArrayList<ITeam2> teams;
 
-    public Division(String divisionName, ArrayList<dhl.LeagueModel.Teams> teams) {
+
+    public Division() {
+    }
+
+    public Division(String divisionName, ArrayList<ITeam2> teams) {
         this.divisionName = divisionName;
-        Teams = teams;
+        this.teams = teams;
     }
 
     public Division(String divisionName) {
         this.divisionName = divisionName;
     }
 
-    public Division() {
+
+    @Override
+    public ArrayList<ITeam2> getTeams() {
+        return teams;
+    }
+
+    @Override
+    public void setTeams(ArrayList<ITeam2> teams) {
+        this.teams = teams;
 
     }
 
-    public ArrayList<dhl.LeagueModel.Teams> getTeams() {
-        return Teams;
-    }
-
-    public void setTeams(ArrayList<dhl.LeagueModel.Teams> teams) {
-        Teams = teams;
-    }
-
+    @Override
     public String getDivisionName() {
         return divisionName;
     }
 
+    @Override
     public void setDivisionName(String divisionName) {
         this.divisionName = divisionName;
-    }
 
-    public void addTeam(Teams team) {
-        Teams.add(team);
+    }
+    public void addTeam(ITeam2 team) {
+        teams.add(team);
     }
 
 }
