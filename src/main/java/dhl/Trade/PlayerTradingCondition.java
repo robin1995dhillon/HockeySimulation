@@ -119,10 +119,12 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         }
         Collections.sort(playersStrong,Collections.reverseOrder((p1, p2) -> Double.compare(strength(p1),strength(p2))));
 
-        if(count>weakestCount)
-            return players.subList(0,weakestCount);
-        else
+        if(count>weakestCount) {
+            return players.subList(0, weakestCount);
+        }
+        else{
             return players.subList(0,count);
+        }
     }
 
     @Override
