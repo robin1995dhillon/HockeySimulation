@@ -115,11 +115,20 @@ public class Teams implements ITeam2 {
 
         for (IPlayers player: players) {
             PlayersStrength strength = new PlayersStrength();
-            strength.calculateStrength(player);
-            teamStrength += player.getStrength();
+            double playerStrength = strength.calculateStrength(player);
+            teamStrength += playerStrength;
         }
         System.out.println(teamStrength);
+        team.setTeamStrength(teamStrength);
         return teamStrength;
+    }
+
+    public void checkForInjury(ITeam2 team) {
+        ArrayList<IPlayers> players;
+        players = team.getPlayers();
+        for(IPlayers player: players) {
+            player.checkForPlayerInjury(player);
+        }
     }
 
 }
