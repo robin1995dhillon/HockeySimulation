@@ -8,7 +8,8 @@ import java.util.Map;
 
 public interface IPlayerTradingCondition {
      void tradeCondition(List<ITeam2> tradeTeams);
-     List<IPlayers> checkWeakestPlayer(ITeam2 tradingTeam , int weakestCount);
+    // List<IPlayers> checkWeakestPlayer(ITeam2 tradingTeam , int weakestCount);
+    List<IPlayers> checkWeakestPlayer(ITeam2 tradingTeam);
      void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam); //delete if other works
 
    // public double strength(IPlayers player);
@@ -18,4 +19,5 @@ public interface IPlayerTradingCondition {
     List<IPlayers> getPositionTypesOffering(List<IPlayers> players);
    // ITeam2 getTradeTeamName(Map<ITeam2,Double> allTeams);
     double StrongestPlayersStrength(List<IPlayers> selectedPLayers);
+    int countTeamPlayers(ITeam2 team);
 }
