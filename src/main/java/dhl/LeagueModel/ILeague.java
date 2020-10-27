@@ -1,5 +1,7 @@
 package dhl.LeagueModel;
 
+import dhl.gamePlayConfig.GamePlayConfig;
+
 import java.util.ArrayList;
 
 public interface ILeague {
@@ -17,6 +19,11 @@ public interface ILeague {
     public void setFreeAgents(ArrayList<IFreeAgents> freeAgents);
     public void setHeadCoach(ArrayList<IHeadCoach> coaches);
     public void setGeneralManager(ArrayList<String> generalManagers);
+
+    GamePlayConfig getGameplayConfig();
+
+    void setGameplayConfig(GamePlayConfig gameplayConfig);
+
     public  boolean isValid(ILeague league);
     public boolean isLeagueNamePresent();
 

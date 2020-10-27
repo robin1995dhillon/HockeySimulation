@@ -41,7 +41,6 @@ public class Teams implements ITeam2 {
     @Override
     public void setPlayers(ArrayList<IPlayers> players) {
         this.players = players;
-
     }
 
     @Override

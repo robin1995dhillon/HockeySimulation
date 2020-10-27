@@ -1,5 +1,7 @@
 package dhl.Validator;
 
+import dhl.gamePlayConfig.GamePlayConfig;
+import dhl.gamePlayConfig.IGamePlayConfig;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -31,10 +33,12 @@ public class JSONValidator {
     }
     public boolean leagueValidator(JSONObject Obj, Stack stack) {
         if(validator.valueIsPresent((String)Obj.get("leagueName"))) {
+            IGamePlayConfig gamePlayConfig = new GamePlayConfig();
             conferenceValidator(Obj, stack);
             freeAgentValidator(Obj, stack);
             coachValidator(Obj, stack);
             generalManagersValidator(Obj, stack);
+            gamePlayConfig.gamePlayConfigValidator(Obj);
         }
         else {
             stack.push("League Name Missing");
@@ -152,8 +156,8 @@ public class JSONValidator {
         Iterator team_arr_iter = teamArray.iterator();
         while (team_arr_iter.hasNext()) {
             JSONObject teamObject = (JSONObject) team_arr_iter.next();
-            String teamName = (String) teamObject.get("teamName");
-            String generalManager = (String) teamObject.get("generalManager");
+            String teamName = teamObject.get("teamName").toString();
+            String generalManager = teamObject.get("generalManager").toString();
             if (validator.valueIsPresent(teamName)) {
                     if(validator.valueIsPresent(generalManager)) {
                         playerValidator(teamObject, stack);

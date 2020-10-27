@@ -7,6 +7,7 @@ import dhl.LeagueModel.IPlayers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Players implements IPlayers {
@@ -74,13 +75,11 @@ public class Players implements IPlayers {
     @Override
     public void setAge(int age) {
         this.age = age;
-
     }
 
     @Override
     public int getSkating() {
         return skating;
-
     }
 
     @Override
@@ -228,7 +227,7 @@ public class Players implements IPlayers {
 
     @Override
     public IFreeAgents replacePlayerWithFreeAgent(IPlayers player, ArrayList<IFreeAgents> freeAgents) {
-        ArrayList<Double> freeAgentStrengthList = new ArrayList<>();
+        List<Double> freeAgentStrengthList = new ArrayList<>();
             for(IFreeAgents freeAgent: freeAgents) {
                 if(player.getPosition().equals(freeAgent.getPosition())) {
                     double freeAgentStrength = freeAgent.calculateStrength(freeAgent);
