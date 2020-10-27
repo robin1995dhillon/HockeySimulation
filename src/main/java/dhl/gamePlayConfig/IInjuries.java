@@ -1,5 +1,10 @@
 package dhl.gamePlayConfig;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import dhl.LeagueModel.Division;
+import org.json.simple.JSONObject;
+
+@JsonDeserialize(as= Injuries.class)
 public interface IInjuries {
     double getRandomInjuryChance();
 
@@ -12,4 +17,10 @@ public interface IInjuries {
     int getInjuryDaysHigh();
 
     void setInjuryDaysHigh(int injuryDaysHigh);
+
+    boolean injuriesValidator(JSONObject Obj);
+
+    boolean checkRangeInteger(int[] injuriesAttributes);
+
+    boolean checkRangeDouble(double[] injuriesAttributes);
 }

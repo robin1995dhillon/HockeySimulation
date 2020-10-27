@@ -17,8 +17,10 @@ public class LeagueCreator {
     public ILeague league;
 
     public LeagueCreator() {
-        objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//        objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapper = new ObjectMapper();
     }
+
 
     public ILeague CreateLeague(String Path) {
         ObjectMapper objectMapper = new ObjectMapper();

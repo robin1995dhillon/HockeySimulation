@@ -1,5 +1,9 @@
 package dhl.gamePlayConfig;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.json.simple.JSONObject;
+
+@JsonDeserialize(as= GamePlayConfig.class)
 public interface IGamePlayConfig {
     Aging getAging();
 
@@ -20,4 +24,6 @@ public interface IGamePlayConfig {
     Training getTraining();
 
     void setTraining(Training training);
+
+    boolean gamePlayConfigValidator(JSONObject Obj);
 }

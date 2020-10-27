@@ -1,5 +1,10 @@
 package dhl.gamePlayConfig;
 
+import org.json.simple.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GamePlayConfig implements IGamePlayConfig {
 
     Aging aging;
@@ -7,6 +12,14 @@ public class GamePlayConfig implements IGamePlayConfig {
     Injuries injuries;
     Trading trading;
     Training training;
+
+    public GamePlayConfig() {
+        aging = new Aging();
+        gameResolver = new GameResolver();
+        injuries = new Injuries();
+        trading = new Trading();
+        training = new Training();
+    }
 
     @Override
     public Aging getAging() {
@@ -57,4 +70,29 @@ public class GamePlayConfig implements IGamePlayConfig {
     public void setTraining(Training training) {
         this.training = training;
     }
+
+    @Override
+    public boolean gamePlayConfigValidator(JSONObject Obj) {
+        JSONObject gamePlayConfigObject = (JSONObject) Obj.get("gameplayConfig");
+        List<Boolean> results = new ArrayList<>();
+//        IAging aging = new Aging();
+        IGameResolver gameResolver = new GameResolver();
+        IInjuries injuries = new Injuries();
+        ITraining training = new Training();
+        ITrading trading = new Trading();
+        results.add(aging.agingValidator(gamePlayConfigObject));
+        results.add(gameResolver.gameResolverValidator(gamePlayConfigObject));
+        results.add(injuries.injuriesValidator(gamePlayConfigObject));
+        results.add(training.trainingValidator(gamePlayConfigObject));
+        results.add(trading.tradingValidator(gamePlayConfigObject));
+
+        if(results.contains(false)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }
+
+
