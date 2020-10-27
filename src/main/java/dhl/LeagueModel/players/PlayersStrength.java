@@ -45,8 +45,11 @@ public class PlayersStrength extends Players {
             player.setStrength(strength);
         }
 
+        if(player.isInjured()) {
+            player.setStrength(player.getStrength()/2);
+            strength = strength/2;
+        }
+
         return strength;
     }
-
-
 }

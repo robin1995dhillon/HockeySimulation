@@ -46,7 +46,10 @@ public class CoachUtilsTest {
         coach2.setSaving(0.5);
         coachList.add(coach2);
         ICoachUtils coachUtils = new CoachUtils();
+        System.out.println("Before remove:");
+        coachUtils.displayCoach(coachList);
         coachUtils.removeCoach(coachList, "Joe Smith");
+        System.out.println("\nAfter remove:");
         coachUtils.displayCoach(coachList);
     }
 }

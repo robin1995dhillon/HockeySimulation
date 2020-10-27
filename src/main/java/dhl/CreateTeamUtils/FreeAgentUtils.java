@@ -1,6 +1,7 @@
 package dhl.CreateTeamUtils;
 
 import dhl.LeagueModel.IFreeAgents;
+import dhl.LeagueModel.IPlayers;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,16 @@ public class FreeAgentUtils implements IFreeAgentUtils {
     }
 
     @Override
+    public IFreeAgents getPlayer(ArrayList<IFreeAgents> freeAgentList, String freeAgentName) {
+        for (IFreeAgents freeAgent : freeAgentList) {
+            if(freeAgent.getPlayerName().equals(freeAgentName)){
+                return freeAgent;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void removeFreeAgent(ArrayList<IFreeAgents> freeAgentList, String freeAgentName) {
         for (IFreeAgents freeAgent : freeAgentList) {
             if(freeAgent.getPlayerName().equals(freeAgentName)){
@@ -30,7 +41,15 @@ public class FreeAgentUtils implements IFreeAgentUtils {
 
     @Override
     public boolean checkPosition(ArrayList<IFreeAgents> freeAgentList, String playerName, String position) {
+        for (IFreeAgents freeAgent : freeAgentList) {
+            if(freeAgent.getPlayerName().equals(playerName)){
+                if(freeAgent.getPosition().equals(position)){
+                    return true;
+                }
+            }
+        }
         return false;
     }
+
 }
 

@@ -22,7 +22,10 @@ public class ManagerUtilsTest {
         managerList.add("Joseph Squidly");
         managerList.add("Tom Spaghetti");
         IManagerUtils managerUtils = new ManagerUtils();
+        System.out.println("Before remove:");
+        managerUtils.displayManager(managerList);
         managerUtils.removeManager(managerList, "Joseph Squidly");
+        System.out.println("\nAfter remove:");
         managerUtils.displayManager(managerList);
     }
 }
