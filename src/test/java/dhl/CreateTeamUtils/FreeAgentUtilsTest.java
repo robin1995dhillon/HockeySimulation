@@ -68,7 +68,10 @@ public class FreeAgentUtilsTest {
         freeAgent2.setSaving(0);
         freeAgentList.add(freeAgent2);
         IFreeAgentUtils freeAgentUtils = new FreeAgentUtils();
+        System.out.println("Before remove:");
+        freeAgentUtils.displayFreeAgent(freeAgentList);
         freeAgentUtils.removeFreeAgent(freeAgentList, "Agent One");
+        System.out.println("\nAfter remove:");
         freeAgentUtils.displayFreeAgent(freeAgentList);
     }
 
