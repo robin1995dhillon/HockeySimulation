@@ -152,8 +152,8 @@ public class JSONValidator {
         Iterator team_arr_iter = teamArray.iterator();
         while (team_arr_iter.hasNext()) {
             JSONObject teamObject = (JSONObject) team_arr_iter.next();
-            String teamName = (String) teamObject.get("teamName");
-            String generalManager = (String) teamObject.get("generalManager");
+            String teamName = teamObject.get("teamName").toString();
+            String generalManager = teamObject.get("generalManager").toString();
             if (validator.valueIsPresent(teamName)) {
                     if(validator.valueIsPresent(generalManager)) {
                         playerValidator(teamObject, stack);

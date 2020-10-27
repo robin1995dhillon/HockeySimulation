@@ -64,7 +64,7 @@ class TeamsTest {
         ArrayList<IPlayers> players = new ArrayList<>();
         IPlayers play1 = new Players();
         play1.setPosition("forward");
-//        play1.setInjured(true);
+        play1.setInjured(true);
         play1.setSaving(0);
         play1.setShooting(20);
         play1.setSkating(15);
