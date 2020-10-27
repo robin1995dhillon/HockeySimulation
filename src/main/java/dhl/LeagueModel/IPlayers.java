@@ -68,4 +68,7 @@ public interface IPlayers {
     void checkForPlayerInjury(IPlayers player);
 
     void playerStillInjured(IPlayers player);
+
+    IPlayers convertFreeAgentToPlayer(IFreeAgents agent);
+    IFreeAgents convertPlayerToFreeAgent(IPlayers player);
 }

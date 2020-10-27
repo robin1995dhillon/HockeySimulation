@@ -11,7 +11,7 @@ import java.util.*;
 class PlayerTradingCondition implements IPlayerTradingCondition{
 
     TradePrompt prompt = new TradePrompt();
-    PlayersStrength playerStrength = new PlayersStrength();
+    PlayersStrength playerStrength;
     private ArrayList<ITeam2> team;
     private int lossPoints = 8;
     private double randomTradeOfferChance=0.05;
@@ -19,15 +19,24 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     private double randomAcceptanceChance = 0.05;
     private double strongestPlayersStrength=0.0;
     private String positionToTrade = "";
-    private Map<ITeam2,Double> map = new HashMap<>();
-    private List<IPlayers> offeringTeamPlayers = new ArrayList<>();
-    private List<IPlayers> consideringTeamPlayers = new ArrayList<>();
-    private List<IPlayers> offeringTeamPositionPlayers = new ArrayList<>();
-    private List<IPlayers> strongestPLayersFinalList = new ArrayList<>();
+    private Map<ITeam2,Double> map;
+    private List<IPlayers> offeringTeamPlayers;
+    private List<IPlayers> consideringTeamPlayers;
+    private List<IPlayers> offeringTeamPositionPlayers;
+    private List<IPlayers> strongestPLayersFinalList;
     private ITeam2 finalTeam = null;
+    private FreeAgentList freeAgentLists;
 
     public PlayerTradingCondition(){
         team = new ArrayList<>();
+        map = new HashMap<>();
+
+        consideringTeamPlayers = new ArrayList<>();
+        offeringTeamPlayers = new ArrayList<>();
+        offeringTeamPositionPlayers = new ArrayList<>();
+        strongestPLayersFinalList = new ArrayList<>();
+        playerStrength = new PlayersStrength();
+        freeAgentLists = new FreeAgentList();
     }
 
     public List<IPlayers> getPositionTypesOffering(List<IPlayers> players){
@@ -47,14 +56,14 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     public void tradeCondition(List<ITeam2> allTeams){
 
 
-        for(int i=0; i<allTeams.size();i++){
+        for(int i = 0;i < allTeams.size();i++){
 
                     if(allTeams.get(i).getTeamType().toLowerCase().equals("ai") && allTeams.get(i).getLossPoints() ==lossPoints){
                         if(randomTradeOfferChance> Math.random()) {
-                            offeringTeamPlayers = checkWeakestPlayer(allTeams.get(i), maxPlayersPerTrade);
+                            offeringTeamPlayers = checkWeakestPlayer(allTeams.get(i));
                             offeringTeamPositionPlayers= getPositionTypesOffering(offeringTeamPlayers);
                             positionToTrade = offeringTeamPositionPlayers.get(0).getPosition();
-                            for(int j=0;j<allTeams.size();j++){
+                            for(int j = 0;j < allTeams.size();j++){
                                 if(i==j){
                                     continue;
                                 }
@@ -82,7 +91,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
 
 
     @Override
-    public List<IPlayers> checkWeakestPlayer(ITeam2 tradingTeam , int weakestCount) {
+    public List<IPlayers> checkWeakestPlayer(ITeam2 tradingTeam) {
         List<IPlayers> players = new ArrayList<>();
         players = tradingTeam.getPlayers();
 
@@ -94,7 +103,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         Collections.sort(players, (p1, p2) -> Double.compare(playerStrength.calculateStrength(p1),playerStrength.calculateStrength(p2)));
 
 
-        return players.subList(0,weakestCount);
+        return players.subList(0,maxPlayersPerTrade);
 
     }
 
@@ -107,8 +116,6 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
 
         for(IPlayers weakPlayer: players){
             if(weakPlayer.getPosition().equalsIgnoreCase(positionToTrade)) {
-              //  double playerStrength = strength(weakPlayer);
-              //  weakPlayer.setStrength(playerStrength);
                 playersStrong.add(weakPlayer);
                 count++;
             }
@@ -137,26 +144,21 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         return strength;
     }
 
-//    @Override
-//    public ITeam2 getTradeTeamName(Map<ITeam2,Double> allTeams){
-//        ITeam2 teamName = new Teams();
-//        double strength = 0;
-//        for(Map.Entry<ITeam2,Double> m:allTeams.entrySet()){
-//            if(m.getValue()>strength){
-//                teamName = m.getKey();
-//            }
-//            else{
-//                continue;
-//            }
-//
-//        }
-//        return teamName;
-//
-//    }
+    @Override
+    public int countTeamPlayers(ITeam2 team) {
+       int count =0;
+       for(IPlayers p:team.getPlayers()){
+           count++;
+       }
+       return count;
+    }
 
     @Override
     public void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam) {
         int count = 0;
+        int totalPlayers=0;
+        int playersToBeAdded = 0;
+        int playersToBeDropped = 0;
 
             outer:
             for (IPlayers offeredPlayer : offeringTeamPositionPlayers) {
@@ -179,11 +181,22 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
                 consideringTeam.getPlayers().addAll(offeringTeamPlayers);
             }
         offeringTeam.setLossPoints(0);
+        totalPlayers = countTeamPlayers(offeringTeam);
+        if(totalPlayers<20){
+           playersToBeAdded = 20 - totalPlayers;
+
+            freeAgentLists.aiAgentListAdd(offeringTeam,playersToBeAdded);
+
+        }
+
+
+
     }
 
     @Override
     public void TradeUser(ITeam2 offeringTeam, ITeam2 consideringTeam) {
         int count = 0;
+        int totalPlayers=0;
         String response = "";
         Scanner sc = new Scanner(System.in);
         prompt.userAcceptRejectTrade(consideringTeamPlayers,offeringTeamPositionPlayers);
@@ -198,8 +211,11 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         }
         else{
             System.out.println("Trade Rejected");
-            offeringTeam.setLossPoints(0);
+
         }
+        offeringTeam.setLossPoints(0);
         sc.close();
+
+
     }
 }

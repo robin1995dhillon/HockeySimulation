@@ -1,5 +1,6 @@
 package dhl.LeagueModel.players;
 
+import dhl.LeagueModel.FreeAgents;
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
 
@@ -269,6 +270,34 @@ public class Players implements IPlayers {
         }
     }
 
+    @Override
+    public IPlayers convertFreeAgentToPlayer(IFreeAgents agent) {
+        IPlayers player = new Players();
+        player.setPlayerName(agent.getPlayerName());
+        player.setPosition(agent.getPosition());
+        player.setAge(agent.getAge());
+        player.setSkating(agent.getSkating());
+        player.setShooting(agent.getShooting());
+        player.setChecking(agent.getChecking());
+        player.setSaving(agent.getSaving());
+        player.setCaptain(false);
+        return player;
+    }
+
+    @Override
+    public IFreeAgents convertPlayerToFreeAgent(IPlayers player) {
+
+        IFreeAgents agent = new FreeAgents();
+        agent.setPlayerName(player.getPlayerName());
+        agent.setPosition(player.getPosition());
+        agent.setAge(player.getAge());
+        agent.setSkating(player.getSkating());
+        agent.setShooting(player.getShooting());
+        agent.setChecking(player.getChecking());
+        agent.setSaving(player.getSaving());
+
+        return agent;
+    }
 
 
 }
