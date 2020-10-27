@@ -58,7 +58,7 @@ public class League implements ILeague{
     }
 
     @Override
-    public ArrayList<IFreeAgents> getfreeAgents() {
+    public ArrayList<IFreeAgents> getFreeAgents() {
         return freeAgents;
     }
 
@@ -73,9 +73,19 @@ public class League implements ILeague{
     }
 
     @Override
-    public void setfreeAgents(ArrayList<IFreeAgents> freeAgents) {
+    public void setFreeAgents(ArrayList<IFreeAgents> freeAgents) {
         this.freeAgents = freeAgents;
 
+    }
+
+    @Override
+    public void setHeadCoach(ArrayList<IHeadCoach> coaches) {
+        this.coaches = coaches;
+    }
+
+    @Override
+    public void setGeneralManager(ArrayList<String> generalManagers) {
+        this.generalManagers = generalManagers;
     }
 
 
@@ -95,11 +105,4 @@ public class League implements ILeague{
         }
     }
 
-    public void setCoaches(ArrayList<IHeadCoach> coaches) {
-        this.coaches = coaches;
-    }
-
-    public void setGeneralManagers(ArrayList<String> generalManagers) {
-        this.generalManagers = generalManagers;
-    }
 }

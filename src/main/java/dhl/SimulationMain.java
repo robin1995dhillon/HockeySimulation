@@ -93,7 +93,7 @@ public class SimulationMain {
                                 context.setState(new CreateTeamState(input, output, teamName, updated_league));
 
                                 System.out.println("Please choose your team players, here are the free agents:");
-                                ArrayList<IFreeAgents> freeAgentList = ILeague.getfreeAgents();
+                                ArrayList<IFreeAgents> freeAgentList = ILeague.getFreeAgents();
                                 ArrayList<IPlayers> playerList = null;
                                 IFreeAgentUtils freeAgentUtils = new FreeAgentUtils();
                                 freeAgentUtils.displayFreeAgent(freeAgentList);
