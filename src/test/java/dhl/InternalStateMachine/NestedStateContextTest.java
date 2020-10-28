@@ -14,41 +14,41 @@ import static org.junit.Assert.assertEquals;
 
 public class NestedStateContextTest {
 
-    ISimulationState st;
-    IUserInput inp;
-    IUserOutput out;
-    NestedStateContext con;
+    INestedState state;
+    IUserInput input;
+    IUserOutput output;
+    NestedStateContext context;
 
     @Before
     public void config() {
-        inp = new UserInput();
-        out = new UserOutput();
-        st = new NestedStartState(inp, out, "");
-        con = new NestedStateContext(inp, out);
-        con.setState(st);
+        input = new UserInput();
+        output = new UserOutput();
+        state = new NestedStartState(null, context, input, output, "Hawks");
+        context = new NestedStateContext(input, output);
+        context.setState(state);
     }
 
     @Test
-    public void forward() {
-        con.forward();
-        assertEquals("Simulate", con.currentStateName);
-        con.setState(st);
+    public void forwardTest() {
+        context.forward();
+        assertEquals("NestedSimulationState", context.currentStateName);
+        context.setState(state);
     }
 
     @Test
-    public void setState() {
-        con.setState(st);
-        assertEquals("Start", con.currentStateName);
+    public void setStateTest() {
+        context.setState(state);
+        assertEquals("NestedStartState", context.currentStateName);
     }
 
-//    @Test
-//    public void runState() {
-//        con.setState(new NestedEndState(inp, out));
-//        ByteArrayOutputStream out = new ByteArrayOutputStream();
-//        System.setOut(new PrintStream(out));
-//        con.runState();
-//        String expected = "Thanks for using our simulation :). See you around.";
-//        String gotOutput = out.toString().replaceAll("\n", "");
-//        assertEquals(expected, gotOutput);
-//    }
+    @Test
+    public void runStateTest() {
+        context.setState(new NestedEndState(input, output));
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        context.runState();
+        String expected = "Thanks for using our simulation :). See you around.";
+        String actual = out.toString().replaceAll("\n", "");
+        assertEquals(expected, actual);
+    }
 }

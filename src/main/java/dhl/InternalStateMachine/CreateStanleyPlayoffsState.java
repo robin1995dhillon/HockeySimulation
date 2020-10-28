@@ -1,14 +1,31 @@
 package dhl.InternalStateMachine;
 
-public class CreateStanleyPlayoffsState implements ISimulationState {
+import dhl.InOut.IUserInput;
+import dhl.InOut.IUserOutput;
+import dhl.LeagueModel.ILeague;
 
-    private static String stateName;
-    private static String nextState;
-    private static boolean finalDay;
+public class CreateStanleyPlayoffsState implements INestedState {
 
-    public CreateStanleyPlayoffsState() {
-        CreateStanleyPlayoffsState.stateName = "CreateStanleyPlayoffsState";
-        CreateStanleyPlayoffsState.nextState = "Training";
+    private Scheduler timeTracker;
+    private NestedStateContext context;
+    private ILeague league;
+    private String currDate;
+    private int currentYear;
+    private IUserInput input;
+    private IUserOutput output;
+    private String stateName;
+    private String nextState;
+    private boolean finalDay;
+
+    public CreateStanleyPlayoffsState(ILeague league, Scheduler timeTracker, String currDate, IUserInput input, IUserOutput output, NestedStateContext context) {
+        this.league = league;
+        this.currDate = currDate;
+        this.timeTracker = timeTracker;
+        this.context = context;
+        this.input = input;
+        this.output = output;
+        this.stateName = "CreateStanleyPlayoffsState";
+        this.nextState = "Training";
     }
 
     public void forward(NestedStateContext context) {
@@ -20,10 +37,10 @@ public class CreateStanleyPlayoffsState implements ISimulationState {
     }
 
     public String getStateName() {
-        return CreateStanleyPlayoffsState.stateName;
+        return this.stateName;
     }
 
     public String getNextState() {
-        return CreateStanleyPlayoffsState.nextState;
+        return this.nextState;
     }
 }

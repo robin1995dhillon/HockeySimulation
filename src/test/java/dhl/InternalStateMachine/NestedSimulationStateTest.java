@@ -4,7 +4,6 @@ import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
 import dhl.InOut.UserInput;
 import dhl.InOut.UserOutput;
-import dhl.InternalStateMachine.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,39 +13,39 @@ import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
 
 public class NestedSimulationStateTest {
-    NestedSimulationState st;
-    IUserInput inp;
-    IUserOutput out;
-    NestedStateContext con;
+    NestedSimulationState state;
+    IUserInput input;
+    IUserOutput output;
+    NestedStateContext context;
 
     @Before
     public void config() throws Exception {
-        inp = new UserInput();
-        out = new UserOutput();
-        st = new NestedSimulationState(inp, out, 1, "Rob's team");
-        con = new NestedStateContext(inp, out);
+        input = new UserInput();
+        output = new UserOutput();
+        context = new NestedStateContext(input, output);
+        state = new NestedSimulationState(null, context, input, output, 1, "Rob's team");
     }
 
     @Test
-    public void nextStateTest() {
-        con.setState(st);
-        con.forward();
-        assertEquals("End", con.currentStateName);
+    public void forwardTest() {
+        context.setState(state);
+        context.forward();
+        assertEquals("NestedEndState", context.currentStateName);
     }
 
     @Test
     public void getStateNameTest() {
-        assertEquals("Simulate", st.getStateName());
+        assertEquals("NestedSimulationState", state.getStateName());
     }
 
 
     @Test
-    public void doProcessing() {
+    public void runStateTest() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         String expected = "Simulating season 1 for Rob's team ...";
 
-        st.runState();
+        state.runState();
 
         String gotOutput = out.toString().replaceAll("\n", "");
         gotOutput = gotOutput.replaceAll("\r", "");

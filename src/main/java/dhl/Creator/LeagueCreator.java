@@ -1,6 +1,7 @@
 package dhl.Creator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import dhl.LeagueModel.IConference;
 import dhl.LeagueModel.ILeague;
@@ -16,8 +17,10 @@ public class LeagueCreator {
     public ILeague league;
 
     public LeagueCreator() {
+//        objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper = new ObjectMapper();
     }
+
 
     public ILeague CreateLeague(String Path) {
         ObjectMapper objectMapper = new ObjectMapper();

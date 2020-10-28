@@ -1,17 +1,17 @@
 package dhl.CreateTeamUtils;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ManagerUtils implements IManagerUtils{
     @Override
-    public void displayManager(ArrayList<String> managerList) {
-        for(int i = 0; i < managerList.size(); i++){
-            System.out.println(managerList.get(i));
+    public void displayManager(List<String> managerList) {
+        for (String s : managerList) {
+            System.out.println(s);
         }
     }
 
     @Override
-    public void removeManager(ArrayList<String> managerList, String managerName) {
+    public void removeManager(List<String> managerList, String managerName) {
         for(int i = 0; i < managerList.size(); i++){
             if (managerList.get(i).equals(managerName)) {
                 managerList.remove(i);

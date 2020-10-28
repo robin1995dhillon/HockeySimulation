@@ -31,7 +31,7 @@ public class FreeAgentUtilsTest {
     }
 
     @Test
-    public void getPlayer(){
+    public void getFreeAgentFromListTest(){
         ArrayList<IFreeAgents> freeAgentList = new ArrayList();
         IFreeAgents freeAgent = new FreeAgents("Agent One", "forward");
         freeAgent.setAge(25);
@@ -41,17 +41,17 @@ public class FreeAgentUtilsTest {
         freeAgent.setSaving(0);
         freeAgentList.add(freeAgent);
         IFreeAgentUtils freeAgentUtils = new FreeAgentUtils();
-        assertEquals("Agent One", freeAgentUtils.getPlayer(freeAgentList,"Agent One").getPlayerName());
-        assertEquals("forward", freeAgentUtils.getPlayer(freeAgentList,"Agent One").getPosition());
-        assertEquals(25, freeAgentUtils.getPlayer(freeAgentList,"Agent One").getAge());
-        assertEquals(10, freeAgentUtils.getPlayer(freeAgentList,"Agent One").getSkating());
-        assertEquals(10, freeAgentUtils.getPlayer(freeAgentList,"Agent One").getShooting());
-        assertEquals(10, freeAgentUtils.getPlayer(freeAgentList,"Agent One").getChecking());
-        assertEquals(0, freeAgentUtils.getPlayer(freeAgentList,"Agent One").getSaving());
+        assertEquals("Agent One", freeAgentUtils.getFreeAgentFromList(freeAgentList,"Agent One").getPlayerName());
+        assertEquals("forward", freeAgentUtils.getFreeAgentFromList(freeAgentList,"Agent One").getPosition());
+        assertEquals(25, freeAgentUtils.getFreeAgentFromList(freeAgentList,"Agent One").getAge());
+        assertEquals(10, freeAgentUtils.getFreeAgentFromList(freeAgentList,"Agent One").getSkating());
+        assertEquals(10, freeAgentUtils.getFreeAgentFromList(freeAgentList,"Agent One").getShooting());
+        assertEquals(10, freeAgentUtils.getFreeAgentFromList(freeAgentList,"Agent One").getChecking());
+        assertEquals(0, freeAgentUtils.getFreeAgentFromList(freeAgentList,"Agent One").getSaving());
     }
 
     @Test
-    public void removeCoachTest(){
+    public void removeFreeAgentTest(){
         ArrayList<IFreeAgents> freeAgentList = new ArrayList();
         IFreeAgents freeAgent1 = new FreeAgents("Agent One", "forward");
         IFreeAgents freeAgent2 = new FreeAgents("Agent Two", "defense");

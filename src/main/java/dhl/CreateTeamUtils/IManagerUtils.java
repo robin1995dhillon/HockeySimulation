@@ -1,8 +1,9 @@
 package dhl.CreateTeamUtils;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 public interface IManagerUtils {
-    public void displayManager(ArrayList<String> managerList);
-    public void removeManager(ArrayList<String> managerList, String managerName);
+    void displayManager(List<String> managerList);
+    void removeManager(List<String> managerList, String managerName);
 }

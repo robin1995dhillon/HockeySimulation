@@ -4,7 +4,7 @@ package dhl.InternalStateMachine;
 import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
 
-public class NestedEndState implements ISimulationState {
+public class NestedEndState implements INestedState {
 
     private static IUserInput input;
     private static IUserOutput output;
@@ -15,7 +15,7 @@ public class NestedEndState implements ISimulationState {
     public NestedEndState(IUserInput input, IUserOutput output) {
         NestedEndState.input = input;
         NestedEndState.output = output;
-        NestedEndState.stateName = "End";
+        NestedEndState.stateName = "NestedEndState";
     }
 
     public void forward(NestedStateContext context) {

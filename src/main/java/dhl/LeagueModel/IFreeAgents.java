@@ -2,35 +2,36 @@ package dhl.LeagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.List;
+
 @JsonDeserialize(as=FreeAgents.class)
 public interface IFreeAgents {
-    public String getPlayerName();
+    String getPlayerName();
 
-    public void setPlayerName(String playerName);
-    public String getPosition() ;
-    public void setPosition(String position);
+    void setPlayerName(String playerName);
+    String getPosition() ;
+    void setPosition(String position);
 
-    public int getAge();
+    int getAge();
 
-    public void setAge(int age);
+    void setAge(int age);
+
+    int getSkating();
+
+    void setSkating(int skating);
+
+    int getShooting();
+
+    void setShooting(int shooting);
+
+    int getChecking();
+
+    void setChecking(int checking);
 
 
-    public int getSkating();
+    int getSaving();
 
-    public void setSkating(int skating);
-
-    public int getShooting();
-
-    public void setShooting(int shooting);
-
-    public int getChecking();
-
-    public void setChecking(int checking);
-
-
-    public int getSaving();
-
-    public void setSaving(int saving);
+    void setSaving(int saving);
 
     double getStrength();
 
@@ -39,4 +40,8 @@ public interface IFreeAgents {
     double calculateStrength(IFreeAgents freeAgents);
 
     double strengthCalculator(int[] positionValues);
+
+    IFreeAgents getFreeAgentFromList(List<IFreeAgents> freeAgentList, String freeAgentName);
+    boolean checkPosition(String position);
+
 }

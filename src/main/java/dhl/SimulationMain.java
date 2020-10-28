@@ -2,11 +2,9 @@ package dhl;
 
 import dhl.CreateTeamUtils.*;
 import dhl.InOut.*;
-import dhl.LeagueModel.IFreeAgents;
-import dhl.LeagueModel.IHeadCoach;
-import dhl.LeagueModel.ILeague;
+import dhl.LeagueModel.*;
 import dhl.Creator.TeamCreator;
-import dhl.LeagueModel.IPlayers;
+import dhl.LeagueModel.players.Players;
 import dhl.SimulationStateMachine.LoadTeamState;
 import dhl.SimulationStateMachine.CreateTeamState;
 import dhl.SimulationStateMachine.SimulateLeagueState;
@@ -73,47 +71,36 @@ public class SimulationMain {
                                 ArrayList<String> managerList = ILeague.getGeneralManagers();
                                 IManagerUtils managerUtils = new ManagerUtils();
                                 managerUtils.displayManager(managerList);
-
                                 System.out.println("Enter Manager Name: ");
                                 String managerName = in.nextLine();
+                                ILeague.removeManagerFromList(managerList, managerName);
 
-                                managerUtils.removeManager(managerList, managerName);
                                 System.out.println("Here are the head coaches:");
                                 ArrayList<IHeadCoach> coachList = ILeague.getCoaches();
                                 ICoachUtils coachUtils = new CoachUtils();
                                 coachUtils.displayCoach(coachList);
-
                                 System.out.println("Enter Head Coach: ");
-                                String headCoach = in.nextLine();
-
-                                coachUtils.removeCoach(coachList, headCoach);
-
-                                TeamCreator teamCreator = new TeamCreator();
-                                ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName);
-                                context.setState(new CreateTeamState(input, output, teamName, updated_league));
+                                String coachName = in.nextLine();
+                                IHeadCoach headCoach = new HeadCoach();
+                                headCoach.getCoachFromList(coachList, coachName);
+                                coachList.remove(headCoach);
 
                                 System.out.println("Please choose your team players, here are the free agents:");
                                 ArrayList<IFreeAgents> freeAgentList = ILeague.getFreeAgents();
-                                ArrayList<IPlayers> playerList = null;
+                                ArrayList<IPlayers> playerList = new ArrayList<>();
                                 IFreeAgentUtils freeAgentUtils = new FreeAgentUtils();
                                 freeAgentUtils.displayFreeAgent(freeAgentList);
                                 System.out.println("Please choose two goalies: ");
                                 for(int i = 0; i < 2; i++){
                                     System.out.println("Enter Player Name: ");
                                     String playerName = in.nextLine();
-                                    if(freeAgentUtils.checkPosition(freeAgentList, playerName, "goalie")){
-                                        IFreeAgents freeAgent = freeAgentUtils.getPlayer(freeAgentList, playerName);
-                                        IPlayers player = null;
-                                        player.setPlayerName(playerName);
-                                        player.setPosition(freeAgent.getPosition());
-                                        player.setAge(freeAgent.getAge());
-                                        player.setSkating(freeAgent.getSkating());
-                                        player.setShooting(freeAgent.getShooting());
-                                        player.setChecking(freeAgent.getChecking());
-                                        player.setSaving(freeAgent.getSaving());
-                                        player.setCaptain(false);
+                                    IFreeAgents freeAgent = new FreeAgents();
+                                    freeAgent.getFreeAgentFromList(freeAgentList, playerName);
+                                    if(freeAgent.checkPosition("goalie")){
+                                        IPlayers player = new Players();
+                                        player.convertFreeAgentToPlayer(freeAgent);
                                         playerList.add(player);
-                                        freeAgentUtils.removeFreeAgent(freeAgentList, playerName);
+                                        freeAgentList.remove(freeAgent);
                                     } else{
                                         System.out.println("You need to pick a goalie!");
                                     }
@@ -122,34 +109,26 @@ public class SimulationMain {
                                 for(int i = 0; i < 18; i++){
                                     System.out.println("Enter Player Name: ");
                                     String playerName = in.nextLine();
-                                    if(freeAgentUtils.checkPosition(freeAgentList, playerName, "forward") || freeAgentUtils.checkPosition(freeAgentList, playerName, "defense")){
-                                        IFreeAgents freeAgent = freeAgentUtils.getPlayer(freeAgentList, playerName);
-                                        IPlayers player = null;
-                                        player.setPlayerName(playerName);
-                                        player.setPosition(freeAgent.getPosition());
-                                        player.setAge(freeAgent.getAge());
-                                        player.setSkating(freeAgent.getSkating());
-                                        player.setShooting(freeAgent.getShooting());
-                                        player.setChecking(freeAgent.getChecking());
-                                        player.setSaving(freeAgent.getSaving());
-                                        player.setCaptain(false);
+                                    IFreeAgents freeAgent = new FreeAgents();
+                                    freeAgent.getFreeAgentFromList(freeAgentList, playerName);
+                                    if(freeAgent.checkPosition("forward") || freeAgent.checkPosition("defense")){
+                                        IPlayers player = new Players();
+                                        player.convertFreeAgentToPlayer(freeAgent);
                                         playerList.add(player);
-                                        freeAgentUtils.removeFreeAgent(freeAgentList, playerName);
+                                        freeAgentList.remove(freeAgent);
                                     } else {
                                         System.out.println("You need to pick a forward or defense!");
                                     }
                                 }
 
+                                TeamCreator teamCreator = new TeamCreator();
+                                ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName, playerList);
+                                context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
+
                                 System.out.println("Saving the team. Please wait...");
                                 context.runState();
                                 context.forward(); //simulate state
                                 context.runState();
-//                                CreateTeamState save = new CreateTeamState();
-//                                System.out.println("Saving the team. Please wait...");
-//                                save.SaveToDB(updated_I_league);
-//                                System.out.println("\nTeam created.");
-//                                SimulateLeagueState simulate = new SimulateLeagueState(input, output, teamName);
-//                                simulate.simulateLeague();
                             } else {
                                 System.out.println("Team Already Exists!");
                             }

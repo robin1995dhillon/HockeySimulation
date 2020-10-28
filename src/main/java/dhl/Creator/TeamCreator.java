@@ -4,15 +4,15 @@ import dhl.LeagueModel.*;
 import dhl.LeagueModel.teams.Teams;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TeamCreator {
 
-    public ILeague createTeam(String ManagerName, String HeadCoach, ILeague ILeague, String ConferenceName, String DivisionName, String TeamName) {
+    public ILeague createTeam(String ManagerName, IHeadCoach headCoach, ILeague ILeague, String ConferenceName, String DivisionName, String TeamName, ArrayList<IPlayers> playerList) {
 
         ArrayList<IConference> Conference;
         ArrayList<IDivision> Divisions;
         ArrayList<ITeam2> Team2;
-//        ArrayList<ITeam2> Team2;
         Conference = ILeague.getConferences();
         for(IConference c: Conference) {
             if(c.getConferenceName().toLowerCase().equals(ConferenceName.toLowerCase())) {
@@ -22,10 +22,11 @@ public class TeamCreator {
                         Team2 = d.getTeams();
                         System.out.println(Team2);
                         ITeam2 team = new Teams();
-                        System.out.println(HeadCoach);
-                            team.setGeneralManager(ManagerName);
-//                            team.setHeadCoach(HeadCoach);
-                            team.setTeamName(TeamName);
+                        System.out.println(headCoach);
+                        team.setGeneralManager(ManagerName);
+                        team.setPlayers(playerList);
+                        team.setHeadCoach(headCoach);
+                        team.setTeamName(TeamName);
                         d.addTeam(team);
                     }
                 }

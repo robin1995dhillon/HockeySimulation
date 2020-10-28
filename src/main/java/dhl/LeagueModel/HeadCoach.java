@@ -1,5 +1,7 @@
 package dhl.LeagueModel;
 
+import java.util.List;
+
 public class HeadCoach implements IHeadCoach{
 
     String name;
@@ -69,4 +71,15 @@ public class HeadCoach implements IHeadCoach{
 
         this.saving = saving;
     }
+
+    @Override
+    public IHeadCoach getCoachFromList(List<IHeadCoach> coachList, String coachName) {
+        for(IHeadCoach coach: coachList){
+            if(coach.getName().equals(coachName)){
+                return coach;
+            }
+        }
+        return null;
+    }
+
 }

@@ -9,27 +9,33 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CreateTeamState implements IState{
-    private static IUserInput input;
-    private static IUserOutput output;
-    private static String stateName;
-    private static String nextStateName;
-    private static ILeague league;
-    private static String teamName;
-    public CreateTeamState(IUserInput input, IUserOutput output, String teamName, ILeague league) {
-        CreateTeamState.input = input;
-        CreateTeamState.output = output;
-        CreateTeamState.stateName = "Create Team";
-        CreateTeamState.league = league;
-        this.teamName = teamName;
+public class CreateTeamState implements IState {
+    private ILeague league;
+    private StateContext context;
+    private IUserInput input;
+    private IUserOutput output;
+    private String stateName;
+    private String nextStateName;
+    private String teamName;
 
+    public CreateTeamState(ILeague league, StateContext context, IUserInput input, IUserOutput output, String teamName) {
+        this.league = league;
+        this.context = context;
+        this.input = input;
+        this.output = output;
+        this.teamName = teamName;
+        this.stateName = "CreateTeamState";
     }
+
     public void runState() {
         ArrayList<IConference> Conference;
         ArrayList<IDivision> Divisions;
         ArrayList<ITeam2> Teams;
         ArrayList<IPlayers> Players;
         IHeadCoach HeadCoach;
+        if (league == null){
+            return;
+        }
         String leagueName = league.getLeagueName();
         System.out.println("entering saveLeague Method");   //commenttt
         JSONObject league_obj = saveLeague(leagueName);
@@ -176,15 +182,17 @@ public class CreateTeamState implements IState{
         }
         return true;
     }
-    public void forward(StateContext context){
-        CreateTeamState.nextStateName = "Simulate";
-        context.setState(new SimulateLeagueState(input, output, teamName));
-    }
-    public String getStateName(){
-        return CreateTeamState.stateName;
+
+    public void forward(StateContext context) {
+        this.nextStateName = "SimulateLeagueState";
+        context.setState(new SimulateLeagueState(league, input, output, teamName));
     }
 
-    public String getNextState(){
-        return CreateTeamState.nextStateName;
+    public String getStateName() {
+        return this.stateName;
+    }
+
+    public String getNextState() {
+        return this.nextStateName;
     }
 }

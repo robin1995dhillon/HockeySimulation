@@ -8,47 +8,49 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
 public class NestedStartStateTest {
 
-    NestedStartState st;
-    IUserInput inp;
-    IUserOutput out;
-    NestedStateContext con;
+    NestedStartState state;
+    IUserInput input;
+    IUserOutput output;
+    NestedStateContext context;
 
     @Before
     public void config() {
-        inp = new UserInput();
-        out = new UserOutput();
-        st = new NestedStartState(inp, out, "");
-        con = new NestedStateContext(inp, out);
+        input = new UserInput();
+        output = new UserOutput();
+        state = new NestedStartState(null, context, input, output, "");
+        context = new NestedStateContext(input, output);
     }
 
     @Test
-    public void forward() {
-        st.forward(con);
-        assertEquals("Simulate", con.currentStateName);
+    public void forwardTest() {
+        state.forward(context);
+        assertEquals("NestedSimulationState", context.currentStateName);
     }
 
     @Test
-    public void runState() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        String input = "0";
+    public void runStateTest() {
+        String input = "2";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        this.inp.setInput();
-        assertEquals("0", String.valueOf(st.numOfSeasons));
+        this.input.setInput();
+        assertEquals("2", this.input.getInput());
     }
 
     @Test
-    public void getStateName() {
-        assertEquals("Start", st.getStateName());
+    public void getStateNameTest() {
+        assertEquals("NestedStartState", state.getStateName());
+    }
+
+    @Test
+    public void getNextStateTest() {
+        state.forward(context);
+        assertEquals("NestedSimulationState", state.getNextState());
     }
 
 
