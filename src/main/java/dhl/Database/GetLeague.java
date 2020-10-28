@@ -1,15 +1,13 @@
 package dhl.Database;
 
-import com.mysql.cj.protocol.Resultset;
 import dhl.LeagueModel.ILeague;
-import dhl.LeagueModel.League;
+import dhl.LeagueModel.league.League;
 
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GetLeague implements IGetStoredProcedure{
     private String procedureName;

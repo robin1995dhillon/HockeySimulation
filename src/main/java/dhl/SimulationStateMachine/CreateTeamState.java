@@ -1,5 +1,6 @@
 package dhl.SimulationStateMachine;
 
+import dhl.Database.*;
 import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
 import dhl.LeagueModel.*;
@@ -7,6 +8,7 @@ import dhl.StoredProcedure;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CreateTeamState implements IState {
@@ -37,7 +39,7 @@ public class CreateTeamState implements IState {
             return;
         }
         String leagueName = league.getLeagueName();
-        System.out.println("entering saveLeague Method");   //commenttt
+        System.out.println("entering saveLeague Method");
         JSONObject league_obj = saveLeague(leagueName);
         boolean league_bool = (boolean) league_obj.get("Status");
         int league_id = (int) league_obj.get("id");
@@ -63,9 +65,9 @@ public class CreateTeamState implements IState {
                                 int team_id = (int) team_obj.get("id");
                                 if (team_bool) {
                                     saveDHL(league_id, conference_id, division_id, team_id);
-//                                    for (Players p : Players) {
-//                                        savePlayer(p.getPlayerName(), p.getPosition(), p.getCaptain(), team_id);
-//                                    }
+                                    for (IPlayers p : Players) {
+                                        savePlayer(p.getPlayerName(), p.getPosition(), p.getCaptain(), team_id  );
+                                    }
                                 }
                             }
                         } else {
@@ -89,15 +91,15 @@ public class CreateTeamState implements IState {
     public JSONObject saveLeague(String leagueName) {
         JSONObject return_obj = new JSONObject();
         System.out.println("entering stored procedure");
-        StoredProcedure SP = new StoredProcedure("create_league");
-        SP.addParameter(leagueName);
-
+//        StoredProcedure SP = new StoredProcedure("create_league");
+//        SP.addParameter(leagueName);
+        ICreateStoredProcedure s = new CreateLeague(leagueName);
         try {
-            SP.executeProcedure();
-            int league_id = SP.getInsertedId();
+            s.executeProcedure();
+            int league_id = s.getInsertedId();
             return_obj.put("Status", true);
             return_obj.put("id", league_id);
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
             return_obj.put("Status", false);
             return_obj.put("id", null);
@@ -107,14 +109,15 @@ public class CreateTeamState implements IState {
 
     public JSONObject saveConference(String conferenceName) {
         JSONObject return_obj = new JSONObject();
-        StoredProcedure SP = new StoredProcedure("create_conference");
-        SP.addParameter(conferenceName);
+//        StoredProcedure SP = new StoredProcedure("create_conference");
+//        SP.addParameter(conferenceName);
+        ICreateStoredProcedure SP = new CreateConference(conferenceName);
         try {
             SP.executeProcedure();
             int conference_id = SP.getInsertedId();
             return_obj.put("Status", true);
             return_obj.put("id", conference_id);
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
             return_obj.put("Status", false);
             return_obj.put("id", null);
@@ -124,14 +127,15 @@ public class CreateTeamState implements IState {
 
     public JSONObject saveDivision(String divisionName) {
         JSONObject return_obj = new JSONObject();
-        StoredProcedure SP = new StoredProcedure("create_division");
-        SP.addParameter(divisionName);
+//        StoredProcedure SP = new StoredProcedure("create_division");
+//        SP.addParameter(divisionName);
+        ICreateStoredProcedure SP = new CreateDivision("Atlantic");
         try {
             SP.executeProcedure();
             int division_id = SP.getInsertedId();
             return_obj.put("Status", true);
             return_obj.put("id", division_id);
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
             return_obj.put("Status", false);
             return_obj.put("id", null);
@@ -161,6 +165,7 @@ public class CreateTeamState implements IState {
     public boolean savePlayer(String playerName, String position, boolean captain, int team_id) {
         StoredProcedure SP = new StoredProcedure("create_player");
         SP.addParameter(playerName, position, captain, team_id);
+        ICreateStoredProcedure s = new CreatePlayer("zongyu", "goalie", false, 22,10,4,9,18,1, false,false,0);
         try {
             SP.executeProcedure();
         } catch (IOException e) {
@@ -172,11 +177,12 @@ public class CreateTeamState implements IState {
     }
 
     public boolean saveDHL(int league_id, int conference_id, int division_id, int team_id) {
-        StoredProcedure SP = new StoredProcedure("create_DHL_table");
-        SP.addParameter(league_id, conference_id, division_id, team_id);
+        ICreateStoredProcedure SP = new CreateDHLTable(league_id,conference_id,division_id, team_id);
+//        StoredProcedure SP = new StoredProcedure("create_DHL_table");
+//        SP.addParameter(league_id, conference_id, division_id, team_id);
         try {
             SP.executeProcedure();
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
             return false;
         }

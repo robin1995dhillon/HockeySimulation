@@ -1,6 +1,6 @@
 package trade;
 
-import dhl.LeagueModel.FreeAgents;
+import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.players.Players;

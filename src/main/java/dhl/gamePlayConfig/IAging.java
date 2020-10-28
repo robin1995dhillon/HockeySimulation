@@ -1,7 +1,6 @@
 package dhl.gamePlayConfig;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import dhl.LeagueModel.Division;
 import org.json.simple.JSONObject;
 
 @JsonDeserialize(as= Aging.class)

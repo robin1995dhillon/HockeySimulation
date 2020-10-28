@@ -1,7 +1,6 @@
 package dhl.LeagueModel;
 
-import dhl.CreateTeamUtils.IManagerUtils;
-import dhl.CreateTeamUtils.ManagerUtils;
+import dhl.LeagueModel.league.League;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
