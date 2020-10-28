@@ -1,20 +1,31 @@
 package dhl.InternalStateMachine;
 
-public class InjuryCheckState implements ISimulationState {
+import dhl.InOut.IUserInput;
+import dhl.InOut.IUserOutput;
+import dhl.LeagueModel.ILeague;
+
+public class InjuryCheckState implements INestedState {
 
     private static String stateName;
     private static String nextStateName;
+    private ILeague league;
+    private Scheduler timeTracker;
+    private Scheduler schedule;
+    private String currentDate;
+    private IUserInput input;
+    private IUserOutput output;
+    private NestedStateContext context;
 
-    public InjuryCheckState(boolean unPlayedGames, boolean tradedEnded) {
-
-        InjuryCheckState.stateName = "InjuryCheck";
-
-        if (unPlayedGames)
-            InjuryCheckState.nextStateName = "SimulatePlayoffGame";
-        else if (tradedEnded)
-            InjuryCheckState.nextStateName = "AgePlayers";
-        else
-            InjuryCheckState.nextStateName = "TradePlayers";
+    public InjuryCheckState(ILeague league, Scheduler schedule, Scheduler timeTracker, String currentDate, IUserInput input, IUserOutput output, NestedStateContext context) {
+        this.league = league;
+        this.schedule = schedule;
+        this.timeTracker = timeTracker;
+        this.currentDate = currentDate;
+        this.output = output;
+        this.input = input;
+        this.context = context;
+        this.stateName = "SimulateGames";
+        this.nextStateName = "InjuryCheck";
 
     }
 

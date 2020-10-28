@@ -1,15 +1,32 @@
 package dhl.InternalStateMachine;
 
-public class AdvanceToNextSeasonState implements ISimulationState {
+import dhl.InOut.IUserInput;
+import dhl.InOut.IUserOutput;
+import dhl.LeagueModel.ILeague;
+
+public class AdvanceToNextSeasonState implements INestedState {
 
     private static String stateName;
     private static String nextStateName;
     private static boolean cupWinnerDeclared;
+    private ILeague league;
+    private Scheduler timeTracker;
+    private Scheduler schedule;
+    private String currentDate;
+    private IUserInput input;
+    private IUserOutput output;
+    private NestedStateContext context;
 
-    public AdvanceToNextSeasonState(boolean cupWinnerDeclared) {
-
-        AdvanceToNextSeasonState.stateName = "NextSeason";
-        AdvanceToNextSeasonState.nextStateName = "Persist";
+    public AdvanceToNextSeasonState(ILeague league, Scheduler schedule, Scheduler timeTracker, String currentDate, IUserInput input, IUserOutput output, NestedStateContext context) {
+        this.league = league;
+        this.schedule = schedule;
+        this.timeTracker = timeTracker;
+        this.currentDate = currentDate;
+        this.output = output;
+        this.input = input;
+        this.context = context;
+        this.stateName = "SimulateGames";
+        this.nextStateName = "InjuryCheck";
 
     }
 

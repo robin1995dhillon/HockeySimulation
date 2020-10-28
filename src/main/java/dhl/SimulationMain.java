@@ -123,18 +123,12 @@ public class SimulationMain {
 
                                 TeamCreator teamCreator = new TeamCreator();
                                 ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName, playerList);
-                                context.setState(new CreateTeamState(input, output, teamName, updated_league));
+                                context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
 
                                 System.out.println("Saving the team. Please wait...");
                                 context.runState();
                                 context.forward(); //simulate state
                                 context.runState();
-//                                CreateTeamState save = new CreateTeamState();
-//                                System.out.println("Saving the team. Please wait...");
-//                                save.SaveToDB(updated_I_league);
-//                                System.out.println("\nTeam created.");
-//                                SimulateLeagueState simulate = new SimulateLeagueState(input, output, teamName);
-//                                simulate.simulateLeague();
                             } else {
                                 System.out.println("Team Already Exists!");
                             }

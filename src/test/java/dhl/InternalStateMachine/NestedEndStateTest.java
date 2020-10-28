@@ -1,7 +1,5 @@
 package dhl.InternalStateMachine;
 
-import dhl.InternalStateMachine.NestedEndState;
-import dhl.InternalStateMachine.NestedStateContext;
 import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
 import dhl.InOut.UserInput;
@@ -36,26 +34,26 @@ public class NestedEndStateTest {
     }
 
     @Test
-    public void getStateName() {
-        assertEquals("End", state.getStateName());
-    }
-
-    @Test
-    public void getNextState() {
-        state.forward(context);
-        assertEquals("None", state.getNextState());
-    }
-
-    @Test
-    public void runState(){
+    public void runStateTest() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
         state.runState();
 
-        String expected  = "Thanks for using our simulation :). See you around.";
+        String expected = "Thanks for using our simulation :). See you around.";
         String gotOutput = out.toString().replaceAll("\n", "");
         gotOutput = gotOutput.replaceAll("\r", "");
         assertEquals(expected, gotOutput);
+    }
+
+    @Test
+    public void getStateNameTest() {
+        assertEquals("NestedEndState", state.getStateName());
+    }
+
+    @Test
+    public void getNextStateTest() {
+        state.forward(context);
+        assertEquals("None", state.getNextState());
     }
 }

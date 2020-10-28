@@ -3,43 +3,47 @@ package dhl.InternalStateMachine;
 
 import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
+import dhl.LeagueModel.ILeague;
 
-public class NestedStartState implements ISimulationState {
+public class NestedStartState implements INestedState {
 
-    private static IUserInput input;
-    private static IUserOutput output;
-    private static String teamName;
-    public int numOfSeasons;
-    private static String stateName;
-    private static String nextStateName;
+    private IUserInput input;
+    private IUserOutput output;
+    private String teamName;
+    private ILeague league;
+    private NestedStateContext context;
+    public int totalSeasons;
+    private String stateName;
+    private String nextStateName;
 
-    public NestedStartState(IUserInput input, IUserOutput output, String teamName) {
-        NestedStartState.input = input;
-        NestedStartState.output = output;
-        NestedStartState.teamName = teamName;
-        NestedStartState.stateName = "Start";
-        this.numOfSeasons = 0;
+    public NestedStartState(ILeague league, NestedStateContext context, IUserInput input, IUserOutput output, String teamName) {
+        this.league = league;
+        this.context = context;
+        this.input = input;
+        this.output = output;
+        this.teamName = teamName;
+        this.stateName = "NestedStartState";
+        this.totalSeasons = 0;
     }
 
     public void forward(NestedStateContext context) {
-        NestedStartState.nextStateName = "Simulate";
-        context.setState(new NestedSimulationState(input, output, numOfSeasons, teamName));
+        this.nextStateName = "NestedSimulationState";
+        context.setState(new NestedSimulationState(league, context, input, output, totalSeasons, teamName));
     }
 
     public void runState() {
         output.setOutput("How many seasons do you want to simulate?");
         output.sendOutput();
-
         input.setInput();
-        this.numOfSeasons = Integer.parseInt(input.getInput());
+        this.totalSeasons = Integer.parseInt(input.getInput());
     }
 
     public String getStateName() {
-        return NestedStartState.stateName;
+        return this.stateName;
     }
 
     public String getNextState() {
-        return NestedStartState.nextStateName;
+        return this.nextStateName;
     }
 
 }

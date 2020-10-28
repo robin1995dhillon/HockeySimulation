@@ -1,17 +1,14 @@
 package dhl.SimulationStateMachine;
 
-import dhl.Creator.LeagueCreator;
-//import dhl.Creator.TeamCreator;
-import dhl.*;
+
 import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
 import dhl.InOut.UserInput;
 import dhl.InOut.UserOutput;
-import dhl.LeagueModel.League;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LoadTeamStateTest {
     IUserInput inp;
