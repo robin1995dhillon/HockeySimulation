@@ -2,9 +2,10 @@ package dhl.CreateTeamUtils;
 
 import dhl.LeagueModel.IHeadCoach;
 
-import java.util.ArrayList;
+import java.util.List;
+
 
 public interface ICoachUtils {
-    public void displayCoach(ArrayList<IHeadCoach> coachList);
-    public void removeCoach(ArrayList<IHeadCoach> coachList, String coachName);
+    void displayCoach(List<IHeadCoach> coachList);
+    void removeCoach(List<IHeadCoach> coachList, String coachName);
 }

@@ -3,26 +3,26 @@ package dhl.CreateTeamUtils;
 import dhl.LeagueModel.IHeadCoach;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.String.*;
 
 public class CoachUtils implements ICoachUtils{
+
     @Override
-    public void displayCoach(ArrayList<IHeadCoach> coachList) {
-        System.out.println(String.format("%-20s\t%-10s\t%-10s\t%-10s%-10s", "name","skating","shooting","checking","saving"));
+    public void displayCoach(List<IHeadCoach> coachList) {
+        System.out.printf("%-20s\t%-10s\t%-10s\t%-10s%-10s%n", "name","skating","shooting","checking","saving");
         for (IHeadCoach headCoach : coachList) {
-            System.out.print(String.format("%-20s\t", headCoach.getName()));
-            System.out.print(String.format("%-10.1f\t", headCoach.getSkating()));
-            System.out.print(String.format("%-10.1f\t", headCoach.getShooting()));
-            System.out.print(String.format("%-10.1f\t", headCoach.getChecking()));
-            System.out.println(String.format("%-10.1f\t", headCoach.getSaving()));
+            System.out.printf("%-20s\t", headCoach.getName());
+            System.out.printf("%-10.1f\t", headCoach.getSkating());
+            System.out.printf("%-10.1f\t", headCoach.getShooting());
+            System.out.printf("%-10.1f\t", headCoach.getChecking());
+            System.out.printf("%-10.1f\t%n", headCoach.getSaving());
         }
     }
 
     @Override
-    public void removeCoach(ArrayList<IHeadCoach> coachList, String coachName) {
-        for (IHeadCoach headCoach : coachList){
-            if(headCoach.getName().equals(coachName)){
-                coachList.remove(headCoach);
-            }
-        }
+    public void removeCoach(List<IHeadCoach> coachList, String coachName) {
+        coachList.removeIf(headCoach -> headCoach.getName().equals(coachName));
     }
 }

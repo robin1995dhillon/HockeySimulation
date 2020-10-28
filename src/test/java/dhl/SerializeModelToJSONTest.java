@@ -6,12 +6,13 @@ import dhl.LeagueModel.players.Players;
 import dhl.LeagueModel.teams.Teams;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 class SerializeModelToJSONTest {
 
     @Test
-    void serializeModelToJSONTest() throws JsonProcessingException {
+    void serializeModelToJSONTest() throws IOException {
         ArrayList<IPlayers> playerList = new ArrayList<>();
         ArrayList<ITeam2> teamList = new ArrayList<>();
         ArrayList<IDivision> divisionList = new ArrayList<>();

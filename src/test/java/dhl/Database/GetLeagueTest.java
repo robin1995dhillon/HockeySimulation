@@ -1,26 +1,31 @@
 package dhl.Database;
 
+import dhl.LeagueModel.ILeague;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GetLeagueTest {
     @Test
     public void CreateLeagueTest(){
         try{
-            IStoredProcedure s = new GetLeague("DHL");
+            IGetStoredProcedure s = new GetLeague("DHL");
         }catch(Exception e){
-            assertTrue(false);
+            fail();
         }
     }
 
     @Test
     public void executeProcedureTest() throws SQLException, IOException {
-        IStoredProcedure s = new GetLeague("DHL");
+        IGetStoredProcedure s = new GetLeague("DHL");
         s.executeProcedure();
+        ArrayList<ILeague> leagueList = s.getData();
+        for(ILeague league: leagueList){
+            System.out.println(league.getLeagueName());
+        }
     }
 }

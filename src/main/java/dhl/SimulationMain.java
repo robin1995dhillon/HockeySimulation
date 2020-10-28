@@ -7,6 +7,7 @@ import dhl.LeagueModel.IHeadCoach;
 import dhl.LeagueModel.ILeague;
 import dhl.Creator.TeamCreator;
 import dhl.LeagueModel.IPlayers;
+import dhl.LeagueModel.players.Players;
 import dhl.SimulationStateMachine.LoadTeamState;
 import dhl.SimulationStateMachine.CreateTeamState;
 import dhl.SimulationStateMachine.SimulateLeagueState;
@@ -103,15 +104,9 @@ public class SimulationMain {
                                     String playerName = in.nextLine();
                                     if(freeAgentUtils.checkPosition(freeAgentList, playerName, "goalie")){
                                         IFreeAgents freeAgent = freeAgentUtils.getPlayer(freeAgentList, playerName);
-                                        IPlayers player = null;
-                                        player.setPlayerName(playerName);
-                                        player.setPosition(freeAgent.getPosition());
-                                        player.setAge(freeAgent.getAge());
-                                        player.setSkating(freeAgent.getSkating());
-                                        player.setShooting(freeAgent.getShooting());
-                                        player.setChecking(freeAgent.getChecking());
-                                        player.setSaving(freeAgent.getSaving());
-                                        player.setCaptain(false);
+                                        IPlayers player = new Players();
+                                        player.convertFreeAgentToPlayer(freeAgent);
+                                        assert playerList != null;
                                         playerList.add(player);
                                         freeAgentUtils.removeFreeAgent(freeAgentList, playerName);
                                     } else{
@@ -124,15 +119,9 @@ public class SimulationMain {
                                     String playerName = in.nextLine();
                                     if(freeAgentUtils.checkPosition(freeAgentList, playerName, "forward") || freeAgentUtils.checkPosition(freeAgentList, playerName, "defense")){
                                         IFreeAgents freeAgent = freeAgentUtils.getPlayer(freeAgentList, playerName);
-                                        IPlayers player = null;
-                                        player.setPlayerName(playerName);
-                                        player.setPosition(freeAgent.getPosition());
-                                        player.setAge(freeAgent.getAge());
-                                        player.setSkating(freeAgent.getSkating());
-                                        player.setShooting(freeAgent.getShooting());
-                                        player.setChecking(freeAgent.getChecking());
-                                        player.setSaving(freeAgent.getSaving());
-                                        player.setCaptain(false);
+                                        IPlayers player = new Players();
+                                        player.convertFreeAgentToPlayer(freeAgent);
+                                        assert playerList != null;
                                         playerList.add(player);
                                         freeAgentUtils.removeFreeAgent(freeAgentList, playerName);
                                     } else {
