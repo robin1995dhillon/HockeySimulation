@@ -4,6 +4,7 @@ import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class League implements ILeague{
 
@@ -79,6 +80,15 @@ public class League implements ILeague{
     }
 
     @Override
+    public void removeManagerFromList(List<String> managerList, String managerName) {
+        for(int i = 0; i < managerList.size(); i++){
+            if (managerList.get(i).equals(managerName)) {
+                managerList.remove(i);
+            }
+        }
+    }
+
+    @Override
     public void setFreeAgents(ArrayList<IFreeAgents> freeAgents) {
         this.freeAgents = freeAgents;
 
@@ -105,19 +115,13 @@ public class League implements ILeague{
     }
 
     public boolean isValid(ILeague league) {
-        if(league == null) {
-            return false;
-        }
-        return true;
+        return league != null;
     }
 
     public boolean isLeagueNamePresent() {
-        if(this.leagueName.isEmpty()) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return !this.leagueName.isEmpty();
     }
+
+
 
 }
