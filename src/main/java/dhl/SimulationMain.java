@@ -7,7 +7,6 @@ import dhl.Creator.TeamCreator;
 import dhl.LeagueModel.players.Players;
 import dhl.SimulationStateMachine.LoadTeamState;
 import dhl.SimulationStateMachine.CreateTeamState;
-import dhl.SimulationStateMachine.SimulateLeagueState;
 import dhl.SimulationStateMachine.StateContext;
 import dhl.Validator.Checker;
 import dhl.Validator.JSONValidator;
