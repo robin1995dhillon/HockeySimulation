@@ -1,12 +1,11 @@
 package dhl.Trade;
 
-import dhl.LeagueModel.FreeAgents;
+import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.ITeam2;
 import dhl.LeagueModel.players.Players;
 import dhl.LeagueModel.players.PlayersStrength;
-import dhl.Training.IPlayerTrainingCondition;
 
 import java.util.ArrayList;
 import java.util.Collections;

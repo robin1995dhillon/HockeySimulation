@@ -1,9 +1,11 @@
-package dhl.LeagueModel;
+package dhl.LeagueModel.freeAgents;
+
+import dhl.LeagueModel.IFreeAgents;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class FreeAgents implements IFreeAgents{
+public class FreeAgents implements IFreeAgents {
 
     String playerName;
     String position;

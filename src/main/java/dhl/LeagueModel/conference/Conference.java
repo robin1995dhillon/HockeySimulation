@@ -1,8 +1,11 @@
-package dhl.LeagueModel;
+package dhl.LeagueModel.conference;
+
+import dhl.LeagueModel.IConference;
+import dhl.LeagueModel.IDivision;
 
 import java.util.ArrayList;
 
-public class Conference implements IConference{
+public class Conference implements IConference {
 
     String conferenceName;
     ArrayList<IDivision> divisions;

@@ -1,7 +1,7 @@
 //package dhl.Creator;
 //
 //import dhl.LeagueModel.ILeague;
-//import dhl.LeagueModel.League;
+//import dhl.LeagueModel.league.League;
 //import org.junit.jupiter.api.Test;
 //
 //import static org.junit.jupiter.api.Assertions.*;

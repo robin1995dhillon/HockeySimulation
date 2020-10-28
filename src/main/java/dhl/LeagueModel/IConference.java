@@ -1,10 +1,11 @@
 package dhl.LeagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import dhl.LeagueModel.conference.Conference;
 
 import java.util.ArrayList;
 
-@JsonDeserialize(as=Conference.class)
+@JsonDeserialize(as= Conference.class)
 public interface IConference {
     public String getConferenceName();
 

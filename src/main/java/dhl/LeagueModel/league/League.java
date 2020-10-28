@@ -1,12 +1,19 @@
-package dhl.LeagueModel;
+package dhl.LeagueModel.league;
 
+import dhl.LeagueModel.IConference;
+import dhl.LeagueModel.IFreeAgents;
+import dhl.LeagueModel.IHeadCoach;
+import dhl.LeagueModel.ILeague;
+import dhl.LeagueModel.conference.Conference;
+import dhl.LeagueModel.freeAgents.FreeAgents;
+import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class League implements ILeague{
+public class League implements ILeague {
 
     IConference iconference;
     IFreeAgents iFreeAgents;

@@ -1,10 +1,11 @@
 package dhl.LeagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import dhl.LeagueModel.freeAgents.FreeAgents;
 
 import java.util.List;
 
-@JsonDeserialize(as=FreeAgents.class)
+@JsonDeserialize(as= FreeAgents.class)
 public interface IFreeAgents {
     String getPlayerName();
 
