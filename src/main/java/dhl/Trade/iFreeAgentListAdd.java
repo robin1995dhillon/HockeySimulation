@@ -13,4 +13,8 @@ public interface iFreeAgentListAdd {
     void addGoalie(List<IPlayers> players, int goalieCount);
     List<IFreeAgents> sortedAgentsGoalieList(int goaliesToBeAdded);
     List<IFreeAgents> sortedAgentsSkaterList(int playersToBeAdded);
+    void addSkaterUser(List<IPlayers> player, int playersToBeAdded);
+    void addGoalieUser(List<IPlayers> player, int playersToBeAdded);
+    List<IFreeAgents> strongestAgentsList(List<IFreeAgents> list);
+    boolean checkPlayerInList(List<IPlayers> playerList,String agentName);
 }
