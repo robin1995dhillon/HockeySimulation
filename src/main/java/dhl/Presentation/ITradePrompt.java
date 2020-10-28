@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ITradePrompt {
 
-    void userAcceptRejectTrade(List<IPlayers> userPlayers, List<IPlayers> AiPlayers);
+    void userAcceptRejectTrade(List<IPlayers> players);
 }

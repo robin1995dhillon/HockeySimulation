@@ -20,4 +20,5 @@ public interface IPlayerTradingCondition {
    // ITeam2 getTradeTeamName(Map<ITeam2,Double> allTeams);
     double StrongestPlayersStrength(List<IPlayers> selectedPLayers);
     int countTeamPlayers(ITeam2 team);
+    void addDropPlayers(ITeam2 team, int totalPlayers);
 }
