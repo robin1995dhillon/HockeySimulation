@@ -1,5 +1,6 @@
 package dhl.LeagueModel;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class FreeAgents implements IFreeAgents{
@@ -141,8 +142,24 @@ public class FreeAgents implements IFreeAgents{
 
     @Override
     public double strengthCalculator(int[] positionValues) {
-        double playerStrength = 0;
+        double playerStrength;
         playerStrength = IntStream.of(positionValues).sum();
         return playerStrength;
     }
+
+    @Override
+    public IFreeAgents getFreeAgentFromList(List<IFreeAgents> freeAgentList, String freeAgentName) {
+        for (IFreeAgents freeAgent : freeAgentList) {
+            if(freeAgent.getPlayerName().equals(freeAgentName)){
+                return freeAgent;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean checkPosition(String position) {
+        return this.position.equals(position);
+    }
+
 }

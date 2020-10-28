@@ -22,7 +22,7 @@ public class FreeAgentUtils implements IFreeAgentUtils {
     }
 
     @Override
-    public IFreeAgents getPlayer(List<IFreeAgents> freeAgentList, String freeAgentName) {
+    public IFreeAgents getFreeAgentFromList(List<IFreeAgents> freeAgentList, String freeAgentName) {
         for (IFreeAgents freeAgent : freeAgentList) {
             if(freeAgent.getPlayerName().equals(freeAgentName)){
                 return freeAgent;

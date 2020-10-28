@@ -2,21 +2,26 @@ package dhl.LeagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.List;
+
 @JsonDeserialize(as=HeadCoach.class)
 public interface IHeadCoach {
 
-    public String getName();
-    public void setName(String name);
+    String getName();
+    void setName(String name);
 
-    public double getSkating();
-    public void setSkating(double skating);
+    double getSkating();
+    void setSkating(double skating);
 
-    public double getShooting();
-    public void setShooting(double shooting);
+    double getShooting();
+    void setShooting(double shooting);
 
-    public double getChecking();
-    public void setChecking(double checking);
+    double getChecking();
+    void setChecking(double checking);
 
-    public double getSaving();
-    public void setSaving(double saving);
+    double getSaving();
+    void setSaving(double saving);
+
+    IHeadCoach getCoachFromList(List<IHeadCoach> coachList , String coachName);
+
 }
