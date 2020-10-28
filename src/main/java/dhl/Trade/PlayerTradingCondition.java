@@ -26,6 +26,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     private List<IPlayers> strongestPLayersFinalList;
     private ITeam2 finalTeam = null;
     private FreeAgentList freeAgentLists;
+    private FreeAgentListDrop freeAgentListsDrop;
 
     public PlayerTradingCondition(){
         team = new ArrayList<>();
@@ -37,6 +38,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         strongestPLayersFinalList = new ArrayList<>();
         playerStrength = new PlayersStrength();
         freeAgentLists = new FreeAgentList();
+        freeAgentListsDrop = new FreeAgentListDrop();
     }
 
     public List<IPlayers> getPositionTypesOffering(List<IPlayers> players){
@@ -125,7 +127,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         }
         Collections.sort(playersStrong,Collections.reverseOrder((p1, p2) -> Double.compare(playerStrength.calculateStrength(p1),playerStrength.calculateStrength(p2))));
 
-       return players;
+       return playersStrong;
     }
 
     public List<IPlayers> strongestPlayersSublist(int maxPlayersPerTrade,List<IPlayers>consideringTeamPlayers){
@@ -154,11 +156,27 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     }
 
     @Override
-    public void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam) {
-        int count = 0;
-        int totalPlayers=0;
+    public void addDropPlayers(ITeam2 team, int totalPlayers){
         int playersToBeAdded = 0;
         int playersToBeDropped = 0;
+
+        if(totalPlayers<20){
+            playersToBeAdded = 20 - totalPlayers;
+
+            freeAgentLists.aiAgentListAdd(team,playersToBeAdded);
+        }
+        else if(totalPlayers>20){
+
+            playersToBeDropped = 20 - totalPlayers;
+            freeAgentListsDrop.agentListDrop(team,playersToBeDropped);
+        }
+    }
+
+    @Override
+    public void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam) {
+        int count = 0;
+        int totalPlayersOfOfferingTeam = 0;
+        int totalPlayersOfConsideringTeam = 0;
 
             outer:
             for (IPlayers offeredPlayer : offeringTeamPositionPlayers) {
@@ -181,25 +199,26 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
                 consideringTeam.getPlayers().addAll(offeringTeamPlayers);
             }
         offeringTeam.setLossPoints(0);
-        totalPlayers = countTeamPlayers(offeringTeam);
-        if(totalPlayers<20){
-           playersToBeAdded = 20 - totalPlayers;
 
-            freeAgentLists.aiAgentListAdd(offeringTeam,playersToBeAdded);
+        totalPlayersOfOfferingTeam = countTeamPlayers(offeringTeam);
+        totalPlayersOfConsideringTeam = countTeamPlayers(consideringTeam);
 
-        }
-
-
+        addDropPlayers(offeringTeam,totalPlayersOfOfferingTeam);
+        addDropPlayers(consideringTeam,totalPlayersOfConsideringTeam);
 
     }
 
     @Override
     public void TradeUser(ITeam2 offeringTeam, ITeam2 consideringTeam) {
         int count = 0;
-        int totalPlayers=0;
+        int totalPlayersOfOfferingTeam = 0;
+        int totalPlayersOfConsideringTeam = 0;
         String response = "";
         Scanner sc = new Scanner(System.in);
-        prompt.userAcceptRejectTrade(consideringTeamPlayers,offeringTeamPositionPlayers);
+        System.out.println("User Players");
+        prompt.userAcceptRejectTrade(consideringTeamPlayers);
+        System.out.println("AI Players");
+        prompt.userAcceptRejectTrade(offeringTeamPositionPlayers);
         System.out.println("Do you accept the trade?(y/n)");
         response = sc.nextLine();
 
@@ -215,6 +234,12 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         }
         offeringTeam.setLossPoints(0);
         sc.close();
+
+        totalPlayersOfOfferingTeam = countTeamPlayers(offeringTeam);
+        totalPlayersOfConsideringTeam = countTeamPlayers(consideringTeam);
+
+        addDropPlayers(offeringTeam,totalPlayersOfOfferingTeam);
+        addDropPlayers(consideringTeam,totalPlayersOfConsideringTeam);
 
 
     }

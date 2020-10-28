@@ -280,6 +280,7 @@ public class Players implements IPlayers {
         player.setShooting(agent.getShooting());
         player.setChecking(agent.getChecking());
         player.setSaving(agent.getSaving());
+        player.setStrength(agent.getStrength());
         player.setCaptain(false);
         return player;
     }
@@ -295,6 +296,7 @@ public class Players implements IPlayers {
         agent.setShooting(player.getShooting());
         agent.setChecking(player.getChecking());
         agent.setSaving(player.getSaving());
+        agent.setStrength(player.getStrength());
 
         return agent;
     }
