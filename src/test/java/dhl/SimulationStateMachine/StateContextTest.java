@@ -5,7 +5,7 @@ import dhl.InOut.IUserOutput;
 import dhl.InOut.UserInput;
 import dhl.InOut.UserOutput;
 import dhl.LeagueModel.ILeague;
-import dhl.MockLeague;
+import dhl.Mock.MockLeague;
 import org.junit.Before;
 import org.junit.Test;
 

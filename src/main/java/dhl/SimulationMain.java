@@ -1,17 +1,24 @@
 package dhl;
 
-import dhl.Creator.LeagueCreator;
-import dhl.Creator.TeamCreator;
+import dhl.CreateTeamUtils.*;
 import dhl.InOut.*;
+import dhl.LeagueModel.IFreeAgents;
+import dhl.LeagueModel.IHeadCoach;
 import dhl.LeagueModel.ILeague;
-import dhl.SimulationStateMachine.CreateTeamState;
+import dhl.Creator.TeamCreator;
+import dhl.LeagueModel.IPlayers;
+import dhl.LeagueModel.players.Players;
 import dhl.SimulationStateMachine.LoadTeamState;
+import dhl.SimulationStateMachine.CreateTeamState;
+import dhl.SimulationStateMachine.SimulateLeagueState;
 import dhl.SimulationStateMachine.StateContext;
 import dhl.Validator.Checker;
 import dhl.Validator.JSONValidator;
+import dhl.Creator.LeagueCreator;
 import org.json.simple.JSONObject;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SimulationMain {
@@ -63,13 +70,65 @@ public class SimulationMain {
                             System.out.println("Enter Your Team Name: ");
                             teamName = in.nextLine();
                             if (CC.TeamChecker(teamName, ILeague)) {
+                                System.out.println("Here are the general managers:");
+                                ArrayList<String> managerList = ILeague.getGeneralManagers();
+                                IManagerUtils managerUtils = new ManagerUtils();
+                                managerUtils.displayManager(managerList);
+
                                 System.out.println("Enter Manager Name: ");
                                 String managerName = in.nextLine();
+
+                                managerUtils.removeManager(managerList, managerName);
+                                System.out.println("Here are the head coaches:");
+                                ArrayList<IHeadCoach> coachList = ILeague.getCoaches();
+                                ICoachUtils coachUtils = new CoachUtils();
+                                coachUtils.displayCoach(coachList);
+
                                 System.out.println("Enter Head Coach: ");
                                 String headCoach = in.nextLine();
+
+                                coachUtils.removeCoach(coachList, headCoach);
+
                                 TeamCreator teamCreator = new TeamCreator();
                                 ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName);
                                 context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
+
+                                System.out.println("Please choose your team players, here are the free agents:");
+                                ArrayList<IFreeAgents> freeAgentList = ILeague.getFreeAgents();
+                                ArrayList<IPlayers> playerList = null;
+                                IFreeAgentUtils freeAgentUtils = new FreeAgentUtils();
+                                freeAgentUtils.displayFreeAgent(freeAgentList);
+                                System.out.println("Please choose two goalies: ");
+                                for(int i = 0; i < 2; i++){
+                                    System.out.println("Enter Player Name: ");
+                                    String playerName = in.nextLine();
+                                    if(freeAgentUtils.checkPosition(freeAgentList, playerName, "goalie")){
+                                        IFreeAgents freeAgent = freeAgentUtils.getPlayer(freeAgentList, playerName);
+                                        IPlayers player = new Players();
+                                        player.convertFreeAgentToPlayer(freeAgent);
+                                        assert playerList != null;
+                                        playerList.add(player);
+                                        freeAgentUtils.removeFreeAgent(freeAgentList, playerName);
+                                    } else{
+                                        System.out.println("You need to pick a goalie!");
+                                    }
+                                }
+                                System.out.println("Please choose eighteen skaters(forward and defense):");
+                                for(int i = 0; i < 18; i++){
+                                    System.out.println("Enter Player Name: ");
+                                    String playerName = in.nextLine();
+                                    if(freeAgentUtils.checkPosition(freeAgentList, playerName, "forward") || freeAgentUtils.checkPosition(freeAgentList, playerName, "defense")){
+                                        IFreeAgents freeAgent = freeAgentUtils.getPlayer(freeAgentList, playerName);
+                                        IPlayers player = new Players();
+                                        player.convertFreeAgentToPlayer(freeAgent);
+                                        assert playerList != null;
+                                        playerList.add(player);
+                                        freeAgentUtils.removeFreeAgent(freeAgentList, playerName);
+                                    } else {
+                                        System.out.println("You need to pick a forward or defense!");
+                                    }
+                                }
+
                                 System.out.println("Saving the team. Please wait...");
                                 context.runState();
                                 context.forward(); //simulate state

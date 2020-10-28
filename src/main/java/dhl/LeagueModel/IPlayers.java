@@ -1,8 +1,11 @@
 package dhl.LeagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import dhl.LeagueModel.players.Players;
 
-@JsonDeserialize(as=Players.class)
+import java.util.ArrayList;
+
+@JsonDeserialize(as= Players.class)
 public interface IPlayers {
     public String getPlayerName();
 
@@ -13,7 +16,7 @@ public interface IPlayers {
 
     public boolean getCaptain() ;
 
-    public void setCaptain(boolean captain) ;
+    public void setCaptain(boolean captain);
 
     public int getAge();
 
@@ -38,7 +41,34 @@ public interface IPlayers {
     public void setSaving(int saving);
 
     public double getStrength();
-public void setStrength(double strength);
 
+    public void setStrength(double strength);
 
+    public boolean isRetired() ;
+
+    public void setRetired(boolean isRetired);
+
+    int getDaysToAge();
+    void setDaysToAge(int daysToAge);
+
+    int getInjuredDays();
+
+    void setInjuredDays(int injuredDays);
+
+    boolean isInjured();
+
+    void setInjured(boolean injured);
+
+    public void agePlayer(IPlayers player, int days);
+
+    void checkIfRetired(IPlayers player);
+
+    IFreeAgents replacePlayerWithFreeAgent(IPlayers player, ArrayList<IFreeAgents> freeAgents);
+
+    void checkForPlayerInjury(IPlayers player);
+
+    void playerStillInjured(IPlayers player);
+
+    IPlayers convertFreeAgentToPlayer(IFreeAgents agent);
+    IFreeAgents convertPlayerToFreeAgent(IPlayers player);
 }

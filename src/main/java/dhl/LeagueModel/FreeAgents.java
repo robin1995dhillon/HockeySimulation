@@ -1,5 +1,7 @@
 package dhl.LeagueModel;
 
+import java.util.stream.IntStream;
+
 public class FreeAgents implements IFreeAgents{
 
     String playerName;
@@ -9,6 +11,7 @@ public class FreeAgents implements IFreeAgents{
     int checking;
     int saving;
     int age;
+    double strength;
 
     public FreeAgents() {
     }
@@ -91,13 +94,55 @@ public class FreeAgents implements IFreeAgents{
 
     @Override
     public int getSaving() {
-
         return saving;
     }
 
     @Override
     public void setSaving(int saving) {
         this.saving = saving;
+    }
 
+    @Override
+    public double getStrength() {
+        return strength;
+    }
+
+    @Override
+    public void setStrength(double strength) {
+        this.strength = strength;
+    }
+    @Override
+    public double calculateStrength(IFreeAgents freeAgents) {
+        String position = freeAgents.getPosition();
+        int skating = freeAgents.getSkating();
+        int shooting = freeAgents.getShooting();
+        int checking = freeAgents.getChecking();
+        int saving = freeAgents.getSaving();
+        double strength;
+
+        if(position.equals("forward")) {
+            int[] forwardValues = {skating, shooting, checking/2};
+            strength = strengthCalculator(forwardValues);
+            freeAgents.setStrength(strength);
+        }
+        else if(position.equals("defense")) {
+            int[] defenseValues = {skating, shooting/2, checking};
+            strength = strengthCalculator(defenseValues);
+            freeAgents.setStrength(strength);
+        }
+        else {
+            int [] goalieValues = {skating, saving};
+            strength = strengthCalculator(goalieValues);
+            freeAgents.setStrength(strength);
+        }
+
+        return strength;
+    }
+
+    @Override
+    public double strengthCalculator(int[] positionValues) {
+        double playerStrength = 0;
+        playerStrength = IntStream.of(positionValues).sum();
+        return playerStrength;
     }
 }

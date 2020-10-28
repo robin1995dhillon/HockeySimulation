@@ -1,5 +1,8 @@
 package dhl.LeagueModel;
 
+import dhl.gamePlayConfig.GamePlayConfig;
+import dhl.gamePlayConfig.IGamePlayConfig;
+
 import java.util.ArrayList;
 
 public class League implements ILeague{
@@ -7,17 +10,20 @@ public class League implements ILeague{
     IConference iconference;
     IFreeAgents iFreeAgents;
     IHeadCoach iheadCoach;
-
+    IGamePlayConfig iGamePlayConfig;
     String leagueName;
+
     ArrayList<IConference> conferences;
     ArrayList<IFreeAgents> freeAgents;
     ArrayList<IHeadCoach> coaches;
     ArrayList<String> generalManagers;
+    GamePlayConfig gameplayConfig;
 
     public League() {
     iconference = new Conference();
     iFreeAgents = new FreeAgents();
     iheadCoach = new HeadCoach();
+    iGamePlayConfig = new GamePlayConfig();
     }
 
     public League(String leagueName, ArrayList<IConference> conferences) {
@@ -58,16 +64,45 @@ public class League implements ILeague{
     }
 
     @Override
-    public ArrayList<IFreeAgents> getfreeAgents() {
+    public ArrayList<IFreeAgents> getFreeAgents() {
         return freeAgents;
     }
 
     @Override
-    public void setfreeAgents(ArrayList<IFreeAgents> freeAgents) {
+    public ArrayList<String> getGeneralManagers() {
+        return generalManagers;
+    }
+
+    @Override
+    public ArrayList<IHeadCoach> getCoaches() {
+        return coaches;
+    }
+
+    @Override
+    public void setFreeAgents(ArrayList<IFreeAgents> freeAgents) {
         this.freeAgents = freeAgents;
 
     }
 
+    @Override
+    public void setHeadCoach(ArrayList<IHeadCoach> coaches) {
+        this.coaches = coaches;
+    }
+
+    @Override
+    public void setGeneralManager(ArrayList<String> generalManagers) {
+        this.generalManagers = generalManagers;
+    }
+
+    @Override
+    public GamePlayConfig getGameplayConfig() {
+        return gameplayConfig;
+    }
+
+    @Override
+    public void setGameplayConfig(GamePlayConfig gameplayConfig) {
+        this.gameplayConfig = gameplayConfig;
+    }
 
     public boolean isValid(ILeague league) {
         if(league == null) {
@@ -85,19 +120,4 @@ public class League implements ILeague{
         }
     }
 
-    public ArrayList<IHeadCoach> getCoaches() {
-        return coaches;
-    }
-
-    public void setCoaches(ArrayList<IHeadCoach> coaches) {
-        this.coaches = coaches;
-    }
-
-    public ArrayList<String> getGeneralManagers() {
-        return generalManagers;
-    }
-
-    public void setGeneralManagers(ArrayList<String> generalManagers) {
-        this.generalManagers = generalManagers;
-    }
 }

@@ -1,5 +1,9 @@
 package dhl.Database;
 
-public interface ICreateStoredProcedure extends IStoredProcedure{
-    public int getInsertedId();
+import java.io.IOException;
+import java.sql.SQLException;
+
+public interface ICreateStoredProcedure {
+    void executeProcedure() throws SQLException, IOException;
+    int getInsertedId();
 }
