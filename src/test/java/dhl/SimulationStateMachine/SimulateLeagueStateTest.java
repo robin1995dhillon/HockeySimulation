@@ -4,6 +4,7 @@ import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
 import dhl.InOut.UserInput;
 import dhl.InOut.UserOutput;
+import dhl.LeagueModel.ILeague;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,8 @@ class SimulateLeagueStateTest {
     IUserInput inp;
     IUserOutput out;
     String teamName;
-    Object ob=null;
+    ILeague league;
+
 
     @Before
     public void config() {
@@ -24,8 +26,9 @@ class SimulateLeagueStateTest {
 
     @Test
     void simulateLeague() {
-        SimulateLeagueState sim = new SimulateLeagueState(inp, out, teamName);
+        SimulateLeagueState sim = new SimulateLeagueState(league, inp, out, teamName);
         assertTrue(sim instanceof SimulateLeagueState);
 
     }
+
 }

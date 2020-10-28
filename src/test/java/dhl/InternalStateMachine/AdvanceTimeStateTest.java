@@ -4,53 +4,69 @@ import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
 import dhl.InOut.UserInput;
 import dhl.InOut.UserOutput;
+import dhl.LeagueModel.ILeague;
 import org.junit.Before;
-
-import java.util.Calendar;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class AdvanceTimeStateTest {
-    private static IUserInput input;
-    private static IUserOutput output;
-    private static NestedStateContext context;
-    private static AdvanceTimeState state;
-    private static Calendar schedule;
+    private IUserInput input;
+    private IUserOutput output;
+    private NestedStateContext context;
+    private AdvanceTimeState state;
+    private Scheduler schedule;
+    private ILeague league;
+    private Scheduler timeTracker;
 
     @Before
     public void config() {
         input = new UserInput();
         output = new UserOutput();
-        schedule = Calendar.getInstance();
-        state = new AdvanceTimeState(schedule, "30-09-2020", "01-10-2020", input, output);
+        state = new AdvanceTimeState(league, schedule, timeTracker, "30-09-2020", "01-10-2020", input, output, context);
         context = new NestedStateContext(input, output);
     }
 
-    @org.junit.Test
-    public void checkIfLastDayOfSeason() {
-        assertEquals(false, state.checkIfLastDayOfSeason("30-09-2020", "01-10-2020"));
+    @Test
+    public void ifLastDayOfSeasonTest() {
+        assertEquals(false, state.ifLastDayOfSeason());
+        state.runState();
+        assertEquals(true, state.ifLastDayOfSeason());
     }
 
-    @org.junit.Test
-    public void forward() {
+    @Test
+    public void getCurrentDateTest() {
+        assertEquals("30-09-2020", state.getCurrentDate());
+        state.runState();
+        assertEquals("01-10-2020", state.getCurrentDate());
+    }
+
+    @Test
+    public void setCurrentDateTest() {
+        state.setCurrentDate("15-10-2020");
+        assertEquals("15-10-2020", state.getCurrentDate());
+    }
+
+    @Test
+    public void forwardTest() {
         context.setState(state);
         context.forward();
         assertEquals("Training", state.getNextState());
     }
 
-    @org.junit.Test
+    @Test
     public void runStateTest() {
         state.runState();
         assertEquals("01-10-2020", state.getCurrentDate());
     }
 
-    @org.junit.Test
-    public void getStateName() {
+    @Test
+    public void getStateNameTest() {
         assertEquals("AdvanceTime", state.getStateName());
     }
 
-    @org.junit.Test
-    public void getNextState() {
+    @Test
+    public void getNextStateTest() {
         state.forward(context);
         assertEquals("Training", state.getNextState());
     }

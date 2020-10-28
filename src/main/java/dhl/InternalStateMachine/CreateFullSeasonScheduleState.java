@@ -6,88 +6,70 @@ import dhl.LeagueModel.ILeague;
 
 import java.util.Calendar;
 
-public class CreateFullSeasonScheduleState implements ISimulationState {
+public class CreateFullSeasonScheduleState implements INestedState {
 
-    private static String stateName;
-    private static String nextStateName;
-    private static String startDate;
-    private static String endDate;
-    private static ILeague league;
-    private static Calendar schedule;
-    private static Integer startYear;
-    private static Integer endYear;
-    private static String endDayMonth;
-    private static IUserInput input;
-    private static IUserOutput output;
-    private static String startDayMonth = "30-09-";
+    private ILeague league;
+    private NestedStateContext context;
+    private IUserInput input;
+    private IUserOutput output;
+    private int currentSeason;
+    private String stateName;
+    private String nextStateName;
+    private String startDate;
+    private String endDate;
+    private int currentYear;
+    private Calendar calendar;
+    private Scheduler schedule;
+    private Scheduler timeTracker;
 
-    public CreateFullSeasonScheduleState(ILeague league, IUserInput input, IUserOutput output) {
-        CreateFullSeasonScheduleState.input = input;
-        CreateFullSeasonScheduleState.league = league;
-        CreateFullSeasonScheduleState.output = output;
-        CreateFullSeasonScheduleState.stateName = "CreateFullSeasonSchedule";
-        CreateFullSeasonScheduleState.schedule = Calendar.getInstance();
-        CreateFullSeasonScheduleState.startYear = CreateFullSeasonScheduleState.schedule.get(Calendar.YEAR);
-        String startYear = Integer.toString(CreateFullSeasonScheduleState.startYear);
-        CreateFullSeasonScheduleState.startDate = CreateFullSeasonScheduleState.startDayMonth + startYear;
-        System.out.println("Season start date is: " + startDate);
-        CreateFullSeasonScheduleState.endYear = CreateFullSeasonScheduleState.startYear + 1;
-        CreateFullSeasonScheduleState.endDayMonth = getSeasonEndDay() + "-04-";
-        CreateFullSeasonScheduleState.endDate = CreateFullSeasonScheduleState.endDayMonth + Integer.toString(CreateFullSeasonScheduleState.endYear);
-        System.out.println("Season end date is: " + endDate);
+    public CreateFullSeasonScheduleState(ILeague league, IUserInput input, IUserOutput output, int currentSeason, NestedStateContext context) {
+        this.league = league;
+        this.context = context;
+        this.input = input;
+        this.output = output;
+        this.currentSeason = currentSeason;
+        this.league = league;
+        this.stateName = "CreateFullSeasonScheduleState";
+        this.calendar = Calendar.getInstance();
+        this.schedule = new Scheduler(calendar, output);
+        this.timeTracker = new Scheduler(calendar, currentSeason);
+        this.startDate = timeTracker.getStartDayOfSeason();
+        this.endDate = timeTracker.getLastDayOfSeason();
     }
 
-    /**
-     * Season end date: First Saturday in April
-     **/
-    public String getSeasonEndDay() {
-        schedule.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-        schedule.set(Calendar.DAY_OF_WEEK_IN_MONTH, 1);
-        schedule.set(Calendar.MONTH, Calendar.APRIL);
-        schedule.set(Calendar.YEAR, CreateFullSeasonScheduleState.endYear);
-        return String.valueOf(schedule.get(Calendar.DATE));
+    public Scheduler getSchedule() {
+        return schedule;
     }
 
-    /**
-     * Trade deadline: Last Monday in February
-     **/
-    public String getTradeDeadline() {
-        schedule.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        schedule.set(Calendar.DAY_OF_WEEK_IN_MONTH, 4);
-        schedule.set(Calendar.MONTH, Calendar.FEBRUARY);
-        schedule.set(Calendar.YEAR, CreateFullSeasonScheduleState.endYear);
-        return String.valueOf(schedule.get(Calendar.DATE));
-    }
-
-    /**
-     * Stanley Playoffs start data: Second Wednesday in April
-     **/
-    public String getPlayoffsStartDate() {
-        schedule.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-        schedule.set(Calendar.DAY_OF_WEEK_IN_MONTH, 2);
-        schedule.set(Calendar.MONTH, Calendar.APRIL);
-        schedule.set(Calendar.YEAR, CreateFullSeasonScheduleState.endYear);
-        return String.valueOf(schedule.get(Calendar.DATE));
-    }
-
-    public String getSeasonEndDate() {
+    public String getRegularSeasonEndDate() {
         return this.endDate;
     }
 
-    public String getSeasonStartDate() {
+    public String getRegularSeasonStartDate() {
         return this.startDate;
     }
 
     @Override
     public void forward(NestedStateContext context) {
-        context.currentDate = this.startDate;
-        this.nextStateName = "AdvanceTime";
-        context.setState(new AdvanceTimeState(schedule, CreateFullSeasonScheduleState.startDate, CreateFullSeasonScheduleState.endDate, CreateFullSeasonScheduleState.input, CreateFullSeasonScheduleState.output));
+        this.nextStateName = "AdvanceTimeState";
+//        context.setState(new AdvanceTimeState(this.league, this.schedule, this.timeTracker, this.startDate, this.endDate, this.input, this.output, context));
     }
 
     @Override
     public void runState() {
 
+//        standings.initializeStandings();
+        if(league == null) {
+            output.setOutput("No league found!");
+            output.sendOutput();
+            return;
+        }
+
+        schedule.generateSchedule(league);
+        output.setOutput("Regular season scheduled.");
+        output.sendOutput();
+
+        schedule.setCurrentDay(timeTracker.getFirstDayOfSeason());
     }
 
     @Override
@@ -99,5 +81,4 @@ public class CreateFullSeasonScheduleState implements ISimulationState {
     public String getNextState() {
         return this.nextStateName;
     }
-
 }

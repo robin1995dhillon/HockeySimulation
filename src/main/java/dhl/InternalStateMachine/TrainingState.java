@@ -1,36 +1,75 @@
 package dhl.InternalStateMachine;
 
-public class TrainingState implements ISimulationState {
+import dhl.InOut.IUserInput;
+import dhl.InOut.IUserOutput;
+import dhl.LeagueModel.ILeague;
 
-    private static String stateName;
-    private static String nextStateName;
-    private static Boolean unPlayedGames = true;
-    private static Boolean tradeEnded = true;
-    public TrainingState() {
-        TrainingState.stateName = "Training";
+import java.util.List;
+import java.util.Map;
+
+public class TrainingState implements INestedState {
+
+    private NestedStateContext context;
+    private String currentDate;
+    private Scheduler timeTracker;
+    private Scheduler schedule;
+    private ILeague league;
+    Map< String, List<Map<String, String>>> finalSchedule;
+    private IUserOutput output;
+    private IUserInput input;
+    private String stateName;
+    private String nextStateName;
+    private Boolean unPlayedGames = true;
+    private Boolean tradeEnded = true;
+
+    public TrainingState(ILeague league, Scheduler schedule, Scheduler timeTracker, String currentDate, IUserInput input, IUserOutput output, NestedStateContext context) {
+        this.league = league;
+        this.schedule = schedule;
+        this.timeTracker = timeTracker;
+        this.currentDate = currentDate;
+        this.output = output;
+        this.input = input;
+        this.context = context;
+        this.stateName = "Training";
 
         if (unPlayedGames) {
-            TrainingState.nextStateName = "SimulatePlayoffs";
+            this.nextStateName = "SimulateGames";
         } else if (tradeEnded)
-            TrainingState.nextStateName = "AgePlayers";
+            this.nextStateName = "AgePlayers";
         else
-            TrainingState.nextStateName = "TradePlayers";
+            this.nextStateName = "TradePlayers";
 
     }
 
+    public boolean checkPendingGames(){
+        this.finalSchedule = schedule.getFinalSchedule();
+        if(finalSchedule.containsKey(this.currentDate)) {
+            if (finalSchedule.get(this.currentDate).size() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void forward(NestedStateContext context) {
         //TODO: set appropriate context
     }
 
+    @Override
     public void runState() {
         //TODO: Execute state-related processing
     }
 
+    @Override
     public String getStateName() {
-        return TrainingState.stateName;
+        return this.stateName;
     }
 
+    @Override
     public String getNextState() {
-        return TrainingState.nextStateName;
+        return this.nextStateName;
     }
 }

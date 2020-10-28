@@ -5,66 +5,83 @@ import dhl.InOut.IUserOutput;
 import dhl.InOut.UserInput;
 import dhl.InOut.UserOutput;
 import org.junit.Before;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class CreateFullSeasonScheduleStateTest {
-    private static CreateFullSeasonScheduleState state;
-    private static IUserInput input;
-    private static IUserOutput output;
-    private static NestedStateContext context;
+    private CreateFullSeasonScheduleState state;
+    private IUserInput input;
+    private IUserOutput output;
+    private NestedStateContext context;
 
     @Before
     public void setUp() throws Exception {
         input = new UserInput();
         output = new UserOutput();
-        state = new CreateFullSeasonScheduleState(null, input, output);
         context = new NestedStateContext(input, output);
+        state = new CreateFullSeasonScheduleState(null, input, output, 0, context);
+
     }
 
-    @org.junit.Test
-    public void forward() {
+    @Test
+    public void forwardTest() {
         context.setState(state);
         context.forward();
-        assertEquals("AdvanceTime", state.getNextState());
+        assertEquals("AdvanceTimeState", state.getNextState());
     }
 
-    @org.junit.Test
-    public void runState() {
-        // TODO - once we finalize the scheduling algo
+    @Test
+    public void runStateTest() {
     }
 
-    @org.junit.Test
-    public void getSeasonEndDay() {
-        assertEquals("3", state.getSeasonEndDay());
-    }
-
-    @org.junit.Test
-    public void getTradeDeadline() {
-        assertEquals("22", state.getTradeDeadline());
-    }
-
-    @org.junit.Test
-    public void getPlayoffsStartDate() {
-        assertEquals("14", state.getPlayoffsStartDate());
-    }
-    @org.junit.Test
-    public void getSeasonEndDate() {
-        assertEquals("3-04-2021", state.getSeasonEndDate());
-    }
-    @org.junit.Test
-    public void getSeasonStartDate() {
-        assertEquals("30-09-2020", state.getSeasonStartDate());
-    }
-
-    @org.junit.Test
+    @Test
     public void getStateNameTest() {
-        assertEquals("CreateFullSeasonSchedule", state.getStateName());
+        assertEquals("CreateFullSeasonScheduleState", state.getStateName());
     }
 
-    @org.junit.Test
-    public void getNextStateNameTest() {
+    @Test
+    public void getNextStateTest() {
         state.forward(context);
-        assertEquals("AdvanceTime", state.getNextState());
+        assertEquals("AdvanceTimeState", state.getNextState());
+    }
+
+//    @Test
+//    void getScheduleTest() {
+//    }
+
+    @Test
+    public void getRegularSeasonStartDateTest() {
+        assertEquals("30-09-2020", state.getRegularSeasonStartDate());
+    }
+
+    @Test
+    public void getRegularSeasonEndDateTest() {
+        assertEquals("3-04-2021", state.getRegularSeasonEndDate());
     }
 }
+//    @org.junit.Test
+//    public void getSeasonEndDay() {
+//        assertEquals("3", state.getSeasonEndDay());
+//    }
+//
+//    @org.junit.Test
+//    public void getTradeDeadline() {
+//        assertEquals("22", state.getTradeDeadline());
+//    }
+//
+//    @org.junit.Test
+//    public void getPlayoffsStartDate() {
+//        assertEquals("14", state.getPlayoffsStartDate());
+//    }
+//    @org.junit.Test
+//    public void getSeasonEndDate() {
+//        assertEquals("3-04-2021", state.getSeasonEndDate());
+//    }
+//    @org.junit.Test
+//    public void getSeasonStartDate() {
+
+//        assertEquals("30-09-2020", state.getSeasonStartDate());
+
+//    }

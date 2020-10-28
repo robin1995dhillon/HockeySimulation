@@ -2,75 +2,90 @@ package dhl.InternalStateMachine;
 
 import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
+import dhl.LeagueModel.ILeague;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class AdvanceTimeState implements ISimulationState {
+public class AdvanceTimeState implements INestedState {
 
-    private static String stateName;
-    private static String nextStateName;
-    private static boolean lastDayOfSeason;
-    private static String currDate;
-    private static String startDate;
-    private static IUserOutput output;
-    private static IUserInput input;
-    private static String endDate;
-    private static Calendar schedule;
+    private NestedStateContext context;
+    private Scheduler timeTracker;
+    private String stateName;
+    private ILeague league;
+    private String nextStateName;
+    private Calendar calendar;
+    private boolean lastDayOfSeason;
+    private String currDate;
+    private IUserOutput output;
+    private IUserInput input;
+    private String endDate;
+    private Scheduler schedule;
 
-    public AdvanceTimeState(Calendar schedule, String startDate, String endDate, IUserInput input, IUserOutput output) {
-        AdvanceTimeState.stateName = "AdvanceTime";
-        AdvanceTimeState.endDate = endDate;
-        AdvanceTimeState.schedule = schedule;
-        AdvanceTimeState.currDate = startDate;
-        AdvanceTimeState.input = input;
-        AdvanceTimeState.output = output;
-        AdvanceTimeState.lastDayOfSeason = checkIfLastDayOfSeason(currDate, endDate);
+    public AdvanceTimeState(ILeague league, Scheduler schedule, Scheduler timeTracker, String currentDate, String endDate, IUserInput input, IUserOutput output, NestedStateContext context) {
+        this.league = league;
+        this.schedule = schedule;
+        this.timeTracker = timeTracker;
+        this.currDate = currentDate;
+        this.endDate = endDate;
+        this.input = input;
+        this.output = output;
+        this.context = context;
+        this.stateName = "AdvanceTime";
+        this.lastDayOfSeason = false;
+        this.calendar = Calendar.getInstance();
     }
 
-    public boolean checkIfLastDayOfSeason(String currDate, String endDate) {
-        boolean lastday = currDate.equals(endDate);
-        return lastday;
+    public String getCurrentDate() {
+        return this.currDate;
+    }
+
+    public void setCurrentDate(String date) {
+        this.currDate = date;
+    }
+
+    public boolean ifLastDayOfSeason() {
+        return lastDayOfSeason;
     }
 
     @Override
     public void forward(NestedStateContext context) {
-        if (AdvanceTimeState.lastDayOfSeason) {
-            AdvanceTimeState.nextStateName = "CreateStanleyPlayoffs";
-            context.setState(new CreateStanleyPlayoffsState());
+        if (lastDayOfSeason) {
+            this.nextStateName = "CreateStanleyPlayoffs";
+            context.setState(new CreateStanleyPlayoffsState(league, timeTracker, currDate, input, output, context));
         } else {
             this.nextStateName = "Training";
-            context.setState(new TrainingState());
+            context.setState(new TrainingState(league, schedule, timeTracker, currDate, input, output, context));
         }
     }
 
     @Override
     public void runState() {
-        //TODO:state related processsing
+        this.lastDayOfSeason = false;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
         try {
-            schedule.setTime(dateFormat.parse(currDate));
+            calendar.setTime(dateFormat.parse(currDate));
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            this.currDate = dateFormat.format(calendar.getTime());
+            System.out.println(this.currDate);
+            if (this.currDate.equals(this.endDate)) {
+                this.lastDayOfSeason = true;
+            }
         } catch (ParseException e) {
-            output.setOutput("Exception while getting current date in Advance Time state");
+            output.setOutput("Couldn't get current date in AdvanceTimeState.");
             output.sendOutput();
         }
-
-        // add a day to current date
-        schedule.add(Calendar.DATE, 1);
-        AdvanceTimeState.currDate = dateFormat.format(schedule.getTime());
     }
 
-    public String getCurrentDate() {
-        return AdvanceTimeState.currDate;
-    }
     @Override
     public String getStateName() {
-        return AdvanceTimeState.stateName;
+        return this.stateName;
     }
 
     @Override
     public String getNextState() {
-        return AdvanceTimeState.nextStateName;
+        return this.nextStateName;
     }
 }

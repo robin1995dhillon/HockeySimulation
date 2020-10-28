@@ -7,21 +7,21 @@ import dhl.StoredProcedure;
 import java.io.IOException;
 
 public class LoadTeamState implements IState{
-    private static IUserInput input;
-    private static IUserOutput output;
-    private static String teamName;
-    private static String stateName;
-    private static String nextStateName;
+    private IUserInput input;
+    private IUserOutput output;
+    private String teamName;
+    private String stateName;
+    private String nextStateName;
 
     public LoadTeamState(IUserInput input, IUserOutput output, String teamName) {
-        LoadTeamState.input = input;
-        LoadTeamState.output = output;
+        this.input = input;
+        this.output = output;
         this.teamName = teamName;
-        LoadTeamState.stateName = "Load Team";
+        this.stateName = "LoadTeamState";
     }
     public void forward(StateContext context){
-        LoadTeamState.nextStateName = "Simulate";
-        context.setState(new SimulateLeagueState(input, output, teamName));
+        this.nextStateName = "SimulateLeagueState";
+        context.setState(new SimulateLeagueState(null, input, output, teamName));
     }
     public void runState() {
         StoredProcedure SP = new StoredProcedure("check_team");
@@ -41,10 +41,10 @@ public class LoadTeamState implements IState{
         }
     }
     public String getStateName(){
-        return LoadTeamState.stateName;
+        return this.stateName;
     }
 
     public String getNextState(){
-        return LoadTeamState.nextStateName;
+        return this.nextStateName;
     }
 }

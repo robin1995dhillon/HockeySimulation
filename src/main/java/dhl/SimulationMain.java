@@ -1,18 +1,17 @@
 package dhl;
 
+import dhl.Creator.LeagueCreator;
+import dhl.Creator.TeamCreator;
 import dhl.InOut.*;
 import dhl.LeagueModel.ILeague;
-import dhl.Creator.TeamCreator;
-import dhl.SimulationStateMachine.LoadTeamState;
 import dhl.SimulationStateMachine.CreateTeamState;
-import dhl.SimulationStateMachine.SimulateLeagueState;
+import dhl.SimulationStateMachine.LoadTeamState;
 import dhl.SimulationStateMachine.StateContext;
 import dhl.Validator.Checker;
 import dhl.Validator.JSONValidator;
-import dhl.Creator.LeagueCreator;
 import org.json.simple.JSONObject;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class SimulationMain {
@@ -70,7 +69,7 @@ public class SimulationMain {
                                 String headCoach = in.nextLine();
                                 TeamCreator teamCreator = new TeamCreator();
                                 ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName);
-                                context.setState(new CreateTeamState(input, output, teamName, updated_league));
+                                context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
                                 System.out.println("Saving the team. Please wait...");
                                 context.runState();
                                 context.forward(); //simulate state

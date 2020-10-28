@@ -4,20 +4,23 @@ import dhl.InOut.IUserInput;
 import dhl.InOut.IUserOutput;
 import dhl.InternalStateMachine.NestedStartState;
 import dhl.InternalStateMachine.NestedStateContext;
+import dhl.LeagueModel.ILeague;
 
 public class SimulateLeagueState implements IState{
-    private static IUserInput input;
-    private static IUserOutput output;
-    private static String teamName;
-    private static String stateName;
-    private static String nextStateName;
+    private ILeague league;
+    private IUserInput input;
+    private IUserOutput output;
+    private String teamName;
+    private String stateName;
+    private String nextStateName;
 
 
-    public SimulateLeagueState(IUserInput input, IUserOutput output, String teamName) {
+    public SimulateLeagueState(ILeague league, IUserInput input, IUserOutput output, String teamName) {
+        this.league = league;
         this.input = input;
         this.output = output;
         this.teamName = teamName;
-        this.stateName = "Simulate";
+        this.stateName = "SimulateLeagueState";
     }
 
     public void forward(StateContext context){
@@ -25,7 +28,7 @@ public class SimulateLeagueState implements IState{
     }
     public void runState() {
         NestedStateContext stateContext = new NestedStateContext(input, output);
-        stateContext.setState(new NestedStartState(input, output, teamName)); //Nested state machine start state
+        stateContext.setState(new NestedStartState(league, stateContext, input, output, teamName)); //Nested state machine start state
         stateContext.runState(); // Run the logic in the nested state
         stateContext.forward(); // Move forward to the next state i.e. Nested Sim State
         stateContext.runState(); // Run the logic in the nested state

@@ -6,7 +6,7 @@ import dhl.InOut.IUserOutput;
 
 public class NestedStateContext {
 
-    public static ISimulationState currentState;
+    public static INestedState currentState;
     public String currentStateName;
     private static IUserOutput output;
     private static IUserInput input;
@@ -26,7 +26,7 @@ public class NestedStateContext {
         NestedStateContext.currentState.forward(this);
     }
 
-    public void setState(ISimulationState state) {
+    public void setState(INestedState state) {
         this.currentStateName = state.getStateName();
         NestedStateContext.currentState = state;
     }
