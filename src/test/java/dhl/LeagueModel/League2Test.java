@@ -43,5 +43,4 @@ class League2Test {
         league.removeManagerFromList(managerList,"Joseph Squidly");
         assertEquals(2,managerList.size());
     }
-
 }
