@@ -39,16 +39,16 @@ public class NestedSimulationStateTest {
     }
 
 
-    @Test
-    public void runStateTest() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        String expected = "Simulating season 1 for Rob's team ...";
-
-        state.runState();
-
-        String gotOutput = out.toString().replaceAll("\n", "");
-        gotOutput = gotOutput.replaceAll("\r", "");
-        assertEquals(expected, gotOutput);
-    }
+//    @Test
+//    public void runStateTest() {
+//        ByteArrayOutputStream out = new ByteArrayOutputStream();
+//        System.setOut(new PrintStream(out));
+//        String expected = "Simulating season 1 for Rob's team ...";
+//
+//        state.runState();
+//
+//        String gotOutput = out.toString().replaceAll("\n", "");
+//        gotOutput = gotOutput.replaceAll("\r", "");
+//        assertEquals(expected, gotOutput);
+//    }
 }

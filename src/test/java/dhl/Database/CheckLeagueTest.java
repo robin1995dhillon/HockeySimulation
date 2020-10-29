@@ -27,4 +27,10 @@ public class CheckLeagueTest {
         s1.executeProcedure();
         assertFalse(s1.getExist());
     }
+
+    @Test
+    public void test(){
+        assertTrue(true);
+    }
+
 }

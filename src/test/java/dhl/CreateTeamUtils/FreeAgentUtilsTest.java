@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 public class FreeAgentUtilsTest {
     @Test
@@ -88,5 +91,9 @@ public class FreeAgentUtilsTest {
         IFreeAgentUtils freeAgentUtils = new FreeAgentUtils();
         assertTrue(freeAgentUtils.checkPosition(freeAgentList, "Agent One", "forward"));
         assertFalse(freeAgentUtils.checkPosition(freeAgentList, "Agent One", "goalie"));
+        assertFalse(freeAgentUtils.checkPosition(freeAgentList, "Agent One", "defense"));
     }
+
+
+
 }
