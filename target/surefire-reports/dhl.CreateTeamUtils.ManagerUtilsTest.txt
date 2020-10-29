@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.CreateTeamUtils.ManagerUtilsTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in dhl.CreateTeamUtils.ManagerUtilsTest
+=======
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in dhl.CreateTeamUtils.ManagerUtilsTest
+>>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711

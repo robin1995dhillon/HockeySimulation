@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.Database.CheckLeagueTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.1 s - in dhl.Database.CheckLeagueTest
+=======
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.064 s - in dhl.Database.CheckLeagueTest
+>>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711

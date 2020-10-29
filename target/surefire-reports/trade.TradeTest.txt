@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: trade.TradeTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s - in trade.TradeTest
+=======
 Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in trade.TradeTest
+>>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711
