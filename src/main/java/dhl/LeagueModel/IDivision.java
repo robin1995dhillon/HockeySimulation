@@ -17,4 +17,6 @@ public interface IDivision {
     public void setDivisionName(String divisionName);
 
     public void addTeam(ITeam2 team);
+
+    void saveDivision(int[] ID);
 }

@@ -2,6 +2,7 @@ package dhl.LeagueModel.division;
 
 import dhl.LeagueModel.IDivision;
 import dhl.LeagueModel.ITeam2;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,17 @@ public class Division implements IDivision {
     }
     public void addTeam(ITeam2 team) {
         teams.add(team);
+    }
+
+    @Override
+    public void saveDivision(int[] ID) {
+        IDivisionPersistence divisionPersistence = new DivisionPersistence();
+        JSONObject resultObject = divisionPersistence.saveDivisionToDB(this.getDivisionName());
+        ArrayList<ITeam2> teamArray = getTeams();
+        
+        for(ITeam2 t: teamArray) {
+
+        }
     }
 
 }

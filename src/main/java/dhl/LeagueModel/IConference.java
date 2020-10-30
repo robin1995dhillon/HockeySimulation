@@ -14,4 +14,6 @@ public interface IConference {
     public ArrayList<IDivision> getDivisions();
 
     public void setDivisions(ArrayList<IDivision> divisions);
+
+    void saveConference(int[] leagueID);
 }
