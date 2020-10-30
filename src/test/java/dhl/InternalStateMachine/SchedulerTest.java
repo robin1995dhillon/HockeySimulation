@@ -82,7 +82,7 @@ public class SchedulerTest {
     @Test
     public void incrementCurrentDayTest() {
         timeTracker.setCurrentDay("1-10-2020");
-        assertEquals(true, timeTracker.incrementDay());
+        assertEquals(true, timeTracker.incrementCurrentDay());
     }
 
 }
