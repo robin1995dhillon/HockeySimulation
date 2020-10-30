@@ -23,6 +23,7 @@ dhl\gamePlayConfig\Aging.class
 dhl\InternalStateMachine\AdvanceToNextSeasonState.class
 dhl\gamePlayConfig\IGameResolver.class
 dhl\gamePlayConfig\IAging.class
+dhl\LeagueModel\league\ILeaguePersistence.class
 dhl\LeagueModel\conference\ConferencePersistence.class
 dhl\LeagueModel\division\Division.class
 dhl\gamePlayConfig\GameResolver.class
@@ -30,6 +31,7 @@ dhl\Database\CreateCoach.class
 dhl\InternalStateMachine\NestedStateContext.class
 dhl\Presentation\ITradePrompt.class
 dhl\Training\IPlayerTrainingCondition.class
+dhl\LeagueModel\league\LeaguePersistence.class
 dhl\InOut\UserInput.class
 dhl\LeagueModel\players\Players.class
 dhl\Trade\IPlayerTradingCondition.class
@@ -45,6 +47,7 @@ dhl\LeagueModel\IAllPlayers.class
 dhl\Validator\Validator.class
 dhl\LeagueModel\freeAgents\IFreeAgentsPersistence.class
 dhl\InternalStateMachine\NestedEndState.class
+dhl\LeagueModel\headCoach\HeadCoachPersistence.class
 dhl\Database\ICreateStoredProcedure.class
 dhl\gamePlayConfig\GamePlayConfig.class
 dhl\InOut\IUserInput.class
@@ -59,6 +62,8 @@ dhl\Mock\MockLeague2.class
 dhl\SimulationStateMachine\LoadTeamState.class
 dhl\CreateTeamUtils\ICoachUtils.class
 dhl\SimulationStateMachine\StateContext.class
+dhl\LeagueModel\teams\ITeamPersistence.class
+dhl\LeagueModel\players\PlayersPersistence.class
 dhl\Validator\Checker.class
 dhl\CreateTeamUtils\IFreeAgentUtils.class
 dhl\LeagueModel\headCoach\HeadCoach.class
@@ -91,6 +96,7 @@ dhl\LeagueModel\IHeadCoach.class
 dhl\Validator\JSONValidator.class
 dhl\LeagueModel\ILeague.class
 dhl\Database\GetLeague.class
+dhl\LeagueModel\teams\TeamPersistence.class
 dhl\InternalStateMachine\TradePlayersState.class
 dhl\SimulationStateMachine\CreateTeamState.class
 dhl\Database\Connect.class
@@ -99,6 +105,7 @@ dhl\SimulationStateMachine\IState.class
 dhl\Creator\LeagueCreator.class
 dhl\gamePlayConfig\ITrading.class
 dhl\gamePlayConfig\Training.class
+dhl\LeagueModel\headCoach\IHeadCoachPersistence.class
 dhl\InOut\UserOutput.class
 dhl\InternalStateMachine\CreateFullSeasonScheduleState.class
 dhl\InternalStateMachine\NestedStartState.class

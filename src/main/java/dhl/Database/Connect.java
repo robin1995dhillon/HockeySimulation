@@ -1,6 +1,8 @@
 package dhl.Database;
 
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -15,16 +17,21 @@ public class Connect implements IConnect{
 
     @Override
     public Connection getConnection() throws IOException {
-        InputStream in = getClass().getClassLoader().getResourceAsStream("application.properties");
-        Properties properties = new Properties();
-        properties.load(in);
-        String url = properties.getProperty("dburl");
-        String user = properties.getProperty("dbuser");
-        String password = properties.getProperty("dbpass");
+        Properties prop = new Properties();
+        InputStream in = new BufferedInputStream(new FileInputStream("application.properties"));
+        prop.load(in);
+        String url = prop.getProperty("dburl");
+        String user = prop.getProperty("dbuser");
+        String password = prop.getProperty("dbpass");
+//        String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_DEVINT?user=CSCI5308_1_DEVINT_USER&serverTimezone=UTC";
+//        String user = "CSCI5308_1_DEVINT_USER";
+//        String password = "B6D4tje9aC";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return conn;

@@ -2,7 +2,7 @@
 Test set: dhl.SimulationStateMachine.CreateTeamStateTest
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in dhl.SimulationStateMachine.CreateTeamStateTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in dhl.SimulationStateMachine.CreateTeamStateTest
 =======
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in dhl.SimulationStateMachine.CreateTeamStateTest
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in dhl.SimulationStateMachine.CreateTeamStateTest
+>>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711

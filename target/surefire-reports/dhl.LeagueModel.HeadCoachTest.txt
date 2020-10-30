@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: dhl.LeagueModel.HeadCoachTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
 Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in dhl.LeagueModel.HeadCoachTest
-=======
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in dhl.LeagueModel.HeadCoachTest
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789

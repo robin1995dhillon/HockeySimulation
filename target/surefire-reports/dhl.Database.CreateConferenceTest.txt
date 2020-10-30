@@ -2,7 +2,7 @@
 Test set: dhl.Database.CreateConferenceTest
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.735 s - in dhl.Database.CreateConferenceTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.266 s - in dhl.Database.CreateConferenceTest
 =======
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.219 s - in dhl.Database.CreateConferenceTest
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.681 s - in dhl.Database.CreateConferenceTest
+>>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FreeAgents2Test {
@@ -67,4 +68,5 @@ class FreeAgents2Test {
         assertTrue(freeAgent.checkPosition("forward"));
         assertFalse(freeAgent.checkPosition("goalie"));
     }
+
 }

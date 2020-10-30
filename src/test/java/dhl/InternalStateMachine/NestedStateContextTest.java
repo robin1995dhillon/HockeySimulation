@@ -41,14 +41,14 @@ public class NestedStateContextTest {
         assertEquals("NestedStartState", context.currentStateName);
     }
 
-    @Test
-    public void runStateTest() {
-        context.setState(new NestedEndState(input, output));
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        context.runState();
-        String expected = "Thanks for using our simulation :). See you around.";
-        String actual = out.toString().replaceAll("\n", "");
-        assertEquals(expected, actual);
-    }
+//    @Test
+//    public void runStateTest() {
+//        context.setState(new NestedEndState(input, output));
+//        ByteArrayOutputStream out = new ByteArrayOutputStream();
+//        System.setOut(new PrintStream(out));
+//        context.runState();
+//        String expected = "Thanks for using our simulation :). See you around.";
+//        String actual = out.toString().replaceAll("\n", "");
+//        assertEquals(expected, actual);
+//    }
 }

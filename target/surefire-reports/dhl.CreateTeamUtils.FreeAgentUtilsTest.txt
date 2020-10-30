@@ -2,7 +2,7 @@
 Test set: dhl.CreateTeamUtils.FreeAgentUtilsTest
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 s - in dhl.CreateTeamUtils.FreeAgentUtilsTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s - in dhl.CreateTeamUtils.FreeAgentUtilsTest
 =======
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s - in dhl.CreateTeamUtils.FreeAgentUtilsTest
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s - in dhl.CreateTeamUtils.FreeAgentUtilsTest
+>>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711
