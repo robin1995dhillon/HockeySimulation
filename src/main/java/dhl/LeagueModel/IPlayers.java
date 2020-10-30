@@ -71,4 +71,6 @@ public interface IPlayers {
 
     IPlayers convertFreeAgentToPlayer(IFreeAgents agent);
     IFreeAgents convertPlayerToFreeAgent(IPlayers player);
+
+    void savePlayer(int teamID);
 }

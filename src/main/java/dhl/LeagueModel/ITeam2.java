@@ -3,7 +3,6 @@ package dhl.LeagueModel;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import dhl.LeagueModel.teams.Teams;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @JsonDeserialize(as= Teams.class)
@@ -24,4 +23,6 @@ public interface ITeam2 {
     int getLossPoints();
     void setLossPoints(int teamType);
     double calculateTeamStrength(ITeam2 team);
+
+    void saveTeams(List<Integer> id);
 }

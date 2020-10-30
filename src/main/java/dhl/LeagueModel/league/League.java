@@ -133,15 +133,23 @@ public class League implements ILeague {
     @Override
     public void storeLeague() {
         String leagueName = this.leagueName;
-        ArrayList<IConference> conferenceArray;
+
         ILeaguePersistence leaguePersistence = new LeaguePersistence();
         JSONObject resultObject = leaguePersistence.saveLeagueToDB(leagueName);
-        conferenceArray = this.getConferences();
-        int[] ID = {(int) resultObject.get("id")};
 
-        System.out.println("League ID" + ID);
+        List<IConference> conferenceArray = this.getConferences();
+        List<IFreeAgents> freeAgentsArray = this.getFreeAgents();
+
+        List<Integer> ID = new ArrayList<>();
+        int leagueID = (int) resultObject.get("id");
+        ID.add(0,leagueID);
+
         for(IConference c: conferenceArray) {
             c.saveConference(ID);
+        }
+        System.out.println("Saving Free Agents");
+        for(IFreeAgents freeAgents: freeAgentsArray) {
+            freeAgents.saveFreeAgent(leagueID);
         }
     }
 

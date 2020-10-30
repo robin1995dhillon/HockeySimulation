@@ -1,6 +1,8 @@
 package dhl.LeagueModel.freeAgents;
 
 import dhl.LeagueModel.IFreeAgents;
+import dhl.LeagueModel.headCoach.HeadCoachPersistence;
+import dhl.LeagueModel.headCoach.IHeadCoachPersistence;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -165,6 +167,20 @@ public class FreeAgents implements IFreeAgents {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void saveFreeAgent(int leagueID) {
+        IFreeAgentsPersistence freeAgentsPersistence = new FreeAgentsPersistence();
+        String freeAgentName = this.getPlayerName();
+        String position = this.getPosition();
+        int age = this.getAge();
+        int skating = this.getSkating();
+        int shooting = this.getShooting();
+        int checking = this.getChecking();
+        int saving = this.getSaving();
+        int[] freeAgentAttributes = {skating,shooting,checking,saving};
+        freeAgentsPersistence.saveFreeAgentsToDB(freeAgentName,position,age,freeAgentAttributes,leagueID);
     }
 
 }

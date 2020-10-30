@@ -10,7 +10,7 @@ class HeadCoachPersistenceTest {
     @Test
     void saveHeadCoachToDB() {
         IHeadCoachPersistence headCoachPersistence = new HeadCoachPersistence();
-        int[] headCoachAttributes = {13,14,15,15};
+        double[] headCoachAttributes = {13,14,15,15};
         JSONObject resultObject =  headCoachPersistence.saveHeadCoachToDB("Head1",headCoachAttributes,2);
         assertEquals(true,resultObject.get("Status"));
     }

@@ -5,6 +5,7 @@ import dhl.LeagueModel.ITeam2;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Division implements IDivision {
 
@@ -52,13 +53,14 @@ public class Division implements IDivision {
     }
 
     @Override
-    public void saveDivision(int[] ID) {
+    public void saveDivision(List<Integer> ID) {
         IDivisionPersistence divisionPersistence = new DivisionPersistence();
         JSONObject resultObject = divisionPersistence.saveDivisionToDB(this.getDivisionName());
-        ArrayList<ITeam2> teamArray = getTeams();
-        
+        int divisionID = (int) resultObject.get("id");
+        ID.add(2,divisionID);
+        List<ITeam2> teamArray = getTeams();
         for(ITeam2 t: teamArray) {
-
+            t.saveTeams(ID);
         }
     }
 

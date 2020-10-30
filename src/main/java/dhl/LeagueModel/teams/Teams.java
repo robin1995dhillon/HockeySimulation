@@ -3,9 +3,11 @@ package dhl.LeagueModel.teams;
 import dhl.LeagueModel.IHeadCoach;
 import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.headCoach.HeadCoachPersistence;
+import dhl.LeagueModel.headCoach.IHeadCoachPersistence;
 import dhl.LeagueModel.players.PlayersStrength;
+import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Teams implements ITeam2 {
@@ -128,6 +130,26 @@ public class Teams implements ITeam2 {
         players = team.getPlayers();
         for(IPlayers player: players) {
             player.checkForPlayerInjury(player);
+        }
+    }
+
+    @Override
+    public void saveTeams(List<Integer> id) {
+        ITeamPersistence teamPersistence = new TeamPersistence();
+        String headCoach = this.headCoach.getName();
+        JSONObject resultObject = teamPersistence.saveTeamToDB(this.teamName, this.generalManager, headCoach);
+        int teamID = (int) resultObject.get("id");
+        System.out.println(teamID);
+        id.add(3,teamID);
+
+        IDHLPersistence idhlPersistence = new DHLPersistence();
+        idhlPersistence.saveDHLTable(id.get(0), id.get(1), id.get(2), id.get(3));
+        List<IPlayers> playersArray = getPlayers();
+        IHeadCoach iHeadCoach = getHeadCoach();
+        iHeadCoach.saveHeadCoach(teamID);
+
+        for(IPlayers player: playersArray) {
+            player.savePlayer(teamID);
         }
     }
 

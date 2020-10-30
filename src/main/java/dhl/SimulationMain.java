@@ -47,8 +47,8 @@ public class SimulationMain {
             if (JSONValidator.get("isValid").equals("True")) {
                 LeagueCreator leagueCreator = new LeagueCreator();
                 ILeague ILeague = leagueCreator.CreateLeague(Path);
-                System.out.println("Focus");
-                ILeague.storeLeague();
+//                System.out.println("Focus");
+//                ILeague.storeLeague();
                 if (ILeague.isValid(ILeague)) {
                     System.out.println("Valid JSON!\n");
                     System.out.println("\nWelcome to the matrix. We all live in simulation ;)");

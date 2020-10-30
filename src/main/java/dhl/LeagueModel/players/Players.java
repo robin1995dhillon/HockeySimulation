@@ -307,5 +307,17 @@ public class Players implements IPlayers {
         return agent;
     }
 
+    @Override
+    public void savePlayer(int teamID) {
+        IPlayersPersistence playersPersistence = new PlayersPersistence();
+        String playerName = this.getPlayerName();
+        String position = this.getPosition();
+        int age = this.getAge();
+        int injuryDays = this.getInjuredDays();
+        boolean[] booleanAttributes = {this.getCaptain(),this.isRetired(),this.isInjured()};
+        int[] playerAttributes = {this.getSkating(), this.getChecking(), this.getShooting(), this.getSaving()};
+        playersPersistence.savePlayerToDB(playerName,position,booleanAttributes,age,playerAttributes,teamID,injuryDays);
+    }
+
 
 }

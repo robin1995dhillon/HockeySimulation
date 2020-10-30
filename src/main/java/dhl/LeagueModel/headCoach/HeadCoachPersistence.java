@@ -10,12 +10,12 @@ import java.sql.SQLException;
 public class HeadCoachPersistence implements IHeadCoachPersistence {
 
     @Override
-    public JSONObject saveHeadCoachToDB(String headCoachName, int[] headCoachAttributes, int teamId) {
+    public JSONObject saveHeadCoachToDB(String headCoachName, double[] headCoachAttributes, int teamId) {
         JSONObject return_obj = new JSONObject();
-        int skating = headCoachAttributes[0];
-        int shooting = headCoachAttributes[1];
-        int checking = headCoachAttributes[2];
-        int saving = headCoachAttributes[3];
+        double skating = headCoachAttributes[0];
+        double shooting = headCoachAttributes[1];
+        double checking = headCoachAttributes[2];
+        double saving = headCoachAttributes[3];
         ICreateStoredProcedure SP = new CreateCoach(headCoachName, skating,shooting,checking,saving,teamId);
         try {
             SP.executeProcedure();
