@@ -6,13 +6,14 @@ import dhl.LeagueModel.ITeam2;
 import dhl.LeagueModel.players.PlayersStrength;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Teams implements ITeam2 {
 
     public String teamName;
     public String generalManager;
     public IHeadCoach headCoach;
-    ArrayList<IPlayers> players;
+    List<IPlayers> players;
     String teamType;
     int lossPoints;
     double teamStrength;
@@ -20,7 +21,7 @@ public class Teams implements ITeam2 {
     public Teams() {
     }
 
-    public Teams(String teamName, String generalManager, IHeadCoach headCoach, ArrayList<IPlayers> players) {
+    public Teams(String teamName, String generalManager, IHeadCoach headCoach, List<IPlayers> players) {
         this.teamName = teamName;
         this.generalManager = generalManager;
         this.headCoach = headCoach;
@@ -34,12 +35,12 @@ public class Teams implements ITeam2 {
     }
 
     @Override
-    public ArrayList<IPlayers> getPlayers() {
+    public List<IPlayers> getPlayers() {
         return players;
     }
 
     @Override
-    public void setPlayers(ArrayList<IPlayers> players) {
+    public void setPlayers(List<IPlayers> players) {
         this.players = players;
     }
 
@@ -107,7 +108,7 @@ public class Teams implements ITeam2 {
 
     @Override
     public double calculateTeamStrength(ITeam2 team) {
-        ArrayList<IPlayers> players;
+        List<IPlayers> players;
         players = team.getPlayers();
         System.out.println(players);
         double teamStrength = 0;
@@ -123,7 +124,7 @@ public class Teams implements ITeam2 {
     }
 
     public void checkForInjury(ITeam2 team) {
-        ArrayList<IPlayers> players;
+        List<IPlayers> players;
         players = team.getPlayers();
         for(IPlayers player: players) {
             player.checkForPlayerInjury(player);

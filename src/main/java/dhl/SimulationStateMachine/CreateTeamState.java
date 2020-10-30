@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class CreateTeamState implements IState {
     private ILeague league;
@@ -30,10 +30,10 @@ public class CreateTeamState implements IState {
     }
 
     public void runState() {
-        ArrayList<IConference> Conference;
-        ArrayList<IDivision> Divisions;
-        ArrayList<ITeam2> Teams;
-        ArrayList<IPlayers> Players;
+        List<IConference> Conference;
+        List<IDivision> Divisions;
+        List<ITeam2> Teams;
+        List<IPlayers> Players;
         IHeadCoach HeadCoach;
         if (league == null){
             return;

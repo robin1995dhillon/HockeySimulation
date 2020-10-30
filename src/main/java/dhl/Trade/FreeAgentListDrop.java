@@ -62,8 +62,8 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
 
     @Override
     public void dropSkaterAi(List<IPlayers> players, int playersToBeDropped) {
-        IFreeAgents playerToAgent = new FreeAgents();
-        List<IPlayers> playerList = new ArrayList<>();
+        IFreeAgents playerToAgent;
+        List<IPlayers> playerList;
         playerList = sortedPLayerSkaterList(players,playersToBeDropped);
 
         for(IPlayers p: playerList){
@@ -91,6 +91,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
 
     }
 
+    @Override
     public List<IPlayers> sortedPLayerSkaterList(List<IPlayers> players, int playersToBeDropped){
         List<IPlayers> playerSkaterList = new ArrayList<>();
         for(IPlayers p: players){
@@ -105,6 +106,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
         return playerSkaterList.subList(0,playersToBeDropped);
     }
 
+    @Override
     public List<IPlayers> sortedPLayerGoalieList(List<IPlayers> players,int goaliesToBeDropped){
         List<IPlayers> playerGoalieList = new ArrayList<>();
         for(IPlayers p: players){
