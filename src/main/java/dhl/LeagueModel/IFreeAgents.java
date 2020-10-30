@@ -45,4 +45,5 @@ public interface IFreeAgents {
     IFreeAgents getFreeAgentFromList(List<IFreeAgents> freeAgentList, String freeAgentName);
     boolean checkPosition(String position);
 
+    void saveFreeAgent(int leagueID);
 }

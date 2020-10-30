@@ -3,6 +3,9 @@ package dhl.LeagueModel.players;
 import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
+import dhl.gamePlayConfig.Aging;
+import dhl.gamePlayConfig.GamePlayConfig;
+import dhl.gamePlayConfig.IGamePlayConfig;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -198,8 +201,12 @@ public class Players implements IPlayers {
 
     @Override
     public void checkIfRetired(IPlayers player) {
+        IGamePlayConfig gamePlayConfig = new GamePlayConfig();
+        Aging aging = gamePlayConfig.getAging();
+        int average = aging.getAverageRetirementAge();
+        int max = aging.getMaximumAge();
         int playerAge = player.getAge();
-        Integer[] retirementAge = {30,31,32,33,34,35,36,40,45,50};
+        Integer[] retirementAge = {average-5,average-4,average-3,average-2,average-1,average,average+1,average+4,average+5,max};
         int[] retirementArray = {5,10,15,20,25,30,50,70,80,100};
 
         int minDistance = Math.abs(retirementAge[0] - playerAge);
@@ -298,6 +305,18 @@ public class Players implements IPlayers {
         agent.setStrength(player.getStrength());
 
         return agent;
+    }
+
+    @Override
+    public void savePlayer(int teamID) {
+        IPlayersPersistence playersPersistence = new PlayersPersistence();
+        String playerName = this.getPlayerName();
+        String position = this.getPosition();
+        int age = this.getAge();
+        int injuryDays = this.getInjuredDays();
+        boolean[] booleanAttributes = {this.getCaptain(),this.isRetired(),this.isInjured()};
+        int[] playerAttributes = {this.getSkating(), this.getChecking(), this.getShooting(), this.getSaving()};
+        playersPersistence.savePlayerToDB(playerName,position,booleanAttributes,age,playerAttributes,teamID,injuryDays);
     }
 
 

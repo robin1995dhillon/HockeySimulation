@@ -9,6 +9,7 @@ import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,6 +128,29 @@ public class League implements ILeague {
 
     public boolean isLeagueNamePresent() {
         return !this.leagueName.isEmpty();
+    }
+
+    @Override
+    public void storeLeague() {
+        String leagueName = this.leagueName;
+
+        ILeaguePersistence leaguePersistence = new LeaguePersistence();
+        JSONObject resultObject = leaguePersistence.saveLeagueToDB(leagueName);
+
+        List<IConference> conferenceArray = this.getConferences();
+        List<IFreeAgents> freeAgentsArray = this.getFreeAgents();
+
+        List<Integer> ID = new ArrayList<>();
+        int leagueID = (int) resultObject.get("id");
+        ID.add(0,leagueID);
+
+        for(IConference c: conferenceArray) {
+            c.saveConference(ID);
+        }
+        System.out.println("Saving Free Agents");
+        for(IFreeAgents freeAgents: freeAgentsArray) {
+            freeAgents.saveFreeAgent(leagueID);
+        }
     }
 
 

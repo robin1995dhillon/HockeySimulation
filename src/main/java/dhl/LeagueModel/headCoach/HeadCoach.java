@@ -84,4 +84,12 @@ public class HeadCoach implements IHeadCoach {
         return null;
     }
 
+    @Override
+    public void saveHeadCoach(int teamID) {
+        IHeadCoachPersistence headCoachPersistence = new HeadCoachPersistence();
+        String headCoachName = this.getName();
+        double[] headCoachAttributes = {this.getSkating(), this.getShooting(), this.getChecking(), this.getSaving()};
+        headCoachPersistence.saveHeadCoachToDB(headCoachName,headCoachAttributes,teamID);
+    }
+
 }
