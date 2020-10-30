@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dhl.Database.CheckTeamTest
--------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.453 s - in dhl.Database.CheckTeamTest
-=======
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.992 s - in dhl.Database.CheckTeamTest
->>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711

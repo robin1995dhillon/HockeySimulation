@@ -79,66 +79,10 @@ public class SchedulerTest {
         assertEquals("01-10-2020", schedule.getCurrentDay());
     }
 
-    //
-//    @Test
-//    public void getCurrentDayTest() {
-//        assertEquals("", schedule.getCurrentDay());
-//    }
-
-    //
-    @Test
-    public void setSeasonWinnerTest() {
-        schedule.setSeasonWinner("Rob's Team");
-        assertEquals("Rob's Team", schedule.getSeasonWinner());
-    }
-
-    @Test
-    public void getSeasonWinnerTest() {
-        schedule.setSeasonWinner("Hawks");
-        assertEquals("Hawks", schedule.getSeasonWinner());
-    }
-
-    @Test
-    public void setSeasonOverStatusTest() {
-        schedule.setSeasonOverStatus(true);
-        assertEquals(true, schedule.getSeasonOverStatus());
-    }
-
-    @Test
-    public void getSeasonOverStatusTest() {
-        schedule.setSeasonOverStatus(false);
-        assertEquals(false, schedule.getSeasonOverStatus());
-    }
-
-    @Test
-    public void setLastSeasonDayTest() {
-        schedule.setLastSeasonDay("1-06-2021");
-        assertEquals("1-06-2021", schedule.getLastSeasonDay());
-        assertNotEquals("30-05-2021", schedule.getLastSeasonDay());
-    }
-
-    @Test
-    public void getLastSeasonDayTest() {
-        schedule.setLastSeasonDay("1-06-2021");
-        assertEquals("1-06-2021", schedule.getLastSeasonDay());
-        assertNotEquals("30-05-2021", schedule.getLastSeasonDay());
-    }
-
     @Test
     public void incrementCurrentDayTest() {
         timeTracker.setCurrentDay("1-10-2020");
         assertEquals(true, timeTracker.incrementCurrentDay());
     }
 
-//    @Test
-//    public void generateSchedule() {
-//    }
-//
-//    @Test
-//    public void setFinalSchedule() {
-//    }
-//
-//    @Test
-//    public void getFinalSchedule() {
-//    }
 }
