@@ -14,7 +14,7 @@ public class TrainingState implements INestedState {
     private Scheduler timeTracker;
     private Scheduler schedule;
     private ILeague league;
-    Map< String, List<Map<String, String>>> finalSchedule;
+    Map<String, List<Map<String, String>>> finalSchedule;
     private IUserOutput output;
     private IUserInput input;
     private String stateName;
@@ -31,27 +31,8 @@ public class TrainingState implements INestedState {
         this.input = input;
         this.context = context;
         this.stateName = "Training";
-
-        if (unPlayedGames) {
-            this.nextStateName = "SimulateGames";
-        } else if (tradeEnded)
-            this.nextStateName = "AgePlayers";
-        else
-            this.nextStateName = "TradePlayers";
-
     }
 
-    public boolean checkPendingGames(){
-        this.finalSchedule = schedule.getFinalSchedule();
-        if(finalSchedule.containsKey(this.currentDate)) {
-            if (finalSchedule.get(this.currentDate).size() > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
 
     @Override
     public void forward(NestedStateContext context) {
