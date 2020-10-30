@@ -4,5 +4,5 @@ import dhl.LeagueModel.IHeadCoach;
 import org.json.simple.JSONObject;
 
 public interface IHeadCoachPersistence {
-    JSONObject saveHeadCoachToDB(IHeadCoach HeadCoach);
+    JSONObject saveHeadCoachToDB(String headCoachName, int[] headCoachAttributes, int teamId);
 }
