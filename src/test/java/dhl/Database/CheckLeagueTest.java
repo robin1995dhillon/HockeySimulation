@@ -18,14 +18,14 @@ public class CheckLeagueTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        ICheckStoredProcedure s = new CheckLeague("DHL");
-        s.executeProcedure();
-        assertTrue(s.getExist());
-        ICheckStoredProcedure s1 = new CheckLeague("asdfghjkl");
-        s1.executeProcedure();
-        assertFalse(s1.getExist());
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        ICheckStoredProcedure s = new CheckLeague("DHL");
+//        s.executeProcedure();
+//        assertTrue(s.getExist());
+//        ICheckStoredProcedure s1 = new CheckLeague("asdfghjkl");
+//        s1.executeProcedure();
+//        assertFalse(s1.getExist());
+//    }
 
 }

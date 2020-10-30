@@ -1,13 +1,12 @@
 package dhl.Trade;
 
-import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.players.Players;
 import dhl.LeagueModel.players.PlayersStrength;
 import dhl.Presentation.TradePrompt;
-import dhl.Training.IPlayerTrainingCondition;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,8 +70,8 @@ public class FreeAgentList implements iFreeAgentListAdd {
     public void addGoalie(List<IPlayers> player, int goalieCount) {
 
         int goaliesToBeAdded = 2 - goalieCount;
-        IPlayers agentToPlayer = new Players();
-        List<IFreeAgents> agentList = new ArrayList<>();
+        IPlayers agentToPlayer;
+        List<IFreeAgents> agentList;
         agentList = sortedAgentsGoalieList(goaliesToBeAdded);
         for (IFreeAgents a : agentList) {
             agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
@@ -101,14 +100,12 @@ public class FreeAgentList implements iFreeAgentListAdd {
             if (a.getPosition().equalsIgnoreCase("goalie")) {
                 agentGoalieList.add(a);
             }
-
         }
         Collections.sort(agentGoalieList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
         return agentGoalieList.subList(0, goaliesToBeAdded);
     }
 
 
-    //continue this
     public void addSkaterUser(List<IPlayers> player, int playersToBeAdded) {
         boolean flag = false;
         Scanner sc = new Scanner(System.in);

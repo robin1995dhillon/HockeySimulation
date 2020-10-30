@@ -19,13 +19,13 @@ public class GetLeagueTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        IGetStoredProcedure s = new GetLeague("DHL");
-        s.executeProcedure();
-        ArrayList<ILeague> leagueList = s.getData();
-        for(ILeague league: leagueList){
-            System.out.println(league.getLeagueName());
-        }
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        IGetStoredProcedure s = new GetLeague("DHL");
+//        s.executeProcedure();
+//        ArrayList<ILeague> leagueList = s.getData();
+//        for(ILeague league: leagueList){
+//            System.out.println(league.getLeagueName());
+//        }
+//    }
 }

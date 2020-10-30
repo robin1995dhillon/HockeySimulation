@@ -17,9 +17,9 @@ public class CreateDHLTableTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        ICreateStoredProcedure s = new CreateDHLTable(1,1,1, 1);
-        s.executeProcedure();
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        ICreateStoredProcedure s = new CreateDHLTable(1,1,1, 1);
+//        s.executeProcedure();
+//    }
 }
