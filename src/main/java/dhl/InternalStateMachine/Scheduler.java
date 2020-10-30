@@ -1,6 +1,5 @@
 package dhl.InternalStateMachine;
 
-import com.sun.applet2.AppletParameters;
 import dhl.InOut.IUserOutput;
 import dhl.LeagueModel.IConference;
 import dhl.LeagueModel.IDivision;
@@ -39,7 +38,7 @@ public class Scheduler {
     private String firstDay;
     private String lastDay;
     private Calendar calendar;
-    
+
     private IUserOutput output;
     private Map<String, List<Map<String, String>>> finalSchedule;
     private List<String> conferenceList;
