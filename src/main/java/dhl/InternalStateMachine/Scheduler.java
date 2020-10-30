@@ -1,5 +1,6 @@
 package dhl.InternalStateMachine;
 
+import com.sun.applet2.AppletParameters;
 import dhl.InOut.IUserOutput;
 import dhl.LeagueModel.IConference;
 import dhl.LeagueModel.IDivision;
@@ -38,6 +39,7 @@ public class Scheduler {
     private String firstDay;
     private String lastDay;
     private Calendar calendar;
+    
     private IUserOutput output;
     private Map<String, List<Map<String, String>>> finalSchedule;
     private List<String> conferenceList;
@@ -340,5 +342,5 @@ public class Scheduler {
 }
 
 //References
-//Line No: Convert map element ( key=value) to string value: https://stackoverflow.com/questions/43177542/list-of-map-entrystring-string
-//Line No: Convert map element ( key=value) to string value: https://www.geeksforgeeks.org/map-entry-interface-java-example/
+//Convert map element ( key=value) to string value: https://stackoverflow.com/questions/43177542/list-of-map-entrystring-string
+//Convert map element ( key=value) to string value: https://www.geeksforgeeks.org/map-entry-interface-java-example/
