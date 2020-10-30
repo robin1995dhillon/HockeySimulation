@@ -1,6 +1,6 @@
 package dhl.LeagueModel.players;
 
-import dhl.LeagueModel.FreeAgents;
+import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
 import org.junit.jupiter.api.Test;
@@ -104,4 +104,56 @@ class PlayersTest {
 //        System.out.println(player.getAge());
 //        System.out.println(player.getDaysToAge());
 //    }
+
+    @Test
+    public void convertPlayerToFreeAgentTest(){
+
+        IPlayers players = new Players();
+        players.setAge(50);
+        players.setChecking(20);
+        players.setSaving(15);
+        players.setSkating(18);
+        players.setStrength(5.6);
+        players.setPosition("forward");
+        players.setPlayerName("Player1");
+
+        IFreeAgents agent  = new FreeAgents();
+        agent.setAge(players.getAge());
+        agent.setChecking(players.getChecking());
+        agent.setSaving(players.getSaving());
+        agent.setSkating(players.getSkating());
+        agent.setPosition(players.getPosition());
+        agent.setPlayerName(players.getPlayerName());
+        agent.setStrength(players.getStrength());
+
+        assertEquals(agent.getPlayerName(),"Player1");
+        assertEquals(agent.getStrength(),5.6);
+
+    }
+
+    @Test
+    public void convertFreeAgentToPlayerTest(){
+
+        IFreeAgents agent = new FreeAgents();
+        agent.setAge(50);
+        agent.setChecking(20);
+        agent.setSaving(15);
+        agent.setSkating(18);
+        agent.setStrength(5.6);
+        agent.setPosition("forward");
+        agent.setPlayerName("Player1");
+
+        IPlayers players  = new Players();
+        players.setAge(agent.getAge());
+        players.setChecking(agent.getChecking());
+        players.setSaving(agent.getSaving());
+        players.setSkating(agent.getSkating());
+        players.setPosition(agent.getPosition());
+        players.setPlayerName(agent.getPlayerName());
+        players.setStrength(agent.getStrength());
+
+        assertEquals(agent.getPlayerName(),"Player1");
+        assertEquals(agent.getStrength(),5.6);
+
+    }
 }

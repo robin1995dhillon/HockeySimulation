@@ -49,6 +49,7 @@ public class Scheduler {
     private Map<String, List<String>> teamsInDivision;
     private Map<String, List<String>> divisionsInConference;
     private Map<String, Integer> scheduledMatches;
+    private Map<String, Integer> matchesOnADay;
 
 
     Scheduler(Calendar calendar, IUserOutput output) {
@@ -66,7 +67,7 @@ public class Scheduler {
         teamsInConference = new HashMap<String, List<String>>();
         teamsInDivision = new HashMap<String, List<String>>();
         divisionsInConference = new HashMap<String, List<String>>();
-        
+        scheduledMatches = new HashMap<String, Integer>();
 
     }
 
@@ -179,7 +180,6 @@ public class Scheduler {
 
     public void setCurrentDay(String currentDay) {
         this.currentDay = currentDay;
-//        matchesOnADay.put(this.currentDay, 0);
     }
 
     public String getCurrentDay() {
@@ -187,13 +187,14 @@ public class Scheduler {
     }
 
     public void generateSchedule(ILeague league) {
-        incrementDay();
-        initModel(league);
-        scheduleMatches();
+        incrementCurrentDay();
+        initialize(league);
+        setMatches();
         createSchedule();
     }
 
-    public boolean incrementDay() {
+
+    public boolean incrementCurrentDay() {
 
         if (currentDay.equals(lastDay)) {
             return false;
@@ -214,7 +215,7 @@ public class Scheduler {
         }
     }
 
-    private void initModel(ILeague league) {
+    private void initialize(ILeague league) {
 
         ArrayList<IConference> retrievedConferences = league.getConferences();
 
@@ -247,7 +248,7 @@ public class Scheduler {
 
     }
 
-    private void scheduleMatches() {
+    private void setMatches() {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Date d1 = null;
@@ -327,7 +328,10 @@ public class Scheduler {
 
 
     private void schedule(List<String> teamsInFormat, String teamName) {
-        
+        int matchCounter = 0;
+        int loopCounter = 28 / (teamsInFormat.size() - 1);
+        int i = 0;
+
         for (String team : teamsInFormat) {
             if (team.equalsIgnoreCase(teamName)) {
                 continue;

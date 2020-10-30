@@ -4,8 +4,9 @@ package dhl.Validator;
 import dhl.LeagueModel.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Checker {
+public class Checker implements IChecker{
 
 //    public ConferenceChecker() {
 //
@@ -52,5 +53,35 @@ public class Checker {
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean managerChecker(List<String> managerList, String managerName) {
+        for(String s : managerList){
+            if(s.equals(managerName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean coachChecker(List<IHeadCoach> coachList, String coachName) {
+        for(IHeadCoach headCoach : coachList){
+            if(headCoach.getName().equals(coachName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean freeAgentChecker(List<IFreeAgents> freeAgentList, String freeAgentName) {
+        for(IFreeAgents freeAgent : freeAgentList){
+            if(freeAgent.getPlayerName().equals(freeAgentName)){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -18,9 +18,9 @@ public class CreateFreeAgentTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        ICreateStoredProcedure s = new CreateFreeAgent("zongyu", "goalie", 22,10,10,10,10,1);
-        s.executeProcedure();
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        ICreateStoredProcedure s = new CreateFreeAgent("zongyu", "goalie", 22,10,10,10,10,1);
+//        s.executeProcedure();
+//    }
 }

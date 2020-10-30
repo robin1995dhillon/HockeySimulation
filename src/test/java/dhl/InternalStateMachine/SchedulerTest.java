@@ -79,27 +79,10 @@ public class SchedulerTest {
         assertEquals("01-10-2020", schedule.getCurrentDay());
     }
 
-    //
-    @Test
-    public void getCurrentDayTest() {
-        assertEquals("", schedule.getCurrentDay());
-    }
-
     @Test
     public void incrementCurrentDayTest() {
         timeTracker.setCurrentDay("1-10-2020");
         assertEquals(true, timeTracker.incrementDay());
     }
 
-//    @Test
-//    public void generateSchedule() {
-//    }
-//
-//    @Test
-//    public void setFinalSchedule() {
-//    }
-//
-//    @Test
-//    public void getFinalSchedule() {
-//    }
 }

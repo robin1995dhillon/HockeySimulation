@@ -14,6 +14,7 @@ public class TrainingState implements INestedState {
     private Scheduler timeTracker;
     private Scheduler schedule;
     private ILeague league;
+    Map<String, List<Map<String, String>>> finalSchedule;
     private IUserOutput output;
     private IUserInput input;
     private String stateName;
@@ -31,6 +32,7 @@ public class TrainingState implements INestedState {
         this.context = context;
         this.stateName = "Training";
     }
+
 
     @Override
     public void forward(NestedStateContext context) {

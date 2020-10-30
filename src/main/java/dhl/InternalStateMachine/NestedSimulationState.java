@@ -21,20 +21,6 @@ public class NestedSimulationState implements INestedState {
     private ILeague league;
 
     private NestedStateContext context;
-    private Scheduler schedule;
-    private Scheduler timeTracker;
-    private Calendar calendar;
-    private String currentDate;
-    private CreateFullSeasonScheduleState createFullSeasonScheduleState;
-    private CreateStanleyPlayoffsState createStanleyPlayoffsState;
-    private TrainingState trainingState;
-    private AdvanceTimeState advanceTimeState;
-    private SimulateGamesState simulateGame;
-    private AgePlayersState agingState;
-    private TradePlayersState tradingState;
-    private InjuryCheckState injuryCheck;
-    private AdvanceToNextSeasonState advanceToNextSeason;
-    private PersistState persistState;
 
 
     public NestedSimulationState(ILeague league, NestedStateContext context, IUserInput input, IUserOutput output, int totalSeasons, String teamName) {
@@ -59,7 +45,6 @@ public class NestedSimulationState implements INestedState {
             boolean seasonIncomplete = true;
             output.setOutput("Simulating season " + i + 1 + " for " + teamName + " ...");
             output.sendOutput();
-            // TODO: Simulate
         }
 
     }
