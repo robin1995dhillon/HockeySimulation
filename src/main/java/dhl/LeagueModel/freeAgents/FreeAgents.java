@@ -161,7 +161,10 @@ public class FreeAgents implements IFreeAgents {
 
     @Override
     public boolean checkPosition(String position) {
-        return this.position.equals(position);
+        if(this.position.equals(position)){
+            return true;
+        }
+        return false;
     }
 
 }
