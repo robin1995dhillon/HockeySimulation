@@ -28,9 +28,4 @@ public class CheckLeagueTest {
         assertFalse(s1.getExist());
     }
 
-    @Test
-    public void test(){
-        assertTrue(true);
-    }
-
 }

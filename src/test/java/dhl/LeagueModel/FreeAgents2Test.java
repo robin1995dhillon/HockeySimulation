@@ -1,7 +1,5 @@
 package dhl.LeagueModel;
 
-import dhl.CreateTeamUtils.FreeAgentUtils;
-import dhl.CreateTeamUtils.IFreeAgentUtils;
 import dhl.LeagueModel.freeAgents.FreeAgents;
 import org.junit.jupiter.api.Test;
 

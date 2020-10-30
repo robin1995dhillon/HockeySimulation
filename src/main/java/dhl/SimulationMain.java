@@ -1,16 +1,17 @@
 package dhl;
 
-import dhl.CreateTeamUtils.*;
 import dhl.InOut.*;
 import dhl.LeagueModel.*;
 import dhl.Creator.TeamCreator;
 import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.LeagueModel.players.Players;
+import dhl.Presentation.*;
 import dhl.SimulationStateMachine.LoadTeamState;
 import dhl.SimulationStateMachine.CreateTeamState;
 import dhl.SimulationStateMachine.StateContext;
 import dhl.Validator.Checker;
+import dhl.Validator.IChecker;
 import dhl.Validator.JSONValidator;
 import dhl.Creator.LeagueCreator;
 import org.json.simple.JSONObject;
@@ -52,7 +53,7 @@ public class SimulationMain {
                     System.out.println("We are going to create a team. Please enter the following details: ");
                     System.out.println("Enter Conference Name:");
                     String conferenceName = in.nextLine();
-                    Checker CC = new Checker();
+                    IChecker CC = new Checker();
                     while(CC.ConferenceChecker(conferenceName, ILeague)==false){
                         System.out.println("Invalid input! Please enter the conference you imported:");
                         conferenceName = in.nextLine();
@@ -70,18 +71,26 @@ public class SimulationMain {
                             if (CC.TeamChecker(teamName, ILeague)) {
                                 System.out.println("Here are the general managers:");
                                 ArrayList<String> managerList = ILeague.getGeneralManagers();
-                                IManagerUtils managerUtils = new ManagerUtils();
-                                managerUtils.displayManager(managerList);
+                                IDisplayManagerList managerDisplayer = new DisplayManagerList();
+                                managerDisplayer.displayManager(managerList);
                                 System.out.println("Enter Manager Name: ");
                                 String managerName = in.nextLine();
+                                while(CC.managerChecker(managerList, managerName) == false){
+                                    System.out.println("Invalid input! Please choose one manager from the list:");
+                                    managerName = in.nextLine();
+                                }
                                 ILeague.removeManagerFromList(managerList, managerName);
 
                                 System.out.println("Here are the head coaches:");
                                 ArrayList<IHeadCoach> coachList = ILeague.getCoaches();
-                                ICoachUtils coachUtils = new CoachUtils();
-                                coachUtils.displayCoach(coachList);
+                                IDisplayCoachList coachDisplayer = new DisplayCoachList();
+                                coachDisplayer.displayCoach(coachList);
                                 System.out.println("Enter Head Coach: ");
                                 String coachName = in.nextLine();
+                                while(CC.coachChecker(coachList, coachName) == false){
+                                    System.out.println("Invalid input! Please choose one coach from the list:");
+                                    coachName = in.nextLine();
+                                }
                                 IHeadCoach headCoach = new HeadCoach();
                                 headCoach.getCoachFromList(coachList, coachName);
                                 coachList.remove(headCoach);
@@ -89,34 +98,44 @@ public class SimulationMain {
                                 System.out.println("Please choose your team players, here are the free agents:");
                                 ArrayList<IFreeAgents> freeAgentList = ILeague.getFreeAgents();
                                 ArrayList<IPlayers> playerList = new ArrayList<>();
-                                IFreeAgentUtils freeAgentUtils = new FreeAgentUtils();
-                                freeAgentUtils.displayFreeAgent(freeAgentList);
+                                IDisplayFreeAgentList freeAgentDisplayer = new DisplayFreeAgentList();
                                 System.out.println("Please choose two goalies: ");
-                                for(int i = 0; i < 2; i++){
+                                for(int i = 0; i < 2;){
+                                    freeAgentDisplayer.displayFreeAgent(freeAgentList);
                                     System.out.println("Enter Player Name: ");
                                     String playerName = in.nextLine();
+                                    while(CC.freeAgentChecker(freeAgentList, playerName) == false){
+                                        System.out.println("Invalid input! Please choose one free agent from the list:");
+                                        playerName = in.nextLine();
+                                    }
                                     IFreeAgents freeAgent = new FreeAgents();
-                                    freeAgent.getFreeAgentFromList(freeAgentList, playerName);
+                                    freeAgent = freeAgent.getFreeAgentFromList(freeAgentList, playerName);
                                     if(freeAgent.checkPosition("goalie")){
                                         IPlayers player = new Players();
                                         player.convertFreeAgentToPlayer(freeAgent);
                                         playerList.add(player);
                                         freeAgentList.remove(freeAgent);
+                                        i++;
                                     } else{
                                         System.out.println("You need to pick a goalie!");
                                     }
                                 }
                                 System.out.println("Please choose eighteen skaters(forward and defense):");
-                                for(int i = 0; i < 18; i++){
+                                for(int i = 0; i < 18;){
                                     System.out.println("Enter Player Name: ");
                                     String playerName = in.nextLine();
+                                    while(CC.freeAgentChecker(freeAgentList, playerName) == false){
+                                        System.out.println("Invalid input! Please choose one free agent from the list:");
+                                        playerName = in.nextLine();
+                                    }
                                     IFreeAgents freeAgent = new FreeAgents();
-                                    freeAgent.getFreeAgentFromList(freeAgentList, playerName);
+                                    freeAgent = freeAgent.getFreeAgentFromList(freeAgentList, playerName);
                                     if(freeAgent.checkPosition("forward") || freeAgent.checkPosition("defense")){
                                         IPlayers player = new Players();
                                         player.convertFreeAgentToPlayer(freeAgent);
                                         playerList.add(player);
                                         freeAgentList.remove(freeAgent);
+                                        i++;
                                     } else {
                                         System.out.println("You need to pick a forward or defense!");
                                     }
