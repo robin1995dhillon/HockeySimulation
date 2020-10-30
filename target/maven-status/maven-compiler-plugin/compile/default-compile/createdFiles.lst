@@ -1,19 +1,13 @@
 dhl\InternalStateMachine\PersistState.class
 dhl\Database\CreateLeague.class
 dhl\InternalStateMachine\CreateStanleyPlayoffsState.class
-<<<<<<< HEAD
-=======
 dhl\LeagueModel\conference\Conference.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\InternalStateMachine\INestedState.class
 dhl\Trade\PlayerTradingCondition.class
 dhl\Database\CreateFreeAgent.class
 dhl\InternalStateMachine\NestedSimulationState.class
 dhl\LeagueModel\ITeamDB.class
-<<<<<<< HEAD
-=======
 dhl\LeagueModel\division\IDivisionPersistence.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\Mock\MockLeague.class
 dhl\Database\IConnect.class
 dhl\CreateTeamUtils\FreeAgentUtils.class
@@ -28,14 +22,9 @@ dhl\Database\CreateDHLTable.class
 dhl\gamePlayConfig\Aging.class
 dhl\InternalStateMachine\AdvanceToNextSeasonState.class
 dhl\gamePlayConfig\IGameResolver.class
-<<<<<<< HEAD
-dhl\LeagueModel\FreeAgents.class
-dhl\gamePlayConfig\IAging.class
-=======
 dhl\gamePlayConfig\IAging.class
 dhl\LeagueModel\conference\ConferencePersistence.class
 dhl\LeagueModel\division\Division.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\gamePlayConfig\GameResolver.class
 dhl\Database\CreateCoach.class
 dhl\InternalStateMachine\NestedStateContext.class
@@ -54,20 +43,13 @@ dhl\LeagueModel\teams\Teams.class
 dhl\Trade\FreeAgentList.class
 dhl\LeagueModel\IAllPlayers.class
 dhl\Validator\Validator.class
-<<<<<<< HEAD
-=======
 dhl\LeagueModel\freeAgents\IFreeAgentsPersistence.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\InternalStateMachine\NestedEndState.class
 dhl\Database\ICreateStoredProcedure.class
 dhl\gamePlayConfig\GamePlayConfig.class
 dhl\InOut\IUserInput.class
 dhl\LeagueModel\TeamDB.class
 dhl\StoredProcedure.class
-<<<<<<< HEAD
-dhl\LeagueModel\Conference.class
-=======
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\LeagueModel\IPlayers.class
 dhl\SimulationStateMachine\SimulateLeagueState.class
 dhl\LeagueModel\players\PlayersStrength.class
@@ -79,34 +61,22 @@ dhl\CreateTeamUtils\ICoachUtils.class
 dhl\SimulationStateMachine\StateContext.class
 dhl\Validator\Checker.class
 dhl\CreateTeamUtils\IFreeAgentUtils.class
-<<<<<<< HEAD
-dhl\LeagueModel\League.class
-dhl\InOut\JSONReader.class
-dhl\InternalStateMachine\AdvanceTimeState.class
-=======
 dhl\LeagueModel\headCoach\HeadCoach.class
 dhl\InOut\JSONReader.class
 dhl\InternalStateMachine\AdvanceTimeState.class
 dhl\LeagueModel\division\DivisionPersistence.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\Trade\iFreeAgentListAdd.class
 dhl\Database\CheckTeam.class
 dhl\InternalStateMachine\Scheduler.class
 dhl\SimulationMain.class
 dhl\LeagueModel\IFreeAgents.class
 dhl\Mock\MockJSONObject.class
-<<<<<<< HEAD
-=======
 dhl\LeagueModel\league\League.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\gamePlayConfig\IGamePlayConfig.class
 dhl\Database\CreateConference.class
 dhl\Trade\FreeAgentListDrop.class
 dhl\InternalStateMachine\InjuryCheckState.class
-<<<<<<< HEAD
-=======
 dhl\LeagueModel\conference\IConferencePersistence.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\Mock\MockPlayer.class
 dhl\Database\CheckLeague.class
 dhl\gamePlayConfig\Trading.class
@@ -115,27 +85,16 @@ dhl\InternalStateMachine\SimulateGamesState.class
 dhl\Database\CreatePlayer.class
 dhl\Database\CreateDivision.class
 dhl\Database\CreateTeam.class
-<<<<<<< HEAD
-dhl\Training\PlayerTrainingCondition.class
-dhl\LeagueModel\IHeadCoach.class
-dhl\Validator\JSONValidator.class
-dhl\LeagueModel\Division.class
-=======
 dhl\LeagueModel\freeAgents\FreeAgentsPersistence.class
 dhl\Training\PlayerTrainingCondition.class
 dhl\LeagueModel\IHeadCoach.class
 dhl\Validator\JSONValidator.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\LeagueModel\ILeague.class
 dhl\Database\GetLeague.class
 dhl\InternalStateMachine\TradePlayersState.class
 dhl\SimulationStateMachine\CreateTeamState.class
 dhl\Database\Connect.class
 dhl\InOut\IUserOutput.class
-<<<<<<< HEAD
-dhl\LeagueModel\HeadCoach.class
-=======
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\SimulationStateMachine\IState.class
 dhl\Creator\LeagueCreator.class
 dhl\gamePlayConfig\ITrading.class
@@ -143,9 +102,6 @@ dhl\gamePlayConfig\Training.class
 dhl\InOut\UserOutput.class
 dhl\InternalStateMachine\CreateFullSeasonScheduleState.class
 dhl\InternalStateMachine\NestedStartState.class
-<<<<<<< HEAD
-=======
 dhl\LeagueModel\freeAgents\FreeAgents.class
->>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
 dhl\CreateTeamUtils\ManagerUtils.class
 dhl\Trade\iFreeAgentListDrop.class
