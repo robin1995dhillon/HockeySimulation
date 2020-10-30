@@ -1,8 +1,10 @@
-package dhl.LeagueModel;
+package dhl.LeagueModel.headCoach;
+
+import dhl.LeagueModel.IHeadCoach;
 
 import java.util.List;
 
-public class HeadCoach implements IHeadCoach{
+public class HeadCoach implements IHeadCoach {
 
     String name;
     double skating;

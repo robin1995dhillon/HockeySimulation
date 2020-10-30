@@ -1,5 +1,7 @@
 package dhl.LeagueModel;
 
+import dhl.LeagueModel.division.Division;
+import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.LeagueModel.teams.Teams;
 import org.junit.jupiter.api.Test;
 

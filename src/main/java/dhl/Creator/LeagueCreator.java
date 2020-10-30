@@ -1,11 +1,10 @@
 package dhl.Creator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import dhl.LeagueModel.IConference;
 import dhl.LeagueModel.ILeague;
-import dhl.LeagueModel.League;
+import dhl.LeagueModel.league.League;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;

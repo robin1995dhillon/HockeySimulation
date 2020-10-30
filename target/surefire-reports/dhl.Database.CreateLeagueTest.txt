@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.Database.CreateLeagueTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in dhl.Database.CreateLeagueTest
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in dhl.Database.CreateLeagueTest
+>>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789

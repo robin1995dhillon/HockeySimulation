@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.LeagueModel.FreeAgents2Test
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in dhl.LeagueModel.FreeAgents2Test
+=======
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in dhl.LeagueModel.FreeAgents2Test
+>>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789

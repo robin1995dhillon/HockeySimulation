@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.SimulationStateMachine.CreateTeamStateTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in dhl.SimulationStateMachine.CreateTeamStateTest
+=======
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in dhl.SimulationStateMachine.CreateTeamStateTest
+>>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789

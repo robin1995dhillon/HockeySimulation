@@ -1,6 +1,6 @@
 package dhl.Training;
 
-import dhl.LeagueModel.HeadCoach;
+import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.LeagueModel.IHeadCoach;
 import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.players.Players;

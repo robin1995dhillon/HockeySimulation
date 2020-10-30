@@ -1,8 +1,11 @@
-package dhl.LeagueModel;
+package dhl.LeagueModel.division;
+
+import dhl.LeagueModel.IDivision;
+import dhl.LeagueModel.ITeam2;
 
 import java.util.ArrayList;
 
-public class Division implements IDivision{
+public class Division implements IDivision {
 
 
     String divisionName;

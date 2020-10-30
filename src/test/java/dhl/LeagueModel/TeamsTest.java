@@ -1,12 +1,11 @@
 package dhl.LeagueModel;
 
+import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.LeagueModel.players.Players;
 import dhl.LeagueModel.teams.Teams;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TeamsTest {
 

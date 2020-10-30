@@ -1,6 +1,6 @@
 package dhl.CreateTeamUtils;
 
-import dhl.LeagueModel.HeadCoach;
+import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.LeagueModel.IHeadCoach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.LeagueModel.players.PlayersStrengthTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s - in dhl.LeagueModel.players.PlayersStrengthTest
+=======
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in dhl.LeagueModel.players.PlayersStrengthTest
+>>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789

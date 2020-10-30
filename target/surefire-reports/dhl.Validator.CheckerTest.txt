@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.Validator.CheckerTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in dhl.Validator.CheckerTest
+=======
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in dhl.Validator.CheckerTest
+>>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789

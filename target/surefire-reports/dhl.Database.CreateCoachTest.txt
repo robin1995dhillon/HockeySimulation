@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.Database.CreateCoachTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.78 s - in dhl.Database.CreateCoachTest
+=======
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.249 s - in dhl.Database.CreateCoachTest
+>>>>>>> a6972c74cfe18599d30b79c83e64b6b170125789
