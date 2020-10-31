@@ -15,8 +15,8 @@ public class AddDropPlayers implements IAddDropPlayers{
     @Override
     public void addDropPlayers(ITeam2 team, int totalPlayers) {
 
-        int playersToBeAdded = 0;
-        int playersToBeDropped = 0;
+        int playersToBeAdded;
+        int playersToBeDropped;
 
         if(totalPlayers<20){
             playersToBeAdded = 20 - totalPlayers;

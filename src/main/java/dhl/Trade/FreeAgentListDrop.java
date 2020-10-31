@@ -1,6 +1,5 @@
 package dhl.Trade;
 
-import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.ITeam2;
@@ -16,7 +15,6 @@ import java.util.Scanner;
 class FreeAgentListDrop implements iFreeAgentListDrop{
 
     private PlayersStrength playerStrength;
-    private FreeAgents agents;
     private List<IFreeAgents> availableAgents;
     private Players playerToDrop;
     private TradePrompt prompt;
@@ -24,7 +22,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
 
 
     FreeAgentListDrop(){
-        agents = new FreeAgents();
+
         availableAgents = new ArrayList<>();
         playerToDrop = new Players();
         playerStrength = new PlayersStrength();
@@ -79,8 +77,8 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
     public void dropGoalieAi(List<IPlayers> players, int goalieCount) {
 
         int goaliesToBeDropped =goalieCount - 2;
-        IFreeAgents playerToAgent = new FreeAgents();
-        List<IPlayers> goalieList = new ArrayList<>();
+        IFreeAgents playerToAgent;
+        List<IPlayers> goalieList;
         goalieList = sortedPLayerGoalieList(players,goaliesToBeDropped);
         for(IPlayers p: goalieList){
             players.remove(p);
@@ -124,10 +122,9 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
 
         boolean flag = false;
         Scanner sc = new Scanner(System.in);
-        String playerDropName = "";
-        IFreeAgents playerToAgent = new FreeAgents();
-        List<IPlayers> playerList = new ArrayList<>();
-        List<IFreeAgents> agentList = new ArrayList<>();
+        String playerDropName;
+        IFreeAgents playerToAgent;
+        List<IPlayers> playerList;
 
         playerList = freeAgent.strongestPlayersList(player);
 
@@ -168,10 +165,9 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
         int playersToBeDropped =goalieCount - 2;
         boolean flag = false;
         Scanner sc = new Scanner(System.in);
-        String playerDropName = "";
-        IFreeAgents playerToAgent = new FreeAgents();
-        List<IPlayers> playerList = new ArrayList<>();
-        List<IFreeAgents> agentList = new ArrayList<>();
+        String playerDropName;
+        IFreeAgents playerToAgent;
+        List<IPlayers> playerList;
 
         playerList = freeAgent.strongestPlayersList(player);
 
