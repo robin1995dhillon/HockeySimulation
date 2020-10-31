@@ -18,9 +18,9 @@ public class CreateDivisionTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        ICreateStoredProcedure s = new CreateDivision("Atlantic");
-        s.executeProcedure();
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        ICreateStoredProcedure s = new CreateDivision("Atlantic");
+//        s.executeProcedure();
+//    }
 }

@@ -2,8 +2,10 @@ package dhl.LeagueModel.conference;
 
 import dhl.LeagueModel.IConference;
 import dhl.LeagueModel.IDivision;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Conference implements IConference {
 
@@ -40,5 +42,19 @@ public class Conference implements IConference {
     @Override
     public void setDivisions(ArrayList<IDivision> divisions) {
         this.divisions = divisions;
+    }
+
+    @Override
+    public void saveConference(List<Integer> DhlID) {
+
+        IConferencePersistence conferencePersistence = new ConferencePersistence();
+        System.out.println("Saving Conference: " + this.conferenceName);
+        JSONObject resultObject = conferencePersistence.saveConferenceToDB(this.conferenceName);
+        List<IDivision> divisionArray = this.getDivisions();
+        int conferenceID = (int) resultObject.get("id");
+        DhlID.add(1,conferenceID);
+        for(IDivision d: divisionArray) {
+            d.saveDivision(DhlID);
+        }
     }
 }

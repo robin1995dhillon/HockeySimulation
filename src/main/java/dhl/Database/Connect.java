@@ -23,9 +23,6 @@ public class Connect implements IConnect{
         String url = prop.getProperty("dburl");
         String user = prop.getProperty("dbuser");
         String password = prop.getProperty("dbpass");
-//        String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_1_DEVINT?user=CSCI5308_1_DEVINT_USER&serverTimezone=UTC";
-//        String user = "CSCI5308_1_DEVINT_USER";
-//        String password = "B6D4tje9aC";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
@@ -48,6 +45,16 @@ public class Connect implements IConnect{
     }
 
     @Override
+    public Statement getStatement() {
+        try {
+            return conn.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public ResultSet gerResultSet() {
         return this.rs;
     }
@@ -60,13 +67,7 @@ public class Connect implements IConnect{
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }if(rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }if(conn != null) {
+        } if(conn != null) {
             try {
                 conn.close();
             } catch (SQLException e) {

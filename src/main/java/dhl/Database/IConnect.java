@@ -1,16 +1,16 @@
 package dhl.Database;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public interface IConnect {
-    public Connection getConnection() throws IOException;
-    public CallableStatement getStatement(String sql);
-    public ResultSet gerResultSet();
-    public void closeConnection();
+    Connection getConnection() throws IOException;
+    CallableStatement getStatement(String sql);
+    Statement getStatement();
+    ResultSet gerResultSet();
+    void closeConnection();
 }

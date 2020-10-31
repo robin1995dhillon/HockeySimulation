@@ -14,6 +14,7 @@ public class CreateStanleyPlayoffsState implements INestedState {
     private IUserInput input;
     private IUserOutput output;
     private String stateName;
+    private Scheduler schedule;
     private String nextState;
     private boolean finalDay;
 
@@ -29,7 +30,8 @@ public class CreateStanleyPlayoffsState implements INestedState {
     }
 
     public void forward(NestedStateContext context) {
-        //TODO: Set appropriate context.
+        this.nextState = "TrainingState";
+        context.setState(new TrainingState(league, schedule, timeTracker, currDate, input, output, context));
     }
 
     public void runState() {

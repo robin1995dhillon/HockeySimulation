@@ -29,4 +29,5 @@ public interface ILeague {
     boolean isValid(ILeague league);
     boolean isLeagueNamePresent();
 
+    void storeLeague();
 }

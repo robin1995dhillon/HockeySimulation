@@ -13,16 +13,21 @@ public class LeaguePersistence implements ILeaguePersistence {
     public JSONObject saveLeagueToDB(String leagueName) {
         JSONObject return_obj = new JSONObject();
         System.out.println("entering stored procedure");
-        ICreateStoredProcedure s = new CreateLeague(leagueName);
-        try {
-            s.executeProcedure();
-            int league_id = s.getInsertedId();
-            return_obj.put("Status", true);
-            return_obj.put("id", league_id);
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
+        ICreateStoredProcedure SP = new CreateLeague(leagueName);
+        if(leagueName.isEmpty()) {
             return_obj.put("Status", false);
             return_obj.put("id", null);
+        } else {
+            try {
+                SP.executeProcedure();
+                int league_id = SP.getInsertedId();
+                return_obj.put("Status", true);
+                return_obj.put("id", league_id);
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+                return_obj.put("Status", false);
+                return_obj.put("id", null);
+            }
         }
         return return_obj;
     }
