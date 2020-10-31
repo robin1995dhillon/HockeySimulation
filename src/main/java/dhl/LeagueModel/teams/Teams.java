@@ -16,7 +16,7 @@ public class Teams implements ITeam2 {
     public String generalManager;
     public IHeadCoach headCoach;
     List<IPlayers> players;
-    String teamType;
+    String teamType = "ai";
     int lossPoints;
     double teamStrength;
 

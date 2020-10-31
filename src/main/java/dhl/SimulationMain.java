@@ -145,7 +145,7 @@ public class SimulationMain {
                                 }
 
                                 TeamCreator teamCreator = new TeamCreator();
-                                ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName, playerList);
+                                ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName, "user", playerList);
                                 context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
 
                                 System.out.println("Saving the team. Please wait...");

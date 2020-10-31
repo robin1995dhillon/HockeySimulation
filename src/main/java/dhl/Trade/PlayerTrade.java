@@ -69,5 +69,6 @@ public class PlayerTrade implements IPlayerTrade{
     @Override
     public void TradeUser(ITeam2 offeringTeam, ITeam2 consideringTeam) {
 
+
     }
 }
