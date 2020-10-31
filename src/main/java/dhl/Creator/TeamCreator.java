@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TeamCreator {
 
-    public ILeague createTeam(String ManagerName, IHeadCoach headCoach, ILeague ILeague, String ConferenceName, String DivisionName, String TeamName, String teamType, ArrayList<IPlayers> playerList) {
+    public ILeague createTeam(String ManagerName, IHeadCoach headCoach, ILeague ILeague, String ConferenceName, String DivisionName, String TeamName, ArrayList<IPlayers> playerList, String teamType) {
 
         ArrayList<IConference> Conference;
         ArrayList<IDivision> Divisions;

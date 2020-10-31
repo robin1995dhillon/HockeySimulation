@@ -1,6 +1,5 @@
 package dhl.Database;
 
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,5 +29,4 @@ public class GetLeague implements IGetStoredProcedure{
     public void closeConnection() {
         conn.closeConnection();
     }
-
 }

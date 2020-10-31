@@ -3,6 +3,9 @@ package dhl.Trade;
 import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.ITeam2;
 import dhl.LeagueModel.players.PlayersStrength;
+import dhl.gamePlayConfig.GamePlayConfig;
+import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.gamePlayConfig.Trading;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,10 +14,13 @@ import java.util.List;
 public class StrongestWeakestPlayers implements IStrongestWeakestPlayers{
 
     PlayersStrength playerStrength;
-    private int maxPlayersPerTrade = 2;
+    IGamePlayConfig gamePlayConfig;
+    Trading trading;
 
     StrongestWeakestPlayers(){
         playerStrength = new PlayersStrength();
+        gamePlayConfig = new GamePlayConfig();
+        trading = new Trading();
     }
 
     @Override
@@ -49,6 +55,8 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers{
 
     @Override
     public List<IPlayers> checkWeakestPlayer(ITeam2 tradingTeam) {
+        trading = gamePlayConfig.getTrading();
+        int maxPlayersPerTrade = trading.getMaxPlayersPerTrade();
 
         List<IPlayers> players = new ArrayList<>();
         players = tradingTeam.getPlayers();
