@@ -356,27 +356,6 @@ public class PlayerTradingTest {
         }
     }
 
-
-
-
-
-//    @Test
-//    public void tradeConditionTest(){
-//
-//        ArrayList<ITeam2> team_array = new ArrayList<>();
-//        IHeadCoach h = new HeadCoach();
-//        h.setChecking(0.5);
-//        h.setName("ABC");
-//        h.setSaving(0.4);
-//        h.setShooting(0.7);
-//        h.setSkating(0.3);
-//        ITeam2 t = new Teams("Random1", "Random2", h);
-//        t.setTeamType("ai");
-//        t.setLossPoints(8);
-//
-//
-//    }
-
     @Test
     public void strongestPlayersStrengthTest(){
 
@@ -420,29 +399,4 @@ public class PlayerTradingTest {
 
         assertEquals(2,count);
     }
-
-//    @Test
-//    public void addDropPlayersTest(){
-//
-//        FreeAgentList agentList = new FreeAgentList();
-//        ITeam2 team = new Teams();
-//        List<IPlayers> players = new ArrayList<>();
-//        IPlayers player1 = new Players();
-//        IPlayers player2 = new Players();
-//        int totalPlayers = 19;
-//        int playersToBeAdded = 1;
-//        int playersToBeDropped = 0;
-//
-//
-//        player1.setStrength(4.2);
-//        players.add(player1);
-//
-//        player2.setStrength(4.5);
-//        players.add(player2);
-//
-//        team.setPlayers(players);
-//
-//        agentList.aiAgentListAdd(team,playersToBeAdded);
-//
-//    }
 }

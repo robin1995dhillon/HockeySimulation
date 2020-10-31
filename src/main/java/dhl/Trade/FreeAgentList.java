@@ -54,8 +54,8 @@ public class FreeAgentList implements iFreeAgentListAdd {
     }
 
     public void addSkater(List<IPlayers> player, int playersToBeAdded) {
-        IPlayers agentToPlayer = new Players();
-        List<IFreeAgents> agentList = new ArrayList<>();
+        IPlayers agentToPlayer;
+        List<IFreeAgents> agentList;
         agentList = sortedAgentsSkaterList(playersToBeAdded);
 
         for (IFreeAgents a : agentList) {
@@ -109,10 +109,10 @@ public class FreeAgentList implements iFreeAgentListAdd {
     public void addSkaterUser(List<IPlayers> player, int playersToBeAdded) {
         boolean flag = false;
         Scanner sc = new Scanner(System.in);
-        String agentAddName = "";
-        IPlayers agentToPlayer = new Players();
+        String agentAddName;
+        IPlayers agentToPlayer;
         List<IPlayers> playerList = new ArrayList<>();
-        List<IFreeAgents> agentList = new ArrayList<>();
+        List<IFreeAgents> agentList;
 
         agentList = strongestAgentsList(availableAgents);
 
@@ -154,10 +154,10 @@ public class FreeAgentList implements iFreeAgentListAdd {
     public void addGoalieUser(List<IPlayers> player, int playersToBeAdded) {
         boolean flag = false;
         Scanner sc = new Scanner(System.in);
-        String agentAddName = "";
-        IPlayers agentToPlayer = new Players();
+        String agentAddName;
+        IPlayers agentToPlayer;
         List<IPlayers> playerList = new ArrayList<>();
-        List<IFreeAgents> agentList = new ArrayList<>();
+        List<IFreeAgents> agentList;
 
         agentList = strongestAgentsList(availableAgents);
 
