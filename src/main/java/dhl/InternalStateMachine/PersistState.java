@@ -33,7 +33,6 @@ public class PersistState implements INestedState {
     }
 
     public void runState() {
-
     }
 
     public String getStateName() {
