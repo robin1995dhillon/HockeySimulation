@@ -18,9 +18,9 @@ public class CreateConferenceTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        ICreateStoredProcedure s = new CreateConference("Eastern Conference");
-        s.executeProcedure();
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        ICreateStoredProcedure s = new CreateConference("Eastern Conference");
+//        s.executeProcedure();
+//    }
 }
