@@ -24,6 +24,8 @@ public class LoadLeagueFromDatabase {
             ILeague league = new League();
             ArrayList<IConference> conferenceList = new ArrayList<>();
             ArrayList<IFreeAgents> freeAgentList = new ArrayList<>();
+            ArrayList<IHeadCoach> freeCoachList = new ArrayList<>();
+            ArrayList<String> freeManagerList = new ArrayList<>();
             IGetStoredProcedure getTeam = new GetTeamByName(teamName);
             ResultSet rs = getTeam.executeProcedure();
             while(rs.next()){
@@ -33,20 +35,6 @@ public class LoadLeagueFromDatabase {
                 while(rsLeague.next()){
                     int leagueId = rsLeague.getInt("id");
                     league.setLeagueName(rsLeague.getString("name"));
-
-                    IGetStoredProcedure getFreeAgent = new GetFreeAgent(leagueId);
-                    ResultSet rsFreeAgent = getFreeAgent.executeProcedure();
-                    while(rsFreeAgent.next()){
-                        IFreeAgents freeAgent = new FreeAgents();
-                        freeAgent.setPlayerName(rsFreeAgent.getString("name"));
-                        freeAgent.setPosition(rsFreeAgent.getString("position"));
-                        freeAgent.setSkating(rsFreeAgent.getInt("skating"));
-                        freeAgent.setShooting(rsFreeAgent.getInt("shooting"));
-                        freeAgent.setChecking(rsFreeAgent.getInt("checking"));
-                        freeAgent.setSaving(rsFreeAgent.getInt("saving"));
-                        freeAgentList.add(freeAgent);
-                    }
-                    league.setFreeAgents(freeAgentList);
 
                     IGetStoredProcedure getConference = new GetAllConferenceInLeague(leagueId);
                     ResultSet rsConference = getConference.executeProcedure();
@@ -112,6 +100,41 @@ public class LoadLeagueFromDatabase {
                         conferenceList.add(conference);
                     }
                     league.setConferences(conferenceList);
+
+                    IGetStoredProcedure getFreeAgent = new GetFreeAgent(leagueId);
+                    ResultSet rsFreeAgent = getFreeAgent.executeProcedure();
+                    while(rsFreeAgent.next()){
+                        IFreeAgents freeAgent = new FreeAgents();
+                        freeAgent.setPlayerName(rsFreeAgent.getString("name"));
+                        freeAgent.setPosition(rsFreeAgent.getString("position"));
+                        freeAgent.setSkating(rsFreeAgent.getInt("skating"));
+                        freeAgent.setShooting(rsFreeAgent.getInt("shooting"));
+                        freeAgent.setChecking(rsFreeAgent.getInt("checking"));
+                        freeAgent.setSaving(rsFreeAgent.getInt("saving"));
+                        freeAgentList.add(freeAgent);
+                    }
+                    league.setFreeAgents(freeAgentList);
+
+                    IGetStoredProcedure getFreeCoach = new GetFreeCoach(leagueId);
+                    ResultSet rsFreeCoach = getFreeCoach.executeProcedure();
+                    while(rsFreeCoach.next()){
+                        IHeadCoach freeCoach = new HeadCoach();
+                        freeCoach.setName(rsFreeCoach.getString("name"));
+                        freeCoach.setSkating(rsFreeCoach.getDouble("skating"));
+                        freeCoach.setShooting(rsFreeCoach.getDouble("shooting"));
+                        freeCoach.setChecking(rsFreeCoach.getDouble("checking"));
+                        freeCoach.setSaving(rsFreeCoach.getDouble("saving"));
+                        freeCoachList.add(freeCoach);
+                    }
+                    league.setHeadCoach(freeCoachList);
+
+//                    IGetStoredProcedure getFreeManager = new GetFreeManager(leagueId);
+//                    ResultSet rsFreeManager = getFreeManager.executeProcedure();
+//                    while(rsFreeManager.next()){
+//                        String freeManager = rsFreeManager.getString("name");
+//                        freeManagerList.add(freeManager);
+//                    }
+//                    league.setManager(freeManagerList);
                     return league;
                 }
             }
