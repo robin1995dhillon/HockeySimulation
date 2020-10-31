@@ -5,21 +5,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetTeamByName implements IGetStoredProcedure{
+public class GetTeamById implements IGetStoredProcedure{
     private String procedureName;
-    private String name;
+    private int id;
     private IConnect conn;
 
-    public GetTeamByName(String name){
-        this.procedureName = "get_team_by_name";
-        this.name = name;
+    public GetTeamById(int id){
+        this.procedureName = "get_team_by_id";
+        this.id = id;
         this.conn = new Connect();
     }
 
     @Override
     public ResultSet executeProcedure() throws SQLException, IOException {
         conn.getConnection();
-        String sql = "{CALL " + this.procedureName + "('" + this.name + "')}";
+        String sql = "{CALL " + this.procedureName + "(" + this.id + ")}";
         Statement stmt = conn.getStatement();
         ResultSet rs = stmt.executeQuery(sql);
         return rs;
