@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dhl.Database.CreateFreeAgentTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.708 s <<< FAILURE! - in dhl.Database.CreateFreeAgentTest
-dhl.Database.CreateFreeAgentTest.executeProcedureTest  Time elapsed: 2.702 s  <<< ERROR!
-java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`CSCI5308_1_DEVINT`.`free_agent`, CONSTRAINT `fk_free_agent_league` FOREIGN KEY (`league_id`) REFERENCES `league` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-	at dhl.Database.CreateFreeAgentTest.executeProcedureTest(CreateFreeAgentTest.java:24)
-

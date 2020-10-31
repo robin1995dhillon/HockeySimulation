@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dhl.Database.CreateTeamTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.698 s <<< FAILURE! - in dhl.Database.CreateTeamTest
-dhl.Database.CreateTeamTest.executeProcedureTest  Time elapsed: 2.69 s  <<< ERROR!
-java.sql.SQLSyntaxErrorException: Unknown column 'head_coach' in 'field list'
-	at dhl.Database.CreateTeamTest.executeProcedureTest(CreateTeamTest.java:24)
-

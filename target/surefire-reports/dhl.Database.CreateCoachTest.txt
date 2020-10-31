@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dhl.Database.CreateCoachTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.753 s <<< FAILURE! - in dhl.Database.CreateCoachTest
-dhl.Database.CreateCoachTest.executeProcedureTest  Time elapsed: 2.737 s  <<< ERROR!
-java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`CSCI5308_1_DEVINT`.`coach`, CONSTRAINT `fk_coach_team` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-	at dhl.Database.CreateCoachTest.executeProcedureTest(CreateCoachTest.java:24)
-
