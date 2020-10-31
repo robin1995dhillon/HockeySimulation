@@ -18,13 +18,13 @@ public class CheckTeamTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        ICheckStoredProcedure s = new CheckTeam("abc");
-        s.executeProcedure();
-        assertTrue(s.getExist());
-        ICheckStoredProcedure s1 = new CheckTeam("asdfghjkl");
-        s1.executeProcedure();
-        assertFalse(s1.getExist());
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        ICheckStoredProcedure s = new CheckTeam("abc");
+//        s.executeProcedure();
+//        assertTrue(s.getExist());
+//        ICheckStoredProcedure s1 = new CheckTeam("asdfghjkl");
+//        s1.executeProcedure();
+//        assertFalse(s1.getExist());
+//    }
 }

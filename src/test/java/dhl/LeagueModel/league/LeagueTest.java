@@ -91,4 +91,68 @@ class LeagueTest {
     void storeLeague() {
 
     }
+
+    @Test
+    void testGetConferences() {
+    }
+
+    @Test
+    void testSetConferences() {
+    }
+
+    @Test
+    void testGetLeagueName() {
+    }
+
+    @Test
+    void testSetLeagueName() {
+    }
+
+    @Test
+    void testGetFreeAgents() {
+    }
+
+    @Test
+    void testGetGeneralManagers() {
+    }
+
+    @Test
+    void testGetCoaches() {
+    }
+
+    @Test
+    void testRemoveManagerFromList() {
+    }
+
+    @Test
+    void testSetFreeAgents() {
+    }
+
+    @Test
+    void testSetHeadCoach() {
+    }
+
+    @Test
+    void testSetGeneralManager() {
+    }
+
+    @Test
+    void testGetGameplayConfig() {
+    }
+
+    @Test
+    void testSetGameplayConfig() {
+    }
+
+    @Test
+    void testIsValid() {
+    }
+
+    @Test
+    void testIsLeagueNamePresent() {
+    }
+
+    @Test
+    void testStoreLeague() {
+    }
 }

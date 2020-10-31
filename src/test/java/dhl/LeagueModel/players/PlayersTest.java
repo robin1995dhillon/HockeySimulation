@@ -156,4 +156,140 @@ class PlayersTest {
         assertEquals(agent.getStrength(),5.6);
 
     }
+
+    @Test
+    void getPlayerName() {
+    }
+
+    @Test
+    void setPlayerName() {
+    }
+
+    @Test
+    void getPosition() {
+    }
+
+    @Test
+    void setPosition() {
+    }
+
+    @Test
+    void getCaptain() {
+    }
+
+    @Test
+    void setCaptain() {
+    }
+
+    @Test
+    void getAge() {
+    }
+
+    @Test
+    void setAge() {
+    }
+
+    @Test
+    void getSkating() {
+    }
+
+    @Test
+    void setSkating() {
+    }
+
+    @Test
+    void getShooting() {
+    }
+
+    @Test
+    void setShooting() {
+    }
+
+    @Test
+    void getChecking() {
+    }
+
+    @Test
+    void setChecking() {
+    }
+
+    @Test
+    void getSaving() {
+    }
+
+    @Test
+    void setSaving() {
+    }
+
+    @Test
+    void getStrength() {
+    }
+
+    @Test
+    void setStrength() {
+    }
+
+    @Test
+    void getDaysToAge() {
+    }
+
+    @Test
+    void setDaysToAge() {
+    }
+
+    @Test
+    void isRetired() {
+    }
+
+    @Test
+    void setRetired() {
+    }
+
+    @Test
+    void getInjuredDays() {
+    }
+
+    @Test
+    void setInjuredDays() {
+    }
+
+    @Test
+    void isInjured() {
+    }
+
+    @Test
+    void setInjured() {
+    }
+
+    @Test
+    void testAgePlayer() {
+    }
+
+    @Test
+    void checkIfRetired() {
+    }
+
+    @Test
+    void testReplacePlayerWithFreeAgent() {
+    }
+
+    @Test
+    void testCheckForPlayerInjury() {
+    }
+
+    @Test
+    void testPlayerStillInjured() {
+    }
+
+    @Test
+    void convertFreeAgentToPlayer() {
+    }
+
+    @Test
+    void convertPlayerToFreeAgent() {
+    }
+
+    @Test
+    void savePlayer() {
+    }
 }
