@@ -5,13 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetLeague implements IGetStoredProcedure{
+public class GetCoach implements IGetStoredProcedure{
     private String procedureName;
     private int id;
     private IConnect conn;
 
-    public GetLeague(int id){
-        this.procedureName = "get_league";
+    public GetCoach(int id){
+        this.procedureName = "get_coach";
         this.id = id;
         this.conn = new Connect();
     }
