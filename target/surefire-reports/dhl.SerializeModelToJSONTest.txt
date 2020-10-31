@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: dhl.SerializeModelToJSONTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.45 s - in dhl.SerializeModelToJSONTest
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.296 s - in dhl.SerializeModelToJSONTest
->>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.303 s - in dhl.SerializeModelToJSONTest

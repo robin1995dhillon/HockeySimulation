@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: dhl.Database.GetLeagueTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.208 s - in dhl.Database.GetLeagueTest
-=======
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.536 s - in dhl.Database.GetLeagueTest
->>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.875 s <<< FAILURE! - in dhl.Database.GetLeagueTest
+dhl.Database.GetLeagueTest.executeProcedureTest  Time elapsed: 2.866 s  <<< ERROR!
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect integer value: 'DHL' for column ``.``.`league_id` at row 2
+	at dhl.Database.GetLeagueTest.executeProcedureTest(GetLeagueTest.java:25)
+

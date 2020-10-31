@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: dhl.LeagueModel.TeamsTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in dhl.LeagueModel.TeamsTest
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s - in dhl.LeagueModel.TeamsTest
->>>>>>> 12b4fd2a3a26113131c39b6520480bb49b177711
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s - in dhl.LeagueModel.TeamsTest
