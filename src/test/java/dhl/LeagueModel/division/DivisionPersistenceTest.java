@@ -14,10 +14,4 @@ class DivisionPersistenceTest {
         assertEquals(true, resultObject.get("Status"));
     }
 
-//    @Test
-//    void saveDivisionToDBFail() {
-//        IDivisionPersistence divisionPersistence = new DivisionPersistence();
-//        JSONObject resultObject = divisionPersistence.saveDivisionToDB("Atlantic!");
-//        assertEquals(false, resultObject.get("Status"));
-//    }
 }

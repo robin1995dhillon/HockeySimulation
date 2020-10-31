@@ -6,6 +6,7 @@ import dhl.LeagueModel.IPlayers;
 import dhl.gamePlayConfig.Aging;
 import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.gamePlayConfig.Injuries;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -253,12 +254,13 @@ public class Players implements IPlayers {
 
     @Override
     public void checkForPlayerInjury(IPlayers player) {
-        double randomInjuryChance = 0.05;
-        int injuryDaysLow = 1;
-        int injuryDaysHigh = 260;
+        IGamePlayConfig gamePlayConfig = new GamePlayConfig();
+        Injuries injuries = gamePlayConfig.getInjuries();
 
+        double randomInjuryChance = injuries.getRandomInjuryChance();
+        int injuryDaysLow = injuries.getInjuryDaysLow();
+        int injuryDaysHigh = injuries.getInjuryDaysHigh();
         double endRange = randomInjuryChance * 100;
-        System.out.println(endRange);
         int randomNumber = ThreadLocalRandom.current().nextInt(0,101);
         if(randomNumber <= endRange) {
             player.setInjured(true);
