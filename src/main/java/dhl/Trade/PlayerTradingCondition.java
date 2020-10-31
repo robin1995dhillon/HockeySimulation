@@ -4,6 +4,10 @@ import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.ITeam2;
 import dhl.LeagueModel.players.PlayersStrength;
 import dhl.Presentation.TradePrompt;
+import dhl.gamePlayConfig.GamePlayConfig;
+import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.gamePlayConfig.ITrading;
+import dhl.gamePlayConfig.Trading;
 
 import java.util.*;
 
@@ -12,8 +16,8 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
 
     PlayersStrength playerStrength;
     StrongestWeakestPlayers strongestWeakestPlayers;
-    private int lossPoints = 8;
-    private double randomTradeOfferChance=0.05;
+    ITrading trading;
+    IGamePlayConfig gamePlayConfig;
     private double strongestPlayersStrength=0.0;
     private String positionToTrade = "";
     private List<IPlayers> offeringTeamPlayers;
@@ -30,6 +34,8 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
         playerStrength = new PlayersStrength();
         strongestWeakestPlayers = new StrongestWeakestPlayers();
         playerTrade = new PlayerTrade();
+        trading = new Trading();
+        gamePlayConfig = new GamePlayConfig();
     }
 
     @Override
@@ -48,7 +54,9 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
 
     @Override
     public void tradeCondition(List<ITeam2> allTeams){
-
+        trading = gamePlayConfig.getTrading();
+        int lossPoints = trading.getLossPoint();
+        double randomTradeOfferChance = trading.getRandomTradeOfferChance();
         for(int i = 0;i < allTeams.size();i++){
 
                     if(allTeams.get(i).getTeamType().toLowerCase().equals("ai") && allTeams.get(i).getLossPoints() ==lossPoints){

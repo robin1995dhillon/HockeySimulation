@@ -3,10 +3,7 @@ package dhl.LeagueModel.players;
 import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
-import dhl.gamePlayConfig.Aging;
-import dhl.gamePlayConfig.GamePlayConfig;
-import dhl.gamePlayConfig.IGamePlayConfig;
-import dhl.gamePlayConfig.Injuries;
+import dhl.gamePlayConfig.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

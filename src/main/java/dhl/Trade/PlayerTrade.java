@@ -2,6 +2,9 @@ package dhl.Trade;
 
 import dhl.LeagueModel.IPlayers;
 import dhl.LeagueModel.ITeam2;
+import dhl.gamePlayConfig.GamePlayConfig;
+import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.gamePlayConfig.Trading;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +14,8 @@ public class PlayerTrade implements IPlayerTrade{
     List<IPlayers> offeringTeamPositionPlayers;
     List<IPlayers> consideringTeamPlayers;
     List<IPlayers> offeringTeamPlayers;
+    IGamePlayConfig gamePlayConfig;
+    Trading trading;
     private AddDropPlayers addDrop;
     private double randomAcceptanceChance = 0.05;
     private int maxPlayersPerTrade = 2;
@@ -20,6 +25,8 @@ public class PlayerTrade implements IPlayerTrade{
         consideringTeamPlayers = new ArrayList<>();
         offeringTeamPositionPlayers = new ArrayList<>();
         addDrop = new AddDropPlayers();
+        gamePlayConfig = new GamePlayConfig();
+        trading = new Trading();
     }
 
     @Override
@@ -33,6 +40,8 @@ public class PlayerTrade implements IPlayerTrade{
 
     @Override
     public void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam) {
+        trading = gamePlayConfig.getTrading();
+        double randomAcceptanceChance = trading.getRandomAcceptanceChance();
         int count = 0;
         int totalPlayersOfOfferingTeam = 0;
         int totalPlayersOfConsideringTeam = 0;
