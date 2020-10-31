@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TeamPersistenceTest {
 
-    @Test
-    void saveTeamToDB() {
-        ITeamPersistence teamPersistence = new TeamPersistence();
-        JSONObject resultObject = teamPersistence.saveTeamToDB("Team1", "Manager1", "Coach1");
-        assertEquals(true,resultObject.get("Status"));
-    }
+//    @Test
+//    void saveTeamToDB() {
+//        ITeamPersistence teamPersistence = new TeamPersistence();
+//        JSONObject resultObject = teamPersistence.saveTeamToDB("Team1", "Manager1", "Coach1");
+//        assertEquals(true,resultObject.get("Status"));
+//    }
 }
