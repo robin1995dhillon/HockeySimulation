@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: dhl.Database.CreateDHLTableTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.702 s <<< FAILURE! - in dhl.Database.CreateDHLTableTest
+dhl.Database.CreateDHLTableTest.executeProcedureTest  Time elapsed: 2.69 s  <<< ERROR!
+java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`CSCI5308_1_DEVINT`.`DHL_fall_table`, CONSTRAINT `fk_DHL_league` FOREIGN KEY (`league_id`) REFERENCES `league` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+	at dhl.Database.CreateDHLTableTest.executeProcedureTest(CreateDHLTableTest.java:23)
+

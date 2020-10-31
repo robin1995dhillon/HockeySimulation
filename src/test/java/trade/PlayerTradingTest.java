@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class PlayerTradingConditionTest {
+public class PlayerTradingTest {
 
     @Test
     public void strengthTestForward(){
