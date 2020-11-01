@@ -1,5 +1,6 @@
 package dhl.trade;
 
+import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.ITeam;
@@ -19,6 +20,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
     private List<IFreeAgents> availableAgents;
     private Players playerToAdd;
     private TradePrompt prompt;
+    private UserOutput userOutput;
 
 
     public FreeAgentList() {
@@ -27,6 +29,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
         playerToAdd = new Players();
         playerStrength = new PlayersStrength();
         prompt = new TradePrompt();
+        userOutput = new UserOutput();
     }
 
     @Override
@@ -124,13 +127,15 @@ public class FreeAgentList implements iFreeAgentListAdd {
         prompt.userAcceptRejectTrade(playerList);
 
         while (playersToBeAdded != 0) {
-            System.out.println("Enter Free Agent name To add");
+             userOutput.setOutput("Enter Free Agent name To add");
+             userOutput.sendOutput();
             agentAddName = sc.nextLine();
 
             for(IFreeAgents a: agentList) {
                 if(a.getPlayerName().equalsIgnoreCase(agentAddName)) {
                     if(a.getPosition().equalsIgnoreCase("goalie")){
-                        System.out.println("Cannot select goalie");
+                        userOutput.setOutput("Cannot select goalie");
+                        userOutput.sendOutput();
                         continue;
                     }
                     agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
@@ -146,7 +151,8 @@ public class FreeAgentList implements iFreeAgentListAdd {
                 }
             }
             if(flag){
-                System.out.println("invalid! try again");
+                userOutput.setOutput("invalid! try again");
+                userOutput.sendOutput();
             }
         }
     }
@@ -169,7 +175,8 @@ public class FreeAgentList implements iFreeAgentListAdd {
         prompt.userAcceptRejectTrade(playerList);
 
         while (playersToBeAdded != 0) {
-            System.out.println("Enter Free Agent name To add");
+            userOutput.setOutput("Enter Free Agent name To add");
+            userOutput.sendOutput();
             agentAddName = sc.nextLine();
 
             for(IFreeAgents a: agentList) {
@@ -190,7 +197,8 @@ public class FreeAgentList implements iFreeAgentListAdd {
                 }
             }
             if(flag){
-                System.out.println("invalid! try again");
+                userOutput.setOutput("invalid! try again");
+                userOutput.sendOutput();
             }
         }
 

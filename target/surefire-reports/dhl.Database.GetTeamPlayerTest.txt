@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: dhl.Database.GetTeamPlayerTest
+Test set: dhl.database.GetTeamPlayerTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.782 s - in dhl.Database.GetTeamPlayerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.75 s - in dhl.database.GetTeamPlayerTest

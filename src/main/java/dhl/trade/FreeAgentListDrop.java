@@ -1,5 +1,6 @@
 package dhl.trade;
 
+import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.ITeam;
@@ -19,6 +20,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
     private Players playerToDrop;
     private TradePrompt prompt;
     private FreeAgentList freeAgent;
+    private UserOutput userOutput;
 
 
     FreeAgentListDrop(){
@@ -28,6 +30,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
         playerStrength = new PlayersStrength();
         prompt = new TradePrompt();
         freeAgent = new FreeAgentList();
+        userOutput = new UserOutput();
     }
 
     @Override
@@ -131,13 +134,15 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
         prompt.userAcceptRejectTrade(playerList);
 
         while (playersToBeDropped != 0) {
-            System.out.println("Enter Player name To drop");
+            userOutput.setOutput("Enter Player name To drop");
+            userOutput.sendOutput();
             playerDropName = sc.nextLine();
 
             for (IPlayers p : playerList) {
                 if(p.getPlayerName().equalsIgnoreCase(playerDropName)) {
                 if (p.getPosition().equalsIgnoreCase("goalie")) {
-                    System.out.println("Cannot select goalie");
+                    userOutput.setOutput("Cannot select goalie");
+                    userOutput.sendOutput();
                     flag = true;
 
                 } else {
@@ -152,7 +157,8 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
             }
 
         if (flag) {
-            System.out.println("invalid! try again");
+            userOutput.setOutput("invalid! try again");
+            userOutput.sendOutput();
         }
     }
         sc.close();
@@ -174,7 +180,8 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
         prompt.userAcceptRejectTrade(playerList);
 
         while (playersToBeDropped != 0) {
-            System.out.println("Enter Player name To drop");
+            userOutput.setOutput("Enter Player name To drop");
+            userOutput.sendOutput();
             playerDropName = sc.nextLine();
 
             for (IPlayers p : playerList) {
@@ -196,7 +203,8 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
 
 
             if (flag) {
-                System.out.println("invalid! try again");
+                userOutput.setOutput("invalid! try again");
+                userOutput.sendOutput();
             }
         }
 

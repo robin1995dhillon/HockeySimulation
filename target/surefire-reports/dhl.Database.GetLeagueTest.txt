@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: dhl.Database.GetLeagueTest
+Test set: dhl.database.GetLeagueTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.854 s - in dhl.Database.GetLeagueTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.901 s - in dhl.database.GetLeagueTest

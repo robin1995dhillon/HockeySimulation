@@ -1,5 +1,6 @@
 package dhl.trade;
 
+import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.ITeam;
 import dhl.presentation.TradePrompt;
@@ -21,6 +22,7 @@ public class PlayerTrade implements IPlayerTrade{
     ITrading trading;
     private AddDropPlayers addDrop;
     TradePrompt prompt;
+    private UserOutput userOutput;
 
     PlayerTrade(){
         offeringTeamPlayers = new ArrayList<>();
@@ -30,6 +32,7 @@ public class PlayerTrade implements IPlayerTrade{
         gamePlayConfig = new GamePlayConfig();
         trading = new Trading();
         prompt = new TradePrompt();
+        userOutput = new UserOutput();
     }
 
     @Override
@@ -55,10 +58,12 @@ public class PlayerTrade implements IPlayerTrade{
             for (IPlayers tradePlayer : consideringTeamPlayers) {
 
                 if (offeredPlayer.getStrength() < tradePlayer.getStrength() && Math.random() < randomAcceptanceChance) {
-                    System.out.println("Rejected");
+                    userOutput.setOutput("Rejected");
+                    userOutput.sendOutput();
                     break outer;
                 } else {
-                    System.out.println("player eligible for trade");
+                    userOutput.setOutput("player eligible for trade");
+                    userOutput.sendOutput();
                     count++;
                 }
             }
@@ -86,13 +91,16 @@ public class PlayerTrade implements IPlayerTrade{
             int totalPlayersOfConsideringTeam;
             String response;
             Scanner sc = new Scanner(System.in);
-            System.out.println("User Players");
+            userOutput.setOutput("User Players");
+            userOutput.sendOutput();
             prompt.userAcceptRejectTrade(consideringTeamPlayers);
-            System.out.println("AI Players");
+            userOutput.setOutput("AI Players");
+            userOutput.sendOutput();
             prompt.userAcceptRejectTrade(offeringTeamPositionPlayers);
 
             while(true) {
-                System.out.println("Do you accept the trade?(y/n)");
+                userOutput.setOutput("Do you accept the trade?(y/n)");
+                userOutput.sendOutput();
                 response = sc.nextLine();
                 if (response.equalsIgnoreCase("y")) {
                     offeringTeam.getPlayers().removeAll(offeringTeamPlayers);
@@ -103,11 +111,13 @@ public class PlayerTrade implements IPlayerTrade{
 
                 }
                 else if (response.equalsIgnoreCase("n")) {
-                    System.out.println("Trade Rejected");
+                    userOutput.setOutput("Trade Rejected");
+                    userOutput.sendOutput();
                     break;
                 }
                 else{
-                    System.out.println("please answer with y or n");
+                    userOutput.setOutput("please answer with y or n");
+                    userOutput.sendOutput();
                 }
             }
             offeringTeam.setLossPoints(0);

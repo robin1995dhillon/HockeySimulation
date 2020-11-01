@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: dhl.LeagueModel.players.PlayersPersistenceTest
+Test set: dhl.leagueModel.players.PlayersPersistenceTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.805 s - in dhl.LeagueModel.players.PlayersPersistenceTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.754 s - in dhl.leagueModel.players.PlayersPersistenceTest

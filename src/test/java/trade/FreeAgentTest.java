@@ -4,6 +4,8 @@ import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.players.Players;
+import dhl.mock.MockFreeAgent;
+import dhl.mock.MockPlayer;
 import dhl.presentation.TradePrompt;
 import dhl.trade.FreeAgentList;
 import org.junit.Test;
@@ -23,53 +25,18 @@ public class FreeAgentTest {
 
         List<IPlayers> players = new ArrayList<>();
         int playersToBeAdded = 1;
-        List<IFreeAgents> availableAgents = new ArrayList<>();
+        List<IFreeAgents> availableAgents = MockFreeAgent.createMockAgentList();
         Players playerToAdd = new Players();
         TradePrompt prompt = new TradePrompt();
-
-        IFreeAgents player1 = new FreeAgents();
-        player1.setPosition("forward");
-        player1.setPlayerName("ABC");
-        player1.setSkating(15);
-        player1.setShooting(12);
-        player1.setChecking(13);
-        player1.setSaving(0);
-        player1.setStrength(9.6);
-
-        IFreeAgents player2 = new FreeAgents();
-        player2.setPosition("forward");
-        player2.setSkating(15);
-        player2.setPlayerName("DEF");
-        player2.setShooting(18);
-        player2.setChecking(12);
-        player2.setSaving(0);
-        player2.setStrength(5.6);
-
-        IFreeAgents player3 = new FreeAgents();
-        player3.setPosition("goalie");
-        player3.setSkating(15);
-        player3.setPlayerName("GHI");
-        player3.setShooting(16);
-        player3.setChecking(17);
-        player3.setSaving(0);
-        player3.setStrength(6.7);
-
-        availableAgents.add(player1);
-        availableAgents.add(player2);
-        availableAgents.add(player3);
-
         String agentAddName = "ABC";
 
-        IPlayers agentToPlayer = new Players();
+        IPlayers agentToPlayer;
         List<IPlayers> playerList = new ArrayList<>();
         List<IFreeAgents> agentList = new ArrayList<>();
-        List<IFreeAgents>expectedAgentList = new ArrayList<>();
+        List<IFreeAgents>expectedAgentList = MockFreeAgent.createMockAgentListExpected();
         List<IFreeAgents>expectedPlayersList = new ArrayList<>();
 
         agentList.addAll(availableAgents);
-        expectedAgentList.add(player2);
-        expectedAgentList.add(player3);
-        expectedPlayersList.add(player1);
 
       agentList = freeAgent.strongestAgentsList(availableAgents);
 
@@ -106,7 +73,8 @@ public class FreeAgentTest {
             }
 
         }
-        assertEquals(expectedAgentList,availableAgents);
+        assertEquals(expectedAgentList.get(0).getPlayerName(),availableAgents.get(0).getPlayerName());
+        assertEquals(expectedAgentList.get(1).getPlayerName(),availableAgents.get(1).getPlayerName());
 
     }
 
@@ -117,54 +85,17 @@ public class FreeAgentTest {
 
         List<IPlayers> players = new ArrayList<>();
         int playersToBeAdded = 1;
-        List<IFreeAgents> availableAgents = new ArrayList<>();
+        List<IFreeAgents> availableAgents = MockFreeAgent.createMockAgentList();
         Players playerToAdd = new Players();
         TradePrompt prompt = new TradePrompt();
-
-        IFreeAgents player1 = new FreeAgents();
-        player1.setPosition("forward");
-        player1.setPlayerName("ABC");
-        player1.setSkating(15);
-        player1.setShooting(12);
-        player1.setChecking(13);
-        player1.setSaving(0);
-        player1.setStrength(9.6);
-
-        IFreeAgents player2 = new FreeAgents();
-        player2.setPosition("forward");
-        player2.setSkating(15);
-        player2.setPlayerName("DEF");
-        player2.setShooting(18);
-        player2.setChecking(12);
-        player2.setSaving(0);
-        player2.setStrength(5.6);
-
-        IFreeAgents player3 = new FreeAgents();
-        player3.setPosition("goalie");
-        player3.setSkating(15);
-        player3.setPlayerName("GHI");
-        player3.setShooting(16);
-        player3.setChecking(17);
-        player3.setSaving(0);
-        player3.setStrength(6.7);
-
-        availableAgents.add(player1);
-        availableAgents.add(player2);
-        availableAgents.add(player3);
-
         String agentAddName = "GHI";
 
-        IPlayers agentToPlayer = new Players();
+        IPlayers agentToPlayer;
         List<IPlayers> playerList = new ArrayList<>();
         List<IFreeAgents> agentList = new ArrayList<>();
-        List<IFreeAgents>expectedAgentList = new ArrayList<>();
-        List<IFreeAgents>expectedPlayersList = new ArrayList<>();
+        List<IFreeAgents>expectedAgentList = MockFreeAgent.createMockAgentGoalieListExpected();
 
         agentList.addAll(availableAgents);
-
-        expectedAgentList.add(player2);
-        expectedAgentList.add(player1);
-
 
         agentList = freeAgent.strongestAgentsList(availableAgents);
 
@@ -197,7 +128,8 @@ public class FreeAgentTest {
                 System.out.println("Invalid! try again");
             }
         }
-        assertEquals(expectedAgentList,availableAgents);
+        assertEquals(expectedAgentList.get(0).getPlayerName(),availableAgents.get(0).getPlayerName());
+        assertEquals(expectedAgentList.get(1).getPlayerName(),availableAgents.get(1).getPlayerName());
     }
 
     @Test
@@ -206,33 +138,11 @@ public class FreeAgentTest {
         int playersToBeAdded = 1;
         List<IPlayers> player = new ArrayList<>();
         Players playerToAdd = new Players();
-        List<IFreeAgents> availableAgents = new ArrayList<>();
+        List<IFreeAgents> availableAgents = MockFreeAgent.createMockAgentList();
         List<IFreeAgents> agentSkaterList = new ArrayList<>();
         IPlayers agentToPlayer;
         List<IFreeAgents> agentList;
-        List<IFreeAgents> expectedAgents = new ArrayList<>();
-
-        IFreeAgents player1 = new FreeAgents();
-        player1.setPosition("forward");
-        player1.setPlayerName("ABC");
-        player1.setStrength(9.6);
-
-        IFreeAgents player2 = new FreeAgents();
-        player2.setPosition("forward");
-        player2.setPlayerName("DEF");
-        player2.setStrength(5.6);
-
-        IFreeAgents player3 = new FreeAgents();
-        player3.setPosition("goalie");
-        player3.setPlayerName("GHI");
-        player3.setStrength(6.7);
-
-        availableAgents.add(player1);
-        availableAgents.add(player2);
-        availableAgents.add(player3);
-
-        expectedAgents.add(player2);
-        expectedAgents.add(player3);
+        List<IFreeAgents> expectedAgents = MockFreeAgent.createMockAgentListExpected();
 
         for(IFreeAgents a:availableAgents){
             if (a.getPosition().equalsIgnoreCase("goalie")) {
@@ -242,19 +152,8 @@ public class FreeAgentTest {
             }
         }
 
-        for(IFreeAgents a:agentSkaterList){
-            System.out.println(a.getPlayerName());
-        }
-        System.out.println("--------------------------------------------");
-
         agentSkaterList.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(),p2.getStrength())));
         agentList = agentSkaterList.subList(0, playersToBeAdded);
-
-
-        for(IFreeAgents a:agentList){
-            System.out.println(a.getPlayerName());
-        }
-        System.out.println("--------------------------------------------");
 
        for (IFreeAgents a : agentList) {
             agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
@@ -262,7 +161,8 @@ public class FreeAgentTest {
             availableAgents.remove(a);
         }
 
-       assertEquals(expectedAgents,availableAgents);
+       assertEquals(expectedAgents.get(0).getPlayerName(),availableAgents.get(0).getPlayerName());
+       assertEquals(expectedAgents.get(0).getPlayerName(),availableAgents.get(0).getPlayerName());
     }
 
     @Test
@@ -271,33 +171,11 @@ public class FreeAgentTest {
         int goaliesToBeAdded = 1;
         List<IPlayers> player = new ArrayList<>();
         Players playerToAdd = new Players();
-        List<IFreeAgents> availableAgents = new ArrayList<>();
+        List<IFreeAgents> availableAgents = MockFreeAgent.createMockAgentList();
         List<IFreeAgents> agentGoalieList = new ArrayList<>();
         IPlayers agentToPlayer;
         List<IFreeAgents> agentList;
-        List<IFreeAgents> expectedAgents = new ArrayList<>();
-
-        IFreeAgents player1 = new FreeAgents();
-        player1.setPosition("forward");
-        player1.setPlayerName("ABC");
-        player1.setStrength(9.6);
-
-        IFreeAgents player2 = new FreeAgents();
-        player2.setPosition("goalie");
-        player2.setPlayerName("DEF");
-        player2.setStrength(5.6);
-
-        IFreeAgents player3 = new FreeAgents();
-        player3.setPosition("goalie");
-        player3.setPlayerName("GHI");
-        player3.setStrength(6.7);
-
-        availableAgents.add(player1);
-        availableAgents.add(player2);
-        availableAgents.add(player3);
-
-        expectedAgents.add(player1);
-        expectedAgents.add(player2);
+        List<IFreeAgents> expectedAgents = MockFreeAgent.createMockAgentGoalieListExpected();
 
         for(IFreeAgents a:availableAgents){
             if (a.getPosition().equalsIgnoreCase("goalie")) {
@@ -314,33 +192,15 @@ public class FreeAgentTest {
             availableAgents.remove(a);
         }
 
-        assertEquals(expectedAgents,availableAgents);
+        assertEquals(expectedAgents.get(1).getPlayerName(),availableAgents.get(0).getPlayerName());
+        assertEquals(expectedAgents.get(0).getPlayerName(),availableAgents.get(1).getPlayerName());
     }
 
     @Test
     public void checkPlayerInListTest() {
 
-        List<IPlayers> availablePlayers = new ArrayList<>();
+        List<IPlayers> availablePlayers = MockPlayer.createMockPlayerList();
         String player = "";
-
-        IPlayers player1 = new Players();
-        player1.setPosition("forward");
-        player1.setPlayerName("ABC");
-        player1.setStrength(9.6);
-
-        IPlayers player2 = new Players();
-        player2.setPosition("goalie");
-        player2.setPlayerName("DEF");
-        player2.setStrength(5.6);
-
-        IPlayers player3 = new Players();
-        player3.setPosition("goalie");
-        player3.setPlayerName("GHI");
-        player3.setStrength(6.7);
-
-        availablePlayers.add(player1);
-        availablePlayers.add(player2);
-        availablePlayers.add(player3);
 
         for (IPlayers p : availablePlayers) {
             if (p.getPlayerName().equalsIgnoreCase("ABC")) {
@@ -351,69 +211,21 @@ public class FreeAgentTest {
     }
 
     @Test
-    public void strongestAgentsListTest(){
-        List<IFreeAgents> list = new ArrayList<>();
-        List<IFreeAgents> expectedList = new ArrayList<>();
-
-        IFreeAgents player1 = new FreeAgents();
-        player1.setPosition("forward");
-        player1.setPlayerName("ABC");
-        player1.setStrength(9.6);
-
-        IFreeAgents player2 = new FreeAgents();
-        player2.setPosition("goalie");
-        player2.setPlayerName("DEF");
-        player2.setStrength(5.6);
-
-        IFreeAgents player3 = new FreeAgents();
-        player3.setPosition("goalie");
-        player3.setPlayerName("GHI");
-        player3.setStrength(6.7);
-
-        list.add(player1);
-        list.add(player2);
-        list.add(player3);
-
-        expectedList.add(player1);
-        expectedList.add(player3);
-        expectedList.add(player2);
+    public void strongestAgentTest(){
+        List<IFreeAgents> list = MockFreeAgent.createMockAgentList();
 
         list.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(),p2.getStrength())));
 
-        assertEquals(expectedList,list);
+        assertEquals(9.6,list.get(0).getStrength());
     }
 
     @Test
-    public void strongestPlayersListTest(){
-        List<IPlayers> list = new ArrayList<>();
-        List<IPlayers> expectedList = new ArrayList<>();
-
-        IPlayers player1 = new Players();
-        player1.setPosition("forward");
-        player1.setPlayerName("ABC");
-        player1.setStrength(9.6);
-
-        IPlayers player2 = new Players();
-        player2.setPosition("goalie");
-        player2.setPlayerName("DEF");
-        player2.setStrength(5.6);
-
-        IPlayers player3 = new Players();
-        player3.setPosition("goalie");
-        player3.setPlayerName("GHI");
-        player3.setStrength(6.7);
-
-        list.add(player1);
-        list.add(player2);
-        list.add(player3);
-
-        expectedList.add(player1);
-        expectedList.add(player3);
-        expectedList.add(player2);
+    public void strongestPlayerTest(){
+        List<IPlayers> list = MockPlayer.createMockPlayerList();
 
         list.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(),p2.getStrength())));
 
-        assertEquals(expectedList,list);
+        assertEquals(8.3,list.get(0).getStrength());
 
     }
 }
