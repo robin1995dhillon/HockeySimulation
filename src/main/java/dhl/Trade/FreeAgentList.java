@@ -2,7 +2,7 @@ package dhl.Trade;
 
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 import dhl.LeagueModel.freeAgents.FreeAgents;
 import dhl.LeagueModel.players.Players;
 import dhl.LeagueModel.players.PlayersStrength;
@@ -30,7 +30,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
     }
 
     @Override
-    public void aiAgentListAdd(ITeam2 team, int playersToBeAdded) {
+    public void aiAgentListAdd(ITeam team, int playersToBeAdded) {
 
         int goalieCount = 0;
         for (IPlayers p : team.getPlayers()) {
@@ -90,7 +90,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
                 agentSkaterList.add(a);
             }
         }
-        Collections.sort(agentSkaterList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(), agents.calculateStrength())));
+        Collections.sort(agentSkaterList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(p1), p2.calculateStrength(p2))));
         return agentSkaterList.subList(0, playersToBeAdded);
     }
 
@@ -101,7 +101,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
                 agentGoalieList.add(a);
             }
         }
-        Collections.sort(agentGoalieList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(), agents.calculateStrength())));
+        Collections.sort(agentGoalieList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
         return agentGoalieList.subList(0, goaliesToBeAdded);
     }
 
@@ -207,7 +207,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
 
     public List<IFreeAgents> strongestAgentsList(List<IFreeAgents> list){
 
-        Collections.sort(list, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(), agents.calculateStrength())));
+        Collections.sort(list, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
         return list;
     }
 

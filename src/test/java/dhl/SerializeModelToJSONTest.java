@@ -18,7 +18,7 @@ class SerializeModelToJSONTest {
     @Test
     void serializeModelToJSONTest() throws IOException {
         ArrayList<IPlayers> playerList = new ArrayList<>();
-        ArrayList<ITeam2> teamList = new ArrayList<>();
+        ArrayList<ITeam> teamList = new ArrayList<>();
         ArrayList<IDivision> divisionList = new ArrayList<>();
         ArrayList<IConference> conferenceList = new ArrayList<>();
         ArrayList<IFreeAgents> freeAgentList = new ArrayList<>();
@@ -38,7 +38,7 @@ class SerializeModelToJSONTest {
         headCoach.setShooting(0.8);
         headCoach.setChecking(0.3);
         headCoach.setSaving(0.5);
-        ITeam2 team = new Teams("Boston", "Mister Fred", headCoach, playerList);
+        ITeam team = new Teams("Boston", "Mister Fred", headCoach, playerList);
         teamList.add(team);
         IPlayers player1 = new Players("Player One", "forward", true);
         player1.setAge(27);

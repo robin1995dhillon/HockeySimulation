@@ -16,7 +16,7 @@ public class MockLeague {
         ILeague l = new League();
         IConference c = new Conference();
         IPlayers p =new Players();
-        ITeam2 t = new Teams();
+        ITeam t = new Teams();
         IDivision d = new Division("Metro");
         ArrayList<IPlayers> players = new ArrayList<>();
         p.setCaptain(true);
@@ -30,7 +30,7 @@ public class MockLeague {
         coach.setSaving(5);
         coach.setShooting(5);
         coach.setSkating(5);
-        ArrayList<ITeam2> teams = new ArrayList<>();
+        ArrayList<ITeam> teams = new ArrayList<>();
         t.setHeadCoach(coach);
         t.setGeneralManager("John");
         t.setTeamName("HalifaxTigers");
@@ -58,8 +58,8 @@ public class MockLeague {
         ILeague l = new League();
         IConference c = new Conference();
         IPlayers p =new Players();
-        ITeam2 t = new Teams();
-        ITeam2 t2 = new Teams();
+        ITeam t = new Teams();
+        ITeam t2 = new Teams();
         IDivision d = new Division("Metro");
         ArrayList<IPlayers> players = new ArrayList<>();
         p.setCaptain(true);
@@ -67,7 +67,7 @@ public class MockLeague {
         p.setPlayerName("Roger");
         players.add(p);
         t.setPlayers(players);
-        ArrayList<ITeam2> teams = new ArrayList<>();
+        ArrayList<ITeam> teams = new ArrayList<>();
 //        t.setHeadCoach("Mat");
         t.setGeneralManager("John");
         t.setTeamName("HalifaxTigers");

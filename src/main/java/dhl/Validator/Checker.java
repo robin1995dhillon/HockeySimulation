@@ -39,13 +39,13 @@ public class Checker implements IChecker{
     public boolean TeamChecker(String Team, ILeague ILeague) {
         ArrayList<IConference> IConference;
         ArrayList<IDivision> IDivisions;
-        ArrayList<ITeam2> ITeam2;
+        ArrayList<ITeam> ITeam;
         IConference = ILeague.getConferences();
         for(IConference c: IConference) {
             IDivisions = c.getDivisions();
             for(IDivision d: IDivisions) {
-                ITeam2 = d.getTeams();
-                for(ITeam2 t: ITeam2) {
+                ITeam = d.getTeams();
+                for(ITeam t: ITeam) {
                     if(t.getTeamName().toLowerCase().equals(Team.toLowerCase())) {
                         return false;
                     }

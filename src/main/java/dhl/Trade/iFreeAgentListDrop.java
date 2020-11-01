@@ -1,13 +1,13 @@
 package dhl.Trade;
 
 import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 
 import java.util.List;
 
 public interface iFreeAgentListDrop {
 
-    void agentListDrop(ITeam2 team, int playersToBeDropped);
+    void agentListDrop(ITeam team, int playersToBeDropped);
     void dropSkaterAi(List<IPlayers> players, int playersToBeDropped);
     void dropGoalieAi(List<IPlayers> players, int goalieCount);
     List<IPlayers> sortedPLayerSkaterList(List<IPlayers> players, int playersToBeDropped);

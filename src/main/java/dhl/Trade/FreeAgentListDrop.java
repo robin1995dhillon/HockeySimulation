@@ -2,7 +2,7 @@ package dhl.Trade;
 
 import dhl.LeagueModel.IFreeAgents;
 import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 import dhl.LeagueModel.players.Players;
 import dhl.LeagueModel.players.PlayersStrength;
 import dhl.Presentation.TradePrompt;
@@ -31,7 +31,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
     }
 
     @Override
-    public void agentListDrop(ITeam2 team, int playersToBeDropped) {
+    public void agentListDrop(ITeam team, int playersToBeDropped) {
         int goalieCount=0;
         for(IPlayers p:team.getPlayers()){
             if(p.getPosition().equalsIgnoreCase("goalie")) {

@@ -2,13 +2,10 @@ package dhl.LeagueModel.conference;
 
 import dhl.LeagueModel.IConference;
 import dhl.LeagueModel.IDivision;
-import dhl.LeagueModel.ITeam2;
-import dhl.LeagueModel.division.Division;
 import dhl.Mock.MockDivision;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 

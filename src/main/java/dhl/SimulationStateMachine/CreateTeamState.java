@@ -32,7 +32,7 @@ public class CreateTeamState implements IState {
     public void runState() {
         List<IConference> Conference;
         List<IDivision> Divisions;
-        List<ITeam2> Teams;
+        List<ITeam> Teams;
         List<IPlayers> Players;
         IHeadCoach HeadCoach;
         if (league == null){
@@ -57,7 +57,7 @@ public class CreateTeamState implements IState {
                         int division_id = (int) division_obj.get("id");
                         if (division_bool) {
                             Teams = d.getTeams();
-                            for (ITeam2 t : Teams) {
+                            for (ITeam t : Teams) {
                                 Players = t.getPlayers();
                                 HeadCoach = t.getHeadCoach();
                                 JSONObject team_obj = saveTeam(t.getTeamName(), t.getGeneralManager());

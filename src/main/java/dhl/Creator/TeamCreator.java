@@ -4,7 +4,6 @@ import dhl.LeagueModel.*;
 import dhl.LeagueModel.teams.Teams;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TeamCreator {
 
@@ -12,7 +11,7 @@ public class TeamCreator {
 
         ArrayList<IConference> Conference;
         ArrayList<IDivision> Divisions;
-        ArrayList<ITeam2> Team2;
+        ArrayList<ITeam> Team2;
         Conference = ILeague.getConferences();
         for(IConference c: Conference) {
             if(c.getConferenceName().toLowerCase().equals(ConferenceName.toLowerCase())) {
@@ -21,7 +20,7 @@ public class TeamCreator {
                     if(d.getDivisionName().toLowerCase().equals(DivisionName.toLowerCase())) {
                         Team2 = d.getTeams();
                         System.out.println(Team2);
-                        ITeam2 team = new Teams();
+                        ITeam team = new Teams();
                         System.out.println(headCoach);
                         team.setGeneralManager(ManagerName);
                         team.setPlayers(playerList);

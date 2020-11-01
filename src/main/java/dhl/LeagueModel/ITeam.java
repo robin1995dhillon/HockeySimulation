@@ -6,7 +6,7 @@ import dhl.LeagueModel.teams.Teams;
 import java.util.List;
 
 @JsonDeserialize(as= Teams.class)
-public interface ITeam2 {
+public interface ITeam {
 
     List<IPlayers> getPlayers();
     void setPlayers(List<IPlayers> players);
@@ -22,7 +22,7 @@ public interface ITeam2 {
     double getTeamStrength();
     int getLossPoints();
     void setLossPoints(int teamType);
-    double calculateTeamStrength(ITeam2 team);
+    double calculateTeamStrength(ITeam team);
 
     void saveTeams(List<Integer> id);
 }

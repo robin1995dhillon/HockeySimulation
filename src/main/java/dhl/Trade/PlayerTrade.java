@@ -1,7 +1,7 @@
 package dhl.Trade;
 
 import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 import dhl.Presentation.TradePrompt;
 import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
@@ -33,7 +33,7 @@ public class PlayerTrade implements IPlayerTrade{
     }
 
     @Override
-    public int countTeamPlayers(ITeam2 team) {
+    public int countTeamPlayers(ITeam team) {
         int count =0;
         for(IPlayers p:team.getPlayers()){
             count++;
@@ -42,7 +42,7 @@ public class PlayerTrade implements IPlayerTrade{
     }
 
     @Override
-    public void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam) {
+    public void TradeAi(ITeam offeringTeam, ITeam consideringTeam) {
         trading = gamePlayConfig.getTrading();
         double randomAcceptanceChance = trading.getRandomAcceptanceChance();
         double maxPlayersPerTrade = trading.getMaxPlayersPerTrade();
@@ -80,7 +80,7 @@ public class PlayerTrade implements IPlayerTrade{
     }
 
     @Override
-    public void TradeUser(ITeam2 offeringTeam, ITeam2 consideringTeam) {
+    public void TradeUser(ITeam offeringTeam, ITeam consideringTeam) {
 
             int totalPlayersOfOfferingTeam;
             int totalPlayersOfConsideringTeam;

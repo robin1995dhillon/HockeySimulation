@@ -9,15 +9,15 @@ import java.util.List;
 @JsonDeserialize(as= Division.class)
 public interface IDivision {
 
-    public ArrayList<ITeam2> getTeams();
+    public ArrayList<ITeam> getTeams();
 
-    public void setTeams(ArrayList<ITeam2> teams);
+    public void setTeams(ArrayList<ITeam> teams);
 
     public String getDivisionName();
 
     public void setDivisionName(String divisionName);
 
-    public void addTeam(ITeam2 team);
+    public void addTeam(ITeam team);
 
     void saveDivision(List<Integer> ID);
 }

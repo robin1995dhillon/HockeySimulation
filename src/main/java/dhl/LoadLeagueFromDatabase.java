@@ -47,7 +47,7 @@ public class LoadLeagueFromDatabase {
                         IGetStoredProcedure getDivision = new GetAllDivisionInConference(conferenceId);
                         ResultSet rsDivision = getDivision.executeProcedure();
                         while(rsDivision.next()){
-                            ArrayList<ITeam2> teamList = new ArrayList<>();
+                            ArrayList<ITeam> teamList = new ArrayList<>();
                             int divisionId = rsDivision.getInt("id");
                             IDivision division = new Division("Metro", teamList);
                             division.setDivisionName(rsDivision.getString("name"));
@@ -57,7 +57,7 @@ public class LoadLeagueFromDatabase {
                             while(rsGetTeamInDivision.next()){
                                 ArrayList<IPlayers> playerList = new ArrayList<>();
                                 int tId = rsGetTeamInDivision.getInt("id");
-                                ITeam2 team = new Teams();
+                                ITeam team = new Teams();
                                 team.setTeamName(rsGetTeamInDivision.getString("name"));
                                 team.setGeneralManager(rsGetTeamInDivision.getString("general_manager"));
 

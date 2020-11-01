@@ -1,13 +1,13 @@
 package dhl.Mock;
 
 import dhl.LeagueModel.IHeadCoach;
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.LeagueModel.teams.Teams;
 
 public class MockTeam {
 
-    public static ITeam2 MockTeam() {
+    public static ITeam MockTeam() {
         IHeadCoach headCoach = new HeadCoach();
         headCoach.setChecking(0.5);
         headCoach.setName("ABC");
@@ -15,11 +15,11 @@ public class MockTeam {
         headCoach.setShooting(0.7);
         headCoach.setSkating(0.3);
 
-        ITeam2 team = new Teams("Random1", "Random2", headCoach);
+        ITeam team = new Teams("Random1", "Random2", headCoach);
         return team;
     }
 
-    public static ITeam2 MockTeamTwo() {
+    public static ITeam MockTeamTwo() {
         IHeadCoach headCoach2 = new HeadCoach();
         headCoach2.setChecking(0.5);
         headCoach2.setName("ABCD");
@@ -27,7 +27,7 @@ public class MockTeam {
         headCoach2.setShooting(0.7);
         headCoach2.setSkating(0.3);
 
-        ITeam2 team = new Teams("Team2", "GeneralManager2", headCoach2);
+        ITeam team = new Teams("Team2", "GeneralManager2", headCoach2);
         return team;
     }
 

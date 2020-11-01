@@ -4,7 +4,7 @@ import dhl.InOut.IUserOutput;
 import dhl.LeagueModel.IConference;
 import dhl.LeagueModel.IDivision;
 import dhl.LeagueModel.ILeague;
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
@@ -227,7 +227,7 @@ public class Scheduler {
 
             for (int j = 0; j < retrievedDivisions.size(); j++) {
                 String divisionName = retrievedDivisions.get(j).getDivisionName();
-                ArrayList<ITeam2> retrievedTeams = retrievedDivisions.get(j).getTeams();
+                ArrayList<ITeam> retrievedTeams = retrievedDivisions.get(j).getTeams();
 
                 this.divisionList.add(divisionName);
                 this.totalTeams += retrievedTeams.size();

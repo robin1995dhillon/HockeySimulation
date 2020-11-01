@@ -4,10 +4,8 @@ import dhl.LeagueModel.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import dhl.LeagueModel.headCoach.HeadCoach;
 import dhl.LeagueModel.players.Players;
 import dhl.LeagueModel.teams.Teams;
-import dhl.Trade.FreeAgentList;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -198,8 +196,8 @@ public class PlayerTradingTest {
     @Test
     public void tradeAiTest() {
         double randomAcceptanceChance = 0.05;
-        ITeam2 offeringTeam = new Teams();
-        ITeam2 consideringTeam = new Teams();
+        ITeam offeringTeam = new Teams();
+        ITeam consideringTeam = new Teams();
         ArrayList<IPlayers> consideringTeamPlayers = new ArrayList<>();
         ArrayList<IPlayers> offeringTeamPositionPlayers = new ArrayList<>();
         ArrayList<IPlayers> consideringFinal = new ArrayList<>();
@@ -282,8 +280,8 @@ public class PlayerTradingTest {
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
 
-        ITeam2 offeringTeam = new Teams();
-        ITeam2 consideringTeam = new Teams();
+        ITeam offeringTeam = new Teams();
+        ITeam consideringTeam = new Teams();
         ArrayList<IPlayers> consideringTeamPlayers = new ArrayList<>();
         ArrayList<IPlayers> offeringTeamPositionPlayers = new ArrayList<>();
         ArrayList<IPlayers> consideringFinal = new ArrayList<>();
@@ -380,7 +378,7 @@ public class PlayerTradingTest {
     public void countTeamPlayers() {
 
         int count = 0;
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         List<IPlayers> players = new ArrayList<>();
         IPlayers player1 = new Players();
         IPlayers player2 = new Players();

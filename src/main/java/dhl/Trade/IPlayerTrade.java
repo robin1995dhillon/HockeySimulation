@@ -1,10 +1,10 @@
 package dhl.Trade;
 
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 
 public interface IPlayerTrade {
 
-    void TradeAi(ITeam2 offeringTeam, ITeam2 consideringTeam);
-    void TradeUser(ITeam2 offeringTeam, ITeam2 consideringTeam);
-    int countTeamPlayers(ITeam2 team);
+    void TradeAi(ITeam offeringTeam, ITeam consideringTeam);
+    void TradeUser(ITeam offeringTeam, ITeam consideringTeam);
+    int countTeamPlayers(ITeam team);
 }
