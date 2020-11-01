@@ -1,11 +1,11 @@
 package trade;
 
-import dhl.LeagueModel.*;
+import dhl.leagueModel.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import dhl.LeagueModel.players.Players;
-import dhl.LeagueModel.teams.Teams;
+import dhl.leagueModel.players.Players;
+import dhl.leagueModel.teams.Teams;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

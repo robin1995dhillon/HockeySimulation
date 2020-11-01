@@ -1,14 +1,14 @@
 package dhl;
 
-import dhl.Database.*;
-import dhl.LeagueModel.*;
-import dhl.LeagueModel.conference.Conference;
-import dhl.LeagueModel.division.Division;
-import dhl.LeagueModel.freeAgents.FreeAgents;
-import dhl.LeagueModel.headCoach.HeadCoach;
-import dhl.LeagueModel.league.League;
-import dhl.LeagueModel.players.Players;
-import dhl.LeagueModel.teams.Teams;
+import dhl.database.*;
+import dhl.leagueModel.*;
+import dhl.leagueModel.conference.Conference;
+import dhl.leagueModel.division.Division;
+import dhl.leagueModel.freeAgents.FreeAgents;
+import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.league.League;
+import dhl.leagueModel.players.Players;
+import dhl.leagueModel.teams.Teams;
 
 import java.io.IOException;
 import java.sql.ResultSet;

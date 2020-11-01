@@ -1,11 +1,11 @@
 package trade;
 
-import dhl.LeagueModel.IFreeAgents;
-import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.freeAgents.FreeAgents;
-import dhl.LeagueModel.players.Players;
-import dhl.Presentation.TradePrompt;
-import dhl.Trade.FreeAgentList;
+import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.freeAgents.FreeAgents;
+import dhl.leagueModel.players.Players;
+import dhl.presentation.TradePrompt;
+import dhl.trade.FreeAgentList;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package Presentation;
 
-import dhl.Presentation.DisplayManagerList;
-import dhl.Presentation.IDisplayManagerList;
+import dhl.presentation.DisplayManagerList;
+import dhl.presentation.IDisplayManagerList;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
