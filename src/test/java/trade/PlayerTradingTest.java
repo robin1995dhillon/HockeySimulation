@@ -1,18 +1,16 @@
 package trade;
 
-import dhl.leagueModel.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.ITeam;
 import dhl.leagueModel.teams.Teams;
 import dhl.mock.MockPlayer;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTradingTest {
 
