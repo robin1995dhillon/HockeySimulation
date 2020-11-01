@@ -5,6 +5,9 @@ import dhl.leagueModel.IHeadCoach;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.players.Players;
 import static org.junit.jupiter.api.Assertions.*;
+
+import dhl.mock.MockHeadCoach;
+import dhl.mock.MockPlayer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,36 +17,21 @@ public class PlayerTrainingConditionTest {
     @Test
     public void receiveTrainingTest(){
         ArrayList<IPlayers> playerList = new ArrayList();
-        IPlayers player = new Players("Zongyu", "goalie", false);
-        player.setSkating(10);
-        player.setShooting(10);
-        player.setChecking(10);
-        player.setSaving(10);
-        player.setAge(50);
+        IPlayers player = MockPlayer.createMock();
         playerList.add(player);
-        IHeadCoach coach1 = new HeadCoach();
-        coach1.setName("Joe Smith");
-        coach1.setSkating(1.0);
-        coach1.setShooting(1.0);
-        coach1.setChecking(1.0);
-        coach1.setSaving(1.0);
-        IHeadCoach coach2 = new HeadCoach();
-        coach2.setName("Joe Smith");
-        coach2.setSkating(0);
-        coach2.setShooting(0);
-        coach2.setChecking(0);
-        coach2.setSaving(1);
+        IHeadCoach bestCoach = MockHeadCoach.createMockBestCoach();
+        IHeadCoach worstCoach = MockHeadCoach.createMockWorstCoach();
         IPlayerTrainingCondition t = new PlayerTrainingCondition();
-        t.receiveTraining(playerList, coach1);
-        assertEquals(11, player.getSkating());
-        assertEquals(11, player.getShooting());
-        assertEquals(11, player.getChecking());
-        assertEquals(11, player.getSaving());
-        t.receiveTraining(playerList, coach2);
-        assertEquals(11, player.getSkating());
-        assertEquals(11, player.getShooting());
-        assertEquals(11, player.getChecking());
-        assertEquals(12, player.getSaving());
+        t.receiveTraining(playerList, bestCoach);
+        assertEquals(16, player.getSkating());
+        assertEquals(16, player.getShooting());
+        assertEquals(16, player.getChecking());
+        assertEquals(16, player.getSaving());
+        t.receiveTraining(playerList, worstCoach);
+        assertEquals(16, player.getSkating());
+        assertEquals(16, player.getShooting());
+        assertEquals(16, player.getChecking());
+        assertEquals(16, player.getSaving());
     }
 
 

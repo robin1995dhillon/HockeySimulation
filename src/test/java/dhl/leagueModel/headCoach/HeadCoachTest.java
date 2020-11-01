@@ -4,6 +4,8 @@ import dhl.leagueModel.IHeadCoach;
 import dhl.mock.MockHeadCoach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HeadCoachTest {
@@ -75,6 +77,10 @@ class HeadCoachTest {
 
     @Test
     void getCoachFromList() {
+        ArrayList<IHeadCoach> coachList = new ArrayList<>();
+        IHeadCoach headCoach = MockHeadCoach.createMock();
+        coachList.add(headCoach);
+        assertEquals(headCoach, headCoach.getCoachFromList(coachList,"Head1"));
     }
 
     @Test
