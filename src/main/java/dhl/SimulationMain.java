@@ -1,19 +1,19 @@
 package dhl;
 
-import dhl.InOut.*;
-import dhl.LeagueModel.*;
-import dhl.Creator.TeamCreator;
-import dhl.LeagueModel.freeAgents.FreeAgents;
-import dhl.LeagueModel.headCoach.HeadCoach;
-import dhl.LeagueModel.players.Players;
-import dhl.Presentation.*;
-import dhl.SimulationStateMachine.LoadTeamState;
-import dhl.SimulationStateMachine.CreateTeamState;
-import dhl.SimulationStateMachine.StateContext;
-import dhl.Validator.Checker;
-import dhl.Validator.IChecker;
-import dhl.Validator.JSONValidator;
-import dhl.Creator.LeagueCreator;
+import dhl.inputOutput.*;
+import dhl.leagueModel.*;
+import dhl.creator.TeamCreator;
+import dhl.leagueModel.freeAgents.FreeAgents;
+import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.players.Players;
+import dhl.presentation.*;
+import dhl.simulationStateMachine.LoadTeamState;
+import dhl.simulationStateMachine.CreateTeamState;
+import dhl.simulationStateMachine.StateContext;
+import dhl.validator.Checker;
+import dhl.validator.IChecker;
+import dhl.validator.JSONValidator;
+import dhl.creator.LeagueCreator;
 import org.json.simple.JSONObject;
 
 import java.io.*;
@@ -56,21 +56,21 @@ public class SimulationMain {
                     System.out.println("Enter Conference Name:");
                     String conferenceName = in.nextLine();
                     IChecker CC = new Checker();
-                    while(CC.ConferenceChecker(conferenceName, ILeague)==false){
+                    while(CC.conferenceChecker(conferenceName, ILeague)==false){
                         System.err.println("Invalid input! Please enter the conference you imported:");
                         conferenceName = in.nextLine();
                     }
-                    if (CC.ConferenceChecker(conferenceName, ILeague)) {
+                    if (CC.conferenceChecker(conferenceName, ILeague)) {
                         System.out.println("Enter Division Name:");
                         String divisionName = in.nextLine();
-                        while(CC.DivisionChecker(divisionName, ILeague)==false){
+                        while(CC.divisionChecker(divisionName, ILeague)==false){
                             System.err.println("Invalid input! Please enter the division you imported:");
                             divisionName = in.nextLine();
                         }
-                        if (CC.DivisionChecker(divisionName, ILeague)) {
+                        if (CC.divisionChecker(divisionName, ILeague)) {
                             System.out.println("Enter Your Team Name: ");
                             teamName = in.nextLine();
-                            if (CC.TeamChecker(teamName, ILeague)) {
+                            if (CC.teamChecker(teamName, ILeague)) {
                                 System.out.println("Here are the general managers:");
                                 ArrayList<String> managerList = ILeague.getGeneralManagers();
                                 IDisplayManagerList managerDisplayer = new DisplayManagerList();

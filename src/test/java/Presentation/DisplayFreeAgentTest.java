@@ -1,9 +1,9 @@
 package Presentation;
 
-import dhl.LeagueModel.IFreeAgents;
-import dhl.LeagueModel.freeAgents.FreeAgents;
-import dhl.Presentation.DisplayFreeAgentList;
-import dhl.Presentation.IDisplayFreeAgentList;
+import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.freeAgents.FreeAgents;
+import dhl.presentation.DisplayFreeAgentList;
+import dhl.presentation.IDisplayFreeAgentList;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

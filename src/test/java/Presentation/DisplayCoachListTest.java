@@ -1,9 +1,9 @@
 package Presentation;
 
-import dhl.LeagueModel.IHeadCoach;
-import dhl.LeagueModel.headCoach.HeadCoach;
-import dhl.Presentation.DisplayCoachList;
-import dhl.Presentation.IDisplayCoachList;
+import dhl.leagueModel.IHeadCoach;
+import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.presentation.DisplayCoachList;
+import dhl.presentation.IDisplayCoachList;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

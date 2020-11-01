@@ -1,8 +1,8 @@
 package Presentation;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.players.Players;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
