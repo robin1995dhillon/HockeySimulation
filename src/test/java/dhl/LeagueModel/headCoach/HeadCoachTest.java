@@ -24,7 +24,7 @@ class HeadCoachTest {
     @Test
     void getSkating() {
         IHeadCoach headCoach = MockHeadCoach.createMock();
-        assertEquals(0.5, headCoach.getSkating());
+        assertEquals(0.6, headCoach.getSkating());
     }
 
     @Test
