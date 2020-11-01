@@ -7,11 +7,11 @@ import java.util.List;
 
 public class GamePlayConfig implements IGamePlayConfig {
 
-    Aging aging;
-    GameResolver gameResolver;
-    Injuries injuries;
-    Trading trading;
-    Training training;
+    IAging aging;
+    IGameResolver gameResolver;
+    IInjuries injuries;
+    ITrading trading;
+    ITraining training;
 
     public GamePlayConfig() {
         aging = new Aging();
@@ -22,52 +22,52 @@ public class GamePlayConfig implements IGamePlayConfig {
     }
 
     @Override
-    public Aging getAging() {
+    public IAging getAging() {
         return aging;
     }
 
     @Override
-    public void setAging(Aging aging) {
+    public void setAging(IAging aging) {
         this.aging = aging;
     }
 
     @Override
-    public GameResolver getGameResolver() {
+    public IGameResolver getGameResolver() {
         return gameResolver;
     }
 
     @Override
-    public void setGameResolver(GameResolver gameResolver) {
+    public void setGameResolver(IGameResolver gameResolver) {
         this.gameResolver = gameResolver;
     }
 
     @Override
-    public Injuries getInjuries() {
+    public IInjuries getInjuries() {
         return injuries;
     }
 
     @Override
-    public void setInjuries(Injuries injuries) {
+    public void setInjuries(IInjuries injuries) {
         this.injuries = injuries;
     }
 
     @Override
-    public Trading getTrading() {
+    public ITrading getTrading() {
         return trading;
     }
 
     @Override
-    public void setTrading(Trading trading) {
+    public void setTrading(ITrading trading) {
         this.trading = trading;
     }
 
     @Override
-    public Training getTraining() {
+    public ITraining getTraining() {
         return training;
     }
 
     @Override
-    public void setTraining(Training training) {
+    public void setTraining(ITraining training) {
         this.training = training;
     }
 

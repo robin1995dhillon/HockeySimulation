@@ -26,7 +26,7 @@ public class League implements ILeague {
     ArrayList<IFreeAgents> freeAgents;
     ArrayList<IHeadCoach> coaches;
     ArrayList<String> generalManagers;
-    GamePlayConfig gameplayConfig;
+
 
     public League() {
     iconference = new Conference();
@@ -113,13 +113,13 @@ public class League implements ILeague {
     }
 
     @Override
-    public GamePlayConfig getGameplayConfig() {
-        return gameplayConfig;
+    public IGamePlayConfig getGameplayConfig() {
+        return iGamePlayConfig;
     }
 
     @Override
-    public void setGameplayConfig(GamePlayConfig gameplayConfig) {
-        this.gameplayConfig = gameplayConfig;
+    public void setGameplayConfig(IGamePlayConfig gameplayConfig) {
+        this.iGamePlayConfig = gameplayConfig;
     }
 
     public boolean isValid(ILeague league) {

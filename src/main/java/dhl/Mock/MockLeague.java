@@ -17,7 +17,7 @@ public class MockLeague {
         IConference c = new Conference();
         IPlayers p =new Players();
         ITeam2 t = new Teams();
-        IDivision d = new Division();
+        IDivision d = new Division("Metro");
         ArrayList<IPlayers> players = new ArrayList<>();
         p.setCaptain(true);
         p.setPosition("goalie");
@@ -60,7 +60,7 @@ public class MockLeague {
         IPlayers p =new Players();
         ITeam2 t = new Teams();
         ITeam2 t2 = new Teams();
-        IDivision d = new Division();
+        IDivision d = new Division("Metro");
         ArrayList<IPlayers> players = new ArrayList<>();
         p.setCaptain(true);
         p.setPosition("goalie");

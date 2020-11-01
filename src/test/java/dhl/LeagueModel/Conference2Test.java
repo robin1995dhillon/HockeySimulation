@@ -5,6 +5,7 @@ import dhl.LeagueModel.division.Division;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,7 +26,8 @@ class ConferenceTest2 {
 
     @Test
     void getDivisions() {
-        IDivision d = new Division();
+        ArrayList<ITeam2> teamArray = new ArrayList<>();
+        IDivision d = new Division("Metro", teamArray);
         d.setDivisionName("Atlantic");
         d.setTeams(new ArrayList<ITeam2>());
         ArrayList<IDivision> div_array = new ArrayList<>();
@@ -37,14 +39,15 @@ class ConferenceTest2 {
 
     @Test
     void setDivisions() {
-        IDivision d = new Division();
+        ArrayList<ITeam2> teamArray = new ArrayList<>();
+        IDivision d = new Division("Metro", teamArray);
         d.setDivisionName("Atlantic");
         d.setTeams(new ArrayList<ITeam2>());
         ArrayList<IDivision> div_array = new ArrayList<>();
         div_array.add(d);
         IConference conference = new Conference("Eastern",div_array);
         conference.getDivisions();
-        IDivision d2 = new Division();
+        IDivision d2 = new Division("Metro", teamArray);
         d2.setDivisionName("Metropolitan");
         ArrayList<IDivision> div_array_2 = new ArrayList<>();
         div_array_2.add(d2);

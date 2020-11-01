@@ -38,9 +38,9 @@ public interface IFreeAgents {
 
     void setStrength(double strength);
 
-    double calculateStrength(IFreeAgents freeAgents);
+    double calculateStrength();
 
-    double strengthCalculator(int[] positionValues);
+    double strengthAdder(int[] positionValues);
 
     IFreeAgents getFreeAgentFromList(List<IFreeAgents> freeAgentList, String freeAgentName);
     boolean checkPosition(String position);

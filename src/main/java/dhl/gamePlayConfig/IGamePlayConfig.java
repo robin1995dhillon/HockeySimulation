@@ -5,25 +5,25 @@ import org.json.simple.JSONObject;
 
 @JsonDeserialize(as= GamePlayConfig.class)
 public interface IGamePlayConfig {
-    Aging getAging();
+    IAging getAging();
 
-    void setAging(Aging aging);
+    void setAging(IAging aging);
 
-    GameResolver getGameResolver();
+    IGameResolver getGameResolver();
 
-    void setGameResolver(GameResolver gameResolver);
+    void setGameResolver(IGameResolver gameResolver);
 
-    Injuries getInjuries();
+    IInjuries getInjuries();
 
-    void setInjuries(Injuries injuries);
+    void setInjuries(IInjuries injuries);
 
-    Trading getTrading();
+    ITrading getTrading();
 
-    void setTrading(Trading trading);
+    void setTrading(ITrading trading);
 
-    Training getTraining();
+    ITraining getTraining();
 
-    void setTraining(Training training);
+    void setTraining(ITraining training);
 
     boolean gamePlayConfigValidator(JSONObject Obj);
 }

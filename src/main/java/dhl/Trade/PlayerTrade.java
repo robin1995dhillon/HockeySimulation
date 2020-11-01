@@ -5,6 +5,7 @@ import dhl.LeagueModel.ITeam2;
 import dhl.Presentation.TradePrompt;
 import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.gamePlayConfig.ITrading;
 import dhl.gamePlayConfig.Trading;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class PlayerTrade implements IPlayerTrade{
     List<IPlayers> consideringTeamPlayers;
     List<IPlayers> offeringTeamPlayers;
     IGamePlayConfig gamePlayConfig;
-    Trading trading;
+    ITrading trading;
     private AddDropPlayers addDrop;
     TradePrompt prompt;
 
