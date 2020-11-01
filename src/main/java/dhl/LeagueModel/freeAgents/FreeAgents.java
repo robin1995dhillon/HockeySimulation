@@ -1,8 +1,6 @@
 package dhl.LeagueModel.freeAgents;
 
 import dhl.LeagueModel.IFreeAgents;
-import dhl.LeagueModel.headCoach.HeadCoachPersistence;
-import dhl.LeagueModel.headCoach.IHeadCoachPersistence;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -117,35 +115,35 @@ public class FreeAgents implements IFreeAgents {
         this.strength = strength;
     }
     @Override
-    public double calculateStrength(IFreeAgents freeAgents) {
-        String position = freeAgents.getPosition();
-        int skating = freeAgents.getSkating();
-        int shooting = freeAgents.getShooting();
-        int checking = freeAgents.getChecking();
-        int saving = freeAgents.getSaving();
+    public double calculateStrength() {
+        String position = this.getPosition();
+        int skating = this.getSkating();
+        int shooting = this.getShooting();
+        int checking = this.getChecking();
+        int saving = this.getSaving();
         double strength;
 
         if(position.equals("forward")) {
             int[] forwardValues = {skating, shooting, checking/2};
-            strength = strengthCalculator(forwardValues);
-            freeAgents.setStrength(strength);
+            strength = strengthAdder(forwardValues);
+            this.setStrength(strength);
         }
         else if(position.equals("defense")) {
             int[] defenseValues = {skating, shooting/2, checking};
-            strength = strengthCalculator(defenseValues);
-            freeAgents.setStrength(strength);
+            strength = strengthAdder(defenseValues);
+            this.setStrength(strength);
         }
         else {
             int [] goalieValues = {skating, saving};
-            strength = strengthCalculator(goalieValues);
-            freeAgents.setStrength(strength);
+            strength = strengthAdder(goalieValues);
+            this.setStrength(strength);
         }
 
         return strength;
     }
 
     @Override
-    public double strengthCalculator(int[] positionValues) {
+    public double strengthAdder(int[] positionValues) {
         double playerStrength;
         playerStrength = IntStream.of(positionValues).sum();
         return playerStrength;

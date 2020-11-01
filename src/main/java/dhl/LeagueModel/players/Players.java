@@ -200,7 +200,7 @@ public class Players implements IPlayers {
     @Override
     public void checkIfRetired(IPlayers player) {
         IGamePlayConfig gamePlayConfig = new GamePlayConfig();
-        Aging aging = gamePlayConfig.getAging();
+        IAging aging = gamePlayConfig.getAging();
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = player.getAge();
@@ -235,7 +235,7 @@ public class Players implements IPlayers {
         List<Double> freeAgentStrengthList = new ArrayList<>();
             for(IFreeAgents freeAgent: freeAgents) {
                 if(player.getPosition().equals(freeAgent.getPosition())) {
-                    double freeAgentStrength = freeAgent.calculateStrength(freeAgent);
+                    double freeAgentStrength = freeAgent.calculateStrength();
                     System.out.println("Strength" + freeAgentStrength);
                     freeAgentStrengthList.add(freeAgentStrength);
                 }
@@ -252,7 +252,7 @@ public class Players implements IPlayers {
     @Override
     public void checkForPlayerInjury(IPlayers player) {
         IGamePlayConfig gamePlayConfig = new GamePlayConfig();
-        Injuries injuries = gamePlayConfig.getInjuries();
+        IInjuries injuries = gamePlayConfig.getInjuries();
 
         double randomInjuryChance = injuries.getRandomInjuryChance();
         int injuryDaysLow = injuries.getInjuryDaysLow();

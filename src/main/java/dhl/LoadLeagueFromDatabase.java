@@ -49,7 +49,7 @@ public class LoadLeagueFromDatabase {
                         while(rsDivision.next()){
                             ArrayList<ITeam2> teamList = new ArrayList<>();
                             int divisionId = rsDivision.getInt("id");
-                            IDivision division = new Division();
+                            IDivision division = new Division("Metro", teamList);
                             division.setDivisionName(rsDivision.getString("name"));
 
                             IGetStoredProcedure getTeamInDivision = new GetAllTeamInDivision(divisionId);

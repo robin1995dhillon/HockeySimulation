@@ -90,7 +90,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
                 agentSkaterList.add(a);
             }
         }
-        Collections.sort(agentSkaterList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
+        Collections.sort(agentSkaterList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(), agents.calculateStrength())));
         return agentSkaterList.subList(0, playersToBeAdded);
     }
 
@@ -101,7 +101,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
                 agentGoalieList.add(a);
             }
         }
-        Collections.sort(agentGoalieList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
+        Collections.sort(agentGoalieList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(), agents.calculateStrength())));
         return agentGoalieList.subList(0, goaliesToBeAdded);
     }
 
@@ -207,7 +207,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
 
     public List<IFreeAgents> strongestAgentsList(List<IFreeAgents> list){
 
-        Collections.sort(list, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
+        Collections.sort(list, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(), agents.calculateStrength())));
         return list;
     }
 

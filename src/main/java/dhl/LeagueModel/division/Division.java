@@ -14,9 +14,6 @@ public class Division implements IDivision {
     ArrayList<ITeam2> teams;
 
 
-    public Division() {
-    }
-
     public Division(String divisionName, ArrayList<ITeam2> teams) {
         this.divisionName = divisionName;
         this.teams = teams;
