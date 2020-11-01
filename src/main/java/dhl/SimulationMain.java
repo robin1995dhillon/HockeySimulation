@@ -46,33 +46,33 @@ public class SimulationMain {
             JSONObject JSONValidator = jsonValidator.mainValidator(Object);
             if (JSONValidator.get("isValid").equals("True")) {
                 LeagueCreator leagueCreator = new LeagueCreator();
-                ILeague ILeague = leagueCreator.CreateLeague(Path);
+                ILeague league = leagueCreator.CreateLeague(Path);
 //                System.out.println("Focus");
-//                ILeague.storeLeague();
-                if (ILeague.isValid(ILeague)) {
+//                league.storeLeague();
+                if (league.isValid(league)) {
                     System.out.println("Valid JSON!\n");
                     System.out.println("\nWelcome to the matrix. We all live in simulation ;)");
                     System.out.println("We are going to create a team. Please enter the following details: ");
                     System.out.println("Enter Conference Name:");
                     String conferenceName = in.nextLine();
                     IChecker CC = new Checker();
-                    while(CC.conferenceChecker(conferenceName, ILeague)==false){
+                    while(CC.conferenceChecker(conferenceName, league)==false){
                         System.err.println("Invalid input! Please enter the conference you imported:");
                         conferenceName = in.nextLine();
                     }
-                    if (CC.conferenceChecker(conferenceName, ILeague)) {
+                    if (CC.conferenceChecker(conferenceName, league)) {
                         System.out.println("Enter Division Name:");
                         String divisionName = in.nextLine();
-                        while(CC.divisionChecker(divisionName, ILeague)==false){
+                        while(CC.divisionChecker(divisionName, league)==false){
                             System.err.println("Invalid input! Please enter the division you imported:");
                             divisionName = in.nextLine();
                         }
-                        if (CC.divisionChecker(divisionName, ILeague)) {
+                        if (CC.divisionChecker(divisionName, league)) {
                             System.out.println("Enter Your Team Name: ");
                             teamName = in.nextLine();
-                            if (CC.teamChecker(teamName, ILeague)) {
+                            if (CC.teamChecker(teamName, league)) {
                                 System.out.println("Here are the general managers:");
-                                ArrayList<String> managerList = ILeague.getGeneralManagers();
+                                ArrayList<String> managerList = league.getGeneralManagers();
                                 IDisplayManagerList managerDisplayer = new DisplayManagerList();
                                 managerDisplayer.displayManager(managerList);
                                 System.out.println("Enter Manager Name: ");
@@ -81,10 +81,10 @@ public class SimulationMain {
                                     System.err.println("Invalid input! Please choose one manager from the list:");
                                     managerName = in.nextLine();
                                 }
-                                ILeague.removeManagerFromList(managerList, managerName);
+                                league.removeManagerFromList(managerList, managerName);
 
                                 System.out.println("Here are the head coaches:");
-                                ArrayList<IHeadCoach> coachList = ILeague.getCoaches();
+                                ArrayList<IHeadCoach> coachList = league.getCoaches();
                                 IDisplayCoachList coachDisplayer = new DisplayCoachList();
                                 coachDisplayer.displayCoach(coachList);
                                 System.out.println("Enter Head Coach: ");
@@ -98,7 +98,7 @@ public class SimulationMain {
                                 coachList.remove(headCoach);
 
                                 System.out.println("Please choose your team players, here are the free agents:");
-                                ArrayList<IFreeAgents> freeAgentList = ILeague.getFreeAgents();
+                                ArrayList<IFreeAgents> freeAgentList = league.getFreeAgents();
                                 ArrayList<IPlayers> playerList = new ArrayList<>();
                                 IDisplayFreeAgentList freeAgentDisplayer = new DisplayFreeAgentList();
                                 System.out.println("Please choose two goalies: ");
@@ -145,7 +145,7 @@ public class SimulationMain {
                                 }
 
                                 TeamCreator teamCreator = new TeamCreator();
-                                ILeague updated_league = teamCreator.createTeam(managerName, headCoach, ILeague, conferenceName, divisionName, teamName, playerList,"user");
+                                ILeague updated_league = teamCreator.createTeam(managerName, headCoach, league, conferenceName, divisionName, teamName, playerList,"user");
                                 context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
 
                                 System.out.println("Saving the team. Please wait...");

@@ -59,15 +59,15 @@ public interface IPlayers {
 
     void setInjured(boolean injured);
 
-    public void agePlayer(IPlayers player, int days);
+    public void agePlayer(int days);
 
-    void checkIfRetired(IPlayers player);
+    void checkIfRetired();
 
     IFreeAgents replacePlayerWithFreeAgent(IPlayers player, ArrayList<IFreeAgents> freeAgents);
 
-    void checkForPlayerInjury(IPlayers player);
+    void checkForPlayerInjury();
 
-    void playerStillInjured(IPlayers player);
+    void playerStillInjured();
 
     IPlayers convertFreeAgentToPlayer(IFreeAgents agent);
     IFreeAgents convertPlayerToFreeAgent(IPlayers player);

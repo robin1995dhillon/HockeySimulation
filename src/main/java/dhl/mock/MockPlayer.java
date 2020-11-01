@@ -14,6 +14,7 @@ public class MockPlayer {
         players.setChecking(15);
         players.setSaving(15);
         players.setAge(25);
+        players.setCaptain(true);
         return players;
     }
 

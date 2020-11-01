@@ -127,7 +127,7 @@ public class Teams implements ITeam {
         List<IPlayers> players;
         players = team.getPlayers();
         for(IPlayers player: players) {
-            player.checkForPlayerInjury(player);
+            player.checkForPlayerInjury();
         }
     }
 
