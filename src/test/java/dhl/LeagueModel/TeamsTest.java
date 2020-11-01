@@ -77,7 +77,7 @@ class TeamsTest {
         players.add(play1);
         players.add(play2);
 
-        ITeam2 T = new Teams("Team1", "Manager1",headCoach, players);
+        ITeam T = new Teams("Team1", "Manager1",headCoach, players);
         double strength = T.calculateTeamStrength(T);
         System.out.println(strength);
     }

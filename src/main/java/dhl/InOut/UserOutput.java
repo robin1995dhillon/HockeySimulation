@@ -21,3 +21,7 @@ public class UserOutput implements IUserOutput {
         return this.OutValue;
     }
 }
+
+// UserOutput userOutput = new UserOutput();
+// userOutput.setOutput("Value");
+// userOutput.sendOutput();

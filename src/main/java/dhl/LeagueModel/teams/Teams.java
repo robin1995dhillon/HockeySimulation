@@ -2,15 +2,13 @@ package dhl.LeagueModel.teams;
 
 import dhl.LeagueModel.IHeadCoach;
 import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.ITeam2;
-import dhl.LeagueModel.headCoach.HeadCoachPersistence;
-import dhl.LeagueModel.headCoach.IHeadCoachPersistence;
+import dhl.LeagueModel.ITeam;
 import dhl.LeagueModel.players.PlayersStrength;
 import org.json.simple.JSONObject;
 
 import java.util.List;
 
-public class Teams implements ITeam2 {
+public class Teams implements ITeam {
 
     public String teamName;
     public String generalManager;
@@ -109,7 +107,7 @@ public class Teams implements ITeam2 {
     }
 
     @Override
-    public double calculateTeamStrength(ITeam2 team) {
+    public double calculateTeamStrength(ITeam team) {
         List<IPlayers> players;
         players = team.getPlayers();
         System.out.println(players);
@@ -125,7 +123,7 @@ public class Teams implements ITeam2 {
         return teamStrength;
     }
 
-    public void checkForInjury(ITeam2 team) {
+    public void checkForInjury(ITeam team) {
         List<IPlayers> players;
         players = team.getPlayers();
         for(IPlayers player: players) {

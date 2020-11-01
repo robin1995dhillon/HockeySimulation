@@ -1,9 +1,8 @@
 package dhl.Trade;
 
 import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 import dhl.LeagueModel.players.PlayersStrength;
-import dhl.Presentation.TradePrompt;
 import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
 import dhl.gamePlayConfig.ITrading;
@@ -23,7 +22,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     private List<IPlayers> offeringTeamPlayers;
     private List<IPlayers> consideringTeamPlayers;
     private List<IPlayers> offeringTeamPositionPlayers;
-    private ITeam2 finalTeam = null;
+    private ITeam finalTeam = null;
     private PlayerTrade playerTrade;
 
     public PlayerTradingCondition(){
@@ -53,7 +52,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
     }
 
     @Override
-    public void tradeCondition(List<ITeam2> allTeams){
+    public void tradeCondition(List<ITeam> allTeams){
         trading = gamePlayConfig.getTrading();
         int lossPoints = trading.getLossPoint();
         double randomTradeOfferChance = trading.getRandomTradeOfferChance();

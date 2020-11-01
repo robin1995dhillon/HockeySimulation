@@ -127,7 +127,7 @@ class FreeAgentsTest {
     @Test
     void calculateStrength() {
         IFreeAgents freeAgents = MockFreeAgent.createMock();
-        double strength = freeAgents.calculateStrength();
+        double strength = freeAgents.calculateStrength(freeAgents);
         assertEquals(50,strength);
 
     }

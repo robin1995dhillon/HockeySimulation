@@ -2,7 +2,7 @@ package dhl.LeagueModel.teams;
 
 import dhl.LeagueModel.IHeadCoach;
 import dhl.LeagueModel.IPlayers;
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 import dhl.Mock.MockHeadCoach;
 import dhl.Mock.MockPlayer;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ class TeamsTest {
     void getPlayers() {
         IPlayers players = MockPlayer.createMock();
         ArrayList<IPlayers> playerArray = new ArrayList<>();
-        ITeam2 team2 = new Teams();
+        ITeam team2 = new Teams();
         playerArray.add(players);
         team2.setPlayers(playerArray);
         assertEquals(playerArray,team2.getPlayers());
@@ -27,7 +27,7 @@ class TeamsTest {
     void setPlayers() {
         IPlayers players = MockPlayer.createMock();
         ArrayList<IPlayers> playerArray = new ArrayList<>();
-        ITeam2 team2 = new Teams();
+        ITeam team2 = new Teams();
         playerArray.add(players);
         team2.setPlayers(playerArray);
         assertEquals(playerArray,team2.getPlayers());
@@ -35,14 +35,14 @@ class TeamsTest {
 
     @Test
     void getTeamName() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setTeamName("Team1");
         assertEquals("Team1", team.getTeamName());
     }
 
     @Test
     void setTeamName() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setTeamName("Team1");
         team.setTeamName("Team2");
         assertEquals("Team2", team.getTeamName());
@@ -50,14 +50,14 @@ class TeamsTest {
 
     @Test
     void getGeneralManager() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setGeneralManager("GeneralManager1");
         assertEquals("GeneralManager1", team.getGeneralManager());
     }
 
     @Test
     void setGeneralManager() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setGeneralManager("GeneralManager1");
         team.setGeneralManager("GeneralManager2");
         assertEquals("GeneralManager2", team.getGeneralManager());
@@ -65,14 +65,14 @@ class TeamsTest {
 
     @Test
     void getTeamType() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setTeamType("ai");
         assertEquals("ai", team.getTeamType());
     }
 
     @Test
     void setTeamType() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setTeamType("ai");
         team.setTeamType("user");
         assertEquals("user", team.getTeamType());
@@ -80,7 +80,7 @@ class TeamsTest {
 
     @Test
     void getHeadCoach() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         IHeadCoach headCoach = MockHeadCoach.createMock();
         team.setHeadCoach(headCoach);
         assertEquals(headCoach,team.getHeadCoach());
@@ -88,7 +88,7 @@ class TeamsTest {
 
     @Test
     void setHeadCoach() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         IHeadCoach headCoach = MockHeadCoach.createMock();
         team.setHeadCoach(headCoach);
         assertEquals(headCoach,team.getHeadCoach());
@@ -96,14 +96,14 @@ class TeamsTest {
 
     @Test
     void getLossPoints() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setLossPoints(10);
         assertEquals(10,team.getLossPoints());
     }
 
     @Test
     void setLossPoints() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setLossPoints(10);
         team.setLossPoints(11);
         assertEquals(11,team.getLossPoints());
@@ -111,14 +111,14 @@ class TeamsTest {
 
     @Test
     void getTeamStrength() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setTeamStrength(10);
         assertEquals(10,team.getTeamStrength());
     }
 
     @Test
     void setTeamStrength() {
-        ITeam2 team = new Teams();
+        ITeam team = new Teams();
         team.setTeamStrength(10);
         team.setTeamStrength(20);
         assertEquals(20,team.getTeamStrength());
@@ -132,7 +132,7 @@ class TeamsTest {
         ArrayList<IPlayers> playerArray = new ArrayList<>();
         playerArray.add(players);
         playerArray.add(playerTwo);
-        ITeam2 team = new Teams("Team1", "Manager1", headCoach, playerArray);
+        ITeam team = new Teams("Team1", "Manager1", headCoach, playerArray);
         assertEquals(74,team.calculateTeamStrength(team));
     }
 

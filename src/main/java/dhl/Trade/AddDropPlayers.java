@@ -1,6 +1,6 @@
 package dhl.Trade;
 
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 
 public class AddDropPlayers implements IAddDropPlayers{
 
@@ -13,7 +13,7 @@ public class AddDropPlayers implements IAddDropPlayers{
     }
 
     @Override
-    public void addDropPlayers(ITeam2 team, int totalPlayers) {
+    public void addDropPlayers(ITeam team, int totalPlayers) {
 
         int playersToBeAdded;
         int playersToBeDropped;

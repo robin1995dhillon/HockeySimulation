@@ -235,7 +235,7 @@ public class Players implements IPlayers {
         List<Double> freeAgentStrengthList = new ArrayList<>();
             for(IFreeAgents freeAgent: freeAgents) {
                 if(player.getPosition().equals(freeAgent.getPosition())) {
-                    double freeAgentStrength = freeAgent.calculateStrength();
+                    double freeAgentStrength = freeAgent.calculateStrength(freeAgent);
                     System.out.println("Strength" + freeAgentStrength);
                     freeAgentStrengthList.add(freeAgentStrength);
                 }

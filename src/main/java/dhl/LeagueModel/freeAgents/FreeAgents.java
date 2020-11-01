@@ -115,12 +115,12 @@ public class FreeAgents implements IFreeAgents {
         this.strength = strength;
     }
     @Override
-    public double calculateStrength() {
-        String position = this.getPosition();
-        int skating = this.getSkating();
-        int shooting = this.getShooting();
-        int checking = this.getChecking();
-        int saving = this.getSaving();
+    public double calculateStrength(IFreeAgents freeAgents) {
+        String position = freeAgents.getPosition();
+        int skating = freeAgents.getSkating();
+        int shooting = freeAgents.getShooting();
+        int checking = freeAgents.getChecking();
+        int saving = freeAgents.getSaving();
         double strength;
 
         if(position.equals("forward")) {

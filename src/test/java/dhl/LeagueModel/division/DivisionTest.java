@@ -1,15 +1,11 @@
 package dhl.LeagueModel.division;
 
 import dhl.LeagueModel.IDivision;
-import dhl.LeagueModel.IHeadCoach;
-import dhl.LeagueModel.ITeam2;
-import dhl.LeagueModel.headCoach.HeadCoach;
-import dhl.LeagueModel.teams.Teams;
+import dhl.LeagueModel.ITeam;
 import dhl.Mock.MockTeam;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,8 +13,8 @@ class DivisionTest {
 
     @Test
     void getTeams() {
-        ArrayList<ITeam2> team_array = new ArrayList<>();
-        ITeam2 team = MockTeam.MockTeam();
+        ArrayList<ITeam> team_array = new ArrayList<>();
+        ITeam team = MockTeam.MockTeam();
         team_array.add(team);
         IDivision d = new Division("Atlantic", team_array);
         d.addTeam(team);
@@ -27,9 +23,9 @@ class DivisionTest {
 
     @Test
     void setTeams() {
-        ArrayList<ITeam2> team_array = new ArrayList<>();
-        ITeam2 team = MockTeam.MockTeam();
-        ITeam2 team2 = MockTeam.MockTeamTwo();
+        ArrayList<ITeam> team_array = new ArrayList<>();
+        ITeam team = MockTeam.MockTeam();
+        ITeam team2 = MockTeam.MockTeamTwo();
         team_array.add(team);
         IDivision d = new Division("Atlantic", team_array);
         team_array.add(team2);
@@ -52,9 +48,9 @@ class DivisionTest {
 
     @Test
     void addTeam() {
-        ITeam2 team = MockTeam.MockTeam();
-        ITeam2 team2 = MockTeam.MockTeamTwo();
-        ArrayList<ITeam2> teamArray = new ArrayList<>();
+        ITeam team = MockTeam.MockTeam();
+        ITeam team2 = MockTeam.MockTeamTwo();
+        ArrayList<ITeam> teamArray = new ArrayList<>();
         teamArray.add(team);
         IDivision division = new Division("Metro",teamArray);
         division.addTeam(team2);

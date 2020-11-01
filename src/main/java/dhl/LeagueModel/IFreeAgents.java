@@ -38,7 +38,7 @@ public interface IFreeAgents {
 
     void setStrength(double strength);
 
-    double calculateStrength();
+    double calculateStrength(IFreeAgents freeAgents);
 
     double strengthAdder(int[] positionValues);
 

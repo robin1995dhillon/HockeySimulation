@@ -1,8 +1,8 @@
 package dhl.Trade;
 
-import dhl.LeagueModel.ITeam2;
+import dhl.LeagueModel.ITeam;
 
 public interface IAddDropPlayers {
 
-    void addDropPlayers(ITeam2 team, int totalPlayers);
+    void addDropPlayers(ITeam team, int totalPlayers);
 }
