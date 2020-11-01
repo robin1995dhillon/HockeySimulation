@@ -4,6 +4,8 @@ import dhl.leagueModel.IFreeAgents;
 import dhl.mock.MockFreeAgent;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FreeAgentsTest {
@@ -142,7 +144,10 @@ class FreeAgentsTest {
 
     @Test
     void getFreeAgentFromList() {
-
+        ArrayList<IFreeAgents> freeAgentList = new ArrayList<>();
+        IFreeAgents freeAgent = MockFreeAgent.createMock();
+        freeAgentList.add(freeAgent);
+        assertEquals(freeAgent, freeAgent.getFreeAgentFromList(freeAgentList, "FreeAgent1"));
     }
 
     @Test
