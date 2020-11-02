@@ -15,6 +15,7 @@ public class PlayerTrainingConditionTest {
 
     @Test
     public void receiveTrainingTest(){
+        int i = 1;
         ArrayList<IPlayers> playerList = new ArrayList();
         IPlayers player = MockPlayer.createMock();
         playerList.add(player);
@@ -26,14 +27,14 @@ public class PlayerTrainingConditionTest {
         assertEquals(16, player.getShooting());
         assertEquals(16, player.getChecking());
         assertEquals(16, player.getSaving());
-        t.receiveTraining(playerList, worstCoach);
+        while(player.isInjured() == false){
+            t.receiveTraining(playerList, worstCoach);
+            i++;
+        }
+        System.out.println("Player get injured in the " + i + " turns.");
         assertEquals(16, player.getSkating());
         assertEquals(16, player.getShooting());
         assertEquals(16, player.getChecking());
         assertEquals(16, player.getSaving());
-
-
     }
-
-
 }
