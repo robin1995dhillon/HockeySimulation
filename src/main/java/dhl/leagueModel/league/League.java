@@ -8,8 +8,7 @@ import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.headCoach.HeadCoach;
 import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.persistence.saving.ILeaguePersistence;
-import dhl.persistence.saving.LeaguePersistence;
+import dhl.persistence.saving.*;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
@@ -113,6 +112,12 @@ public class League implements ILeague {
     }
 
     @Override
+    public void saveManager(String name, int leagueID) {
+        IFreeManagerPersistence freeManagerPersistence = new FreeManagerPersistence();
+        freeManagerPersistence.saveFreeManagerToDB(name,leagueID);
+    }
+
+    @Override
     public IGamePlayConfig getGameplayConfig() {
         return iGamePlayConfig;
     }
@@ -140,6 +145,8 @@ public class League implements ILeague {
         List<IConference> conferenceArray = this.getConferences();
         List<IFreeAgents> freeAgentsArray = this.getFreeAgents();
         IGamePlayConfig gamePlayConfig = this.getGameplayConfig();
+        List<IHeadCoach> headCoachArray = this.getCoaches();
+        ArrayList<String> managerName = this.getGeneralManagers();
 
         List<Integer> ID = new ArrayList<>();
         int leagueID = (int) resultObject.get("id");
@@ -155,9 +162,19 @@ public class League implements ILeague {
 
         gamePlayConfig.saveGamePlayConfigToDB(leagueID);
 
+        for(IHeadCoach headCoach: headCoachArray) {
+            headCoach.saveFreeCoach(leagueID);
+        }
+
+        for(String name: managerName) {
+            this.saveManager(name, leagueID);
+        }
+
+
 
 
     }
+
 
 
 

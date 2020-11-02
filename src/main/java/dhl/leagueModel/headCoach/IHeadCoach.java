@@ -25,4 +25,6 @@ public interface IHeadCoach {
     IHeadCoach getCoachFromList(List<IHeadCoach> coachList , String coachName);
 
     void saveHeadCoach(int teamID);
+
+    void saveFreeCoach(int leagueID);
 }

@@ -24,6 +24,7 @@ public interface ILeague {
     void setFreeAgents(ArrayList<IFreeAgents> freeAgents);
     void setHeadCoach(ArrayList<IHeadCoach> coaches);
     void setGeneralManager(ArrayList<String> generalManagers);
+    void saveManager(String name, int leagueID);
 
     IGamePlayConfig getGameplayConfig();
 

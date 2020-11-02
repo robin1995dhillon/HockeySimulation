@@ -26,6 +26,7 @@ public interface ITeam {
     int getLossPoints();
     void setLossPoints(int teamType);
     double calculateTeamStrength(ITeam team);
+//    Might be used in the next milestone. That's why we havent removed it.
     boolean getIsUser();
     void setIsUser(boolean isUser);
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, ArrayList<IPlayers> playerList);
