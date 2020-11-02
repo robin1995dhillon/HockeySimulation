@@ -12,8 +12,6 @@ import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
 import dhl.presentation.*;
 import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
-import dhl.serializeAndDeserialize.serialize.ISerializeModelToJSON;
-import dhl.serializeAndDeserialize.serialize.SerializeModelToJSON;
 import dhl.simulationStateMachine.CreateTeamState;
 import dhl.simulationStateMachine.LoadTeamState;
 import dhl.simulationStateMachine.StateContext;
@@ -30,7 +28,7 @@ public class SimulationMain {
     public static void main(String[] args) throws IOException {
         IUserInput input = new UserInput();
         IUserOutput output = new UserOutput();
-        String teamName = null;
+        String teamName;
         StateContext context = new StateContext(input, output);
         if (args == null || args.length == 0) {
             output.setOutput("Welcome to the matrix. We all live in simulation ;)");

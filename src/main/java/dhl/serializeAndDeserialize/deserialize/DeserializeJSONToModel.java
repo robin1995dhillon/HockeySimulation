@@ -17,6 +17,7 @@ public class DeserializeJSONToModel implements IDeserializeJSONToModel {
     static ObjectMapper objectMapper;
     public ILeague league;
     UserOutput userOutput;
+
     public DeserializeJSONToModel() {
         objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         userOutput = new UserOutput();
@@ -42,7 +43,6 @@ public class DeserializeJSONToModel implements IDeserializeJSONToModel {
             userOutput.setOutput("\nConferences:");
             userOutput.sendOutput();
             for (IConference c : league.getConferences()) {
-                System.out.println(c.getConferenceName());
                 userOutput.setOutput(c.getConferenceName());
                 userOutput.sendOutput();
             }

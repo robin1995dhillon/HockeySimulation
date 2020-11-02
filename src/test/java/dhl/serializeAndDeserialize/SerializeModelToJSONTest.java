@@ -1,7 +1,9 @@
-package dhl.serializeAndDeserialize.serialize;
+package dhl.serializeAndDeserialize;
 
 import dhl.leagueModel.league.ILeague;
 import dhl.mock.MockLeague;
+import dhl.serializeAndDeserialize.serialize.ISerializeModelToJSON;
+import dhl.serializeAndDeserialize.serialize.SerializeModelToJSON;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

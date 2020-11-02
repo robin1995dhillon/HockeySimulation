@@ -1,6 +1,5 @@
 package dhl.validator;
 
-//import dhl.LeagueModel;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.freeAgents.IFreeAgents;
