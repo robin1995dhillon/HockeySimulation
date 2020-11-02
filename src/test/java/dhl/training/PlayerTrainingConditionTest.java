@@ -15,7 +15,7 @@ public class PlayerTrainingConditionTest {
 
     @Test
     public void receiveTrainingTest(){
-        int i = 1;
+        int i = 0;
         ArrayList<IPlayers> playerList = new ArrayList();
         IPlayers player = MockPlayer.createMock();
         playerList.add(player);
