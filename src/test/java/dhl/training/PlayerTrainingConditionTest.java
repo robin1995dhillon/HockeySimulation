@@ -1,9 +1,8 @@
 package dhl.training;
 
-import dhl.leagueModel.headCoach.HeadCoach;
-import dhl.leagueModel.IHeadCoach;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.players.IPlayers;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import dhl.mock.MockHeadCoach;

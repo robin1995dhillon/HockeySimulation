@@ -1,6 +1,7 @@
 package dhl.leagueModel;
 
 import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.headCoach.IHeadCoach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

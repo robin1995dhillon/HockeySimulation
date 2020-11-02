@@ -4,7 +4,7 @@ import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.ILeague;
+import dhl.leagueModel.league.ILeague;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 

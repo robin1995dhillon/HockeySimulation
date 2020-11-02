@@ -3,8 +3,13 @@ package dhl.simulationStateMachine;
 import dhl.database.*;
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
-import dhl.leagueModel.*;
 import dhl.StoredProcedure;
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.division.IDivision;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.teams.ITeam;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;

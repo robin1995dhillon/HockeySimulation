@@ -1,6 +1,7 @@
 package dhl.leagueModel;
 
 import dhl.leagueModel.freeAgents.FreeAgents;
+import dhl.leagueModel.freeAgents.IFreeAgents;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -93,6 +93,30 @@ public class GamePlayConfig implements IGamePlayConfig {
             return true;
         }
     }
+
+    @Override
+    public boolean saveGamePlayConfigToDB(int leagueID) {
+        int maximumAge = this.aging.getMaximumAge();
+        int averageRetirementAge = this.aging.getAverageRetirementAge();
+        int randomWinChance = this.gameResolver.getRandomWinChance();
+        int injuryDaysHigh = this.injuries.getInjuryDaysHigh();
+        int injuryDaysLow = this.injuries.getInjuryDaysLow();
+        double randomInjuryChance = this.injuries.getRandomInjuryChance();
+        int lossPoint = this.trading.getLossPoint();
+        int maxPlayersPerTrade =  this.trading.getMaxPlayersPerTrade();
+        int randomAcceptanceChance = this.trading.getRandomAcceptanceChance();
+        int randomTradeOfferChance = this.trading.getRandomTradeOfferChance();
+        int daysUntilStatIncreaseCheck = this.training.getDaysUntilStatIncreaseCheck();
+
+        int[] gamePlayAttributesInteger = {averageRetirementAge,maximumAge,randomWinChance,injuryDaysLow,injuryDaysHigh,daysUntilStatIncreaseCheck,lossPoint,randomTradeOfferChance, maxPlayersPerTrade,randomAcceptanceChance,leagueID};
+        double[] gamePlayAttributesDouble = {randomInjuryChance};
+
+        IGamePlayConfigPersistence gamePlayConfigPersistence = new GamePlayConfigPersistence();
+        gamePlayConfigPersistence.saveConfigToDB(gamePlayAttributesInteger,gamePlayAttributesDouble);
+        return true;
+    }
+
+
 }
 
 

@@ -1,7 +1,10 @@
 package dhl.leagueModel.headCoach;
 
-import dhl.leagueModel.IHeadCoach;
+import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.players.IPlayers;
+import dhl.mock.MockFreeAgent;
 import dhl.mock.MockHeadCoach;
+import dhl.mock.MockPlayer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -85,5 +88,15 @@ class HeadCoachTest {
 
     @Test
     void saveHeadCoach() {
+    }
+
+    @Test
+    public void convertFreeAgentToPlayerTest(){
+        IPlayers players = MockPlayer.createMock();
+        IFreeAgents agent = MockFreeAgent.createMock();
+        IPlayers player = players.convertFreeAgentToPlayer(agent);
+        assertEquals(agent.getPlayerName(), player.getPlayerName());
+
+
     }
 }

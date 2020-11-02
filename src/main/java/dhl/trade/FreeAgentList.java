@@ -1,9 +1,9 @@
 package dhl.trade;
 
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.ITeam;
+import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.players.Players;
 import dhl.leagueModel.players.PlayersStrength;

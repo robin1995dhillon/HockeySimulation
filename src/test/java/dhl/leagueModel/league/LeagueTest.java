@@ -1,9 +1,8 @@
 package dhl.leagueModel.league;
 
-import dhl.leagueModel.IConference;
-import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.IHeadCoach;
-import dhl.leagueModel.ILeague;
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.conference.Conference;
 import dhl.mock.MockFreeAgent;
 import dhl.mock.MockGamePlayConfig;

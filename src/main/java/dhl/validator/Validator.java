@@ -5,6 +5,7 @@ public class Validator {
     public boolean valueIsPresent(String val) {
         return !(val.isEmpty());
     }
+
     public boolean valueIsPresent(double val) {
         String val_string = Double.toString(val);
         return !(val_string.isEmpty());

@@ -1,6 +1,6 @@
 package dhl.creator;
 
-import dhl.leagueModel.ILeague;
+import dhl.leagueModel.league.ILeague;
 
 public interface ICreator {
 

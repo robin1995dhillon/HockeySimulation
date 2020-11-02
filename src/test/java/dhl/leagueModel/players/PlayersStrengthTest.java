@@ -1,6 +1,5 @@
 package dhl.leagueModel.players;
 
-import dhl.leagueModel.IPlayers;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

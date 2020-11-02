@@ -1,5 +1,7 @@
 package dhl.leagueModel;
 
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.league.League;
 import org.junit.jupiter.api.Test;
 

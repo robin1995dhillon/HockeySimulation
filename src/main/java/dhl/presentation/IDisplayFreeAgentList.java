@@ -1,6 +1,6 @@
 package dhl.presentation;
 
-import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.freeAgents.IFreeAgents;
 
 import java.util.List;
 

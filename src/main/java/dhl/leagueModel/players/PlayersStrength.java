@@ -1,7 +1,5 @@
 package dhl.leagueModel.players;
 
-import dhl.leagueModel.IPlayers;
-
 import java.util.stream.IntStream;
 
 public class PlayersStrength extends Players {
