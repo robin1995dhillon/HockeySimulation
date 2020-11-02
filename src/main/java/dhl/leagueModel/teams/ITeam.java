@@ -2,8 +2,10 @@ package dhl.leagueModel.teams;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.players.IPlayers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonDeserialize(as= Teams.class)
@@ -26,6 +28,7 @@ public interface ITeam {
     double calculateTeamStrength(ITeam team);
     boolean getIsUser();
     void setIsUser(boolean isUser);
+    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, ArrayList<IPlayers> playerList);
 
     void saveTeams(List<Integer> id);
 }

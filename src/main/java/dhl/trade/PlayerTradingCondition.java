@@ -8,7 +8,8 @@ import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 class PlayerTradingCondition implements IPlayerTradingCondition{
@@ -68,10 +69,10 @@ class PlayerTradingCondition implements IPlayerTradingCondition{
                                     continue;
                                 }
                                 else{
-
                             consideringTeamPlayers = strongestWeakestPlayers.checkStrongestPlayer(allTeams.get(j),positionToTrade);
-                           if(strongestWeakestPlayers.StrongestPlayersStrength(consideringTeamPlayers)>strongestPlayersStrength)
-                           finalTeam = allTeams.get(j);
+                           if(strongestWeakestPlayers.StrongestPlayersStrength(consideringTeamPlayers)>strongestPlayersStrength) {
+                               finalTeam = allTeams.get(j);
+                           }
                         }
                     }
                             if(finalTeam.getTeamType().equalsIgnoreCase("ai")) {

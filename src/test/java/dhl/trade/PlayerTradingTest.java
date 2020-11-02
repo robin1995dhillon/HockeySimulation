@@ -166,14 +166,6 @@ public class PlayerTradingTest {
         assertEquals(consideringTeam.getPlayers().get(3).getPlayerName(),expectedConsideringTeam.get(3).getPlayerName());
 
     }
-    @Test
-    public void tradeUserRejectTest() {
-
-        String value = "rejected";
-
-        assertEquals("rejected",value);
-
-    }
 
     @Test
     public void strongestPlayersStrengthTest(){

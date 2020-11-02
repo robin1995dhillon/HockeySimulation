@@ -89,14 +89,4 @@ class HeadCoachTest {
     @Test
     void saveHeadCoach() {
     }
-
-    @Test
-    public void convertFreeAgentToPlayerTest(){
-        IPlayers players = MockPlayer.createMock();
-        IFreeAgents agent = MockFreeAgent.createMock();
-        IPlayers player = players.convertFreeAgentToPlayer(agent);
-        assertEquals(agent.getPlayerName(), player.getPlayerName());
-
-
-    }
 }
