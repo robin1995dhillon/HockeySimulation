@@ -1,13 +1,20 @@
 package dhl;
 
 import dhl.database.*;
-import dhl.leagueModel.*;
+import dhl.gamePlayConfig.*;
 import dhl.leagueModel.conference.Conference;
+import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.Division;
+import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.freeAgents.FreeAgents;
+import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.league.League;
+import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
+import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
 import java.io.IOException;
@@ -128,13 +135,42 @@ public class LoadLeagueFromDatabase {
                     }
                     league.setHeadCoach(freeCoachList);
 
-//                    IGetStoredProcedure getFreeManager = new GetFreeManager(leagueId);
-//                    ResultSet rsFreeManager = getFreeManager.executeProcedure();
-//                    while(rsFreeManager.next()){
-//                        String freeManager = rsFreeManager.getString("name");
-//                        freeManagerList.add(freeManager);
-//                    }
-//                    league.setManager(freeManagerList);
+                    IGetStoredProcedure getFreeManager = new GetFreeManager(leagueId);
+                    ResultSet rsFreeManager = getFreeManager.executeProcedure();
+                    while(rsFreeManager.next()){
+                        String freeManager = rsFreeManager.getString("name");
+                        freeManagerList.add(freeManager);
+                    }
+                    league.setGeneralManager(freeManagerList);
+
+                    IGetStoredProcedure getConfig = new GetConfig(leagueId);
+                    ResultSet rsGetConfig = getConfig.executeProcedure();
+                    IGamePlayConfig gamePlayConfig = new GamePlayConfig();
+                    while(rsGetConfig.next()){
+                        IAging aging = new Aging();
+                        aging.setAverageRetirementAge(rsGetConfig.getInt("average_retirement_age"));
+                        aging.setMaximumAge(rsGetConfig.getInt("maximum_age"));
+                        gamePlayConfig.setAging(aging);
+                        IGameResolver gameResolver = new GameResolver();
+                        //gameResolver.setRandomWinChance(rsGetConfig.getDouble("random_win_chance"));
+                        gamePlayConfig.setGameResolver(gameResolver);
+                        IInjuries injuries = new Injuries();
+                        injuries.setRandomInjuryChance(rsGetConfig.getDouble("random_injury_chance"));
+                        injuries.setInjuryDaysLow(rsGetConfig.getInt("injury_days_low"));
+                        injuries.setInjuryDaysHigh(rsGetConfig.getInt("injury_days_high"));
+                        gamePlayConfig.setInjuries(injuries);
+                        ITraining training = new Training();
+                        training.setDaysUntilStatIncreaseCheck(rsGetConfig.getInt("days_until_stat_increase_check"));
+                        gamePlayConfig.setTraining(training);
+                        ITrading trading = new Trading();
+                        trading.setLossPoint(rsGetConfig.getInt("loss_point"));
+                        //trading.setRandomTradeOfferChance(rsGetConfig.getDouble("random_trade_offer_chance"));
+                        trading.setMaxPlayersPerTrade(rsGetConfig.getInt("max_players_per_trade"));
+                        //trading.setRandomAcceptanceChance(rsGetConfig.getDouble("random_acceptance_chance"));
+                        gamePlayConfig.setTrading(trading);
+                    }
+                    league.setGameplayConfig(gamePlayConfig);
+
                     return league;
                 }
             }

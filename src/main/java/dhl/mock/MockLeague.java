@@ -1,11 +1,16 @@
 package dhl.mock;
 
-import dhl.leagueModel.*;
 import dhl.leagueModel.conference.Conference;
+import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.Division;
+import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.league.League;
+import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
+import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
 import java.util.ArrayList;

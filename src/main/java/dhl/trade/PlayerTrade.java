@@ -1,8 +1,8 @@
 package dhl.trade;
 
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.ITeam;
+import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.TradePrompt;
 import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
@@ -62,7 +62,7 @@ public class PlayerTrade implements IPlayerTrade{
                     userOutput.sendOutput();
                     break outer;
                 } else {
-                    userOutput.setOutput("player eligible for trade");
+                    userOutput.setOutput("player eligible for dhl.trade");
                     userOutput.sendOutput();
                     count++;
                 }
@@ -99,7 +99,7 @@ public class PlayerTrade implements IPlayerTrade{
             prompt.userAcceptRejectTrade(offeringTeamPositionPlayers);
 
             while(true) {
-                userOutput.setOutput("Do you accept the trade?(y/n)");
+                userOutput.setOutput("Do you accept the dhl.trade?(y/n)");
                 userOutput.sendOutput();
                 response = sc.nextLine();
                 if (response.equalsIgnoreCase("y")) {

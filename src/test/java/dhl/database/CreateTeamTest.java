@@ -9,7 +9,7 @@ public class CreateTeamTest {
     @Test
     public void CreateLeagueTest(){
         try{
-            ICreateStoredProcedure s = new CreateTeam("abc", "zongyu", "wu");
+            ICreateStoredProcedure s = new CreateTeam("abc", "zongyu", "wu", true);
         }catch(Exception e){
             assertTrue(false);
         }

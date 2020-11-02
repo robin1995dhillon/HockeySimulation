@@ -2,7 +2,7 @@ package dhl.internalStateMachine;
 
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
-import dhl.leagueModel.ILeague;
+import dhl.leagueModel.league.ILeague;
 
 public class PersistState implements INestedState {
 

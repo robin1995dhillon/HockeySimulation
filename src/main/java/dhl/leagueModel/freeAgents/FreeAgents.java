@@ -1,7 +1,5 @@
 package dhl.leagueModel.freeAgents;
 
-import dhl.leagueModel.IFreeAgents;
-
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -180,5 +178,7 @@ public class FreeAgents implements IFreeAgents {
         int[] freeAgentAttributes = {skating,shooting,checking,saving};
         freeAgentsPersistence.saveFreeAgentsToDB(freeAgentName,position,age,freeAgentAttributes,leagueID);
     }
+
+
 
 }

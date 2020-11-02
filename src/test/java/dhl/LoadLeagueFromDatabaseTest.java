@@ -1,6 +1,6 @@
 package dhl;
 
-import dhl.leagueModel.ILeague;
+import dhl.leagueModel.league.ILeague;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

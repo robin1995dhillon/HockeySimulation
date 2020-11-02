@@ -3,7 +3,7 @@ package dhl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import dhl.leagueModel.ILeague;
+import dhl.leagueModel.league.ILeague;
 
 import java.io.IOException;
 

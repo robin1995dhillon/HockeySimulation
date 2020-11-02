@@ -1,6 +1,5 @@
 package dhl.leagueModel.freeAgents;
 
-import dhl.leagueModel.IFreeAgents;
 import dhl.mock.MockFreeAgent;
 import org.junit.jupiter.api.Test;
 

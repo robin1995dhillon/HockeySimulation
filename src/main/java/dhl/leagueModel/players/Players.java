@@ -1,9 +1,9 @@
 package dhl.leagueModel.players;
 
 import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.gamePlayConfig.*;
+import dhl.mock.MockGamePlayConfig;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +26,7 @@ public class Players implements IPlayers {
     int injuredDays = 0;
     boolean isRetired = false;
     boolean isInjured = false;
+    IGamePlayConfig gamePlayConfig = MockGamePlayConfig.createMock();
 
     public Players() {
     }
@@ -177,35 +178,35 @@ public class Players implements IPlayers {
     }
 
     @Override
-    public void agePlayer(IPlayers player, int days) {
-        int newDaysToAge = calculateNewDaysToAge(days, player);
+    public void agePlayer(int days) {
+        int newDaysToAge = calculateNewDaysToAge(days, this);
         if(newDaysToAge<=365) {
-            player.setDaysToAge(newDaysToAge);
+            this.setDaysToAge(newDaysToAge);
         }
         else {
             newDaysToAge = newDaysToAge % 365;
-            player.setAge(player.getAge() + 1);
-            player.setDaysToAge(newDaysToAge);
+            this.setAge(this.getAge() + 1);
+            this.setDaysToAge(newDaysToAge);
         }
-        if(player.isInjured()) {
-            player.setInjuredDays(player.getInjuredDays() - days);
-            player.playerStillInjured(player);
-            player.checkIfRetired(player);
+        if(this.isInjured()) {
+            this.setInjuredDays(this.getInjuredDays() - days);
+            this.playerStillInjured();
+            this.checkIfRetired();
         }
         else {
-            checkIfRetired(player);
+            checkIfRetired();
         }
     }
 
     @Override
-    public void checkIfRetired(IPlayers player) {
-        IGamePlayConfig gamePlayConfig = new GamePlayConfig();
+    public void checkIfRetired() {
+//        IGamePlayConfig gamePlayConfig = new GamePlayConfig();
         IAging aging = gamePlayConfig.getAging();
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
-        int playerAge = player.getAge();
+        int playerAge = this.getAge();
         Integer[] retirementAge = {average-5,average-4,average-3,average-2,average-1,average,average+1,average+4,average+5,max};
-        int[] retirementArray = {5,10,15,20,25,30,50,70,80,100};
+        Integer[] retirementArray = {5,10,15,20,25,30,50,70,80,100};
 
         int minDistance = Math.abs(retirementAge[0] - playerAge);
         int minIndex = 0;
@@ -216,17 +217,17 @@ public class Players implements IPlayers {
                 minDistance = currentDistance;
             }
         }
-        int theNumber = retirementAge[minIndex];
-        System.out.println("Closest Bracket" + theNumber);
-        int index = Arrays.asList(retirementAge).indexOf(theNumber);
-        System.out.println("Index is" + index);
+        int closestBracket = retirementAge[minIndex];
+        System.out.println("Closest Bracket: " + closestBracket);
+        int index = Arrays.asList(retirementAge).indexOf(closestBracket);
+        System.out.println("Index is: " + index);
         int randomNumber = ThreadLocalRandom.current().nextInt(0,101);
-        System.out.println("Random Number is" + randomNumber);
+        System.out.println("Random Number is: " + randomNumber);
         if(randomNumber >= 0 && randomNumber <= retirementArray[index]) {
             System.out.println("Inside Retirement");
-            player.setRetired(true);
+            this.setRetired(true);
         } else {
-            player.setRetired(false);
+            this.setRetired(false);
         }
     }
 
@@ -250,28 +251,26 @@ public class Players implements IPlayers {
     }
 
     @Override
-    public void checkForPlayerInjury(IPlayers player) {
-        IGamePlayConfig gamePlayConfig = new GamePlayConfig();
+    public void checkForPlayerInjury() {
         IInjuries injuries = gamePlayConfig.getInjuries();
-
         double randomInjuryChance = injuries.getRandomInjuryChance();
         int injuryDaysLow = injuries.getInjuryDaysLow();
         int injuryDaysHigh = injuries.getInjuryDaysHigh();
         double endRange = randomInjuryChance * 100;
         int randomNumber = ThreadLocalRandom.current().nextInt(0,101);
         if(randomNumber <= endRange) {
-            player.setInjured(true);
+            this.setInjured(true);
             int randomInjuryDays = ThreadLocalRandom.current().nextInt(injuryDaysLow,injuryDaysHigh + 1);
             System.out.println("Player is Injured for " + randomInjuryDays + " days");
-            player.setInjuredDays(randomInjuryDays);
+            this.setInjuredDays(randomInjuryDays);
         }
     }
 
     @Override
-    public void playerStillInjured(IPlayers player) {
-        if(player.getInjuredDays() <= 0) {
-            player.setInjured(false);
-            player.setInjuredDays(0);
+    public void playerStillInjured() {
+        if(this.getInjuredDays() <= 0) {
+            this.setInjured(false);
+            this.setInjuredDays(0);
         }
     }
 

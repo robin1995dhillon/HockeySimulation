@@ -1,8 +1,11 @@
 package dhl.leagueModel.players;
 
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.IPlayers;
+import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.mock.MockFreeAgent;
+import dhl.mock.MockGamePlayConfig;
+import dhl.mock.MockPlayer;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,282 +14,271 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayersTest {
 
+    @Before
+    void setValues() {
+        IGamePlayConfig iGamePlayConfig = MockGamePlayConfig.createMock();
+        System.out.println(iGamePlayConfig.getAging().getAverageRetirementAge());
+    }
+
     @Test
     void agePlayer() {
-        IPlayers player = new Players();
-        player.setAge(20);
-        player.setDaysToAge(20);
-        int playerDays = player.getDaysToAge();
-        System.out.println(playerDays);
-        player.agePlayer(player, 250);
-        System.out.println(player.getAge());
-        System.out.println(player.getDaysToAge());
+        setValues();
+        IPlayers players = MockPlayer.createMock();
+        IGamePlayConfig gamePlayConfig = MockGamePlayConfig.createMock();
+        players.agePlayer(200);
+        assertEquals(201, players.getDaysToAge());
+        assertEquals(25, players.getAge());
+    }
+
+    @Test
+    void agePlayer2() {
+        IPlayers players = MockPlayer.createMock();
+        players.setAge(33);
+        players.setDaysToAge(200);
+        players.agePlayer(200);
+        assertEquals(35, players.getDaysToAge());
+        assertEquals(34, players.getAge());
     }
 
     @Test
     void replacePlayerWithFreeAgent() {
-        IPlayers players = new Players();
-        players.setChecking(20);
-        players.setSaving(15);
-        players.setSkating(18);
-        players.setPosition("forward");
-        players.setPlayerName("Player1");
-
-        IFreeAgents freeAgents_1 = new FreeAgents();
-        freeAgents_1.setChecking(20);
-        freeAgents_1.setSaving(15);
-        freeAgents_1.setSkating(18);
-        freeAgents_1.setPosition("forward");
-        freeAgents_1.setPlayerName("Player1");
-
-        IFreeAgents freeAgents_2 = new FreeAgents();
-        freeAgents_2.setChecking(10);
-        freeAgents_2.setSaving(20);
-        freeAgents_2.setSkating(15);
-        freeAgents_2.setPosition("forward");
-        freeAgents_2.setPlayerName("Player2");
-
-        IFreeAgents freeAgents_3 = new FreeAgents();
-        freeAgents_3.setChecking(20);
-        freeAgents_3.setSaving(20);
-        freeAgents_3.setSkating(25);
-        freeAgents_3.setPosition("defense");
-        freeAgents_3.setPlayerName("Player3");
+        IPlayers players = MockPlayer.createMock();
+        IFreeAgents freeAgents = MockFreeAgent.createMock();
+        IFreeAgents freeAgents1 = MockFreeAgent.createMockTwo();
+        IFreeAgents freeAgents2 = MockFreeAgent.createMockThree();
 
         ArrayList<IFreeAgents> freeAgentArrayList = new ArrayList<>();
-        freeAgentArrayList.add(freeAgents_1);
-        freeAgentArrayList.add(freeAgents_2);
-        freeAgentArrayList.add(freeAgents_3);
+        freeAgentArrayList.add(freeAgents);
+        freeAgentArrayList.add(freeAgents1);
+        freeAgentArrayList.add(freeAgents2);
 
         IFreeAgents bestFreeAgent = players.replacePlayerWithFreeAgent(players, freeAgentArrayList);
-        assertEquals(bestFreeAgent.getPlayerName(), "Player1");
+        assertEquals(bestFreeAgent.getPlayerName(), "FreeAgent1");
     }
 
     @Test
     void checkForPlayerInjury() {
-        IPlayers players = new Players();
-        players.setAge(50);
-        players.setChecking(20);
-        players.setSaving(15);
-        players.setSkating(18);
-        players.setPosition("forward");
-        players.setPlayerName("Player1");
+        IPlayers players = MockPlayer.createMock();
 
-        players.agePlayer(players, 25);
+        players.agePlayer(25);
         while(true) {
-            players.checkForPlayerInjury(players);
+            players.checkForPlayerInjury();
             if(players.isInjured()) {
                 break;
             }
         }
-
-        System.out.println("Injury Days for Player is" + players.getInjuredDays());
-        players.agePlayer(players, players.getInjuredDays() - 2);
-        players.checkForPlayerInjury(players);
-        System.out.println("After Aging" + players.isInjured());
-        System.out.println("After Aging Player Injury Days" + players.getInjuredDays());
+        assertTrue(players.isInjured());
     }
 
     @Test
     void playerStillInjured() {
-
-    }
-
-//    @Test
-//    void checkIfRetired() {
-//        IPlayers player = new Players();
-//        player.setAge(42);
-//        player.
-//        player.setDaysToAge(20);
-//        int playerDays = player.getDaysToAge();
-//        System.out.println(playerDays);
-//        player.agePlayer(player, 250);
-//        System.out.println(player.getAge());
-//        System.out.println(player.getDaysToAge());
-//    }
-
-    @Test
-    public void convertPlayerToFreeAgentTest(){
-
-        IPlayers players = new Players();
-        players.setAge(50);
-        players.setChecking(20);
-        players.setSaving(15);
-        players.setSkating(18);
-        players.setStrength(5.6);
-        players.setPosition("forward");
-        players.setPlayerName("Player1");
-
-        IFreeAgents agent  = new FreeAgents();
-        agent.setAge(players.getAge());
-        agent.setChecking(players.getChecking());
-        agent.setSaving(players.getSaving());
-        agent.setSkating(players.getSkating());
-        agent.setPosition(players.getPosition());
-        agent.setPlayerName(players.getPlayerName());
-        agent.setStrength(players.getStrength());
-
-        assertEquals(agent.getPlayerName(),"Player1");
-        assertEquals(agent.getStrength(),5.6);
-
+        IPlayers players = MockPlayer.createMock();
+        players.setInjured(true);
+        players.setInjuredDays(50);
+        players.playerStillInjured();
+        assertTrue(players.isInjured());
     }
 
     @Test
-    public void convertFreeAgentToPlayerTest(){
-
-        IFreeAgents agent = new FreeAgents();
-        agent.setAge(50);
-        agent.setChecking(20);
-        agent.setSaving(15);
-        agent.setSkating(18);
-        agent.setStrength(5.6);
-        agent.setPosition("forward");
-        agent.setPlayerName("Player1");
-
-        IPlayers players  = new Players();
-        players.setAge(agent.getAge());
-        players.setChecking(agent.getChecking());
-        players.setSaving(agent.getSaving());
-        players.setSkating(agent.getSkating());
-        players.setPosition(agent.getPosition());
-        players.setPlayerName(agent.getPlayerName());
-        players.setStrength(agent.getStrength());
-
-        assertEquals(agent.getPlayerName(),"Player1");
-        assertEquals(agent.getStrength(),5.6);
-
-    }
-
-    @Test
-    void getPlayerName() {
-    }
-
-    @Test
-    void setPlayerName() {
-    }
-
-    @Test
-    void getPosition() {
-    }
-
-    @Test
-    void setPosition() {
-    }
-
-    @Test
-    void getCaptain() {
-    }
-
-    @Test
-    void setCaptain() {
-    }
-
-    @Test
-    void getAge() {
-    }
-
-    @Test
-    void setAge() {
-    }
-
-    @Test
-    void getSkating() {
-    }
-
-    @Test
-    void setSkating() {
-    }
-
-    @Test
-    void getShooting() {
-    }
-
-    @Test
-    void setShooting() {
-    }
-
-    @Test
-    void getChecking() {
-    }
-
-    @Test
-    void setChecking() {
-    }
-
-    @Test
-    void getSaving() {
-    }
-
-    @Test
-    void setSaving() {
-    }
-
-    @Test
-    void getStrength() {
-    }
-
-    @Test
-    void setStrength() {
-    }
-
-    @Test
-    void getDaysToAge() {
-    }
-
-    @Test
-    void setDaysToAge() {
-    }
-
-    @Test
-    void isRetired() {
-    }
-
-    @Test
-    void setRetired() {
-    }
-
-    @Test
-    void getInjuredDays() {
-    }
-
-    @Test
-    void setInjuredDays() {
-    }
-
-    @Test
-    void isInjured() {
-    }
-
-    @Test
-    void setInjured() {
-    }
-
-    @Test
-    void testAgePlayer() {
+    void playerStillInjuredFalse() {
+        IPlayers players = MockPlayer.createMock();
+        players.setInjured(true);
+        players.setInjuredDays(50);
+        players.agePlayer(55);
+        players.playerStillInjured();
+        assertFalse(players.isInjured());
     }
 
     @Test
     void checkIfRetired() {
+        IPlayers player = MockPlayer.createMock();
+        player.setAge(50);
+        player.setDaysToAge(20);
+        player.checkIfRetired();
+        assertTrue(player.isRetired());
     }
 
     @Test
-    void testReplacePlayerWithFreeAgent() {
+    public void convertPlayerToFreeAgentTest(){
+
+        IPlayers players = MockPlayer.createMock();
+        players.setStrength(40);
+        IFreeAgents freeAgents = players.convertPlayerToFreeAgent(players);
+        assertEquals(freeAgents.getPlayerName(), players.getPlayerName());
     }
 
     @Test
-    void testCheckForPlayerInjury() {
+    void getPlayerName() {
+        IPlayers players = MockPlayer.createMock();
+        assertEquals("Player1", players.getPlayerName());
     }
 
     @Test
-    void testPlayerStillInjured() {
+    void setPlayerName() {
+        IPlayers players = MockPlayer.createMock();
+        players.setPlayerName("Player2");
+        assertEquals("Player2", players.getPlayerName());
     }
 
     @Test
-    void convertFreeAgentToPlayer() {
+    void getPosition() {
+        IPlayers players = MockPlayer.createMock();
+        assertEquals("forward", players.getPosition());
     }
 
     @Test
-    void convertPlayerToFreeAgent() {
+    void setPosition() {
+        IPlayers players = MockPlayer.createMock();
+        players.setPosition("defense");
+        assertEquals("defense", players.getPosition());
+    }
+
+    @Test
+    void getCaptain() {
+        IPlayers players = MockPlayer.createMock();
+        assertEquals(true, players.getCaptain());
+    }
+
+    @Test
+    void setCaptain() {
+        IPlayers players = MockPlayer.createMock();
+        players.setCaptain(false);
+        assertEquals(false, players.getCaptain());
+    }
+
+    @Test
+    void getAge() {
+        IPlayers players = MockPlayer.createMock();
+        assertEquals(25, players.getAge());
+    }
+
+    @Test
+    void setAge() {
+        IPlayers players = MockPlayer.createMock();
+        players.setAge(20);
+        assertEquals(20, players.getAge());
+    }
+
+    @Test
+    void getSkating() {
+        IPlayers players = MockPlayer.createMock();
+        assertEquals(15, players.getSkating());
+    }
+
+    @Test
+    void setSkating() {
+        IPlayers players = MockPlayer.createMock();
+        players.setSkating(20);
+        assertEquals(20, players.getSkating());
+    }
+
+    @Test
+    void getShooting() {
+        IPlayers players = MockPlayer.createMock();
+        assertEquals(15, players.getShooting());
+    }
+
+    @Test
+    void setShooting() {
+        IPlayers players = MockPlayer.createMock();
+        players.setShooting(20);
+        assertEquals(20, players.getShooting());
+    }
+
+    @Test
+    void getChecking() {
+        IPlayers players = MockPlayer.createMock();
+        assertEquals(15, players.getChecking());
+    }
+
+    @Test
+    void setChecking() {
+        IPlayers players = MockPlayer.createMock();
+        players.setChecking(20);
+        assertEquals(20, players.getChecking());
+    }
+
+    @Test
+    void getSaving() {
+        IPlayers players = MockPlayer.createMock();
+        assertEquals(15, players.getSaving());
+    }
+
+    @Test
+    void setSaving() {
+        IPlayers players = MockPlayer.createMock();
+        players.setSaving(20);
+        assertEquals(20, players.getSaving());
+    }
+
+    @Test
+    void getStrength() {
+        IPlayers players = MockPlayer.createMock();
+        players.setStrength(50);
+        assertEquals(50, players.getStrength());
+    }
+
+    @Test
+    void setStrength() {
+        IPlayers players = MockPlayer.createMock();
+        players.setStrength(50);
+        assertEquals(50, players.getStrength());
+    }
+
+    @Test
+    void getDaysToAge() {
+        IPlayers players = MockPlayer.createMock();
+        players.setDaysToAge(20);
+        assertEquals(20, players.getDaysToAge());
+    }
+
+    @Test
+    void setDaysToAge() {
+        IPlayers players = MockPlayer.createMock();
+        players.setDaysToAge(20);
+        assertEquals(20, players.getDaysToAge());
+    }
+
+    @Test
+    void isRetired() {
+        IPlayers players = MockPlayer.createMock();
+        players.setRetired(true);
+        assertEquals(true, players.isRetired());
+    }
+
+    @Test
+    void setRetired() {
+        IPlayers players = MockPlayer.createMock();
+        players.setRetired(false);
+        assertEquals(false, players.isRetired());
+    }
+
+    @Test
+    void getInjuredDays() {
+        IPlayers players = MockPlayer.createMock();
+        players.setInjuredDays(20);
+        assertEquals(20, players.getInjuredDays());
+    }
+
+    @Test
+    void setInjuredDays() {
+        IPlayers players = MockPlayer.createMock();
+        players.setInjuredDays(20);
+        assertEquals(20, players.getInjuredDays());
+    }
+
+    @Test
+    void isInjured() {
+        IPlayers players = MockPlayer.createMock();
+        players.setInjured(true);
+        assertEquals(true, players.isInjured());
+    }
+
+    @Test
+    void setInjured() {
+        IPlayers players = MockPlayer.createMock();
+        players.setInjured(true);
+        assertEquals(true, players.isInjured());
     }
 
     @Test

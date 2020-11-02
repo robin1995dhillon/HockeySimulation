@@ -1,7 +1,7 @@
 package dhl.mock;
 
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.ITeam;
+import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.players.Players;
 import dhl.leagueModel.teams.Teams;
 
@@ -19,6 +19,7 @@ public class MockPlayer {
         players.setChecking(15);
         players.setSaving(15);
         players.setAge(25);
+        players.setCaptain(true);
         return players;
     }
 

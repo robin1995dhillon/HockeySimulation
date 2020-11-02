@@ -1,9 +1,8 @@
 package dhl.leagueModel.league;
 
-import dhl.leagueModel.IConference;
-import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.IHeadCoach;
-import dhl.leagueModel.ILeague;
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.conference.Conference;
 import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.headCoach.HeadCoach;
@@ -58,7 +57,6 @@ public class League implements ILeague {
     @Override
     public void setConferences(ArrayList<IConference> conferences) {
         this.conferences = conferences;
-
     }
 
     @Override
@@ -139,6 +137,7 @@ public class League implements ILeague {
 
         List<IConference> conferenceArray = this.getConferences();
         List<IFreeAgents> freeAgentsArray = this.getFreeAgents();
+        IGamePlayConfig gamePlayConfig = this.getGameplayConfig();
 
         List<Integer> ID = new ArrayList<>();
         int leagueID = (int) resultObject.get("id");
@@ -147,10 +146,15 @@ public class League implements ILeague {
         for(IConference c: conferenceArray) {
             c.saveConference(ID);
         }
-        System.out.println("Saving Free Agents");
+
         for(IFreeAgents freeAgents: freeAgentsArray) {
             freeAgents.saveFreeAgent(leagueID);
         }
+
+        gamePlayConfig.saveGamePlayConfigToDB(leagueID);
+
+
+
     }
 
 
