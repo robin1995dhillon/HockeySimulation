@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dhl.Database.GetDHLTableTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.817 s <<< FAILURE! - in dhl.Database.GetDHLTableTest
-dhl.Database.GetDHLTableTest.executeProcedureTest  Time elapsed: 1.81 s  <<< ERROR!
-java.sql.SQLSyntaxErrorException: PROCEDURE CSCI5308_1_DEVINT.get_dhl_table does not exist
-	at dhl.Database.GetDHLTableTest.executeProcedureTest(GetDHLTableTest.java:24)
-
