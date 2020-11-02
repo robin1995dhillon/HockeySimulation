@@ -10,9 +10,9 @@ import java.sql.SQLException;
 public class TeamPersistence implements ITeamPersistence {
 
     @Override
-    public JSONObject saveTeamToDB(String name, String managerName, String coachName) {
+    public JSONObject saveTeamToDB(String name, String managerName, String coachName, boolean is_user) {
         JSONObject return_obj = new JSONObject();
-        ICreateStoredProcedure SP = new CreateTeam(name, managerName, coachName);
+        ICreateStoredProcedure SP = new CreateTeam(name, managerName, coachName, is_user);
         try {
             SP.executeProcedure();
             int team_id = SP.getInsertedId();

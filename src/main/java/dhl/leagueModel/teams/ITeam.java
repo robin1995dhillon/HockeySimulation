@@ -24,6 +24,8 @@ public interface ITeam {
     int getLossPoints();
     void setLossPoints(int teamType);
     double calculateTeamStrength(ITeam team);
+    boolean getIsUser();
+    void setIsUser(boolean isUser);
 
     void saveTeams(List<Integer> id);
 }

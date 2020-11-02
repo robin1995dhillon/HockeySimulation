@@ -16,6 +16,7 @@ public class Teams implements ITeam {
     String teamType = "ai";
     int lossPoints;
     double teamStrength;
+    private boolean isUser;
 
     public Teams() {
     }
@@ -122,6 +123,16 @@ public class Teams implements ITeam {
         return teamStrength;
     }
 
+    @Override
+    public boolean getIsUser() {
+        return this.isUser;
+    }
+
+    @Override
+    public void setIsUser(boolean isUser) {
+        this.isUser = isUser;
+    }
+
     public void checkForInjury(ITeam team) {
         List<IPlayers> players;
         players = team.getPlayers();
@@ -134,7 +145,7 @@ public class Teams implements ITeam {
     public void saveTeams(List<Integer> id) {
         ITeamPersistence teamPersistence = new TeamPersistence();
         String headCoach = this.headCoach.getName();
-        JSONObject resultObject = teamPersistence.saveTeamToDB(this.teamName, this.generalManager, headCoach);
+        JSONObject resultObject = teamPersistence.saveTeamToDB(this.teamName, this.generalManager, headCoach, this.isUser);
         int teamID = (int) resultObject.get("id");
         System.out.println(teamID);
         id.add(3,teamID);
