@@ -1,5 +1,7 @@
 package dhl.leagueModel.freeAgents;
 
+import dhl.persistence.saving.FreeAgentsPersistence;
+import dhl.persistence.saving.IFreeAgentsPersistence;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
 

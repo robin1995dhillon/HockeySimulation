@@ -1,7 +1,7 @@
 package dhl.validator;
 
-import dhl.gamePlayConfig.GamePlayConfig;
-import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.inputOutput.UserOutput;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -1,6 +1,8 @@
 package dhl.leagueModel.division;
 
 import dhl.leagueModel.teams.ITeam;
+import dhl.persistence.saving.DivisionPersistence;
+import dhl.persistence.saving.IDivisionPersistence;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;

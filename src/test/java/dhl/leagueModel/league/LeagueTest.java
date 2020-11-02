@@ -8,7 +8,7 @@ import dhl.mock.MockFreeAgent;
 import dhl.mock.MockGamePlayConfig;
 import dhl.mock.MockHeadCoach;
 import dhl.mock.MockManager;
-import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

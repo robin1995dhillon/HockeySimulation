@@ -1,5 +1,8 @@
 package dhl.leagueModel.freeAgents;
 
+import dhl.persistence.saving.FreeAgentsPersistence;
+import dhl.persistence.saving.IFreeAgentsPersistence;
+
 import java.util.List;
 import java.util.stream.IntStream;
 

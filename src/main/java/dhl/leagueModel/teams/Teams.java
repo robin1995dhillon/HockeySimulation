@@ -3,6 +3,10 @@ package dhl.leagueModel.teams;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.PlayersStrength;
+import dhl.persistence.saving.DHLPersistence;
+import dhl.persistence.saving.IDHLPersistence;
+import dhl.persistence.saving.ITeamPersistence;
+import dhl.persistence.saving.TeamPersistence;
 import org.json.simple.JSONObject;
 
 import java.util.List;
@@ -16,7 +20,7 @@ public class Teams implements ITeam {
     String teamType = "ai";
     int lossPoints;
     double teamStrength;
-    private boolean isUser;
+    private boolean isUser = false;
 
     public Teams() {
     }

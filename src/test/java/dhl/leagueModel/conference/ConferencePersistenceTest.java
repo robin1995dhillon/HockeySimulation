@@ -1,5 +1,7 @@
 package dhl.leagueModel.conference;
 
+import dhl.persistence.saving.ConferencePersistence;
+import dhl.persistence.saving.IConferencePersistence;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
 

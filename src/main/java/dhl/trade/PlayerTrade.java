@@ -4,10 +4,10 @@ import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.TradePrompt;
-import dhl.gamePlayConfig.GamePlayConfig;
-import dhl.gamePlayConfig.IGamePlayConfig;
-import dhl.gamePlayConfig.ITrading;
-import dhl.gamePlayConfig.Trading;
+import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.gamePlayConfig.ITrading;
+import dhl.leagueModel.gamePlayConfig.Trading;
 
 import java.util.ArrayList;
 import java.util.List;
