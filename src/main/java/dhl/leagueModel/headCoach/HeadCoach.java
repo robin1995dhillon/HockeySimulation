@@ -1,7 +1,5 @@
 package dhl.leagueModel.headCoach;
 
-import dhl.leagueModel.IHeadCoach;
-
 import java.util.List;
 
 public class HeadCoach implements IHeadCoach {

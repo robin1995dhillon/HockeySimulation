@@ -1,7 +1,6 @@
 package dhl.leagueModel.division;
 
-import dhl.leagueModel.IDivision;
-import dhl.leagueModel.ITeam;
+import dhl.leagueModel.teams.ITeam;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
@@ -17,6 +16,10 @@ public class Division implements IDivision {
     public Division(String divisionName, ArrayList<ITeam> teams) {
         this.divisionName = divisionName;
         this.teams = teams;
+    }
+
+    public Division() {
+
     }
 
     public Division(String divisionName) {

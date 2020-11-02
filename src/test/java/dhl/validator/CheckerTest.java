@@ -1,11 +1,12 @@
 package dhl.validator;
 
-import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.IHeadCoach;
-import dhl.leagueModel.ILeague;
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.league.ILeague;
+import dhl.mock.MockFreeAgent;
+import dhl.mock.MockHeadCoach;
 import dhl.mock.MockLeague;
+import dhl.mock.MockManager;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ class CheckerTest {
         Checker c = new Checker();
         String MockStringName = "Eastern Conference";
         ILeague ILeague = MockLeague.createMock();
-        assertEquals(true, c.conferenceChecker(MockStringName, ILeague));
+        assertTrue(c.conferenceChecker(MockStringName, ILeague));
     }
 
     @Test
@@ -27,7 +28,7 @@ class CheckerTest {
         Checker c = new Checker();
         String MockStringName = "Eastern ";
         ILeague ILeague = MockLeague.createMock();
-        assertEquals(false, c.conferenceChecker(MockStringName, ILeague));
+        assertFalse(c.conferenceChecker(MockStringName, ILeague));
     }
 
     @Test
@@ -35,7 +36,7 @@ class CheckerTest {
         Checker c = new Checker();
         String MockStringName = "American";
         ILeague ILeague = MockLeague.createMock();
-        assertEquals(true, c.divisionChecker(MockStringName, ILeague));
+        assertTrue(c.divisionChecker(MockStringName, ILeague));
     }
 
     @Test
@@ -43,7 +44,7 @@ class CheckerTest {
         Checker c = new Checker();
         String MockStringName = "India";
         ILeague ILeague = MockLeague.createMock();
-        assertEquals(false, c.divisionChecker(MockStringName, ILeague));
+        assertFalse(c.divisionChecker(MockStringName, ILeague));
     }
 
     @Test
@@ -51,53 +52,42 @@ class CheckerTest {
         Checker c = new Checker();
         String MockStringName = "halifax";
         ILeague ILeague = MockLeague.createMock();
-        assertEquals(true, c.teamChecker(MockStringName, ILeague));
+        assertTrue(c.teamChecker(MockStringName, ILeague));
 
     }
     void falseTeamChecker() {
         Checker c = new Checker();
         String MockStringName = "HalifaxTigers";
         ILeague ILeague = MockLeague.createMock();
-        assertEquals(false, c.teamChecker(MockStringName, ILeague));
+        assertFalse(c.teamChecker(MockStringName, ILeague));
 
     }
 
     @Test
     public void managerCheckerTest(){
-        ArrayList<String> managerList = new ArrayList<>();
-        managerList.add("abc");
+        ArrayList<String> managerList = MockManager.createMock();
         IChecker c = new Checker();
-        assertTrue(c.managerChecker(managerList, "abc"));
+        assertTrue(c.managerChecker(managerList, "Manager1"));
         assertFalse(c.managerChecker(managerList, "def"));
     }
 
     @Test
     public void coachCheckerTest(){
         ArrayList<IHeadCoach> coachList = new ArrayList<>();
-        IHeadCoach coach = new HeadCoach();
-        coach.setName("Joe Smith");
-        coach.setSkating(0.5);
-        coach.setShooting(0.8);
-        coach.setChecking(0.3);
-        coach.setSaving(1.0);
+        IHeadCoach coach = MockHeadCoach.createMock();
         coachList.add(coach);
         IChecker c = new Checker();
-        assertTrue(c.coachChecker(coachList, "Joe Smith"));
+        assertTrue(c.coachChecker(coachList, "Head1"));
         assertFalse(c.coachChecker(coachList, "Frank Smith"));
     }
 
     @Test
     public void freeAgentCheckerTest(){
         ArrayList<IFreeAgents> freeAgentList = new ArrayList();
-        IFreeAgents freeAgent = new FreeAgents("Agent One", "forward");
-        freeAgent.setAge(25);
-        freeAgent.setSkating(10);
-        freeAgent.setShooting(10);
-        freeAgent.setChecking(10);
-        freeAgent.setSaving(0);
+        IFreeAgents freeAgent = MockFreeAgent.createMock();
         freeAgentList.add(freeAgent);
         IChecker c = new Checker();
-        assertTrue(c.freeAgentChecker(freeAgentList,"Agent One"));
+        assertTrue(c.freeAgentChecker(freeAgentList,"FreeAgent1"));
         assertFalse(c.freeAgentChecker(freeAgentList, "Agent Two"));
     }
 }

@@ -1,7 +1,5 @@
 package dhl.leagueModel.freeAgents;
 
-import dhl.leagueModel.IFreeAgents;
-
 import java.util.List;
 import java.util.stream.IntStream;
 

@@ -1,7 +1,6 @@
 package dhl.leagueModel.conference;
 
-import dhl.leagueModel.IConference;
-import dhl.leagueModel.IDivision;
+import dhl.leagueModel.division.IDivision;
 import dhl.mock.MockDivision;
 import org.junit.jupiter.api.Test;
 

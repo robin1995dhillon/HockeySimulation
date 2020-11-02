@@ -2,6 +2,7 @@ package dhl.validator;
 
 import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
+import dhl.inputOutput.UserOutput;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -11,9 +12,11 @@ import java.util.Stack;
 public class JSONValidator {
 
     Validator validator;
+    private UserOutput userOutput;
 
     public JSONValidator() {
         validator = new Validator();
+        userOutput = new UserOutput();
     }
 
     public JSONObject mainValidator(JSONObject Obj) {
@@ -88,7 +91,6 @@ public class JSONValidator {
             JSONObject freeAgentObject = (JSONObject) free_agent_iter.next();
             String playerName = (String) freeAgentObject.get("playerName");
             String position = (String) freeAgentObject.get("position");
-            System.out.println(freeAgentObject.get("age"));
             int age = ((Long)freeAgentObject.get("age")).intValue();
             int skating = ((Long)freeAgentObject.get("skating")).intValue();
             int shooting = ((Long)freeAgentObject.get("shooting")).intValue();
@@ -111,7 +113,9 @@ public class JSONValidator {
             for(int i=0;i<stats_array.length;i++) {
                 if(!validator.checkRange(stats_array[i])) {
                     stack.push(stats_name[i] + "should be between 1 and 20");
-                    System.out.println("Value should be between 1 and 20");
+                    userOutput.setOutput("Value should be between 1 and 20");
+                    userOutput.sendOutput();
+
                     return false;
                 }
             }
@@ -120,7 +124,6 @@ public class JSONValidator {
     }
 
     public Boolean coachValidator(JSONObject Obj, Stack stack) {
-        System.out.println("Inside Coach");
         JSONArray coachArray = (JSONArray) (Obj.get("coaches"));
         if(coachArray==null) {
             return false;
@@ -138,21 +141,18 @@ public class JSONValidator {
         Iterator div_arr_iter = divisionArray.iterator();
         while (div_arr_iter.hasNext()) {
             JSONObject divisionObject = (JSONObject) div_arr_iter.next();
-
             String divisionName = (String) divisionObject.get("divisionName");
-            System.out.println(divisionObject);
             if (validator.valueIsPresent(divisionName)) {
                 teamValidator(divisionObject, stack);
-
             } else {
                 return true;
             }
         }
         return true;
     }
+
     public Boolean teamValidator(JSONObject Obj, Stack stack) {
         JSONArray teamArray = (JSONArray) (Obj.get("teams"));
-
         Iterator team_arr_iter = teamArray.iterator();
         while (team_arr_iter.hasNext()) {
             JSONObject teamObject = (JSONObject) team_arr_iter.next();
@@ -216,7 +216,8 @@ public class JSONValidator {
             for(int i=0;i<stats_array.length;i++) {
                 if(!validator.checkRange(stats_array[i])) {
                     stack.push(stats_name[i] + "should be between 1 and 20");
-                    System.out.println("Value should be between 1 and 20");
+                    userOutput.setOutput("Value should be between 1 and 20");
+                    userOutput.sendOutput();
                     return false;
                 }
             }
@@ -224,8 +225,6 @@ public class JSONValidator {
         return false;
     }
     public Boolean attributesValidator(JSONObject Obj, Stack stack) {
-        System.out.println("Inside Attributes");
-        System.out.println(Obj);
         String name = (String) Obj.get("name");
         Double skating = (Double) Obj.get("skating");
         Double shooting = (Double) Obj.get("shooting");
@@ -235,7 +234,8 @@ public class JSONValidator {
         String[] detailsName = {"skating", "shooting", "checking", "saving"};
         if(!validator.valueIsPresent(name)) {
             stack.push("Name is Missing");
-            System.out.println("Name is Missing");
+            userOutput.setOutput("Name is Missing");
+            userOutput.sendOutput();
             return false;
         }
         for(int i=0;i<detailsValue.length;i++) {

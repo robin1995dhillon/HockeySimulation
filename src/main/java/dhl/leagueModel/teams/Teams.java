@@ -1,8 +1,7 @@
 package dhl.leagueModel.teams;
 
-import dhl.leagueModel.IHeadCoach;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.ITeam;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.PlayersStrength;
 import org.json.simple.JSONObject;
 

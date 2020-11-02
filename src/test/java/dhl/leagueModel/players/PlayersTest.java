@@ -1,12 +1,7 @@
 package dhl.leagueModel.players;
 
-import dhl.gamePlayConfig.GamePlayConfig;
 import dhl.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.ILeague;
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.league.League;
+import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.mock.MockFreeAgent;
 import dhl.mock.MockGamePlayConfig;
 import dhl.mock.MockPlayer;

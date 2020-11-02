@@ -1,7 +1,6 @@
 package dhl.leagueModel.conference;
 
-import dhl.leagueModel.IConference;
-import dhl.leagueModel.IDivision;
+import dhl.leagueModel.division.IDivision;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;

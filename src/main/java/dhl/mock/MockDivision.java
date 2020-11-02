@@ -1,7 +1,7 @@
 package dhl.mock;
 
-import dhl.leagueModel.IDivision;
-import dhl.leagueModel.ITeam;
+import dhl.leagueModel.division.IDivision;
+import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.division.Division;
 import dhl.leagueModel.teams.Teams;
 

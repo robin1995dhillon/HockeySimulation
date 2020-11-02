@@ -1,10 +1,10 @@
 package dhl.internalStateMachine;
 
 import dhl.inputOutput.IUserOutput;
-import dhl.leagueModel.IConference;
-import dhl.leagueModel.IDivision;
-import dhl.leagueModel.ILeague;
-import dhl.leagueModel.ITeam;
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.division.IDivision;
+import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.teams.ITeam;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 

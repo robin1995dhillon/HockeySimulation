@@ -1,12 +1,18 @@
 package dhl.creator;
 
-import dhl.leagueModel.*;
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.division.IDivision;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
 import java.util.ArrayList;
 
-public class TeamCreator {
+public class TeamCreator implements ITeamCreator {
 
+    @Override
     public ILeague createTeam(String ManagerName, IHeadCoach headCoach, ILeague ILeague, String ConferenceName, String DivisionName, String TeamName, ArrayList<IPlayers> playerList, String teamType) {
 
         ArrayList<IConference> Conference;
@@ -32,19 +38,6 @@ public class TeamCreator {
                 }
             }
         }
-//        for(Conference c: Conference) {
-//            System.out.println(c.getConferenceName());
-//            Divisions = c.getDivisions();
-//            for(Division d: Divisions) {
-//                System.out.println(d.getDivisionName());
-//                Teams = d.getTeams();
-//                for(Teams t: Teams) {
-//                    System.out.println(t.getTeamName());
-//                    System.out.println(t.getGeneralManager());
-//                    System.out.println(t.getHeadCoach());
-//                    }
-//                }
-//            }
         return ILeague;
     }
 }

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: dhl.LeagueModel.players.PlayersTest
+Test set: dhl.leagueModel.players.PlayersTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in dhl.LeagueModel.players.PlayersTest
+Tests run: 40, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s - in dhl.leagueModel.players.PlayersTest

@@ -1,7 +1,12 @@
 package dhl.validator;
 
 //import dhl.LeagueModel;
-import dhl.leagueModel.*;
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.division.IDivision;
+import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.teams.ITeam;
 
 import java.util.ArrayList;
 import java.util.List;

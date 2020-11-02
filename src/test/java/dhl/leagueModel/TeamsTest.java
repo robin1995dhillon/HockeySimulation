@@ -1,7 +1,10 @@
 package dhl.leagueModel;
 
 import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
+import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 import org.junit.jupiter.api.Test;
 
