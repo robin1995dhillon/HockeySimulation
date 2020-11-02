@@ -121,10 +121,10 @@ public class PlayerTradingTest {
             }
         }
 
-            offeringTeam.getPlayers().removeAll(offeringFinal);
-            offeringTeam.getPlayers().addAll(consideringFinal);
-            consideringTeam.getPlayers().removeAll(consideringFinal);
-            consideringTeam.getPlayers().addAll(offeringFinal);
+        offeringTeam.getPlayers().removeAll(offeringFinal);
+        offeringTeam.getPlayers().addAll(consideringFinal);
+        consideringTeam.getPlayers().removeAll(consideringFinal);
+        consideringTeam.getPlayers().addAll(offeringFinal);
 
         assertEquals(offeringTeam.getPlayers().get(0).getPlayerName(),expectedTradingTeam.get(0).getPlayerName());
         assertEquals(offeringTeam.getPlayers().get(1).getPlayerName(),expectedTradingTeam.get(1).getPlayerName());
@@ -150,28 +150,21 @@ public class PlayerTradingTest {
         List<IPlayers> expectedConsideringTeam = MockPlayer.tradeAiExpectedConsideringTeamTestMock();
         List<IPlayers> expectedTradingTeam = MockPlayer.tradeAiExpectedTradingTeamTestMock();
 
-//        while(true) {
-//
-//            if (response.equalsIgnoreCase("y")) {
-                offeringTeam.getPlayers().removeAll(offeringFinal);
-                offeringTeam.getPlayers().addAll(consideringFinal);
-                consideringTeam.getPlayers().removeAll(consideringFinal);
-                consideringTeam.getPlayers().addAll(offeringFinal);
+        offeringTeam.getPlayers().removeAll(offeringFinal);
+        offeringTeam.getPlayers().addAll(consideringFinal);
+        consideringTeam.getPlayers().removeAll(consideringFinal);
+        consideringTeam.getPlayers().addAll(offeringFinal);
 
-                assertEquals(offeringTeam.getPlayers().get(0).getPlayerName(),expectedTradingTeam.get(0).getPlayerName());
-                assertEquals(offeringTeam.getPlayers().get(1).getPlayerName(),expectedTradingTeam.get(1).getPlayerName());
-                assertEquals(offeringTeam.getPlayers().get(2).getPlayerName(),expectedTradingTeam.get(2).getPlayerName());
-                assertEquals(offeringTeam.getPlayers().get(3).getPlayerName(),expectedTradingTeam.get(3).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(0).getPlayerName(),expectedTradingTeam.get(0).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(1).getPlayerName(),expectedTradingTeam.get(1).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(2).getPlayerName(),expectedTradingTeam.get(2).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(3).getPlayerName(),expectedTradingTeam.get(3).getPlayerName());
 
-                assertEquals(consideringTeam.getPlayers().get(0).getPlayerName(),expectedConsideringTeam.get(0).getPlayerName());
-                assertEquals(consideringTeam.getPlayers().get(1).getPlayerName(),expectedConsideringTeam.get(1).getPlayerName());
-                assertEquals(consideringTeam.getPlayers().get(2).getPlayerName(),expectedConsideringTeam.get(2).getPlayerName());
-                assertEquals(consideringTeam.getPlayers().get(3).getPlayerName(),expectedConsideringTeam.get(3).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(0).getPlayerName(),expectedConsideringTeam.get(0).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(1).getPlayerName(),expectedConsideringTeam.get(1).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(2).getPlayerName(),expectedConsideringTeam.get(2).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(3).getPlayerName(),expectedConsideringTeam.get(3).getPlayerName());
 
-
-            //}
-
-        //} //
     }
     @Test
     public void tradeUserRejectTest() {
