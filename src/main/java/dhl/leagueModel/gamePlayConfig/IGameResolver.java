@@ -5,9 +5,9 @@ import org.json.simple.JSONObject;
 
 @JsonDeserialize(as= GameResolver.class)
 public interface IGameResolver {
-    int getRandomWinChance();
+    double getRandomWinChance();
 
-    void setRandomWinChance(int randomWinChance);
+    void setRandomWinChance(double randomWinChance);
 
     boolean gameResolverValidator(JSONObject Obj);
 
