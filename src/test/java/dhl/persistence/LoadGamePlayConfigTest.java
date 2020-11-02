@@ -16,7 +16,7 @@ public class LoadGamePlayConfigTest {
     public void loadGameConfigTest() throws IOException, SQLException {
         ILoadGamePlayConfig l = new LoadGamePlayConfig();
         ILeague league = new League("abc");
-        league.setGameplayConfig(l.loadGameGonfig(1));
+        league.setGameplayConfig(l.loadGameConfig(1));
         ISerializeModelToJSON s = new SerializeModelToJSON();
         System.out.println(s.serializeModelToJSON(league));
     }

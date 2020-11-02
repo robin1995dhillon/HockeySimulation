@@ -9,17 +9,17 @@ public interface ITrading {
 
     void setLossPoint(int lossPoint);
 
-    int getRandomTradeOfferChance();
+    double getRandomTradeOfferChance();
 
-    void setRandomTradeOfferChance(int randomTradeOfferChance);
+    void setRandomTradeOfferChance(double randomTradeOfferChance);
 
     int getMaxPlayersPerTrade();
 
     void setMaxPlayersPerTrade(int maxPlayersPerTrade);
 
-    int getRandomAcceptanceChance();
+    double getRandomAcceptanceChance();
 
-    void setRandomAcceptanceChance(int randomAcceptanceChance);
+    void setRandomAcceptanceChance(double randomAcceptanceChance);
 
     boolean tradingValidator(JSONObject Obj);
 

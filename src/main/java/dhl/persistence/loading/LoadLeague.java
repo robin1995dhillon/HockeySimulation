@@ -41,7 +41,7 @@ public class LoadLeague implements ILoadLeague{
                 ArrayList<String> managerList = getManager.loadFreeManager(leagueId);
                 league.setGeneralManager(managerList);
                 ILoadGamePlayConfig getConfig = new LoadGamePlayConfig();
-                IGamePlayConfig gamePlayConfig = getConfig.loadGameGonfig(leagueId);
+                IGamePlayConfig gamePlayConfig = getConfig.loadGameConfig(leagueId);
                 league.setGameplayConfig(gamePlayConfig);
             }
         }

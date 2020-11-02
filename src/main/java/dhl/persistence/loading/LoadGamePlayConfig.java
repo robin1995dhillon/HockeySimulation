@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class LoadGamePlayConfig implements ILoadGamePlayConfig {
 
-    public IGamePlayConfig loadGameGonfig(int leagueId) throws IOException, SQLException {
+    public IGamePlayConfig loadGameConfig(int leagueId) throws IOException, SQLException {
         IGetStoredProcedure getConfig = new GetConfig(leagueId);
         ResultSet rsGetConfig = getConfig.executeProcedure();
         IGamePlayConfig gamePlayConfig = new GamePlayConfig();
@@ -20,7 +20,7 @@ public class LoadGamePlayConfig implements ILoadGamePlayConfig {
             aging.setMaximumAge(rsGetConfig.getInt("maximum_age"));
             gamePlayConfig.setAging(aging);
             IGameResolver gameResolver = new GameResolver();
-            //gameResolver.setRandomWinChance(rsGetConfig.getDouble("random_win_chance"));
+            gameResolver.setRandomWinChance(rsGetConfig.getDouble("random_win_chance"));
             gamePlayConfig.setGameResolver(gameResolver);
             IInjuries injuries = new Injuries();
             injuries.setRandomInjuryChance(rsGetConfig.getDouble("random_injury_chance"));
@@ -32,9 +32,9 @@ public class LoadGamePlayConfig implements ILoadGamePlayConfig {
             gamePlayConfig.setTraining(training);
             ITrading trading = new Trading();
             trading.setLossPoint(rsGetConfig.getInt("loss_point"));
-            //trading.setRandomTradeOfferChance(rsGetConfig.getDouble("random_trade_offer_chance"));
+            trading.setRandomTradeOfferChance(rsGetConfig.getDouble("random_trade_offer_chance"));
             trading.setMaxPlayersPerTrade(rsGetConfig.getInt("max_players_per_trade"));
-            //trading.setRandomAcceptanceChance(rsGetConfig.getDouble("random_acceptance_chance"));
+            trading.setRandomAcceptanceChance(rsGetConfig.getDouble("random_acceptance_chance"));
             gamePlayConfig.setTrading(trading);
         }
         return gamePlayConfig;

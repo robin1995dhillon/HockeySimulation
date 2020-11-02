@@ -4,9 +4,9 @@ import org.json.simple.JSONObject;
 
 public class Trading implements ITrading {
     private int lossPoint;
-    private int randomTradeOfferChance;
+    private double randomTradeOfferChance;
     private int maxPlayersPerTrade;
-    private int randomAcceptanceChance;
+    private double randomAcceptanceChance;
 
     @Override
     public int getLossPoint() {
@@ -19,12 +19,12 @@ public class Trading implements ITrading {
     }
 
     @Override
-    public int getRandomTradeOfferChance() {
+    public double getRandomTradeOfferChance() {
         return randomTradeOfferChance;
     }
 
     @Override
-    public void setRandomTradeOfferChance(int randomTradeOfferChance) {
+    public void setRandomTradeOfferChance(double randomTradeOfferChance) {
         this.randomTradeOfferChance = randomTradeOfferChance;
     }
 
@@ -39,12 +39,12 @@ public class Trading implements ITrading {
     }
 
     @Override
-    public int getRandomAcceptanceChance() {
+    public double getRandomAcceptanceChance() {
         return randomAcceptanceChance;
     }
 
     @Override
-    public void setRandomAcceptanceChance(int randomAcceptanceChance) {
+    public void setRandomAcceptanceChance(double randomAcceptanceChance) {
         this.randomAcceptanceChance = randomAcceptanceChance;
     }
 
