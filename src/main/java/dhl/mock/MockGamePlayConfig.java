@@ -1,6 +1,6 @@
 package dhl.mock;
 
-import dhl.gamePlayConfig.*;
+import dhl.leagueModel.gamePlayConfig.*;
 
 public class MockGamePlayConfig {
 

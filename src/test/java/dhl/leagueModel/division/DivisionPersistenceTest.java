@@ -1,5 +1,7 @@
 package dhl.leagueModel.division;
 
+import dhl.persistence.saving.DivisionPersistence;
+import dhl.persistence.saving.IDivisionPersistence;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
 

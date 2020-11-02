@@ -1,5 +1,8 @@
 package dhl.leagueModel.headCoach;
 
+import dhl.persistence.saving.HeadCoachPersistence;
+import dhl.persistence.saving.IHeadCoachPersistence;
+
 import java.util.List;
 
 public class HeadCoach implements IHeadCoach {

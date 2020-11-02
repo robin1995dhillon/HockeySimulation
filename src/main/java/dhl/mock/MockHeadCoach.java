@@ -13,6 +13,7 @@ public class MockHeadCoach {
         headCoach.setSkating(0.6);
         return headCoach;
     }
+
     public static IHeadCoach createMockBestCoach(){
         IHeadCoach headCoach = new HeadCoach();
         headCoach.setName("Best Coach");

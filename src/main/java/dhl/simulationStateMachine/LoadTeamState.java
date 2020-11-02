@@ -1,9 +1,11 @@
 package dhl.simulationStateMachine;
 
-import dhl.LoadLeagueFromDatabase;
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
-import dhl.StoredProcedure;
+import dhl.persistence.database.CheckTeam;
+import dhl.persistence.database.ICheckStoredProcedure;
+import dhl.persistence.loading.ILoadLeague;
+import dhl.persistence.loading.LoadLeague;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,29 +28,29 @@ public class LoadTeamState implements IState{
         context.setState(new SimulateLeagueState(null, input, output, teamName));
     }
     public void runState() {
-//        StoredProcedure SP = new StoredProcedure("check_team");
-//        SP.addParameter(teamName);
-//        boolean is_exist = false;
-//        try {
-//            SP.executeProcedure();
-//            is_exist = SP.getExist();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        if (is_exist) {
-//            System.out.println("Found the team. Loading...");
-//        } else {
-//            System.out.println(" No such team. Quitting simulation.");
-//            System.exit(0);
-//        }
-        LoadLeagueFromDatabase loadLeagueFromDatabase = new LoadLeagueFromDatabase();
+        ICheckStoredProcedure SP = new CheckTeam(teamName);
+        boolean is_exist = false;
         try {
-            loadLeagueFromDatabase.loadLeagueFromDatabase("Detroit Warriors");
-        } catch (IOException e) {
+            SP.executeProcedure();
+            is_exist = SP.getExist();
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
+        if (is_exist) {
+            System.out.println("Found the team. Loading...");
+            ILoadLeague load = new LoadLeague();
+            try {
+                load.loadLeague(teamName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SQLException exception) {
+                exception.printStackTrace();
+            }
+        } else {
+            System.out.println(" No such team. Quitting simulation.");
+            System.exit(0);
+        }
+
     }
     public String getStateName(){
         return this.stateName;

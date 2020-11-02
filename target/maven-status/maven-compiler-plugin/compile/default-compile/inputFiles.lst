@@ -1,146 +1,165 @@
-E:\projects\csci5308\src\main\java\dhl\database\CreateDHLTable.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\IGamePlayConfig.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockTeam.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\Trading.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\Training.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\freeAgents\FreeAgents.java
-E:\projects\csci5308\src\main\java\dhl\trade\PlayerTrade.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\players\PlayersPersistence.java
-E:\projects\csci5308\src\main\java\dhl\presentation\DisplayFreeAgentList.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateFreeAgent.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\league\LeaguePersistence.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\players\PlayersStrength.java
-E:\projects\csci5308\src\main\java\dhl\creator\LeagueCreator.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\teams\DHLPersistence.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\teams\IDHLPersistence.java
-E:\projects\csci5308\src\main\java\dhl\database\GetAllConferenceInLeague.java
-E:\projects\csci5308\src\main\java\dhl\database\GetFreeAgent.java
-E:\projects\csci5308\src\main\java\dhl\database\GetDivision.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\TradePlayersState.java
-E:\projects\csci5308\src\main\java\dhl\simulationStateMachine\LoadTeamState.java
-E:\projects\csci5308\src\main\java\dhl\presentation\DisplayManagerList.java
-E:\projects\csci5308\src\main\java\dhl\validator\IChecker.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockDivision.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockManager.java
-E:\projects\csci5308\src\main\java\dhl\database\GetCoach.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\NestedEndState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\players\Players.java
-E:\projects\csci5308\src\main\java\dhl\trade\FreeAgentList.java
-E:\projects\csci5308\src\main\java\dhl\database\Connect.java
-E:\projects\csci5308\src\main\java\dhl\database\CheckTeam.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\division\Division.java
-E:\projects\csci5308\src\main\java\dhl\presentation\ITradePrompt.java
-E:\projects\csci5308\src\main\java\dhl\database\GetFreeCoach.java
-E:\projects\csci5308\src\main\java\dhl\trade\iFreeAgentListAdd.java
-E:\projects\csci5308\src\main\java\dhl\inputOutput\UserOutput.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\NestedStateContext.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\TrainingState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\conference\Conference.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateCoach.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\IPlayers.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\GamePlayConfig.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\CreateStanleyPlayoffsState.java
-E:\projects\csci5308\src\main\java\dhl\validator\Validator.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockJSONObject.java
-E:\projects\csci5308\src\main\java\dhl\StoredProcedure.java
-E:\projects\csci5308\src\main\java\dhl\trade\IPlayerTrade.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\PlayoffsScheduler.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\headCoach\HeadCoachPersistence.java
-E:\projects\csci5308\src\main\java\dhl\database\IGetStoredProcedure.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateTeam.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\teams\ITeamPersistence.java
-E:\projects\csci5308\src\main\java\dhl\database\GetAllTeamInDivision.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\Injuries.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\IGameResolver.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\ILeague.java
-E:\projects\csci5308\src\main\java\dhl\simulationStateMachine\IState.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateFreeCoach.java
-E:\projects\csci5308\src\main\java\dhl\validator\Checker.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\AgePlayersState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\league\League.java
-E:\projects\csci5308\src\main\java\dhl\presentation\IDisplayManagerList.java
-E:\projects\csci5308\src\main\java\dhl\trade\IAddDropPlayers.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\SimulateGamesState.java
-E:\projects\csci5308\src\main\java\dhl\database\GetConference.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\ITrading.java
-E:\projects\csci5308\src\main\java\dhl\presentation\IDisplayFreeAgentList.java
-E:\projects\csci5308\src\main\java\dhl\creator\ICreator.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\ITeam.java
-E:\projects\csci5308\src\main\java\dhl\trade\AddDropPlayers.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\IAllPlayers.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\NestedSimulationState.java
-E:\projects\csci5308\src\main\java\dhl\simulationStateMachine\StateContext.java
-E:\projects\csci5308\src\main\java\dhl\database\GetLeague.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\IConference.java
-E:\projects\csci5308\src\main\java\dhl\trade\StrongestWeakestPlayers.java
-E:\projects\csci5308\src\main\java\dhl\validator\JSONValidator.java
-E:\projects\csci5308\src\main\java\dhl\trade\FreeAgentListDrop.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockHeadCoach.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\league\ILeaguePersistence.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockLeague.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateLeague.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\ITraining.java
-E:\projects\csci5308\src\main\java\dhl\inputOutput\UserInput.java
-E:\projects\csci5308\src\main\java\dhl\SerializeModelToJSON.java
-E:\projects\csci5308\src\main\java\dhl\simulationStateMachine\SimulateLeagueState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\IFreeAgents.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\AdvanceToNextSeasonState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\headCoach\IHeadCoachPersistence.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockGamePlayConfig.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\AdvanceTimeState.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateFreeManager.java
-E:\projects\csci5308\src\main\java\dhl\database\ICreateStoredProcedure.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\teams\TeamPersistence.java
-E:\projects\csci5308\src\main\java\dhl\trade\IStrongestWeakestPlayers.java
-E:\projects\csci5308\src\main\java\dhl\inputOutput\JSONReader.java
-E:\projects\csci5308\src\main\java\dhl\database\GetAllDivisionInConference.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\Scheduler.java
-E:\projects\csci5308\src\main\java\dhl\presentation\DisplayCoachList.java
-E:\projects\csci5308\src\main\java\dhl\database\GetTeamById.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\freeAgents\FreeAgentsPersistence.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\IAging.java
-E:\projects\csci5308\src\main\java\dhl\inputOutput\IUserOutput.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\Aging.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\PersistState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\division\DivisionPersistence.java
-E:\projects\csci5308\src\main\java\dhl\training\IPlayerTrainingCondition.java
-E:\projects\csci5308\src\main\java\dhl\creator\TeamCreator.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\conference\ConferencePersistence.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\players\IPlayersPersistence.java
-E:\projects\csci5308\src\main\java\dhl\presentation\IDisplayCoachList.java
-E:\projects\csci5308\src\main\java\dhl\database\ICheckStoredProcedure.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockLeague2.java
-E:\projects\csci5308\src\main\java\dhl\database\CheckLeague.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateDivision.java
-E:\projects\csci5308\src\main\java\dhl\LoadLeagueFromDatabase.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\conference\IConferencePersistence.java
-E:\projects\csci5308\src\main\java\dhl\trade\IPlayerTradingCondition.java
-E:\projects\csci5308\src\main\java\dhl\database\GetConfig.java
-E:\projects\csci5308\src\main\java\dhl\database\GetTeamPlayer.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\teams\Teams.java
-E:\projects\csci5308\src\main\java\dhl\database\GetFreeManager.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\CreateFullSeasonScheduleState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\division\IDivisionPersistence.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\IDivision.java
-E:\projects\csci5308\src\main\java\dhl\presentation\TradePrompt.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockFreeAgent.java
-E:\projects\csci5308\src\main\java\dhl\trade\iFreeAgentListDrop.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateConfig.java
-E:\projects\csci5308\src\main\java\dhl\trade\PlayerTradingCondition.java
-E:\projects\csci5308\src\main\java\dhl\database\GetTeamByName.java
-E:\projects\csci5308\src\main\java\dhl\training\PlayerTrainingCondition.java
-E:\projects\csci5308\src\main\java\dhl\database\IConnect.java
-E:\projects\csci5308\src\main\java\dhl\mock\MockPlayer.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\IInjuries.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\InjuryCheckState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\freeAgents\IFreeAgentsPersistence.java
-E:\projects\csci5308\src\main\java\dhl\database\CreatePlayer.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\IHeadCoach.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\INestedState.java
-E:\projects\csci5308\src\main\java\dhl\leagueModel\headCoach\HeadCoach.java
-E:\projects\csci5308\src\main\java\dhl\simulationStateMachine\CreateTeamState.java
-E:\projects\csci5308\src\main\java\dhl\database\CreateConference.java
-E:\projects\csci5308\src\main\java\dhl\internalStateMachine\NestedStartState.java
-E:\projects\csci5308\src\main\java\dhl\SimulationMain.java
-E:\projects\csci5308\src\main\java\dhl\inputOutput\IUserInput.java
-E:\projects\csci5308\src\main\java\dhl\gamePlayConfig\GameResolver.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\conference\IConference.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\league\ILeague.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CheckTeam.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadDivision.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\freeAgents\FreeAgents.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadConference.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\headCoach\HeadCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockGamePlayConfig.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadFreeManager.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\AdvanceTimeState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateDHLTable.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetAllConferenceInLeague.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadConference.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\AdvanceToNextSeasonState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\validator\Validator.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadTeamPlayer.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\FreeAgentListDrop.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\IConferencePersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\validator\JSONValidator.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\IGamePlayConfig.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\simulationStateMachine\SimulateLeagueState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\NestedStateContext.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadTeamPlayer.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\IGamePlayConfigPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockManager.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockDivision.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateFreeCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreatePlayer.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\GamePlayConfigPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetFreeAgent.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\TrainingState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\IFreeAgentsPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\GamePlayConfig.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\CreateFullSeasonScheduleState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\presentation\DisplayManagerList.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadDivision.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\serializeAndDeserialize\deserialize\IDeserializeJSONToModel.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetDivision.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetTeamPlayer.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadTeam.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\PlayerTrade.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockPlayer.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\inputOutput\IUserOutput.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\DHLPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\presentation\IDisplayFreeAgentList.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\IDivisionPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\AgePlayersState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\PlayerTradingCondition.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateTeam.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\players\Players.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\conference\Conference.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\division\IDivision.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\SimulationMain.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\teams\Teams.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\TradePlayersState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\presentation\DisplayCoachList.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetConference.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\ITrading.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\Training.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\Connect.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\IGetStoredProcedure.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\IAddDropPlayers.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\NestedStartState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\inputOutput\IUserInput.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\ITraining.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\presentation\ITradePrompt.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\IPlayerTrade.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateDivision.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadLeague.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateFreeManager.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\FreeAgentList.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\league\League.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\InjuryCheckState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\training\PlayerTrainingCondition.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadLeague.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetTeamById.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\Trading.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateFreeAgent.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\CreateStanleyPlayoffsState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetAllTeamInDivision.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\inputOutput\UserInput.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\serializeAndDeserialize\TeamCreator.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\IInjuries.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\DivisionPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\GameResolver.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\presentation\IDisplayCoachList.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockTeam.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\NestedSimulationState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\ConferencePersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockJSONObject.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\simulationStateMachine\IState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateConference.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\IPlayersPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadGamePlayConfig.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\Aging.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\ICreateStoredProcedure.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadFreeManager.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\IAging.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\PlayoffsScheduler.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateLeague.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\training\IPlayerTrainingCondition.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\validator\Checker.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateConfig.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\IPlayerTradingCondition.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\ICheckStoredProcedure.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadGamePlayConfig.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\division\Division.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\AddDropPlayers.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\IStrongestWeakestPlayers.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\presentation\IDisplayManagerList.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\LeaguePersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\Injuries.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\IDHLPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\serializeAndDeserialize\serialize\SerializeModelToJSON.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockFreeAgent.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\HeadCoachPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\simulationStateMachine\CreateTeamState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\simulationStateMachine\StateContext.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockLeague2.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\FreeAgentsPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\PersistState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\SimulateGamesState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\ITeamPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\PlayersPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\Scheduler.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\players\PlayersStrength.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\validator\IChecker.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\serializeAndDeserialize\ITeamCreator.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\simulationStateMachine\LoadTeamState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadFreeAgent.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\LoadFreeAgent.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\iFreeAgentListAdd.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadTeam.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\inputOutput\UserOutput.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetLeague.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\teams\ITeam.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CheckLeague.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetFreeManager.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\NestedEndState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\iFreeAgentListDrop.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\IConnect.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\gamePlayConfig\IGameResolver.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\loading\ILoadCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\presentation\TradePrompt.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\IHeadCoachPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\freeAgents\IFreeAgents.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\trade\StrongestWeakestPlayers.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetFreeCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\serializeAndDeserialize\deserialize\DeserializeJSONToModel.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\serializeAndDeserialize\serialize\ISerializeModelToJSON.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\headCoach\IHeadCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\CreateCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetTeamByName.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\leagueModel\players\IPlayers.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetConfig.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\database\GetAllDivisionInConference.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockLeague.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\presentation\DisplayFreeAgentList.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\internalStateMachine\INestedState.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\mock\MockHeadCoach.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\ILeaguePersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\persistence\saving\TeamPersistence.java
+D:\ASDC\M2 -\csci5308\src\main\java\dhl\inputOutput\JSONReader.java

@@ -1,8 +1,8 @@
 package dhl;
 
-import dhl.creator.ITeamCreator;
+import dhl.serializeAndDeserialize.ITeamCreator;
 import dhl.inputOutput.*;
-import dhl.creator.TeamCreator;
+import dhl.serializeAndDeserialize.TeamCreator;
 import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.headCoach.HeadCoach;
@@ -11,6 +11,7 @@ import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
 import dhl.presentation.*;
+import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
 import dhl.simulationStateMachine.CreateTeamState;
 import dhl.simulationStateMachine.LoadTeamState;
 //import dhl.simulationStateMachine.CreateTeamState;
@@ -18,7 +19,7 @@ import dhl.simulationStateMachine.StateContext;
 import dhl.validator.Checker;
 import dhl.validator.IChecker;
 import dhl.validator.JSONValidator;
-import dhl.creator.LeagueCreator;
+import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
 import org.json.simple.JSONObject;
 
 import java.io.*;
@@ -50,10 +51,8 @@ public class SimulationMain {
             JSONValidator jsonValidator = new JSONValidator();
             JSONObject JSONValidator = jsonValidator.mainValidator(Object);
             if (JSONValidator.get("isValid").equals("True")) {
-                LeagueCreator leagueCreator = new LeagueCreator();
-                ILeague league = leagueCreator.CreateLeague(Path);
-//                System.out.println("Focus");
-//                league.storeLeague();
+                IDeserializeJSONToModel IDeserializeJSONToModel = new DeserializeJSONToModel();
+                ILeague league = IDeserializeJSONToModel.CreateLeague(Path);
                 if (league.isValid(league)) {
                     System.out.println("Valid JSON!\n");
                     System.out.println("\nWelcome to the matrix. We all live in simulation ;)");

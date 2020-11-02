@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dhl.LeagueModel.teams.TeamPersistenceTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.682 s <<< FAILURE! - in dhl.LeagueModel.teams.TeamPersistenceTest
-dhl.LeagueModel.teams.TeamPersistenceTest.saveTeamToDB  Time elapsed: 2.681 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at dhl.LeagueModel.teams.TeamPersistenceTest.saveTeamToDB(TeamPersistenceTest.java:14)
-
