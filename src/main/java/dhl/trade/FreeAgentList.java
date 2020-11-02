@@ -48,11 +48,8 @@ public class FreeAgentList implements iFreeAgentListAdd {
         } else if (goalieCount < 2 && team.getTeamType().equalsIgnoreCase("ai")) {
             addGoalie(team.getPlayers(), goalieCount);
         } else if (goalieCount == 2 && team.getTeamType().equalsIgnoreCase("user")) {
-
             addSkaterUser(team.getPlayers(), playersToBeAdded);
-
         } else if (goalieCount < 2 && team.getTeamType().equalsIgnoreCase("user")) {
-
             addGoalieUser(team.getPlayers(), playersToBeAdded);
         }
 
