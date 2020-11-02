@@ -1,5 +1,6 @@
 package dhl.trade;
 
+import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.players.IPlayers;
@@ -11,7 +12,6 @@ import dhl.presentation.TradePrompt;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 class FreeAgentListDrop implements iFreeAgentListDrop{
 
@@ -21,6 +21,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
     private TradePrompt prompt;
     private FreeAgentList freeAgent;
     private UserOutput userOutput;
+    private UserInput userInput;
 
 
     FreeAgentListDrop(){
@@ -31,6 +32,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
         prompt = new TradePrompt();
         freeAgent = new FreeAgentList();
         userOutput = new UserOutput();
+        userInput = new UserInput();
     }
 
     @Override
@@ -124,7 +126,6 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
     public void dropSkaterUser(List<IPlayers> player, int playersToBeDropped) {
 
         boolean flag = false;
-        Scanner sc = new Scanner(System.in);
         String playerDropName;
         IFreeAgents playerToAgent;
         List<IPlayers> playerList;
@@ -136,7 +137,8 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
         while (playersToBeDropped != 0) {
             userOutput.setOutput("Enter Player name To drop");
             userOutput.sendOutput();
-            playerDropName = sc.nextLine();
+            userInput.setInput();
+            playerDropName = userInput.getInput();
 
             for (IPlayers p : playerList) {
                 if(p.getPlayerName().equalsIgnoreCase(playerDropName)) {
@@ -161,7 +163,6 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
             userOutput.sendOutput();
         }
     }
-        sc.close();
         }
 
 
@@ -170,7 +171,6 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
 
         int playersToBeDropped =goalieCount - 2;
         boolean flag = false;
-        Scanner sc = new Scanner(System.in);
         String playerDropName;
         IFreeAgents playerToAgent;
         List<IPlayers> playerList;
@@ -182,8 +182,8 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
         while (playersToBeDropped != 0) {
             userOutput.setOutput("Enter Player name To drop");
             userOutput.sendOutput();
-            playerDropName = sc.nextLine();
-
+            userInput.setInput();
+            playerDropName = userInput.getInput();
             for (IPlayers p : playerList) {
                 if(p.getPlayerName().equalsIgnoreCase(playerDropName)) {
                     if (p.getPosition().equalsIgnoreCase("goalie")) {
@@ -207,8 +207,6 @@ class FreeAgentListDrop implements iFreeAgentListDrop{
                 userOutput.sendOutput();
             }
         }
-
-        sc.close();
     }
 
 }

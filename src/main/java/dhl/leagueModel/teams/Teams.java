@@ -1,6 +1,9 @@
 package dhl.leagueModel.teams;
 
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.PlayersStrength;
 import dhl.persistence.saving.DHLPersistence;
@@ -9,6 +12,7 @@ import dhl.persistence.saving.ITeamPersistence;
 import dhl.persistence.saving.TeamPersistence;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Teams implements ITeam {
@@ -90,6 +94,7 @@ public class Teams implements ITeam {
         this.headCoach = headCoach;
 
     }
+
     @Override
     public int getLossPoints() {
         return lossPoints;
@@ -117,7 +122,7 @@ public class Teams implements ITeam {
         System.out.println(players);
         double teamStrength = 0;
 
-        for (IPlayers player: players) {
+        for (IPlayers player : players) {
             PlayersStrength strength = new PlayersStrength();
             double playerStrength = strength.calculateStrength(player);
             teamStrength += playerStrength;
@@ -140,9 +145,38 @@ public class Teams implements ITeam {
     public void checkForInjury(ITeam team) {
         List<IPlayers> players;
         players = team.getPlayers();
-        for(IPlayers player: players) {
+        for (IPlayers player : players) {
             player.checkForPlayerInjury();
         }
+    }
+
+    @Override
+    public ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, ArrayList<IPlayers> playerList) {
+
+        ArrayList<IConference> conferenceList;
+        ArrayList<IDivision> divisionList;
+        String conferenceName = locationAttributes[0];
+        String divisionName = locationAttributes[1];
+        String teamName = locationAttributes[2];
+        String managerName = locationAttributes[3];
+        conferenceList = league.getConferences();
+        for (IConference conference : conferenceList) {
+            if (conference.getConferenceName().toLowerCase().equals(conferenceName.toLowerCase())) {
+                divisionList = conference.getDivisions();
+                for (IDivision division : divisionList) {
+                    if (division.getDivisionName().toLowerCase().equals(divisionName.toLowerCase())) {
+                        ITeam team = new Teams();
+                        team.setGeneralManager(managerName);
+                        team.setPlayers(playerList);
+                        team.setHeadCoach(headCoach);
+                        team.setTeamName(teamName);
+                        team.setIsUser(true);
+                        division.addTeam(team);
+                    }
+                }
+            }
+        }
+        return league;
     }
 
     @Override
@@ -151,9 +185,8 @@ public class Teams implements ITeam {
         String headCoach = this.headCoach.getName();
         JSONObject resultObject = teamPersistence.saveTeamToDB(this.teamName, this.generalManager, headCoach, this.isUser);
         int teamID = (int) resultObject.get("id");
-        System.out.println(teamID);
+        System.out.println("Saving Team " + teamID + ": " + this.getTeamName());
         id.add(3,teamID);
-
         IDHLPersistence idhlPersistence = new DHLPersistence();
         idhlPersistence.saveDHLTable(id.get(0), id.get(1), id.get(2), id.get(3));
         List<IPlayers> playersArray = getPlayers();

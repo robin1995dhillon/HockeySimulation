@@ -1,5 +1,6 @@
 package dhl.trade;
 
+import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.players.IPlayers;
@@ -12,7 +13,6 @@ import dhl.presentation.TradePrompt;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class FreeAgentList implements iFreeAgentListAdd {
     private PlayersStrength playerStrength;
@@ -21,6 +21,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
     private Players playerToAdd;
     private TradePrompt prompt;
     private UserOutput userOutput;
+    private UserInput userInput;
 
 
     public FreeAgentList() {
@@ -30,6 +31,7 @@ public class FreeAgentList implements iFreeAgentListAdd {
         playerStrength = new PlayersStrength();
         prompt = new TradePrompt();
         userOutput = new UserOutput();
+        userInput = new UserInput();
     }
 
     @Override
@@ -108,7 +110,6 @@ public class FreeAgentList implements iFreeAgentListAdd {
 
     public void addSkaterUser(List<IPlayers> player, int playersToBeAdded) {
         boolean flag = false;
-        Scanner sc = new Scanner(System.in);
         String agentAddName;
         IPlayers agentToPlayer;
         List<IPlayers> playerList = new ArrayList<>();
@@ -124,9 +125,10 @@ public class FreeAgentList implements iFreeAgentListAdd {
         prompt.userAcceptRejectTrade(playerList);
 
         while (playersToBeAdded != 0) {
-             userOutput.setOutput("Enter Free Agent name To add");
-             userOutput.sendOutput();
-            agentAddName = sc.nextLine();
+            userOutput.setOutput("Enter Free Agent name To add");
+            userOutput.sendOutput();
+            userInput.setInput();
+            agentAddName = userInput.getInput();
 
             for(IFreeAgents a: agentList) {
                 if(a.getPlayerName().equalsIgnoreCase(agentAddName)) {
@@ -156,7 +158,6 @@ public class FreeAgentList implements iFreeAgentListAdd {
 
     public void addGoalieUser(List<IPlayers> player, int playersToBeAdded) {
         boolean flag = false;
-        Scanner sc = new Scanner(System.in);
         String agentAddName;
         IPlayers agentToPlayer;
         List<IPlayers> playerList = new ArrayList<>();
@@ -174,7 +175,9 @@ public class FreeAgentList implements iFreeAgentListAdd {
         while (playersToBeAdded != 0) {
             userOutput.setOutput("Enter Free Agent name To add");
             userOutput.sendOutput();
-            agentAddName = sc.nextLine();
+            userInput.setInput();
+            agentAddName = userInput.getInput();
+
 
             for(IFreeAgents a: agentList) {
                 if(a.getPlayerName().equalsIgnoreCase(agentAddName)) {

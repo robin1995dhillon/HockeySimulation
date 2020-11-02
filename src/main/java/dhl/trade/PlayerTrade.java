@@ -1,5 +1,6 @@
 package dhl.trade;
 
+import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
@@ -11,7 +12,6 @@ import dhl.leagueModel.gamePlayConfig.Trading;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class PlayerTrade implements IPlayerTrade{
 
@@ -23,6 +23,7 @@ public class PlayerTrade implements IPlayerTrade{
     private AddDropPlayers addDrop;
     TradePrompt prompt;
     private UserOutput userOutput;
+    private UserInput userInput;
 
     PlayerTrade(){
         offeringTeamPlayers = new ArrayList<>();
@@ -33,6 +34,7 @@ public class PlayerTrade implements IPlayerTrade{
         trading = new Trading();
         prompt = new TradePrompt();
         userOutput = new UserOutput();
+        userInput = new UserInput();
     }
 
     @Override
@@ -90,7 +92,6 @@ public class PlayerTrade implements IPlayerTrade{
             int totalPlayersOfOfferingTeam;
             int totalPlayersOfConsideringTeam;
             String response;
-            Scanner sc = new Scanner(System.in);
             userOutput.setOutput("User Players");
             userOutput.sendOutput();
             prompt.userAcceptRejectTrade(consideringTeamPlayers);
@@ -101,7 +102,8 @@ public class PlayerTrade implements IPlayerTrade{
             while(true) {
                 userOutput.setOutput("Do you accept the dhl.trade?(y/n)");
                 userOutput.sendOutput();
-                response = sc.nextLine();
+                userInput.setInput();
+                response = userInput.getInput();
                 if (response.equalsIgnoreCase("y")) {
                     offeringTeam.getPlayers().removeAll(offeringTeamPlayers);
                     offeringTeam.getPlayers().addAll(consideringTeamPlayers);
@@ -121,7 +123,6 @@ public class PlayerTrade implements IPlayerTrade{
                 }
             }
             offeringTeam.setLossPoints(0);
-            sc.close();
 
             totalPlayersOfOfferingTeam = countTeamPlayers(offeringTeam);
             totalPlayersOfConsideringTeam = countTeamPlayers(consideringTeam);
