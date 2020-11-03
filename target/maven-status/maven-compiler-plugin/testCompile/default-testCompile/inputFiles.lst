@@ -6,7 +6,6 @@ D:\ASDC\M2 -\csci5308\src\test\java\dhl\trade\FreeAgentTest.java
 D:\ASDC\M2 -\csci5308\src\test\java\dhl\persistence\database\GetAllDivisionInConferenceTest.java
 D:\ASDC\M2 -\csci5308\src\test\java\dhl\persistence\database\GetFreeManagerTest.java
 D:\ASDC\M2 -\csci5308\src\test\java\dhl\simulationStateMachine\LoadTeamStateTest.java
-D:\ASDC\M2 -\csci5308\src\test\java\dhl\validator\JSONValidatorTest.java
 D:\ASDC\M2 -\csci5308\src\test\java\dhl\leagueModel\conference\ConferencePersistenceTest.java
 D:\ASDC\M2 -\csci5308\src\test\java\dhl\leagueModel\conference\ConferenceTest.java
 D:\ASDC\M2 -\csci5308\src\test\java\dhl\internalStateMachine\NestedStateContextTest.java

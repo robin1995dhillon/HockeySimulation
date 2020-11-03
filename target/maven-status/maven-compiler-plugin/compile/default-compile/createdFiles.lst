@@ -153,7 +153,6 @@ dhl\leagueModel\division\Division.class
 dhl\persistence\loading\ILoadLeague.class
 dhl\trade\iFreeAgentListAdd.class
 dhl\persistence\database\CreateDivision.class
-dhl\mock\MockJSONObject.class
 dhl\leagueModel\gamePlayConfig\Aging.class
 dhl\persistence\database\GetConfig.class
 dhl\persistence\database\GetAllDivisionInConference.class
