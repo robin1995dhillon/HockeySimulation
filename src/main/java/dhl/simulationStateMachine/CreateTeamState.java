@@ -23,7 +23,6 @@ public class CreateTeamState implements IState {
     }
 
     public void runState() {
-        System.out.println("Inside Saving");
         league.storeLeague();
     }
 

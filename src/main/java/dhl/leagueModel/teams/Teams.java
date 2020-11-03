@@ -1,11 +1,13 @@
 package dhl.leagueModel.teams;
 
+import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
+import dhl.Configurables;
 import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.PlayersStrength;
+import dhl.leagueModel.players.Players;
 import dhl.persistence.saving.DHLPersistence;
 import dhl.persistence.saving.IDHLPersistence;
 import dhl.persistence.saving.ITeamPersistence;
@@ -21,10 +23,11 @@ public class Teams implements ITeam {
     public String generalManager;
     public IHeadCoach headCoach;
     List<IPlayers> players;
-    String teamType = "ai";
+    String teamType = Configurables.AI.getAction();
     int lossPoints;
     double teamStrength;
     private boolean isUser = false;
+    UserOutput userOutput = new UserOutput();
 
     public Teams() {
     }
@@ -119,15 +122,13 @@ public class Teams implements ITeam {
     public double calculateTeamStrength(ITeam team) {
         List<IPlayers> players;
         players = team.getPlayers();
-        System.out.println(players);
         double teamStrength = 0;
 
         for (IPlayers player : players) {
-            PlayersStrength strength = new PlayersStrength();
+            IPlayers strength = new Players();
             double playerStrength = strength.calculateStrength(player);
             teamStrength += playerStrength;
         }
-        System.out.println(teamStrength);
         team.setTeamStrength(teamStrength);
         return teamStrength;
     }
@@ -140,14 +141,6 @@ public class Teams implements ITeam {
     @Override
     public void setIsUser(boolean isUser) {
         this.isUser = isUser;
-    }
-
-    public void checkForInjury(ITeam team) {
-        List<IPlayers> players;
-        players = team.getPlayers();
-        for (IPlayers player : players) {
-            player.checkForPlayerInjury();
-        }
     }
 
     @Override
@@ -184,16 +177,17 @@ public class Teams implements ITeam {
         ITeamPersistence teamPersistence = new TeamPersistence();
         String headCoach = this.headCoach.getName();
         JSONObject resultObject = teamPersistence.saveTeamToDB(this.teamName, this.generalManager, headCoach, this.isUser);
-        int teamID = (int) resultObject.get("id");
-        System.out.println("Saving Team " + teamID + ": " + this.getTeamName());
-        id.add(3,teamID);
+        int teamID = (int) resultObject.get(Configurables.ID.getAction());
+        userOutput.setOutput("Saving Team " + teamID + ": " + this.getTeamName());
+        userOutput.sendOutput();
+        id.add(3, teamID);
         IDHLPersistence idhlPersistence = new DHLPersistence();
         idhlPersistence.saveDHLTable(id.get(0), id.get(1), id.get(2), id.get(3));
         List<IPlayers> playersArray = getPlayers();
         IHeadCoach iHeadCoach = getHeadCoach();
         iHeadCoach.saveHeadCoach(teamID);
 
-        for(IPlayers player: playersArray) {
+        for (IPlayers player : playersArray) {
             player.savePlayer(teamID);
         }
     }

@@ -41,7 +41,7 @@ public class NestedSimulationState implements INestedState {
         for (int i = 0; i < totalSeasons; i++) {
             this.currentSeason = i;
             boolean seasonIncomplete = true;
-            output.setOutput("Simulating season " + (i+1) + " for " + teamName + " ...");
+            output.setOutput("Simulating season " + (i + 1) + " for " + teamName + " ...");
             output.sendOutput();
         }
 

@@ -1,15 +1,15 @@
 package dhl.mock;
 
+import dhl.leagueModel.division.Division;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.division.Division;
 import dhl.leagueModel.teams.Teams;
 
 import java.util.ArrayList;
 
 public class MockDivision {
 
-    public static IDivision getOneTeamDivision() {
+    public static IDivision createMock() {
         ArrayList<ITeam> teamArray = new ArrayList<>();
         IDivision division = new Division("Metro");
         division.setDivisionName("Atlantic");
@@ -19,7 +19,7 @@ public class MockDivision {
         return division;
     }
 
-    public static IDivision getTwoTeamDivision() {
+    public static IDivision createMockTwo() {
         ArrayList<ITeam> teamArray = new ArrayList<>();
         IDivision division = new Division("Metro");
         division.setDivisionName("Metro");

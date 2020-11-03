@@ -1,7 +1,6 @@
 package dhl.inputOutput;
 
 
-import dhl.inputOutput.UserInput;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,11 +10,11 @@ import java.io.InputStream;
 import static org.junit.Assert.assertEquals;
 
 public class UserInputTest {
-//    private static UserInput inp;
+    //    private static UserInput inp;
     private UserInput userInput;
 
     @Before
-    public void config(){
+    public void config() {
         userInput = new UserInput();
     }
 
@@ -24,6 +23,7 @@ public class UserInputTest {
         userInput.setDefaultInput();
         assertEquals("", userInput.getInput());
     }
+
     @Test
     public void getInput() {
         String input = "Testing Get Input";

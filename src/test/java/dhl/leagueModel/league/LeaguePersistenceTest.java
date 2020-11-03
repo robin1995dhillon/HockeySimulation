@@ -5,7 +5,7 @@ import dhl.persistence.saving.LeaguePersistence;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LeaguePersistenceTest {
 
@@ -13,13 +13,13 @@ class LeaguePersistenceTest {
     void saveLeagueToDB() {
         ILeaguePersistence leaguePersistence = new LeaguePersistence();
         JSONObject result_object = leaguePersistence.saveLeagueToDB("Devam League");
-        assertEquals(true,result_object.get("Status"));
+        assertEquals(true, result_object.get("Status"));
     }
 
     @Test
     void saveLeagueToDBFail() {
         ILeaguePersistence leaguePersistence = new LeaguePersistence();
         JSONObject result_object = leaguePersistence.saveLeagueToDB("");
-        assertEquals(false,result_object.get("Status"));
+        assertEquals(false, result_object.get("Status"));
     }
 }

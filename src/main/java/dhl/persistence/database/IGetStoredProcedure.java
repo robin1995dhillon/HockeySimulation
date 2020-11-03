@@ -6,5 +6,6 @@ import java.sql.SQLException;
 
 public interface IGetStoredProcedure {
     ResultSet executeProcedure() throws SQLException, IOException;
+
     void closeConnection();
 }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TeamsTest {
 
@@ -19,7 +19,7 @@ class TeamsTest {
         ITeam team2 = new Teams();
         playerArray.add(players);
         team2.setPlayers(playerArray);
-        assertEquals(playerArray,team2.getPlayers());
+        assertEquals(playerArray, team2.getPlayers());
     }
 
     @Test
@@ -29,7 +29,7 @@ class TeamsTest {
         ITeam team2 = new Teams();
         playerArray.add(players);
         team2.setPlayers(playerArray);
-        assertEquals(playerArray,team2.getPlayers());
+        assertEquals(playerArray, team2.getPlayers());
     }
 
     @Test
@@ -82,7 +82,7 @@ class TeamsTest {
         ITeam team = new Teams();
         IHeadCoach headCoach = MockHeadCoach.createMock();
         team.setHeadCoach(headCoach);
-        assertEquals(headCoach,team.getHeadCoach());
+        assertEquals(headCoach, team.getHeadCoach());
     }
 
     @Test
@@ -90,14 +90,14 @@ class TeamsTest {
         ITeam team = new Teams();
         IHeadCoach headCoach = MockHeadCoach.createMock();
         team.setHeadCoach(headCoach);
-        assertEquals(headCoach,team.getHeadCoach());
+        assertEquals(headCoach, team.getHeadCoach());
     }
 
     @Test
     void getLossPoints() {
         ITeam team = new Teams();
         team.setLossPoints(10);
-        assertEquals(10,team.getLossPoints());
+        assertEquals(10, team.getLossPoints());
     }
 
     @Test
@@ -105,14 +105,14 @@ class TeamsTest {
         ITeam team = new Teams();
         team.setLossPoints(10);
         team.setLossPoints(11);
-        assertEquals(11,team.getLossPoints());
+        assertEquals(11, team.getLossPoints());
     }
 
     @Test
     void getTeamStrength() {
         ITeam team = new Teams();
         team.setTeamStrength(10);
-        assertEquals(10,team.getTeamStrength());
+        assertEquals(10, team.getTeamStrength());
     }
 
     @Test
@@ -120,7 +120,7 @@ class TeamsTest {
         ITeam team = new Teams();
         team.setTeamStrength(10);
         team.setTeamStrength(20);
-        assertEquals(20,team.getTeamStrength());
+        assertEquals(20, team.getTeamStrength());
     }
 
     @Test
@@ -132,7 +132,7 @@ class TeamsTest {
         playerArray.add(players);
         playerArray.add(playerTwo);
         ITeam team = new Teams("Team1", "Manager1", headCoach, playerArray);
-        assertEquals(74,team.calculateTeamStrength(team));
+        assertEquals(74, team.calculateTeamStrength(team));
     }
 
 //    @Test

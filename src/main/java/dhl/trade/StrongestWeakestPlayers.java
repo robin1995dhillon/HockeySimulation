@@ -1,25 +1,25 @@
 package dhl.trade;
 
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.players.PlayersStrength;
 import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
+import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.players.Players;
+import dhl.leagueModel.teams.ITeam;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class StrongestWeakestPlayers implements IStrongestWeakestPlayers{
+public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
 
-    PlayersStrength playerStrength;
+    IPlayers playerStrength;
     IGamePlayConfig gamePlayConfig;
     ITrading trading;
 
-    StrongestWeakestPlayers(){
-        playerStrength = new PlayersStrength();
+    StrongestWeakestPlayers() {
+        playerStrength = new Players();
         gamePlayConfig = new GamePlayConfig();
         trading = new Trading();
     }
@@ -30,8 +30,8 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers{
         List<IPlayers> playersStrong = new ArrayList<>();
         players = tradingTeam.getPlayers();
 
-        for(IPlayers weakPlayer: players){
-            if(weakPlayer.getPosition().equalsIgnoreCase(positionToTrade)) {
+        for (IPlayers weakPlayer : players) {
+            if (weakPlayer.getPosition().equalsIgnoreCase(positionToTrade)) {
                 playersStrong.add(weakPlayer);
             }
         }
@@ -45,7 +45,7 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers{
     public double StrongestPlayersStrength(List<IPlayers> selectedPLayers) {
 
         double strength = 0;
-        for(IPlayers p: selectedPLayers){
+        for (IPlayers p : selectedPLayers) {
             strength += p.getStrength();
         }
         return strength;
@@ -60,16 +60,11 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers{
         List<IPlayers> players;
         players = tradingTeam.getPlayers();
 
-        for(IPlayers weakPlayer: players){
+        for (IPlayers weakPlayer : players) {
             double strength = playerStrength.calculateStrength(weakPlayer);
             weakPlayer.setStrength(strength);
-
         }
         players.sort((p1, p2) -> Double.compare(playerStrength.calculateStrength(p1), playerStrength.calculateStrength(p2)));
-
-
-        return players.subList(0,maxPlayersPerTrade);
-
-
+        return players.subList(0, maxPlayersPerTrade);
     }
 }

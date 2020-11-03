@@ -16,7 +16,7 @@ public class FreeAgentsPersistence implements IFreeAgentsPersistence {
         int shooting = freeAgentAttributes[1];
         int checking = freeAgentAttributes[2];
         int saving = freeAgentAttributes[3];
-        ICreateStoredProcedure SP = new CreateFreeAgent(name, position, age,skating,shooting,checking,saving,leagueID);
+        ICreateStoredProcedure SP = new CreateFreeAgent(name, position, age, skating, shooting, checking, saving, leagueID);
         try {
             SP.executeProcedure();
             int division_id = SP.getInsertedId();

@@ -5,16 +5,17 @@ import dhl.leagueModel.freeAgents.IFreeAgents;
 
 import java.util.ArrayList;
 
-@JsonDeserialize(as= Players.class)
+@JsonDeserialize(as = Players.class)
 public interface IPlayers {
     public String getPlayerName();
 
     public void setPlayerName(String playerName);
-    public String getPosition() ;
+
+    public String getPosition();
 
     public void setPosition(String position);
 
-    public boolean getCaptain() ;
+    public boolean getCaptain();
 
     public void setCaptain(boolean captain);
 
@@ -44,11 +45,12 @@ public interface IPlayers {
 
     public void setStrength(double strength);
 
-    public boolean isRetired() ;
+    public boolean isRetired();
 
     public void setRetired(boolean isRetired);
 
     int getDaysToAge();
+
     void setDaysToAge(int daysToAge);
 
     int getInjuredDays();
@@ -67,9 +69,14 @@ public interface IPlayers {
 
     void checkForPlayerInjury();
 
+    double strengthCalculator(int[] forwardValues);
+
+    double calculateStrength(IPlayers player);
+
     void playerStillInjured();
 
     IPlayers convertFreeAgentToPlayer(IFreeAgents agent);
+
     IFreeAgents convertPlayerToFreeAgent(IPlayers player);
 
     void savePlayer(int teamID);

@@ -4,12 +4,14 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.List;
 
-@JsonDeserialize(as= FreeAgents.class)
+@JsonDeserialize(as = FreeAgents.class)
 public interface IFreeAgents {
     String getPlayerName();
 
     void setPlayerName(String playerName);
-    String getPosition() ;
+
+    String getPosition();
+
     void setPosition(String position);
 
     int getAge();
@@ -42,6 +44,7 @@ public interface IFreeAgents {
     double strengthAdder(int[] positionValues);
 
     IFreeAgents getFreeAgentFromList(List<IFreeAgents> freeAgentList, String freeAgentName);
+
     boolean checkPosition(String position);
 
     void saveFreeAgent(int leagueID);

@@ -15,50 +15,49 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PlayerTradingTest {
 
     @Test
-    public void strengthTestForward(){
+    public void strengthTestForward() {
 
         IPlayers player;
         player = MockPlayer.createMock();
         double strength = player.getShooting() + player.getSkating() + player.getChecking() / 2.0;
-        assertEquals(player.getShooting() + player.getSkating() + player.getChecking() / 2.0,strength);
+        assertEquals(player.getShooting() + player.getSkating() + player.getChecking() / 2.0, strength);
     }
 
     @Test
-    public void strengthTestDefense(){
+    public void strengthTestDefense() {
         IPlayers player;
         player = MockPlayer.createMock();
         double strength = player.getSkating() + player.getChecking() + player.getShooting() / 2.0;
-        assertEquals(player.getSkating() + player.getChecking() + player.getShooting() / 2.0,strength);
+        assertEquals(player.getSkating() + player.getChecking() + player.getShooting() / 2.0, strength);
 
     }
 
     @Test
-    public void strengthTestGoalie(){
+    public void strengthTestGoalie() {
         IPlayers player;
         player = MockPlayer.createMock();
         double strength = player.getSkating() + player.getSaving();
-        assertEquals(player.getSkating() + player.getSaving(),strength);
+        assertEquals(player.getSkating() + player.getSaving(), strength);
     }
 
     @Test
-    public void getPositionTypesOfferingTest(){
+    public void getPositionTypesOfferingTest() {
         List<IPlayers> players;
         players = MockPlayer.createMockPlayerList();
 
         List<IPlayers> expectedList;
         expectedList = MockPlayer.getPositionTypesOfferingExpectedList();
 
-        for(int i=1;i<players.size();i++){
-            if(players.get(0).getPosition().equalsIgnoreCase(players.get(i).getPosition())){
+        for (int i = 1; i < players.size(); i++) {
+            if (players.get(0).getPosition().equalsIgnoreCase(players.get(i).getPosition())) {
 
                 continue;
-            }
-            else{
+            } else {
                 players.remove(i);
-                i-=1;
+                i -= 1;
             }
         }
-        assertEquals(players.get(0).getPosition(),expectedList.get(0).getPosition());
+        assertEquals(players.get(0).getPosition(), expectedList.get(0).getPosition());
     }
 
     @Test
@@ -71,9 +70,9 @@ public class PlayerTradingTest {
         players = MockPlayer.createMockPlayerList();
 
         players.sort((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength()));
-        playersWeak=players.subList(0,weakestCount);
+        playersWeak = players.subList(0, weakestCount);
 
-        assertEquals(playersWeak.get(0).getStrength(),2.6);
+        assertEquals(playersWeak.get(0).getStrength(), 2.6);
     }
 
     @Test
@@ -92,11 +91,11 @@ public class PlayerTradingTest {
 
             }
         }
-            playersStrong.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength())));
+        playersStrong.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength())));
 
-            playersStrong= playersStrong.subList(0,weakestCount);
+        playersStrong = playersStrong.subList(0, weakestCount);
 
-           assertEquals(playersStrong.get(0).getStrength(), 5.8);
+        assertEquals(playersStrong.get(0).getStrength(), 5.8);
     }
 
     @Test
@@ -126,21 +125,20 @@ public class PlayerTradingTest {
         consideringTeam.getPlayers().removeAll(consideringFinal);
         consideringTeam.getPlayers().addAll(offeringFinal);
 
-        assertEquals(offeringTeam.getPlayers().get(0).getPlayerName(),expectedTradingTeam.get(0).getPlayerName());
-        assertEquals(offeringTeam.getPlayers().get(1).getPlayerName(),expectedTradingTeam.get(1).getPlayerName());
-        assertEquals(offeringTeam.getPlayers().get(2).getPlayerName(),expectedTradingTeam.get(2).getPlayerName());
-        assertEquals(offeringTeam.getPlayers().get(3).getPlayerName(),expectedTradingTeam.get(3).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(0).getPlayerName(), expectedTradingTeam.get(0).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(1).getPlayerName(), expectedTradingTeam.get(1).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(2).getPlayerName(), expectedTradingTeam.get(2).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(3).getPlayerName(), expectedTradingTeam.get(3).getPlayerName());
 
-        assertEquals(consideringTeam.getPlayers().get(0).getPlayerName(),expectedConsideringTeam.get(0).getPlayerName());
-        assertEquals(consideringTeam.getPlayers().get(1).getPlayerName(),expectedConsideringTeam.get(1).getPlayerName());
-        assertEquals(consideringTeam.getPlayers().get(2).getPlayerName(),expectedConsideringTeam.get(2).getPlayerName());
-        assertEquals(consideringTeam.getPlayers().get(3).getPlayerName(),expectedConsideringTeam.get(3).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(0).getPlayerName(), expectedConsideringTeam.get(0).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(1).getPlayerName(), expectedConsideringTeam.get(1).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(2).getPlayerName(), expectedConsideringTeam.get(2).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(3).getPlayerName(), expectedConsideringTeam.get(3).getPlayerName());
 
     }
 
     @Test
     public void tradeUserAcceptTest() {
-
 
 
         ITeam offeringTeam = MockPlayer.tradeAiOfferingPlayersTestMock();
@@ -155,28 +153,28 @@ public class PlayerTradingTest {
         consideringTeam.getPlayers().removeAll(consideringFinal);
         consideringTeam.getPlayers().addAll(offeringFinal);
 
-        assertEquals(offeringTeam.getPlayers().get(0).getPlayerName(),expectedTradingTeam.get(0).getPlayerName());
-        assertEquals(offeringTeam.getPlayers().get(1).getPlayerName(),expectedTradingTeam.get(1).getPlayerName());
-        assertEquals(offeringTeam.getPlayers().get(2).getPlayerName(),expectedTradingTeam.get(2).getPlayerName());
-        assertEquals(offeringTeam.getPlayers().get(3).getPlayerName(),expectedTradingTeam.get(3).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(0).getPlayerName(), expectedTradingTeam.get(0).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(1).getPlayerName(), expectedTradingTeam.get(1).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(2).getPlayerName(), expectedTradingTeam.get(2).getPlayerName());
+        assertEquals(offeringTeam.getPlayers().get(3).getPlayerName(), expectedTradingTeam.get(3).getPlayerName());
 
-        assertEquals(consideringTeam.getPlayers().get(0).getPlayerName(),expectedConsideringTeam.get(0).getPlayerName());
-        assertEquals(consideringTeam.getPlayers().get(1).getPlayerName(),expectedConsideringTeam.get(1).getPlayerName());
-        assertEquals(consideringTeam.getPlayers().get(2).getPlayerName(),expectedConsideringTeam.get(2).getPlayerName());
-        assertEquals(consideringTeam.getPlayers().get(3).getPlayerName(),expectedConsideringTeam.get(3).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(0).getPlayerName(), expectedConsideringTeam.get(0).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(1).getPlayerName(), expectedConsideringTeam.get(1).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(2).getPlayerName(), expectedConsideringTeam.get(2).getPlayerName());
+        assertEquals(consideringTeam.getPlayers().get(3).getPlayerName(), expectedConsideringTeam.get(3).getPlayerName());
 
     }
 
     @Test
-    public void strongestPlayersStrengthTest(){
+    public void strongestPlayersStrengthTest() {
 
         double strength = 0;
-        List<IPlayers> players =MockPlayer.createMockPlayerList();
+        List<IPlayers> players = MockPlayer.createMockPlayerList();
 
-        for(IPlayers p: players){
+        for (IPlayers p : players) {
             strength += p.getStrength();
         }
-        assertEquals(29.3,strength);
+        assertEquals(29.3, strength);
     }
 
     @Test
@@ -184,13 +182,13 @@ public class PlayerTradingTest {
 
         int count = 0;
         ITeam team = new Teams();
-        List<IPlayers> players =MockPlayer.createMockPlayerList();
+        List<IPlayers> players = MockPlayer.createMockPlayerList();
         team.setPlayers(players);
 
         for (IPlayers p : team.getPlayers()) {
             count++;
         }
 
-        assertEquals(6,count);
+        assertEquals(6, count);
     }
 }

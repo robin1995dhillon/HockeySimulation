@@ -14,7 +14,7 @@ public class LoadFreeManager implements ILoadFreeManager {
         IGetStoredProcedure getFreeManager = new GetFreeManager(leagueId);
         ResultSet rsFreeManager = getFreeManager.executeProcedure();
         ArrayList<String> freeManagerList = new ArrayList<>();
-        while(rsFreeManager.next()){
+        while (rsFreeManager.next()) {
             String freeManager = rsFreeManager.getString("name");
             freeManagerList.add(freeManager);
         }

@@ -9,11 +9,11 @@ import java.util.List;
 
 public class HeadCoach implements IHeadCoach {
 
-    String name;
-    double skating;
-    double shooting;
-    double checking;
-    double saving;
+    private String name;
+    private double skating;
+    private double shooting;
+    private double checking;
+    private double saving;
 
     public HeadCoach() {
     }
@@ -43,8 +43,8 @@ public class HeadCoach implements IHeadCoach {
 
     @Override
     public double getShooting() {
-
         return shooting;
+
     }
 
     @Override
@@ -55,7 +55,6 @@ public class HeadCoach implements IHeadCoach {
 
     @Override
     public double getChecking() {
-
         return checking;
     }
 
@@ -67,20 +66,18 @@ public class HeadCoach implements IHeadCoach {
 
     @Override
     public double getSaving() {
-
         return saving;
     }
 
     @Override
     public void setSaving(double saving) {
-
         this.saving = saving;
     }
 
     @Override
     public IHeadCoach getCoachFromList(List<IHeadCoach> coachList, String coachName) {
-        for(IHeadCoach coach: coachList){
-            if(coach.getName().equals(coachName)){
+        for (IHeadCoach coach : coachList) {
+            if (coach.getName().equals(coachName)) {
                 return coach;
             }
         }
@@ -92,7 +89,7 @@ public class HeadCoach implements IHeadCoach {
         IHeadCoachPersistence headCoachPersistence = new HeadCoachPersistence();
         String headCoachName = this.getName();
         double[] headCoachAttributes = {this.getSkating(), this.getShooting(), this.getChecking(), this.getSaving()};
-        headCoachPersistence.saveHeadCoachToDB(headCoachName,headCoachAttributes,teamID);
+        headCoachPersistence.saveHeadCoachToDB(headCoachName, headCoachAttributes, teamID);
     }
 
     @Override
@@ -100,7 +97,6 @@ public class HeadCoach implements IHeadCoach {
         IFreeCoachPersistence freeCoachPersistence = new FreeCoachPersistence();
         String freeCoachName = this.getName();
         double[] headCoachAttributes = {this.getSkating(), this.getShooting(), this.getChecking(), this.getSaving()};
-        freeCoachPersistence.saveFreeCoachToDB(freeCoachName,headCoachAttributes,leagueID);
+        freeCoachPersistence.saveFreeCoachToDB(freeCoachName, headCoachAttributes, leagueID);
     }
-
 }

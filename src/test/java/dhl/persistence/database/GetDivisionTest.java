@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class GetDivisionTest {
     @Test
-    public void CreateLeagueTest(){
-        try{
+    public void CreateLeagueTest() {
+        try {
             IGetStoredProcedure s = new GetDivision(1);
-        }catch(Exception e){
+        } catch (Exception e) {
             fail();
         }
     }
@@ -22,7 +22,7 @@ public class GetDivisionTest {
     public void executeProcedureTest() throws SQLException, IOException {
         IGetStoredProcedure s = new GetDivision(1);
         ResultSet rs = s.executeProcedure();
-        while(rs.next()){
+        while (rs.next()) {
             System.out.print("ID: " + rs.getInt("id"));
             System.out.println(", Name: " + rs.getString("name"));
         }

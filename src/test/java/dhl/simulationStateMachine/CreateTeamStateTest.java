@@ -22,6 +22,7 @@ class CreateTeamStateTest {
         out = new UserOutput();
         teamName = "Rob's team";
     }
+
     @Test
     void runState() {
     }

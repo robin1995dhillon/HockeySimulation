@@ -1,10 +1,10 @@
 package dhl.persistence.loading;
 
+import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.persistence.database.GetCoach;
 import dhl.persistence.database.GetFreeCoach;
 import dhl.persistence.database.IGetStoredProcedure;
-import dhl.leagueModel.headCoach.HeadCoach;
-import dhl.leagueModel.headCoach.IHeadCoach;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -18,7 +18,7 @@ public class LoadCoach implements ILoadCoach {
         IGetStoredProcedure getCoach = new GetCoach(teamId);
         ResultSet rsCoach = getCoach.executeProcedure();
         IHeadCoach headCoach = new HeadCoach();
-        while(rsCoach.next()){
+        while (rsCoach.next()) {
             headCoach.setName(rsCoach.getString("name"));
             headCoach.setSkating(rsCoach.getDouble("skating"));
             headCoach.setShooting(rsCoach.getDouble("shooting"));
@@ -33,7 +33,7 @@ public class LoadCoach implements ILoadCoach {
         IGetStoredProcedure getFreeCoach = new GetFreeCoach(leagueId);
         ResultSet rsFreeCoach = getFreeCoach.executeProcedure();
         ArrayList<IHeadCoach> freeCoachList = new ArrayList<>();
-        while(rsFreeCoach.next()){
+        while (rsFreeCoach.next()) {
             IHeadCoach freeCoach = new HeadCoach();
             freeCoach.setName(rsFreeCoach.getString("name"));
             freeCoach.setSkating(rsFreeCoach.getDouble("skating"));

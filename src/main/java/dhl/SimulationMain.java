@@ -1,7 +1,5 @@
 package dhl;
 
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
 import dhl.inputOutput.*;
 import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.freeAgents.IFreeAgents;
@@ -10,7 +8,10 @@ import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
+import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.teams.Teams;
 import dhl.presentation.*;
+import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
 import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
 import dhl.simulationStateMachine.CreateTeamState;
 import dhl.simulationStateMachine.LoadTeamState;
@@ -18,10 +19,9 @@ import dhl.simulationStateMachine.StateContext;
 import dhl.validator.Checker;
 import dhl.validator.IChecker;
 import dhl.validator.JSONValidator;
-import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
 import org.json.simple.JSONObject;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SimulationMain {
@@ -65,7 +65,7 @@ public class SimulationMain {
                     input.setInput();
                     String conferenceName = input.getInput();
                     IChecker CC = new Checker();
-                    while(CC.conferenceChecker(conferenceName, league)==false){
+                    while (CC.conferenceChecker(conferenceName, league) == false) {
                         output.setOutput("Invalid input! Please enter the conference you imported:");
                         output.sendErrorOutput();
                         input.setInput();
@@ -76,7 +76,7 @@ public class SimulationMain {
                         output.sendOutput();
                         input.setInput();
                         String divisionName = input.getInput();
-                        while(CC.divisionChecker(divisionName, league)==false){
+                        while (CC.divisionChecker(divisionName, league) == false) {
                             output.setOutput("Invalid input! Please enter the division you imported:");
                             output.sendErrorOutput();
                             input.setInput();
@@ -97,7 +97,7 @@ public class SimulationMain {
                                 output.sendOutput();
                                 input.setInput();
                                 String managerName = input.getInput();
-                                while(CC.managerChecker(managerList, managerName) == false){
+                                while (CC.managerChecker(managerList, managerName) == false) {
                                     output.setOutput("Invalid input! Please enter one manager from the list:");
                                     output.sendErrorOutput();
                                     input.setInput();
@@ -113,7 +113,7 @@ public class SimulationMain {
                                 output.sendOutput();
                                 input.setInput();
                                 String coachName = input.getInput();
-                                while(CC.coachChecker(coachList, coachName) == false){
+                                while (CC.coachChecker(coachList, coachName) == false) {
                                     output.setOutput("Invalid input! Please choose one coach from the list:");
                                     output.sendErrorOutput();
                                     input.setInput();
@@ -129,13 +129,13 @@ public class SimulationMain {
                                 IDisplayFreeAgentList freeAgentDisplayer = new DisplayFreeAgentList();
                                 output.setOutput("Please choose two goalies: ");
                                 output.sendOutput();
-                                for(int i = 1; i <= 2;){
+                                for (int i = 1; i <= 2; ) {
                                     freeAgentDisplayer.displayFreeAgent(freeAgentList);
                                     output.setOutput("Enter Goalie: " + i);
                                     output.sendOutput();
                                     input.setInput();
                                     String playerName = input.getInput();
-                                    while(CC.freeAgentChecker(freeAgentList, playerName) == false){
+                                    while (CC.freeAgentChecker(freeAgentList, playerName) == false) {
                                         output.setOutput("Invalid input! Please choose one free agent from the list:");
                                         output.sendErrorOutput();
                                         input.setInput();
@@ -143,26 +143,26 @@ public class SimulationMain {
                                     }
                                     IFreeAgents freeAgent = new FreeAgents();
                                     freeAgent = freeAgent.getFreeAgentFromList(freeAgentList, playerName);
-                                    if(freeAgent.checkPosition("goalie")){
+                                    if (freeAgent.checkPosition(Configurables.GOALIE.getAction())) {
                                         IPlayers player = new Players();
                                         player = player.convertFreeAgentToPlayer(freeAgent);
                                         playerList.add(player);
                                         freeAgentList.remove(freeAgent);
                                         i++;
-                                    } else{
+                                    } else {
                                         output.setOutput("Invalid input! You need to pick a goalie!");
                                         output.sendErrorOutput();
                                     }
                                 }
                                 output.setOutput("Please choose eighteen skaters(forward and defense):");
                                 output.sendOutput();
-                                for(int i = 1; i <= 18;){
+                                for (int i = 1; i <= 18; ) {
                                     freeAgentDisplayer.displayFreeAgent(freeAgentList);
                                     output.setOutput("Enter Skaters (Forward and Defense) " + i);
                                     output.sendOutput();
                                     input.setInput();
                                     String playerName = input.getInput();
-                                    while(CC.freeAgentChecker(freeAgentList, playerName) == false){
+                                    while (CC.freeAgentChecker(freeAgentList, playerName) == false) {
                                         output.setOutput("Invalid input! Please choose one free agent from the list:");
                                         output.sendErrorOutput();
                                         input.setInput();
@@ -170,7 +170,7 @@ public class SimulationMain {
                                     }
                                     IFreeAgents freeAgent = new FreeAgents();
                                     freeAgent = freeAgent.getFreeAgentFromList(freeAgentList, playerName);
-                                    if(freeAgent.checkPosition("forward") || freeAgent.checkPosition("defense")){
+                                    if (freeAgent.checkPosition(Configurables.FORWARD.getAction()) || freeAgent.checkPosition(Configurables.DEFENSE.getAction())) {
                                         IPlayers player = new Players();
                                         player = player.convertFreeAgentToPlayer(freeAgent);
                                         playerList.add(player);
@@ -181,14 +181,14 @@ public class SimulationMain {
                                         output.sendErrorOutput();
                                     }
                                 }
-                                String[] locationAttributes = {conferenceName,divisionName,teamName,managerName};
+                                String[] locationAttributes = {conferenceName, divisionName, teamName, managerName};
                                 ITeam team = new Teams();
-                                ILeague updated_league = team.createTeam(league,locationAttributes,headCoach,playerList);
+                                ILeague updated_league = team.createTeam(league, locationAttributes, headCoach, playerList);
                                 context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
                                 output.setOutput("Saving the team. Please wait...");
                                 output.sendOutput();
                                 context.runState();
-                                context.forward(); //simulate state
+                                context.forward();
                                 context.runState();
                             } else {
                                 output.setOutput("Team Already Exists!");
@@ -200,7 +200,7 @@ public class SimulationMain {
             } else {
                 output.setOutput("Invalid JSON");
                 output.sendErrorOutput();
-                output.setOutput((String)JSONValidator.get("Message"));
+                output.setOutput((String) JSONValidator.get("Message"));
                 output.sendErrorOutput();
             }
         }

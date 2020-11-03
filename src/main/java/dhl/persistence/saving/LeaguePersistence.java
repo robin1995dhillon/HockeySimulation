@@ -12,9 +12,8 @@ public class LeaguePersistence implements ILeaguePersistence {
     @Override
     public JSONObject saveLeagueToDB(String leagueName) {
         JSONObject return_obj = new JSONObject();
-        System.out.println("entering stored procedure");
         ICreateStoredProcedure SP = new CreateLeague(leagueName);
-        if(leagueName.isEmpty()) {
+        if (leagueName.isEmpty()) {
             return_obj.put("Status", false);
             return_obj.put("id", null);
         } else {

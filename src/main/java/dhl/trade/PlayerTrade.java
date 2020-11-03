@@ -2,18 +2,19 @@ package dhl.trade;
 
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.teams.ITeam;
-import dhl.presentation.TradePrompt;
 import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
+import dhl.Configurables;
+import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.teams.ITeam;
+import dhl.presentation.TradePrompt;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerTrade implements IPlayerTrade{
+public class PlayerTrade implements IPlayerTrade {
 
     List<IPlayers> offeringTeamPositionPlayers;
     List<IPlayers> consideringTeamPlayers;
@@ -25,7 +26,7 @@ public class PlayerTrade implements IPlayerTrade{
     private UserOutput userOutput;
     private UserInput userInput;
 
-    PlayerTrade(){
+    PlayerTrade() {
         offeringTeamPlayers = new ArrayList<>();
         consideringTeamPlayers = new ArrayList<>();
         offeringTeamPositionPlayers = new ArrayList<>();
@@ -39,8 +40,8 @@ public class PlayerTrade implements IPlayerTrade{
 
     @Override
     public int countTeamPlayers(ITeam team) {
-        int count =0;
-        for(IPlayers p:team.getPlayers()){
+        int count = 0;
+        for (IPlayers p : team.getPlayers()) {
             count++;
         }
         return count;
@@ -64,13 +65,13 @@ public class PlayerTrade implements IPlayerTrade{
                     userOutput.sendOutput();
                     break outer;
                 } else {
-                    userOutput.setOutput("player eligible for dhl.trade");
+                    userOutput.setOutput("player eligible for trade");
                     userOutput.sendOutput();
                     count++;
                 }
             }
         }
-        if(count>0 && count<=maxPlayersPerTrade) {
+        if (count > 0 && count <= maxPlayersPerTrade) {
             offeringTeam.getPlayers().removeAll(offeringTeamPlayers);
             offeringTeam.getPlayers().addAll(consideringTeamPlayers);
             consideringTeam.getPlayers().removeAll(consideringTeamPlayers);
@@ -81,55 +82,53 @@ public class PlayerTrade implements IPlayerTrade{
         totalPlayersOfOfferingTeam = countTeamPlayers(offeringTeam);
         totalPlayersOfConsideringTeam = countTeamPlayers(consideringTeam);
 
-        addDrop.addDropPlayers(offeringTeam,totalPlayersOfOfferingTeam);
-        addDrop.addDropPlayers(consideringTeam,totalPlayersOfConsideringTeam);
+        addDrop.addDropPlayers(offeringTeam, totalPlayersOfOfferingTeam);
+        addDrop.addDropPlayers(consideringTeam, totalPlayersOfConsideringTeam);
 
     }
 
     @Override
     public void TradeUser(ITeam offeringTeam, ITeam consideringTeam) {
 
-            int totalPlayersOfOfferingTeam;
-            int totalPlayersOfConsideringTeam;
-            String response;
-            userOutput.setOutput("User Players");
-            userOutput.sendOutput();
-            prompt.userAcceptRejectTrade(consideringTeamPlayers);
-            userOutput.setOutput("AI Players");
-            userOutput.sendOutput();
-            prompt.userAcceptRejectTrade(offeringTeamPositionPlayers);
+        int totalPlayersOfOfferingTeam;
+        int totalPlayersOfConsideringTeam;
+        String response;
+        userOutput.setOutput("User Players");
+        userOutput.sendOutput();
+        prompt.userAcceptRejectTrade(consideringTeamPlayers);
+        userOutput.setOutput("AI Players");
+        userOutput.sendOutput();
+        prompt.userAcceptRejectTrade(offeringTeamPositionPlayers);
 
-            while(true) {
-                userOutput.setOutput("Do you accept the dhl.trade?(y/n)");
+        while (true) {
+            userOutput.setOutput("Do you accept the trade?(y/n)");
+            userOutput.sendOutput();
+            userInput.setInput();
+            response = userInput.getInput();
+            if (response.equalsIgnoreCase(Configurables.YES.getAction())) {
+                offeringTeam.getPlayers().removeAll(offeringTeamPlayers);
+                offeringTeam.getPlayers().addAll(consideringTeamPlayers);
+                consideringTeam.getPlayers().removeAll(consideringTeamPlayers);
+                consideringTeam.getPlayers().addAll(offeringTeamPlayers);
+                break;
+
+            } else if (response.equalsIgnoreCase(Configurables.NO.getAction())) {
+                userOutput.setOutput("Trade Rejected");
                 userOutput.sendOutput();
-                userInput.setInput();
-                response = userInput.getInput();
-                if (response.equalsIgnoreCase("y")) {
-                    offeringTeam.getPlayers().removeAll(offeringTeamPlayers);
-                    offeringTeam.getPlayers().addAll(consideringTeamPlayers);
-                    consideringTeam.getPlayers().removeAll(consideringTeamPlayers);
-                    consideringTeam.getPlayers().addAll(offeringTeamPlayers);
-                    break;
-
-                }
-                else if (response.equalsIgnoreCase("n")) {
-                    userOutput.setOutput("Trade Rejected");
-                    userOutput.sendOutput();
-                    break;
-                }
-                else{
-                    userOutput.setOutput("please answer with y or n");
-                    userOutput.sendOutput();
-                }
+                break;
+            } else {
+                userOutput.setOutput("please answer with y or n");
+                userOutput.sendOutput();
             }
-            offeringTeam.setLossPoints(0);
-
-            totalPlayersOfOfferingTeam = countTeamPlayers(offeringTeam);
-            totalPlayersOfConsideringTeam = countTeamPlayers(consideringTeam);
-
-            addDrop.addDropPlayers(offeringTeam,totalPlayersOfOfferingTeam);
-            addDrop.addDropPlayers(consideringTeam,totalPlayersOfConsideringTeam);
         }
+        offeringTeam.setLossPoints(0);
 
+        totalPlayersOfOfferingTeam = countTeamPlayers(offeringTeam);
+        totalPlayersOfConsideringTeam = countTeamPlayers(consideringTeam);
+
+        addDrop.addDropPlayers(offeringTeam, totalPlayersOfOfferingTeam);
+        addDrop.addDropPlayers(consideringTeam, totalPlayersOfConsideringTeam);
     }
+
+}
 

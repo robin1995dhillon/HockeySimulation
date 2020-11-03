@@ -4,7 +4,7 @@ package dhl.simulationStateMachine;
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 
-public class StateContext{
+public class StateContext {
     private static IState currentState;
     private static IUserOutput output;
     private static IUserInput input;

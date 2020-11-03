@@ -8,27 +8,44 @@ import dhl.leagueModel.players.IPlayers;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonDeserialize(as= Teams.class)
+@JsonDeserialize(as = Teams.class)
 public interface ITeam {
 
     List<IPlayers> getPlayers();
+
     void setPlayers(List<IPlayers> players);
+
     String getTeamName();
+
     void setTeamName(String teamName);
+
     String getGeneralManager();
+
     void setGeneralManager(String generalManager);
+
     IHeadCoach getHeadCoach();
+
     void setHeadCoach(IHeadCoach headCoach);
+
     String getTeamType();
+
     void setTeamType(String teamType);
+
     void setTeamStrength(double teamStrength);
+
     double getTeamStrength();
+
     int getLossPoints();
+
     void setLossPoints(int teamType);
+
     double calculateTeamStrength(ITeam team);
-//    Might be used in the next milestone. That's why we havent removed it.
+
+    //    Might be used in the next milestone. That's why we havent removed it.
     boolean getIsUser();
+
     void setIsUser(boolean isUser);
+
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, ArrayList<IPlayers> playerList);
 
     void saveTeams(List<Integer> id);

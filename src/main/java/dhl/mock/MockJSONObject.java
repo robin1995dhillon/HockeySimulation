@@ -31,9 +31,9 @@ public class MockJSONObject {
         player_object.put("captain", true);
 
         player_array.add(player_object);
-        team_object.put("players",player_array);
+        team_object.put("players", player_array);
         team_array.add(team_object);
-        division_object.put("teams",team_array);
+        division_object.put("teams", team_array);
         division_array.add(division_object);
         conference_object.put("divisions", division_array);
         conf_array.add(conference_object);

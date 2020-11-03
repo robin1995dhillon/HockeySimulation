@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetDivision implements IGetStoredProcedure{
+public class GetDivision implements IGetStoredProcedure {
     private String procedureName;
     private int id;
     private IConnect conn;
 
-    public GetDivision(int id){
+    public GetDivision(int id) {
         this.procedureName = "get_division";
         this.id = id;
         this.conn = new Connect();

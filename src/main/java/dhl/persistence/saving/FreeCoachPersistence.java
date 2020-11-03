@@ -1,6 +1,5 @@
 package dhl.persistence.saving;
 
-import dhl.persistence.database.CreateCoach;
 import dhl.persistence.database.CreateFreeCoach;
 import dhl.persistence.database.ICreateStoredProcedure;
 
@@ -16,7 +15,7 @@ public class FreeCoachPersistence implements IFreeCoachPersistence {
         double checking = coachAttributes[2];
         double saving = coachAttributes[3];
 
-        ICreateStoredProcedure createStoredProcedure = new CreateFreeCoach(coachName,skating,shooting,checking,saving,leagueID);
+        ICreateStoredProcedure createStoredProcedure = new CreateFreeCoach(coachName, skating, shooting, checking, saving, leagueID);
         try {
             createStoredProcedure.executeProcedure();
         } catch (SQLException exception) {

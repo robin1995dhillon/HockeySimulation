@@ -1,15 +1,11 @@
 package dhl.leagueModel.headCoach;
 
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.players.IPlayers;
-import dhl.mock.MockFreeAgent;
 import dhl.mock.MockHeadCoach;
-import dhl.mock.MockPlayer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HeadCoachTest {
 
@@ -83,7 +79,7 @@ class HeadCoachTest {
         ArrayList<IHeadCoach> coachList = new ArrayList<>();
         IHeadCoach headCoach = MockHeadCoach.createMock();
         coachList.add(headCoach);
-        assertEquals(headCoach, headCoach.getCoachFromList(coachList,"Head1"));
+        assertEquals(headCoach, headCoach.getCoachFromList(coachList, "Head1"));
     }
 
     @Test

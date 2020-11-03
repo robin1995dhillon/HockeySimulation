@@ -11,7 +11,7 @@ public class GetConfigTest {
     public void executeProcedureTest() throws SQLException, IOException {
         IGetStoredProcedure s = new GetConfig(1);
         ResultSet rs = s.executeProcedure();
-        while(rs.next()){
+        while (rs.next()) {
             System.out.println("ID: " + rs.getInt("id"));
             System.out.println("Average Retirement Age: " + rs.getInt("average_retirement_age"));
             System.out.println("Maximum Age: " + rs.getInt("maximum_age"));

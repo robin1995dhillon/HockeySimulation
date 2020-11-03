@@ -5,12 +5,12 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class CheckTeam implements ICheckStoredProcedure{
+public class CheckTeam implements ICheckStoredProcedure {
     private String procedureName;
     private String name;
     private boolean exist;
 
-    public CheckTeam(String name){
+    public CheckTeam(String name) {
         this.procedureName = "check_team";
         this.name = name;
         this.exist = false;

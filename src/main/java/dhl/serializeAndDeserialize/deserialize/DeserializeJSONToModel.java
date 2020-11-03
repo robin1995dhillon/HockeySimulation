@@ -3,11 +3,11 @@ package dhl.serializeAndDeserialize.deserialize;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.league.League;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;

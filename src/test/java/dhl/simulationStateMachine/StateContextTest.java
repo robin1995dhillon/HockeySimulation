@@ -20,7 +20,6 @@ public class StateContextTest {
     private static IUserInput input;
     private static IUserOutput output;
     private static StateContext context;
-//    private static ILeague league1;
     private static ILeague league;
 
     @Before

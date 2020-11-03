@@ -1,9 +1,9 @@
 package dhl.persistence.loading;
 
-import dhl.persistence.database.GetFreeAgent;
-import dhl.persistence.database.IGetStoredProcedure;
 import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.persistence.database.GetFreeAgent;
+import dhl.persistence.database.IGetStoredProcedure;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ public class LoadFreeAgent implements ILoadFreeAgent {
         IGetStoredProcedure getFreeAgent = new GetFreeAgent(leagueId);
         ResultSet rsFreeAgent = getFreeAgent.executeProcedure();
         ArrayList<IFreeAgents> freeAgentList = new ArrayList<>();
-        while(rsFreeAgent.next()){
+        while (rsFreeAgent.next()) {
             IFreeAgents freeAgent = new FreeAgents();
             freeAgent.setPlayerName(rsFreeAgent.getString("name"));
             freeAgent.setPosition(rsFreeAgent.getString("position"));

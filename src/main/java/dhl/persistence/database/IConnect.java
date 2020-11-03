@@ -9,8 +9,12 @@ import java.sql.Statement;
 
 public interface IConnect {
     Connection getConnection() throws IOException;
+
     CallableStatement getStatement(String sql);
+
     Statement getStatement();
+
     ResultSet gerResultSet();
+
     void closeConnection();
 }

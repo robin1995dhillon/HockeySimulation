@@ -1,5 +1,6 @@
 package dhl.leagueModel.gamePlayConfig;
 
+import dhl.Configurables;
 import org.json.simple.JSONObject;
 
 public class GameResolver implements IGameResolver {
@@ -17,8 +18,8 @@ public class GameResolver implements IGameResolver {
 
     @Override
     public boolean gameResolverValidator(JSONObject Obj) {
-        JSONObject gameResolverObject = (JSONObject) Obj.get("gameResolver");
-        double randomWinChance = (double) gameResolverObject.get("randomWinChance");
+        JSONObject gameResolverObject = (JSONObject) Obj.get(Configurables.GAMERESOLVER.getAction());
+        double randomWinChance = (double) gameResolverObject.get(Configurables.RANDOMWINCHANCE.getAction());
         double[] gameResolverAttributes = {randomWinChance};
         boolean result = checkRange(gameResolverAttributes);
         return result;
@@ -26,11 +27,10 @@ public class GameResolver implements IGameResolver {
 
     @Override
     public boolean checkRange(double[] gameResolverAttributes) {
-        for(double a: gameResolverAttributes) {
-            if(a>=0 && a<=1) {
+        for (double attributeValue : gameResolverAttributes) {
+            if (attributeValue >= 0 && attributeValue <= 1) {
                 continue;
-            }
-            else {
+            } else {
                 return false;
             }
         }
