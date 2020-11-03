@@ -1,9 +1,9 @@
 package dhl.persistence.loading;
 
-import dhl.persistence.database.GetTeamPlayer;
-import dhl.persistence.database.IGetStoredProcedure;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
+import dhl.persistence.database.GetTeamPlayer;
+import dhl.persistence.database.IGetStoredProcedure;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ public class LoadTeamPlayer implements ILoadTeamPlayer {
         IGetStoredProcedure getPlayer = new GetTeamPlayer(teamId);
         ResultSet rsPlayer = getPlayer.executeProcedure();
         ArrayList<IPlayers> playerList = new ArrayList<>();
-        while(rsPlayer.next()){
+        while (rsPlayer.next()) {
             IPlayers player = new Players();
             player.setPlayerName(rsPlayer.getString("name"));
             player.setPosition(rsPlayer.getString("position"));

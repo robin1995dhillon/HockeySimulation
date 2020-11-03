@@ -12,12 +12,11 @@ public class Validator {
     }
 
     public boolean checkRange(int val) {
-        if(val>=0 && val<=20) {
+        if (val >= 0 && val <= 20) {
             return true;
         }
         return false;
     }
-
 
 
 }

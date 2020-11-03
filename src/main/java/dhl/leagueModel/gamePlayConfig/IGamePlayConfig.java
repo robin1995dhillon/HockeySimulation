@@ -3,7 +3,7 @@ package dhl.leagueModel.gamePlayConfig;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.json.simple.JSONObject;
 
-@JsonDeserialize(as= GamePlayConfig.class)
+@JsonDeserialize(as = GamePlayConfig.class)
 public interface IGamePlayConfig {
     IAging getAging();
 

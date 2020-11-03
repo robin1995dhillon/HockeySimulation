@@ -1,11 +1,11 @@
 package dhl.persistence.loading;
 
-import dhl.persistence.database.GetAllTeamInDivision;
-import dhl.persistence.database.IGetStoredProcedure;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
+import dhl.persistence.database.GetAllTeamInDivision;
+import dhl.persistence.database.IGetStoredProcedure;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -18,7 +18,7 @@ public class LoadTeam implements ILoadTeam {
         ArrayList<ITeam> teamList = new ArrayList<>();
         IGetStoredProcedure getTeamInDivision = new GetAllTeamInDivision(divisionId);
         ResultSet rsGetTeamInDivision = getTeamInDivision.executeProcedure();
-        while(rsGetTeamInDivision.next()){
+        while (rsGetTeamInDivision.next()) {
             int teamId = rsGetTeamInDivision.getInt("id");
             ITeam team = new Teams();
             team.setTeamName(rsGetTeamInDivision.getString("name"));

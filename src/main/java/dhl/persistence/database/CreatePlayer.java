@@ -5,7 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CreatePlayer implements ICreateStoredProcedure{
+public class CreatePlayer implements ICreateStoredProcedure {
 
     private String procedureName;
     private String name;
@@ -22,7 +22,7 @@ public class CreatePlayer implements ICreateStoredProcedure{
     private int injuryDays;
     private int insertedId;
 
-    public CreatePlayer(String name, String position, boolean captain, int age, int skating, int shooting, int checking, int saving, int teamId, boolean isRetired, boolean isInjured, int injuryDays){
+    public CreatePlayer(String name, String position, boolean captain, int age, int skating, int shooting, int checking, int saving, int teamId, boolean isRetired, boolean isInjured, int injuryDays) {
         this.procedureName = "create_player";
         this.name = name;
         this.position = position;
@@ -53,20 +53,20 @@ public class CreatePlayer implements ICreateStoredProcedure{
         stmt.setString(1, this.name);
         stmt.setString(2, this.position);
         stmt.setBoolean(3, this.captain);
-        stmt.setInt(4,this.age);
-        stmt.setInt(5,this.skating);
+        stmt.setInt(4, this.age);
+        stmt.setInt(5, this.skating);
         stmt.setInt(6, this.shooting);
-        stmt.setInt(7,this.checking);
+        stmt.setInt(7, this.checking);
         stmt.setInt(8, this.saving);
         stmt.setInt(9, this.teamId);
         stmt.setBoolean(10, this.isRetired);
         stmt.setBoolean(11, this.isInjured);
         stmt.setInt(12, this.injuryDays);
         boolean hasResultSet = stmt.execute();
-        if(hasResultSet){
+        if (hasResultSet) {
             rs = stmt.getResultSet();
-            while(rs.next()){
-                this.insertedId  = rs.getInt("id");
+            while (rs.next()) {
+                this.insertedId = rs.getInt("id");
             }
         }
         conn.closeConnection();

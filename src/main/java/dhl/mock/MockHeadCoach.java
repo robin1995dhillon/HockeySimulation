@@ -1,7 +1,7 @@
 package dhl.mock;
 
-import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.headCoach.IHeadCoach;
 
 public class MockHeadCoach {
     public static IHeadCoach createMock() {
@@ -14,7 +14,7 @@ public class MockHeadCoach {
         return headCoach;
     }
 
-    public static IHeadCoach createMockBestCoach(){
+    public static IHeadCoach createMockBestCoach() {
         IHeadCoach headCoach = new HeadCoach();
         headCoach.setName("Best Coach");
         headCoach.setChecking(1);
@@ -24,7 +24,7 @@ public class MockHeadCoach {
         return headCoach;
     }
 
-    public static IHeadCoach createMockWorstCoach(){
+    public static IHeadCoach createMockWorstCoach() {
         IHeadCoach headCoach = new HeadCoach();
         headCoach.setName("Worst Coach");
         headCoach.setChecking(0);

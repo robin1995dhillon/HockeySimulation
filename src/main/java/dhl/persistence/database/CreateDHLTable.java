@@ -5,7 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CreateDHLTable implements ICreateStoredProcedure{
+public class CreateDHLTable implements ICreateStoredProcedure {
     private String procedureName;
     private int leagueId;
     private int conferenceId;
@@ -13,7 +13,7 @@ public class CreateDHLTable implements ICreateStoredProcedure{
     private int teamId;
     private int insertedId;
 
-    public CreateDHLTable(int leagueId, int conferenceId, int divisionId, int teamId){
+    public CreateDHLTable(int leagueId, int conferenceId, int divisionId, int teamId) {
         this.procedureName = "create_DHL_table";
         this.leagueId = leagueId;
         this.conferenceId = conferenceId;
@@ -38,10 +38,10 @@ public class CreateDHLTable implements ICreateStoredProcedure{
         stmt.setInt(3, this.divisionId);
         stmt.setInt(4, this.teamId);
         boolean hasResultSet = stmt.execute();
-        if(hasResultSet){
+        if (hasResultSet) {
             rs = stmt.getResultSet();
-            while(rs.next()){
-                this.insertedId  = rs.getInt("id");
+            while (rs.next()) {
+                this.insertedId = rs.getInt("id");
             }
         }
         conn.closeConnection();

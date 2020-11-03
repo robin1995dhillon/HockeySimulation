@@ -3,7 +3,7 @@ package dhl.leagueModel.gamePlayConfig;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.json.simple.JSONObject;
 
-@JsonDeserialize(as= Injuries.class)
+@JsonDeserialize(as = Injuries.class)
 public interface IInjuries {
     double getRandomInjuryChance();
 

@@ -3,7 +3,7 @@ package dhl.leagueModel.gamePlayConfig;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.json.simple.JSONObject;
 
-@JsonDeserialize(as= Aging.class)
+@JsonDeserialize(as = Aging.class)
 public interface IAging {
     int getAverageRetirementAge();
 

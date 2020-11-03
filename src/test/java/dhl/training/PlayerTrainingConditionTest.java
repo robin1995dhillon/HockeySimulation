@@ -2,19 +2,18 @@ package dhl.training;
 
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.players.IPlayers;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import dhl.mock.MockHeadCoach;
 import dhl.mock.MockPlayer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class PlayerTrainingConditionTest {
 
     @Test
-    public void receiveTrainingTest(){
+    public void receiveTrainingTest() {
         int i = 0;
         ArrayList<IPlayers> playerList = new ArrayList();
         IPlayers player = MockPlayer.createMock();
@@ -27,7 +26,7 @@ public class PlayerTrainingConditionTest {
         assertEquals(16, player.getShooting());
         assertEquals(16, player.getChecking());
         assertEquals(16, player.getSaving());
-        while(player.isInjured() == false){
+        while (player.isInjured() == false) {
             t.receiveTraining(playerList, worstCoach);
             i++;
         }

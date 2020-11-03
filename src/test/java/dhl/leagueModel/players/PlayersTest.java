@@ -1,7 +1,7 @@
 package dhl.leagueModel.players;
 
-import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.mock.MockFreeAgent;
 import dhl.mock.MockGamePlayConfig;
 import dhl.mock.MockPlayer;
@@ -61,9 +61,9 @@ class PlayersTest {
         IPlayers players = MockPlayer.createMock();
 
         players.agePlayer(25);
-        while(true) {
+        while (true) {
             players.checkForPlayerInjury();
-            if(players.isInjured()) {
+            if (players.isInjured()) {
                 break;
             }
         }
@@ -99,7 +99,7 @@ class PlayersTest {
     }
 
     @Test
-    public void convertPlayerToFreeAgentTest(){
+    public void convertPlayerToFreeAgentTest() {
 
         IPlayers players = MockPlayer.createMock();
         players.setStrength(40);
@@ -286,10 +286,52 @@ class PlayersTest {
     }
 
     @Test
-    public void convertFreeAgentToPlayerTest(){
+    public void convertFreeAgentToPlayerTest() {
         IPlayers players = MockPlayer.createMock();
         IFreeAgents agent = MockFreeAgent.createMock();
         IPlayers player = players.convertFreeAgentToPlayer(agent);
         assertEquals(agent.getPlayerName(), player.getPlayerName());
+    }
+
+    @Test
+    void calculateForwardStrength() {
+        IPlayers player = new Players();
+        player.setPosition("forward");
+        player.setChecking(15);
+        player.setSkating(18);
+        player.setShooting(20);
+        player.setSaving(0);
+
+        IPlayers strength = new Players();
+        double playerStrength = strength.calculateStrength(player);
+        assertEquals(45.0, playerStrength);
+    }
+
+    @Test
+    void calculateDefenseStrength() {
+        IPlayers player = new Players();
+        player.setPosition("defense");
+        player.setChecking(15);
+        player.setSkating(18);
+        player.setShooting(20);
+        player.setSaving(0);
+
+        IPlayers strength = new Players();
+        double playerStrength = strength.calculateStrength(player);
+        assertEquals(43, playerStrength);
+    }
+
+    @Test
+    void calculateGoalieStrength() {
+        IPlayers player = new Players();
+        player.setPosition("goalie");
+        player.setChecking(15);
+        player.setSkating(18);
+        player.setShooting(20);
+        player.setSaving(0);
+
+        IPlayers players = new Players();
+        double playerStrength = players.calculateStrength(player);
+        assertEquals(18.0, playerStrength);
     }
 }

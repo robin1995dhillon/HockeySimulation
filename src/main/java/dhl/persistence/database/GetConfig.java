@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetConfig implements IGetStoredProcedure{
+public class GetConfig implements IGetStoredProcedure {
     private String procedureName;
     private int id;
     private IConnect conn;
 
-    public GetConfig(int id){
+    public GetConfig(int id) {
         this.procedureName = "get_config";
         this.id = id;
         this.conn = new Connect();

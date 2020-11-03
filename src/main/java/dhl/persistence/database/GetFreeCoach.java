@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetFreeCoach implements IGetStoredProcedure{
+public class GetFreeCoach implements IGetStoredProcedure {
     private String procedureName;
     private int id;
     private IConnect conn;
 
-    public GetFreeCoach(int id){
+    public GetFreeCoach(int id) {
         this.procedureName = "get_free_coach";
         this.id = id;
         this.conn = new Connect();

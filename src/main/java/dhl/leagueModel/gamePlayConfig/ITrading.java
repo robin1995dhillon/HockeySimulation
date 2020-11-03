@@ -3,7 +3,7 @@ package dhl.leagueModel.gamePlayConfig;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.json.simple.JSONObject;
 
-@JsonDeserialize(as= Trading.class)
+@JsonDeserialize(as = Trading.class)
 public interface ITrading {
     int getLossPoint();
 

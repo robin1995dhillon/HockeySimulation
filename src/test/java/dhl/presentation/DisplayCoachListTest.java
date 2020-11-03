@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class DisplayCoachListTest {
     @Test
-    public void displayCoachTest(){
+    public void displayCoachTest() {
         ArrayList<IHeadCoach> coachList = new ArrayList();
         IHeadCoach coach1 = MockHeadCoach.createMockBestCoach();
         IHeadCoach coach2 = MockHeadCoach.createMockWorstCoach();

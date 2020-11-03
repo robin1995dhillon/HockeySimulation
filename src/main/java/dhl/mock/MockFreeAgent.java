@@ -1,7 +1,7 @@
 package dhl.mock;
 
-import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.freeAgents.FreeAgents;
+import dhl.leagueModel.freeAgents.IFreeAgents;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +87,7 @@ public class MockFreeAgent {
 
     public static List<IFreeAgents> createMockAgentListExpected() {
 
-        List<IFreeAgents>expectedAgentList = new ArrayList<>();
+        List<IFreeAgents> expectedAgentList = new ArrayList<>();
         IFreeAgents player2 = new FreeAgents();
         player2.setPosition("forward");
         player2.setSkating(15);
@@ -115,7 +115,7 @@ public class MockFreeAgent {
 
     public static List<IFreeAgents> createMockAgentGoalieListExpected() {
 
-        List<IFreeAgents>expectedAgentList = new ArrayList<>();
+        List<IFreeAgents> expectedAgentList = new ArrayList<>();
         IFreeAgents player2 = new FreeAgents();
         player2.setPosition("forward");
         player2.setSkating(15);

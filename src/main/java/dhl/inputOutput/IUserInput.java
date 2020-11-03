@@ -1,9 +1,9 @@
 package dhl.inputOutput;
 
 public interface IUserInput {
-    public String getInput();
+    abstract String getInput();
 
-    public void setInput();
+    abstract void setInput();
 
-    public void setDefaultInput();
+    abstract void setDefaultInput();
 }

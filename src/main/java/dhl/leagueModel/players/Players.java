@@ -1,8 +1,11 @@
 package dhl.leagueModel.players;
 
+import dhl.Configurables;
 import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.gamePlayConfig.*;
+import dhl.leagueModel.gamePlayConfig.IAging;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.gamePlayConfig.IInjuries;
 import dhl.mock.MockGamePlayConfig;
 import dhl.persistence.saving.IPlayersPersistence;
 import dhl.persistence.saving.PlayersPersistence;
@@ -12,25 +15,27 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 
 public class Players implements IPlayers {
 
-    String playerName;
-    String position;
-    boolean captain;
-    int skating;
-    int shooting;
-    int checking;
-    int saving;
-    int age;
-    int daysToAge = 1;
-    double strength;
-    int injuredDays = 0;
-    boolean isRetired = false;
-    boolean isInjured = false;
-    IGamePlayConfig gamePlayConfig = MockGamePlayConfig.createMock();
+    private String playerName;
+    private String position;
+    private boolean captain;
+    private int skating;
+    private int shooting;
+    private int checking;
+    private int saving;
+    private int age;
+    private int daysToAge = 1;
+    private double strength;
+    private int injuredDays = 0;
+    private boolean isRetired = false;
+    private boolean isInjured = false;
+    IGamePlayConfig gamePlayConfig;
 
     public Players() {
+        gamePlayConfig = MockGamePlayConfig.createMock();
     }
 
     public Players(String playerName, String position, boolean captain) {
@@ -141,6 +146,7 @@ public class Players implements IPlayers {
     public int getDaysToAge() {
         return daysToAge;
     }
+
     @Override
     public void setDaysToAge(int daysToAge) {
         this.daysToAge = daysToAge;
@@ -160,14 +166,17 @@ public class Players implements IPlayers {
     public int getInjuredDays() {
         return injuredDays;
     }
+
     @Override
     public void setInjuredDays(int injuredDays) {
         this.injuredDays = injuredDays;
     }
+
     @Override
     public boolean isInjured() {
         return isInjured;
     }
+
     @Override
     public void setInjured(boolean injured) {
         isInjured = injured;
@@ -182,51 +191,45 @@ public class Players implements IPlayers {
     @Override
     public void agePlayer(int days) {
         int newDaysToAge = calculateNewDaysToAge(days, this);
-        if(newDaysToAge<=365) {
+        if (newDaysToAge <= 365) {
             this.setDaysToAge(newDaysToAge);
-        }
-        else {
+        } else {
             newDaysToAge = newDaysToAge % 365;
             this.setAge(this.getAge() + 1);
             this.setDaysToAge(newDaysToAge);
         }
-        if(this.isInjured()) {
+        if (this.isInjured()) {
             this.setInjuredDays(this.getInjuredDays() - days);
             this.playerStillInjured();
             this.checkIfRetired();
-        }
-        else {
+        } else {
             checkIfRetired();
         }
     }
 
     @Override
     public void checkIfRetired() {
-//        IGamePlayConfig gamePlayConfig = new GamePlayConfig();
         IAging aging = gamePlayConfig.getAging();
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = this.getAge();
-        Integer[] retirementAge = {average-5,average-4,average-3,average-2,average-1,average,average+1,average+4,average+5,max};
-        Integer[] retirementArray = {5,10,15,20,25,30,50,70,80,100};
+        Integer[] retirementAge = {average - 5, average - 4, average - 3, average - 2, average - 1, average, average + 1, average + 4, average + 5, max};
+//      The array below is used to determine the brackets for retirement. If the player is of average age, the chance for retirement is 30%"
+        Integer[] retirementArray = {5, 10, 15, 20, 25, 30, 50, 70, 80, 100};
 
         int minDistance = Math.abs(retirementAge[0] - playerAge);
         int minIndex = 0;
-        for(int i = 1; i < retirementAge.length; i++){
+        for (int i = 1; i < retirementAge.length; i++) {
             int currentDistance = Math.abs(retirementAge[i] - playerAge);
-            if(currentDistance < minDistance){
+            if (currentDistance < minDistance) {
                 minIndex = i;
                 minDistance = currentDistance;
             }
         }
         int closestBracket = retirementAge[minIndex];
-        System.out.println("Closest Bracket: " + closestBracket);
         int index = Arrays.asList(retirementAge).indexOf(closestBracket);
-        System.out.println("Index is: " + index);
-        int randomNumber = ThreadLocalRandom.current().nextInt(0,101);
-        System.out.println("Random Number is: " + randomNumber);
-        if(randomNumber >= 0 && randomNumber <= retirementArray[index]) {
-            System.out.println("Inside Retirement");
+        int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
+        if (randomNumber >= 0 && randomNumber <= retirementArray[index]) {
             this.setRetired(true);
         } else {
             this.setRetired(false);
@@ -236,19 +239,16 @@ public class Players implements IPlayers {
     @Override
     public IFreeAgents replacePlayerWithFreeAgent(IPlayers player, ArrayList<IFreeAgents> freeAgents) {
         List<Double> freeAgentStrengthList = new ArrayList<>();
-            for(IFreeAgents freeAgent: freeAgents) {
-                if(player.getPosition().equals(freeAgent.getPosition())) {
-                    double freeAgentStrength = freeAgent.calculateStrength(freeAgent);
-                    System.out.println("Strength" + freeAgentStrength);
-                    freeAgentStrengthList.add(freeAgentStrength);
-                }
+        for (IFreeAgents freeAgent : freeAgents) {
+            if (player.getPosition().equals(freeAgent.getPosition())) {
+                double freeAgentStrength = freeAgent.calculateStrength(freeAgent);
+                freeAgentStrengthList.add(freeAgentStrength);
             }
+        }
         double maxStrength = Collections.max(freeAgentStrengthList);
         int maxIndex = freeAgentStrengthList.indexOf(maxStrength);
-        System.out.println("Max Strength of Free Agent is: " + maxStrength);
-        System.out.println("Max Index is: " + maxIndex);
-        IFreeAgents  bestFreeAgent = freeAgents.get(maxIndex);
-        System.out.println(bestFreeAgent.getPlayerName());
+        IFreeAgents bestFreeAgent = freeAgents.get(maxIndex);
+//       We have a seperate method which changes a freeAgent to type Player. That will be called in State Machine.
         return bestFreeAgent;
     }
 
@@ -259,18 +259,55 @@ public class Players implements IPlayers {
         int injuryDaysLow = injuries.getInjuryDaysLow();
         int injuryDaysHigh = injuries.getInjuryDaysHigh();
         double endRange = randomInjuryChance * 100;
-        int randomNumber = ThreadLocalRandom.current().nextInt(0,101);
-        if(randomNumber <= endRange) {
+        int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
+        if (randomNumber <= endRange) {
             this.setInjured(true);
-            int randomInjuryDays = ThreadLocalRandom.current().nextInt(injuryDaysLow,injuryDaysHigh + 1);
-            System.out.println("Player is Injured for " + randomInjuryDays + " days");
+            int randomInjuryDays = ThreadLocalRandom.current().nextInt(injuryDaysLow, injuryDaysHigh + 1);
             this.setInjuredDays(randomInjuryDays);
         }
     }
 
     @Override
+    public double strengthCalculator(int[] forwardValues) {
+        double playerStrength = 0;
+        playerStrength = IntStream.of(forwardValues).sum();
+        return playerStrength;
+    }
+
+    @Override
+    public double calculateStrength(IPlayers player) {
+        String position = player.getPosition();
+        int skating = player.getSkating();
+        int shooting = player.getShooting();
+        int checking = player.getChecking();
+        int saving = player.getSaving();
+        double strength;
+
+        if (position.equals(Configurables.FORWARD.getAction())) {
+            int[] forwardValues = {skating, shooting, checking / 2};
+            strength = strengthCalculator(forwardValues);
+            player.setStrength(strength);
+        } else if (position.equals(Configurables.DEFENSE.getAction())) {
+            int[] defenseValues = {skating, shooting / 2, checking};
+            strength = strengthCalculator(defenseValues);
+            player.setStrength(strength);
+        } else {
+            int[] goalieValues = {skating, saving};
+            strength = strengthCalculator(goalieValues);
+            player.setStrength(strength);
+        }
+
+        if (player.isInjured()) {
+            player.setStrength(player.getStrength() / 2);
+            strength = strength / 2;
+        }
+
+        return strength;
+    }
+
+    @Override
     public void playerStillInjured() {
-        if(this.getInjuredDays() <= 0) {
+        if (this.getInjuredDays() <= 0) {
             this.setInjured(false);
             this.setInjuredDays(0);
         }
@@ -293,7 +330,6 @@ public class Players implements IPlayers {
 
     @Override
     public IFreeAgents convertPlayerToFreeAgent(IPlayers player) {
-
         IFreeAgents agent = new FreeAgents();
         agent.setPlayerName(player.getPlayerName());
         agent.setPosition(player.getPosition());
@@ -314,9 +350,9 @@ public class Players implements IPlayers {
         String position = this.getPosition();
         int age = this.getAge();
         int injuryDays = this.getInjuredDays();
-        boolean[] booleanAttributes = {this.getCaptain(),this.isRetired(),this.isInjured()};
+        boolean[] booleanAttributes = {this.getCaptain(), this.isRetired(), this.isInjured()};
         int[] playerAttributes = {this.getSkating(), this.getChecking(), this.getShooting(), this.getSaving()};
-        playersPersistence.savePlayerToDB(playerName,position,booleanAttributes,age,playerAttributes,teamID,injuryDays);
+        playersPersistence.savePlayerToDB(playerName, position, booleanAttributes, age, playerAttributes, teamID, injuryDays);
     }
 
 

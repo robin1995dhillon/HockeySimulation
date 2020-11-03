@@ -5,8 +5,10 @@ import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
 import dhl.mock.MockPlayer;
 import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FreeAgentDropListTest {
@@ -15,7 +17,7 @@ public class FreeAgentDropListTest {
     Players playerToDrop = new Players();
 
     @Test
-    public void dropSkaterAiTest(){
+    public void dropSkaterAiTest() {
 
         int playersToBeDropped = 1;
         List<IPlayers> availablePlayers = MockPlayer.createMockPlayerList();
@@ -24,7 +26,7 @@ public class FreeAgentDropListTest {
         List<IPlayers> playerList;
         List<IFreeAgents> agents = new ArrayList<>();
 
-        for(IPlayers p:availablePlayers){
+        for (IPlayers p : availablePlayers) {
             if (p.getPosition().equalsIgnoreCase("goalie")) {
                 continue;
             } else {
@@ -32,7 +34,7 @@ public class FreeAgentDropListTest {
             }
         }
 
-        playerSkaterList.sort((p1, p2) -> Double.compare(p1.getStrength(),p2.getStrength()));
+        playerSkaterList.sort((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength()));
         playerList = playerSkaterList.subList(0, playersToBeDropped);
 
         for (IPlayers a : playerList) {
@@ -41,38 +43,38 @@ public class FreeAgentDropListTest {
             agents.add(playerToAgent);
         }
 
-        assertEquals("JKL",agents.get(0).getPlayerName());
+        assertEquals("JKL", agents.get(0).getPlayerName());
     }
 
 
     @Test
-    public void dropGoalieAiTest(){
+    public void dropGoalieAiTest() {
 
-            int playersToBeDropped = 1;
-            List<IPlayers> availablePlayers = MockPlayer.createMockPlayerList();
-            List<IPlayers> playerGoalieList = new ArrayList<>();
-            IFreeAgents playerToAgent;
-            List<IPlayers> goalieList;
+        int playersToBeDropped = 1;
+        List<IPlayers> availablePlayers = MockPlayer.createMockPlayerList();
+        List<IPlayers> playerGoalieList = new ArrayList<>();
+        IFreeAgents playerToAgent;
+        List<IPlayers> goalieList;
         List<IFreeAgents> agents = new ArrayList<>();
 
-            for(IPlayers p:availablePlayers){
-                if (p.getPosition().equalsIgnoreCase("goalie")) {
-                    playerGoalieList.add(p);
-                }
+        for (IPlayers p : availablePlayers) {
+            if (p.getPosition().equalsIgnoreCase("goalie")) {
+                playerGoalieList.add(p);
             }
+        }
 
-        playerGoalieList.sort((p1, p2) -> Double.compare(p1.getStrength(),p2.getStrength()));
+        playerGoalieList.sort((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength()));
         goalieList = playerGoalieList.subList(0, playersToBeDropped);
 
 
-        for(IPlayers p: goalieList){
+        for (IPlayers p : goalieList) {
             availablePlayers.remove(p);
             playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
             agents.add(playerToAgent);
         }
-        assertEquals("DEF",agents.get(0).getPlayerName());
+        assertEquals("DEF", agents.get(0).getPlayerName());
 
-        }
+    }
 
     @Test
     public void dropSkaterUserTest() {
@@ -91,11 +93,11 @@ public class FreeAgentDropListTest {
         while (playersToBeDropped != 0) {
 
             for (IPlayers p : playerList) {
-                if(p.getPlayerName().equalsIgnoreCase(playerDropName)) {
-                if (p.getPosition().equalsIgnoreCase("goalie")) {
-                    System.out.println("Cannot select goalie");
-                    continue;
-                }
+                if (p.getPlayerName().equalsIgnoreCase(playerDropName)) {
+                    if (p.getPosition().equalsIgnoreCase("goalie")) {
+                        System.out.println("Cannot select goalie");
+                        continue;
+                    }
                     playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
                     availablePlayers.remove(p);
                     playersToBeDropped--;
@@ -103,9 +105,8 @@ public class FreeAgentDropListTest {
                     flag = false;
                     break;
 
-                }
-                else {
-                    flag=true;
+                } else {
+                    flag = true;
 
                 }
             }
@@ -114,12 +115,12 @@ public class FreeAgentDropListTest {
                 System.out.println("invalid! try again");
             }
         }
-        assertEquals(playerDropName,agentsFree.get(0).getPlayerName());
+        assertEquals(playerDropName, agentsFree.get(0).getPlayerName());
 
     }
 
     @Test
-    public void dropGoalieUserTest(){
+    public void dropGoalieUserTest() {
 
         List<IFreeAgents> agentsFree = new ArrayList<>();
         int playersToBeDropped = 1;
@@ -134,7 +135,7 @@ public class FreeAgentDropListTest {
         while (playersToBeDropped != 0) {
 
             for (IPlayers p : playerList) {
-                if(p.getPlayerName().equalsIgnoreCase(playerDropName)) {
+                if (p.getPlayerName().equalsIgnoreCase(playerDropName)) {
                     if (p.getPosition().equalsIgnoreCase("goalie")) {
 
                         playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
@@ -144,8 +145,7 @@ public class FreeAgentDropListTest {
                         flag = false;
                         break;
                     }
-                }
-                else{
+                } else {
                     flag = true;
                 }
             }
@@ -155,6 +155,6 @@ public class FreeAgentDropListTest {
             }
         }
 
-        assertEquals(playerDropName,agentsFree.get(0).getPlayerName());
+        assertEquals(playerDropName, agentsFree.get(0).getPlayerName());
     }
 }

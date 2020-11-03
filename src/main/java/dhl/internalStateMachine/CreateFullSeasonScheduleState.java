@@ -59,7 +59,7 @@ public class CreateFullSeasonScheduleState implements INestedState {
     public void runState() {
 
 //        standings.initializeStandings();
-        if(league == null) {
+        if (league == null) {
             output.setOutput("No league found!");
             output.sendOutput();
             return;

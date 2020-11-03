@@ -11,7 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CheckerTest {
 
@@ -55,6 +56,7 @@ class CheckerTest {
         assertTrue(c.teamChecker(MockStringName, ILeague));
 
     }
+
     void falseTeamChecker() {
         Checker c = new Checker();
         String MockStringName = "HalifaxTigers";
@@ -64,7 +66,7 @@ class CheckerTest {
     }
 
     @Test
-    public void managerCheckerTest(){
+    public void managerCheckerTest() {
         ArrayList<String> managerList = MockManager.createMock();
         IChecker c = new Checker();
         assertTrue(c.managerChecker(managerList, "Manager1"));
@@ -72,7 +74,7 @@ class CheckerTest {
     }
 
     @Test
-    public void coachCheckerTest(){
+    public void coachCheckerTest() {
         ArrayList<IHeadCoach> coachList = new ArrayList<>();
         IHeadCoach coach = MockHeadCoach.createMock();
         coachList.add(coach);
@@ -82,12 +84,12 @@ class CheckerTest {
     }
 
     @Test
-    public void freeAgentCheckerTest(){
+    public void freeAgentCheckerTest() {
         ArrayList<IFreeAgents> freeAgentList = new ArrayList();
         IFreeAgents freeAgent = MockFreeAgent.createMock();
         freeAgentList.add(freeAgent);
         IChecker c = new Checker();
-        assertTrue(c.freeAgentChecker(freeAgentList,"FreeAgent1"));
+        assertTrue(c.freeAgentChecker(freeAgentList, "FreeAgent1"));
         assertFalse(c.freeAgentChecker(freeAgentList, "Agent Two"));
     }
 }

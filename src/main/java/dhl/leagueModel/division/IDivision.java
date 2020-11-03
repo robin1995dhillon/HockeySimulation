@@ -1,13 +1,12 @@
 package dhl.leagueModel.division;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import dhl.leagueModel.division.Division;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonDeserialize(as= Division.class)
+@JsonDeserialize(as = Division.class)
 public interface IDivision {
 
     public ArrayList<ITeam> getTeams();

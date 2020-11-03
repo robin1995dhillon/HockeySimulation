@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetFreeManager implements IGetStoredProcedure{
+public class GetFreeManager implements IGetStoredProcedure {
     private String procedureName;
     private int id;
     private IConnect conn;
 
-    public GetFreeManager(int id){
+    public GetFreeManager(int id) {
         this.procedureName = "get_free_manager";
         this.id = id;
         this.conn = new Connect();

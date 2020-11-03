@@ -16,7 +16,7 @@ public class HeadCoachPersistence implements IHeadCoachPersistence {
         double shooting = headCoachAttributes[1];
         double checking = headCoachAttributes[2];
         double saving = headCoachAttributes[3];
-        ICreateStoredProcedure SP = new CreateCoach(headCoachName, skating,shooting,checking,saving,teamId);
+        ICreateStoredProcedure SP = new CreateCoach(headCoachName, skating, shooting, checking, saving, teamId);
         try {
             SP.executeProcedure();
             int headCoach_id = SP.getInsertedId();

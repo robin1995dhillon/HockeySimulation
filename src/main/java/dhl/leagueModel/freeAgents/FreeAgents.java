@@ -1,5 +1,6 @@
 package dhl.leagueModel.freeAgents;
 
+import dhl.Configurables;
 import dhl.persistence.saving.FreeAgentsPersistence;
 import dhl.persistence.saving.IFreeAgentsPersistence;
 
@@ -8,21 +9,21 @@ import java.util.stream.IntStream;
 
 public class FreeAgents implements IFreeAgents {
 
-    String playerName;
-    String position;
-    int skating;
-    int shooting;
-    int checking;
-    int saving;
-    int age;
-    double strength;
+    private String playerName;
+    private String position;
+    private int skating;
+    private int shooting;
+    private int checking;
+    private int saving;
+    private int age;
+    private double strength;
 
     public FreeAgents() {
     }
+
     public FreeAgents(String playerName, String position) {
         this.playerName = playerName;
         this.position = position;
-
     }
 
 
@@ -34,7 +35,6 @@ public class FreeAgents implements IFreeAgents {
     @Override
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
-
     }
 
     @Override
@@ -44,56 +44,47 @@ public class FreeAgents implements IFreeAgents {
 
     @Override
     public void setPosition(String position) {
-
         this.position = position;
     }
 
     @Override
     public int getAge() {
         return age;
-
     }
 
     @Override
     public void setAge(int age) {
         this.age = age;
-
     }
 
     @Override
     public int getSkating() {
-
         return skating;
     }
 
     @Override
     public void setSkating(int skating) {
         this.skating = skating;
-
     }
 
     @Override
     public int getShooting() {
-
         return shooting;
     }
 
     @Override
     public void setShooting(int shooting) {
         this.shooting = shooting;
-
     }
 
     @Override
     public int getChecking() {
-
         return checking;
     }
 
     @Override
     public void setChecking(int checking) {
         this.checking = checking;
-
     }
 
     @Override
@@ -115,6 +106,7 @@ public class FreeAgents implements IFreeAgents {
     public void setStrength(double strength) {
         this.strength = strength;
     }
+
     @Override
     public double calculateStrength(IFreeAgents freeAgents) {
         String position = freeAgents.getPosition();
@@ -124,22 +116,19 @@ public class FreeAgents implements IFreeAgents {
         int saving = freeAgents.getSaving();
         double strength;
 
-        if(position.equals("forward")) {
-            int[] forwardValues = {skating, shooting, checking/2};
+        if (position.equals(Configurables.FORWARD.getAction())) {
+            int[] forwardValues = {skating, shooting, checking / 2};
             strength = strengthAdder(forwardValues);
             this.setStrength(strength);
-        }
-        else if(position.equals("defense")) {
-            int[] defenseValues = {skating, shooting/2, checking};
+        } else if (position.equals(Configurables.DEFENSE.getAction())) {
+            int[] defenseValues = {skating, shooting / 2, checking};
             strength = strengthAdder(defenseValues);
             this.setStrength(strength);
-        }
-        else {
-            int [] goalieValues = {skating, saving};
+        } else {
+            int[] goalieValues = {skating, saving};
             strength = strengthAdder(goalieValues);
             this.setStrength(strength);
         }
-
         return strength;
     }
 
@@ -153,7 +142,7 @@ public class FreeAgents implements IFreeAgents {
     @Override
     public IFreeAgents getFreeAgentFromList(List<IFreeAgents> freeAgentList, String freeAgentName) {
         for (IFreeAgents freeAgent : freeAgentList) {
-            if(freeAgent.getPlayerName().equals(freeAgentName)){
+            if (freeAgent.getPlayerName().equals(freeAgentName)) {
                 return freeAgent;
             }
         }
@@ -162,7 +151,7 @@ public class FreeAgents implements IFreeAgents {
 
     @Override
     public boolean checkPosition(String position) {
-        if(this.position.equals(position)){
+        if (this.position.equals(position)) {
             return true;
         }
         return false;
@@ -178,10 +167,7 @@ public class FreeAgents implements IFreeAgents {
         int shooting = this.getShooting();
         int checking = this.getChecking();
         int saving = this.getSaving();
-        int[] freeAgentAttributes = {skating,shooting,checking,saving};
-        freeAgentsPersistence.saveFreeAgentsToDB(freeAgentName,position,age,freeAgentAttributes,leagueID);
+        int[] freeAgentAttributes = {skating, shooting, checking, saving};
+        freeAgentsPersistence.saveFreeAgentsToDB(freeAgentName, position, age, freeAgentAttributes, leagueID);
     }
-
-
-
 }

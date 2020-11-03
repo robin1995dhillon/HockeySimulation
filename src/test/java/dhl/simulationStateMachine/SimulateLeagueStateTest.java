@@ -8,7 +8,7 @@ import dhl.leagueModel.league.ILeague;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SimulateLeagueStateTest {
     IUserInput inp;

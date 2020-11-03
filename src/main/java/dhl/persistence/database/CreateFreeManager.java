@@ -5,13 +5,13 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CreateFreeManager implements ICreateStoredProcedure{
+public class CreateFreeManager implements ICreateStoredProcedure {
     private String procedureName;
     private String name;
     private int leagueId;
     private int insertedId;
 
-    public CreateFreeManager(String name, int leagueId){
+    public CreateFreeManager(String name, int leagueId) {
         this.procedureName = "create_free_manager";
         this.name = name;
         this.leagueId = leagueId;
@@ -31,10 +31,10 @@ public class CreateFreeManager implements ICreateStoredProcedure{
         stmt.setString(1, this.name);
         stmt.setInt(2, this.leagueId);
         boolean hasResultSet = stmt.execute();
-        if(hasResultSet){
+        if (hasResultSet) {
             ResultSet rs = stmt.getResultSet();
-            while(rs.next()){
-                this.insertedId  = rs.getInt("id");
+            while (rs.next()) {
+                this.insertedId = rs.getInt("id");
             }
         }
         conn.closeConnection();
