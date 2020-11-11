@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class DisplayFreeAgentTest {
     @Test
-    public void displayFreeAgentTest(){
+    public void displayFreeAgentTest() {
         ArrayList<IFreeAgents> freeAgentList = new ArrayList();
         IFreeAgents freeAgent1 = MockFreeAgent.createMock();
         freeAgentList.add(freeAgent1);

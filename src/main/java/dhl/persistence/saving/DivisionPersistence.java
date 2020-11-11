@@ -13,7 +13,7 @@ public class DivisionPersistence implements IDivisionPersistence {
     public JSONObject saveDivisionToDB(String divisionName) {
         JSONObject return_obj = new JSONObject();
         ICreateStoredProcedure SP = new CreateDivision(divisionName);
-        if(divisionName.isEmpty()) {
+        if (divisionName.isEmpty()) {
             return_obj.put("Status", false);
             return_obj.put("id", null);
         } else {

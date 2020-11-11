@@ -1,0 +1,81 @@
+{
+  "leagueName" : "Dalhousie League",
+  "conferences" : [ {
+    "conferenceName" : "Eastern Conference",
+    "divisions" : [ {
+      "divisionName" : "American",
+      "teams" : [ {
+        "teamName" : "HalifaxTigers",
+        "generalManager" : "John",
+        "headCoach" : {
+          "name" : "Random1",
+          "skating" : 5.0,
+          "shooting" : 5.0,
+          "checking" : 5.0,
+          "saving" : 5.0
+        },
+        "players" : [ {
+          "playerName" : "Roger",
+          "position" : "goalie",
+          "captain" : true,
+          "skating" : 0,
+          "shooting" : 0,
+          "checking" : 0,
+          "saving" : 0,
+          "age" : 0,
+          "daysToAge" : 1,
+          "strength" : 0.0,
+          "injuredDays" : 0,
+          "retired" : false,
+          "injured" : false
+        } ],
+        "teamType" : "ai",
+        "lossPoints" : 0,
+        "teamStrength" : 0.0,
+        "isUser" : false
+      } ]
+    } ]
+  } ],
+  "freeAgents" : [ {
+    "playerName" : "Free1",
+    "position" : "forward",
+    "skating" : 20,
+    "shooting" : 20,
+    "checking" : 20,
+    "saving" : 20,
+    "age" : 20,
+    "strength" : 50.0
+  } ],
+  "coaches" : [ {
+    "name" : "Head1",
+    "skating" : 0.6,
+    "shooting" : 0.5,
+    "checking" : 0.5,
+    "saving" : 0.5
+  } ],
+  "generalManagers" : [ "Hey1", "Hey2" ],
+  "leagueNamePresent" : true,
+  "gameplayConfig" : {
+    "aging" : {
+      "averageRetirementAge" : 37,
+      "maximumAge" : 49
+    },
+    "gameResolver" : {
+      "randomWinChance" : 0.66
+    },
+    "injuries" : {
+      "randomInjuryChance" : 0.0,
+      "injuryDaysLow" : 0,
+      "injuryDaysHigh" : 0
+    },
+    "trading" : {
+      "lossPoint" : 6,
+      "randomTradeOfferChance" : 0.13,
+      "maxPlayersPerTrade" : 3,
+      "randomAcceptanceChance" : 0.27
+    },
+    "training" : {
+      "daysUntilStatIncreaseCheck" : 40
+    }
+  }
+}

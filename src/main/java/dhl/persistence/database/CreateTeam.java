@@ -13,7 +13,7 @@ public class CreateTeam implements ICreateStoredProcedure {
     private boolean is_user;
     private int insertedId;
 
-    public CreateTeam(String name, String manager, String coach, boolean is_user){
+    public CreateTeam(String name, String manager, String coach, boolean is_user) {
         this.procedureName = "create_team";
         this.name = name;
         this.manager = manager;
@@ -32,17 +32,17 @@ public class CreateTeam implements ICreateStoredProcedure {
         stmt.setString(3, this.coach);
         stmt.setBoolean(4, this.is_user);
         boolean hasResultSet = stmt.execute();
-        if(hasResultSet){
+        if (hasResultSet) {
             ResultSet rs = stmt.getResultSet();
-            while(rs.next()){
-                this.insertedId  = rs.getInt("id");
+            while (rs.next()) {
+                this.insertedId = rs.getInt("id");
             }
         }
         conn.closeConnection();
     }
 
     @Override
-    public int getInsertedId(){
+    public int getInsertedId() {
         return this.insertedId;
     }
 }

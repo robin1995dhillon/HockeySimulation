@@ -1,9 +1,11 @@
 package dhl.inputOutput;
 
 public interface IUserOutput {
-    public void setOutput(String outvalue);
+    abstract void setOutput(String outvalue);
 
-    public String sendOutput();
+    abstract String sendOutput();
 
-    public void setDefaultOutput();
+    abstract void setDefaultOutput();
+
+    String sendErrorOutput();
 }

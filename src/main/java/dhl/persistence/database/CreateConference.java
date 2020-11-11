@@ -5,13 +5,13 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CreateConference implements ICreateStoredProcedure{
+public class CreateConference implements ICreateStoredProcedure {
 
     private String procedureName;
     private String name;
     private int insertedId;
 
-    public CreateConference(String name){
+    public CreateConference(String name) {
         this.procedureName = "create_conference";
         this.name = name;
     }
@@ -30,10 +30,10 @@ public class CreateConference implements ICreateStoredProcedure{
         CallableStatement stmt = conn.getStatement(sql);
         stmt.setString(1, this.name);
         boolean hasResultSet = stmt.execute();
-        if(hasResultSet){
+        if (hasResultSet) {
             rs = stmt.getResultSet();
-            while(rs.next()){
-                this.insertedId  = rs.getInt("id");
+            while (rs.next()) {
+                this.insertedId = rs.getInt("id");
             }
         }
         conn.closeConnection();

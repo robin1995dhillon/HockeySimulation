@@ -3,7 +3,7 @@ package dhl.leagueModel.gamePlayConfig;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.json.simple.JSONObject;
 
-@JsonDeserialize(as= GameResolver.class)
+@JsonDeserialize(as = GameResolver.class)
 public interface IGameResolver {
     double getRandomWinChance();
 

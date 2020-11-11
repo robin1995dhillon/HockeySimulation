@@ -1,5 +1,6 @@
 package dhl.leagueModel.gamePlayConfig;
 
+import dhl.Configurables;
 import org.json.simple.JSONObject;
 
 public class Trading implements ITrading {
@@ -50,13 +51,13 @@ public class Trading implements ITrading {
 
     @Override
     public boolean tradingValidator(JSONObject Obj) {
-        JSONObject tradingObject = (JSONObject) Obj.get("trading");
-        double randomTradeOfferChance = (double) tradingObject.get("randomTradeOfferChance");
-        double randomAcceptanceChance = (double) tradingObject.get("randomAcceptanceChance");
-        int lossPoint = ((Long) tradingObject.get("lossPoint")).intValue();
-        int maxPlayersPerTrade = ((Long) tradingObject.get("maxPlayersPerTrade")).intValue();
-        int[] tradingAttributesInteger = {lossPoint,maxPlayersPerTrade};
-        double[] tradingAttributesDouble = {randomTradeOfferChance,randomAcceptanceChance};
+        JSONObject tradingObject = (JSONObject) Obj.get(Configurables.TRADING.getAction());
+        double randomTradeOfferChance = (double) tradingObject.get(Configurables.RANDOMTRADEOFFERCHANCE.getAction());
+        double randomAcceptanceChance = (double) tradingObject.get(Configurables.RANDOMACCEPTANCECHANCE.getAction());
+        int lossPoint = ((Long) tradingObject.get(Configurables.LOSSPOINT.getAction())).intValue();
+        int maxPlayersPerTrade = ((Long) tradingObject.get(Configurables.MAXPLAYERSPERTRADE.getAction())).intValue();
+        int[] tradingAttributesInteger = {lossPoint, maxPlayersPerTrade};
+        double[] tradingAttributesDouble = {randomTradeOfferChance, randomAcceptanceChance};
         boolean resultDouble = checkRangeDouble(tradingAttributesDouble);
         boolean resultInt = checkRangeInteger(tradingAttributesInteger);
         return (resultDouble && resultInt);
@@ -64,11 +65,10 @@ public class Trading implements ITrading {
 
     @Override
     public boolean checkRangeInteger(int[] tradingAttributes) {
-        for(int a: tradingAttributes) {
-            if(a>=0 && a<=365) {
+        for (int attributeValue : tradingAttributes) {
+            if (attributeValue >= 0 && attributeValue <= 365) {
                 continue;
-            }
-            else {
+            } else {
                 return false;
             }
         }
@@ -77,11 +77,10 @@ public class Trading implements ITrading {
 
     @Override
     public boolean checkRangeDouble(double[] tradingAttributes) {
-        for(double a: tradingAttributes) {
-            if(a>=0 && a<=1) {
+        for (double attributeValue : tradingAttributes) {
+            if (attributeValue >= 0 && attributeValue <= 1) {
                 continue;
-            }
-            else {
+            } else {
                 return false;
             }
         }

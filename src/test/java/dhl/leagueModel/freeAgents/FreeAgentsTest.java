@@ -11,26 +11,26 @@ class FreeAgentsTest {
 
     @Test
     void getPlayerName() {
-        IFreeAgents f = new FreeAgents("Player1","forward");
+        IFreeAgents f = new FreeAgents("Player1", "forward");
         assertEquals("Player1", f.getPlayerName());
     }
 
     @Test
     void setPlayerName() {
-        IFreeAgents f = new FreeAgents("Player1","forward");
+        IFreeAgents f = new FreeAgents("Player1", "forward");
         f.setPlayerName("Player2");
         assertEquals("Player2", f.getPlayerName());
     }
 
     @Test
     void getPosition() {
-        IFreeAgents f = new FreeAgents("Player1","goalie");
+        IFreeAgents f = new FreeAgents("Player1", "goalie");
         assertEquals("goalie", f.getPosition());
     }
 
     @Test
     void setPosition() {
-        IFreeAgents f = new FreeAgents("Player1","goalie");
+        IFreeAgents f = new FreeAgents("Player1", "goalie");
         f.setPosition("forward");
         assertEquals("forward", f.getPosition());
     }
@@ -129,13 +129,13 @@ class FreeAgentsTest {
     void calculateStrength() {
         IFreeAgents freeAgents = MockFreeAgent.createMock();
         double strength = freeAgents.calculateStrength(freeAgents);
-        assertEquals(50,strength);
+        assertEquals(50, strength);
 
     }
 
     @Test
     void strengthAdder() {
-        int [] StrengthArray = {20,15,10};
+        int[] StrengthArray = {20, 15, 10};
         IFreeAgents freeAgents = new FreeAgents();
         double strength = freeAgents.strengthAdder(StrengthArray);
         assertEquals(45, strength);

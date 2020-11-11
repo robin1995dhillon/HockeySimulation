@@ -1,8 +1,8 @@
 package dhl.mock;
 
 import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.players.Players;
+import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
 import java.util.ArrayList;
@@ -151,6 +151,7 @@ public class MockPlayer {
 
         return consideringTeam;
     }
+
     public static List<IPlayers> tradeAiExpectedConsideringTeamTestMock() {
 
         List<IPlayers> expectedConsideringTeam = new ArrayList<>();

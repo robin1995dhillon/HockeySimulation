@@ -1,11 +1,12 @@
 package dhl.leagueModel.gamePlayConfig;
 
+import dhl.Configurables;
 import org.json.simple.JSONObject;
 
 public class Injuries implements IInjuries {
-    double randomInjuryChance = 0.05;
-    int injuryDaysLow = 1;
-    int injuryDaysHigh = 260;
+    private double randomInjuryChance;
+    private int injuryDaysLow;
+    int injuryDaysHigh;
 
     @Override
     public double getRandomInjuryChance() {
@@ -39,11 +40,11 @@ public class Injuries implements IInjuries {
 
     @Override
     public boolean injuriesValidator(JSONObject Obj) {
-        JSONObject injuriesObject = (JSONObject) Obj.get("injuries");
-        double randomInjuryChance = (double) injuriesObject.get("randomInjuryChance");
-        int injuryDaysLow = ((Long) injuriesObject.get("injuryDaysLow")).intValue();
-        int injuryDaysHigh = ((Long) injuriesObject.get("injuryDaysHigh")).intValue();
-        int[] injuriesAttributesInt = {injuryDaysLow,injuryDaysHigh};
+        JSONObject injuriesObject = (JSONObject) Obj.get(Configurables.INJURIES.getAction());
+        double randomInjuryChance = (double) injuriesObject.get(Configurables.RANDOMINJURYCHANCE.getAction());
+        int injuryDaysLow = ((Long) injuriesObject.get(Configurables.INJURYDAYSLOW.getAction())).intValue();
+        int injuryDaysHigh = ((Long) injuriesObject.get(Configurables.INJURYDAYSHIGH.getAction())).intValue();
+        int[] injuriesAttributesInt = {injuryDaysLow, injuryDaysHigh};
         double[] injuriesAttributesDouble = {randomInjuryChance};
         boolean resultDouble = checkRangeDouble(injuriesAttributesDouble);
         boolean resultInt = checkRangeInteger(injuriesAttributesInt);
@@ -52,11 +53,10 @@ public class Injuries implements IInjuries {
 
     @Override
     public boolean checkRangeInteger(int[] injuriesAttributes) {
-        for(int a: injuriesAttributes) {
-            if(a>=0 && a<=365) {
+        for (int attributeValue : injuriesAttributes) {
+            if (attributeValue >= 0 && attributeValue <= 365) {
                 continue;
-            }
-            else {
+            } else {
                 return false;
             }
         }
@@ -65,11 +65,10 @@ public class Injuries implements IInjuries {
 
     @Override
     public boolean checkRangeDouble(double[] injuriesAttributes) {
-        for(double a: injuriesAttributes) {
-            if(a>=0 && a<=1) {
+        for (double attributeValue : injuriesAttributes) {
+            if (attributeValue >= 0 && attributeValue <= 1) {
                 continue;
-            }
-            else {
+            } else {
                 return false;
             }
         }

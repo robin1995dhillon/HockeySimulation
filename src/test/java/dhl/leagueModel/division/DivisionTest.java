@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DivisionTest {
 
@@ -17,7 +17,7 @@ class DivisionTest {
         team_array.add(team);
         IDivision d = new Division("Atlantic", team_array);
         d.addTeam(team);
-        assertEquals(team,d.getTeams().get(0));
+        assertEquals(team, d.getTeams().get(0));
     }
 
     @Test
@@ -29,7 +29,7 @@ class DivisionTest {
         IDivision d = new Division("Atlantic", team_array);
         team_array.add(team2);
         d.setTeams(team_array);
-        assertEquals(team2,d.getTeams().get(1));
+        assertEquals(team2, d.getTeams().get(1));
     }
 
     @Test
@@ -51,9 +51,9 @@ class DivisionTest {
         ITeam team2 = MockTeam.MockTeamTwo();
         ArrayList<ITeam> teamArray = new ArrayList<>();
         teamArray.add(team);
-        IDivision division = new Division("Metro",teamArray);
+        IDivision division = new Division("Metro", teamArray);
         division.addTeam(team2);
-        assertEquals(team2,division.getTeams().get(1));
+        assertEquals(team2, division.getTeams().get(1));
     }
 
     @Test

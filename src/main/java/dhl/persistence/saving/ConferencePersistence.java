@@ -13,7 +13,7 @@ public class ConferencePersistence implements IConferencePersistence {
     public JSONObject saveConferenceToDB(String conferenceName) {
         JSONObject return_obj = new JSONObject();
         ICreateStoredProcedure SP = new CreateConference(conferenceName);
-        if(conferenceName.isEmpty()) {
+        if (conferenceName.isEmpty()) {
             return_obj.put("Status", false);
             return_obj.put("id", null);
         } else {

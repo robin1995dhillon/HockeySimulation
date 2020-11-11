@@ -3,7 +3,7 @@ package dhl.leagueModel.gamePlayConfig;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.json.simple.JSONObject;
 
-@JsonDeserialize(as= Training.class)
+@JsonDeserialize(as = Training.class)
 public interface ITraining {
     int getDaysUntilStatIncreaseCheck();
 

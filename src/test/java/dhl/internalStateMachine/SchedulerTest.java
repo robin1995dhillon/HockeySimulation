@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SchedulerTest {
     private IUserInput input;

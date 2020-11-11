@@ -1,5 +1,6 @@
 package dhl.leagueModel.gamePlayConfig;
 
+import dhl.Configurables;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
@@ -7,11 +8,11 @@ import java.util.List;
 
 public class GamePlayConfig implements IGamePlayConfig {
 
-    IAging aging;
-    IGameResolver gameResolver;
-    IInjuries injuries;
-    ITrading trading;
-    ITraining training;
+    private IAging aging;
+    private IGameResolver gameResolver;
+    private IInjuries injuries;
+    private ITrading trading;
+    private ITraining training;
 
     public GamePlayConfig() {
         aging = new Aging();
@@ -73,9 +74,9 @@ public class GamePlayConfig implements IGamePlayConfig {
 
     @Override
     public boolean gamePlayConfigValidator(JSONObject Obj) {
-        JSONObject gamePlayConfigObject = (JSONObject) Obj.get("gameplayConfig");
+        JSONObject gamePlayConfigObject = (JSONObject) Obj.get(Configurables.GAMEPLAYCONFIG.getAction());
         List<Boolean> results = new ArrayList<>();
-//        IAging aging = new Aging();
+        IAging aging = new Aging();
         IGameResolver gameResolver = new GameResolver();
         IInjuries injuries = new Injuries();
         ITraining training = new Training();
@@ -86,10 +87,9 @@ public class GamePlayConfig implements IGamePlayConfig {
         results.add(training.trainingValidator(gamePlayConfigObject));
         results.add(trading.tradingValidator(gamePlayConfigObject));
 
-        if(results.contains(false)) {
+        if (results.contains(false)) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
@@ -103,16 +103,16 @@ public class GamePlayConfig implements IGamePlayConfig {
         int injuryDaysLow = this.injuries.getInjuryDaysLow();
         double randomInjuryChance = this.injuries.getRandomInjuryChance();
         int lossPoint = this.trading.getLossPoint();
-        int maxPlayersPerTrade =  this.trading.getMaxPlayersPerTrade();
+        int maxPlayersPerTrade = this.trading.getMaxPlayersPerTrade();
         double randomAcceptanceChance = this.trading.getRandomAcceptanceChance();
         double randomTradeOfferChance = this.trading.getRandomTradeOfferChance();
         int daysUntilStatIncreaseCheck = this.training.getDaysUntilStatIncreaseCheck();
 
-        int[] gamePlayAttributesInteger = {averageRetirementAge,maximumAge,injuryDaysLow,injuryDaysHigh,daysUntilStatIncreaseCheck,lossPoint,maxPlayersPerTrade,leagueID};
-        double[] gamePlayAttributesDouble = {randomInjuryChance, randomWinChance,randomAcceptanceChance,randomTradeOfferChance};
+        int[] gamePlayAttributesInteger = {averageRetirementAge, maximumAge, injuryDaysLow, injuryDaysHigh, daysUntilStatIncreaseCheck, lossPoint, maxPlayersPerTrade, leagueID};
+        double[] gamePlayAttributesDouble = {randomInjuryChance, randomWinChance, randomAcceptanceChance, randomTradeOfferChance};
 
         IGamePlayConfigPersistence gamePlayConfigPersistence = new GamePlayConfigPersistence();
-        gamePlayConfigPersistence.saveConfigToDB(gamePlayAttributesInteger,gamePlayAttributesDouble);
+        gamePlayConfigPersistence.saveConfigToDB(gamePlayAttributesInteger, gamePlayAttributesDouble);
         return true;
     }
 

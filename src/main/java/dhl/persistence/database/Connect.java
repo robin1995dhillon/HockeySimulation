@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.Properties;
 
 
-public class Connect implements IConnect{
+public class Connect implements IConnect {
 
     private Connection conn = null;
     private CallableStatement stmt = null;
@@ -23,7 +23,7 @@ public class Connect implements IConnect{
         String url = prop.getProperty("dburl");
         String user = prop.getProperty("dbuser");
         String password = prop.getProperty("dbpass");
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
@@ -60,14 +60,19 @@ public class Connect implements IConnect{
     }
 
     @Override
-    public void closeConnection(){
-        if(stmt != null) {
+    public void closeConnection() {
+        if (stmt == null) {
+            return;
+        } else {
             try {
                 stmt.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } if(conn != null) {
+        }
+        if (conn == null) {
+            return;
+        } else {
             try {
                 conn.close();
             } catch (SQLException e) {

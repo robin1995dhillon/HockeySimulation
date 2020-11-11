@@ -1,8 +1,8 @@
 package dhl.persistence.loading;
 
+import dhl.leagueModel.gamePlayConfig.*;
 import dhl.persistence.database.GetConfig;
 import dhl.persistence.database.IGetStoredProcedure;
-import dhl.leagueModel.gamePlayConfig.*;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ public class LoadGamePlayConfig implements ILoadGamePlayConfig {
         IGetStoredProcedure getConfig = new GetConfig(leagueId);
         ResultSet rsGetConfig = getConfig.executeProcedure();
         IGamePlayConfig gamePlayConfig = new GamePlayConfig();
-        while(rsGetConfig.next()){
+        while (rsGetConfig.next()) {
             IAging aging = new Aging();
             aging.setAverageRetirementAge(rsGetConfig.getInt("average_retirement_age"));
             aging.setMaximumAge(rsGetConfig.getInt("maximum_age"));

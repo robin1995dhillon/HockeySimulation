@@ -21,6 +21,7 @@ class LoadTeamStateTest {
         out = new UserOutput();
         teamName = "Rob's team";
     }
+
     @Test
     void loadTeam() {
         LoadTeamState load = new LoadTeamState(inp, out, teamName);

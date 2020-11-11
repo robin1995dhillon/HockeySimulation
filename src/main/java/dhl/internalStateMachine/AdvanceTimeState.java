@@ -69,7 +69,6 @@ public class AdvanceTimeState implements INestedState {
             calendar.setTime(dateFormat.parse(currDate));
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             this.currDate = dateFormat.format(calendar.getTime());
-            System.out.println(this.currDate);
             if (this.currDate.equals(this.endDate)) {
                 this.lastDayOfSeason = true;
             }

@@ -11,7 +11,7 @@ public class GetCoachTest {
     public void executeProcedureTest() throws SQLException, IOException {
         IGetStoredProcedure s = new GetCoach(1);
         ResultSet rs = s.executeProcedure();
-        while(rs.next()){
+        while (rs.next()) {
             System.out.print("ID: " + rs.getInt("id"));
             System.out.print(", Name: " + rs.getString("name"));
             System.out.print(", Skating: " + rs.getDouble("skating"));

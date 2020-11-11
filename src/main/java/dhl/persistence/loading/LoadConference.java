@@ -1,10 +1,10 @@
 package dhl.persistence.loading;
 
-import dhl.persistence.database.GetAllConferenceInLeague;
-import dhl.persistence.database.IGetStoredProcedure;
 import dhl.leagueModel.conference.Conference;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
+import dhl.persistence.database.GetAllConferenceInLeague;
+import dhl.persistence.database.IGetStoredProcedure;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ public class LoadConference implements ILoadConference {
         ArrayList<IConference> conferenceList = new ArrayList<>();
         IGetStoredProcedure getConference = new GetAllConferenceInLeague(leagueId);
         ResultSet rsConference = getConference.executeProcedure();
-        while (rsConference.next()){
+        while (rsConference.next()) {
             int conferenceId = rsConference.getInt("id");
             IConference conference = new Conference();
             conference.setConferenceName(rsConference.getString("name"));

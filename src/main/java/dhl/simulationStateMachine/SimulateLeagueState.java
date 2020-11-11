@@ -6,7 +6,7 @@ import dhl.internalStateMachine.NestedStartState;
 import dhl.internalStateMachine.NestedStateContext;
 import dhl.leagueModel.league.ILeague;
 
-public class SimulateLeagueState implements IState{
+public class SimulateLeagueState implements IState {
     private ILeague league;
     private IUserInput input;
     private IUserOutput output;
@@ -23,9 +23,10 @@ public class SimulateLeagueState implements IState{
         this.stateName = "SimulateLeagueState";
     }
 
-    public void forward(StateContext context){
+    public void forward(StateContext context) {
         this.nextStateName = "";
     }
+
     public void runState() {
         NestedStateContext stateContext = new NestedStateContext(input, output);
         stateContext.setState(new NestedStartState(league, stateContext, input, output, teamName)); //Nested state machine start state
@@ -35,11 +36,12 @@ public class SimulateLeagueState implements IState{
         stateContext.forward(); // Move to the next state i.e. End State
         stateContext.runState(); // End state
     }
-    public String getStateName(){
+
+    public String getStateName() {
         return this.stateName;
     }
 
-    public String getNextState(){
+    public String getNextState() {
         return this.nextStateName;
     }
 

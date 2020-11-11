@@ -17,7 +17,7 @@ public class PlayersPersistence implements IPlayersPersistence {
         int shooting = playerAttributes[1];
         int checking = playerAttributes[2];
         int saving = playerAttributes[3];
-        ICreateStoredProcedure SP = new CreatePlayer(playerName,position,captain,age,skating,shooting,checking,saving,team_id,isRetired,isInjured,injuryDays);
+        ICreateStoredProcedure SP = new CreatePlayer(playerName, position, captain, age, skating, shooting, checking, saving, team_id, isRetired, isInjured, injuryDays);
         try {
             SP.executeProcedure();
         } catch (IOException | SQLException e) {

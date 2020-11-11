@@ -10,7 +10,7 @@ import dhl.persistence.loading.LoadLeague;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class LoadTeamState implements IState{
+public class LoadTeamState implements IState {
     private IUserInput input;
     private IUserOutput output;
     private String teamName;
@@ -23,10 +23,12 @@ public class LoadTeamState implements IState{
         this.teamName = teamName;
         this.stateName = "LoadTeamState";
     }
-    public void forward(StateContext context){
+
+    public void forward(StateContext context) {
         this.nextStateName = "SimulateLeagueState";
         context.setState(new SimulateLeagueState(null, input, output, teamName));
     }
+
     public void runState() {
         ICheckStoredProcedure SP = new CheckTeam(teamName);
         boolean is_exist = false;
@@ -52,11 +54,12 @@ public class LoadTeamState implements IState{
         }
 
     }
-    public String getStateName(){
+
+    public String getStateName() {
         return this.stateName;
     }
 
-    public String getNextState(){
+    public String getNextState() {
         return this.nextStateName;
     }
 }

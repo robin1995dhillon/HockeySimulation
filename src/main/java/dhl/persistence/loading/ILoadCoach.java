@@ -8,5 +8,6 @@ import java.util.ArrayList;
 
 public interface ILoadCoach {
     IHeadCoach loadHeadCoach(int teamId) throws IOException, SQLException;
+
     ArrayList<IHeadCoach> loadFreeCoach(int leagueId) throws IOException, SQLException;
 }

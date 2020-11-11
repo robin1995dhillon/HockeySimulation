@@ -1,8 +1,8 @@
 package dhl.mock;
 
+import dhl.leagueModel.headCoach.HeadCoach;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.headCoach.HeadCoach;
 import dhl.leagueModel.teams.Teams;
 
 import java.util.ArrayList;

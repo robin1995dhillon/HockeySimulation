@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class GetTeamByNameTest {
     @Test
-    public void GetTeamByNameTest(){
-        try{
+    public void GetTeamByNameTest() {
+        try {
             IGetStoredProcedure s = new GetTeamByName("Detroit Warriors");
-        }catch(Exception e){
+        } catch (Exception e) {
             fail();
         }
     }
@@ -22,7 +22,7 @@ public class GetTeamByNameTest {
     public void executeProcedureTest() throws SQLException, IOException {
         IGetStoredProcedure s = new GetTeamByName("Detroit Warriors");
         ResultSet rs = s.executeProcedure();
-        while(rs.next()){
+        while (rs.next()) {
             System.out.print("ID: " + rs.getInt("id"));
             System.out.print(", Name: " + rs.getString("name"));
             System.out.print(", Manager: " + rs.getString("general_manager"));

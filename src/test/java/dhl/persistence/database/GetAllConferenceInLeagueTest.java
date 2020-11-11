@@ -12,7 +12,7 @@ public class GetAllConferenceInLeagueTest {
     public void executeProcedureTest() throws SQLException, IOException {
         IGetStoredProcedure s = new GetAllConferenceInLeague(1);
         ResultSet rs = s.executeProcedure();
-        while(rs.next()){
+        while (rs.next()) {
             System.out.print("ID: " + rs.getInt("id"));
             System.out.println(", Name: " + rs.getString("name"));
         }

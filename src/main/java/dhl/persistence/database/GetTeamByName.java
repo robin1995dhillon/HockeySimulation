@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetTeamByName implements IGetStoredProcedure{
+public class GetTeamByName implements IGetStoredProcedure {
     private String procedureName;
     private String name;
     private IConnect conn;
 
-    public GetTeamByName(String name){
+    public GetTeamByName(String name) {
         this.procedureName = "get_team_by_name";
         this.name = name;
         this.conn = new Connect();

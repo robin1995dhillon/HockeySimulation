@@ -16,8 +16,10 @@ public class JSONReader {
         try (FileReader reader = new FileReader(Path)) {
             Object obj = jsonParser.parse(reader);
             jsonObject = (JSONObject) obj;
-        } catch(JsonProcessingException jp) {
-            System.out.println("Invalid JSON - Parsing");
+        } catch (JsonProcessingException jp) {
+            UserOutput userOutput = new UserOutput();
+            userOutput.setOutput("Invalid JSON - Parsing");
+            userOutput.sendOutput();
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
