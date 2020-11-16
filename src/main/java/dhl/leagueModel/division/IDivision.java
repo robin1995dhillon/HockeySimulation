@@ -9,9 +9,9 @@ import java.util.List;
 @JsonDeserialize(as = Division.class)
 public interface IDivision {
 
-    public ArrayList<ITeam> getTeams();
+    public List<ITeam> getTeams();
 
-    public void setTeams(ArrayList<ITeam> teams);
+    public void setTeams(List<ITeam> teams);
 
     public String getDivisionName();
 

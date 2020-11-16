@@ -46,7 +46,7 @@ public interface ITeam {
 
     void setIsUser(boolean isUser);
 
-    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, ArrayList<IPlayers> playerList);
+    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
 
     void saveTeams(List<Integer> id);
 }

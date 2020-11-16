@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class UserInput implements IUserInput {
 
-    private String InputValue;
+    private String inputValue;
 
     public UserInput() {
         setDefaultInput();
@@ -12,19 +12,19 @@ public class UserInput implements IUserInput {
 
     @Override
     public void setDefaultInput() {
-        InputValue = "";
+        inputValue = "";
     }
 
     @Override
     public String getInput() {
-        return this.InputValue;
+        return this.inputValue;
     }
 
     @Override
     public void setInput() {
         Scanner scInput = new Scanner(System.in);
         scInput.useDelimiter("\n");
-        this.InputValue = scInput.nextLine();
+        this.inputValue = scInput.nextLine();
 
     }
 }

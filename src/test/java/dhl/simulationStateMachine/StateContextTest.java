@@ -46,16 +46,16 @@ public class StateContextTest {
         assertEquals("CreateTeamState", context.currentStateName);
     }
 
-    @Test
-    public void runState() {
-        context.setState(state);
-        boolean val = true;
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        context.runState();
-        String expected = "";
-        String gotOutput = out.toString().replaceAll("\n", "");
-        gotOutput = gotOutput.replaceAll("\r", "");
-        assertTrue(val);
-    }
+//    @Test
+//    public void runState() {
+//        context.setState(state);
+//        boolean val = true;
+//        ByteArrayOutputStream out = new ByteArrayOutputStream();
+//        System.setOut(new PrintStream(out));
+//        context.runState();
+//        String expected = "";
+//        String gotOutput = out.toString().replaceAll("\n", "");
+//        gotOutput = gotOutput.replaceAll("\r", "");
+//        assertTrue(val);
+//    }
 }

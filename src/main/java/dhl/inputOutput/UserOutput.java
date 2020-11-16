@@ -2,7 +2,7 @@ package dhl.inputOutput;
 
 public class UserOutput implements IUserOutput {
 
-    private String OutValue;
+    private String outValue;
 
     public UserOutput() {
         setDefaultOutput();
@@ -10,23 +10,23 @@ public class UserOutput implements IUserOutput {
 
     @Override
     public void setDefaultOutput() {
-        OutValue = "";
+        outValue = "";
     }
 
     @Override
-    public void setOutput(String outvalue) {
-        this.OutValue = outvalue;
+    public void setOutput(String outValue) {
+        this.outValue = outValue;
     }
 
     @Override
     public String sendOutput() {
-        System.out.println(this.OutValue);
-        return this.OutValue;
+        System.out.println(this.outValue);
+        return this.outValue;
     }
 
     @Override
     public String sendErrorOutput() {
-        System.err.println(this.OutValue);
-        return this.OutValue;
+        System.err.println(this.outValue);
+        return this.outValue;
     }
 }

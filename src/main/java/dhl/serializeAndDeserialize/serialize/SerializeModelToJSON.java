@@ -18,11 +18,11 @@ public class SerializeModelToJSON implements ISerializeModelToJSON {
         ObjectWriter objectWriter = objectMapper.writer();
         objectWriter = objectWriter.with(SerializationFeature.INDENT_OUTPUT);
         String mapJakcson = objectWriter.writeValueAsString(league);
-        FileWriter fw = new FileWriter(new File(System.getProperty("user.dir") + "\\src\\create.json"));
-        BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(mapJakcson);
-        bw.flush();
-        bw.close();
+//        FileWriter fw = new FileWriter(new File(System.getProperty("user.dir") + "\\src\\create.json"));
+//        BufferedWriter bw = new BufferedWriter(fw);
+//        bw.write(mapJakcson);
+//        bw.flush();
+//        bw.close();
         return mapJakcson;
     }
 

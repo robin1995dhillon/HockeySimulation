@@ -26,10 +26,10 @@ public class League implements ILeague {
     private IGamePlayConfig iGamePlayConfig;
     private String leagueName;
 
-    private ArrayList<IConference> conferences;
-    private ArrayList<IFreeAgents> freeAgents;
-    private ArrayList<IHeadCoach> coaches;
-    private ArrayList<String> generalManagers;
+    private List<IConference> conferences;
+    private List<IFreeAgents> freeAgents;
+    private List<IHeadCoach> coaches;
+    private List<String> generalManagers;
 
     public League() {
         iconference = new Conference();
@@ -38,12 +38,12 @@ public class League implements ILeague {
         iGamePlayConfig = new GamePlayConfig();
     }
 
-    public League(String leagueName, ArrayList<IConference> conferences) {
+    public League(String leagueName, List<IConference> conferences) {
         this.leagueName = leagueName;
         this.conferences = conferences;
     }
 
-    public League(String leagueName, ArrayList<IConference> conferences, ArrayList<IFreeAgents> freeAgents) {
+    public League(String leagueName, List<IConference> conferences, List<IFreeAgents> freeAgents) {
         this.leagueName = leagueName;
         this.conferences = conferences;
         this.freeAgents = freeAgents;
@@ -55,12 +55,12 @@ public class League implements ILeague {
 
 
     @Override
-    public ArrayList<IConference> getConferences() {
+    public List<IConference> getConferences() {
         return conferences;
     }
 
     @Override
-    public void setConferences(ArrayList<IConference> conferences) {
+    public void setConferences(List<IConference> conferences) {
         this.conferences = conferences;
     }
 
@@ -76,17 +76,17 @@ public class League implements ILeague {
     }
 
     @Override
-    public ArrayList<IFreeAgents> getFreeAgents() {
+    public List<IFreeAgents> getFreeAgents() {
         return freeAgents;
     }
 
     @Override
-    public ArrayList<String> getGeneralManagers() {
+    public List<String> getGeneralManagers() {
         return generalManagers;
     }
 
     @Override
-    public ArrayList<IHeadCoach> getCoaches() {
+    public List<IHeadCoach> getCoaches() {
         return coaches;
     }
 
@@ -100,18 +100,18 @@ public class League implements ILeague {
     }
 
     @Override
-    public void setFreeAgents(ArrayList<IFreeAgents> freeAgents) {
+    public void setFreeAgents(List<IFreeAgents> freeAgents) {
         this.freeAgents = freeAgents;
 
     }
 
     @Override
-    public void setHeadCoach(ArrayList<IHeadCoach> coaches) {
+    public void setHeadCoach(List<IHeadCoach> coaches) {
         this.coaches = coaches;
     }
 
     @Override
-    public void setGeneralManager(ArrayList<String> generalManagers) {
+    public void setGeneralManager(List<String> generalManagers) {
         this.generalManagers = generalManagers;
     }
 
@@ -148,7 +148,7 @@ public class League implements ILeague {
         List<IFreeAgents> freeAgentsArray = this.getFreeAgents();
         IGamePlayConfig gamePlayConfig = this.getGameplayConfig();
         List<IHeadCoach> headCoachArray = this.getCoaches();
-        ArrayList<String> managerName = this.getGeneralManagers();
+        List<String> managerName = this.getGeneralManagers();
 
         List<Integer> ID = new ArrayList<>();
         int leagueID = (int) resultObject.get(Configurables.ID.getAction());
