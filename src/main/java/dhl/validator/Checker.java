@@ -23,8 +23,8 @@ public class Checker implements IChecker {
     }
 
     public boolean divisionChecker(String division, ILeague league) {
-        ArrayList<IConference> conferenceList;
-        ArrayList<IDivision> divisionList;
+        List<IConference> conferenceList;
+        List<IDivision> divisionList;
         conferenceList = league.getConferences();
         for (IConference c : conferenceList) {
             divisionList = c.getDivisions();
@@ -38,9 +38,9 @@ public class Checker implements IChecker {
     }
 
     public boolean teamChecker(String team, ILeague league) {
-        ArrayList<IConference> conferenceList;
-        ArrayList<IDivision> divisionList;
-        ArrayList<ITeam> teamList;
+        List<IConference> conferenceList;
+        List<IDivision> divisionList;
+        List<ITeam> teamList;
         conferenceList = league.getConferences();
         for (IConference c : conferenceList) {
             divisionList = c.getDivisions();

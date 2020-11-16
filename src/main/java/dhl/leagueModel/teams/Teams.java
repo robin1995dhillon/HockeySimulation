@@ -144,10 +144,10 @@ public class Teams implements ITeam {
     }
 
     @Override
-    public ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, ArrayList<IPlayers> playerList) {
+    public ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList) {
 
-        ArrayList<IConference> conferenceList;
-        ArrayList<IDivision> divisionList;
+        List<IConference> conferenceList;
+        List<IDivision> divisionList;
         String conferenceName = locationAttributes[0];
         String divisionName = locationAttributes[1];
         String teamName = locationAttributes[2];

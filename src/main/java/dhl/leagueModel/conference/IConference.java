@@ -12,9 +12,9 @@ public interface IConference {
 
     void setConferenceName(String conferenceName);
 
-    ArrayList<IDivision> getDivisions();
+    List<IDivision> getDivisions();
 
-    void setDivisions(ArrayList<IDivision> divisions);
+    void setDivisions(List<IDivision> divisions);
 
     void saveConference(List<Integer> leagueID);
 }
