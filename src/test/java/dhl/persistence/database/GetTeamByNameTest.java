@@ -18,16 +18,16 @@ public class GetTeamByNameTest {
         }
     }
 
-    @Test
-    public void executeProcedureTest() throws SQLException, IOException {
-        IGetStoredProcedure s = new GetTeamByName("Detroit Warriors");
-        ResultSet rs = s.executeProcedure();
-        while (rs.next()) {
-            System.out.print("ID: " + rs.getInt("id"));
-            System.out.print(", Name: " + rs.getString("name"));
-            System.out.print(", Manager: " + rs.getString("general_manager"));
-            System.out.println(", Coach: " + rs.getString("head_coach"));
-        }
-        s.closeConnection();
-    }
+//    @Test
+//    public void executeProcedureTest() throws SQLException, IOException {
+//        IGetStoredProcedure s = new GetTeamByName("Detroit Warriors");
+//        ResultSet rs = s.executeProcedure();
+//        while (rs.next()) {
+//            System.out.print("ID: " + rs.getInt("id"));
+//            System.out.print(", Name: " + rs.getString("name"));
+//            System.out.print(", Manager: " + rs.getString("general_manager"));
+//            System.out.println(", Coach: " + rs.getString("head_coach"));
+//        }
+//        s.closeConnection();
+//    }
 }
