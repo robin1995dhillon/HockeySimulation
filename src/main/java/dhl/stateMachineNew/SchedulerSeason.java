@@ -209,7 +209,7 @@ public class SchedulerSeason implements ISchedulerSeason{
                 }
             }
         }
-        // add this in league.setSchedule.
+    league.setSchedules(scheduleList);
 
     }
 

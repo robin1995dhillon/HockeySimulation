@@ -13,6 +13,7 @@ import dhl.persistence.saving.FreeManagerPersistence;
 import dhl.persistence.saving.IFreeManagerPersistence;
 import dhl.persistence.saving.ILeaguePersistence;
 import dhl.persistence.saving.LeaguePersistence;
+import dhl.stateMachineNew.ISchedulerSeason;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
@@ -137,6 +138,16 @@ public class League implements ILeague {
 
     public boolean isLeagueNamePresent() {
         return !this.leagueName.isEmpty();
+    }
+
+    @Override
+    public void setSchedules(List<ISchedulerSeason> gameSchedules) {
+
+    }
+
+    @Override
+    public List<ISchedulerSeason> getGameSchedules() {
+        return null;
     }
 
     @Override
