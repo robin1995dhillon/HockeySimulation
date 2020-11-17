@@ -1,11 +1,11 @@
-package dhl.internalStateMachine;
+package dhl.stateMachineNew;
 
+import dhl.Configurables;
 import dhl.inputOutput.IUserOutput;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
-import dhl.stateMachineNew.ISchedulerSeason;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
@@ -27,7 +27,7 @@ import java.util.*;
  * • ~1/3rd Games: Inter-Division.
  * • ~1/3rd Games: Inter-Conference.
  */
-public class Scheduler {
+public class SchedulerSeason implements ISchedulerSeason{
     private String currentYear;
     private int regSeasonYear;
     private int playoffsYear;
@@ -41,39 +41,46 @@ public class Scheduler {
     private Calendar calendar;
     private int gamePerTeam = 82;
     private List<ISchedulerSeason> shedule = new ArrayList<>();
+    private String matchStatus;
+    private String gameType;
+    private ITeam firstTeam;
+    private ITeam secondTeam;
+    private String matchDate;
+    private List<ISchedulerSeason> scheduleList;
+
 
     private IUserOutput output;
     private Map<String, List<Map<String, String>>> finalSchedule;
-    private List<String> conferenceList;
-    private List<String> divisionList;
-    private List<String> teamList;
-    private Map<String, List<String>> teamsInConference;
-    private Map<String, List<String>> teamsInDivision;
-    private Map<String, List<String>> divisionsInConference;
-    private Map<String, Integer> scheduledMatches;
+    private List<IConference> conferenceList;
+    private List<IDivision> divisionList;
+    private List<ITeam> teamList;
+    private Map<IConference, List<ITeam>> teamsInConference;
+    private Map<IDivision, List<ITeam>> teamsInDivision;
+    private Map<IConference, List<IDivision>> divisionsInConference;
+    private Map<ITeam, Integer> scheduledMatches;
     private Map<String, Integer> matchesOnADay;
 
 
-    Scheduler(Calendar calendar, IUserOutput output) {
+    SchedulerSeason(Calendar calendar, IUserOutput output) {
         this.totalDivisions = 0;
         this.totalTeams = 0;
         this.calendar = calendar;
         this.output = output;
 
         //Model lists
-        conferenceList = new ArrayList<String>();
-        divisionList = new ArrayList<String>();
-        teamList = new ArrayList<String>();
+        conferenceList = new ArrayList<>();
+        divisionList = new ArrayList<>();
+        teamList = new ArrayList<>();
 
         //Model mappers
-        teamsInConference = new HashMap<String, List<String>>();
-        teamsInDivision = new HashMap<String, List<String>>();
-        divisionsInConference = new HashMap<String, List<String>>();
-        scheduledMatches = new HashMap<String, Integer>();
+        teamsInConference = new HashMap<>();
+        teamsInDivision = new HashMap<>();
+        divisionsInConference = new HashMap<>();
+        scheduledMatches = new HashMap<ITeam, Integer>();
 
     }
 
-    Scheduler(Calendar calendar, int currentSeason) {
+    SchedulerSeason(Calendar calendar, int currentSeason) {
         this.currentSeason = currentSeason;
         this.calendar = calendar;
         int currentYear = this.calendar.get(Calendar.YEAR);
@@ -82,6 +89,8 @@ public class Scheduler {
         this.regSeasonYear = currentYear;
         this.playoffsYear = currentYear + 1;
     }
+
+    SchedulerSeason(){}
 
     public String getStartDayOfSeason() {
         String startDate = "30-09-" + this.currentYear;
@@ -189,17 +198,17 @@ public class Scheduler {
     }
 
     public void generateSchedule(ILeague league) {
-//        for(each conf in leage){
-//            for(each div in conf){
-//                for(each team in div){
-//                    incrementCurrentDay();
-//                    initialize(league);
-//                    setMatches();
-//                    createSchedule();
-//
-//                }
-//            }
-//        }
+        scheduleList = new ArrayList<>();
+        initialize(league);
+        for(IConference conference : league.getConferences()){
+            for(IDivision division : conference.getDivisions()){
+                for(ITeam team : division.getTeams()){
+                    incrementCurrentDay();
+                    //setMatches();
+                    createSchedule();
+                }
+            }
+        }
         // add this in league.setSchedule.
 
     }
@@ -231,21 +240,21 @@ public class Scheduler {
         ArrayList<IConference> retrievedConferences = league.getConferences();
 
         for (int i = 0; i < retrievedConferences.size(); i++) {
-            String conferenceName = retrievedConferences.get(i).getConferenceName();
+            IConference conferenceName = retrievedConferences.get(i);
             ArrayList<IDivision> retrievedDivisions = retrievedConferences.get(i).getDivisions();
 
             this.conferenceList.add(conferenceName);
             this.totalDivisions += retrievedDivisions.size();
 
             for (int j = 0; j < retrievedDivisions.size(); j++) {
-                String divisionName = retrievedDivisions.get(j).getDivisionName();
+                IDivision divisionName = retrievedDivisions.get(j);
                 ArrayList<ITeam> retrievedTeams = retrievedDivisions.get(j).getTeams();
 
                 this.divisionList.add(divisionName);
                 this.totalTeams += retrievedTeams.size();
 
                 for (int k = 0; k < retrievedTeams.size(); k++) {
-                    String teamName = retrievedTeams.get(k).getTeamName();
+                    ITeam teamName = retrievedTeams.get(k);
 
                     this.teamList.add(teamName);
                     scheduledMatches.put(teamName, 0);
@@ -282,14 +291,14 @@ public class Scheduler {
 
     private void createSchedule() {
 
-        for (String conference : conferenceList) {
+        for (IConference conference : conferenceList) {
 
-            List<String> teamsInConf = teamsInConference.get(conference);
-            for (String team : teamsInConf) {
+            List<ITeam> teamsInConf = teamsInConference.get(conference);
+            for (ITeam team : teamsInConf) {
 
-                Set<Map.Entry<String, List<String>>> entrySet = teamsInDivision.entrySet();
-                String divisionName = "";
-                for (Map.Entry<String, List<String>> itr : entrySet) {
+                Set<Map.Entry<IDivision, List<ITeam>>> entrySet = teamsInDivision.entrySet();
+                IDivision divisionName = null;
+                for (Map.Entry<IDivision, List<ITeam>> itr : entrySet) {
                     if (itr.getValue().contains(team)) {
                         divisionName = itr.getKey();
                     }
@@ -299,24 +308,24 @@ public class Scheduler {
         }
     }
 
-    private void scheduleRegularSeasonGames(String conferenceName, String divisionName, String teamName) {
+    private void scheduleRegularSeasonGames(IConference conferenceName, IDivision divisionName, ITeam teamName) {
         scheduleIntraDivGames(divisionName, teamName);
         scheduleInterDivGames(conferenceName, divisionName, teamName);
         scheduleInterConfGames(conferenceName, teamName);
     }
 
-    private void scheduleIntraDivGames(String divisionName, String teamName) {
-        List<String> teamsInDiv = teamsInDivision.get(divisionName);
+    private void scheduleIntraDivGames(IDivision divisionName, ITeam teamName) {
+        List<ITeam> teamsInDiv = teamsInDivision.get(divisionName);
         schedule(teamsInDiv, teamName);
     }
 
-    private void scheduleInterDivGames(String conferenceName, String divisionName, String teamName) {
-        List<String> teamsInOtherDivision = new ArrayList<>();
-        List<String> divisionsInConf = divisionsInConference.get(conferenceName);
+    private void scheduleInterDivGames(IConference conferenceName, IDivision divisionName, ITeam teamName) {
+        List<ITeam> teamsInOtherDivision = new ArrayList<>();
+        List<IDivision> divisionsInConf = divisionsInConference.get(conferenceName);
 
-        for (Map.Entry<String, List<String>> entry : teamsInDivision.entrySet()) {
+        for (Map.Entry<IDivision, List<ITeam>> entry : teamsInDivision.entrySet()) {
             if (divisionsInConf.contains(entry.getKey())) {
-                if (entry.getKey().equalsIgnoreCase(divisionName)) {
+                if (entry.getKey().getDivisionName().equalsIgnoreCase(divisionName.getDivisionName())) {
                     continue;
                 }
                 teamsInOtherDivision.addAll(teamsInDivision.get(entry.getKey()));
@@ -325,10 +334,10 @@ public class Scheduler {
         schedule(teamsInOtherDivision, teamName);
     }
 
-    private void scheduleInterConfGames(String conferenceName, String teamName) {
-        List<String> teamsInOtherConferences = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entry : teamsInConference.entrySet()) {
-            if (entry.getKey().equalsIgnoreCase(conferenceName)) {
+    private void scheduleInterConfGames(IConference conferenceName, ITeam teamName) {
+        List<ITeam> teamsInOtherConferences = new ArrayList<>();
+        for (Map.Entry<IConference, List<ITeam>> entry : teamsInConference.entrySet()) {
+            if (entry.getKey().getConferenceName().equalsIgnoreCase(conferenceName.getConferenceName())) {
                 continue;
             }
             teamsInOtherConferences.addAll(teamsInConference.get(entry.getKey()));
@@ -337,24 +346,90 @@ public class Scheduler {
     }
 
 
-    private void schedule(List<String> teamsInFormat, String teamName) {
+    private void schedule(List<ITeam> teamsInFormat, ITeam teamName) {
         int matchCounter = 0;
         //int loopCounter = 28 / (teamsInFormat.size() - 1);
         int i = 0;
         int gameCounter = 0;
 
-        for (String team : teamsInFormat) {
+        for (ITeam team : teamsInFormat) {
             while (gameCounter < 28){
-                if (team.equalsIgnoreCase(teamName)) {
+                if (team.getTeamName().equalsIgnoreCase(teamName.getTeamName())) {
                     continue;
                 } else {
 
-                    // addMatchSchedule(team, teamName, currentDay)
+                     addSchedule(team, teamName, currentDay, Configurables.REGULAR.getAction());
+                     incrementCurrentDay();
                 }
-        }
+            }
 
         }
 
+    }
+
+    public void addSchedule(ITeam team, ITeam teamName, String currentDay, String gameType) {
+
+        ISchedulerSeason schedulerSeason = new SchedulerSeason();
+        schedulerSeason.setFirstTeam(teamName);
+        schedulerSeason.setSecondTeam(team);
+        schedulerSeason.setDateOfMatch(currentDay);
+        schedulerSeason.setStatus(Configurables.SCHEDULED.getAction());
+        schedulerSeason.setGameType(gameType);
+        scheduleList.add(schedulerSeason);
+    }
+
+    @Override
+    public ITeam getFirstTeam() {
+        return firstTeam;
+    }
+
+    @Override
+    public ITeam getSecondTeam() {
+        return secondTeam;
+    }
+
+    @Override
+    public String getDateOfMatch() {
+        return matchDate;
+    }
+
+    @Override
+    public String getGameType() {
+        return gameType;
+    }
+
+    @Override
+    public String getStatus() {
+        return matchStatus;
+    }
+
+    @Override
+    public void setFirstTeam(ITeam teamFirst) {
+        this.firstTeam = teamFirst;
+
+    }
+
+    @Override
+    public void setSecondTeam(ITeam teamSecond) {
+        this.secondTeam = teamSecond;
+
+    }
+
+    @Override
+    public void setDateOfMatch(String date) {
+        this.matchDate = date;
+
+    }
+
+    @Override
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
+
+    }
+
+    @Override
+    public void setStatus(String status) {
+        this.matchStatus = status;
     }
 }
 
