@@ -12,30 +12,22 @@ public class PlayerTrainingCondition implements IPlayerTrainingCondition {
             if (Math.random() < headCoach.getSkating()) {
                 player.setSkating(player.getSkating() + 1);
             } else {
-                if (player.isInjured() == false) {
-                    player.checkForPlayerInjury();
-                }
+                player.checkForPlayerInjury();
             }
             if (Math.random() < headCoach.getShooting()) {
                 player.setShooting(player.getShooting() + 1);
             } else {
-                if (player.isInjured() == false) {
-                    player.checkForPlayerInjury();
-                }
+                player.checkForPlayerInjury();
             }
             if (Math.random() < headCoach.getChecking()) {
                 player.setChecking(player.getChecking() + 1);
             } else {
-                if (player.isInjured() == false) {
-                    player.checkForPlayerInjury();
-                }
+                player.checkForPlayerInjury();
             }
             if (Math.random() < headCoach.getSaving()) {
                 player.setSaving(player.getSaving() + 1);
             } else {
-                if (player.isInjured() == false) {
-                    player.checkForPlayerInjury();
-                }
+                player.checkForPlayerInjury();
             }
         }
     }
