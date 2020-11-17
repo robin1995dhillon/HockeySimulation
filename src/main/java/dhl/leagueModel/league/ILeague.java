@@ -9,27 +9,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ILeague {
-    ArrayList<IConference> getConferences();
+    List<IConference> getConferences();
 
-    void setConferences(ArrayList<IConference> conferences);
+    void setConferences(List<IConference> conferences);
 
     String getLeagueName();
 
     void setLeagueName(String leagueName);
 
-    ArrayList<IFreeAgents> getFreeAgents();
+    List<IFreeAgents> getFreeAgents();
 
-    ArrayList<String> getGeneralManagers();
+    List<String> getGeneralManagers();
 
-    ArrayList<IHeadCoach> getCoaches();
+    List<IHeadCoach> getCoaches();
 
     void removeManagerFromList(List<String> managerList, String managerName);
 
-    void setFreeAgents(ArrayList<IFreeAgents> freeAgents);
+    void setFreeAgents(List<IFreeAgents> freeAgents);
 
-    void setHeadCoach(ArrayList<IHeadCoach> coaches);
+    void setHeadCoach(List<IHeadCoach> coaches);
 
-    void setGeneralManager(ArrayList<String> generalManagers);
+    void setGeneralManager(List<String> generalManagers);
 
     void saveManager(String name, int leagueID);
 

@@ -13,7 +13,7 @@ import java.util.List;
 public class Conference implements IConference {
 
     private String conferenceName;
-    private ArrayList<IDivision> divisions;
+    private List<IDivision> divisions;
     private UserOutput userOutput = new UserOutput();
 
     public Conference() {
@@ -23,7 +23,7 @@ public class Conference implements IConference {
         this.conferenceName = conferenceName;
     }
 
-    public Conference(String conferenceName, ArrayList<IDivision> division) {
+    public Conference(String conferenceName, List<IDivision> division) {
         this.conferenceName = conferenceName;
         this.divisions = division;
     }
@@ -39,12 +39,12 @@ public class Conference implements IConference {
     }
 
     @Override
-    public ArrayList<IDivision> getDivisions() {
+    public List<IDivision> getDivisions() {
         return divisions;
     }
 
     @Override
-    public void setDivisions(ArrayList<IDivision> divisions) {
+    public void setDivisions(List<IDivision> divisions) {
         this.divisions = divisions;
     }
 

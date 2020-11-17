@@ -23,6 +23,7 @@ import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SimulationMain {
     public static void main(String[] args) throws IOException {
@@ -90,7 +91,7 @@ public class SimulationMain {
                             if (CC.teamChecker(teamName, league)) {
                                 output.setOutput("Here are the general managers:");
                                 output.sendOutput();
-                                ArrayList<String> managerList = league.getGeneralManagers();
+                                List<String> managerList = league.getGeneralManagers();
                                 IDisplayManagerList managerDisplayer = new DisplayManagerList();
                                 managerDisplayer.displayManager(managerList);
                                 output.setOutput("Enter Manager Name: ");
@@ -106,7 +107,7 @@ public class SimulationMain {
                                 league.removeManagerFromList(managerList, managerName);
                                 output.setOutput("Here are the head coaches:");
                                 output.sendOutput();
-                                ArrayList<IHeadCoach> coachList = league.getCoaches();
+                                List<IHeadCoach> coachList = league.getCoaches();
                                 IDisplayCoachList coachDisplayer = new DisplayCoachList();
                                 coachDisplayer.displayCoach(coachList);
                                 output.setOutput("Enter Head Coach: ");
@@ -124,7 +125,7 @@ public class SimulationMain {
                                 coachList.remove(headCoach);
                                 output.setOutput("Please choose your team players, here are the free agents:");
                                 output.sendOutput();
-                                ArrayList<IFreeAgents> freeAgentList = league.getFreeAgents();
+                                List<IFreeAgents> freeAgentList = league.getFreeAgents();
                                 ArrayList<IPlayers> playerList = new ArrayList<>();
                                 IDisplayFreeAgentList freeAgentDisplayer = new DisplayFreeAgentList();
                                 output.setOutput("Please choose two goalies: ");

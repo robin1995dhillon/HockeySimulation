@@ -237,18 +237,18 @@ public class SchedulerSeason implements ISchedulerSeason{
 
     private void initialize(ILeague league) {
 
-        ArrayList<IConference> retrievedConferences = league.getConferences();
+        List<IConference> retrievedConferences = league.getConferences();
 
         for (int i = 0; i < retrievedConferences.size(); i++) {
             IConference conferenceName = retrievedConferences.get(i);
-            ArrayList<IDivision> retrievedDivisions = retrievedConferences.get(i).getDivisions();
+            List<IDivision> retrievedDivisions = retrievedConferences.get(i).getDivisions();
 
             this.conferenceList.add(conferenceName);
             this.totalDivisions += retrievedDivisions.size();
 
             for (int j = 0; j < retrievedDivisions.size(); j++) {
                 IDivision divisionName = retrievedDivisions.get(j);
-                ArrayList<ITeam> retrievedTeams = retrievedDivisions.get(j).getTeams();
+                List<ITeam> retrievedTeams = retrievedDivisions.get(j).getTeams();
 
                 this.divisionList.add(divisionName);
                 this.totalTeams += retrievedTeams.size();

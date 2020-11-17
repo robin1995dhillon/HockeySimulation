@@ -12,9 +12,9 @@ import java.util.List;
 public class Division implements IDivision {
 
     private String divisionName;
-    private ArrayList<ITeam> teams;
+    private List<ITeam> teams;
 
-    public Division(String divisionName, ArrayList<ITeam> teams) {
+    public Division(String divisionName, List<ITeam> teams) {
         this.divisionName = divisionName;
         this.teams = teams;
     }
@@ -28,12 +28,12 @@ public class Division implements IDivision {
     }
 
     @Override
-    public ArrayList<ITeam> getTeams() {
+    public List<ITeam> getTeams() {
         return teams;
     }
 
     @Override
-    public void setTeams(ArrayList<ITeam> teams) {
+    public void setTeams(List<ITeam> teams) {
         this.teams = teams;
     }
 

@@ -228,18 +228,18 @@ public class Scheduler {
 
     private void initialize(ILeague league) {
 
-        ArrayList<IConference> retrievedConferences = league.getConferences();
+        List<IConference> retrievedConferences = league.getConferences();
 
         for (int i = 0; i < retrievedConferences.size(); i++) {
             String conferenceName = retrievedConferences.get(i).getConferenceName();
-            ArrayList<IDivision> retrievedDivisions = retrievedConferences.get(i).getDivisions();
+            List<IDivision> retrievedDivisions = retrievedConferences.get(i).getDivisions();
 
             this.conferenceList.add(conferenceName);
             this.totalDivisions += retrievedDivisions.size();
 
             for (int j = 0; j < retrievedDivisions.size(); j++) {
                 String divisionName = retrievedDivisions.get(j).getDivisionName();
-                ArrayList<ITeam> retrievedTeams = retrievedDivisions.get(j).getTeams();
+                List<ITeam> retrievedTeams = retrievedDivisions.get(j).getTeams();
 
                 this.divisionList.add(divisionName);
                 this.totalTeams += retrievedTeams.size();
