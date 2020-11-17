@@ -47,7 +47,12 @@ public enum Configurables {
     NAME("name"),
     POSITION("position"),
     AI("ai"),
-    USER("user");
+    USER("user"),
+    ISVALID("isValid"),
+    TRUE("True"),
+    REGULAR("Regular"),
+    SCHEDULED("Scheduled"),
+    PLAYOFF("Playoff");
 
 
     private String action;
