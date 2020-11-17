@@ -1,5 +1,8 @@
 package dhl.trade;
 
+import dhl.Configurables;
+import dhl.inputOutput.IUserOutput;
+import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.players.IPlayers;
@@ -19,10 +22,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FreeAgentTest {
     FreeAgents agents = new FreeAgents();
     FreeAgentList freeAgent = new FreeAgentList();
+    private IUserOutput userOutput = new UserOutput();
 
     @Test
     public void addSkaterUserTest() {
-        boolean flag = false;
+        boolean isSkaterNotAdded = false;
 
         List<IPlayers> players = new ArrayList<>();
         int playersToBeAdded = 1;
@@ -41,35 +45,37 @@ public class FreeAgentTest {
 
         agentList = freeAgent.strongestAgentsList(availableAgents);
 
-        for (IFreeAgents a : agentList) {
-            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
+        for (IFreeAgents agent : agentList) {
+            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
             playerList.add(agentToPlayer);
         }
 
         prompt.userAcceptRejectTrade(playerList);
 
-        while (playersToBeAdded != 0) {
+        while (playersToBeAdded > 0) {
 
-            for (IFreeAgents a : agentList) {
-                if (a.getPlayerName().equalsIgnoreCase(agentAddName)) {
-                    if (a.getPosition().equalsIgnoreCase("goalie")) {
-                        System.out.println("Cannot select goalie");
+            for (IFreeAgents agent : agentList) {
+                if (agent.getPlayerName().equalsIgnoreCase(agentAddName)) {
+                    if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+                        userOutput.setOutput("Cannot select goalie");
+                        userOutput.sendOutput();
                         continue;
                     }
-                    agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
+                    agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
                     players.add(agentToPlayer);
                     playersToBeAdded--;
-                    availableAgents.remove(a);
-                    flag = false;
+                    availableAgents.remove(agent);
+                    isSkaterNotAdded = false;
                     break;
                 } else {
-                    flag = true;
+                    isSkaterNotAdded = true;
                     continue;
                 }
             }
 
-            if (flag) {
-                System.out.println("Invalid! try again");
+            if (isSkaterNotAdded) {
+                userOutput.setOutput("invalid! try again");
+                userOutput.sendOutput();
             }
 
         }
@@ -81,7 +87,7 @@ public class FreeAgentTest {
     @Test
     public void addGoalieUserTest() {
 
-        boolean flag = false;
+        boolean isGoalieNotAdded = false;
 
         List<IPlayers> players = new ArrayList<>();
         int playersToBeAdded = 1;
@@ -99,32 +105,33 @@ public class FreeAgentTest {
 
         agentList = freeAgent.strongestAgentsList(availableAgents);
 
-        for (IFreeAgents a : agentList) {
-            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
+        for (IFreeAgents agent : agentList) {
+            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
             playerList.add(agentToPlayer);
         }
 
         prompt.userAcceptRejectTrade(playerList);
 
-        while (playersToBeAdded != 0) {
+        while (playersToBeAdded > 0) {
 
-            for (IFreeAgents a : agentList) {
-                if (a.getPlayerName().equalsIgnoreCase(agentAddName)) {
-                    if (a.getPosition().equalsIgnoreCase("goalie")) {
+            for (IFreeAgents agent : agentList) {
+                if (agent.getPlayerName().equalsIgnoreCase(agentAddName)) {
+                    if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
 
-                        agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
+                        agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
                         players.add(agentToPlayer);
                         playersToBeAdded--;
-                        availableAgents.remove(a);
-                        flag = false;
+                        availableAgents.remove(agent);
+                        isGoalieNotAdded = false;
                         break;
                     }
                 } else {
-                    flag = true;
+                    isGoalieNotAdded = true;
                 }
             }
-            if (flag) {
-                System.out.println("Invalid! try again");
+            if (isGoalieNotAdded) {
+                userOutput.setOutput("invalid! try again");
+                userOutput.sendOutput();
             }
         }
         assertEquals(expectedAgentList.get(0).getPlayerName(), availableAgents.get(0).getPlayerName());
@@ -143,21 +150,21 @@ public class FreeAgentTest {
         List<IFreeAgents> agentList;
         List<IFreeAgents> expectedAgents = MockFreeAgent.createMockAgentListExpected();
 
-        for (IFreeAgents a : availableAgents) {
-            if (a.getPosition().equalsIgnoreCase("goalie")) {
+        for (IFreeAgents agent : availableAgents) {
+            if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
                 continue;
             } else {
-                agentSkaterList.add(a);
+                agentSkaterList.add(agent);
             }
         }
 
         agentSkaterList.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength())));
         agentList = agentSkaterList.subList(0, playersToBeAdded);
 
-        for (IFreeAgents a : agentList) {
-            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
+        for (IFreeAgents agent : agentList) {
+            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
             player.add(agentToPlayer);
-            availableAgents.remove(a);
+            availableAgents.remove(agent);
         }
 
         assertEquals(expectedAgents.get(0).getPlayerName(), availableAgents.get(0).getPlayerName());
@@ -176,19 +183,19 @@ public class FreeAgentTest {
         List<IFreeAgents> agentList;
         List<IFreeAgents> expectedAgents = MockFreeAgent.createMockAgentGoalieListExpected();
 
-        for (IFreeAgents a : availableAgents) {
-            if (a.getPosition().equalsIgnoreCase("goalie")) {
-                agentGoalieList.add(a);
+        for (IFreeAgents agent : availableAgents) {
+            if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+                agentGoalieList.add(agent);
             }
         }
 
         agentGoalieList.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength())));
         agentList = agentGoalieList.subList(0, goaliesToBeAdded);
 
-        for (IFreeAgents a : agentList) {
-            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(a);
+        for (IFreeAgents agent : agentList) {
+            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
             player.add(agentToPlayer);
-            availableAgents.remove(a);
+            availableAgents.remove(agent);
         }
 
         assertEquals(expectedAgents.get(1).getPlayerName(), availableAgents.get(0).getPlayerName());
@@ -201,8 +208,8 @@ public class FreeAgentTest {
         List<IPlayers> availablePlayers = MockPlayer.createMockPlayerList();
         String player = "";
 
-        for (IPlayers p : availablePlayers) {
-            if (p.getPlayerName().equalsIgnoreCase("ABC")) {
+        for (IPlayers players : availablePlayers) {
+            if (players.getPlayerName().equalsIgnoreCase("ABC")) {
                 player = "exists";
             }
         }

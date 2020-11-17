@@ -1,5 +1,8 @@
 package dhl.trade;
 
+import dhl.Configurables;
+import dhl.inputOutput.IUserOutput;
+import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
@@ -15,7 +18,7 @@ public class FreeAgentDropListTest {
 
     FreeAgentList freeAgent = new FreeAgentList();
     Players playerToDrop = new Players();
-
+    private IUserOutput userOutput = new UserOutput();
     @Test
     public void dropSkaterAiTest() {
 
@@ -26,20 +29,20 @@ public class FreeAgentDropListTest {
         List<IPlayers> playerList;
         List<IFreeAgents> agents = new ArrayList<>();
 
-        for (IPlayers p : availablePlayers) {
-            if (p.getPosition().equalsIgnoreCase("goalie")) {
+        for (IPlayers player : availablePlayers) {
+            if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
                 continue;
             } else {
-                playerSkaterList.add(p);
+                playerSkaterList.add(player);
             }
         }
 
         playerSkaterList.sort((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength()));
         playerList = playerSkaterList.subList(0, playersToBeDropped);
 
-        for (IPlayers a : playerList) {
-            availablePlayers.remove(a);
-            playerToAgent = playerToDrop.convertPlayerToFreeAgent(a);
+        for (IPlayers player : playerList) {
+            availablePlayers.remove(player);
+            playerToAgent = playerToDrop.convertPlayerToFreeAgent(player);
             agents.add(playerToAgent);
         }
 
@@ -57,9 +60,9 @@ public class FreeAgentDropListTest {
         List<IPlayers> goalieList;
         List<IFreeAgents> agents = new ArrayList<>();
 
-        for (IPlayers p : availablePlayers) {
-            if (p.getPosition().equalsIgnoreCase("goalie")) {
-                playerGoalieList.add(p);
+        for (IPlayers player : availablePlayers) {
+            if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+                playerGoalieList.add(player);
             }
         }
 
@@ -67,9 +70,9 @@ public class FreeAgentDropListTest {
         goalieList = playerGoalieList.subList(0, playersToBeDropped);
 
 
-        for (IPlayers p : goalieList) {
-            availablePlayers.remove(p);
-            playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
+        for (IPlayers player : goalieList) {
+            availablePlayers.remove(player);
+            playerToAgent = playerToDrop.convertPlayerToFreeAgent(player);
             agents.add(playerToAgent);
         }
         assertEquals("DEF", agents.get(0).getPlayerName());
@@ -92,14 +95,15 @@ public class FreeAgentDropListTest {
 
         while (playersToBeDropped != 0) {
 
-            for (IPlayers p : playerList) {
-                if (p.getPlayerName().equalsIgnoreCase(playerDropName)) {
-                    if (p.getPosition().equalsIgnoreCase("goalie")) {
-                        System.out.println("Cannot select goalie");
+            for (IPlayers player : playerList) {
+                if (player.getPlayerName().equalsIgnoreCase(playerDropName)) {
+                    if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+                        userOutput.setOutput("Cannot select goalie");
+                        userOutput.sendOutput();
                         continue;
                     }
-                    playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
-                    availablePlayers.remove(p);
+                    playerToAgent = playerToDrop.convertPlayerToFreeAgent(player);
+                    availablePlayers.remove(player);
                     playersToBeDropped--;
                     agentsFree.add(playerToAgent);
                     flag = false;
@@ -112,7 +116,8 @@ public class FreeAgentDropListTest {
             }
 
             if (flag) {
-                System.out.println("invalid! try again");
+                userOutput.setOutput("invalid! try again");
+                userOutput.sendOutput();
             }
         }
         assertEquals(playerDropName, agentsFree.get(0).getPlayerName());
@@ -125,33 +130,34 @@ public class FreeAgentDropListTest {
         List<IFreeAgents> agentsFree = new ArrayList<>();
         int playersToBeDropped = 1;
         List<IPlayers> availablePlayers = MockPlayer.createMockPlayerList();
-        boolean flag = false;
+        boolean isGoalieNotDropped = false;
         String playerDropName = "DEF";
         IFreeAgents playerToAgent;
         List<IPlayers> playerList;
 
         playerList = freeAgent.strongestPlayersList(availablePlayers);
 
-        while (playersToBeDropped != 0) {
+        while (playersToBeDropped > 0) {
 
-            for (IPlayers p : playerList) {
-                if (p.getPlayerName().equalsIgnoreCase(playerDropName)) {
-                    if (p.getPosition().equalsIgnoreCase("goalie")) {
+            for (IPlayers player : playerList) {
+                if (player.getPlayerName().equalsIgnoreCase(playerDropName)) {
+                    if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
 
-                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
-                        availablePlayers.remove(p);
+                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(player);
+                        availablePlayers.remove(player);
                         playersToBeDropped--;
                         agentsFree.add(playerToAgent);
-                        flag = false;
+                        isGoalieNotDropped = false;
                         break;
                     }
                 } else {
-                    flag = true;
+                    isGoalieNotDropped = true;
                 }
             }
 
-            if (flag) {
-                System.out.println("invalid! try again");
+            if (isGoalieNotDropped) {
+                userOutput.setOutput("invalid! try again");
+                userOutput.sendOutput();
             }
         }
 

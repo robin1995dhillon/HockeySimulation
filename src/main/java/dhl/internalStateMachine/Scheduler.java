@@ -258,7 +258,7 @@ public class Scheduler {
             DateTime dt1 = new DateTime(d1);
             DateTime dt2 = new DateTime(d2);
             int totalDays = Days.daysBetween(dt1, dt2).getDays();
-            int totalMatches = (totalTeams * 84);
+            int totalMatches = (totalTeams * 82);
             //Each team plays at least 82 matches but we bring it to 84 to get a nice round off for 84 / 3 = 28
             double temp = Math.ceil(((double) totalMatches / (double) totalDays));
             int count = (int) temp;

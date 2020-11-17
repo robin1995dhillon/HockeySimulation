@@ -1,5 +1,7 @@
 package dhl.trade;
 
+import dhl.inputOutput.IUserInput;
+import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.freeAgents.IFreeAgents;
@@ -7,21 +9,22 @@ import dhl.Configurables;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
 import dhl.leagueModel.teams.ITeam;
+import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class FreeAgentListDrop implements iFreeAgentListDrop {
+class FreeAgentListDrop implements IFreeAgentListDrop {
 
     private IPlayers playerStrength;
     private List<IFreeAgents> availableAgents;
     private IPlayers playerToDrop;
-    private TradePrompt prompt;
-    private FreeAgentList freeAgent;
-    private UserOutput userOutput;
-    private UserInput userInput;
+    private ITradePrompt prompt;
+    private IFreeAgentListAdd freeAgent;
+    private IUserOutput userOutput;
+    private IUserInput userInput;
 
 
     FreeAgentListDrop() {
@@ -38,8 +41,8 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
     @Override
     public void agentListDrop(ITeam team, int playersToBeDropped) {
         int goalieCount = 0;
-        for (IPlayers p : team.getPlayers()) {
-            if (p.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+        for (IPlayers player : team.getPlayers()) {
+            if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
                 goalieCount++;
             }
         }
@@ -62,9 +65,9 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
         List<IPlayers> playerList;
         playerList = sortedPLayerSkaterList(players, playersToBeDropped);
 
-        for (IPlayers p : playerList) {
-            players.remove(p);
-            playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
+        for (IPlayers player : playerList) {
+            players.remove(player);
+            playerToAgent = playerToDrop.convertPlayerToFreeAgent(player);
             availableAgents.add(playerToAgent);
         }
     }
@@ -76,9 +79,9 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
         IFreeAgents playerToAgent;
         List<IPlayers> goalieList;
         goalieList = sortedPLayerGoalieList(players, goaliesToBeDropped);
-        for (IPlayers p : goalieList) {
-            players.remove(p);
-            playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
+        for (IPlayers player : goalieList) {
+            players.remove(player);
+            playerToAgent = playerToDrop.convertPlayerToFreeAgent(player);
             availableAgents.add(playerToAgent);
         }
     }
@@ -86,11 +89,11 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
     @Override
     public List<IPlayers> sortedPLayerSkaterList(List<IPlayers> players, int playersToBeDropped) {
         List<IPlayers> playerSkaterList = new ArrayList<>();
-        for (IPlayers p : players) {
-            if (p.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+        for (IPlayers player : players) {
+            if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
                 continue;
             } else {
-                playerSkaterList.add(p);
+                playerSkaterList.add(player);
             }
         }
         Collections.sort(playerSkaterList, (p1, p2) -> Double.compare(playerStrength.calculateStrength(p1), playerStrength.calculateStrength(p2)));
@@ -100,9 +103,9 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
     @Override
     public List<IPlayers> sortedPLayerGoalieList(List<IPlayers> players, int goaliesToBeDropped) {
         List<IPlayers> playerGoalieList = new ArrayList<>();
-        for (IPlayers p : players) {
-            if (p.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-                playerGoalieList.add(p);
+        for (IPlayers player : players) {
+            if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+                playerGoalieList.add(player);
             }
         }
         Collections.sort(playerGoalieList, (p1, p2) -> Double.compare(playerStrength.calculateStrength(p1), playerStrength.calculateStrength(p2)));
@@ -112,7 +115,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
     @Override
     public void dropSkaterUser(List<IPlayers> player, int playersToBeDropped) {
 
-        boolean flag = false;
+        boolean isSkaterNotDropped = false;
         String playerDropName;
         IFreeAgents playerToAgent;
         List<IPlayers> playerList;
@@ -121,28 +124,28 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
 
         prompt.userAcceptRejectTrade(playerList);
 
-        while (playersToBeDropped != 0) {
+        while (playersToBeDropped > 0) {
             userOutput.setOutput("Enter Player name To drop");
             userOutput.sendOutput();
             userInput.setInput();
             playerDropName = userInput.getInput();
-            for (IPlayers p : playerList) {
-                if (p.getPlayerName().equalsIgnoreCase(playerDropName)) {
-                    if (p.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+            for (IPlayers players : playerList) {
+                if (players.getPlayerName().equalsIgnoreCase(playerDropName)) {
+                    if (players.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
                         userOutput.setOutput("Cannot select goalie");
                         userOutput.sendOutput();
-                        flag = true;
+                        isSkaterNotDropped = true;
                     } else {
-                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
-                        player.remove(p);
+                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(players);
+                        player.remove(players);
                         playersToBeDropped--;
                         availableAgents.add(playerToAgent);
-                        flag = false;
+                        isSkaterNotDropped = false;
                         break;
                     }
                 }
             }
-            if (flag) {
+            if (isSkaterNotDropped) {
                 userOutput.setOutput("invalid! try again");
                 userOutput.sendOutput();
             }
@@ -154,7 +157,7 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
     public void dropGoalieUser(List<IPlayers> player, int goalieCount) {
 
         int playersToBeDropped = goalieCount - 2;
-        boolean flag = false;
+        boolean isGoalieNotDropped = false;
         String playerDropName;
         IFreeAgents playerToAgent;
         List<IPlayers> playerList;
@@ -163,27 +166,27 @@ class FreeAgentListDrop implements iFreeAgentListDrop {
 
         prompt.userAcceptRejectTrade(playerList);
 
-        while (playersToBeDropped != 0) {
+        while (playersToBeDropped > 0) {
             userOutput.setOutput("Enter Player name To drop");
             userOutput.sendOutput();
             userInput.setInput();
             playerDropName = userInput.getInput();
-            for (IPlayers p : playerList) {
-                if (p.getPlayerName().equalsIgnoreCase(playerDropName)) {
-                    if (p.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+            for (IPlayers players : playerList) {
+                if (players.getPlayerName().equalsIgnoreCase(playerDropName)) {
+                    if (players.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
 
-                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(p);
-                        player.remove(p);
+                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(players);
+                        player.remove(players);
                         playersToBeDropped--;
                         availableAgents.add(playerToAgent);
-                        flag = false;
+                        isGoalieNotDropped = false;
                         break;
                     }
                 } else {
-                    flag = true;
+                    isGoalieNotDropped = true;
                 }
             }
-            if (flag) {
+            if (isGoalieNotDropped) {
                 userOutput.setOutput("invalid! try again");
                 userOutput.sendOutput();
             }

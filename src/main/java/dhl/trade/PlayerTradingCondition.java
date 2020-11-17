@@ -14,8 +14,8 @@ import java.util.List;
 
 class PlayerTradingCondition implements IPlayerTradingCondition {
 
-    Players playerStrength;
-    StrongestWeakestPlayers strongestWeakestPlayers;
+    IPlayers playerStrength;
+    IStrongestWeakestPlayers strongestWeakestPlayers;
     ITrading trading;
     IGamePlayConfig gamePlayConfig;
     private double strongestPlayersStrength = 0.0;
@@ -24,7 +24,7 @@ class PlayerTradingCondition implements IPlayerTradingCondition {
     private List<IPlayers> consideringTeamPlayers;
     private List<IPlayers> offeringTeamPositionPlayers;
     private ITeam finalTeam = null;
-    private PlayerTrade playerTrade;
+    private IPlayerTrade playerTrade;
 
     public PlayerTradingCondition() {
 
@@ -68,15 +68,15 @@ class PlayerTradingCondition implements IPlayerTradingCondition {
                             continue;
                         } else {
                             consideringTeamPlayers = strongestWeakestPlayers.checkStrongestPlayer(allTeams.get(j), positionToTrade);
-                            if (strongestWeakestPlayers.StrongestPlayersStrength(consideringTeamPlayers) > strongestPlayersStrength) {
+                            if (strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers) > strongestPlayersStrength) {
                                 finalTeam = allTeams.get(j);
                             }
                         }
                     }
                     if (finalTeam.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
-                        playerTrade.TradeAi(allTeams.get(i), finalTeam);
+                        playerTrade.tradeAi(allTeams.get(i), finalTeam);
                     } else {
-                        playerTrade.TradeUser(allTeams.get(i), finalTeam);
+                        playerTrade.tradeUser(allTeams.get(i), finalTeam);
                     }
                 }
             }
