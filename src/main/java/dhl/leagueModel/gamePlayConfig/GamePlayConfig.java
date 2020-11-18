@@ -22,6 +22,14 @@ public class GamePlayConfig implements IGamePlayConfig {
         training = new Training();
     }
 
+    public GamePlayConfig(IAging aging, IGameResolver gameResolver, IInjuries injuries, ITrading trading, ITraining training) {
+        this.aging = aging;
+        this.gameResolver = gameResolver;
+        this.injuries = injuries;
+        this.trading = trading;
+        this.training = training;
+    }
+
     @Override
     public IAging getAging() {
         return aging;

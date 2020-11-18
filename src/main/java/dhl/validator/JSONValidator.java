@@ -22,16 +22,16 @@ public class JSONValidator {
 
     public JSONObject mainValidator(JSONObject Obj) {
         Stack<String> stack = new Stack<>();
-        JSONObject return_json = new JSONObject();
+        JSONObject returnObject = new JSONObject();
         leagueValidator(Obj, stack);
         if (stack.isEmpty()) {
-            return_json.put("isValid", "True");
-            return_json.put("Message", "Null");
-            return return_json;
+            returnObject.put("isValid", "True");
+            returnObject.put("Message", "Null");
+            return returnObject;
         } else {
-            return_json.put("isValid", "False");
-            return_json.put("Message", stack.pop());
-            return return_json;
+            returnObject.put("isValid", "False");
+            returnObject.put("Message", stack.pop());
+            return returnObject;
         }
     }
 
@@ -53,9 +53,9 @@ public class JSONValidator {
     private boolean generalManagersValidator(JSONObject obj, Stack stack) {
         JSONArray generalManagersArray = (JSONArray) obj.get(Configurables.GENERALMANAGERS.getAction());
 
-        Iterator general_manager_iter = generalManagersArray.iterator();
-        while (general_manager_iter.hasNext()) {
-            String val = (String) general_manager_iter.next();
+        Iterator generalManagerIter = generalManagersArray.iterator();
+        while (generalManagerIter.hasNext()) {
+            String val = (String) generalManagerIter.next();
             if (!validator.valueIsPresent(val)) {
                 stack.push("General Manager Value Missing");
                 return false;
@@ -66,9 +66,9 @@ public class JSONValidator {
 
     public Boolean conferenceValidator(JSONObject Obj, Stack stack) {
         JSONArray conferenceArray = (JSONArray) (Obj.get(Configurables.CONFERENCES.getAction()));
-        Iterator conf_arr_iter = conferenceArray.iterator();
-        while (conf_arr_iter.hasNext()) {
-            JSONObject conferenceObject = (JSONObject) conf_arr_iter.next();
+        Iterator confArrIter = conferenceArray.iterator();
+        while (confArrIter.hasNext()) {
+            JSONObject conferenceObject = (JSONObject) confArrIter.next();
             String conferenceName = (String) conferenceObject.get(Configurables.CONFERENCENAME.getAction());
 
             if (validator.valueIsPresent(conferenceName)) {
@@ -86,9 +86,9 @@ public class JSONValidator {
         if (freeAgentArray == null) {
             return false;
         }
-        Iterator free_agent_iter = freeAgentArray.iterator();
-        while (free_agent_iter.hasNext()) {
-            JSONObject freeAgentObject = (JSONObject) free_agent_iter.next();
+        Iterator freeAgentIter = freeAgentArray.iterator();
+        while (freeAgentIter.hasNext()) {
+            JSONObject freeAgentObject = (JSONObject) freeAgentIter.next();
             String playerName = (String) freeAgentObject.get(Configurables.PLAYERNAME.getAction());
             String position = (String) freeAgentObject.get(Configurables.POSITION.getAction());
             int age = ((Long) freeAgentObject.get(Configurables.AGE.getAction())).intValue();
@@ -138,9 +138,9 @@ public class JSONValidator {
     public Boolean divisionValidator(JSONObject Obj, Stack stack) {
         JSONArray divisionArray = (JSONArray) (Obj.get(Configurables.DIVISIONS.getAction()));
 
-        Iterator div_arr_iter = divisionArray.iterator();
-        while (div_arr_iter.hasNext()) {
-            JSONObject divisionObject = (JSONObject) div_arr_iter.next();
+        Iterator divArrIter = divisionArray.iterator();
+        while (divArrIter.hasNext()) {
+            JSONObject divisionObject = (JSONObject) divArrIter.next();
             String divisionName = (String) divisionObject.get(Configurables.DIVISIONNAME.getAction());
             if (validator.valueIsPresent(divisionName)) {
                 teamValidator(divisionObject, stack);
@@ -153,9 +153,9 @@ public class JSONValidator {
 
     public Boolean teamValidator(JSONObject Obj, Stack stack) {
         JSONArray teamArray = (JSONArray) (Obj.get(Configurables.TEAMS.getAction()));
-        Iterator team_arr_iter = teamArray.iterator();
-        while (team_arr_iter.hasNext()) {
-            JSONObject teamObject = (JSONObject) team_arr_iter.next();
+        Iterator teamArrIter = teamArray.iterator();
+        while (teamArrIter.hasNext()) {
+            JSONObject teamObject = (JSONObject) teamArrIter.next();
             String teamName = teamObject.get(Configurables.TEAMNAME.getAction()).toString();
             String generalManager = teamObject.get(Configurables.GENERALMANAGER.getAction()).toString();
             if (validator.valueIsPresent(teamName)) {
@@ -194,8 +194,11 @@ public class JSONValidator {
             int shooting = ((Long) playerObject.get(Configurables.SHOOTING.getAction())).intValue();
             int checking = ((Long) playerObject.get(Configurables.CHECKING.getAction())).intValue();
             int saving = ((Long) playerObject.get(Configurables.SAVING.getAction())).intValue();
-            int[] stats_array = {skating, shooting, checking, saving};
-            String[] stats_name = {"skating", "shooting", "checking", "saving"};
+            int birthDay = ((Long) playerObject.get(Configurables.BIRTHDAY.getAction())).intValue();
+            int birthMonth = ((Long) playerObject.get(Configurables.BIRTHMONTH.getAction())).intValue();
+            int birthYear = ((Long) playerObject.get(Configurables.BIRTHYEAR.getAction())).intValue();
+            int[] statsArray = {skating, shooting, checking, saving};
+            String[] statsName = {"skating", "shooting", "checking", "saving"};
             if (validator.valueIsPresent(playerName)) {
                 if (validator.valueIsPresent(position)) {
                     if (validator.valueIsPresent(captain)) {
@@ -211,16 +214,33 @@ public class JSONValidator {
                 stack.push("Team Name Missing");
                 return false;
             }
-            for (int i = 0; i < stats_array.length; i++) {
-                if (validator.checkRange(stats_array[i])) {
+            for (int i = 0; i < statsArray.length; i++) {
+                if (validator.checkRange(statsArray[i])) {
+                    continue;
                 }
                 else {
-                    stack.push(stats_name[i] + "should be between 1 and 20");
+                    stack.push(statsName[i] + "should be between 1 and 20");
                     userOutput.setOutput("Value should be between 1 and 20");
                     userOutput.sendOutput();
                     return false;
                 }
             }
+            if (validator.checkBirthDay(birthDay)) {
+                    if(validator.checkBirthMonth(birthMonth)) {
+                        if(validator.checkBirthYear(birthYear)) {
+
+                        }
+                        else {
+                            stack.push("Birth Month should be between 1 and 2020");
+                        }
+                    }
+                    else {
+                        stack.push("Birth Month should be between 1 and 12");
+                    }
+                }
+            else {
+                    stack.push("Birth Date should be between 1 and 31");
+                }
         }
         return false;
     }

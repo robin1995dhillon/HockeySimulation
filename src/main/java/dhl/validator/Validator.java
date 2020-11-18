@@ -18,5 +18,26 @@ public class Validator {
         return false;
     }
 
+    public boolean checkBirthDay(int val) {
+        if (val>= 0 && val<=31) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkBirthYear(int val) {
+        if (val>= 0 && val<=2020) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkBirthMonth(int val) {
+        if(val>=1 && val<=12) {
+            return true;
+        }
+        return false;
+    }
+
 
 }
