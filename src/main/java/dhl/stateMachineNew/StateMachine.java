@@ -7,6 +7,9 @@ import dhl.leagueModel.league.League;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StateMachine {
     private ILeague league;
     private IStateMachine jsonImport;
@@ -24,12 +27,16 @@ public class StateMachine {
     private IStateMachine aging;
     private IStateMachine advanceToNextSeason;
     private IStateMachine persist;
+
+
     private IStateMachine currentState;
     private IUserOutput output;
     private ITeam team;
+    private List<ITeam> totalTeamList;
 
     StateMachine(String filePath){
 
+        totalTeamList = new ArrayList<>();
         league = new League();
         team = new Teams();
         jsonImport = new JsonImportState(this,filePath);
@@ -215,5 +222,22 @@ public class StateMachine {
 
     public void setLeague(ILeague league) {
         this.league = league;
+    }
+
+
+    public ITeam getTeam() {
+        return team;
+    }
+
+    public void setTeam(ITeam team) {
+        this.team = team;
+    }
+
+    public List<ITeam> getTotalTeamList() {
+        return totalTeamList;
+    }
+
+    public void setTotalTeamList(List<ITeam> totalTeamList) {
+        this.totalTeamList = totalTeamList;
     }
 }
