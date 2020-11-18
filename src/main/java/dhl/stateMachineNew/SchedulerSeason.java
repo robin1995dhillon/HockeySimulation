@@ -27,7 +27,7 @@ import java.util.*;
  * • ~1/3rd Games: Inter-Division.
  * • ~1/3rd Games: Inter-Conference.
  */
-public class SchedulerSeason implements ISchedulerSeason{
+public class SchedulerSeason implements ISchedulerSeason {
     private String currentYear;
     private int regSeasonYear;
     private int playoffsYear;
@@ -47,7 +47,7 @@ public class SchedulerSeason implements ISchedulerSeason{
     private ITeam secondTeam;
     private String matchDate;
     private List<ISchedulerSeason> scheduleList;
-
+    private List<ITeamStanding> listTeamStanding;
 
     private IUserOutput output;
     private Map<String, List<Map<String, String>>> finalSchedule;
@@ -59,6 +59,7 @@ public class SchedulerSeason implements ISchedulerSeason{
     private Map<IConference, List<IDivision>> divisionsInConference;
     private Map<ITeam, Integer> scheduledMatches;
     private Map<String, Integer> matchesOnADay;
+
 
 
     SchedulerSeason(Calendar calendar, IUserOutput output) {
@@ -90,7 +91,8 @@ public class SchedulerSeason implements ISchedulerSeason{
         this.playoffsYear = currentYear + 1;
     }
 
-    SchedulerSeason(){}
+    SchedulerSeason() {
+    }
 
     public String getStartDayOfSeason() {
         String startDate = "30-09-" + this.currentYear;
@@ -197,20 +199,29 @@ public class SchedulerSeason implements ISchedulerSeason{
         return this.currentDay;
     }
 
-    public void generateSchedule(ILeague league) {
+    public void generateSchedule(ILeague league, StateMachine machine) {
         scheduleList = new ArrayList<>();
+        listTeamStanding = new ArrayList<>();
         initialize(league);
-        for(IConference conference : league.getConferences()){
-            for(IDivision division : conference.getDivisions()){
-                for(ITeam team : division.getTeams()){
+        for (IConference conference : league.getConferences()) {
+            for (IDivision division : conference.getDivisions()) {
+                for (ITeam team : division.getTeams()) {
+                    ITeamStanding teamStanding = new TeamStandings();
+                    teamList.add(team);
+                    teamStanding.setDivision(division.getDivisionName());
+                    teamStanding.setConference(conference.getConferenceName());
+                    teamStanding.setTeam(team);
+                    listTeamStanding.add(teamStanding);
                     incrementCurrentDay();
                     //setMatches();
                     createSchedule();
+
                 }
             }
         }
-    league.setSchedules(scheduleList);
-
+        league.setSchedules(scheduleList);
+        league.setTeamStandingList(listTeamStanding);
+        machine.setTotalTeamList(teamList);
     }
 
 
@@ -256,7 +267,7 @@ public class SchedulerSeason implements ISchedulerSeason{
                 for (int k = 0; k < retrievedTeams.size(); k++) {
                     ITeam teamName = retrievedTeams.get(k);
 
-                    this.teamList.add(teamName);
+                    //this.teamList.add(teamName);
                     scheduledMatches.put(teamName, 0);
                 }
 
@@ -264,30 +275,31 @@ public class SchedulerSeason implements ISchedulerSeason{
                 teamsInDivision.put(divisionName, teamList);
             }
             divisionsInConference.put(conferenceName, divisionList);
+
         }
 
     }
 
-    private void setMatches() {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        Date d1 = null;
-        Date d2 = null;
-        try {
-            d1 = sdf.parse(firstDay);
-            d2 = sdf.parse(lastDay);
-            DateTime dt1 = new DateTime(d1);
-            DateTime dt2 = new DateTime(d2);
-            int totalDays = Days.daysBetween(dt1, dt2).getDays();
-            int totalMatches = (totalTeams * 82);
-            double temp = Math.ceil(((double) totalMatches / (double) totalDays));
-            int count = (int) temp;
-            matchesPerDay = count;
-            System.out.println("Total days: " + totalDays + "\nMatches per day: " + matchesPerDay);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void setMatches() {
+//
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+//        Date d1 = null;
+//        Date d2 = null;
+//        try {
+//            d1 = sdf.parse(firstDay);
+//            d2 = sdf.parse(lastDay);
+//            DateTime dt1 = new DateTime(d1);
+//            DateTime dt2 = new DateTime(d2);
+//            int totalDays = Days.daysBetween(dt1, dt2).getDays();
+//            int totalMatches = (totalTeams * 82);
+//            double temp = Math.ceil(((double) totalMatches / (double) totalDays));
+//            int count = (int) temp;
+//            matchesPerDay = count;
+//            System.out.println("Total days: " + totalDays + "\nMatches per day: " + matchesPerDay);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void createSchedule() {
 
@@ -351,19 +363,23 @@ public class SchedulerSeason implements ISchedulerSeason{
         //int loopCounter = 28 / (teamsInFormat.size() - 1);
         int i = 0;
         int gameCounter = 0;
-
+        // while (gameCounter < 28){
         for (ITeam team : teamsInFormat) {
-            while (gameCounter < 28){
+            if (gameCounter < 28) {
                 if (team.getTeamName().equalsIgnoreCase(teamName.getTeamName())) {
                     continue;
                 } else {
-
-                     addSchedule(team, teamName, currentDay, Configurables.REGULAR.getAction());
-                     incrementCurrentDay();
+                    addSchedule(team, teamName, currentDay, Configurables.REGULAR.getAction());
+                    incrementCurrentDay();
+                    gameCounter++;
                 }
-            }
+            } else {
+                break;
 
+            }
         }
+
+        //  }
 
     }
 

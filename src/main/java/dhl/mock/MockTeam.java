@@ -19,6 +19,7 @@ public class MockTeam {
         headCoach.setSkating(0.3);
 
         ITeam team = new Teams("Random1", "Random2", headCoach);
+        team.setTeamStrength(40);
         return team;
     }
 
@@ -31,6 +32,8 @@ public class MockTeam {
         headCoach2.setSkating(0.3);
 
         ITeam team = new Teams("Team2", "GeneralManager2", headCoach2);
+        team.setTeamStrength(50);
         return team;
     }
+
 }
