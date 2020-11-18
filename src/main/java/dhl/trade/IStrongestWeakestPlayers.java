@@ -9,7 +9,7 @@ public interface IStrongestWeakestPlayers {
 
     List<IPlayers> checkStrongestPlayer(ITeam tradingTeam, String positionToTrade);
 
-    double StrongestPlayersStrength(List<IPlayers> selectedPLayers);
+    double strongestPlayersStrength(List<IPlayers> selectedPLayers);
 
     List<IPlayers> checkWeakestPlayer(ITeam tradingTeam);
 

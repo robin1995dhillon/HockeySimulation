@@ -329,6 +329,9 @@ public class Players implements IPlayers {
 
     @Override
     public void checkForPlayerInjury() {
+        if (isInjured){
+            return;
+        }
         IInjuries injuries = gamePlayConfig.getInjuries();
         double randomInjuryChance = injuries.getRandomInjuryChance();
         int injuryDaysLow = injuries.getInjuryDaysLow();

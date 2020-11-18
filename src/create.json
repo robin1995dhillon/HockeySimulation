@@ -54,7 +54,6 @@
     "saving" : 0.5
   } ],
   "generalManagers" : [ "Hey1", "Hey2" ],
-  "leagueNamePresent" : true,
   "gameplayConfig" : {
     "aging" : {
       "averageRetirementAge" : 37,
@@ -77,5 +76,6 @@
     "training" : {
       "daysUntilStatIncreaseCheck" : 40
     }
-  }
+  },
+  "leagueNamePresent" : true
 }

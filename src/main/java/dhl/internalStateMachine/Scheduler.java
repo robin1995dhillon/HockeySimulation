@@ -5,6 +5,7 @@ import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
+import dhl.stateMachineNew.ISchedulerSeason;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
@@ -38,6 +39,8 @@ public class Scheduler {
     private String firstDay;
     private String lastDay;
     private Calendar calendar;
+    private int gamePerTeam = 82;
+    private List<ISchedulerSeason> shedule = new ArrayList<>();
 
     private IUserOutput output;
     private Map<String, List<Map<String, String>>> finalSchedule;
@@ -186,10 +189,19 @@ public class Scheduler {
     }
 
     public void generateSchedule(ILeague league) {
-        incrementCurrentDay();
-        initialize(league);
-        setMatches();
-        createSchedule();
+//        for(each conf in leage){
+//            for(each div in conf){
+//                for(each team in div){
+//                    incrementCurrentDay();
+//                    initialize(league);
+//                    setMatches();
+//                    createSchedule();
+//
+//                }
+//            }
+//        }
+        // add this in league.setSchedule.
+
     }
 
 
@@ -258,8 +270,7 @@ public class Scheduler {
             DateTime dt1 = new DateTime(d1);
             DateTime dt2 = new DateTime(d2);
             int totalDays = Days.daysBetween(dt1, dt2).getDays();
-            int totalMatches = (totalTeams * 84);
-            //Each team plays at least 82 matches but we bring it to 84 to get a nice round off for 84 / 3 = 28
+            int totalMatches = (totalTeams * 82);
             double temp = Math.ceil(((double) totalMatches / (double) totalDays));
             int count = (int) temp;
             matchesPerDay = count;
@@ -328,15 +339,22 @@ public class Scheduler {
 
     private void schedule(List<String> teamsInFormat, String teamName) {
         int matchCounter = 0;
-        int loopCounter = 28 / (teamsInFormat.size() - 1);
+        //int loopCounter = 28 / (teamsInFormat.size() - 1);
         int i = 0;
+        int gameCounter = 0;
 
         for (String team : teamsInFormat) {
-            if (team.equalsIgnoreCase(teamName)) {
-                continue;
-            } else {
-            }
+            while (gameCounter < 28){
+                if (team.equalsIgnoreCase(teamName)) {
+                    continue;
+                } else {
+
+                    // addMatchSchedule(team, teamName, currentDay)
+                }
         }
+
+        }
+
     }
 }
 

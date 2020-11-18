@@ -42,11 +42,11 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
     }
 
     @Override
-    public double StrongestPlayersStrength(List<IPlayers> selectedPLayers) {
+    public double strongestPlayersStrength(List<IPlayers> selectedPLayers) {
 
         double strength = 0;
-        for (IPlayers p : selectedPLayers) {
-            strength += p.getStrength();
+        for (IPlayers player : selectedPLayers) {
+            strength += player.getStrength();
         }
         return strength;
 

@@ -9,6 +9,8 @@ import dhl.persistence.saving.FreeManagerPersistence;
 import dhl.persistence.saving.IFreeManagerPersistence;
 import dhl.persistence.saving.ILeaguePersistence;
 import dhl.persistence.saving.LeaguePersistence;
+import dhl.stateMachineNew.ISchedulerSeason;
+import dhl.stateMachineNew.ITeamStanding;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ public class League implements ILeague {
     private List<IHeadCoach> coaches;
     private List<String> generalManagers;
     private IGamePlayConfig gamePlayConfig;
+    List<ITeamStanding> teamStandingList;
+    List<ISchedulerSeason> gameSchedules;
 
     public League() {
 
@@ -129,6 +133,25 @@ public class League implements ILeague {
 
     public boolean isLeagueNamePresent() {
         return !this.leagueName.isEmpty();
+    }
+
+    @Override
+    public void setSchedules(List<ISchedulerSeason> gameSchedules) {
+    this.gameSchedules = gameSchedules;
+    }
+
+    @Override
+    public List<ISchedulerSeason> getGameSchedules() {
+        return gameSchedules;
+    }
+
+    public List<ITeamStanding> getTeamStandingList() {
+        return teamStandingList;
+    }
+
+    public void setTeamStandingList(List<ITeamStanding> teamStandingList) {
+        this.teamStandingList = teamStandingList;
+
     }
 
     @Override

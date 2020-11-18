@@ -5,7 +5,7 @@ import dhl.leagueModel.teams.ITeam;
 
 import java.util.List;
 
-public interface iFreeAgentListDrop {
+public interface IFreeAgentListDrop {
 
     void agentListDrop(ITeam team, int playersToBeDropped);
 

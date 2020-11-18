@@ -4,6 +4,8 @@ import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.stateMachineNew.ISchedulerSeason;
+import dhl.stateMachineNew.ITeamStanding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,14 @@ public interface ILeague {
     boolean isValid(ILeague league);
 
     boolean isLeagueNamePresent();
+
+    void setSchedules(List<ISchedulerSeason> gameSchedules);
+
+    List<ISchedulerSeason> getGameSchedules();
+
+    List<ITeamStanding> getTeamStandingList();
+
+    void setTeamStandingList(List<ITeamStanding> teamStandingList);
 
     void storeLeague();
 }

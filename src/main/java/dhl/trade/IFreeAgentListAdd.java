@@ -6,7 +6,7 @@ import dhl.leagueModel.teams.ITeam;
 
 import java.util.List;
 
-public interface iFreeAgentListAdd {
+public interface IFreeAgentListAdd {
 
     void aiAgentListAdd(ITeam team, int numberOfPlayers);
 
@@ -25,4 +25,5 @@ public interface iFreeAgentListAdd {
     List<IFreeAgents> strongestAgentsList(List<IFreeAgents> list);
 
     boolean checkPlayerInList(List<IPlayers> playerList, String agentName);
+    List<IPlayers> strongestPlayersList(List<IPlayers> list);
 }

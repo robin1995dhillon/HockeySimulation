@@ -1,5 +1,7 @@
 package dhl.trade;
 
+import dhl.inputOutput.IUserInput;
+import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
@@ -9,6 +11,7 @@ import dhl.leagueModel.gamePlayConfig.Trading;
 import dhl.Configurables;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
+import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
 
 import java.util.ArrayList;
@@ -21,10 +24,10 @@ public class PlayerTrade implements IPlayerTrade {
     List<IPlayers> offeringTeamPlayers;
     IGamePlayConfig gamePlayConfig;
     ITrading trading;
-    private AddDropPlayers addDrop;
-    TradePrompt prompt;
-    private UserOutput userOutput;
-    private UserInput userInput;
+    private IAddDropPlayers addDrop;
+    ITradePrompt prompt;
+    private IUserOutput userOutput;
+    private IUserInput userInput;
 
     PlayerTrade() {
         offeringTeamPlayers = new ArrayList<>();
@@ -37,18 +40,21 @@ public class PlayerTrade implements IPlayerTrade {
         userOutput = new UserOutput();
         userInput = new UserInput();
     }
+    PlayerTrade(ITrading trading) {
+        this.trading = trading;
+    }
 
     @Override
     public int countTeamPlayers(ITeam team) {
         int count = 0;
-        for (IPlayers p : team.getPlayers()) {
+        for (IPlayers player : team.getPlayers()) {
             count++;
         }
         return count;
     }
 
     @Override
-    public void TradeAi(ITeam offeringTeam, ITeam consideringTeam) {
+    public void tradeAi(ITeam offeringTeam, ITeam consideringTeam) {
         trading = gamePlayConfig.getTrading();
         double randomAcceptanceChance = trading.getRandomAcceptanceChance();
         double maxPlayersPerTrade = trading.getMaxPlayersPerTrade();
@@ -88,7 +94,7 @@ public class PlayerTrade implements IPlayerTrade {
     }
 
     @Override
-    public void TradeUser(ITeam offeringTeam, ITeam consideringTeam) {
+    public void tradeUser(ITeam offeringTeam, ITeam consideringTeam) {
 
         int totalPlayersOfOfferingTeam;
         int totalPlayersOfConsideringTeam;

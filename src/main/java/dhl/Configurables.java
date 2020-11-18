@@ -50,7 +50,12 @@ public enum Configurables {
     USER("user"),
     BIRTHDAY("birthDay"),
     BIRTHYEAR("birthYear"),
-    BIRTHMONTH("birthMonth");
+    BIRTHMONTH("birthMonth"),
+    ISVALID("isValid"),
+    TRUE("True"),
+    REGULAR("Regular"),
+    SCHEDULED("Scheduled"),
+    PLAYOFF("Playoff");
 
 
     private String action;

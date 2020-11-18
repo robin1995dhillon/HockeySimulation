@@ -26,6 +26,7 @@ public class PlayerTrainingConditionTest {
         assertEquals(16, player.getShooting());
         assertEquals(16, player.getChecking());
         assertEquals(16, player.getSaving());
+        //player.set(gamePlayConfig.injury)
         while (player.isInjured() == false) {
             t.receiveTraining(playerList, worstCoach);
             i++;

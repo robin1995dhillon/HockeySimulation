@@ -130,7 +130,7 @@ public class SimulationMain {
                                 IDisplayFreeAgentList freeAgentDisplayer = new DisplayFreeAgentList();
                                 output.setOutput("Please choose two goalies: ");
                                 output.sendOutput();
-                                for (int i = 1; i <= 2; ) {
+                                for (int i = 1; i <= 1; ) {
                                     freeAgentDisplayer.displayFreeAgent(freeAgentList);
                                     output.setOutput("Enter Goalie: " + i);
                                     output.sendOutput();
@@ -157,7 +157,7 @@ public class SimulationMain {
                                 }
                                 output.setOutput("Please choose eighteen skaters(forward and defense):");
                                 output.sendOutput();
-                                for (int i = 1; i <= 18; ) {
+                                for (int i = 1; i <= 2; ) {
                                     freeAgentDisplayer.displayFreeAgent(freeAgentList);
                                     output.setOutput("Enter Skaters (Forward and Defense) " + i);
                                     output.sendOutput();

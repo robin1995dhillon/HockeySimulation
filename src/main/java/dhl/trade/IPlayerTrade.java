@@ -4,9 +4,9 @@ import dhl.leagueModel.teams.ITeam;
 
 public interface IPlayerTrade {
 
-    void TradeAi(ITeam offeringTeam, ITeam consideringTeam);
+    void tradeAi(ITeam offeringTeam, ITeam consideringTeam);
 
-    void TradeUser(ITeam offeringTeam, ITeam consideringTeam);
+    void tradeUser(ITeam offeringTeam, ITeam consideringTeam);
 
     int countTeamPlayers(ITeam team);
 }

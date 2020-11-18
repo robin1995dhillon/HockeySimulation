@@ -85,9 +85,9 @@ public class PlayerTradingTest {
         List<IPlayers> players;
         players = MockPlayer.createMockPlayerList();
 
-        for (IPlayers p : players) {
-            if (p.getPosition().equalsIgnoreCase(positionToTrade)) {
-                playersStrong.add(p);
+        for (IPlayers player : players) {
+            if (player.getPosition().equalsIgnoreCase(positionToTrade)) {
+                playersStrong.add(player);
 
             }
         }
@@ -171,8 +171,8 @@ public class PlayerTradingTest {
         double strength = 0;
         List<IPlayers> players = MockPlayer.createMockPlayerList();
 
-        for (IPlayers p : players) {
-            strength += p.getStrength();
+        for (IPlayers player : players) {
+            strength += player.getStrength();
         }
         assertEquals(29.3, strength);
     }
@@ -185,7 +185,7 @@ public class PlayerTradingTest {
         List<IPlayers> players = MockPlayer.createMockPlayerList();
         team.setPlayers(players);
 
-        for (IPlayers p : team.getPlayers()) {
+        for (IPlayers player : team.getPlayers()) {
             count++;
         }
 
