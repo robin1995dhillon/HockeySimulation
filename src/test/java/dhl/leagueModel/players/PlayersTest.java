@@ -20,25 +20,6 @@ class PlayersTest {
         System.out.println(iGamePlayConfig.getAging().getAverageRetirementAge());
     }
 
-    @Test
-    void agePlayer() {
-        setValues();
-        IPlayers players = MockPlayer.createMock();
-        IGamePlayConfig gamePlayConfig = MockGamePlayConfig.createMock();
-        players.agePlayer(200);
-        assertEquals(201, players.getDaysToAge());
-        assertEquals(25, players.getAge());
-    }
-
-    @Test
-    void agePlayer2() {
-        IPlayers players = MockPlayer.createMock();
-        players.setAge(33);
-        players.setDaysToAge(200);
-        players.agePlayer(200);
-        assertEquals(35, players.getDaysToAge());
-        assertEquals(34, players.getAge());
-    }
 
     @Test
     void replacePlayerWithFreeAgent() {
@@ -144,19 +125,6 @@ class PlayersTest {
         IPlayers players = MockPlayer.createMock();
         players.setCaptain(false);
         assertEquals(false, players.getCaptain());
-    }
-
-    @Test
-    void getAge() {
-        IPlayers players = MockPlayer.createMock();
-        assertEquals(25, players.getAge());
-    }
-
-    @Test
-    void setAge() {
-        IPlayers players = MockPlayer.createMock();
-        players.setAge(20);
-        assertEquals(20, players.getAge());
     }
 
     @Test
@@ -340,7 +308,5 @@ class PlayersTest {
         IPlayers players = MockPlayer.createMockWithDateOfBirth();
         players.agePlayer(300);
         assertEquals(24, players.getAge());
-
-
     }
 }

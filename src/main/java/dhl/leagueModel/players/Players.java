@@ -303,7 +303,7 @@ public class Players implements IPlayers {
         }
 
         if (this.isInjured()) {
-            this.setInjuredDays(this.getInjuredDays() - days);
+            this.setInjuredDays(this.getInjuredDays() - daysToAge);
             this.playerStillInjured();
             this.checkIfRetired();
         } else {
