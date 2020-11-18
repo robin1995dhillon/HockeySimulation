@@ -3,6 +3,7 @@ package dhl.leagueModel.players;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @JsonDeserialize(as = Players.class)
@@ -61,7 +62,23 @@ public interface IPlayers {
 
     void setInjured(boolean injured);
 
+    int getBirthDay();
+
+    void setBirthDay(int birthDay);
+
+    int getBirthMonth();
+
+    void setBirthMonth(int birthMonth);
+
+    int getBirthYear();
+
+    void setBirthYear(int birthYear);
+
     public void agePlayer(int days);
+
+    LocalDate getPlayerCurrentDate();
+
+    void setPlayerCurrentDate(LocalDate playerCurrentDate);
 
     void checkIfRetired();
 

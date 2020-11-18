@@ -47,7 +47,10 @@ public enum Configurables {
     NAME("name"),
     POSITION("position"),
     AI("ai"),
-    USER("user");
+    USER("user"),
+    BIRTHDAY("birthDay"),
+    BIRTHYEAR("birthYear"),
+    BIRTHMONTH("birthMonth");
 
 
     private String action;

@@ -1,12 +1,8 @@
 package dhl.leagueModel.league;
 
-import dhl.leagueModel.conference.Conference;
 import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.headCoach.HeadCoach;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.Configurables;
 import dhl.persistence.saving.FreeManagerPersistence;
@@ -20,22 +16,17 @@ import java.util.List;
 
 public class League implements ILeague {
 
-    private IConference iconference;
-    private IFreeAgents iFreeAgents;
-    private IHeadCoach iheadCoach;
-    private IGamePlayConfig iGamePlayConfig;
+
     private String leagueName;
 
     private List<IConference> conferences;
     private List<IFreeAgents> freeAgents;
     private List<IHeadCoach> coaches;
     private List<String> generalManagers;
+    private IGamePlayConfig gamePlayConfig;
 
     public League() {
-        iconference = new Conference();
-        iFreeAgents = new FreeAgents();
-        iheadCoach = new HeadCoach();
-        iGamePlayConfig = new GamePlayConfig();
+
     }
 
     public League(String leagueName, List<IConference> conferences) {
@@ -43,10 +34,11 @@ public class League implements ILeague {
         this.conferences = conferences;
     }
 
-    public League(String leagueName, List<IConference> conferences, List<IFreeAgents> freeAgents) {
+    public League(String leagueName, List<IConference> conferences, List<IFreeAgents> freeAgents, IGamePlayConfig gamePlayConfig) {
         this.leagueName = leagueName;
         this.conferences = conferences;
         this.freeAgents = freeAgents;
+        this.gamePlayConfig = gamePlayConfig;
     }
 
     public League(String leagueName) {
@@ -123,12 +115,12 @@ public class League implements ILeague {
 
     @Override
     public IGamePlayConfig getGameplayConfig() {
-        return iGamePlayConfig;
+        return gamePlayConfig;
     }
 
     @Override
     public void setGameplayConfig(IGamePlayConfig gameplayConfig) {
-        this.iGamePlayConfig = gameplayConfig;
+        this.gamePlayConfig = gameplayConfig;
     }
 
     public boolean isValid(ILeague league) {

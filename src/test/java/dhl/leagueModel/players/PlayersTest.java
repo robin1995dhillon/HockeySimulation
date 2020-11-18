@@ -334,4 +334,13 @@ class PlayersTest {
         double playerStrength = players.calculateStrength(player);
         assertEquals(18.0, playerStrength);
     }
+
+    @Test
+    void ageNewPlayer() {
+        IPlayers players = MockPlayer.createMockWithDateOfBirth();
+        players.agePlayer(300);
+        assertEquals(24, players.getAge());
+
+
+    }
 }

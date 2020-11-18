@@ -35,6 +35,21 @@ public class MockPlayer {
         return players;
     }
 
+    public static IPlayers createMockWithDateOfBirth() {
+        IPlayers players = new Players();
+        players.setPlayerName("Player2");
+        players.setPosition("forward");
+        players.setSkating(15);
+        players.setShooting(15);
+        players.setChecking(15);
+        players.setSaving(15);
+        players.setBirthDay(28);
+        players.setBirthYear(1997);
+        players.setBirthMonth(6);
+
+        return players;
+    }
+
     public static List<IPlayers> createMockPlayerList() {
 
         List<IPlayers> players = new ArrayList<>();
