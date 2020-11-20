@@ -50,15 +50,22 @@ public class JSONValidator {
         return true;
     }
 
-    private boolean generalManagersValidator(JSONObject obj, Stack stack) {
-        JSONArray generalManagersArray = (JSONArray) obj.get(Configurables.GENERALMANAGERS.getAction());
+    private boolean generalManagersValidator(JSONObject Obj, Stack stack) {
+        JSONArray generalManagersArray = (JSONArray) Obj.get(Configurables.GENERALMANAGERS.getAction());
 
         Iterator generalManagerIter = generalManagersArray.iterator();
         while (generalManagerIter.hasNext()) {
-            String val = (String) generalManagerIter.next();
-            if (!validator.valueIsPresent(val)) {
-                stack.push("General Manager Value Missing");
-                return false;
+            JSONObject managerObject = (JSONObject) generalManagerIter.next();
+            String managerName = (String) managerObject.get(Configurables.NAME.getAction());
+            String personality = (String) managerObject.get(Configurables.PERSONALITY.getAction());
+            if(validator.valueIsPresent(managerName)) {
+                if(validator.valueIsPresent(personality)) {
+
+                } else {
+                    stack.push("Personality Missing in General Manager!");
+                }
+            }  else {
+                stack.push("Manager Name Missing!");
             }
         }
         return true;
@@ -91,7 +98,6 @@ public class JSONValidator {
             JSONObject freeAgentObject = (JSONObject) freeAgentIter.next();
             String playerName = (String) freeAgentObject.get(Configurables.PLAYERNAME.getAction());
             String position = (String) freeAgentObject.get(Configurables.POSITION.getAction());
-            int age = ((Long) freeAgentObject.get(Configurables.AGE.getAction())).intValue();
             int skating = ((Long) freeAgentObject.get(Configurables.SKATING.getAction())).intValue();
             int shooting = ((Long) freeAgentObject.get(Configurables.SHOOTING.getAction())).intValue();
             int checking = ((Long) freeAgentObject.get(Configurables.CHECKING.getAction())).intValue();
@@ -189,7 +195,6 @@ public class JSONValidator {
             String playerName = (String) playerObject.get(Configurables.PLAYERNAME.getAction());
             String position = (String) playerObject.get(Configurables.POSITION.getAction());
             String captain = playerObject.get(Configurables.CAPTAIN.getAction()).toString();
-            int age = ((Long) playerObject.get(Configurables.AGE.getAction())).intValue();
             int skating = ((Long) playerObject.get(Configurables.SKATING.getAction())).intValue();
             int shooting = ((Long) playerObject.get(Configurables.SHOOTING.getAction())).intValue();
             int checking = ((Long) playerObject.get(Configurables.CHECKING.getAction())).intValue();

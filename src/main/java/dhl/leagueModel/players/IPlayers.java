@@ -96,5 +96,7 @@ public interface IPlayers {
 
     IFreeAgents convertPlayerToFreeAgent(IPlayers player);
 
-    void savePlayer(int teamID);
+//    void savePlayer(int teamID);
+
+    void statsDecayDueToBirthDay();
 }

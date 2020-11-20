@@ -40,7 +40,7 @@ public class StateMachine {
         league = new League();
         team = new Teams();
         jsonImport = new JsonImportState(this,filePath);
-        createTeam = new CreateTeamState(this);
+//        createTeam = new CreateTeamState(this);
         loadTeam = new LoadTeamState(this);
         playerChoice = new PlayerChoiceState(this);
         simulate = new SimulateState();

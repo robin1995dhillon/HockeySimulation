@@ -8,6 +8,7 @@ import dhl.mock.MockPlayer;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -308,5 +309,19 @@ class PlayersTest {
         IPlayers players = MockPlayer.createMockWithDateOfBirth();
         players.agePlayer(300);
         assertEquals(24, players.getAge());
+    }
+
+    @Test
+    void statsDecayDueToBirthDay() {
+        IPlayers player = MockPlayer.createPlayerWithStatDecay();
+        player.setPlayerCurrentDate(LocalDate.of(2020,6,28));
+        while(player.getSkating() == 15) {
+            System.out.println("Inside");
+            player.statsDecayDueToBirthDay();
+            System.out.println("Skating Value is: " + player.getSkating());
+
+        }
+        assertEquals(14, player.getSkating());
+
     }
 }

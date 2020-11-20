@@ -8,6 +8,8 @@ public class Trading implements ITrading {
     private double randomTradeOfferChance;
     private int maxPlayersPerTrade;
     private double randomAcceptanceChance;
+    private IGmTable gmTable;
+
 
     @Override
     public int getLossPoint() {
@@ -48,6 +50,17 @@ public class Trading implements ITrading {
     public void setRandomAcceptanceChance(double randomAcceptanceChance) {
         this.randomAcceptanceChance = randomAcceptanceChance;
     }
+
+    @Override
+    public IGmTable getGmTable() {
+        return gmTable;
+    }
+
+    @Override
+    public void setGmTable(IGmTable gmTable) {
+        this.gmTable = gmTable;
+    }
+
 
     @Override
     public boolean tradingValidator(JSONObject Obj) {

@@ -421,16 +421,32 @@ public class Players implements IPlayers {
         return agent;
     }
 
+//    @Override
+//    public void savePlayer(int teamID) {
+//        IPlayersPersistence playersPersistence = new PlayersPersistence();
+//        String playerName = this.getPlayerName();
+//        String position = this.getPosition();
+//        int age = this.getAge();
+//        int injuryDays = this.getInjuredDays();
+//        boolean[] booleanAttributes = {this.getCaptain(), this.isRetired(), this.isInjured()};
+//        int[] playerAttributes = {this.getSkating(), this.getChecking(), this.getShooting(), this.getSaving()};
+//        playersPersistence.savePlayerToDB(playerName, position, booleanAttributes, age, playerAttributes, teamID, injuryDays);
+//    }
+
     @Override
-    public void savePlayer(int teamID) {
-        IPlayersPersistence playersPersistence = new PlayersPersistence();
-        String playerName = this.getPlayerName();
-        String position = this.getPosition();
-        int age = this.getAge();
-        int injuryDays = this.getInjuredDays();
-        boolean[] booleanAttributes = {this.getCaptain(), this.isRetired(), this.isInjured()};
-        int[] playerAttributes = {this.getSkating(), this.getChecking(), this.getShooting(), this.getSaving()};
-        playersPersistence.savePlayerToDB(playerName, position, booleanAttributes, age, playerAttributes, teamID, injuryDays);
+    public void statsDecayDueToBirthDay() {
+        LocalDate nextPlayerBirthday = LocalDate.of(this.playerCurrentDate.getYear(), this.birthMonth, this.birthDay);
+        if(nextPlayerBirthday.equals(this.playerCurrentDate) || nextPlayerBirthday.isBefore(playerCurrentDate)) {
+            IAging aging = gamePlayConfig.getAging();
+            double statDecayChance = aging.getStatDecayChance() * 100;
+            double randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
+            if(randomNumber<=statDecayChance) {
+                this.setShooting(this.getShooting() - 1);
+                this.setSaving(this.getSaving() - 1);
+                this.setSkating(this.getSkating() - 1);
+                this.setSaving(this.getSaving() - 1);
+            }
+        }
     }
 
 
