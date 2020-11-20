@@ -3,6 +3,7 @@ package dhl.leagueModel.league;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.ITeamStanding;
@@ -21,7 +22,7 @@ public interface ILeague {
 
     List<IFreeAgents> getFreeAgents();
 
-    List<String> getGeneralManagers();
+    List<IGeneralManager> getGeneralManagers();
 
     List<IHeadCoach> getCoaches();
 
@@ -31,7 +32,7 @@ public interface ILeague {
 
     void setHeadCoach(List<IHeadCoach> coaches);
 
-    void setGeneralManager(List<String> generalManagers);
+    void setGeneralManagers(List<IGeneralManager> generalManagers);
 
     void saveManager(String name, int leagueID);
 
@@ -51,5 +52,5 @@ public interface ILeague {
 
     void setTeamStandingList(List<ITeamStanding> teamStandingList);
 
-    void storeLeague();
+//    void storeLeague();
 }

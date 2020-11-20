@@ -51,6 +51,8 @@ public enum Configurables {
     BIRTHDAY("birthDay"),
     BIRTHYEAR("birthYear"),
     BIRTHMONTH("birthMonth"),
+    PERSONALITY("personality"),
+    STATDECAYCHANCE("statDecayChance"),
     ISVALID("isValid"),
     TRUE("True"),
     REGULAR("Regular"),

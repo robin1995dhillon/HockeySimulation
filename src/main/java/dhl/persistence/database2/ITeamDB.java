@@ -11,5 +11,5 @@ public interface ITeamDB {
     boolean checkTeam(String teamName) throws IOException, SQLException;
     List<ITeam> getAllTeamInDivision(int divisionId) throws IOException, SQLException;
     int getTeamIdByTeamName(String teamName) throws IOException, SQLException;
-    void updateTeam();
+//    void updateTeam();
 }

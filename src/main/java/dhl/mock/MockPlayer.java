@@ -5,6 +5,7 @@ import dhl.leagueModel.players.Players;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -247,6 +248,20 @@ public class MockPlayer {
         consideringFinal.add(player8);
 
         return consideringFinal;
+    }
+
+    public static IPlayers createPlayerWithStatDecay() {
+        IPlayers players = new Players();
+        players.setPlayerName("StatDecayPlayer");
+        players.setPosition("forward");
+        players.setSkating(15);
+        players.setShooting(15);
+        players.setChecking(15);
+        players.setSaving(15);
+        players.setBirthDay(28);
+        players.setBirthYear(1997);
+        players.setBirthMonth(6);
+        return players;
     }
 
 

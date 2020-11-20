@@ -157,17 +157,17 @@ public class FreeAgents implements IFreeAgents {
         return false;
     }
 
-    @Override
-    public void saveFreeAgent(int leagueID) {
-        IFreeAgentsPersistence freeAgentsPersistence = new FreeAgentsPersistence();
-        String freeAgentName = this.getPlayerName();
-        String position = this.getPosition();
-        int age = this.getAge();
-        int skating = this.getSkating();
-        int shooting = this.getShooting();
-        int checking = this.getChecking();
-        int saving = this.getSaving();
-        int[] freeAgentAttributes = {skating, shooting, checking, saving};
-        freeAgentsPersistence.saveFreeAgentsToDB(freeAgentName, position, age, freeAgentAttributes, leagueID);
-    }
+//    @Override
+//    public void saveFreeAgent(int leagueID) {
+//        IFreeAgentsPersistence freeAgentsPersistence = new FreeAgentsPersistence();
+//        String freeAgentName = this.getPlayerName();
+//        String position = this.getPosition();
+//        int age = this.getAge();
+//        int skating = this.getSkating();
+//        int shooting = this.getShooting();
+//        int checking = this.getChecking();
+//        int saving = this.getSaving();
+//        int[] freeAgentAttributes = {skating, shooting, checking, saving};
+//        freeAgentsPersistence.saveFreeAgentsToDB(freeAgentName, position, age, freeAgentAttributes, leagueID);
+//    }
 }

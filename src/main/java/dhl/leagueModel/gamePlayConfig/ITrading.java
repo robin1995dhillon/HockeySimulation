@@ -21,6 +21,10 @@ public interface ITrading {
 
     void setRandomAcceptanceChance(double randomAcceptanceChance);
 
+    IGmTable getGmTable();
+
+    void setGmTable(IGmTable gmTable);
+
     boolean tradingValidator(JSONObject Obj);
 
     boolean checkRangeInteger(int[] injuriesAttributes);
