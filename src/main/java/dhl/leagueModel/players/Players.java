@@ -31,7 +31,7 @@ public class Players implements IPlayers {
     private int birthMonth;
     private int birthYear;
     private int age = 0;
-    private int daysToAge = 1;
+
     private double strength;
     private int injuredDays = 0;
     private boolean isRetired = false;
@@ -148,16 +148,6 @@ public class Players implements IPlayers {
     }
 
     @Override
-    public int getDaysToAge() {
-        return daysToAge;
-    }
-
-    @Override
-    public void setDaysToAge(int daysToAge) {
-        this.daysToAge = daysToAge;
-    }
-
-    @Override
     public boolean isRetired() {
         return isRetired;
     }
@@ -227,11 +217,11 @@ public class Players implements IPlayers {
         this.playerCurrentDate = playerCurrentDate;
     }
 
-    private int calculateNewDaysToAge(int days, IPlayers player) {
-        int currentDays = player.getDaysToAge();
-        int newDays = currentDays + days;
-        return newDays;
-    }
+//    private int calculateNewDaysToAge(int days, IPlayers player) {
+//        int currentDays = player.getDaysToAge();
+//        int newDays = currentDays + days;
+//        return newDays;
+//    }
 
 //    @Override
 //    public void agePlayer(int days) {

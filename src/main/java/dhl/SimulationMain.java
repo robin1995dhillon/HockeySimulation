@@ -1,7 +1,10 @@
 package dhl;
 
 import dhl.inputOutput.*;
+import dhl.leagueModel.conference.IConference;
+import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.teams.ITeam;
 import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
 import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
 //import dhl.simulationStateMachine.LoadTeamState;
@@ -12,7 +15,7 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 
 public class SimulationMain {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         IUserInput input = new UserInput();
         IUserOutput output = new UserOutput();
         String teamName;
@@ -42,7 +45,11 @@ public class SimulationMain {
                 ILeague league = IDeserializeJSONToModel.jsonToLeague(Path);
                 if (league.isValid(league)) {
                     output.setOutput("Valid JSON!\n");
-                    System.out.println(league.getGameplayConfig().getTrading().getGmTable().getShrewd());
+                    System.out.println(league.getFreeAgents().get(0).getBirthYear());
+                    IConference conference = league.getConferences().get(0);
+                    IDivision division = conference.getDivisions().get(0);
+                    ITeam team = division.getTeams().get(0);
+                    team.createRoster();
 //                    output.sendOutput();
 //                    output.setOutput("\nWelcome to the matrix. We all live in simulation ;)");
 //                    output.sendOutput();

@@ -71,14 +71,14 @@ class PlayersTest {
         assertFalse(players.isInjured());
     }
 
-    @Test
-    void checkIfRetired() {
-        IPlayers player = MockPlayer.createMock();
-        player.setAge(50);
-        player.setDaysToAge(20);
-        player.checkIfRetired();
-        assertTrue(player.isRetired());
-    }
+//    @Test
+//    void checkIfRetired() {
+//        IPlayers player = MockPlayer.createMock();
+//        player.setAge(50);
+//        player.setDaysToAge(20);
+//        player.checkIfRetired();
+//        assertTrue(player.isRetired());
+//    }
 
     @Test
     public void convertPlayerToFreeAgentTest() {
@@ -194,19 +194,19 @@ class PlayersTest {
         assertEquals(50, players.getStrength());
     }
 
-    @Test
-    void getDaysToAge() {
-        IPlayers players = MockPlayer.createMock();
-        players.setDaysToAge(20);
-        assertEquals(20, players.getDaysToAge());
-    }
-
-    @Test
-    void setDaysToAge() {
-        IPlayers players = MockPlayer.createMock();
-        players.setDaysToAge(20);
-        assertEquals(20, players.getDaysToAge());
-    }
+//    @Test
+//    void getDaysToAge() {
+//        IPlayers players = MockPlayer.createMock();
+//        players.setDaysToAge(20);
+//        assertEquals(20, players.getDaysToAge());
+//    }
+//
+//    @Test
+//    void setDaysToAge() {
+//        IPlayers players = MockPlayer.createMock();
+//        players.setDaysToAge(20);
+//        assertEquals(20, players.getDaysToAge());
+//    }
 
     @Test
     void isRetired() {

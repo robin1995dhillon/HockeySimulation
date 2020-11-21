@@ -16,6 +16,9 @@ public class FreeAgents implements IFreeAgents {
     private int checking;
     private int saving;
     private int age;
+    private int birthDay;
+    private int birthMonth;
+    private int birthYear;
     private double strength;
 
     public FreeAgents() {
@@ -105,6 +108,36 @@ public class FreeAgents implements IFreeAgents {
     @Override
     public void setStrength(double strength) {
         this.strength = strength;
+    }
+
+    @Override
+    public int getBirthDay() {
+        return birthDay;
+    }
+
+    @Override
+    public void setBirthDay(int birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    @Override
+    public int getBirthMonth() {
+        return birthMonth;
+    }
+
+    @Override
+    public void setBirthMonth(int birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    @Override
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    @Override
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 
     @Override
