@@ -40,6 +40,14 @@ public interface ITeam {
 
     void setLossPoints(int teamType);
 
+    List<IPlayers> getActiveRoster();
+
+    void setActiveRoster(List<IPlayers> activeRoster);
+
+    List<IPlayers> getInActiveRoster();
+
+    void setInActiveRoster(List<IPlayers> inActiveRoster);
+
     double calculateTeamStrength(ITeam team);
 
     //    Might be used in the next milestone. That's why we havent removed it.
@@ -49,6 +57,8 @@ public interface ITeam {
 
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager);
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
+
+    void createRoster() throws Exception;
 
     void saveTeams(List<Integer> id);
 }

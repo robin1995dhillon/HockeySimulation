@@ -39,6 +39,18 @@ public interface IFreeAgents {
 
     void setStrength(double strength);
 
+    int getBirthDay();
+
+    void setBirthDay(int birthDay);
+
+    int getBirthMonth();
+
+    void setBirthMonth(int birthMonth);
+
+    int getBirthYear();
+
+    void setBirthYear(int birthYear);
+
     double calculateStrength(IFreeAgents freeAgents);
 
     double strengthAdder(int[] positionValues);

@@ -24,6 +24,8 @@ public class Teams implements ITeam {
     public IGeneralManager generalManager;
     public IHeadCoach headCoach;
     public List<IPlayers> players;
+    public List<IPlayers> activeRoster;
+    public List<IPlayers> inActiveRoster;
     public String teamType = Configurables.AI.getAction();
     public int lossPoints;
     public double teamStrength;
@@ -120,6 +122,26 @@ public class Teams implements ITeam {
     }
 
     @Override
+    public List<IPlayers> getActiveRoster() {
+        return activeRoster;
+    }
+
+    @Override
+    public void setActiveRoster(List<IPlayers> activeRoster) {
+        this.activeRoster = activeRoster;
+    }
+
+    @Override
+    public List<IPlayers> getInActiveRoster() {
+        return inActiveRoster;
+    }
+
+    @Override
+    public void setInActiveRoster(List<IPlayers> inActiveRoster) {
+        this.inActiveRoster = inActiveRoster;
+    }
+
+    @Override
     public double calculateTeamStrength(ITeam team) {
         List<IPlayers> players;
         players = team.getPlayers();
@@ -178,6 +200,25 @@ public class Teams implements ITeam {
         // Remove this method when general Manager thing is solved.
         return league;
     }
+
+    @Override
+    public void createRoster() throws Exception {
+        List<IPlayers> allSkaters = new ArrayList<>();
+        List<IPlayers> allGoalie = new ArrayList<>();
+        if(this.players == null) {
+            throw new Exception("Player Array is empty while creating roster.");
+        } else {
+            for (IPlayers players : this.players) {
+                if (players.getPosition().equals(Configurables.FORWARD.getAction()) || players.getPosition().equals(Configurables.DEFENSE.getAction())) {
+                    allSkaters.add(players);
+                } else {
+                    allGoalie.add(players);
+                }
+            }
+        }
+    }
+
+
 
     @Override
     public void saveTeams(List<Integer> id) {

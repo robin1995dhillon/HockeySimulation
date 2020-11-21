@@ -50,10 +50,6 @@ public interface IPlayers {
 
     public void setRetired(boolean isRetired);
 
-    int getDaysToAge();
-
-    void setDaysToAge(int daysToAge);
-
     int getInjuredDays();
 
     void setInjuredDays(int injuredDays);
