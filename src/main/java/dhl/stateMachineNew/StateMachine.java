@@ -2,6 +2,7 @@ package dhl.stateMachineNew;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
+import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.league.League;
 import dhl.leagueModel.teams.ITeam;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class StateMachine {
     private ILeague league;
+    private LeagueModelAbstractFactory factory;
     private List<ITeam> teamsForInjuryCheck;
     private IStateMachine jsonImport;
     private IStateMachine createTeam;
@@ -40,6 +42,7 @@ public class StateMachine {
 
         totalTeamList = new ArrayList<>();
         league = new League();
+//        league = factory.getLeague();
         team = new Teams();
         jsonImport = new JsonImportState(this,filePath);
 //        createTeam = new CreateTeamState(this);
@@ -49,11 +52,11 @@ public class StateMachine {
         initializeSeason = new InitializeSeasonState(this);
         advanceTime = new AdvanceTimeState(this);
         generatePlayoffSchedule = new GeneratePlayoffScheduleState(this);
-        training = new TrainingState();
+        training = new TrainingState(this);
         simulateGame = new SimulateGame();
-        injuryCheck = new InjuryCheckState();
+        injuryCheck = new InjuryCheckState(this,this.getTeamsForInjuryCheck());
         executeTrades = new ExecuteTradesState(this);
-        aging = new AgingState(this);
+        aging = new AgingState(this, this.getTotalTeamList());
         advanceToNextSeason = new AdvanceToNextSeasonState(this);
         persist = new PersistState();
         output = new UserOutput();

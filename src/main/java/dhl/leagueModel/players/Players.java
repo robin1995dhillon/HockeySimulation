@@ -286,7 +286,6 @@ public class Players implements IPlayers {
         System.out.println(this.playerCurrentDate);
         System.out.println(nextBirthDay);
         if (nextBirthDay.isBefore(this.playerCurrentDate)) {
-            System.out.println("Inside Increase");
             this.setAge(this.playerCurrentDate.getYear() - year);
         } else {
             this.setAge(this.playerCurrentDate.getYear() - year - 1);
