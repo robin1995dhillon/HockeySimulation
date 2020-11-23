@@ -62,31 +62,32 @@ public class SchedulerSeason implements ISchedulerSeason {
     private ILeague league;
     private ITime timeConcept;
 
-    public SchedulerSeason(int currentSeason) {
-        this.totalDivisions = 0;
-        this.totalTeams = 0;
-        this.currentSeason = currentSeason;
-
-        conferenceList = new ArrayList<>();
-        divisionList = new ArrayList<>();
-        teamList = new ArrayList<>();
-        timeConcept = new LeagueTimeConcept();
-
-        teamsInConference = new HashMap<>();
-        teamsInDivision = new HashMap<>();
-        divisionsInConference = new HashMap<>();
-        scheduledMatches = new HashMap<>();
-        int currentYear = this.calendar.get(Calendar.YEAR);
-        currentYear += this.currentSeason;                          //check it
-        this.currentYear = String.valueOf(currentYear);
-        this.regSeasonYear = currentYear;
-        this.playoffsYear = currentYear + 1;
-
-    }
-
     public SchedulerSeason() {
+        timeConcept = new LeagueTimeConcept();
+//        this.totalDivisions = 0;
+//        this.totalTeams = 0;
+//        //this.currentSeason = ;
+//
+//        conferenceList = new ArrayList<>();
+//        divisionList = new ArrayList<>();
+//        teamList = new ArrayList<>();
+//        timeConcept = new LeagueTimeConcept();
+//
+//        teamsInConference = new HashMap<>();
+//        teamsInDivision = new HashMap<>();
+//        divisionsInConference = new HashMap<>();
+//        scheduledMatches = new HashMap<>();
+//        int currentYear = this.calendar.get(Calendar.YEAR);
+//        currentYear += this.currentSeason;                          //check it
+//        this.currentYear = String.valueOf(currentYear);
+//        this.regSeasonYear = currentYear;
+//        this.playoffsYear = currentYear + 1;
 
     }
+
+//    public SchedulerSeason() {
+//
+//    }
 
 //    SchedulerSeason(Calendar calendar, int currentSeason, StateMachine machine) {
 //        this.machine = machine;
@@ -207,6 +208,14 @@ public class SchedulerSeason implements ISchedulerSeason {
     }
 
     public void generateSchedule(StateMachine machine) throws ParseException {
+
+        this.currentSeason = machine.getLeague().getSeason();
+        int currentYear = this.calendar.get(Calendar.YEAR);
+        currentYear += this.currentSeason;                          //check it
+        this.currentYear = String.valueOf(currentYear);
+        this.regSeasonYear = currentYear;
+        this.playoffsYear = currentYear + 1;
+
         scheduleList = new ArrayList<>();
         listTeamStanding = new ArrayList<>();
         String startDateOfSeason = getStartDayOfSeason();
@@ -247,6 +256,17 @@ public class SchedulerSeason implements ISchedulerSeason {
     }
 
     private void initialize(ILeague league) {
+        this.totalDivisions = 0;
+        this.totalTeams = 0;
+
+        conferenceList = new ArrayList<>();
+        divisionList = new ArrayList<>();
+        teamList = new ArrayList<>();
+
+        teamsInConference = new HashMap<>();
+        teamsInDivision = new HashMap<>();
+        divisionsInConference = new HashMap<>();
+        scheduledMatches = new HashMap<>();
 
         List<IConference> retrievedConferences = league.getConferences();
 

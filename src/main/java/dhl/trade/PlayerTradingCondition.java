@@ -12,7 +12,7 @@ import dhl.leagueModel.teams.ITeam;
 import java.util.ArrayList;
 import java.util.List;
 
-class PlayerTradingCondition implements IPlayerTradingCondition {
+public class PlayerTradingCondition implements IPlayerTradingCondition {
 
     IPlayers playerStrength;
     IStrongestWeakestPlayers strongestWeakestPlayers;

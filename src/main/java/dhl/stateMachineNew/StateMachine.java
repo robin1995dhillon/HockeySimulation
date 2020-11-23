@@ -13,6 +13,7 @@ import java.util.List;
 
 public class StateMachine {
     private ILeague league;
+    private List<ITeam> teamsForInjuryCheck;
     private IStateMachine jsonImport;
     private IStateMachine createTeam;
     private IStateMachine loadTeam;
@@ -44,14 +45,14 @@ public class StateMachine {
         createTeam = new CreateTeamState(this);
         loadTeam = new LoadTeamState(this);
         playerChoice = new PlayerChoiceState(this);
-        simulate = new SimulateState();
-        initializeSeason = new InitializeSeasonState();
+        simulate = new SimulateState(this);
+        initializeSeason = new InitializeSeasonState(this);
         advanceTime = new AdvanceTimeState(this);
         generatePlayoffSchedule = new GeneratePlayoffScheduleState(this);
         training = new TrainingState();
         simulateGame = new SimulateGame();
         injuryCheck = new InjuryCheckState();
-        executeTrades = new ExecuteTradesState();
+        executeTrades = new ExecuteTradesState(this);
         aging = new AgingState(this);
         advanceToNextSeason = new AdvanceToNextSeasonState(this);
         persist = new PersistState();
@@ -240,5 +241,13 @@ public class StateMachine {
 
     public void setTotalTeamList(List<ITeam> totalTeamList) {
         this.totalTeamList = totalTeamList;
+    }
+
+    public List<ITeam> getTeamsForInjuryCheck() {
+        return teamsForInjuryCheck;
+    }
+
+    public void setTeamsForInjuryCheck(List<ITeam> teamsForInjuryCheck) {
+        this.teamsForInjuryCheck = teamsForInjuryCheck;
     }
 }

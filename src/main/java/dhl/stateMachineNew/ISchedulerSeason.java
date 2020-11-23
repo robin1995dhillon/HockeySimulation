@@ -32,6 +32,9 @@ public interface ISchedulerSeason {
 
     String getLastDayOfStanleyPlayoffs();
 
+    void generateSchedule(StateMachine machine) throws ParseException;
+
+    boolean isLastDayOfTrade(String currentDate);
 
 
 }
