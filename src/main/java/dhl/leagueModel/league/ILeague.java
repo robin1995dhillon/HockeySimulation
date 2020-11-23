@@ -26,8 +26,6 @@ public interface ILeague {
 
     List<IHeadCoach> getCoaches();
 
-    void removeManagerFromList(List<String> managerList, String managerName);
-
     void setFreeAgents(List<IFreeAgents> freeAgents);
 
     void setHeadCoach(List<IHeadCoach> coaches);

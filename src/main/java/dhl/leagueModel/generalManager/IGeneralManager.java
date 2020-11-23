@@ -2,6 +2,8 @@ package dhl.leagueModel.generalManager;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.List;
+
 
 @JsonDeserialize(as = GeneralManager.class)
 public interface IGeneralManager {
@@ -12,4 +14,6 @@ public interface IGeneralManager {
     String getPersonality();
 
     void setPersonality(String personality);
+
+    IGeneralManager getManagerFromList(List<IGeneralManager> managerList, String managerName);
 }

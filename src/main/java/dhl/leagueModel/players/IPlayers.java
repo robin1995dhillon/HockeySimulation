@@ -95,4 +95,13 @@ public interface IPlayers {
 //    void savePlayer(int teamID);
 
     void statsDecayDueToBirthDay();
+
+    void setGoals(double goals);
+    double getGoals();
+    void setSaves(double saves);
+    double getSaves();
+    void setShots(double shots);
+    double getShots();
+    void setPenalties(double penalties);
+    double getPenalties();
 }

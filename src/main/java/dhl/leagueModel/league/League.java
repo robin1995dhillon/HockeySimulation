@@ -82,14 +82,6 @@ public class League implements ILeague {
         return coaches;
     }
 
-    @Override
-    public void removeManagerFromList(List<String> managerList, String managerName) {
-        for (int i = 0; i < managerList.size(); i++) {
-            if (managerList.get(i).equals(managerName)) {
-                managerList.remove(i);
-            }
-        }
-    }
 
     @Override
     public void setFreeAgents(List<IFreeAgents> freeAgents) {

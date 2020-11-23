@@ -1,5 +1,9 @@
 package dhl.leagueModel.generalManager;
 
+import dhl.leagueModel.headCoach.IHeadCoach;
+
+import java.util.List;
+
 public class GeneralManager implements IGeneralManager {
 
     private String name;
@@ -32,5 +36,15 @@ public class GeneralManager implements IGeneralManager {
     @Override
     public void setPersonality(String personality) {
         this.personality = personality;
+    }
+
+    @Override
+    public IGeneralManager getManagerFromList(List<IGeneralManager> managerList, String managerName) {
+        for (IGeneralManager manager : managerList) {
+            if (manager.getName().equals(managerName)) {
+                return manager;
+            }
+        }
+        return null;
     }
 }

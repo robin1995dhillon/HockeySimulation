@@ -1,6 +1,7 @@
 package dhl.validator;
 
 import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 
@@ -13,7 +14,7 @@ public interface IChecker {
 
     boolean teamChecker(String Team, ILeague ILeague);
 
-    boolean managerChecker(List<String> managerList, String managerName);
+    boolean managerChecker(List<IGeneralManager> managerList, String managerName);
 
     boolean coachChecker(List<IHeadCoach> coachList, String coachName);
 

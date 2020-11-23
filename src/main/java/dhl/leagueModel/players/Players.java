@@ -38,6 +38,10 @@ public class Players implements IPlayers {
     private boolean isInjured = false;
     private LocalDate playerCurrentDate;
     private IGamePlayConfig gamePlayConfig;
+    private double saves;
+    private double shots;
+    private double penalties;
+    private double goals;
 
     public Players() {
         gamePlayConfig = MockGamePlayConfig.createMock();
@@ -210,6 +214,46 @@ public class Players implements IPlayers {
     @Override
     public LocalDate getPlayerCurrentDate() {
         return playerCurrentDate;
+    }
+
+    @Override
+    public void setGoals(double goals) {
+        this.goals = goals;
+    }
+
+    @Override
+    public double getGoals() {
+        return this.goals;
+    }
+
+    @Override
+    public void setSaves(double saves) {
+        this.saves = saves;
+    }
+
+    @Override
+    public double getSaves() {
+        return this.saves;
+    }
+
+    @Override
+    public void setShots(double shots) {
+        this.shots = shots;
+    }
+
+    @Override
+    public double getShots() {
+        return this.shots;
+    }
+
+    @Override
+    public void setPenalties(double penalties) {
+        this.penalties = penalties;
+    }
+
+    @Override
+    public double getPenalties() {
+        return this.penalties;
     }
 
     @Override
