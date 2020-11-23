@@ -57,6 +57,10 @@ public interface ILeague {
 
     void setDate(String startDateOfSeason);
 
+    String getLastDateOfSeason();
+
+    void setLastDateOfSeason(String lastDateOfSeason);
+
     int getSeason();
 
     void setSeason(int season);

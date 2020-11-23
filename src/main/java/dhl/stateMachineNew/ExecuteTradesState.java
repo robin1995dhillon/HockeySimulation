@@ -23,7 +23,7 @@ public class ExecuteTradesState implements IStateMachine{
 
     public IStateMachine doTask() {
 
-        return null;
+        return stateMachine.getAging();
     }
 
     public void exit() {

@@ -8,12 +8,10 @@ public class AdvanceTimeState implements IStateMachine{
 
     StateMachine stateMachine;
     ITime leagueTimeConcept;
-    ISchedulerSeason season;
 
     public AdvanceTimeState(StateMachine stateMachine){
         this.stateMachine = stateMachine;
         leagueTimeConcept = new LeagueTimeConcept();
-        season = new SchedulerSeason();
     }
 
     public void entry() throws ParseException {
@@ -28,7 +26,7 @@ public class AdvanceTimeState implements IStateMachine{
 
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
-        String regularSeasonEndDate = season.getLastDayOfSeason();
+        String regularSeasonEndDate = league.getLastDateOfSeason();
         if(currentDate.equalsIgnoreCase(regularSeasonEndDate)){
 
             return stateMachine.getGeneratePlayoffSchedule();

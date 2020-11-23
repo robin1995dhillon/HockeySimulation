@@ -222,6 +222,7 @@ public class SchedulerSeason implements ISchedulerSeason {
         currentDay = getStartDayOfSeason(); //check krvaa
         lastDay = getLastDayOfSeason();
         machine.getLeague().setDate(startDateOfSeason);
+        machine.getLeague().setLastDateOfSeason(lastDay);
         initialize(machine.getLeague());
         for (IConference conference : machine.getLeague().getConferences()) {
             for (IDivision division : conference.getDivisions()) {

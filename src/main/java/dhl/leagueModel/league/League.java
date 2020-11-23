@@ -30,6 +30,7 @@ public class League implements ILeague {
     private String startDateOfSeason;
     private int numberSeason;
     private int totalSeasons;
+    private String lastDateOfSeason;
 
     private List<IConference> conferences;
     private List<IFreeAgents> freeAgents;
@@ -202,6 +203,17 @@ public class League implements ILeague {
     @Override
     public void setDate(String startDateOfSeason) {
         this.startDateOfSeason = startDateOfSeason;
+    }
+
+    @Override
+    public String getLastDateOfSeason() {
+        return lastDateOfSeason;
+    }
+
+    @Override
+    public void setLastDateOfSeason(String lastDateOfSeason) {
+        this.lastDateOfSeason = lastDateOfSeason;
+
     }
 
     @Override
