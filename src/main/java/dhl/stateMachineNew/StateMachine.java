@@ -7,6 +7,7 @@ import dhl.leagueModel.league.League;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,21 +46,21 @@ public class StateMachine {
         playerChoice = new PlayerChoiceState(this);
         simulate = new SimulateState();
         initializeSeason = new InitializeSeasonState();
-        advanceTime = new AdvanceTimeState();
-        generatePlayoffSchedule = new GeneratePlayoffScheduleState();
+        advanceTime = new AdvanceTimeState(this);
+        generatePlayoffSchedule = new GeneratePlayoffScheduleState(this);
         training = new TrainingState();
         simulateGame = new SimulateGame();
         injuryCheck = new InjuryCheckState();
         executeTrades = new ExecuteTradesState();
-        aging = new AgingState();
-        advanceToNextSeason = new AdvanceToNextSeasonState();
+        aging = new AgingState(this);
+        advanceToNextSeason = new AdvanceToNextSeasonState(this);
         persist = new PersistState();
         output = new UserOutput();
         currentState = jsonImport;
     }
 
 
-    public void startMachine(){
+    public void startMachine() throws ParseException {
 
         while (currentState != null) {
             IStateMachine nextState = currentState.doTask();

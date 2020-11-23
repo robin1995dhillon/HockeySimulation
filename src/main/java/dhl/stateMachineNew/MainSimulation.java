@@ -1,8 +1,10 @@
 package dhl.stateMachineNew;
 
+import java.text.ParseException;
+
 public class MainSimulation {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         String filePath = null;
         try {

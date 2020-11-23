@@ -1,23 +1,31 @@
 package dhl.stateMachineNewTest;
 
+import dhl.Configurables;
+import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
 import dhl.mock.MockStandingTeam;
 import dhl.mock.MockTeam;
+import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.ITeamStanding;
+import dhl.stateMachineNew.StateMachine;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GameSimulationTest {
 
     @Test
-    public void simulateGame() {
+    public void simulateGameTest() {
 
         double randomWinChance = 0.66;
         List<ITeamStanding> listStanding;
         listStanding = MockStandingTeam.createTeamStandingMock();
-        ITeam first = listStanding.get(1).getTeam();
-        ITeam  second = listStanding.get(0).getTeam();
+      //  ITeam first = listStanding.get(1).getTeam();
+      //  ITeam  second = listStanding.get(0).getTeam();
 
         ITeam firstTeam = MockTeam.MockTeam();
         ITeam opponentTeam = MockTeam.MockTeamTwo();
@@ -147,5 +155,7 @@ public class GameSimulationTest {
         teamStanding.setGamesWon(teamStanding.getGamesWon()+1);
         teamStanding.setTotalPoints(teamStanding.getTotalPoints()+2);
     }
+
+
 
 }

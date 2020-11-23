@@ -27,6 +27,9 @@ public class League implements ILeague {
     private IHeadCoach iheadCoach;
     private IGamePlayConfig iGamePlayConfig;
     private String leagueName;
+    private String startDateOfSeason;
+    private int numberSeason;
+    private int totalSeasons;
 
     private List<IConference> conferences;
     private List<IFreeAgents> freeAgents;
@@ -189,6 +192,38 @@ public class League implements ILeague {
         for (String name : managerName) {
             this.saveManager(name, leagueID);
         }
+    }
+
+    @Override
+    public String getDate() {
+        return startDateOfSeason;
+    }
+
+    @Override
+    public void setDate(String startDateOfSeason) {
+        this.startDateOfSeason = startDateOfSeason;
+    }
+
+    @Override
+    public int getSeason() {
+        return numberSeason;
+    }
+
+    @Override
+    public void setSeason(int season) {
+        this.numberSeason = season;
+
+    }
+
+    @Override
+    public int getTotalSeasons() {
+        return totalSeasons;
+    }
+
+    @Override
+    public void setTotalSeasons(int numberOfSeasons) {
+        this.totalSeasons = numberOfSeasons;
+
     }
 
 
