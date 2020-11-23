@@ -7,6 +7,7 @@
 //import dhl.inputOutput.UserOutput;
 //import dhl.leagueModel.freeAgents.FreeAgents;
 //import dhl.leagueModel.freeAgents.IFreeAgents;
+//import dhl.leagueModel.generalManager.GeneralManager;
 //import dhl.leagueModel.generalManager.IGeneralManager;
 //import dhl.leagueModel.headCoach.HeadCoach;
 //import dhl.leagueModel.headCoach.IHeadCoach;
@@ -93,7 +94,7 @@
 //                if (CC.teamChecker(teamName, league)) {
 //                    output.setOutput("Here are the general managers:");
 //                    output.sendOutput();
-//                    IGeneralManager managerList = league.getGeneralManagers();
+//                    List<IGeneralManager> managerList = league.getGeneralManagers();
 //                    IDisplayManagerList managerDisplayer = new DisplayManagerList();
 //                    managerDisplayer.displayManager(managerList);
 //                    output.setOutput("Enter Manager Name: ");
@@ -106,7 +107,9 @@
 //                        input.setInput();
 //                        managerName = input.getInput();
 //                    }
-//                    league.removeManagerFromList(managerList, managerName);
+//                    IGeneralManager generalManager = new GeneralManager();
+//                    generalManager = generalManager.getManagerFromList(managerList, managerName);
+//                    managerList.remove(generalManager);
 //                    output.setOutput("Here are the head coaches:");
 //                    output.sendOutput();
 //                    List<IHeadCoach> coachList = league.getCoaches();
