@@ -7,7 +7,7 @@ import dhl.inputOutput.UserOutput;
 import dhl.persistence.database.CheckTeam;
 import dhl.persistence.database.ICheckStoredProcedure;
 import dhl.persistence.loading.ILoadLeague;
-import dhl.persistence.loading.LoadLeague;
+//import dhl.persistence.loading.LoadLeague;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,7 +23,7 @@ public class LoadTeamState implements IStateMachine{
         this.stateMachine = machine;
         output = new UserOutput();
         input = new UserInput();
-        loadLeague = new LoadLeague();
+
     }
 
     public void entry() {

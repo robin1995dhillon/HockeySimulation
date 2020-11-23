@@ -51,15 +51,15 @@ public class Division implements IDivision {
         teams.add(team);
     }
 
-    @Override
-    public void saveDivision(List<Integer> ID) {
-        IDivisionPersistence divisionPersistence = new DivisionPersistence();
-        JSONObject resultObject = divisionPersistence.saveDivisionToDB(this.getDivisionName());
-        int divisionID = (int) resultObject.get(Configurables.ID.getAction());
-        ID.add(2, divisionID);
-        List<ITeam> teamArray = getTeams();
-        for (ITeam t : teamArray) {
-            t.saveTeams(ID);
-        }
-    }
+//    @Override
+//    public void saveDivision(List<Integer> ID) {
+//        IDivisionPersistence divisionPersistence = new DivisionPersistence();
+//        JSONObject resultObject = divisionPersistence.saveDivisionToDB(this.getDivisionName());
+//        int divisionID = (int) resultObject.get(Configurables.ID.getAction());
+//        ID.add(2, divisionID);
+//        List<ITeam> teamArray = getTeams();
+//        for (ITeam t : teamArray) {
+//            t.saveTeams(ID);
+//        }
+//    }
 }

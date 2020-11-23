@@ -10,6 +10,7 @@ import dhl.mock.MockGamePlayConfig;
 import dhl.persistence.saving.IPlayersPersistence;
 import dhl.persistence.saving.PlayersPersistence;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,13 +27,17 @@ public class Players implements IPlayers {
     private int shooting;
     private int checking;
     private int saving;
-    private int age;
-    private int daysToAge = 1;
+    private int birthDay;
+    private int birthMonth;
+    private int birthYear;
+    private int age = 0;
+
     private double strength;
     private int injuredDays = 0;
     private boolean isRetired = false;
     private boolean isInjured = false;
-    IGamePlayConfig gamePlayConfig;
+    private LocalDate playerCurrentDate;
+    private IGamePlayConfig gamePlayConfig;
 
     public Players() {
         gamePlayConfig = MockGamePlayConfig.createMock();
@@ -143,16 +148,6 @@ public class Players implements IPlayers {
     }
 
     @Override
-    public int getDaysToAge() {
-        return daysToAge;
-    }
-
-    @Override
-    public void setDaysToAge(int daysToAge) {
-        this.daysToAge = daysToAge;
-    }
-
-    @Override
     public boolean isRetired() {
         return isRetired;
     }
@@ -182,39 +177,80 @@ public class Players implements IPlayers {
         isInjured = injured;
     }
 
-    private int calculateNewDaysToAge(int days, IPlayers player) {
-        int currentDays = player.getDaysToAge();
-        int newDays = currentDays + days;
-        return newDays;
+    @Override
+    public int getBirthDay() {
+        return birthDay;
     }
 
     @Override
-    public void agePlayer(int days) {
-        int newDaysToAge = calculateNewDaysToAge(days, this);
-        if (newDaysToAge <= 365) {
-            this.setDaysToAge(newDaysToAge);
-        } else {
-            newDaysToAge = newDaysToAge % 365;
-            this.setAge(this.getAge() + 1);
-            this.setDaysToAge(newDaysToAge);
-        }
-        if (this.isInjured()) {
-            this.setInjuredDays(this.getInjuredDays() - days);
-            this.playerStillInjured();
-            this.checkIfRetired();
-        } else {
-            checkIfRetired();
-        }
+    public void setBirthDay(int birthDay) {
+        this.birthDay = birthDay;
     }
+
+    @Override
+    public int getBirthMonth() {
+        return birthMonth;
+    }
+
+    @Override
+    public void setBirthMonth(int birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    @Override
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    @Override
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    @Override
+    public LocalDate getPlayerCurrentDate() {
+        return playerCurrentDate;
+    }
+
+    @Override
+    public void setPlayerCurrentDate(LocalDate playerCurrentDate) {
+        this.playerCurrentDate = playerCurrentDate;
+    }
+
+//    private int calculateNewDaysToAge(int days, IPlayers player) {
+//        int currentDays = player.getDaysToAge();
+//        int newDays = currentDays + days;
+//        return newDays;
+//    }
+
+//    @Override
+//    public void agePlayer(int days) {
+//        int newDaysToAge = calculateNewDaysToAge(days, this);
+//        if (newDaysToAge <= 365) {
+//            this.setDaysToAge(newDaysToAge);
+//        } else {
+//            newDaysToAge = newDaysToAge % 365;
+//            this.setAge(this.getAge() + 1);
+//            this.setDaysToAge(newDaysToAge);
+//        }
+//        if (this.isInjured()) {
+//            this.setInjuredDays(this.getInjuredDays() - days);
+//            this.playerStillInjured();
+//            this.checkIfRetired();
+//        } else {
+//            checkIfRetired();
+//        }
+//    }
 
     @Override
     public void checkIfRetired() {
+        System.out.println("Inside Retirement");
         IAging aging = gamePlayConfig.getAging();
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = this.getAge();
+        System.out.println(playerAge);
         Integer[] retirementAge = {average - 5, average - 4, average - 3, average - 2, average - 1, average, average + 1, average + 4, average + 5, max};
-//      The array below is used to determine the brackets for retirement. If the player is of average age, the chance for retirement is 30%"
         Integer[] retirementArray = {5, 10, 15, 20, 25, 30, 50, 70, 80, 100};
 
         int minDistance = Math.abs(retirementAge[0] - playerAge);
@@ -234,6 +270,36 @@ public class Players implements IPlayers {
         } else {
             this.setRetired(false);
         }
+        System.out.println(this.isRetired);
+    }
+    @Override
+    public void agePlayer(int daysToAge) {
+        int year = this.getBirthYear();
+        int month = this.getBirthMonth();
+        int days = this.getBirthDay();
+        if(this.age == 0) {
+            this.playerCurrentDate = LocalDate.now();
+            this.setAge(this.playerCurrentDate.getYear() - year);
+        }
+        this.setPlayerCurrentDate(this.getPlayerCurrentDate().plusDays(daysToAge));
+        LocalDate nextBirthDay = LocalDate.of(this.playerCurrentDate.getYear(), month, days);
+        System.out.println(this.playerCurrentDate);
+        System.out.println(nextBirthDay);
+        if (nextBirthDay.isBefore(this.playerCurrentDate)) {
+            System.out.println("Inside Increase");
+            this.setAge(this.playerCurrentDate.getYear() - year);
+        } else {
+            this.setAge(this.playerCurrentDate.getYear() - year - 1);
+        }
+
+        if (this.isInjured()) {
+            this.setInjuredDays(this.getInjuredDays() - daysToAge);
+            this.playerStillInjured();
+            this.checkIfRetired();
+        } else {
+            this.checkIfRetired();
+        }
+
     }
 
     @Override
@@ -248,7 +314,6 @@ public class Players implements IPlayers {
         double maxStrength = Collections.max(freeAgentStrengthList);
         int maxIndex = freeAgentStrengthList.indexOf(maxStrength);
         IFreeAgents bestFreeAgent = freeAgents.get(maxIndex);
-//       We have a seperate method which changes a freeAgent to type Player. That will be called in State Machine.
         return bestFreeAgent;
     }
 
@@ -346,16 +411,32 @@ public class Players implements IPlayers {
         return agent;
     }
 
+//    @Override
+//    public void savePlayer(int teamID) {
+//        IPlayersPersistence playersPersistence = new PlayersPersistence();
+//        String playerName = this.getPlayerName();
+//        String position = this.getPosition();
+//        int age = this.getAge();
+//        int injuryDays = this.getInjuredDays();
+//        boolean[] booleanAttributes = {this.getCaptain(), this.isRetired(), this.isInjured()};
+//        int[] playerAttributes = {this.getSkating(), this.getChecking(), this.getShooting(), this.getSaving()};
+//        playersPersistence.savePlayerToDB(playerName, position, booleanAttributes, age, playerAttributes, teamID, injuryDays);
+//    }
+
     @Override
-    public void savePlayer(int teamID) {
-        IPlayersPersistence playersPersistence = new PlayersPersistence();
-        String playerName = this.getPlayerName();
-        String position = this.getPosition();
-        int age = this.getAge();
-        int injuryDays = this.getInjuredDays();
-        boolean[] booleanAttributes = {this.getCaptain(), this.isRetired(), this.isInjured()};
-        int[] playerAttributes = {this.getSkating(), this.getChecking(), this.getShooting(), this.getSaving()};
-        playersPersistence.savePlayerToDB(playerName, position, booleanAttributes, age, playerAttributes, teamID, injuryDays);
+    public void statsDecayDueToBirthDay() {
+        LocalDate nextPlayerBirthday = LocalDate.of(this.playerCurrentDate.getYear(), this.birthMonth, this.birthDay);
+        if(nextPlayerBirthday.equals(this.playerCurrentDate) || nextPlayerBirthday.isBefore(playerCurrentDate)) {
+            IAging aging = gamePlayConfig.getAging();
+            double statDecayChance = aging.getStatDecayChance() * 100;
+            double randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
+            if(randomNumber<=statDecayChance) {
+                this.setShooting(this.getShooting() - 1);
+                this.setSaving(this.getSaving() - 1);
+                this.setSkating(this.getSkating() - 1);
+                this.setSaving(this.getSaving() - 1);
+            }
+        }
     }
 
 

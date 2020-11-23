@@ -23,7 +23,7 @@ public class CreateTeamState implements IState {
     }
 
     public void runState() {
-        league.storeLeague();
+
     }
 
     public void forward(StateContext context) {

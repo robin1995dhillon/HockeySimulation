@@ -1,6 +1,7 @@
 package dhl.leagueModel.teams;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.players.IPlayers;
@@ -19,9 +20,9 @@ public interface ITeam {
 
     void setTeamName(String teamName);
 
-    String getGeneralManager();
+    IGeneralManager getGeneralManager();
 
-    void setGeneralManager(String generalManager);
+    void setGeneralManager(IGeneralManager generalManager);
 
     IHeadCoach getHeadCoach();
 
@@ -39,6 +40,14 @@ public interface ITeam {
 
     void setLossPoints(int teamType);
 
+    List<IPlayers> getActiveRoster();
+
+    void setActiveRoster(List<IPlayers> activeRoster);
+
+    List<IPlayers> getInActiveRoster();
+
+    void setInActiveRoster(List<IPlayers> inActiveRoster);
+
     double calculateTeamStrength(ITeam team);
 
     //    Might be used in the next milestone. That's why we havent removed it.
@@ -46,7 +55,10 @@ public interface ITeam {
 
     void setIsUser(boolean isUser);
 
+    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager);
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
+
+    void createRoster() throws Exception;
 
     void saveTeams(List<Integer> id);
 }

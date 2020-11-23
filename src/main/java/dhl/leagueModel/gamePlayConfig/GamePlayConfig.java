@@ -22,6 +22,14 @@ public class GamePlayConfig implements IGamePlayConfig {
         training = new Training();
     }
 
+    public GamePlayConfig(IAging aging, IGameResolver gameResolver, IInjuries injuries, ITrading trading, ITraining training) {
+        this.aging = aging;
+        this.gameResolver = gameResolver;
+        this.injuries = injuries;
+        this.trading = trading;
+        this.training = training;
+    }
+
     @Override
     public IAging getAging() {
         return aging;
@@ -82,7 +90,7 @@ public class GamePlayConfig implements IGamePlayConfig {
         ITraining training = new Training();
         ITrading trading = new Trading();
         results.add(aging.agingValidator(gamePlayConfigObject));
-        results.add(gameResolver.gameResolverValidator(gamePlayConfigObject));
+//        results.add(gameResolver.gameResolverValidator(gamePlayConfigObject));
         results.add(injuries.injuriesValidator(gamePlayConfigObject));
         results.add(training.trainingValidator(gamePlayConfigObject));
         results.add(trading.tradingValidator(gamePlayConfigObject));

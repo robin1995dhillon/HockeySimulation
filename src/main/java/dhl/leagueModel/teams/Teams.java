@@ -3,6 +3,7 @@ package dhl.leagueModel.teams;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
+import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.Configurables;
@@ -20,26 +21,28 @@ import java.util.List;
 public class Teams implements ITeam {
 
     public String teamName;
-    public String generalManager;
+    public IGeneralManager generalManager;
     public IHeadCoach headCoach;
-    List<IPlayers> players;
-    String teamType = Configurables.AI.getAction();
-    int lossPoints;
-    double teamStrength;
+    public List<IPlayers> players;
+    public List<IPlayers> activeRoster;
+    public List<IPlayers> inActiveRoster;
+    public String teamType = Configurables.AI.getAction();
+    public int lossPoints;
+    public double teamStrength;
     private boolean isUser = false;
     UserOutput userOutput = new UserOutput();
 
     public Teams() {
     }
 
-    public Teams(String teamName, String generalManager, IHeadCoach headCoach, List<IPlayers> players) {
+    public Teams(String teamName, IGeneralManager generalManager, IHeadCoach headCoach, List<IPlayers> players) {
         this.teamName = teamName;
         this.generalManager = generalManager;
         this.headCoach = headCoach;
         this.players = players;
     }
 
-    public Teams(String teamName, String generalManager, IHeadCoach headCoach) {
+    public Teams(String teamName, IGeneralManager generalManager, IHeadCoach headCoach) {
         this.teamName = teamName;
         this.generalManager = generalManager;
         this.headCoach = headCoach;
@@ -67,12 +70,12 @@ public class Teams implements ITeam {
     }
 
     @Override
-    public String getGeneralManager() {
+    public IGeneralManager getGeneralManager() {
         return generalManager;
     }
 
     @Override
-    public void setGeneralManager(String generalManager) {
+    public void setGeneralManager(IGeneralManager generalManager) {
         this.generalManager = generalManager;
 
     }
@@ -119,6 +122,26 @@ public class Teams implements ITeam {
     }
 
     @Override
+    public List<IPlayers> getActiveRoster() {
+        return activeRoster;
+    }
+
+    @Override
+    public void setActiveRoster(List<IPlayers> activeRoster) {
+        this.activeRoster = activeRoster;
+    }
+
+    @Override
+    public List<IPlayers> getInActiveRoster() {
+        return inActiveRoster;
+    }
+
+    @Override
+    public void setInActiveRoster(List<IPlayers> inActiveRoster) {
+        this.inActiveRoster = inActiveRoster;
+    }
+
+    @Override
     public double calculateTeamStrength(ITeam team) {
         List<IPlayers> players;
         players = team.getPlayers();
@@ -144,7 +167,7 @@ public class Teams implements ITeam {
     }
 
     @Override
-    public ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList) {
+    public ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager) {
 
         List<IConference> conferenceList;
         List<IDivision> divisionList;
@@ -159,7 +182,7 @@ public class Teams implements ITeam {
                 for (IDivision division : divisionList) {
                     if (division.getDivisionName().toLowerCase().equals(divisionName.toLowerCase())) {
                         ITeam team = new Teams();
-                        team.setGeneralManager(managerName);
+                        team.setGeneralManager(generalManager);
                         team.setPlayers(playerList);
                         team.setHeadCoach(headCoach);
                         team.setTeamName(teamName);
@@ -171,25 +194,50 @@ public class Teams implements ITeam {
         }
         return league;
     }
+    @Override
+    public ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList) {
+
+        // Remove this method when general Manager thing is solved.
+        return league;
+    }
+
+    @Override
+    public void createRoster() throws Exception {
+        List<IPlayers> allSkaters = new ArrayList<>();
+        List<IPlayers> allGoalie = new ArrayList<>();
+        if(this.players == null) {
+            throw new Exception("Player Array is empty while creating roster.");
+        } else {
+            for (IPlayers players : this.players) {
+                if (players.getPosition().equals(Configurables.FORWARD.getAction()) || players.getPosition().equals(Configurables.DEFENSE.getAction())) {
+                    allSkaters.add(players);
+                } else {
+                    allGoalie.add(players);
+                }
+            }
+        }
+    }
+
+
 
     @Override
     public void saveTeams(List<Integer> id) {
-        ITeamPersistence teamPersistence = new TeamPersistence();
-        String headCoach = this.headCoach.getName();
-        JSONObject resultObject = teamPersistence.saveTeamToDB(this.teamName, this.generalManager, headCoach, this.isUser);
-        int teamID = (int) resultObject.get(Configurables.ID.getAction());
-        userOutput.setOutput("Saving Team " + teamID + ": " + this.getTeamName());
-        userOutput.sendOutput();
-        id.add(3, teamID);
-        IDHLPersistence idhlPersistence = new DHLPersistence();
-        idhlPersistence.saveDHLTable(id.get(0), id.get(1), id.get(2), id.get(3));
-        List<IPlayers> playersArray = getPlayers();
-        IHeadCoach iHeadCoach = getHeadCoach();
-        iHeadCoach.saveHeadCoach(teamID);
-
-        for (IPlayers player : playersArray) {
-            player.savePlayer(teamID);
-        }
+//        ITeamPersistence teamPersistence = new TeamPersistence();
+//        String headCoach = this.headCoach.getName();
+//        JSONObject resultObject = teamPersistence.saveTeamToDB(this.teamName, this.generalManager, headCoach, this.isUser);
+//        int teamID = (int) resultObject.get(Configurables.ID.getAction());
+//        userOutput.setOutput("Saving Team " + teamID + ": " + this.getTeamName());
+//        userOutput.sendOutput();
+//        id.add(3, teamID);
+//        IDHLPersistence idhlPersistence = new DHLPersistence();
+//        idhlPersistence.saveDHLTable(id.get(0), id.get(1), id.get(2), id.get(3));
+//        List<IPlayers> playersArray = getPlayers();
+//        IHeadCoach iHeadCoach = getHeadCoach();
+//        iHeadCoach.saveHeadCoach(teamID);
+//
+//        for (IPlayers player : playersArray) {
+//            player.savePlayer(teamID);
+//        }
     }
 
 }

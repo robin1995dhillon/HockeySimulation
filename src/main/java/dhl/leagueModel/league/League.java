@@ -1,31 +1,20 @@
 package dhl.leagueModel.league;
 
-import dhl.leagueModel.conference.Conference;
 import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.headCoach.HeadCoach;
+import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.Configurables;
 import dhl.persistence.saving.FreeManagerPersistence;
 import dhl.persistence.saving.IFreeManagerPersistence;
-import dhl.persistence.saving.ILeaguePersistence;
-import dhl.persistence.saving.LeaguePersistence;
 import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.ITeamStanding;
-import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class League implements ILeague {
 
-    private IConference iconference;
-    private IFreeAgents iFreeAgents;
-    private IHeadCoach iheadCoach;
-    private IGamePlayConfig iGamePlayConfig;
+
     private String leagueName;
     private String startDateOfSeason;
     private int numberSeason;
@@ -35,15 +24,13 @@ public class League implements ILeague {
     private List<IConference> conferences;
     private List<IFreeAgents> freeAgents;
     private List<IHeadCoach> coaches;
-    private List<String> generalManagers;
-    List<ITeamStanding> teamStandingList;
-    List<ISchedulerSeason> gameSchedules;
+    private List<IGeneralManager> generalManagers;
+    private IGamePlayConfig gamePlayConfig;
+    private List<ITeamStanding> teamStandingList;
+    private List<ISchedulerSeason> gameSchedules;
 
     public League() {
-        iconference = new Conference();
-        iFreeAgents = new FreeAgents();
-        iheadCoach = new HeadCoach();
-        iGamePlayConfig = new GamePlayConfig();
+
     }
 
     public League(String leagueName, List<IConference> conferences) {
@@ -51,10 +38,11 @@ public class League implements ILeague {
         this.conferences = conferences;
     }
 
-    public League(String leagueName, List<IConference> conferences, List<IFreeAgents> freeAgents) {
+    public League(String leagueName, List<IConference> conferences, List<IFreeAgents> freeAgents, IGamePlayConfig gamePlayConfig) {
         this.leagueName = leagueName;
         this.conferences = conferences;
         this.freeAgents = freeAgents;
+        this.gamePlayConfig = gamePlayConfig;
     }
 
     public League(String leagueName) {
@@ -88,10 +76,6 @@ public class League implements ILeague {
         return freeAgents;
     }
 
-    @Override
-    public List<String> getGeneralManagers() {
-        return generalManagers;
-    }
 
     @Override
     public List<IHeadCoach> getCoaches() {
@@ -118,10 +102,7 @@ public class League implements ILeague {
         this.coaches = coaches;
     }
 
-    @Override
-    public void setGeneralManager(List<String> generalManagers) {
-        this.generalManagers = generalManagers;
-    }
+
 
     @Override
     public void saveManager(String name, int leagueID) {
@@ -131,12 +112,12 @@ public class League implements ILeague {
 
     @Override
     public IGamePlayConfig getGameplayConfig() {
-        return iGamePlayConfig;
+        return gamePlayConfig;
     }
 
     @Override
     public void setGameplayConfig(IGamePlayConfig gameplayConfig) {
-        this.iGamePlayConfig = gameplayConfig;
+        this.gamePlayConfig = gameplayConfig;
     }
 
     public boolean isValid(ILeague league) {
@@ -167,38 +148,47 @@ public class League implements ILeague {
     }
 
     @Override
-    public void storeLeague() {
-        String leagueName = this.leagueName;
-        ILeaguePersistence leaguePersistence = new LeaguePersistence();
-        JSONObject resultObject = leaguePersistence.saveLeagueToDB(leagueName);
-        List<IConference> conferenceArray = this.getConferences();
-        List<IFreeAgents> freeAgentsArray = this.getFreeAgents();
-        IGamePlayConfig gamePlayConfig = this.getGameplayConfig();
-        List<IHeadCoach> headCoachArray = this.getCoaches();
-        List<String> managerName = this.getGeneralManagers();
-
-        List<Integer> ID = new ArrayList<>();
-        int leagueID = (int) resultObject.get(Configurables.ID.getAction());
-        ID.add(0, leagueID);
-        for (IConference c : conferenceArray) {
-            c.saveConference(ID);
-        }
-        for (IFreeAgents freeAgents : freeAgentsArray) {
-            freeAgents.saveFreeAgent(leagueID);
-        }
-        gamePlayConfig.saveGamePlayConfigToDB(leagueID);
-        for (IHeadCoach headCoach : headCoachArray) {
-            headCoach.saveFreeCoach(leagueID);
-        }
-        for (String name : managerName) {
-            this.saveManager(name, leagueID);
-        }
+    public List<IGeneralManager> getGeneralManagers() {
+        return generalManagers;
     }
 
-    @Override
-    public String getDate() {
-        return startDateOfSeason;
+    public void setGeneralManagers(List<IGeneralManager> generalManagers) {
+        this.generalManagers = generalManagers;
     }
+
+//    @Override
+//    public void storeLeague() {
+//        String leagueName = this.leagueName;
+//        ILeaguePersistence leaguePersistence = new LeaguePersistence();
+//        JSONObject resultObject = leaguePersistence.saveLeagueToDB(leagueName);
+//        List<IConference> conferenceArray = this.getConferences();
+//        List<IFreeAgents> freeAgentsArray = this.getFreeAgents();
+//        IGamePlayConfig gamePlayConfig = this.getGameplayConfig();
+//        List<IHeadCoach> headCoachArray = this.getCoaches();
+//        IGeneralManager = this.getGeneralManagers();
+//
+//        List<Integer> ID = new ArrayList<>();
+//        int leagueID = (int) resultObject.get(Configurables.ID.getAction());
+//        ID.add(0, leagueID);
+//        for (IConference c : conferenceArray) {
+//            c.saveConference(ID);
+//        }
+//        for (IFreeAgents freeAgents : freeAgentsArray) {
+//            freeAgents.saveFreeAgent(leagueID);
+//        }
+//        gamePlayConfig.saveGamePlayConfigToDB(leagueID);
+//        for (IHeadCoach headCoach : headCoachArray) {
+//            headCoach.saveFreeCoach(leagueID);
+//        }
+//        for (String name : managerName) {
+//            this.saveManager(name, leagueID);
+//        }
+//    }
+
+@Override
+public String getDate() {
+    return startDateOfSeason;
+}
 
     @Override
     public void setDate(String startDateOfSeason) {
@@ -237,6 +227,5 @@ public class League implements ILeague {
         this.totalSeasons = numberOfSeasons;
 
     }
-
 
 }

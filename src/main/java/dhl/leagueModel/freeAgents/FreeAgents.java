@@ -16,6 +16,9 @@ public class FreeAgents implements IFreeAgents {
     private int checking;
     private int saving;
     private int age;
+    private int birthDay;
+    private int birthMonth;
+    private int birthYear;
     private double strength;
 
     public FreeAgents() {
@@ -108,6 +111,36 @@ public class FreeAgents implements IFreeAgents {
     }
 
     @Override
+    public int getBirthDay() {
+        return birthDay;
+    }
+
+    @Override
+    public void setBirthDay(int birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    @Override
+    public int getBirthMonth() {
+        return birthMonth;
+    }
+
+    @Override
+    public void setBirthMonth(int birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    @Override
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    @Override
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    @Override
     public double calculateStrength(IFreeAgents freeAgents) {
         String position = freeAgents.getPosition();
         int skating = freeAgents.getSkating();
@@ -157,17 +190,17 @@ public class FreeAgents implements IFreeAgents {
         return false;
     }
 
-    @Override
-    public void saveFreeAgent(int leagueID) {
-        IFreeAgentsPersistence freeAgentsPersistence = new FreeAgentsPersistence();
-        String freeAgentName = this.getPlayerName();
-        String position = this.getPosition();
-        int age = this.getAge();
-        int skating = this.getSkating();
-        int shooting = this.getShooting();
-        int checking = this.getChecking();
-        int saving = this.getSaving();
-        int[] freeAgentAttributes = {skating, shooting, checking, saving};
-        freeAgentsPersistence.saveFreeAgentsToDB(freeAgentName, position, age, freeAgentAttributes, leagueID);
-    }
+//    @Override
+//    public void saveFreeAgent(int leagueID) {
+//        IFreeAgentsPersistence freeAgentsPersistence = new FreeAgentsPersistence();
+//        String freeAgentName = this.getPlayerName();
+//        String position = this.getPosition();
+//        int age = this.getAge();
+//        int skating = this.getSkating();
+//        int shooting = this.getShooting();
+//        int checking = this.getChecking();
+//        int saving = this.getSaving();
+//        int[] freeAgentAttributes = {skating, shooting, checking, saving};
+//        freeAgentsPersistence.saveFreeAgentsToDB(freeAgentName, position, age, freeAgentAttributes, leagueID);
+//    }
 }

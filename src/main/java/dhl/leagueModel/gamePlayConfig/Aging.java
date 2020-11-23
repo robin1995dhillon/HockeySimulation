@@ -4,8 +4,10 @@ import dhl.Configurables;
 import org.json.simple.JSONObject;
 
 public class Aging implements IAging {
+
     private int averageRetirementAge;
     private int maximumAge;
+    private double statDecayChance;
 
     @Override
     public int getAverageRetirementAge() {
@@ -28,11 +30,23 @@ public class Aging implements IAging {
     }
 
     @Override
+    public double getStatDecayChance() {
+        return statDecayChance;
+    }
+
+    @Override
+    public void setStatDecayChance(double statDecayChance) {
+        this.statDecayChance = statDecayChance;
+    }
+
+    @Override
     public boolean agingValidator(JSONObject Obj) {
         JSONObject ageObject = (JSONObject) Obj.get(Configurables.AGING.getAction());
         int averageRetirementAge = ((Long) ageObject.get(Configurables.AVERAGERETIREMENTAGE.getAction())).intValue();
         int maximumAge = ((Long) ageObject.get(Configurables.MAXIMUMAGE.getAction())).intValue();
+        double statDecayChance = ((Double) ageObject.get(Configurables.STATDECAYCHANCE.getAction())).intValue();
         int[] ageAttribute = {averageRetirementAge, maximumAge};
+        double[] ageAttributeDouble = {statDecayChance};
         boolean result = checkRange(ageAttribute);
         return result;
     }

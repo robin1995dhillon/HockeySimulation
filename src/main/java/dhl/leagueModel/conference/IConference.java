@@ -16,5 +16,5 @@ public interface IConference {
 
     void setDivisions(List<IDivision> divisions);
 
-    void saveConference(List<Integer> leagueID);
+//    void saveConference(List<Integer> leagueID);
 }

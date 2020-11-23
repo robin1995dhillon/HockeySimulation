@@ -57,13 +57,13 @@ class LeagueTest {
         assertEquals(freeAgentsArray, league.getFreeAgents());
     }
 
-    @Test
-    void getGeneralManagers() {
-        ArrayList<String> generalManagerArray = MockManager.createMock();
-        ILeague league = new League("DHL");
-        league.setGeneralManager(generalManagerArray);
-        assertEquals(generalManagerArray, league.getGeneralManagers());
-    }
+//    @Test
+//    void getGeneralManagers() {
+//        ArrayList<String> generalManagerArray = MockManager.createMock();
+//        ILeague league = new League("DHL");
+//        league.setGeneralManager(generalManagerArray);
+//        assertEquals(generalManagerArray, league.getGeneralManagers());
+//    }
 
     @Test
     void getCoaches() {
@@ -75,15 +75,15 @@ class LeagueTest {
         assertEquals(headCoachArray, league.getCoaches());
     }
 
-    @Test
-    void removeManagerFromList() {
-        ArrayList<String> managerList = MockManager.createMock();
-        ILeague league = new League();
-        league.setGeneralManager(managerList);
-        league.removeManagerFromList(managerList, "Manager1");
-        assertEquals(2, managerList.size());
-
-    }
+//    @Test
+//    void removeManagerFromList() {
+//        ArrayList<String> managerList = MockManager.createMock();
+//        ILeague league = new League();
+//        league.setGeneralManager(managerList);
+//        league.removeManagerFromList(managerList, "Manager1");
+//        assertEquals(2, managerList.size());
+//
+//    }
 
     @Test
     void setFreeAgents() {
@@ -105,13 +105,13 @@ class LeagueTest {
         assertEquals(headCoachList, league.getCoaches());
     }
 
-    @Test
-    void setGeneralManager() {
-        ArrayList<String> generalManagerArray = MockManager.createMock();
-        ILeague league = new League("DHL");
-        league.setGeneralManager(generalManagerArray);
-        assertEquals(generalManagerArray, league.getGeneralManagers());
-    }
+//    @Test
+//    void setGeneralManager() {
+//        ArrayList<String> generalManagerArray = MockManager.createMock();
+//        ILeague league = new League("DHL");
+//        league.setGeneralManager(generalManagerArray);
+//        assertEquals(generalManagerArray, league.getGeneralManagers());
+//    }
 
     @Test
     void getGameplayConfig() {

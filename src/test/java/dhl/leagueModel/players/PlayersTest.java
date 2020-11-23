@@ -8,6 +8,7 @@ import dhl.mock.MockPlayer;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,25 +21,6 @@ class PlayersTest {
         System.out.println(iGamePlayConfig.getAging().getAverageRetirementAge());
     }
 
-    @Test
-    void agePlayer() {
-        setValues();
-        IPlayers players = MockPlayer.createMock();
-        IGamePlayConfig gamePlayConfig = MockGamePlayConfig.createMock();
-        players.agePlayer(200);
-        assertEquals(201, players.getDaysToAge());
-        assertEquals(25, players.getAge());
-    }
-
-    @Test
-    void agePlayer2() {
-        IPlayers players = MockPlayer.createMock();
-        players.setAge(33);
-        players.setDaysToAge(200);
-        players.agePlayer(200);
-        assertEquals(35, players.getDaysToAge());
-        assertEquals(34, players.getAge());
-    }
 
     @Test
     void replacePlayerWithFreeAgent() {
@@ -89,14 +71,14 @@ class PlayersTest {
         assertFalse(players.isInjured());
     }
 
-    @Test
-    void checkIfRetired() {
-        IPlayers player = MockPlayer.createMock();
-        player.setAge(50);
-        player.setDaysToAge(20);
-        player.checkIfRetired();
-        assertTrue(player.isRetired());
-    }
+//    @Test
+//    void checkIfRetired() {
+//        IPlayers player = MockPlayer.createMock();
+//        player.setAge(50);
+//        player.setDaysToAge(20);
+//        player.checkIfRetired();
+//        assertTrue(player.isRetired());
+//    }
 
     @Test
     public void convertPlayerToFreeAgentTest() {
@@ -144,19 +126,6 @@ class PlayersTest {
         IPlayers players = MockPlayer.createMock();
         players.setCaptain(false);
         assertEquals(false, players.getCaptain());
-    }
-
-    @Test
-    void getAge() {
-        IPlayers players = MockPlayer.createMock();
-        assertEquals(25, players.getAge());
-    }
-
-    @Test
-    void setAge() {
-        IPlayers players = MockPlayer.createMock();
-        players.setAge(20);
-        assertEquals(20, players.getAge());
     }
 
     @Test
@@ -225,19 +194,19 @@ class PlayersTest {
         assertEquals(50, players.getStrength());
     }
 
-    @Test
-    void getDaysToAge() {
-        IPlayers players = MockPlayer.createMock();
-        players.setDaysToAge(20);
-        assertEquals(20, players.getDaysToAge());
-    }
-
-    @Test
-    void setDaysToAge() {
-        IPlayers players = MockPlayer.createMock();
-        players.setDaysToAge(20);
-        assertEquals(20, players.getDaysToAge());
-    }
+//    @Test
+//    void getDaysToAge() {
+//        IPlayers players = MockPlayer.createMock();
+//        players.setDaysToAge(20);
+//        assertEquals(20, players.getDaysToAge());
+//    }
+//
+//    @Test
+//    void setDaysToAge() {
+//        IPlayers players = MockPlayer.createMock();
+//        players.setDaysToAge(20);
+//        assertEquals(20, players.getDaysToAge());
+//    }
 
     @Test
     void isRetired() {
@@ -333,5 +302,26 @@ class PlayersTest {
         IPlayers players = new Players();
         double playerStrength = players.calculateStrength(player);
         assertEquals(18.0, playerStrength);
+    }
+
+    @Test
+    void ageNewPlayer() {
+        IPlayers players = MockPlayer.createMockWithDateOfBirth();
+        players.agePlayer(300);
+        assertEquals(24, players.getAge());
+    }
+
+    @Test
+    void statsDecayDueToBirthDay() {
+        IPlayers player = MockPlayer.createPlayerWithStatDecay();
+        player.setPlayerCurrentDate(LocalDate.of(2020,6,28));
+        while(player.getSkating() == 15) {
+            System.out.println("Inside");
+            player.statsDecayDueToBirthDay();
+            System.out.println("Skating Value is: " + player.getSkating());
+
+        }
+        assertEquals(14, player.getSkating());
+
     }
 }
