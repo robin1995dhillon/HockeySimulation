@@ -32,14 +32,16 @@ public class PlayerChoiceState implements IStateMachine{
         output.sendOutput();
         input.setInput();
         totalSeasons = Integer.parseInt(input.getInput());
-        for (int i = 0; i < totalSeasons; i++) {
-            currentSeason = i;
-            boolean seasonIncomplete = true;
-            output.setOutput("Simulating season " + (i + 1) + " for " + machineLeague + " ...");
-            output.sendOutput();
-        }
+//        for (int i = 0; i < totalSeasons; i++) {
+//            currentSeason = i;
+//            boolean seasonIncomplete = true;
+//            output.setOutput("Simulating season " + (i + 1) + " for " + machineLeague + " ...");
+//            output.sendOutput();
+//        }
+        machineLeague.setTotalSeasons(totalSeasons);
+        machineLeague.setSeason(0);
+        return stateMachine.getInitializeSeason();
 
-        return null;
     }
 
     public void exit() {

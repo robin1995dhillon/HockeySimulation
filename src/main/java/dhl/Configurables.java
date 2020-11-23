@@ -57,6 +57,7 @@ public enum Configurables {
     TRUE("True"),
     REGULAR("Regular"),
     SCHEDULED("Scheduled"),
+    PLAYED("played"),
     PLAYOFF("Playoff");
 
 

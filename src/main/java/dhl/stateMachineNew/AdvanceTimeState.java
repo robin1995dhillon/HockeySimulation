@@ -1,13 +1,39 @@
 package dhl.stateMachineNew;
 
+import dhl.leagueModel.league.ILeague;
+
+import java.text.ParseException;
+
 public class AdvanceTimeState implements IStateMachine{
-    public void entry() {
+
+    StateMachine stateMachine;
+    ITime leagueTimeConcept;
+
+    public AdvanceTimeState(StateMachine stateMachine){
+        this.stateMachine = stateMachine;
+        leagueTimeConcept = new LeagueTimeConcept();
+    }
+
+    public void entry() throws ParseException {
+
+        ILeague league = stateMachine.getLeague();
+        String currentDate = league.getDate();
+        league.setDate(leagueTimeConcept.nextDate(currentDate));
 
     }
 
     public IStateMachine doTask() {
 
-        return null;
+        ILeague league = stateMachine.getLeague();
+        String currentDate = league.getDate();
+        String regularSeasonEndDate = league.getLastDateOfSeason();
+        if(currentDate.equalsIgnoreCase(regularSeasonEndDate)){
+
+            return stateMachine.getGeneratePlayoffSchedule();
+        }
+        else{
+            return stateMachine.getTraining();
+        }
     }
 
     public void exit() {

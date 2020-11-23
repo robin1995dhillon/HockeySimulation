@@ -51,4 +51,21 @@ public interface ILeague {
     void setTeamStandingList(List<ITeamStanding> teamStandingList);
 
 //    void storeLeague();
+
+    String getDate();
+
+    void setDate(String startDateOfSeason);
+
+    String getLastDateOfSeason();
+
+    void setLastDateOfSeason(String lastDateOfSeason);
+
+    int getSeason();
+
+    void setSeason(int season);
+
+    int getTotalSeasons();
+
+    void setTotalSeasons(int numberOfSeasons);
+
 }

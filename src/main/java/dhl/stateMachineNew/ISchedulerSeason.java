@@ -2,6 +2,8 @@ package dhl.stateMachineNew;
 
 import dhl.leagueModel.teams.ITeam;
 
+import java.text.ParseException;
+
 public interface ISchedulerSeason {
 
     ITeam getFirstTeam();
@@ -24,6 +26,15 @@ public interface ISchedulerSeason {
 
     void setStatus(String status);
 
+    void playoffSchedule(StateMachine machine) throws ParseException;
+
+    String getLastDayOfSeason();
+
+    String getLastDayOfStanleyPlayoffs();
+
+    void generateSchedule(StateMachine machine) throws ParseException;
+
+    boolean isLastDayOfTrade(String currentDate);
 
 
 }

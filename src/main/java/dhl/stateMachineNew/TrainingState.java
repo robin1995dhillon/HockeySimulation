@@ -1,6 +1,12 @@
 package dhl.stateMachineNew;
 
 public class TrainingState implements IStateMachine{
+
+    StateMachine machine;
+
+    public TrainingState(StateMachine machine){
+        this.machine = machine;
+    }
     public void entry() {
 
     }
