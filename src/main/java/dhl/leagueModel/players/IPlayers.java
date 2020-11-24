@@ -104,4 +104,6 @@ public interface IPlayers {
     double getShots();
     void setPenalties(double penalties);
     double getPenalties();
+    void setShifts(int shifts);
+    int getShifts();
 }

@@ -4,16 +4,13 @@ package dhl.gameSimulationAlgorithm;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
     private double penaltyChance;
     private double saveChance;
     private double shotChance;
-    private double goals;
-    private double penalties;
-    private double shots;
-    private double saves;
     private double saveCoefficientOne;
     private double saveCoefficientTwo;
     private double shotCoefficientOne;
@@ -25,6 +22,29 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         this.shotChance = shotChance;
     }
 
+    @Override
+    public List<IPlayers> getPlayerForShift(ITeam team){
+        List<IPlayers> playerList = new ArrayList<>();
+        int forward = 0;
+        int defense = 0;
+        int goalie = 1;
+        for(IPlayers player : team.getPlayers()){
+            if(player.getPosition().equals("forward") && player.getShifts() < 10 && forward < 3){
+                playerList.add(player);
+                forward += 1;
+            }
+            if(player.getPosition().equals("defense") && player.getShifts() < 10 && defense < 2){
+                playerList.add(player);
+                defense += 1;
+            }
+            if(player.getPosition().equals("goalie") && player.getShifts() < 24 && goalie < 1){
+                playerList.add(player);
+            }
+        }
+        return playerList;
+    }
+
+    @Override
     public IPlayers shots(List<IPlayers> teamOnePlayers, List<IPlayers> teamTwoPlayers){
         double totalSkatingOne = 0;
         double totalSkatingTwo = 0;
@@ -43,6 +63,16 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         else{
             if(Math.random() < penaltyChance){
                 penaltyDefence(defenseList);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public IPlayers getGoalie(List<IPlayers> playerList){
+        for(IPlayers player: playerList){
+            if(player.getPosition().equals("goalie")){
+                return player;
             }
         }
         return null;
@@ -93,38 +123,62 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
     }
 
     @Override
-    public void calculateStatistics(ITeam team) {
+    public double getShots(ITeam team) {
+        double shots = 0;
         List<IPlayers> playerList = team.getPlayers();
-        for(IPlayers player : playerList){
-            this.shots += player.getShots();
-            this.saves += player.getSaves();
-            this.penalties += player.getPenalties();
-            this.goals += player.getGoals();
+        for(IPlayers player : playerList) {
+            shots += player.getShots();
             player.setShots(0);
+        }
+        return shots;
+    }
+
+    @Override
+    public double getSaves(ITeam team) {
+        double saves = 0;
+        List<IPlayers> playerList = team.getPlayers();
+        for(IPlayers player : playerList) {
+            saves += player.getSaves();
             player.setSaves(0);
-            player.setPenalties(0);
+        }
+        return saves;
+    }
+
+    @Override
+    public double getGoals(ITeam team) {
+        double goals = 0;
+        List<IPlayers> playerList = team.getPlayers();
+        for(IPlayers player : playerList) {
+            goals += player.getGoals();
             player.setGoals(0);
         }
+        return goals;
     }
 
     @Override
-    public double getShots() {
-        return this.shots;
+    public double getPenalties(ITeam team) {
+        double penalties = 0;
+        List<IPlayers> playerList = team.getPlayers();
+        for(IPlayers player : playerList) {
+            penalties += player.getPenalties();
+            player.setPenalties(0);
+        }
+        return penalties;
     }
 
     @Override
-    public double getSaves() {
-        return this.saves;
+    public void setPenaltyChance(double penaltyChance) {
+        this.penaltyChance = penaltyChance;
     }
 
     @Override
-    public double getGoals() {
-        return this.goals;
+    public void setShotChance(double shotChance) {
+        this.shotChance = shotChance;
     }
 
     @Override
-    public double getPenalties() {
-        return this.penalties;
+    public void setSaveChance(double saveChance) {
+        this.shotChance = saveChance;
     }
 
     @Override
