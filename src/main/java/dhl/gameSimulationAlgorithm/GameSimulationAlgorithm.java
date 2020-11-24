@@ -27,16 +27,20 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         List<IPlayers> playerList = new ArrayList<>();
         int forward = 0;
         int defense = 0;
-        int goalie = 1;
-        for(IPlayers player : team.getPlayers()){
-            if(player.getPosition().equals("forward") && player.getShifts() < 10 && forward < 3){
+        int goalie = 0;
+        for(IPlayers player : team.getPlayers()) {
+            if (player.getPosition().equals("forward") && player.getShifts() < 10 && forward < 3) {
                 playerList.add(player);
                 forward += 1;
             }
-            if(player.getPosition().equals("defense") && player.getShifts() < 10 && defense < 2){
+        }
+        for(IPlayers player : team.getPlayers()) {
+            if (player.getPosition().equals("defense") && player.getShifts() < 10 && defense < 2) {
                 playerList.add(player);
                 defense += 1;
             }
+        }
+        for(IPlayers player : team.getPlayers()) {
             if(player.getPosition().equals("goalie") && player.getShifts() < 24 && goalie < 1){
                 playerList.add(player);
             }
@@ -78,6 +82,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         return null;
     }
 
+    @Override
     public void saves(IPlayers goalie, IPlayers forward) {
         saveChance += saveCoefficientOne * (goalie.getSaving() - forward.getShooting()) + saveCoefficientTwo;
         if(Math.random() < saveChance){
@@ -88,6 +93,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         }
     }
 
+    @Override
     public IPlayers shotForward(List<IPlayers> forwardList){
         IPlayers forwardOne = forwardList.get(0);
         IPlayers forwardTwo = forwardList.get(1);
@@ -107,6 +113,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         }
     }
 
+    @Override
     public void penaltyDefence(List<IPlayers> defenseList){
         IPlayers defenseOne = defenseList.get(0);
         IPlayers defenseTwo = defenseList.get(1);
@@ -114,11 +121,9 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         double pointTwo = defenseTwo.getChecking();
         if(Math.random() < pointOne / (pointOne + pointTwo)){
             defenseOne.setPenalties(defenseOne.getPenalties() + 1);
-            //return defenseOne;
         }
         else{
             defenseTwo.setPenalties(defenseTwo.getPenalties() + 1);
-            //return defenseTwo;
         }
     }
 

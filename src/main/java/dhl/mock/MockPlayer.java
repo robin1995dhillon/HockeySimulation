@@ -264,5 +264,48 @@ public class MockPlayer {
         return players;
     }
 
+    public static List<IPlayers> forwardListMock() {
+        List<IPlayers> playersList = new ArrayList<>();
+        IPlayers player1 = new Players();
+        player1.setPlayerName("player1");
+        player1.setPosition("forward");
+        player1.setSkating(15);
+        player1.setShooting(15);
+        player1.setChecking(15);
+        player1.setSaving(15);
+        playersList.add(player1);
+        IPlayers player2 = new Players();
+        player2.setPlayerName("player2");
+        player2.setPosition("forward");
+        player2.setSkating(15);
+        player2.setShooting(0);
+        player2.setChecking(0);
+        player2.setSaving(15);
+        playersList.add(player2);
+        IPlayers player3 = new Players();
+        player3.setPlayerName("player3");
+        player3.setPosition("forward");
+        player3.setSkating(15);
+        player3.setShooting(0);
+        player3.setChecking(0);
+        player3.setSaving(15);
+        playersList.add(player3);
+        return playersList;
+    }
+
+    public static IPlayers worstForwardMock() {
+        IPlayers player = new Players();
+        player.setShooting(0);
+        player.setShots(0);
+        return player;
+    }
+
+    public static IPlayers bestGoalieMock(){
+        IPlayers player = new Players();
+        player.setSaving(20);
+        player.setSaves(0);
+        return player;
+    }
+
 
 }

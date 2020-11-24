@@ -9,6 +9,8 @@ public interface IGameSimulationAlgorithm {
     List<IPlayers> getPlayerForShift(ITeam team);
     IPlayers shots(List<IPlayers> teamOnePlayers, List<IPlayers> teamTwoPlayers);
     IPlayers getGoalie(List<IPlayers> playerList);
+    IPlayers shotForward(List<IPlayers> forwardList);
+    void penaltyDefence(List<IPlayers> defenseList);
     void saves(IPlayers goalie, IPlayers forward);
     double getShots(ITeam team);
     double getSaves(ITeam team);

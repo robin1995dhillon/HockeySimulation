@@ -18,6 +18,8 @@ import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
+import dhl.trade.IPlayerTradingCondition;
+import dhl.trade.PlayerTradingCondition;
 
 public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
@@ -30,6 +32,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
     private IGeneralManager generalManager;
     private IFreeAgents freeAgents;
     private IGamePlayConfig gamePlayConfig;
+    private IPlayerTradingCondition playerTradingCondition;
 
 
     public LeagueModelConcrete() {
@@ -150,5 +153,18 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
     @Override
     public void setGamePlayConfig(IGamePlayConfig gamePlayConfig) {
         this.gamePlayConfig = gamePlayConfig;
+    }
+
+    @Override
+    public IPlayerTradingCondition getPlayerTradingCondition() {
+        if(playerTradingCondition == null)  {
+            playerTradingCondition = new PlayerTradingCondition();
+        }
+        return playerTradingCondition;
+    }
+
+    @Override
+    public void setPlayerTradingCondition(IPlayerTradingCondition playerTradingCondition) {
+        this.playerTradingCondition = playerTradingCondition;
     }
 }
