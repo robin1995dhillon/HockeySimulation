@@ -42,6 +42,7 @@ public class Players implements IPlayers {
     private double shots;
     private double penalties;
     private double goals;
+    private int shifts;
 
     public Players() {
         gamePlayConfig = MockGamePlayConfig.createMock();
@@ -254,6 +255,16 @@ public class Players implements IPlayers {
     @Override
     public double getPenalties() {
         return this.penalties;
+    }
+
+    @Override
+    public void setShifts(int shifts){
+        this.shifts = shifts;
+    }
+
+    @Override
+    public int getShifts(){
+        return this.shifts;
     }
 
     @Override
