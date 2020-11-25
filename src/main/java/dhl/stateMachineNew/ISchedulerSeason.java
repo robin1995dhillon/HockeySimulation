@@ -36,5 +36,7 @@ public interface ISchedulerSeason {
 
     boolean isLastDayOfTrade(String currentDate);
 
+    String getStartDayOfSeason();
+
 
 }

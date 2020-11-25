@@ -58,6 +58,7 @@ public enum Configurables {
     REGULAR("Regular"),
     SCHEDULED("Scheduled"),
     PLAYED("played"),
+    START_DAY_OF_SEASON("30-09-"),
     PLAYOFF("Playoff");
 
 

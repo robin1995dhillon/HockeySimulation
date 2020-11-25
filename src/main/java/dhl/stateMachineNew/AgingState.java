@@ -24,7 +24,7 @@ public class AgingState implements IStateMachine{
         this.allTeams = allTeams;
     }
 
-    public void entry() {
+    public void entry() throws ParseException {
         for(ITeam team : allTeams){
             for(IPlayers player : team.getPlayers()){
                 player.agePlayer(1);
@@ -33,6 +33,7 @@ public class AgingState implements IStateMachine{
         for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
             //age free agent
         }
+        doTask();
 
     }
 

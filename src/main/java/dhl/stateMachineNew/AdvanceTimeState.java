@@ -19,6 +19,7 @@ public class AdvanceTimeState implements IStateMachine{
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
         league.setDate(leagueTimeConcept.nextDate(currentDate));
+        doTask();
 
     }
 

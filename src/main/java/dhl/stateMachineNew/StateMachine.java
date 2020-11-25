@@ -57,7 +57,7 @@ public class StateMachine {
         injuryCheck = new InjuryCheckState(this,this.getTeamsForInjuryCheck());
         executeTrades = new ExecuteTradesState(this);
         aging = new AgingState(this, this.getTotalTeamList());
-        advanceToNextSeason = new AdvanceToNextSeasonState(this);
+        advanceToNextSeason = new AdvanceToNextSeasonState(this, this.getTotalTeamList());
         persist = new PersistState();
         output = new UserOutput();
         currentState = jsonImport;

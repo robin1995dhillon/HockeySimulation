@@ -3,11 +3,11 @@ package dhl.leagueModel.training;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.players.IPlayers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerTrainingCondition implements IPlayerTrainingCondition {
     @Override
-    public void receiveTraining(ArrayList<IPlayers> playerList, IHeadCoach headCoach) {
+    public void receiveTraining(List<IPlayers> playerList, IHeadCoach headCoach) {
         for (IPlayers player : playerList) {
             if (Math.random() < headCoach.getSkating()) {
                 player.setSkating(player.getSkating() + 1);

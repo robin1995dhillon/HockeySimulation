@@ -5,6 +5,7 @@ import dhl.leagueModel.freeAgents.IFreeAgents;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @JsonDeserialize(as = Players.class)
 public interface IPlayers {
@@ -78,7 +79,7 @@ public interface IPlayers {
 
     void checkIfRetired();
 
-    IFreeAgents replacePlayerWithFreeAgent(IPlayers player, ArrayList<IFreeAgents> freeAgents);
+    IFreeAgents replacePlayerWithFreeAgent(IPlayers player, List<IFreeAgents> freeAgents);
 
     void checkForPlayerInjury();
 
