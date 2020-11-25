@@ -4,8 +4,8 @@ import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITraining;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
-import dhl.training.IPlayerTrainingCondition;
-import dhl.training.PlayerTrainingCondition;
+import dhl.leagueModel.training.IPlayerTrainingCondition;
+import dhl.leagueModel.training.PlayerTrainingCondition;
 
 public class TrainingState implements IStateMachine{
 
