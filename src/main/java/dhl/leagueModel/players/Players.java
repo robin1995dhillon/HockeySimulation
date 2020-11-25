@@ -346,7 +346,7 @@ public class Players implements IPlayers {
     }
 
     @Override
-    public IFreeAgents replacePlayerWithFreeAgent(IPlayers player, ArrayList<IFreeAgents> freeAgents) {
+    public IFreeAgents replacePlayerWithFreeAgent(IPlayers player, List<IFreeAgents> freeAgents) {
         List<Double> freeAgentStrengthList = new ArrayList<>();
         for (IFreeAgents freeAgent : freeAgents) {
             if (player.getPosition().equals(freeAgent.getPosition())) {

@@ -11,7 +11,8 @@ public class InitializeSeasonState implements IStateMachine {
 
     }
 
-    public void entry() {
+    public void entry() throws ParseException {
+        doTask();
 
     }
 

@@ -103,7 +103,7 @@ public class SchedulerSeason implements ISchedulerSeason {
 
 
     public String getStartDayOfSeason() {
-        String startDate = "30-09-" + this.currentYear;
+        String startDate = Configurables.START_DAY_OF_SEASON.getAction() + this.currentYear;
 
         return startDate;
     }

@@ -24,7 +24,8 @@ public class SimulateState implements IStateMachine {
 
     }
 
-    public void entry() {
+    public void entry() throws ParseException {
+        doTask();
 
     }
 
@@ -46,12 +47,13 @@ public class SimulateState implements IStateMachine {
                 machine.setTeamsForInjuryCheck(teamsInjuryCheck);
             }
         }
-        if (teamsInjuryCheck != null) {
-            machine.setCurrentState(machine.getInjuryCheck());
-            machine.getCurrentState().entry();
-        } else {
+        if (teamsInjuryCheck == null) {
             output.setOutput("injury check list is empty");
             output.sendOutput();
+
+        } else {
+            machine.setCurrentState(machine.getInjuryCheck());
+            machine.getCurrentState().entry();
         }
 
         String currentDate = league.getDate();

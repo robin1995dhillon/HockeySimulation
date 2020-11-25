@@ -1,5 +1,6 @@
 package dhl.stateMachineNew;
 
+import dhl.Configurables;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
@@ -21,10 +22,16 @@ public class InjuryCheckState implements IStateMachine{
                 player.checkForPlayerInjury();
             }
         }
+        doTask();
 
     }
 
     public IStateMachine doTask() {
+        for(ISchedulerSeason schedule : machine.getLeague().getGameSchedules()){
+            if(schedule.getStatus().equalsIgnoreCase(Configurables.SCHEDULED.getAction())){
+                return machine.getSimulate();
+            }
+        }
 
         return null;
     }
