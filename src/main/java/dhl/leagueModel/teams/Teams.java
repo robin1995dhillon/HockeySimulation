@@ -16,6 +16,7 @@ import dhl.persistence.saving.TeamPersistence;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Teams implements ITeam {
@@ -204,6 +205,7 @@ public class Teams implements ITeam {
     @Override
     public void createRoster() throws Exception {
         List<IPlayers> allSkaters = new ArrayList<>();
+        List<Double> allSkatersStrength = new ArrayList<>();
         List<IPlayers> allGoalie = new ArrayList<>();
         if(this.players == null) {
             throw new Exception("Player Array is empty while creating roster.");
@@ -211,11 +213,18 @@ public class Teams implements ITeam {
             for (IPlayers players : this.players) {
                 if (players.getPosition().equals(Configurables.FORWARD.getAction()) || players.getPosition().equals(Configurables.DEFENSE.getAction())) {
                     allSkaters.add(players);
+                    allSkatersStrength.add(players.calculateStrength(players));
                 } else {
                     allGoalie.add(players);
                 }
             }
         }
+    }
+
+    private void bestSkatersInATeam(List<IPlayers> playersList, List<Double> playersStrengthList) {
+        Collections.sort(playersStrengthList);
+
+
     }
 
 
