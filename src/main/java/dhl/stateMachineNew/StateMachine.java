@@ -2,16 +2,20 @@ package dhl.stateMachineNew;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
+import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.league.League;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StateMachine {
     private ILeague league;
+    private LeagueModelAbstractFactory factory;
+    private List<ITeam> teamsForInjuryCheck;
     private IStateMachine jsonImport;
     private IStateMachine createTeam;
     private IStateMachine loadTeam;
@@ -38,28 +42,29 @@ public class StateMachine {
 
         totalTeamList = new ArrayList<>();
         league = new League();
+//        league = factory.getLeague();
         team = new Teams();
         jsonImport = new JsonImportState(this,filePath);
 //        createTeam = new CreateTeamState(this);
         loadTeam = new LoadTeamState(this);
         playerChoice = new PlayerChoiceState(this);
-        simulate = new SimulateState();
-        initializeSeason = new InitializeSeasonState();
-        advanceTime = new AdvanceTimeState();
-        generatePlayoffSchedule = new GeneratePlayoffScheduleState();
-        training = new TrainingState();
+        simulate = new SimulateState(this);
+        initializeSeason = new InitializeSeasonState(this);
+        advanceTime = new AdvanceTimeState(this);
+        generatePlayoffSchedule = new GeneratePlayoffScheduleState(this);
+        training = new TrainingState(this);
         simulateGame = new SimulateGame();
-        injuryCheck = new InjuryCheckState();
-        executeTrades = new ExecuteTradesState();
-        aging = new AgingState();
-        advanceToNextSeason = new AdvanceToNextSeasonState();
+        injuryCheck = new InjuryCheckState(this,this.getTeamsForInjuryCheck());
+        executeTrades = new ExecuteTradesState(this);
+        aging = new AgingState(this, this.getTotalTeamList());
+        advanceToNextSeason = new AdvanceToNextSeasonState(this);
         persist = new PersistState();
         output = new UserOutput();
         currentState = jsonImport;
     }
 
 
-    public void startMachine(){
+    public void startMachine() throws ParseException {
 
         while (currentState != null) {
             IStateMachine nextState = currentState.doTask();
@@ -239,5 +244,13 @@ public class StateMachine {
 
     public void setTotalTeamList(List<ITeam> totalTeamList) {
         this.totalTeamList = totalTeamList;
+    }
+
+    public List<ITeam> getTeamsForInjuryCheck() {
+        return teamsForInjuryCheck;
+    }
+
+    public void setTeamsForInjuryCheck(List<ITeam> teamsForInjuryCheck) {
+        this.teamsForInjuryCheck = teamsForInjuryCheck;
     }
 }

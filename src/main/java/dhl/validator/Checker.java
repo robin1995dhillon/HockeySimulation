@@ -3,6 +3,8 @@ package dhl.validator;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
@@ -57,9 +59,9 @@ public class Checker implements IChecker {
     }
 
     @Override
-    public boolean managerChecker(List<String> managerList, String managerName) {
-        for (String s : managerList) {
-            if (s.equals(managerName)) {
+    public boolean managerChecker(List<IGeneralManager> managerList, String managerName) {
+        for (IGeneralManager manager : managerList) {
+            if (manager.getName().equals(managerName)) {
                 return true;
             }
         }

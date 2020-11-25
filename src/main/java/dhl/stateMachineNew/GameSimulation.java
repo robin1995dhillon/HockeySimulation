@@ -10,7 +10,7 @@ public class GameSimulation implements IGameSimulation {
 
 
     @Override
-    public boolean simulateGame(ITeam firstTeam, ITeam opponentTeam, double firstTeamStrength, double opponentTeamStrength, ILeague league) {
+    public void simulateGame(ITeam firstTeam, ITeam opponentTeam, double firstTeamStrength, double opponentTeamStrength, ILeague league) {
 
         IGamePlayConfig config = MockGamePlayConfig.createMock();
         double randomWinChance = config.getGameResolver().getRandomWinChance(); //league.getGameplayConfig().getGameResolver().getRandomWinChance()[pass league from stateMachine, it will have all the values];
@@ -67,9 +67,9 @@ public class GameSimulation implements IGameSimulation {
             }
 
         }
-        return true;
     }
 
+    @Override
     public void opponentTeamLose(ITeam opponentTeam, ITeamStanding teamStanding) {
 //        opponentTeam.setLossPoints(opponentTeam.getLossPoints() + 1);
         teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);
@@ -77,18 +77,21 @@ public class GameSimulation implements IGameSimulation {
         teamStanding.setTotalPoints(teamStanding.getTotalPoints() + 2);
     }
 
+    @Override
     public void firstTeamLose(ITeam firstTeam, ITeamStanding teamStanding) {
         firstTeam.setLossPoints(firstTeam.getLossPoints() + 1);
         teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);
         teamStanding.setGamesLost(teamStanding.getGamesLost() + 1);
     }
 
+    @Override
     public void opponentTeamLoseReverse(ITeam opponentTeam, ITeamStanding teamStanding) {
         opponentTeam.setLossPoints(opponentTeam.getLossPoints() + 1);
         teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);
         teamStanding.setGamesLost(teamStanding.getGamesLost() + 1);
     }
 
+    @Override
     public void firstTeamLoseReverse(ITeam firstTeam, ITeamStanding teamStanding) {
 //        firstTeam.setLossPoints(firstTeam.getLossPoints() + 1);
         teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);

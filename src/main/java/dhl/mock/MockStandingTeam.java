@@ -17,20 +17,20 @@ public class MockStandingTeam {
         ITeam team = MockTeam.MockTeamTwo();
         ITeamStanding teamStanding = new TeamStandings();
         teamStanding.setTeam(team);
-        teamStanding.setGamesLost(0);
-        teamStanding.setTotalPoints(0);
-        teamStanding.setGamesWon(0);
-        teamStanding.setGamesPlayed(0);
+        teamStanding.setGamesLost(4);
+        teamStanding.setTotalPoints(2);
+        teamStanding.setGamesWon(1);
+        teamStanding.setGamesPlayed(5);
         teamStanding.setDivision("ABC");
         teamStanding.setConference("DEF");
 
         ITeam team2 = MockTeam.MockTeam();
         ITeamStanding teamStanding2 = new TeamStandings();
         teamStanding2.setTeam(team2);
-        teamStanding2.setGamesLost(0);
-        teamStanding2.setTotalPoints(0);
-        teamStanding2.setGamesWon(0);
-        teamStanding2.setGamesPlayed(0);
+        teamStanding2.setGamesLost(5);
+        teamStanding2.setTotalPoints(8);
+        teamStanding2.setGamesWon(4);
+        teamStanding2.setGamesPlayed(9);
         teamStanding2.setDivision("GHI");
         teamStanding2.setConference("JKL");
         list.add(teamStanding);

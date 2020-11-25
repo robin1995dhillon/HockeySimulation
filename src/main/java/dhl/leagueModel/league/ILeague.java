@@ -26,8 +26,6 @@ public interface ILeague {
 
     List<IHeadCoach> getCoaches();
 
-    void removeManagerFromList(List<String> managerList, String managerName);
-
     void setFreeAgents(List<IFreeAgents> freeAgents);
 
     void setHeadCoach(List<IHeadCoach> coaches);
@@ -53,4 +51,21 @@ public interface ILeague {
     void setTeamStandingList(List<ITeamStanding> teamStandingList);
 
 //    void storeLeague();
+
+    String getDate();
+
+    void setDate(String startDateOfSeason);
+
+    String getLastDateOfSeason();
+
+    void setLastDateOfSeason(String lastDateOfSeason);
+
+    int getSeason();
+
+    void setSeason(int season);
+
+    int getTotalSeasons();
+
+    void setTotalSeasons(int numberOfSeasons);
+
 }

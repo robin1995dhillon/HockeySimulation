@@ -6,8 +6,6 @@ import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,6 +46,7 @@ public class SchedulerSeason implements ISchedulerSeason {
     private String matchDate;
     private List<ISchedulerSeason> scheduleList;
     private List<ITeamStanding> listTeamStanding;
+    private List<ITeamStanding> sortedTeamListPlayoff;
 
     private IUserOutput output;
     private Map<String, List<Map<String, String>>> finalSchedule;
@@ -59,40 +58,49 @@ public class SchedulerSeason implements ISchedulerSeason {
     private Map<IConference, List<IDivision>> divisionsInConference;
     private Map<ITeam, Integer> scheduledMatches;
     private Map<String, Integer> matchesOnADay;
+    private StateMachine machine;
+    private ILeague league;
+    private ITime timeConcept;
 
-
-
-    SchedulerSeason(Calendar calendar, IUserOutput output) {
-        this.totalDivisions = 0;
-        this.totalTeams = 0;
-        this.calendar = calendar;
-        this.output = output;
-
-        //Model lists
-        conferenceList = new ArrayList<>();
-        divisionList = new ArrayList<>();
-        teamList = new ArrayList<>();
-
-        //Model mappers
-        teamsInConference = new HashMap<>();
-        teamsInDivision = new HashMap<>();
-        divisionsInConference = new HashMap<>();
-        scheduledMatches = new HashMap<ITeam, Integer>();
+    public SchedulerSeason() {
+        timeConcept = new LeagueTimeConcept();
+//        this.totalDivisions = 0;
+//        this.totalTeams = 0;
+//        //this.currentSeason = ;
+//
+//        conferenceList = new ArrayList<>();
+//        divisionList = new ArrayList<>();
+//        teamList = new ArrayList<>();
+//        timeConcept = new LeagueTimeConcept();
+//
+//        teamsInConference = new HashMap<>();
+//        teamsInDivision = new HashMap<>();
+//        divisionsInConference = new HashMap<>();
+//        scheduledMatches = new HashMap<>();
+//        int currentYear = this.calendar.get(Calendar.YEAR);
+//        currentYear += this.currentSeason;                          //check it
+//        this.currentYear = String.valueOf(currentYear);
+//        this.regSeasonYear = currentYear;
+//        this.playoffsYear = currentYear + 1;
 
     }
 
-    SchedulerSeason(Calendar calendar, int currentSeason) {
-        this.currentSeason = currentSeason;
-        this.calendar = calendar;
-        int currentYear = this.calendar.get(Calendar.YEAR);
-        currentYear += this.currentSeason;
-        this.currentYear = String.valueOf(currentYear);
-        this.regSeasonYear = currentYear;
-        this.playoffsYear = currentYear + 1;
-    }
+//    public SchedulerSeason() {
+//
+//    }
 
-    SchedulerSeason() {
-    }
+//    SchedulerSeason(Calendar calendar, int currentSeason, StateMachine machine) {
+//        this.machine = machine;
+//        this.league = this.machine.getLeague();
+//        this.currentSeason = currentSeason;
+//        this.calendar = calendar;
+//        int currentYear = this.calendar.get(Calendar.YEAR);
+//        currentYear += this.currentSeason;
+//        this.currentYear = String.valueOf(currentYear);
+//        this.regSeasonYear = currentYear;
+//        this.playoffsYear = currentYear + 1;
+//    }
+
 
     public String getStartDayOfSeason() {
         String startDate = "30-09-" + this.currentYear;
@@ -104,7 +112,7 @@ public class SchedulerSeason implements ISchedulerSeason {
      * Season start date: 1st October
      **/
     public String getFirstDayOfSeason() {
-        String firstDay = "1-10-" + this.currentYear;
+        String firstDay = "01-10-" + this.currentYear;
 
         return firstDay;
     }
@@ -117,8 +125,8 @@ public class SchedulerSeason implements ISchedulerSeason {
         calendar.set(Calendar.DAY_OF_WEEK_IN_MONTH, 1);
         calendar.set(Calendar.MONTH, Calendar.APRIL);
         calendar.set(Calendar.YEAR, playoffsYear);
-        String dDay = String.valueOf(calendar.get(Calendar.DATE));
-        String lastDay = dDay + "-04-" + String.valueOf(playoffsYear);
+        String seasonDay = String.valueOf(calendar.get(Calendar.DATE));
+        String lastDay = seasonDay + "-04-" + String.valueOf(playoffsYear);
 
         return lastDay;
     }
@@ -139,7 +147,7 @@ public class SchedulerSeason implements ISchedulerSeason {
      * Stanley Playoffs end date: June 1st
      **/
     public String getLastDayOfStanleyPlayoffs() {
-        String lastDay = "1-06-" + String.valueOf(playoffsYear);
+        String lastDay = "01-06-" + String.valueOf(playoffsYear);
 
         return lastDay;
     }
@@ -175,10 +183,10 @@ public class SchedulerSeason implements ISchedulerSeason {
         return false;
     }
 
-    public boolean isLastDayOfSeason(String currentDate) {
+    public boolean isLastDayOfSeason(String currentDate, String lastDate) {
         try {
             Date start = new SimpleDateFormat("dd-MM-yyyy").parse(currentDate);
-            Date end = new SimpleDateFormat("dd-MM-yyyy").parse(getLastDayOfStanleyPlayoffs());
+            Date end = new SimpleDateFormat("dd-MM-yyyy").parse(lastDate);
             if (start.compareTo(end) >= 0) {
                 return true;
             }
@@ -199,11 +207,24 @@ public class SchedulerSeason implements ISchedulerSeason {
         return this.currentDay;
     }
 
-    public void generateSchedule(ILeague league, StateMachine machine) {
+    public void generateSchedule(StateMachine machine) throws ParseException {
+
+        this.currentSeason = machine.getLeague().getSeason();
+        int currentYear = this.calendar.get(Calendar.YEAR);
+        currentYear += this.currentSeason;                          //check it
+        this.currentYear = String.valueOf(currentYear);
+        this.regSeasonYear = currentYear;
+        this.playoffsYear = currentYear + 1;
+
         scheduleList = new ArrayList<>();
         listTeamStanding = new ArrayList<>();
-        initialize(league);
-        for (IConference conference : league.getConferences()) {
+        String startDateOfSeason = getStartDayOfSeason();
+        currentDay = getStartDayOfSeason(); //check krvaa
+        lastDay = getLastDayOfSeason();
+        machine.getLeague().setDate(startDateOfSeason);
+        machine.getLeague().setLastDateOfSeason(lastDay);
+        initialize(machine.getLeague());
+        for (IConference conference : machine.getLeague().getConferences()) {
             for (IDivision division : conference.getDivisions()) {
                 for (ITeam team : division.getTeams()) {
                     ITeamStanding teamStanding = new TeamStandings();
@@ -212,41 +233,41 @@ public class SchedulerSeason implements ISchedulerSeason {
                     teamStanding.setConference(conference.getConferenceName());
                     teamStanding.setTeam(team);
                     listTeamStanding.add(teamStanding);
-                    incrementCurrentDay();
+                    incrementCurrentDay(currentDay, lastDay);
                     //setMatches();
                     createSchedule();
 
                 }
             }
         }
-        league.setSchedules(scheduleList);
-        league.setTeamStandingList(listTeamStanding);
+        machine.getLeague().setSchedules(scheduleList);
+        machine.getLeague().setTeamStandingList(listTeamStanding);
         machine.setTotalTeamList(teamList);
     }
 
 
-    public boolean incrementCurrentDay() {
+    public boolean incrementCurrentDay(String currentDay, String lastDay) throws ParseException {
 
         if (currentDay.equals(lastDay)) {
             return false;
         } else {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-
-            try {
-                calendar.setTime(dateFormat.parse(currentDay));
-            } catch (ParseException e) {
-                output.setOutput("Exception while getting current date in Advance Time state");
-                output.sendOutput();
-            }
-
-            // add a day to current date if it is not last date for the season
-            calendar.add(Calendar.DAY_OF_MONTH, 1);
-            currentDay = dateFormat.format(calendar.getTime());
+            String date = timeConcept.nextDate(currentDay);
             return true;
         }
     }
 
     private void initialize(ILeague league) {
+        this.totalDivisions = 0;
+        this.totalTeams = 0;
+
+        conferenceList = new ArrayList<>();
+        divisionList = new ArrayList<>();
+        teamList = new ArrayList<>();
+
+        teamsInConference = new HashMap<>();
+        teamsInDivision = new HashMap<>();
+        divisionsInConference = new HashMap<>();
+        scheduledMatches = new HashMap<>();
 
         List<IConference> retrievedConferences = league.getConferences();
 
@@ -301,7 +322,7 @@ public class SchedulerSeason implements ISchedulerSeason {
 //        }
 //    }
 
-    private void createSchedule() {
+    private void createSchedule() throws ParseException {
 
         for (IConference conference : conferenceList) {
 
@@ -310,9 +331,9 @@ public class SchedulerSeason implements ISchedulerSeason {
 
                 Set<Map.Entry<IDivision, List<ITeam>>> entrySet = teamsInDivision.entrySet();
                 IDivision divisionName = null;
-                for (Map.Entry<IDivision, List<ITeam>> itr : entrySet) {
-                    if (itr.getValue().contains(team)) {
-                        divisionName = itr.getKey();
+                for (Map.Entry<IDivision, List<ITeam>> iterate : entrySet) {
+                    if (iterate.getValue().contains(team)) {
+                        divisionName = iterate.getKey();
                     }
                 }
                 scheduleRegularSeasonGames(conference, divisionName, team);
@@ -320,18 +341,18 @@ public class SchedulerSeason implements ISchedulerSeason {
         }
     }
 
-    private void scheduleRegularSeasonGames(IConference conferenceName, IDivision divisionName, ITeam teamName) {
+    private void scheduleRegularSeasonGames(IConference conferenceName, IDivision divisionName, ITeam teamName) throws ParseException {
         scheduleIntraDivGames(divisionName, teamName);
         scheduleInterDivGames(conferenceName, divisionName, teamName);
         scheduleInterConfGames(conferenceName, teamName);
     }
 
-    private void scheduleIntraDivGames(IDivision divisionName, ITeam teamName) {
+    private void scheduleIntraDivGames(IDivision divisionName, ITeam teamName) throws ParseException {
         List<ITeam> teamsInDiv = teamsInDivision.get(divisionName);
         schedule(teamsInDiv, teamName);
     }
 
-    private void scheduleInterDivGames(IConference conferenceName, IDivision divisionName, ITeam teamName) {
+    private void scheduleInterDivGames(IConference conferenceName, IDivision divisionName, ITeam teamName) throws ParseException {
         List<ITeam> teamsInOtherDivision = new ArrayList<>();
         List<IDivision> divisionsInConf = divisionsInConference.get(conferenceName);
 
@@ -346,7 +367,7 @@ public class SchedulerSeason implements ISchedulerSeason {
         schedule(teamsInOtherDivision, teamName);
     }
 
-    private void scheduleInterConfGames(IConference conferenceName, ITeam teamName) {
+    private void scheduleInterConfGames(IConference conferenceName, ITeam teamName) throws ParseException {
         List<ITeam> teamsInOtherConferences = new ArrayList<>();
         for (Map.Entry<IConference, List<ITeam>> entry : teamsInConference.entrySet()) {
             if (entry.getKey().getConferenceName().equalsIgnoreCase(conferenceName.getConferenceName())) {
@@ -358,8 +379,7 @@ public class SchedulerSeason implements ISchedulerSeason {
     }
 
 
-    private void schedule(List<ITeam> teamsInFormat, ITeam teamName) {
-        int matchCounter = 0;
+    private void schedule(List<ITeam> teamsInFormat, ITeam teamName) throws ParseException {
         //int loopCounter = 28 / (teamsInFormat.size() - 1);
         int i = 0;
         int gameCounter = 0;
@@ -370,12 +390,18 @@ public class SchedulerSeason implements ISchedulerSeason {
                     continue;
                 } else {
                     addSchedule(team, teamName, currentDay, Configurables.REGULAR.getAction());
-                    incrementCurrentDay();
-                    gameCounter++;
+                    boolean isIncrement = incrementCurrentDay(currentDay, lastDay);
+                    if (isIncrement) {
+                        gameCounter++;
+                        continue;
+                    } else {
+                        currentDay = getFirstDayOfSeason();
+                        gameCounter++;
+                    }
+                    //agr last date aa gyi toh set it again to 1 oct?
                 }
             } else {
                 break;
-
             }
         }
 
@@ -383,15 +409,50 @@ public class SchedulerSeason implements ISchedulerSeason {
 
     }
 
-    public void addSchedule(ITeam team, ITeam teamName, String currentDay, String gameType) {
+    public void addSchedule(ITeam team, ITeam opponentTeam, String currentDay, String gameType) {
 
         ISchedulerSeason schedulerSeason = new SchedulerSeason();
-        schedulerSeason.setFirstTeam(teamName);
+        schedulerSeason.setFirstTeam(opponentTeam);
         schedulerSeason.setSecondTeam(team);
         schedulerSeason.setDateOfMatch(currentDay);
         schedulerSeason.setStatus(Configurables.SCHEDULED.getAction());
         schedulerSeason.setGameType(gameType);
         scheduleList.add(schedulerSeason);
+    }
+
+    public void playoffSchedule(StateMachine machine) throws ParseException {
+        sortedTeamListPlayoff = new ArrayList<>();
+        scheduleList = new ArrayList<>();
+        Map<ITeam, Integer> teamListPlayoff = new HashMap<>();
+        List<ITeam> finalPlayoffList = new ArrayList<>();
+        ILeague league = machine.getLeague();
+        String playoffStartDate = getFirstDayOfStanleyPlayoffs();
+        String playoffEndDate = getLastDayOfStanleyPlayoffs();
+        league.getTeamStandingList().sort((team1, team2) -> Integer.compare(team1.getTotalPoints(), team2.getTotalPoints()));
+        sortedTeamListPlayoff = league.getTeamStandingList().subList(0, 10);
+        for (ITeamStanding team : sortedTeamListPlayoff) {
+            teamListPlayoff.put(team.getTeam(), team.getTotalPoints());
+        }
+        for (Map.Entry<ITeam, Integer> entry : teamListPlayoff.entrySet()) {
+            finalPlayoffList.add(entry.getKey());
+        }
+        for (ITeam firstTeam : finalPlayoffList) {
+            for (ITeam opponentTeam : finalPlayoffList) {
+                if (firstTeam.getTeamName().equalsIgnoreCase(opponentTeam.getTeamName())) {
+                    continue;
+                } else {
+                    addSchedule(firstTeam, opponentTeam, playoffStartDate, Configurables.PLAYOFF.getAction());
+                    boolean isLateDate = incrementCurrentDay(playoffStartDate, playoffEndDate);
+                    if (isLateDate) {
+                        playoffStartDate = getFirstDayOfStanleyPlayoffs();
+                    } else {
+                        continue;
+                    }
+                }
+            }
+        }
+        league.setSchedules(scheduleList);
+
     }
 
     @Override

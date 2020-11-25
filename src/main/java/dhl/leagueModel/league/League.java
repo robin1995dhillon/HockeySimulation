@@ -16,6 +16,10 @@ public class League implements ILeague {
 
 
     private String leagueName;
+    private String startDateOfSeason;
+    private int numberSeason;
+    private int totalSeasons;
+    private String lastDateOfSeason;
 
     private List<IConference> conferences;
     private List<IFreeAgents> freeAgents;
@@ -78,14 +82,6 @@ public class League implements ILeague {
         return coaches;
     }
 
-    @Override
-    public void removeManagerFromList(List<String> managerList, String managerName) {
-        for (int i = 0; i < managerList.size(); i++) {
-            if (managerList.get(i).equals(managerName)) {
-                managerList.remove(i);
-            }
-        }
-    }
 
     @Override
     public void setFreeAgents(List<IFreeAgents> freeAgents) {
@@ -181,5 +177,47 @@ public class League implements ILeague {
 //        }
 //    }
 
+@Override
+public String getDate() {
+    return startDateOfSeason;
+}
+
+    @Override
+    public void setDate(String startDateOfSeason) {
+        this.startDateOfSeason = startDateOfSeason;
+    }
+
+    @Override
+    public String getLastDateOfSeason() {
+        return lastDateOfSeason;
+    }
+
+    @Override
+    public void setLastDateOfSeason(String lastDateOfSeason) {
+        this.lastDateOfSeason = lastDateOfSeason;
+
+    }
+
+    @Override
+    public int getSeason() {
+        return numberSeason;
+    }
+
+    @Override
+    public void setSeason(int season) {
+        this.numberSeason = season;
+
+    }
+
+    @Override
+    public int getTotalSeasons() {
+        return totalSeasons;
+    }
+
+    @Override
+    public void setTotalSeasons(int numberOfSeasons) {
+        this.totalSeasons = numberOfSeasons;
+
+    }
 
 }

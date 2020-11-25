@@ -9,6 +9,7 @@ import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
+import dhl.trade.IPlayerTradingCondition;
 
 public abstract class LeagueModelAbstractFactory {
 
@@ -58,4 +59,8 @@ public abstract class LeagueModelAbstractFactory {
     public abstract IGamePlayConfig getGamePlayConfig();
 
     public abstract void setGamePlayConfig(IGamePlayConfig gamePlayConfig);
+
+    public abstract IPlayerTradingCondition getPlayerTradingCondition();
+
+    public abstract void setPlayerTradingCondition(IPlayerTradingCondition playerTradingCondition);
 }

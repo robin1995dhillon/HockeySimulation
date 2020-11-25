@@ -38,6 +38,11 @@ public class Players implements IPlayers {
     private boolean isInjured = false;
     private LocalDate playerCurrentDate;
     private IGamePlayConfig gamePlayConfig;
+    private double saves;
+    private double shots;
+    private double penalties;
+    private double goals;
+    private int shifts;
 
     public Players() {
         gamePlayConfig = MockGamePlayConfig.createMock();
@@ -213,6 +218,56 @@ public class Players implements IPlayers {
     }
 
     @Override
+    public void setGoals(double goals) {
+        this.goals = goals;
+    }
+
+    @Override
+    public double getGoals() {
+        return this.goals;
+    }
+
+    @Override
+    public void setSaves(double saves) {
+        this.saves = saves;
+    }
+
+    @Override
+    public double getSaves() {
+        return this.saves;
+    }
+
+    @Override
+    public void setShots(double shots) {
+        this.shots = shots;
+    }
+
+    @Override
+    public double getShots() {
+        return this.shots;
+    }
+
+    @Override
+    public void setPenalties(double penalties) {
+        this.penalties = penalties;
+    }
+
+    @Override
+    public double getPenalties() {
+        return this.penalties;
+    }
+
+    @Override
+    public void setShifts(int shifts){
+        this.shifts = shifts;
+    }
+
+    @Override
+    public int getShifts(){
+        return this.shifts;
+    }
+
+    @Override
     public void setPlayerCurrentDate(LocalDate playerCurrentDate) {
         this.playerCurrentDate = playerCurrentDate;
     }
@@ -286,7 +341,6 @@ public class Players implements IPlayers {
         System.out.println(this.playerCurrentDate);
         System.out.println(nextBirthDay);
         if (nextBirthDay.isBefore(this.playerCurrentDate)) {
-            System.out.println("Inside Increase");
             this.setAge(this.playerCurrentDate.getYear() - year);
         } else {
             this.setAge(this.playerCurrentDate.getYear() - year - 1);

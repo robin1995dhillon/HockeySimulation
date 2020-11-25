@@ -5,5 +5,13 @@ import dhl.leagueModel.teams.ITeam;
 
 public interface IGameSimulation {
 
-    public boolean simulateGame(ITeam firstTeam, ITeam opponentTeam, double firstTeamStrength, double opponentTeamTeamStrength, ILeague league);
+    void simulateGame(ITeam firstTeam, ITeam opponentTeam, double firstTeamStrength, double opponentTeamTeamStrength, ILeague league);
+
+    void opponentTeamLose(ITeam opponentTeam, ITeamStanding teamStanding);
+
+    void firstTeamLose(ITeam firstTeam, ITeamStanding teamStanding);
+
+    void opponentTeamLoseReverse(ITeam opponentTeam, ITeamStanding teamStanding);
+
+    void firstTeamLoseReverse(ITeam firstTeam, ITeamStanding teamStanding);
 }
