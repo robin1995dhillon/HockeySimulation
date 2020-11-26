@@ -60,7 +60,6 @@ public class SimulationMain {
                 ILeague league = IDeserializeJSONToModel.jsonToLeague(Path);
                 if (league.isValid(league)) {
                     output.setOutput("Valid JSON!\n");
-                    System.out.println(league.getFreeAgents().get(0).getBirthYear());
                     IConference conference = league.getConferences().get(0);
                     IDivision division = conference.getDivisions().get(0);
                     ITeam team = division.getTeams().get(0);

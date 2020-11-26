@@ -1,5 +1,7 @@
 package dhl.leagueModel.league;
 
+import dhl.leagueModel.IAllPlayers;
+import dhl.leagueModel.IFreeAgents2;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
@@ -51,6 +53,10 @@ public interface ILeague {
     void setTeamStandingList(List<ITeamStanding> teamStandingList);
 
 //    void storeLeague();
+
+    List<IFreeAgents2> getFreeAgents2();
+
+    void setFreeAgents2(List<IFreeAgents2> freeAgents2);
 
     String getDate();
 

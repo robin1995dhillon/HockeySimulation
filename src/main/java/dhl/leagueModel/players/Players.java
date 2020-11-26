@@ -31,7 +31,6 @@ public class Players implements IPlayers {
     private int birthMonth;
     private int birthYear;
     private int age = 0;
-
     private double strength;
     private int injuredDays = 0;
     private boolean isRetired = false;
