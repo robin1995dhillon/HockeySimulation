@@ -40,19 +40,19 @@ public class PlayerTradingTest {
         assertEquals(player.getSkating() + player.getSaving(), strength);
     }
 
-    @Test
-    public void getPositionTypesOfferingTest() {
-
-        IPlayerTradingCondition condition = new PlayerTradingCondition();
-        List<IPlayers> players;
-        players = MockPlayer.createMockPlayerList();
-
-        List<IPlayers> expectedList;
-        expectedList = MockPlayer.getPositionTypesOfferingExpectedList();
-        condition.getPositionTypesOffering(players);
-
-        assertEquals(players.get(0).getPosition(), expectedList.get(0).getPosition());
-    }
+//    @Test
+//    public void getPositionTypesOfferingTest() {
+//
+//        IPlayerTradingCondition condition = new PlayerTradingCondition();
+//        List<IPlayers> players;
+//        players = MockPlayer.createMockPlayerList();
+//
+//        List<IPlayers> expectedList;
+//        expectedList = MockPlayer.getPositionTypesOfferingExpectedList();
+//        condition.getPositionTypesOffering(players);
+//
+//        assertEquals(players.get(0).getPosition(), expectedList.get(0).getPosition());
+//    }
 
 
 
