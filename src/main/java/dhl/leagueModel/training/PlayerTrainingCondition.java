@@ -2,10 +2,15 @@ package dhl.leagueModel.training;
 
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.players.IPlayers;
+import dhl.stateMachineNew.AdvanceToNextSeasonState;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class PlayerTrainingCondition implements IPlayerTrainingCondition {
+    private static final Logger logger = LogManager.getLogger(PlayerTrainingCondition.class);
+
     @Override
     public void receiveTraining(List<IPlayers> playerList, IHeadCoach headCoach) {
         for (IPlayers player : playerList) {
@@ -30,5 +35,6 @@ public class PlayerTrainingCondition implements IPlayerTrainingCondition {
                 player.checkForPlayerInjury();
             }
         }
+        logger.info("Complete the training.");
     }
 }
