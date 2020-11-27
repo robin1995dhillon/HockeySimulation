@@ -1,26 +1,32 @@
 package dhl.trade;
 
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.List;
 
 public interface IFreeAgentListAdd {
 
+    void addPlayer(List<IPlayers> player, int playersToBeAdded, int goalieCount);
+
+    List<IFreeAgents> sortedAgentsList(int playersToBeAdded, int goalieCount);
+
+    void addPlayerUser(List<IPlayers> player, int playersToBeAdded, int goalieCount);
+
     void aiAgentListAdd(ITeam team, int numberOfPlayers);
 
-    void addSkater(List<IPlayers> players, int playersToBeAdded);
+//    void addSkater(List<IPlayers> players, int playersToBeAdded);
 
-    void addGoalie(List<IPlayers> players, int goalieCount);
+//    void addGoalie(List<IPlayers> players, int goalieCount);
 
-    List<IFreeAgents> sortedAgentsGoalieList(int goaliesToBeAdded);
+//    List<IFreeAgents> sortedAgentsGoalieList(int goaliesToBeAdded);
 
-    List<IFreeAgents> sortedAgentsSkaterList(int playersToBeAdded);
+//    List<IFreeAgents> sortedAgentsSkaterList(int playersToBeAdded);
 
-    void addSkaterUser(List<IPlayers> player, int playersToBeAdded);
+//    void addSkaterUser(List<IPlayers> player, int playersToBeAdded);
 
-    void addGoalieUser(List<IPlayers> player, int playersToBeAdded);
+//    void addGoalieUser(List<IPlayers> player, int playersToBeAdded);
 
     List<IFreeAgents> strongestAgentsList(List<IFreeAgents> list);
 

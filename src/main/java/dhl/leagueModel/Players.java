@@ -2,8 +2,8 @@ package dhl.leagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(as = Players2.class)
-public class Players2 extends AllPlayers implements IPlayers2 {
+@JsonDeserialize(as = Players.class)
+public class Players extends AllPlayers implements IPlayers {
 
     private double saves;
     private double shots;
@@ -12,7 +12,7 @@ public class Players2 extends AllPlayers implements IPlayers2 {
     private int shifts;
     private boolean captain;
 
-    public Players2() {
+    public Players() {
         super();
     }
 
@@ -67,7 +67,7 @@ public class Players2 extends AllPlayers implements IPlayers2 {
     }
 
     @Override
-    public boolean isCaptain() {
+    public boolean getCaptain() {
         return captain;
     }
 

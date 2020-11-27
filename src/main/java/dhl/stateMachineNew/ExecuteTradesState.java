@@ -15,6 +15,7 @@ public class ExecuteTradesState implements IStateMachine{
 
         IPlayerTradingCondition trading = new PlayerTradingCondition();
         trading.tradeCondition(stateMachine.getTotalTeamList());
+        doTask();
 
     }
 

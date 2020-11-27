@@ -1,7 +1,7 @@
 //package dhl.leagueModel.teams;
 //
 //import dhl.leagueModel.headCoach.IHeadCoach;
-//import dhl.leagueModel.players.IPlayers;
+//import dhl.leagueModel.IPlayers;
 //import dhl.mock.MockHeadCoach;
 //import dhl.mock.MockPlayer;
 //import org.junit.jupiter.api.Test;

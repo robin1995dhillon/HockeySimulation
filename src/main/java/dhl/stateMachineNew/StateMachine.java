@@ -38,14 +38,14 @@ public class StateMachine {
     private ITeam team;
     private List<ITeam> totalTeamList;
 
-    StateMachine(String filePath){
+    public StateMachine(String filePath) {
 
         totalTeamList = new ArrayList<>();
         league = new League();
 //        league = factory.getLeague();
         team = new Teams();
-        jsonImport = new JsonImportState(this,filePath);
-//        createTeam = new CreateTeamState(this);
+        jsonImport = new JsonImportState(this, filePath);
+        createTeam = new CreateTeamState(this);
         loadTeam = new LoadTeamState(this);
         playerChoice = new PlayerChoiceState(this);
         simulate = new SimulateState(this);
@@ -54,15 +54,17 @@ public class StateMachine {
         generatePlayoffSchedule = new GeneratePlayoffScheduleState(this);
         training = new TrainingState(this);
         simulateGame = new SimulateGame();
-        injuryCheck = new InjuryCheckState(this,this.getTeamsForInjuryCheck());
+        injuryCheck = new InjuryCheckState(this, this.getTeamsForInjuryCheck());
         executeTrades = new ExecuteTradesState(this);
         aging = new AgingState(this, this.getTotalTeamList());
-        advanceToNextSeason = new AdvanceToNextSeasonState(this);
+        advanceToNextSeason = new AdvanceToNextSeasonState(this, this.getTotalTeamList());
         persist = new PersistState();
         output = new UserOutput();
         currentState = jsonImport;
     }
 
+    public StateMachine() {
+    }
 
     public void startMachine() throws ParseException {
 
@@ -75,11 +77,10 @@ public class StateMachine {
 
     }
 
-    public void goToNextState(IStateMachine nextState){
-        if(nextState == null){
+    public void goToNextState(IStateMachine nextState) {
+        if (nextState == null) {
             System.exit(0);
-        }
-        else {
+        } else {
             currentState.exit();
             currentState = nextState;
         }

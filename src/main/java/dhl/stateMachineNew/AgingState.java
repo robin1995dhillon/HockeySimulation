@@ -3,8 +3,8 @@ package dhl.stateMachineNew;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IAllPlayers;
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.text.ParseException;
@@ -25,7 +25,7 @@ public class AgingState implements IStateMachine{
         this.allTeams = allTeams;
     }
 
-    public void entry() {
+    public void entry() throws ParseException {
         for(ITeam team : allTeams){
             for(IPlayers player : team.getPlayers()){
                 player.agePlayer(1);
@@ -34,6 +34,7 @@ public class AgingState implements IStateMachine{
         for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
             //age free agent
         }
+        doTask();
 
         for(IAllPlayers agent: machine.getLeague().getFreeAgents2()) {
             agent.agePlayer(1);
@@ -49,9 +50,9 @@ public class AgingState implements IStateMachine{
             machine.getLeague().getTeamStandingList().sort(Collections.reverseOrder((team1, team2)-> Integer.compare(team1.getTotalPoints(),team2.getTotalPoints())));
             output.setOutput("Winner of Stanley cup season "+(machine.getLeague().getSeason()+1)+" is : "+machine.getLeague().getTeamStandingList().get(0).getTeam().getTeamName());
             output.sendOutput();
-            machine.setCurrentState(machine.getAdvanceToNextSeason());
-            machine.getCurrentState().entry();
-            return machine.getInitializeSeason();
+//            machine.setCurrentState(machine.getAdvanceToNextSeason());
+//            machine.getCurrentState().entry();
+            return machine.getAdvanceToNextSeason();
         }
         else{
             return machine.getAdvanceTime();

@@ -1,6 +1,6 @@
 //package dhl.validator;
 //
-//import dhl.leagueModel.freeAgents.IFreeAgents;
+//import dhl.leagueModel.IFreeAgents;
 //import dhl.leagueModel.headCoach.IHeadCoach;
 //import dhl.leagueModel.league.ILeague;
 //import dhl.mock.MockFreeAgent;

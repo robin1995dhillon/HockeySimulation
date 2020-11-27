@@ -3,6 +3,7 @@ package dhl.stateMachineNew;
 import dhl.leagueModel.teams.ITeam;
 
 import java.text.ParseException;
+import java.util.List;
 
 public interface ISchedulerSeason {
 
@@ -35,6 +36,10 @@ public interface ISchedulerSeason {
     void generateSchedule(StateMachine machine) throws ParseException;
 
     boolean isLastDayOfTrade(String currentDate);
+
+    String getStartDayOfSeason();
+
+   void schedule(List<ITeam> teamsInFormat, ITeam teamName) throws ParseException;
 
 
 }

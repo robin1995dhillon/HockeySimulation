@@ -1,11 +1,10 @@
 package dhl.mock;
 
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.Players;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -273,6 +272,7 @@ public class MockPlayer {
         player1.setShooting(15);
         player1.setChecking(15);
         player1.setSaving(15);
+        player1.setShifts(2);
         playersList.add(player1);
         IPlayers player2 = new Players();
         player2.setPlayerName("player2");
@@ -281,6 +281,7 @@ public class MockPlayer {
         player2.setShooting(0);
         player2.setChecking(0);
         player2.setSaving(15);
+        player2.setShifts(1);
         playersList.add(player2);
         IPlayers player3 = new Players();
         player3.setPlayerName("player3");
@@ -289,6 +290,7 @@ public class MockPlayer {
         player3.setShooting(0);
         player3.setChecking(0);
         player3.setSaving(15);
+        player3.setShifts(3);
         playersList.add(player3);
         return playersList;
     }
@@ -307,5 +309,53 @@ public class MockPlayer {
         return player;
     }
 
+    public static List<IPlayers> offensivePlayerListMock() {
+        List<IPlayers> playersList = new ArrayList<>();
+        IPlayers player1 = new Players();
+        player1.setPlayerName("player1");
+        player1.setPosition("forward");
+        player1.setSkating(15);
+        player1.setShooting(15);
+        player1.setChecking(15);
+        player1.setSaving(15);
+        playersList.add(player1);
+        IPlayers player2 = new Players();
+        player2.setPlayerName("player2");
+        player2.setPosition("forward");
+        player2.setSkating(15);
+        player2.setShooting(0);
+        player2.setChecking(0);
+        player2.setSaving(15);
+        playersList.add(player2);
+        IPlayers player3 = new Players();
+        player3.setPlayerName("player3");
+        player3.setPosition("forward");
+        player3.setSkating(15);
+        player3.setShooting(0);
+        player3.setChecking(0);
+        player3.setSaving(15);
+        playersList.add(player3);
+        IPlayers player4 = new Players();
+        player4.setPlayerName("player4");
+        player4.setPosition("defense");
+        player4.setSkating(15);
+        player4.setShooting(0);
+        player4.setChecking(15);
+        player4.setSaving(15);
+        playersList.add(player4);
+        IPlayers player5 = new Players();
+        player5.setPlayerName("player5");
+        player5.setPosition("defense");
+        player5.setSkating(15);
+        player5.setShooting(0);
+        player5.setChecking(0);
+        player5.setSaving(15);
+        playersList.add(player5);
+        IPlayers player6 = new Players();
+        player6.setPlayerName("player6");
+        player6.setPosition("goalie");
+        playersList.add(player6);
+        return playersList;
+    }
 
 }

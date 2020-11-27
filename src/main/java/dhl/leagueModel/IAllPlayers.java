@@ -1,15 +1,9 @@
 package dhl.leagueModel;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface IAllPlayers {
     String getPlayerName();
@@ -89,4 +83,12 @@ public interface IAllPlayers {
     IFreeAgents convertPlayerToFreeAgent(IPlayers player);
 
     boolean checkPosition(String position);
+
+    double strengthCalculator(int[] forwardValues);
+
+    double calculateStrength();
+
+    IFreeAgents replacePlayerWithFreeAgent(IPlayers player, List<IFreeAgents> freeAgents);
+
+    void checkForPlayerInjury();
 }

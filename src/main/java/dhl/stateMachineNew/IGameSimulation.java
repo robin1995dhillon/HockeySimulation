@@ -1,17 +1,15 @@
 package dhl.stateMachineNew;
 
+import dhl.gameSimulationAlgorithm.IGameSimulationAlgorithm;
+import dhl.gameSimulationAlgorithm.IShiftTime;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
 
 public interface IGameSimulation {
 
-    void simulateGame(ITeam firstTeam, ITeam opponentTeam, double firstTeamStrength, double opponentTeamTeamStrength, ILeague league);
+    void simulateGame(ITeam offensiveTeam, ITeam defendingTeam, ILeague league, IGameSimulationAlgorithm algorithm, IShiftTime shiftTime);
+    void teamWin(ITeam team, ITeamStanding teamStanding);
+    void teamLost(ITeam team, ITeamStanding teamStanding);
+    void teamDraw(ITeam team, ITeamStanding teamStanding);
 
-    void opponentTeamLose(ITeam opponentTeam, ITeamStanding teamStanding);
-
-    void firstTeamLose(ITeam firstTeam, ITeamStanding teamStanding);
-
-    void opponentTeamLoseReverse(ITeam opponentTeam, ITeamStanding teamStanding);
-
-    void firstTeamLoseReverse(ITeam firstTeam, ITeamStanding teamStanding);
 }

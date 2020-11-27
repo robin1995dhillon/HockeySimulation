@@ -7,8 +7,8 @@ import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.Configurables;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.Players;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +26,10 @@ public class Teams implements ITeam {
     public int lossPoints;
     public double teamStrength;
     private boolean isUser = false;
+    private double shots;
+    private double saves;
+    private double penalties;
+    private double goals;
     UserOutput userOutput = new UserOutput();
 
     public Teams() {
@@ -138,14 +142,53 @@ public class Teams implements ITeam {
     }
 
     @Override
+    public void setGoals(double goals) {
+        this.goals = goals;
+    }
+
+    @Override
+    public double getGoals() {
+        return this.goals;
+    }
+
+    @Override
+    public void setSaves(double saves) {
+        this.saves = saves;
+    }
+
+    @Override
+    public double getSaves() {
+        return this.saves;
+    }
+
+    @Override
+    public void setShots(double shots) {
+        this.shots = shots;
+    }
+
+    @Override
+    public double getShots() {
+        return this.shots;
+    }
+
+    @Override
+    public void setPenalties(double penalties) {
+        this.penalties = penalties;
+    }
+
+    @Override
+    public double getPenalties() {
+        return this.penalties;
+    }
+
+    @Override
     public double calculateTeamStrength(ITeam team) {
         List<IPlayers> players;
         players = team.getPlayers();
         double teamStrength = 0;
 
         for (IPlayers player : players) {
-            IPlayers strength = new Players();
-            double playerStrength = strength.calculateStrength(player);
+            double playerStrength = player.calculateStrength();
             teamStrength += playerStrength;
         }
         team.setTeamStrength(teamStrength);
@@ -207,7 +250,7 @@ public class Teams implements ITeam {
             throw new Exception("Player Array is empty while creating roster.");
         } else {
             for (IPlayers players : this.players) {
-                players.calculateStrength(players);
+                players.calculateStrength();
                 System.out.println(players.getPlayerName());
                 if (players.getPosition().equals(Configurables.FORWARD.getAction()) || players.getPosition().equals(Configurables.DEFENSE.getAction())) {
                     allSkaters.add(players);

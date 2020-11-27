@@ -5,8 +5,8 @@ import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
 import dhl.Configurables;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.Players;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
 
             if (allTeams.get(i).getTeamType().toLowerCase().equals(Configurables.AI.getAction()) && allTeams.get(i).getLossPoints() == lossPoints) {
                 if (randomTradeOfferChance > Math.random()) {
-                    offeringTeamPlayers = strongestWeakestPlayers.checkWeakestPlayer(allTeams.get(i));
+                    offeringTeamPlayers = strongestWeakestPlayers.checkWeakestPlayer(allTeams.get(i), gamePlayConfig);
                     offeringTeamPositionPlayers = getPositionTypesOffering(offeringTeamPlayers);
                     positionToTrade = offeringTeamPositionPlayers.get(0).getPosition();
                     for (int j = 0; j < allTeams.size(); j++) {

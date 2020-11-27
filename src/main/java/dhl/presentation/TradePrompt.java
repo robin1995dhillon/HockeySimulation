@@ -2,7 +2,7 @@ package dhl.presentation;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 
 import java.util.List;
 

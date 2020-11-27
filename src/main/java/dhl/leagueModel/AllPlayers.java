@@ -1,15 +1,17 @@
 package dhl.leagueModel;
 
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.Configurables;
 import dhl.leagueModel.gamePlayConfig.IAging;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.gamePlayConfig.IInjuries;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 
 public class AllPlayers implements IAllPlayers {
 
@@ -312,5 +314,76 @@ public class AllPlayers implements IAllPlayers {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public double strengthCalculator(int[] forwardValues) {
+        double playerStrength = 0;
+        playerStrength = IntStream.of(forwardValues).sum();
+        return playerStrength;
+    }
+
+    @Override
+    public double calculateStrength() {
+        String position = this.getPosition();
+        int skating = this.getSkating();
+        int shooting = this.getShooting();
+        int checking = this.getChecking();
+        int saving = this.getSaving();
+        double strength;
+
+        if (position.equals(Configurables.FORWARD.getAction())) {
+            int[] forwardValues = {skating, shooting, checking / 2};
+            strength = strengthCalculator(forwardValues);
+            this.setStrength(strength);
+        } else if (position.equals(Configurables.DEFENSE.getAction())) {
+            int[] defenseValues = {skating, shooting / 2, checking};
+            strength = strengthCalculator(defenseValues);
+            this.setStrength(strength);
+        } else {
+            int[] goalieValues = {skating, saving};
+            strength = strengthCalculator(goalieValues);
+            this.setStrength(strength);
+        }
+
+        if (this.isInjured()) {
+            this.setStrength(this.getStrength() / 2);
+            strength = strength / 2;
+        }
+
+        return strength;
+    }
+
+    @Override
+    public IFreeAgents replacePlayerWithFreeAgent(IPlayers player, List<IFreeAgents> freeAgents) {
+        List<Double> freeAgentStrengthList = new ArrayList<>();
+        for (IFreeAgents freeAgent : freeAgents) {
+            if (player.getPosition().equals(freeAgent.getPosition())) {
+                double freeAgentStrength = freeAgent.calculateStrength();
+                freeAgentStrengthList.add(freeAgentStrength);
+            }
+        }
+        double maxStrength = Collections.max(freeAgentStrengthList);
+        int maxIndex = freeAgentStrengthList.indexOf(maxStrength);
+        IFreeAgents bestFreeAgent = freeAgents.get(maxIndex);
+        return bestFreeAgent;
+    }
+
+    @Override
+    public void checkForPlayerInjury() {
+        if (isInjured){
+            return;
+        }
+        IInjuries injuries = gamePlayConfig.getInjuries();
+        double randomInjuryChance = injuries.getRandomInjuryChance();
+        int injuryDaysLow = injuries.getInjuryDaysLow();
+        int injuryDaysHigh = injuries.getInjuryDaysHigh();
+        double endRange = randomInjuryChance * 100;
+        int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
+        if (randomNumber <= endRange) {
+            this.setInjured(true);
+            int randomInjuryDays = ThreadLocalRandom.current().nextInt(injuryDaysLow, injuryDaysHigh + 1);
+            this.setInjuredDays(randomInjuryDays);
+        }
     }
 }

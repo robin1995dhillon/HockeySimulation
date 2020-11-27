@@ -3,30 +3,16 @@ package dhl;
 import dhl.inputOutput.*;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.generalManager.GeneralManager;
-import dhl.leagueModel.generalManager.IGeneralManager;
-import dhl.leagueModel.headCoach.HeadCoach;
-import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
-import dhl.presentation.*;
 import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
 import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
 //import dhl.simulationStateMachine.LoadTeamState;
-import dhl.simulationStateMachine.CreateTeamState;
 import dhl.simulationStateMachine.StateContext;
-import dhl.validator.Checker;
-import dhl.validator.IChecker;
 import dhl.validator.JSONValidator;
 import org.json.simple.JSONObject;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SimulationMain {

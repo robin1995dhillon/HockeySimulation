@@ -1,6 +1,7 @@
 package dhl.trade;
 
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.List;
@@ -11,6 +12,6 @@ public interface IStrongestWeakestPlayers {
 
     double strongestPlayersStrength(List<IPlayers> selectedPLayers);
 
-    List<IPlayers> checkWeakestPlayer(ITeam tradingTeam);
+    List<IPlayers> checkWeakestPlayer(ITeam tradingTeam, IGamePlayConfig gamePlayConfig);
 
 }

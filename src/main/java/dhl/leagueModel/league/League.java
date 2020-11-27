@@ -1,8 +1,7 @@
 package dhl.leagueModel.league;
 
-import dhl.leagueModel.IFreeAgents2;
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
@@ -21,7 +20,7 @@ public class League implements ILeague {
     private int numberSeason;
     private int totalSeasons;
     private String lastDateOfSeason;
-    private List<IFreeAgents2> freeAgents2;
+    private List<IFreeAgents> freeAgents2;
     private List<IConference> conferences;
     private List<IFreeAgents> freeAgents;
     private List<IHeadCoach> coaches;
@@ -150,12 +149,12 @@ public class League implements ILeague {
     }
 
     @Override
-    public List<IFreeAgents2> getFreeAgents2() {
+    public List<IFreeAgents> getFreeAgents2() {
         return freeAgents2;
     }
 
     @Override
-    public void setFreeAgents2(List<IFreeAgents2> freeAgents2) {
+    public void setFreeAgents2(List<IFreeAgents> freeAgents2) {
         this.freeAgents2 = freeAgents2;
     }
 

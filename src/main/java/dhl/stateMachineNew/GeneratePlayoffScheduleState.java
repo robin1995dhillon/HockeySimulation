@@ -10,8 +10,8 @@ public class GeneratePlayoffScheduleState implements IStateMachine{
         this.machine = stateMachine;
     }
 
-    public void entry() {
-
+    public void entry() throws ParseException {
+        doTask();
     }
 
     public IStateMachine doTask() throws ParseException {
@@ -19,7 +19,7 @@ public class GeneratePlayoffScheduleState implements IStateMachine{
         ISchedulerSeason scheduler = new SchedulerSeason();
         scheduler.playoffSchedule(machine);
 
-        return null;
+        return machine.getTraining();
     }
 
     public void exit() {

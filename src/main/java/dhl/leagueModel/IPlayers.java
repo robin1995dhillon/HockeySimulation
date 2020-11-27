@@ -1,10 +1,9 @@
 package dhl.leagueModel;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import dhl.leagueModel.players.Players;
 
-@JsonDeserialize(as = Players2.class)
-public interface IPlayers2 extends IAllPlayers {
+@JsonDeserialize(as = Players.class)
+public interface IPlayers extends IAllPlayers {
     double getSaves();
 
     void setSaves(double saves);
@@ -25,7 +24,7 @@ public interface IPlayers2 extends IAllPlayers {
 
     void setShifts(int shifts);
 
-    boolean isCaptain();
+    boolean getCaptain();
 
     void setCaptain(boolean captain);
 }

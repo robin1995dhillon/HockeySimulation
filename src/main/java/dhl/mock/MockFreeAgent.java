@@ -1,7 +1,7 @@
 package dhl.mock;
 
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.FreeAgents;
+import dhl.leagueModel.IFreeAgents;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,5 +139,27 @@ public class MockFreeAgent {
         expectedAgentList.add(player1);
 
         return expectedAgentList;
+    }
+
+    public static List<IFreeAgents> retireFreeAgentMockList() {
+        List<IFreeAgents> agentList = new ArrayList<>();
+        IFreeAgents agent1 = new FreeAgents();
+        IFreeAgents agent2 = new FreeAgents();
+        IFreeAgents agent3 = new FreeAgents();
+        IFreeAgents agent4 = new FreeAgents();
+        agent1.setRetired(true);
+        agent1.setPlayerName("Agent1");
+        agent2.setRetired(false);
+        agent2.setPlayerName("Agent1");
+        agent3.setRetired(false);
+        agent3.setPlayerName("Agent1");
+        agent4.setRetired(true);
+        agent4.setPlayerName("Agent1");
+        agentList.add(agent1);
+        agentList.add(agent2);
+        agentList.add(agent3);
+        agentList.add(agent4);
+
+        return agentList;
     }
 }
