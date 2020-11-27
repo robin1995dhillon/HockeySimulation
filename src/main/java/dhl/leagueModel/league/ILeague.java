@@ -1,14 +1,13 @@
 package dhl.leagueModel.league;
 
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.freeAgents.IFreeAgents;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.ITeamStanding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface ILeague {
@@ -51,6 +50,10 @@ public interface ILeague {
     void setTeamStandingList(List<ITeamStanding> teamStandingList);
 
 //    void storeLeague();
+
+    List<IFreeAgents> getFreeAgents2();
+
+    void setFreeAgents2(List<IFreeAgents> freeAgents2);
 
     String getDate();
 

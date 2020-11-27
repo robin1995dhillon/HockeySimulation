@@ -3,7 +3,6 @@ package dhl.internalStateMachine;
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -5,11 +5,10 @@ import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.Players;
 import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
@@ -115,10 +114,10 @@ class FreeAgentListDrop implements IFreeAgentListDrop {
 
         }
         if (playerList.get(0).getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-            Collections.sort(playerList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(p1), p2.calculateStrength(p2))));
+            Collections.sort(playerList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
             return playerList.subList(0, goaliesToBeDropped);
         } else {
-            Collections.sort(playerList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(p1), p2.calculateStrength(p2))));
+            Collections.sort(playerList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
             return playerList.subList(0, playersToBeDropped);
         }
 

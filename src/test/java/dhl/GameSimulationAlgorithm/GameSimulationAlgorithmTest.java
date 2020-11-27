@@ -2,7 +2,7 @@ package dhl.GameSimulationAlgorithm;
 
 import dhl.gameSimulationAlgorithm.GameSimulationAlgorithm;
 import dhl.gameSimulationAlgorithm.IGameSimulationAlgorithm;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.mock.MockPlayer;
 import dhl.mock.MockTeam;

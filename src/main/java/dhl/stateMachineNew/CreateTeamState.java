@@ -5,15 +5,15 @@ import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.FreeAgents;
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.generalManager.GeneralManager;
 import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.HeadCoach;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.Players;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 import dhl.presentation.*;
@@ -189,7 +189,7 @@ public class CreateTeamState implements IStateMachine{
                     }
                     String[] locationAttributes = {conferenceName, divisionName, teamName, managerName};
 
-                    ILeague updatedLeague = team.createTeam(league, locationAttributes, headCoach, playerList);
+                    ILeague updatedLeague = team.createTeam(league, locationAttributes, headCoach, playerList, generalManager);
                    //context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
 //                    updatedLeague.storeLeague();
                     stateMachine.setLeague(updatedLeague);

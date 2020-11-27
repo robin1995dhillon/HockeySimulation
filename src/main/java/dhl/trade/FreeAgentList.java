@@ -5,11 +5,11 @@ import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.FreeAgents;
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.Players;
 import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
@@ -112,10 +112,10 @@ public class FreeAgentList implements IFreeAgentListAdd {
             }
         }
         if (agentList.get(0).getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(p1), p2.calculateStrength(p2))));
+            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
             return agentList.subList(0, goalieCount);
         } else {
-            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(p1), p2.calculateStrength(p2))));
+            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
             return agentList.subList(0, playersToBeAdded);
         }
 
@@ -269,13 +269,13 @@ public class FreeAgentList implements IFreeAgentListAdd {
 
     public List<IFreeAgents> strongestAgentsList(List<IFreeAgents> list) {
 
-        Collections.sort(list, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
+        Collections.sort(list, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
         return list;
     }
 
     public List<IPlayers> strongestPlayersList(List<IPlayers> list) {
 
-        Collections.sort(list, Collections.reverseOrder((p1, p2) -> Double.compare(playerStrength.calculateStrength(p1), playerStrength.calculateStrength(p2))));
+        Collections.sort(list, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
         return list;
     }
 }

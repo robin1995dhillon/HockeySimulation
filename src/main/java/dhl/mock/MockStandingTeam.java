@@ -1,6 +1,5 @@
 package dhl.mock;
 
-import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.stateMachineNew.ITeamStanding;
 import dhl.stateMachineNew.TeamStandings;

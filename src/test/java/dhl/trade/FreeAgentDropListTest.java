@@ -3,9 +3,9 @@
 //import dhl.Configurables;
 //import dhl.inputOutput.IUserOutput;
 //import dhl.inputOutput.UserOutput;
-//import dhl.leagueModel.freeAgents.IFreeAgents;
-//import dhl.leagueModel.players.IPlayers;
-//import dhl.leagueModel.players.Players;
+//import dhl.leagueModel.IFreeAgents;
+//import dhl.leagueModel.IPlayers;
+//import dhl.leagueModel.Players;
 //import dhl.mock.MockPlayer;
 //import org.junit.Test;
 //

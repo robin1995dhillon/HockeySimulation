@@ -1,7 +1,7 @@
 //package dhl.persistence.database2;
 //
-//import dhl.leagueModel.freeAgents.FreeAgents;
-//import dhl.leagueModel.freeAgents.IFreeAgents;
+//import dhl.leagueModel.FreeAgents;
+//import dhl.leagueModel.IFreeAgents;
 //
 //import java.io.IOException;
 //import java.sql.ResultSet;

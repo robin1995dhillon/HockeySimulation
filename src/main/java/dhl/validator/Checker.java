@@ -2,14 +2,12 @@ package dhl.validator;
 
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Checker implements IChecker {

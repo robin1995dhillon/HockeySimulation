@@ -1,7 +1,7 @@
 //package dhl.persistence.database2;
 //
 //import dhl.leagueModel.conference.IConference;
-//import dhl.leagueModel.freeAgents.IFreeAgents;
+//import dhl.leagueModel.IFreeAgents;
 //import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 //import dhl.leagueModel.headCoach.IHeadCoach;
 //import dhl.leagueModel.league.ILeague;

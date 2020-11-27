@@ -1,7 +1,7 @@
 package dhl.leagueModel.training;
 
 import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 import dhl.stateMachineNew.AdvanceToNextSeasonState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -2,7 +2,7 @@ package dhl.gameSimulationAlgorithm;
 
 
 import dhl.Configurables;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.ArrayList;

@@ -2,8 +2,9 @@ package dhl.stateMachineNew;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IAllPlayers;
+import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.text.ParseException;
@@ -34,6 +35,10 @@ public class AgingState implements IStateMachine{
             //age free agent
         }
         doTask();
+
+        for(IAllPlayers agent: machine.getLeague().getFreeAgents2()) {
+            agent.agePlayer(1);
+        }
 
     }
 

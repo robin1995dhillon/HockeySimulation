@@ -1,16 +1,12 @@
 package dhl.trade;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
 import dhl.mock.MockGamePlayConfig;
-import dhl.mock.MockPlayer;
 import dhl.mock.MockTeam;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
