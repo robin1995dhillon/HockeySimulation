@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 
 public class GameSimulationAlgorithmTest {
-    IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm(0.05, 0.5, 0.5);
+    IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm(1, 0.5, 0.5);
 
 
     @Test
@@ -51,9 +51,46 @@ public class GameSimulationAlgorithmTest {
     }
 
     @Test
-    public void shotsTest(){
-
+    public void shotsOneTest(){
+        List<IPlayers> playersList = MockPlayer.offensivePlayerListMock();
+        algorithm.setShotCoefficientOne(1);
+        algorithm.setShotCoefficientTwo(0.5);
+        IPlayers players = algorithm.shots(playersList, playersList);
+        assertEquals("player1", players.getPlayerName());
     }
 
+    @Test
+    public void shotsTwoTest(){
+        List<IPlayers> playersList = MockPlayer.offensivePlayerListMock();
+        algorithm.setShotCoefficientOne(1);
+        algorithm.setShotCoefficientTwo(-0.5);
+        IPlayers players = algorithm.shots(playersList, playersList);
+        assertEquals(null, players);
+        assertEquals(1.0, playersList.get(3).getPenalties());
+    }
+
+    @Test
+    public void getGoalieTest(){
+        List<IPlayers> playersList = MockPlayer.offensivePlayerListMock();
+        IPlayers player = algorithm.getGoalie(playersList);
+        assertEquals("player6", player.getPlayerName());
+    }
+
+    @Test
+    public void getTeamStatisticTest(){
+        ITeam team = MockTeam.MockTeamThree();
+        algorithm.getTeamStatistic(team);
+        assertEquals(1.0, team.getGoals());
+        assertEquals(0.0, team.getPenalties());
+        assertEquals(5.0, team.getShots());
+        assertEquals(0.0, team.getSaves());
+    }
+
+    @Test
+    public void getPlayerWithLeastShiftTest(){
+        List<IPlayers> playersList = MockPlayer.forwardListMock();
+        IPlayers player = algorithm.getPlayerWithLeastShift(playersList);
+        assertEquals("player2", player.getPlayerName());
+    }
 
 }

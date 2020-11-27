@@ -46,6 +46,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
         if(machine.getLeague().getSeason() == machine.getLeague().getTotalSeasons()){
             output.setOutput("end of simulation!");
             output.sendOutput();
+            //save to json file
             System.exit(0);
         }
         else{
@@ -68,6 +69,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
             }
 
         }
+        //save file to json
         return machine.getInitializeSeason();
     }
 

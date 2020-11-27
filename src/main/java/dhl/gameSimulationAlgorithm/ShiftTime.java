@@ -9,13 +9,12 @@ import java.util.List;
 public class ShiftTime implements IShiftTime{
     private IGameSimulationAlgorithm algorithm;
 
-    public ShiftTime(IGameSimulationAlgorithm algorithm){
-        this.algorithm = algorithm;
-    }
-
     public void oneShot(List<IPlayers> playersListOne, List<IPlayers> playersListTwo){
         IPlayers forward = algorithm.shots(playersListOne, playersListTwo);
         IPlayers goalie = algorithm.getGoalie(playersListTwo);
+        if(forward == null){
+            return;
+        }
         algorithm.saves(goalie, forward);
     }
 
@@ -25,6 +24,12 @@ public class ShiftTime implements IShiftTime{
         for(int i = 0; i < 2; i++){
             oneShot(playersListOne, playersListTwo);
             oneShot(playersListTwo, playersListOne);
+        }
+        for(IPlayers player : playersListOne){
+            player.setShifts(player.getShifts() + 1);
+        }
+        for(IPlayers player : playersListTwo){
+            player.setShifts(player.getShifts() + 1);
         }
     }
 
@@ -37,5 +42,12 @@ public class ShiftTime implements IShiftTime{
         System.out.println("\tShots: " + algorithm.getShots(teamOne) + "\tSaves: " + algorithm.getSaves(teamOne));
         System.out.print(teamTwo.getTeamName() + ": Goals: " + algorithm.getGoals(teamTwo) + "\tPenalties: " + algorithm.getPenalties(teamTwo));
         System.out.println("\tShots: " + algorithm.getShots(teamTwo) + "\tSaves: " + algorithm.getSaves(teamTwo));
+        algorithm.getTeamStatistic(teamOne);
+        algorithm.getTeamStatistic(teamTwo);
+    }
+
+    @Override
+    public void setAlgorithm(IGameSimulationAlgorithm algorithm) {
+        this.algorithm = algorithm;
     }
 }

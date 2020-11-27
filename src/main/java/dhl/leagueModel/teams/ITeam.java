@@ -55,6 +55,15 @@ public interface ITeam {
 
     void setIsUser(boolean isUser);
 
+    void setGoals(double goals);
+    double getGoals();
+    void setSaves(double saves);
+    double getSaves();
+    void setShots(double shots);
+    double getShots();
+    void setPenalties(double penalties);
+    double getPenalties();
+
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager);
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
 

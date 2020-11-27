@@ -1,6 +1,10 @@
 package dhl.stateMachineNew;
 
 import dhl.Configurables;
+import dhl.gameSimulationAlgorithm.GameSimulationAlgorithm;
+import dhl.gameSimulationAlgorithm.IGameSimulationAlgorithm;
+import dhl.gameSimulationAlgorithm.IShiftTime;
+import dhl.gameSimulationAlgorithm.ShiftTime;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.league.ILeague;
@@ -34,13 +38,14 @@ public class SimulateState implements IStateMachine {
         ILeague league = machine.getLeague();
         List<ITeam> teamsInjuryCheck = new ArrayList<>();
         IGameSimulation simulate = new GameSimulation();
+        IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm();
+        IShiftTime shiftTime = new ShiftTime();
 
         for (ISchedulerSeason scheduler : league.getGameSchedules()) {
             String currentDate = league.getDate();
             String dateOfMatch = scheduler.getDateOfMatch();
             if (currentDate.equalsIgnoreCase(dateOfMatch) && scheduler.getStatus().equals(Configurables.SCHEDULED.getAction())) {
-                simulate.simulateGame(scheduler.getFirstTeam(), scheduler.getSecondTeam(), scheduler.getFirstTeam().getTeamStrength(),
-                        scheduler.getSecondTeam().getTeamStrength(), league);
+                simulate.simulateGame(scheduler.getFirstTeam(), scheduler.getSecondTeam(), league, algorithm, shiftTime);
                 scheduler.setStatus(Configurables.PLAYED.getAction());
                 teamsInjuryCheck.add(scheduler.getFirstTeam());
                 teamsInjuryCheck.add(scheduler.getSecondTeam());
