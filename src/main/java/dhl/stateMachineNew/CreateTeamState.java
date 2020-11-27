@@ -189,7 +189,7 @@ public class CreateTeamState implements IStateMachine{
                     }
                     String[] locationAttributes = {conferenceName, divisionName, teamName, managerName};
 
-                    ILeague updatedLeague = team.createTeam(league, locationAttributes, headCoach, playerList);
+                    ILeague updatedLeague = team.createTeam(league, locationAttributes, headCoach, playerList, generalManager);
                    //context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
 //                    updatedLeague.storeLeague();
                     stateMachine.setLeague(updatedLeague);

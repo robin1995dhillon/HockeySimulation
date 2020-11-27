@@ -1,6 +1,5 @@
 package dhl.leagueModel.league;
 
-import dhl.leagueModel.IAllPlayers;
 import dhl.leagueModel.IFreeAgents2;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.freeAgents.IFreeAgents;

@@ -8,7 +8,6 @@ import java.util.List;
 @JsonDeserialize(as = FreeAgents2.class)
 public class FreeAgents2 extends AllPlayers implements IFreeAgents2 {
 
-    private String type = "freeAgents";
     public FreeAgents2() {
         super();
     }

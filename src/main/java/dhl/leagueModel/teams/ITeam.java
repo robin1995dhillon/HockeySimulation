@@ -56,7 +56,7 @@ public interface ITeam {
     void setIsUser(boolean isUser);
 
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager);
-    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
+//    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
 
     void createRoster() throws Exception;
 
