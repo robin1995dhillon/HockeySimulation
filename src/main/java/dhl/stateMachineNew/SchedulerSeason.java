@@ -379,26 +379,24 @@ public class SchedulerSeason implements ISchedulerSeason {
     }
 
 
-    private void schedule(List<ITeam> teamsInFormat, ITeam teamName) throws ParseException {
-        //int loopCounter = 28 / (teamsInFormat.size() - 1);
+    public void schedule(List<ITeam> teamsInFormat, ITeam teamName) throws ParseException {
         int i = 0;
+        String currentScheduleDate = getFirstDayOfSeason();
         int gameCounter = 0;
-        // while (gameCounter < 28){
         for (ITeam team : teamsInFormat) {
             if (gameCounter < 28) {
                 if (team.getTeamName().equalsIgnoreCase(teamName.getTeamName())) {
                     continue;
                 } else {
-                    addSchedule(team, teamName, currentDay, Configurables.REGULAR.getAction());
-                    boolean isIncrement = incrementCurrentDay(currentDay, lastDay);
+                    addSchedule(team, teamName, currentScheduleDate, Configurables.REGULAR.getAction());
+                    boolean isIncrement = incrementCurrentDay(currentScheduleDate, lastDay);
                     if (isIncrement) {
                         gameCounter++;
                         continue;
                     } else {
-                        currentDay = getFirstDayOfSeason();
+                        currentScheduleDate = getFirstDayOfSeason();
                         gameCounter++;
                     }
-                    //agr last date aa gyi toh set it again to 1 oct?
                 }
             } else {
                 break;

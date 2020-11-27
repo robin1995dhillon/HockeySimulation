@@ -35,6 +35,11 @@ public class MockStandingTeam {
         teamStanding2.setConference("JKL");
         list.add(teamStanding);
         list.add(teamStanding2);
+        for(ITeamStanding teamStandings: list){
+            System.out.println(teamStandings.getTotalPoints());
+
+
+        }
         return list;
     }
 }

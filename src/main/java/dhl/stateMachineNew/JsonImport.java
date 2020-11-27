@@ -29,7 +29,7 @@ public class JsonImport {
         if (JSONValidator.get(Configurables.ISVALID.getAction()).equals(Configurables.TRUE.getAction())) {
             IDeserializeJSONToModel IDeserializeJSONToModel = new DeserializeJSONToModel();
             league = IDeserializeJSONToModel.jsonToLeague(filePath);
-           // stateMachine.setLeague(league);
+//            stateMachine.setLeague(league);
             if (league.isValid(league)) {
                 output.setOutput("Valid JSON!\n");
                 output.sendOutput();

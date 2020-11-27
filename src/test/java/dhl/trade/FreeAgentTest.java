@@ -30,7 +30,9 @@ public class FreeAgentTest {
 
         List<IPlayers> players = new ArrayList<>();
         int playersToBeAdded = 1;
+        int goalieCount = 1;
         List<IFreeAgents> availableAgents = MockFreeAgent.createMockAgentList();
+      //  List<IFreeAgents> agentList = MockFreeAgent.createMockAgentList();
         Players playerToAdd = new Players();
         TradePrompt prompt = new TradePrompt();
         String agentAddName = "ABC";
