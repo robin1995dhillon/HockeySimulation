@@ -1,7 +1,7 @@
 package dhl.trade;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.List;

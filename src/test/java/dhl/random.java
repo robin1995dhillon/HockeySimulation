@@ -19,8 +19,8 @@ public class random {
         System.out.println(aging.getStatDecayChance());
         trading = leagueModelAbstractFactory.getGamePlayConfig().getTrading();
         System.out.println(trading);
-        trading2 = new Trading();
-        System.out.println(trading2);
+//        trading2 = new Trading();
+//        System.out.println(trading2);
         trading2 = leagueModelAbstractFactory.getGamePlayConfig().getTrading();
         System.out.println(trading2);
     }

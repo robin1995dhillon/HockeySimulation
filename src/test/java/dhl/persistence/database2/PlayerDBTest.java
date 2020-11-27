@@ -1,6 +1,6 @@
 //package dhl.persistence.database2;
 //
-//import dhl.leagueModel.players.IPlayers;
+//import dhl.leagueModel.IPlayers;
 //import org.junit.jupiter.api.Test;
 //
 //import java.io.IOException;

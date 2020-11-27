@@ -1,8 +1,7 @@
 package dhl.trade;
 
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.List;
@@ -16,8 +15,6 @@ public interface IFreeAgentListAdd {
     void addPlayerUser(List<IPlayers> player, int playersToBeAdded, int goalieCount);
 
     void aiAgentListAdd(ITeam team, int numberOfPlayers);
-
-    void setAvailableLeague(ILeague league);
 
 //    void addSkater(List<IPlayers> players, int playersToBeAdded);
 

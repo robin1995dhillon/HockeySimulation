@@ -1,6 +1,6 @@
 package dhl.persistence.database2;
 
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.IFreeAgents;
 
 import java.io.IOException;
 import java.sql.SQLException;

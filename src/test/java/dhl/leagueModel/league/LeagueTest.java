@@ -2,13 +2,12 @@ package dhl.leagueModel.league;
 
 import dhl.leagueModel.conference.Conference;
 import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.mock.MockFreeAgent;
 import dhl.mock.MockGamePlayConfig;
 import dhl.mock.MockHeadCoach;
-import dhl.mock.MockManager;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

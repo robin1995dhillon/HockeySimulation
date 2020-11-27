@@ -1,7 +1,7 @@
 //package dhl.persistence.database2;
 //
-//import dhl.leagueModel.players.IPlayers;
-//import dhl.leagueModel.players.Players;
+//import dhl.leagueModel.IPlayers;
+//import dhl.leagueModel.Players;
 //
 //import java.io.IOException;
 //import java.sql.ResultSet;

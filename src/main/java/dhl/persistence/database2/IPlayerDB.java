@@ -1,6 +1,6 @@
 package dhl.persistence.database2;
 
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 
 import java.io.IOException;
 import java.sql.SQLException;

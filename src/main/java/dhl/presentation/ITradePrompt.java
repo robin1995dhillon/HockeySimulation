@@ -1,6 +1,6 @@
 package dhl.presentation;
 
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 
 import java.util.List;
 

@@ -2,11 +2,9 @@ package dhl.stateMachineNew;
 
 import dhl.gameSimulationAlgorithm.IGameSimulationAlgorithm;
 import dhl.gameSimulationAlgorithm.IShiftTime;
-import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
-import dhl.mock.MockGamePlayConfig;
 
 
 public class GameSimulation implements IGameSimulation {

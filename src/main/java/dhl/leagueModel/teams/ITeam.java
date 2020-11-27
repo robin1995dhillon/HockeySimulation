@@ -4,9 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @JsonDeserialize(as = Teams.class)
@@ -65,7 +64,7 @@ public interface ITeam {
     double getPenalties();
 
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager);
-    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
+//    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
 
     void createRoster() throws Exception;
 

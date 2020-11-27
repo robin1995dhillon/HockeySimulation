@@ -9,7 +9,7 @@ import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
 import dhl.Configurables;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;

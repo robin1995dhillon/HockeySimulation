@@ -2,20 +2,24 @@ package dhl.stateMachineNew;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import dhl.Configurables;
+import dhl.Main;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.players.IPlayers;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.serializeAndDeserialize.serialize.ISerializeModelToJSON;
 import dhl.serializeAndDeserialize.serialize.SerializeModelToJSON;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdvanceToNextSeasonState implements IStateMachine{
@@ -24,7 +28,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
     IUserOutput output;
     List<ITeam> allTeams;
     ISerializeModelToJSON serialize;
-
+    private static final Logger logger = LogManager.getLogger(AdvanceToNextSeasonState.class);
 
     public AdvanceToNextSeasonState(StateMachine stateMachine, List<ITeam> allTeams){
 
@@ -55,10 +59,16 @@ public class AdvanceToNextSeasonState implements IStateMachine{
             System.exit(0);
         }
         else{
-            for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
+            List<IFreeAgents> oldFreeAgentList = machine.getLeague().getFreeAgents();
+            List<IFreeAgents> newFreeAgentList = new ArrayList<>();
+            for(IFreeAgents agent : oldFreeAgentList){
                 //FREE AGENT LIST FOR RETIREMENT
                 // whichever retires, remove from list
+                if(agent.isRetired()) {
+                    newFreeAgentList = agent.retireFreeAgents(oldFreeAgentList);
+                }
             }
+            machine.getLeague().setFreeAgents(newFreeAgentList);
 
             for(ITeam team : allTeams){
                 for(IPlayers player : team.getPlayers()){
@@ -69,6 +79,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
                         IFreeAgents agent = player.replacePlayerWithFreeAgent(player, machine.getLeague().getFreeAgents());
                         IPlayers convertPlayer = player.convertFreeAgentToPlayer(agent);
                         //add player to team
+
                     }
                 }
             }
@@ -87,8 +98,10 @@ public class AdvanceToNextSeasonState implements IStateMachine{
             String leagueModel = serialize.serializeModelToJSON(league);
             serialize.saveToFile(leagueModel);
         } catch (JsonProcessingException e) {
+            logger.error("Fail to serialize the league model to Json format.");
             e.printStackTrace();
         } catch (IOException exception) {
+            logger.error("Fail to save the game.");
             exception.printStackTrace();
         }
     }
