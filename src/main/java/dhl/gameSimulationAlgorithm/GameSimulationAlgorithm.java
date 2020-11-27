@@ -1,13 +1,14 @@
 package dhl.gameSimulationAlgorithm;
 
 
+import dhl.Configurables;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+
 
 public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
     private double penaltyChance;
@@ -43,10 +44,10 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         List<IPlayers> defenseList = new ArrayList<>();
         List<IPlayers> forwardList = new ArrayList<>();
         for(IPlayers player : team.getPlayers()){
-            if(player.getPosition().equals("forward")){
+            if(player.getPosition().equals(Configurables.FORWARD.getAction())){
                 forwardList.add(player);
             }
-            if(player.getPosition().equals("defense")){
+            if(player.getPosition().equals(Configurables.DEFENSE.getAction())){
                 defenseList.add(player);
             }
         }
@@ -58,7 +59,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
             playerList.add(getPlayerWithLeastShift(defenseList));
         }
         for(IPlayers player : team.getPlayers()) {
-            if(player.getPosition().equals("goalie") && player.getShifts() < 24 && goalie < 1){
+            if(player.getPosition().equals(Configurables.GOALIE.getAction()) && player.getShifts() < 24 && goalie < 1){
                 playerList.add(player);
                 goalie += 1;
             }
@@ -93,7 +94,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
     @Override
     public IPlayers getGoalie(List<IPlayers> playerList){
         for(IPlayers player: playerList){
-            if(player.getPosition().equals("goalie")){
+            if(player.getPosition().equals(Configurables.GOALIE.getAction())){
                 return player;
             }
         }
@@ -113,8 +114,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
 
     @Override
     public void reset(ITeam team) {
-        ITeam t = team;
-        for(IPlayers player : t.getPlayers()){
+        for(IPlayers player : team.getPlayers()){
             player.setSaves(0);
             player.setShots(0);
             player.setPenalties(0);

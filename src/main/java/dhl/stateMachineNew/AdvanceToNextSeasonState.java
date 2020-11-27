@@ -1,12 +1,17 @@
 package dhl.stateMachineNew;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import dhl.Configurables;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
+import dhl.serializeAndDeserialize.serialize.ISerializeModelToJSON;
+import dhl.serializeAndDeserialize.serialize.SerializeModelToJSON;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -18,6 +23,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
     StateMachine machine;
     IUserOutput output;
     List<ITeam> allTeams;
+    ISerializeModelToJSON serialize;
 
 
     public AdvanceToNextSeasonState(StateMachine stateMachine, List<ITeam> allTeams){
@@ -25,7 +31,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
         this.machine = stateMachine;
         this.allTeams = allTeams;
         output = new UserOutput();
-
+        serialize = new SerializeModelToJSON();
     }
 
     public void entry() throws ParseException {
@@ -34,7 +40,6 @@ public class AdvanceToNextSeasonState implements IStateMachine{
     }
 
     public IStateMachine doTask() throws ParseException {
-
         ISchedulerSeason season = new SchedulerSeason();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String date = machine.getLeague().getDate();
@@ -46,7 +51,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
         if(machine.getLeague().getSeason() == machine.getLeague().getTotalSeasons()){
             output.setOutput("end of simulation!");
             output.sendOutput();
-            //save to json file
+            saveGame(machine.getLeague());
             System.exit(0);
         }
         else{
@@ -69,11 +74,22 @@ public class AdvanceToNextSeasonState implements IStateMachine{
             }
 
         }
-        //save file to json
+        saveGame(machine.getLeague());
         return machine.getInitializeSeason();
     }
 
     public void exit() {
 
+    }
+
+    public void saveGame(ILeague league){
+        try {
+            String leagueModel = serialize.serializeModelToJSON(league);
+            serialize.saveToFile(leagueModel);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 }

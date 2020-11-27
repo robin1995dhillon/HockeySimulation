@@ -12,7 +12,6 @@ public class GeneratePlayoffScheduleState implements IStateMachine{
 
     public void entry() throws ParseException {
         doTask();
-
     }
 
     public IStateMachine doTask() throws ParseException {
