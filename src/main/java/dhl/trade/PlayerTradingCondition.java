@@ -60,7 +60,7 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
 
             if (allTeams.get(i).getTeamType().toLowerCase().equals(Configurables.AI.getAction()) && allTeams.get(i).getLossPoints() == lossPoints) {
                 if (randomTradeOfferChance > Math.random()) {
-                    offeringTeamPlayers = strongestWeakestPlayers.checkWeakestPlayer(allTeams.get(i));
+                    offeringTeamPlayers = strongestWeakestPlayers.checkWeakestPlayer(allTeams.get(i), gamePlayConfig);
                     offeringTeamPositionPlayers = getPositionTypesOffering(offeringTeamPlayers);
                     positionToTrade = offeringTeamPositionPlayers.get(0).getPosition();
                     for (int j = 0; j < allTeams.size(); j++) {

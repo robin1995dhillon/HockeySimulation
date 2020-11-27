@@ -40,63 +40,21 @@ public class PlayerTradingTest {
         assertEquals(player.getSkating() + player.getSaving(), strength);
     }
 
-    @Test
-    public void getPositionTypesOfferingTest() {
-        List<IPlayers> players;
-        players = MockPlayer.createMockPlayerList();
-
-        List<IPlayers> expectedList;
-        expectedList = MockPlayer.getPositionTypesOfferingExpectedList();
-
-        for (int i = 1; i < players.size(); i++) {
-            if (players.get(0).getPosition().equalsIgnoreCase(players.get(i).getPosition())) {
-
-                continue;
-            } else {
-                players.remove(i);
-                i -= 1;
-            }
-        }
-        assertEquals(players.get(0).getPosition(), expectedList.get(0).getPosition());
-    }
-
-    @Test
-    public void checkWeakestPlayerTest() {
+//    @Test
+//    public void getPositionTypesOfferingTest() {
+//
+//        IPlayerTradingCondition condition = new PlayerTradingCondition();
+//        List<IPlayers> players;
+//        players = MockPlayer.createMockPlayerList();
+//
+//        List<IPlayers> expectedList;
+//        expectedList = MockPlayer.getPositionTypesOfferingExpectedList();
+//        condition.getPositionTypesOffering(players);
+//
+//        assertEquals(players.get(0).getPosition(), expectedList.get(0).getPosition());
+//    }
 
 
-        int weakestCount = 1;
-        List<IPlayers> playersWeak;
-        List<IPlayers> players;
-        players = MockPlayer.createMockPlayerList();
-
-        players.sort((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength()));
-        playersWeak = players.subList(0, weakestCount);
-
-        assertEquals(playersWeak.get(0).getStrength(), 2.6);
-    }
-
-    @Test
-    public void checkStrongestPlayerTest() {
-
-
-        int weakestCount = 1;
-        String positionToTrade = "forward";
-        List<IPlayers> playersStrong = new ArrayList<>();
-        List<IPlayers> players;
-        players = MockPlayer.createMockPlayerList();
-
-        for (IPlayers player : players) {
-            if (player.getPosition().equalsIgnoreCase(positionToTrade)) {
-                playersStrong.add(player);
-
-            }
-        }
-        playersStrong.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength())));
-
-        playersStrong = playersStrong.subList(0, weakestCount);
-
-        assertEquals(playersStrong.get(0).getStrength(), 5.8);
-    }
 
     @Test
     public void tradeAiTest() {
@@ -165,17 +123,7 @@ public class PlayerTradingTest {
 
     }
 
-    @Test
-    public void strongestPlayersStrengthTest() {
 
-        double strength = 0;
-        List<IPlayers> players = MockPlayer.createMockPlayerList();
-
-        for (IPlayers player : players) {
-            strength += player.getStrength();
-        }
-        assertEquals(29.3, strength);
-    }
 
     @Test
     public void countTeamPlayers() {

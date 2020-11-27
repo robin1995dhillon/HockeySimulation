@@ -1,23 +1,27 @@
 package dhl.trade;
 
+import dhl.Configurables;
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.freeAgents.FreeAgents;
 import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.Configurables;
+import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.players.Players;
 import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
+import dhl.stateMachineNew.StateMachine;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class FreeAgentList implements IFreeAgentListAdd {
+    private StateMachine machine;
+    private ILeague league;
     private IPlayers playerStrength;
     private IFreeAgents agents;
     private List<IFreeAgents> availableAgents;
@@ -28,8 +32,10 @@ public class FreeAgentList implements IFreeAgentListAdd {
 
 
     public FreeAgentList() {
+        machine = new StateMachine();
+        league = machine.getLeague();
         agents = new FreeAgents();
-        availableAgents = new ArrayList<>();
+        availableAgents = league.getFreeAgents();
         playerToAdd = new Players();
         playerStrength = new Players();
         prompt = new TradePrompt();
@@ -46,22 +52,18 @@ public class FreeAgentList implements IFreeAgentListAdd {
                 goalieCount++;
             }
         }
-        if (goalieCount == 2 && team.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
-            addSkater(team.getPlayers(), playersToBeAdded);
-        } else if (goalieCount < 2 && team.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
-            addGoalie(team.getPlayers(), goalieCount);
-        } else if (goalieCount == 2 && team.getTeamType().equalsIgnoreCase(Configurables.USER.getAction())) {
-            addSkaterUser(team.getPlayers(), playersToBeAdded);
-        } else if (goalieCount < 2 && team.getTeamType().equalsIgnoreCase(Configurables.USER.getAction())) {
-            addGoalieUser(team.getPlayers(), playersToBeAdded);
+        if (team.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
+            addPlayer(team.getPlayers(), playersToBeAdded, goalieCount);
+        } else if (goalieCount <= 2 && team.getTeamType().equalsIgnoreCase(Configurables.USER.getAction())) {
+            addPlayerUser(team.getPlayers(), playersToBeAdded, goalieCount);
         }
 
     }
 
-    public void addSkater(List<IPlayers> player, int playersToBeAdded) {
+    public void addPlayer(List<IPlayers> player, int playersToBeAdded, int goalieCount) {
         IPlayers agentToPlayer;
         List<IFreeAgents> agentList;
-        agentList = sortedAgentsSkaterList(playersToBeAdded);
+        agentList = sortedAgentsList(playersToBeAdded, goalieCount);
 
         for (IFreeAgents agent : agentList) {
             agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
@@ -72,46 +74,65 @@ public class FreeAgentList implements IFreeAgentListAdd {
 
     }
 
-    public void addGoalie(List<IPlayers> player, int goalieCount) {
+//    public void addGoalie(List<IPlayers> player, int goalieCount) {
+//
+//        int goaliesToBeAdded = 2 - goalieCount;
+//        IPlayers agentToPlayer;
+//        List<IFreeAgents> agentList;
+//        agentList = sortedAgentsGoalieList(goaliesToBeAdded);
+//        for (IFreeAgents agent : agentList) {
+//            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
+//            player.add(agentToPlayer);
+//            availableAgents.remove(agent);
+//        }
+//
+//    }
 
-        int goaliesToBeAdded = 2 - goalieCount;
-        IPlayers agentToPlayer;
-        List<IFreeAgents> agentList;
-        agentList = sortedAgentsGoalieList(goaliesToBeAdded);
-        for (IFreeAgents agent : agentList) {
-            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
-            player.add(agentToPlayer);
-            availableAgents.remove(agent);
-        }
-
-    }
-
-    public List<IFreeAgents> sortedAgentsSkaterList(int playersToBeAdded) {
-        List<IFreeAgents> agentSkaterList = new ArrayList<>();
+    public List<IFreeAgents> sortedAgentsList(int playersToBeAdded, int goalieCount) {
+        List<IFreeAgents> agentList = new ArrayList<>();
         for (IFreeAgents agent : availableAgents) {
-            if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-                continue;
+            if (goalieCount == 2) {
+                if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction())) {
+                    agentList.add(agent);
+                } else {
+                    continue;
+                }
+
             } else {
-                agentSkaterList.add(agent);
+                if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+                    agentList.add(agent);
+                    goalieCount++;
+                    if (goalieCount == 2) {
+                        break;
+                    }
+                } else {
+                    continue;
+                }
             }
         }
-        Collections.sort(agentSkaterList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(p1), p2.calculateStrength(p2))));
-        return agentSkaterList.subList(0, playersToBeAdded);
-    }
-
-    public List<IFreeAgents> sortedAgentsGoalieList(int goaliesToBeAdded) {
-        List<IFreeAgents> agentGoalieList = new ArrayList<>();
-        for (IFreeAgents agent : availableAgents) {
-            if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-                agentGoalieList.add(agent);
-            }
+        if (agentList.get(0).getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(p1), p2.calculateStrength(p2))));
+            return agentList.subList(0, goalieCount);
+        } else {
+            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(p1), p2.calculateStrength(p2))));
+            return agentList.subList(0, playersToBeAdded);
         }
-        Collections.sort(agentGoalieList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
-        return agentGoalieList.subList(0, goaliesToBeAdded);
+
     }
 
+//    public List<IFreeAgents> sortedAgentsGoalieList(int goaliesToBeAdded) {
+//        List<IFreeAgents> agentGoalieList = new ArrayList<>();
+//        for (IFreeAgents agent : availableAgents) {
+//            if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+//                agentGoalieList.add(agent);
+//            }
+//        }
+//        Collections.sort(agentGoalieList, Collections.reverseOrder((p1, p2) -> Double.compare(agents.calculateStrength(p1), agents.calculateStrength(p2))));
+//        return agentGoalieList.subList(0, goaliesToBeAdded);
+//    }
 
-    public void addSkaterUser(List<IPlayers> player, int playersToBeAdded) {
+
+    public void addPlayerUser(List<IPlayers> player, int playersToBeAdded, int goalieCount) {
         boolean isPlayerNotAdded = false;
         int playersAdded = 0;
         String agentAddName;
@@ -135,22 +156,44 @@ public class FreeAgentList implements IFreeAgentListAdd {
             agentAddName = userInput.getInput();
 
             for (IFreeAgents agent : agentList) {
-                if (agent.getPlayerName().equalsIgnoreCase(agentAddName)) {
+                if (agent.getPlayerName().equalsIgnoreCase(agentAddName) && goalieCount < 2) {
                     if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+                        addPlayer(agent, player);
+//                        agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
+//                        player.add(agentToPlayer);
+                        playersAdded++;
+                        //availableAgents.remove(agent);
+                        isPlayerNotAdded = false;
+                        break;
+                    } else {
+                        userOutput.setOutput("Cannot select forward");
+                        userOutput.sendOutput();
+                        break;
+
+                    }
+
+                } else if (agent.getPlayerName().equalsIgnoreCase(agentAddName) && goalieCount >= 2) {
+                    if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction())) {
+                        addPlayer(agent, player);
+                        //agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
+                        //player.add(agentToPlayer);
+                        playersAdded++;
+                        // availableAgents.remove(agent);
+                        isPlayerNotAdded = false;
+                        break;
+
+                    } else {
                         userOutput.setOutput("Cannot select goalie");
                         userOutput.sendOutput();
-                        continue;
+                        break;
+
                     }
-                    agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
-                    player.add(agentToPlayer);
-                    playersAdded++;
-                    availableAgents.remove(agent);
-                    isPlayerNotAdded = false;
-                    break;
+
                 } else {
                     isPlayerNotAdded = true;
                     continue;
                 }
+
             }
             if (isPlayerNotAdded) {
                 userOutput.setOutput("invalid! try again");
@@ -159,53 +202,60 @@ public class FreeAgentList implements IFreeAgentListAdd {
         }
     }
 
-    public void addGoalieUser(List<IPlayers> player, int playersToBeAdded) {
-        boolean isPlayerNotAdded = false;
-        int playersAdded = 0;
-        String agentAddName;
-        IPlayers agentToPlayer;
-        List<IPlayers> playerList = new ArrayList<>();
-        List<IFreeAgents> agentList;
+    public void addPlayer(IFreeAgents agent, List<IPlayers> player) {
 
-        agentList = strongestAgentsList(availableAgents);
-
-        for (IFreeAgents agent : agentList) {
-            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
-            playerList.add(agentToPlayer);
-        }
-
-        prompt.userAcceptRejectTrade(playerList);
-
-        while (playersAdded < playersToBeAdded) {
-            userOutput.setOutput("Enter Free Agent name To add");
-            userOutput.sendOutput();
-            userInput.setInput();
-            agentAddName = userInput.getInput();
-
-
-            for (IFreeAgents agent : agentList) {
-                if (agent.getPlayerName().equalsIgnoreCase(agentAddName)) {
-                    if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-
-                        agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
-                        player.add(agentToPlayer);
-                        playersAdded++;
-                        availableAgents.remove(agent);
-                        isPlayerNotAdded = false;
-                        break;
-                    }
-                } else {
-                    isPlayerNotAdded = true;
-
-                }
-            }
-            if (isPlayerNotAdded) {
-                userOutput.setOutput("invalid! try again");
-                userOutput.sendOutput();
-            }
-        }
-
+        IPlayers agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
+        player.add(agentToPlayer);
+        availableAgents.remove(agent);
     }
+
+//    public void addGoalieUser(List<IPlayers> player, int playersToBeAdded) {
+//        boolean isPlayerNotAdded = false;
+//        int playersAdded = 0;
+//        String agentAddName;
+//        IPlayers agentToPlayer;
+//        List<IPlayers> playerList = new ArrayList<>();
+//        List<IFreeAgents> agentList;
+//
+//        agentList = strongestAgentsList(availableAgents);
+//
+//        for (IFreeAgents agent : agentList) {
+//            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
+//            playerList.add(agentToPlayer);
+//        }
+//
+//        prompt.userAcceptRejectTrade(playerList);
+//
+//        while (playersAdded < playersToBeAdded) {
+//            userOutput.setOutput("Enter Free Agent name To add");
+//            userOutput.sendOutput();
+//            userInput.setInput();
+//            agentAddName = userInput.getInput();
+//
+//
+//            for (IFreeAgents agent : agentList) {
+//                if (agent.getPlayerName().equalsIgnoreCase(agentAddName)) {
+//                    if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+//
+//                        agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
+//                        player.add(agentToPlayer);
+//                        playersAdded++;
+//                        availableAgents.remove(agent);
+//                        isPlayerNotAdded = false;
+//                        break;
+//                    }
+//                } else {
+//                    isPlayerNotAdded = true;
+//
+//                }
+//            }
+//            if (isPlayerNotAdded) {
+//                userOutput.setOutput("invalid! try again");
+//                userOutput.sendOutput();
+//            }
+//        }
+//
+//    }
 
     public boolean checkPlayerInList(List<IPlayers> playerList, String agentName) {
         for (IPlayers player : playerList) {

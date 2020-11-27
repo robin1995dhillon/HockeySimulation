@@ -4,6 +4,7 @@ public enum Configurables {
     FORWARD("forward"),
     DEFENSE("defense"),
     GOALIE("goalie"),
+    SKATER("skater"),
     LEAGUENAME("leagueName"),
     CONFERENCES("conferences"),
     CONFERENCENAME("conferenceName"),

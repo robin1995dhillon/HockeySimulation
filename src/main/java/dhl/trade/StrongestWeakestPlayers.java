@@ -20,7 +20,6 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
 
     StrongestWeakestPlayers() {
         playerStrength = new Players();
-        gamePlayConfig = new GamePlayConfig();
         trading = new Trading();
     }
 
@@ -46,17 +45,17 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
 
         double strength = 0;
         for (IPlayers player : selectedPLayers) {
-            strength += player.getStrength();
+            //strength += player.getStrength();
+            strength += player.calculateStrength(player);
         }
         return strength;
 
     }
 
     @Override
-    public List<IPlayers> checkWeakestPlayer(ITeam tradingTeam) {
+    public List<IPlayers> checkWeakestPlayer(ITeam tradingTeam, IGamePlayConfig gamePlayConfig) {
         trading = gamePlayConfig.getTrading();
         int maxPlayersPerTrade = trading.getMaxPlayersPerTrade();
-
         List<IPlayers> players;
         players = tradingTeam.getPlayers();
 
