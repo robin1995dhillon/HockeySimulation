@@ -1,5 +1,6 @@
 package dhl.serializeAndDeserialize.serialize;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -14,16 +15,20 @@ public class SerializeModelToJSON implements ISerializeModelToJSON {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public String serializeModelToJSON(ILeague league) throws IOException {
+    public String serializeModelToJSON(ILeague league) throws JsonProcessingException {
         ObjectWriter objectWriter = objectMapper.writer();
         objectWriter = objectWriter.with(SerializationFeature.INDENT_OUTPUT);
-        String mapJakcson = objectWriter.writeValueAsString(league);
-//        FileWriter fw = new FileWriter(new File(System.getProperty("user.dir") + "\\src\\create.json"));
-//        BufferedWriter bw = new BufferedWriter(fw);
-//        bw.write(mapJakcson);
-//        bw.flush();
-//        bw.close();
-        return mapJakcson;
+        String mapJackson = objectWriter.writeValueAsString(league);
+        return mapJackson;
+    }
+
+    @Override
+    public void saveToFile(String mapJackson) throws IOException {
+        FileWriter fw = new FileWriter(new File(System.getProperty("user.dir") + "\\src\\saveFile.json"));
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(mapJackson);
+        bw.flush();
+        bw.close();
     }
 
 }

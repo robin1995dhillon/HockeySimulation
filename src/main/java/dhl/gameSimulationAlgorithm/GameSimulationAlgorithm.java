@@ -1,11 +1,14 @@
 package dhl.gameSimulationAlgorithm;
 
 
+import dhl.Configurables;
 import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
 
 public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
     private double penaltyChance;
@@ -16,33 +19,49 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
     private double shotCoefficientOne;
     private double shotCoefficientTwo;
 
-    public GameSimulationAlgorithm(double penaltyChance, double shotChance, double saveChance){
+    public GameSimulationAlgorithm(){
+    }
+
+    public GameSimulationAlgorithm(double penaltyChance, double saveChance, double shotChance){
         this.penaltyChance = penaltyChance;
-        this.saveChance = saveChance;
         this.shotChance = shotChance;
+        this.saveChance = saveChance;
+    }
+
+    @Override
+    public IPlayers getPlayerWithLeastShift(List<IPlayers> playersList){
+        List<Integer> shiftList = new ArrayList<>();
+        for(IPlayers player : playersList){
+            shiftList.add(player.getShifts());
+        }
+        int index = shiftList.indexOf(Collections.min(shiftList));
+        return playersList.get(index);
     }
 
     @Override
     public List<IPlayers> getPlayerForShift(ITeam team){
         List<IPlayers> playerList = new ArrayList<>();
-        int forward = 0;
-        int defense = 0;
+        List<IPlayers> defenseList = new ArrayList<>();
+        List<IPlayers> forwardList = new ArrayList<>();
+        for(IPlayers player : team.getPlayers()){
+            if(player.getPosition().equals(Configurables.FORWARD.getAction())){
+                forwardList.add(player);
+            }
+            if(player.getPosition().equals(Configurables.DEFENSE.getAction())){
+                defenseList.add(player);
+            }
+        }
         int goalie = 0;
-        for(IPlayers player : team.getPlayers()) {
-            if (player.getPosition().equals("forward") && player.getShifts() < 10 && forward < 3) {
-                playerList.add(player);
-                forward += 1;
-            }
+        for(int forward = 0; forward < 3; forward++){
+            playerList.add(getPlayerWithLeastShift(forwardList));
+        }
+        for(int defense = 0; defense < 2; defense++){
+            playerList.add(getPlayerWithLeastShift(defenseList));
         }
         for(IPlayers player : team.getPlayers()) {
-            if (player.getPosition().equals("defense") && player.getShifts() < 10 && defense < 2) {
+            if(player.getPosition().equals(Configurables.GOALIE.getAction()) && player.getShifts() < 24 && goalie < 1){
                 playerList.add(player);
-                defense += 1;
-            }
-        }
-        for(IPlayers player : team.getPlayers()) {
-            if(player.getPosition().equals("goalie") && player.getShifts() < 24 && goalie < 1){
-                playerList.add(player);
+                goalie += 1;
             }
         }
         return playerList;
@@ -75,7 +94,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
     @Override
     public IPlayers getGoalie(List<IPlayers> playerList){
         for(IPlayers player: playerList){
-            if(player.getPosition().equals("goalie")){
+            if(player.getPosition().equals(Configurables.GOALIE.getAction())){
                 return player;
             }
         }
@@ -90,6 +109,17 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         }
         else{
             forward.setGoals(forward.getGoals() + 1);
+        }
+    }
+
+    @Override
+    public void reset(ITeam team) {
+        for(IPlayers player : team.getPlayers()){
+            player.setSaves(0);
+            player.setShots(0);
+            player.setPenalties(0);
+            player.setGoals(0);
+            player.setShifts(0);
         }
     }
 
@@ -127,13 +157,14 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         }
     }
 
+
+
     @Override
     public double getShots(ITeam team) {
         double shots = 0;
         List<IPlayers> playerList = team.getPlayers();
         for(IPlayers player : playerList) {
             shots += player.getShots();
-            player.setShots(0);
         }
         return shots;
     }
@@ -144,7 +175,6 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         List<IPlayers> playerList = team.getPlayers();
         for(IPlayers player : playerList) {
             saves += player.getSaves();
-            player.setSaves(0);
         }
         return saves;
     }
@@ -155,7 +185,6 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         List<IPlayers> playerList = team.getPlayers();
         for(IPlayers player : playerList) {
             goals += player.getGoals();
-            player.setGoals(0);
         }
         return goals;
     }
@@ -166,9 +195,27 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         List<IPlayers> playerList = team.getPlayers();
         for(IPlayers player : playerList) {
             penalties += player.getPenalties();
-            player.setPenalties(0);
         }
         return penalties;
+    }
+
+    @Override
+    public void getTeamStatistic(ITeam team) {
+        double goals = team.getGoals();
+        double penalties = team.getPenalties();
+        double shots = team.getShots();
+        double saves = team.getSaves();
+        List<IPlayers> playerList = team.getPlayers();
+        for(IPlayers player : playerList) {
+            goals += player.getGoals();
+            penalties += player.getPenalties();
+            shots += player.getShots();
+            saves += player.getSaves();
+        }
+        team.setGoals(goals);
+        team.setPenalties(penalties);
+        team.setShots(shots);
+        team.setSaves(saves);
     }
 
     @Override

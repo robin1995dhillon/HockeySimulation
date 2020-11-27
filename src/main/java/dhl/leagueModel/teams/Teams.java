@@ -30,6 +30,10 @@ public class Teams implements ITeam {
     public int lossPoints;
     public double teamStrength;
     private boolean isUser = false;
+    private double shots;
+    private double saves;
+    private double penalties;
+    private double goals;
     UserOutput userOutput = new UserOutput();
 
     public Teams() {
@@ -139,6 +143,46 @@ public class Teams implements ITeam {
     @Override
     public void setInActiveRoster(List<IPlayers> inActiveRoster) {
         this.inActiveRoster = inActiveRoster;
+    }
+
+    @Override
+    public void setGoals(double goals) {
+        this.goals = goals;
+    }
+
+    @Override
+    public double getGoals() {
+        return this.goals;
+    }
+
+    @Override
+    public void setSaves(double saves) {
+        this.saves = saves;
+    }
+
+    @Override
+    public double getSaves() {
+        return this.saves;
+    }
+
+    @Override
+    public void setShots(double shots) {
+        this.shots = shots;
+    }
+
+    @Override
+    public double getShots() {
+        return this.shots;
+    }
+
+    @Override
+    public void setPenalties(double penalties) {
+        this.penalties = penalties;
+    }
+
+    @Override
+    public double getPenalties() {
+        return this.penalties;
     }
 
     @Override

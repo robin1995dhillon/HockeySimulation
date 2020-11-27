@@ -45,9 +45,9 @@ public class AgingState implements IStateMachine{
             machine.getLeague().getTeamStandingList().sort(Collections.reverseOrder((team1, team2)-> Integer.compare(team1.getTotalPoints(),team2.getTotalPoints())));
             output.setOutput("Winner of Stanley cup season "+(machine.getLeague().getSeason()+1)+" is : "+machine.getLeague().getTeamStandingList().get(0).getTeam().getTeamName());
             output.sendOutput();
-            machine.setCurrentState(machine.getAdvanceToNextSeason());
-            machine.getCurrentState().entry();
-            return machine.getInitializeSeason();
+//            machine.setCurrentState(machine.getAdvanceToNextSeason());
+//            machine.getCurrentState().entry();
+            return machine.getAdvanceToNextSeason();
         }
         else{
             return machine.getAdvanceTime();

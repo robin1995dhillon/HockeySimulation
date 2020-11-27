@@ -1,7 +1,10 @@
 package dhl.stateMachineNew;
 
+import dhl.gameSimulationAlgorithm.IGameSimulationAlgorithm;
+import dhl.gameSimulationAlgorithm.IShiftTime;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.players.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.mock.MockGamePlayConfig;
 
@@ -10,94 +13,65 @@ public class GameSimulation implements IGameSimulation {
 
 
     @Override
-    public void simulateGame(ITeam firstTeam, ITeam opponentTeam, double firstTeamStrength, double opponentTeamStrength, ILeague league) {
+    public void simulateGame(ITeam offensiveTeam, ITeam defendingTeam, ILeague league, IGameSimulationAlgorithm algorithm, IShiftTime shiftTime) {
 
-        IGamePlayConfig config = MockGamePlayConfig.createMock();
-        double randomWinChance = config.getGameResolver().getRandomWinChance(); //league.getGameplayConfig().getGameResolver().getRandomWinChance()[pass league from stateMachine, it will have all the values];
-        boolean decisionReversed = false;
-        if (Math.random() > randomWinChance) {
-            decisionReversed = true;
+        double offensiveGoals = 0;
+        double defendingGoals = 0;
+        algorithm.setPenaltyChance(0.05);
+        algorithm.setShotChance(0.3);
+        algorithm.setSaveChance(0.5);
+        algorithm.setSaveCoefficientOne(0);
+        algorithm.setSaveCoefficientTwo(0.015);
+        algorithm.setShotCoefficientOne(0.1);
+        algorithm.setShotCoefficientTwo(-0.001);
+        shiftTime.setAlgorithm(algorithm);
+        ITeamStanding offensiveTeamStanding = new TeamStandings();
+        ITeamStanding defendingTeamStanding = new TeamStandings();
+
+        for(ITeamStanding teamStanding : league.getTeamStandingList()){
+            if(teamStanding.getTeam().getTeamName().equals(offensiveTeam.getTeamName())){
+                offensiveTeamStanding = teamStanding;
+            }
+            if(teamStanding.getTeam().getTeamName().equals(defendingTeam.getTeamName())){
+                defendingTeamStanding = teamStanding;
+            }
         }
 
-        for (ITeamStanding teamStanding : league.getTeamStandingList()) {
-
-            if (teamStanding.getTeam().getTeamName().equalsIgnoreCase(firstTeam.getTeamName()) && firstTeamStrength > opponentTeamStrength) {
-
-                if (decisionReversed) {
-
-                    firstTeamLose(firstTeam, teamStanding);
-                }
-                else {
-
-                    opponentTeamLose(opponentTeam, teamStanding);
-                }
-
-            }
-            else if (teamStanding.getTeam().getTeamName().equalsIgnoreCase(firstTeam.getTeamName()) && firstTeamStrength < opponentTeamStrength) {
-                if (decisionReversed) {
-
-                    opponentTeamLose(opponentTeam, teamStanding);
-
-                }
-                else {
-
-                    firstTeamLose(firstTeam, teamStanding);
-                }
-            }
-            else if (teamStanding.getTeam().getTeamName().equalsIgnoreCase(opponentTeam.getTeamName()) && opponentTeamStrength > firstTeamStrength) {
-                if (decisionReversed) {
-
-                    opponentTeamLoseReverse(opponentTeam, teamStanding);
-                }
-                else {
-
-                    firstTeamLoseReverse(firstTeam, teamStanding);
-                }
-
-            }
-            else if (teamStanding.getTeam().getTeamName().equalsIgnoreCase(opponentTeam.getTeamName()) && opponentTeamStrength < firstTeamStrength) {
-                if (decisionReversed) {
-
-                    firstTeamLoseReverse(firstTeam, teamStanding);
-                }
-                else {
-
-                    opponentTeamLoseReverse(opponentTeam, teamStanding);
-                }
-            }
-
+        shiftTime.oneGame(offensiveTeam, defendingTeam);
+        for(IPlayers player : offensiveTeam.getPlayers()){
+            offensiveGoals += player.getGoals();
         }
+        for(IPlayers player : defendingTeam.getPlayers()){
+            defendingGoals += player.getGoals();
+        }
+        if(offensiveGoals > defendingGoals){
+            teamWin(offensiveTeam, offensiveTeamStanding);
+            teamLost(defendingTeam, defendingTeamStanding);
+        }
+        else if(offensiveGoals < defendingGoals){
+            teamWin(defendingTeam, offensiveTeamStanding);
+            teamLost(offensiveTeam, defendingTeamStanding);
+        }
+        else{
+            teamDraw(offensiveTeam, offensiveTeamStanding);
+            teamDraw(defendingTeam, defendingTeamStanding);
+        }
+        algorithm.reset(offensiveTeam);
+        algorithm.reset(defendingTeam);
     }
 
-    @Override
-    public void opponentTeamLose(ITeam opponentTeam, ITeamStanding teamStanding) {
-//        opponentTeam.setLossPoints(opponentTeam.getLossPoints() + 1);
+    public void teamWin(ITeam team, ITeamStanding teamStanding){
         teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);
         teamStanding.setGamesWon(teamStanding.getGamesWon() + 1);
         teamStanding.setTotalPoints(teamStanding.getTotalPoints() + 2);
     }
 
-    @Override
-    public void firstTeamLose(ITeam firstTeam, ITeamStanding teamStanding) {
-        firstTeam.setLossPoints(firstTeam.getLossPoints() + 1);
+    public void teamLost(ITeam team, ITeamStanding teamStanding){
         teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);
-        teamStanding.setGamesLost(teamStanding.getGamesLost() + 1);
     }
 
-    @Override
-    public void opponentTeamLoseReverse(ITeam opponentTeam, ITeamStanding teamStanding) {
-        opponentTeam.setLossPoints(opponentTeam.getLossPoints() + 1);
+    public void teamDraw(ITeam team, ITeamStanding teamStanding){
         teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);
-        teamStanding.setGamesLost(teamStanding.getGamesLost() + 1);
+        teamStanding.setTotalPoints(teamStanding.getTotalPoints() + 1);
     }
-
-    @Override
-    public void firstTeamLoseReverse(ITeam firstTeam, ITeamStanding teamStanding) {
-//        firstTeam.setLossPoints(firstTeam.getLossPoints() + 1);
-        teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);
-        teamStanding.setGamesWon(teamStanding.getGamesWon() + 1);
-        teamStanding.setTotalPoints(teamStanding.getTotalPoints() + 2);
-    }
-
-
 }

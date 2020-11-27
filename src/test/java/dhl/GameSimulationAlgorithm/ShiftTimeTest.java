@@ -8,17 +8,22 @@ import dhl.leagueModel.teams.ITeam;
 import dhl.mock.MockTeam;
 import org.junit.jupiter.api.Test;
 
+
+
 public class ShiftTimeTest {
+    IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm(0.05, 0.5, 0.5);
+    IShiftTime shiftTime = new ShiftTime();
+
     @Test
     public void oneGameTest(){
-        IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm(0.05, 0.5, 0.5);
-        algorithm.setSaveCoefficientOne(0.5);
-        algorithm.setSaveCoefficientTwo(0.5);
-        algorithm.setShotCoefficientOne(0.5);
-        algorithm.setShotCoefficientTwo(0.5);
-        IShiftTime shiftTime = new ShiftTime(algorithm);
-        ITeam teamOne = MockTeam.MockTeam();
-        ITeam teamTwo = MockTeam.MockTeamTwo();
-        //shiftTime.oneGame(teamOne, teamTwo);
+        algorithm.setSaveCoefficientOne(0);
+        algorithm.setSaveCoefficientTwo(0.015);
+        algorithm.setShotCoefficientOne(0.1);
+        algorithm.setShotCoefficientTwo(-0.001);
+        shiftTime.setAlgorithm(algorithm);
+        ITeam teamOne = MockTeam.MockOffensiveTeam();
+        ITeam teamTwo = MockTeam.MockDefendingTeam();
+        shiftTime.oneGame(teamOne, teamTwo);
     }
+
 }
