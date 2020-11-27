@@ -3,6 +3,8 @@ package dhl.trade;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
+import dhl.mock.MockFreeAgent;
+import dhl.mock.MockLeague;
 import dhl.mock.MockPlayer;
 import org.junit.Test;
 
@@ -38,19 +40,21 @@ public class PlayerTradingTest {
         assertEquals(player.getSkating() + player.getSaving(), strength);
     }
 
-//    @Test
-//    public void getPositionTypesOfferingTest() {
-//
-//        IPlayerTradingCondition condition = new PlayerTradingCondition();
-//        List<IPlayers> players;
-//        players = MockPlayer.createMockPlayerList();
-//
-//        List<IPlayers> expectedList;
-//        expectedList = MockPlayer.getPositionTypesOfferingExpectedList();
-//        condition.getPositionTypesOffering(players);
-//
-//        assertEquals(players.get(0).getPosition(), expectedList.get(0).getPosition());
-//    }
+    @Test
+    public void getPositionTypesOfferingTest() {
+
+        IFreeAgentListAdd freeAgentListAdd = new FreeAgentList();
+        freeAgentListAdd.setAvailableLeague(MockLeague.createMock());
+        IPlayerTradingCondition condition = new PlayerTradingCondition();
+        List<IPlayers> players;
+        players = MockPlayer.createMockPlayerList();
+
+        List<IPlayers> expectedList;
+        expectedList = MockPlayer.getPositionTypesOfferingExpectedList();
+        condition.getPositionTypesOffering(players);
+
+        assertEquals(players.get(0).getPosition(), expectedList.get(0).getPosition());
+    }
 
 
 

@@ -9,6 +9,7 @@ import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.Players;
+import dhl.leagueModel.league.League;
 import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
@@ -31,15 +32,16 @@ class FreeAgentListDrop implements IFreeAgentListDrop {
     private ILeague league;
 
     FreeAgentListDrop() {
-        league = machine.getLeague();
+        league = new League();
         availableAgents = league.getFreeAgents();
-       // availableAgents = new ArrayList<>();
+        // availableAgents = new ArrayList<>();
         playerToDrop = new Players();
         playerStrength = new Players();
         prompt = new TradePrompt();
         freeAgent = new FreeAgentList();
         userOutput = new UserOutput();
         userInput = new UserInput();
+
     }
 
     @Override
