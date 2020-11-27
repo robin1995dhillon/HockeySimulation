@@ -34,6 +34,7 @@ class FreeAgentListDrop implements IFreeAgentListDrop {
     FreeAgentListDrop() {
         league = machine.getLeague();
         availableAgents = league.getFreeAgents();
+       // availableAgents = new ArrayList<>();
         playerToDrop = new Players();
         playerStrength = new Players();
         prompt = new TradePrompt();

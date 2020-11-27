@@ -36,6 +36,7 @@ public class FreeAgentList implements IFreeAgentListAdd {
         league = machine.getLeague();
         agents = new FreeAgents();
         availableAgents = league.getFreeAgents();
+       // availableAgents = new ArrayList<>();
         playerToAdd = new Players();
         playerStrength = new Players();
         prompt = new TradePrompt();
