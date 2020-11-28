@@ -69,4 +69,6 @@ public interface ITeam {
     void createRoster() throws Exception;
 
     void saveTeams(List<Integer> id);
+
+    void addPlayerToTeam(IPlayers players);
 }

@@ -40,6 +40,8 @@ public abstract class LeagueModelAbstractFactory {
 
     public abstract IPlayers getPlayers();
 
+    public abstract IPlayers getNewPlayers();
+
     public abstract void setPlayers(IPlayers players);
 
     public abstract IHeadCoach getHeadCoach();

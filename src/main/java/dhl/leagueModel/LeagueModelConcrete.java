@@ -95,6 +95,11 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
     }
 
     @Override
+    public IPlayers getNewPlayers() {
+        return new Players();
+    }
+
+    @Override
     public void setPlayers(IPlayers players) {
         this.players = players;
     }

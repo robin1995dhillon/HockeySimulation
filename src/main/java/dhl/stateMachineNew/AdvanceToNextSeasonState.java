@@ -60,15 +60,14 @@ public class AdvanceToNextSeasonState implements IStateMachine{
         }
         else{
             List<IFreeAgents> oldFreeAgentList = machine.getLeague().getFreeAgents();
-            List<IFreeAgents> newFreeAgentList = new ArrayList<>();
-            for(IFreeAgents agent : oldFreeAgentList){
-                //FREE AGENT LIST FOR RETIREMENT
-                // whichever retires, remove from list
-                if(agent.isRetired()) {
-                    newFreeAgentList = agent.retireFreeAgents(oldFreeAgentList);
+
+//            If the freeAgent is retired -> remove from freeAgentList
+            for(int i=0;i<oldFreeAgentList.size();i++) {
+                if(oldFreeAgentList.get(i).isRetired()) {
+                    oldFreeAgentList.remove(oldFreeAgentList.get(i));
                 }
             }
-            machine.getLeague().setFreeAgents(newFreeAgentList);
+            machine.getLeague().setFreeAgents(oldFreeAgentList);
 
             for(ITeam team : allTeams){
                 for(IPlayers player : team.getPlayers()){
@@ -79,7 +78,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
                         IFreeAgents agent = player.replacePlayerWithFreeAgent(player, machine.getLeague().getFreeAgents());
                         IPlayers convertPlayer = player.convertFreeAgentToPlayer(agent);
                         //add player to team
-
+                        team.addPlayerToTeam(convertPlayer);
                     }
                 }
             }
