@@ -1,17 +1,21 @@
-//package dhl.leagueModel.teams;
-//
-//import dhl.leagueModel.headCoach.IHeadCoach;
-//import dhl.leagueModel.IPlayers;
-//import dhl.mock.MockHeadCoach;
-//import dhl.mock.MockPlayer;
-//import org.junit.jupiter.api.Test;
-//
-//import java.util.ArrayList;
-//
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//class TeamsTest {
-//
+package dhl.leagueModel.teams;
+
+import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.IPlayers;
+import dhl.mock.MockHeadCoach;
+import dhl.mock.MockPlayer;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class TeamsTest {
+    @Test
+    void swapForPlayerInInactiveRoster() {
+
+    }
+
 //    @Test
 //    void getPlayers() {
 //        IPlayers players = MockPlayer.createMock();
@@ -134,12 +138,15 @@
 //        ITeam team = new Teams("Team1", "Manager1", headCoach, playerArray);
 //        assertEquals(74, team.calculateTeamStrength(team));
 //    }
-//
-////    @Test
-////    void checkForInjury() {
-////    }
+
+//    @Test
+//    void checkForInjury() {
+//    }
 //
 //    @Test
 //    void saveTeams() {
 //    }
-//}
+
+
+
+}
