@@ -350,4 +350,9 @@ public class Teams implements ITeam {
 //        }
     }
 
+    @Override
+    public void addPlayerToTeam(IPlayers players) {
+        this.players.add(players);
+    }
+
 }

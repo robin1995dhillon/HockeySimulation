@@ -150,11 +150,11 @@ public class MockFreeAgent {
         agent1.setRetired(true);
         agent1.setPlayerName("Agent1");
         agent2.setRetired(false);
-        agent2.setPlayerName("Agent1");
+        agent2.setPlayerName("Agent2");
         agent3.setRetired(false);
-        agent3.setPlayerName("Agent1");
+        agent3.setPlayerName("Agent3");
         agent4.setRetired(true);
-        agent4.setPlayerName("Agent1");
+        agent4.setPlayerName("Agent4");
         agentList.add(agent1);
         agentList.add(agent2);
         agentList.add(agent3);
