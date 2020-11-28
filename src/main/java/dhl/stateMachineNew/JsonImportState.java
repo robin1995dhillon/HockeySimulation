@@ -21,8 +21,9 @@ public class JsonImportState implements IStateMachine {
 
     }
 
-    public void entry() {
-        doTask();
+    public IStateMachine entry() {
+
+        return doTask();
     }
 
     public IStateMachine doTask() {

@@ -26,10 +26,11 @@ public class LoadTeamState implements IStateMachine{
 
     }
 
-    public void entry() {
+    public IStateMachine entry() {
 
-        doTask();
 
+
+        return doTask();
     }
 
     public IStateMachine doTask() {

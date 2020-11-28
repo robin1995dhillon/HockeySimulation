@@ -29,17 +29,19 @@ public interface ISchedulerSeason {
 
     void playoffSchedule(StateMachine machine) throws ParseException;
 
-    String getLastDayOfSeason();
+    String getLastDayOfSeason() throws ParseException;
 
     String getLastDayOfStanleyPlayoffs();
 
     void generateSchedule(StateMachine machine) throws ParseException;
 
-    boolean isLastDayOfTrade(String currentDate);
+    boolean isLastDayOfTrade(String currentDate,int playoffsYear) throws ParseException;
 
     String getStartDayOfSeason();
 
-   void schedule(List<ITeam> teamsInFormat, ITeam teamName) throws ParseException;
+   String schedule(List<ITeam> teamsInFormat, ITeam teamName, String currentDate) throws ParseException;
+
+
 
 
 }

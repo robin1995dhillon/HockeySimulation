@@ -2,37 +2,48 @@ package dhl.stateMachineNew;
 
 import dhl.Configurables;
 import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.List;
 
-public class InjuryCheckState implements IStateMachine{
+public class InjuryCheckState implements IStateMachine {
 
     StateMachine machine;
     List<ITeam> checkInjuryTeam;
 
-    public InjuryCheckState(StateMachine machine, List<ITeam> checkInjury){
+    //    public InjuryCheckState(StateMachine machine, List<ITeam> checkInjury){
+    public InjuryCheckState(StateMachine machine) {
         this.machine = machine;
-        this.checkInjuryTeam = checkInjury;
+        //this.checkInjuryTeam = this.machine.getTeamsForInjuryCheck();
     }
 
-    public void entry() {
-        for(ITeam team : checkInjuryTeam){
-            for(IPlayers player : team.getPlayers()){
-                player.checkForPlayerInjury();
+    public IStateMachine entry() {
+        this.checkInjuryTeam = this.machine.getTeamsForInjuryCheck();
+        System.out.println("in injury state "+machine.getLeague().getLeagueName());
+        System.out.println("teams for injury check "+machine.getTeamsForInjuryCheck().get(0).getTeamName());
+        System.out.println("bla bla bla "+this.checkInjuryTeam.get(0).getTeamName());
+        for (ITeam team : checkInjuryTeam) {
+            for (IPlayers player : team.getPlayers()) {
+                player.checkForPlayerInjury(machine.getLeague().getGameplayConfig());
             }
         }
-        doTask();
 
+
+        return doTask();
     }
 
     public IStateMachine doTask() {
-        for(ISchedulerSeason schedule : machine.getLeague().getGameSchedules()){
-            if(schedule.getStatus().equalsIgnoreCase(Configurables.SCHEDULED.getAction())){
-                return machine.getSimulate();
+        int count = 0;
+        for (ISchedulerSeason schedule : machine.getLeague().getGameSchedules()) {
+            if (schedule.getStatus().equalsIgnoreCase(Configurables.SCHEDULED.getAction()) && machine.getLeague().getDate().equalsIgnoreCase(schedule.getDateOfMatch())) {
+                System.out.println(schedule.getFirstTeam().getTeamName());
+                System.out.println(schedule.getSecondTeam().getTeamName());
+                //return machine.getSimulate();
+                count++;
             }
         }
-
+        System.out.println("count is : "+count);
         return null;
     }
 

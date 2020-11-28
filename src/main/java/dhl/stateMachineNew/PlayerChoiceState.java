@@ -23,8 +23,9 @@ public class PlayerChoiceState implements IStateMachine{
         machineLeague = machine.getLeague();
     }
 
-    public void entry() {
-        doTask();
+    public IStateMachine entry() {
+
+        return doTask();
     }
 
     public IStateMachine doTask() {

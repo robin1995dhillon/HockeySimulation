@@ -3,43 +3,40 @@ package dhl.stateMachineNew;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IAllPlayers;
-import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 
 import java.text.ParseException;
 import java.util.Collections;
-import java.util.List;
 
 public class AgingState implements IStateMachine{
 
     StateMachine machine;
     ISchedulerSeason schedulerSeason;
     private IUserOutput output;
-    private List<ITeam> allTeams;
+   // private List<ITeam> allTeams;
 
-    AgingState(StateMachine stateMachine, List<ITeam> allTeams){
+    AgingState(StateMachine stateMachine){
         this.machine = stateMachine;
         schedulerSeason = new SchedulerSeason();
         output = new UserOutput();
-        this.allTeams = allTeams;
+       // this.allTeams = this.machine.getTotalTeamList();
     }
 
-    public void entry() throws ParseException {
-        for(ITeam team : allTeams){
+    public IStateMachine entry() throws ParseException {
+        for(ITeam team : this.machine.getTotalTeamList()){
             for(IPlayers player : team.getPlayers()){
-                player.agePlayer(1);
+                player.agePlayer(1,this.machine.getLeague().getGameplayConfig());
             }
         }
-        for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
-            //age free agent
-        }
-        doTask();
-
+//        for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
+//            //age free agent
+//        }
         for(IAllPlayers agent: machine.getLeague().getFreeAgents2()) {
-            agent.agePlayer(1);
+            agent.agePlayer(1, this.machine.getLeague().getGameplayConfig());
         }
 
+        return doTask();
     }
 
     public IStateMachine doTask() throws ParseException {

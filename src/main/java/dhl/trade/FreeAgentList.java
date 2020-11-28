@@ -92,7 +92,7 @@ public class FreeAgentList implements IFreeAgentListAdd {
         List<IFreeAgents> agentList = new ArrayList<>();
         for (IFreeAgents agent : league.getFreeAgents()) {
             if (goalieCount == 2) {
-                if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction())) {
+                if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || agent.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
                     agentList.add(agent);
                 } else {
                     continue;
@@ -173,7 +173,7 @@ public class FreeAgentList implements IFreeAgentListAdd {
                     }
 
                 } else if (agent.getPlayerName().equalsIgnoreCase(agentAddName) && goalieCount >= 2) {
-                    if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction())) {
+                    if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || agent.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
                         addPlayer(agent, player);
                         //agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
                         //player.add(agentToPlayer);

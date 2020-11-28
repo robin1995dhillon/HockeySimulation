@@ -196,7 +196,8 @@ public class AllPlayers implements IAllPlayers {
     }
 
     @Override
-    public void agePlayer(int daysToAge) {
+    public void agePlayer(int daysToAge, IGamePlayConfig gamePlayConfig) {
+        this.gamePlayConfig = gamePlayConfig;
         int year = this.getBirthYear();
         int month = this.getBirthMonth();
         int days = this.getBirthDay();
@@ -370,7 +371,7 @@ public class AllPlayers implements IAllPlayers {
     }
 
     @Override
-    public void checkForPlayerInjury() {
+    public void checkForPlayerInjury(IGamePlayConfig gamePlayConfig) {
         if (isInjured){
             return;
         }
