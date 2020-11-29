@@ -2,6 +2,7 @@ package dhl.stateMachineNew;
 
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.LeagueModelAbstractFactory;
+import dhl.leagueModel.teams.ITeam;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -305,5 +306,23 @@ public class PlayerDraft {
         }
         return goaliePlayerList;
     }
+
+    public List<ITeamStanding> getTeamStandingList() {
+        List<ITeamStanding> teamStandingList = leagueModelAbstractFactory.getLeague().getTeamStandingList();
+        teamStandingList.sort(((t1, t2) -> Double.compare(t1.getTotalPoints(), t2.getTotalPoints())));
+        return teamStandingList;
+    }
+
+    public void selectionOrder() {
+        List<ITeamStanding> teamStandingList = getTeamStandingList();
+        List<IPlayers> playerDraft = this.draftingPlayerList;
+
+        for(int i=0;i<draftingRounds;i++) {
+            for(int j=0;j<teamStandingList.size();j++) {
+                teamStandingList.get(j).getTeam().addPlayerToTeam(playerDraft.get((i*7)+j));
+            }
+        }
+    }
+
 
 }

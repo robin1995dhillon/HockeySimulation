@@ -5,6 +5,7 @@ import dhl.leagueModel.gamePlayConfig.IAging;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
 import dhl.mock.MockFreeAgent;
+import dhl.stateMachineNew.PlayerDraft;
 import org.junit.jupiter.api.Test;
 
 public class random {
@@ -37,6 +38,11 @@ public class random {
 //        freeAgents.agePlayer(10);
 //        System.out.println(freeAgents.getPlayerCurrentDate());
 //        System.out.println(freeAgents.getAge());
+//    }
+//    @Test
+//    void random2() {
+//        PlayerDraft playerDraft = new PlayerDraft();
+//        playerDraft.getTeamStandingList();
 //    }
 
 

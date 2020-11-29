@@ -381,4 +381,44 @@ public class Teams implements ITeam {
         }
     }
 
+    @Override
+    public void dropTeamToThirty() {
+        List<IPlayers> playerList = this.players;
+        List<IPlayers> forwardPlayerList = new ArrayList<>();
+        List<IPlayers> defensePlayerList = new ArrayList<>();
+        List<IPlayers> goaliePlayerList = new ArrayList<>();
+        for(IPlayers players: playerList) {
+            if(players.getPosition().equals("forward")) {
+                forwardPlayerList.add(players);
+            }
+            else if (players.getPosition().equals("defense")) {
+                defensePlayerList.add(players);
+            }
+            else {
+                goaliePlayerList.add(players);
+            }
+        }
+        forwardPlayerList.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength())));
+        defensePlayerList.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength())));
+        goaliePlayerList.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.getStrength(), p2.getStrength())));
+
+        List<IPlayers> finalTeamList = new ArrayList<>();
+        finalTeamList = setPlayersOfAPositionInTeam(forwardPlayerList, finalTeamList, 16);
+        finalTeamList = setPlayersOfAPositionInTeam(defensePlayerList, finalTeamList, 10);
+        finalTeamList = setPlayersOfAPositionInTeam(goaliePlayerList, finalTeamList, 4);
+        this.setPlayers(finalTeamList);
+    }
+
+    public List<IPlayers> setPlayersOfAPositionInTeam(List<IPlayers> playerList, List<IPlayers> finalTeamList, int maxPlayersOfAPosition) {
+        int count = 0;
+        for(IPlayers players: playerList) {
+            if(count < maxPlayersOfAPosition) {
+                finalTeamList.add(players);
+            }
+            count = count + 1;
+        }
+        return finalTeamList;
+    }
+
+
 }
