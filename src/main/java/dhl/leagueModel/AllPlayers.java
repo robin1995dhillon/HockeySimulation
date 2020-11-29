@@ -25,7 +25,7 @@ public class AllPlayers implements IAllPlayers {
     private int injuredDays = 0;
     private boolean isRetired = false;
     private boolean isInjured = false;
-    private LocalDate playerCurrentDate;
+    private LocalDate playerCurrentDate = LocalDate.now();
     private IGamePlayConfig gamePlayConfig;
     private int skating;
     private int shooting;
@@ -216,13 +216,13 @@ public class AllPlayers implements IAllPlayers {
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
 
-        if(this.isInjured()) {
-            this.setInjuredDays(this.getInjuredDays() - daysToAge);
-            this.playerStillInjured();
-            this.checkIfRetired();
-        } else {
-            this.checkIfRetired();
-        }
+//        if(this.isInjured()) {
+//            this.setInjuredDays(this.getInjuredDays() - daysToAge);
+//            this.playerStillInjured();
+//           // this.checkIfRetired();
+//        } else {
+//          //  this.checkIfRetired();
+//        }
 
     }
 
@@ -249,10 +249,12 @@ public class AllPlayers implements IAllPlayers {
         int index = Arrays.asList(retirementAge).indexOf(closestBracket);
         int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
         if (randomNumber >= 0 && randomNumber <= retirementArray[index]) {
+            System.out.println(this.playerName+" is retired----------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             this.setRetired(true);
         } else {
             this.setRetired(false);
         }
+
         System.out.println(this.isRetired);
     }
 
@@ -292,6 +294,9 @@ public class AllPlayers implements IAllPlayers {
         player.setSaving(agent.getSaving());
         player.setStrength(agent.getStrength());
         player.setCaptain(false);
+        player.setBirthMonth(agent.getBirthMonth());
+        player.setBirthDay(agent.getBirthDay());
+        player.setBirthYear(agent.getBirthYear());
         return player;
     }
 
@@ -306,7 +311,9 @@ public class AllPlayers implements IAllPlayers {
         agent.setChecking(player.getChecking());
         agent.setSaving(player.getSaving());
         agent.setStrength(player.getStrength());
-
+        agent.setBirthMonth(player.getBirthMonth());
+        agent.setBirthDay(player.getBirthDay());
+        agent.setBirthYear(player.getBirthYear());
         return agent;
     }
 

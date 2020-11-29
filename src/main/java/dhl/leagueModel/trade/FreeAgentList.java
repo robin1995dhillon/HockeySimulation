@@ -78,6 +78,7 @@ public class FreeAgentList implements IFreeAgentListAdd {
             league.getFreeAgents().remove(agent);
 
         }
+        System.out.println("--------------team size is------------- "+player.size());
 
     }
 
@@ -96,34 +97,40 @@ public class FreeAgentList implements IFreeAgentListAdd {
 //    }
 
     public List<IFreeAgents> sortedAgentsList(int playersToBeAdded, int goalieCount) {
-
-        List<IFreeAgents> agentList = new ArrayList<>();
+        System.out.println("------------------------------------goaliessssss count: "+goalieCount);
+        List<IFreeAgents> agentsList = new ArrayList<>();
         for (IFreeAgents agent : league.getFreeAgents()) {
             if (goalieCount == totalGoalies) {
                 if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || agent.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
-                    agentList.add(agent);
+                    agentsList.add(agent);
                 } else {
                     continue;
                 }
 
             } else {
                 if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-                    agentList.add(agent);
+                    agentsList.add(agent);
                     goalieCount++;
+                    System.out.println("goalie added, count is : "+goalieCount);
                     if (goalieCount == totalGoalies) {
-                        break;
+                        System.out.println("inside adding goalie");
+                        continue;  //changed from break
                     }
                 } else {
                     continue;
                 }
             }
         }
-        if (agentList.get(0).getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
-            return agentList.subList(0, playersToBeAdded);
+        System.out.println("------------------------------------goalie count: "+goalieCount);
+        System.out.println("------------------------------------players to be added are: "+playersToBeAdded);
+        System.out.println("------------------------------------agents are: "+agentsList.size());
+        System.out.println("------------------------------------actual agents are: "+league.getFreeAgents().size());
+        if (agentsList.get(0).getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+            Collections.sort(agentsList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
+            return agentsList.subList(0, playersToBeAdded);
         } else {
-            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
-            return agentList.subList(0, playersToBeAdded);
+            Collections.sort(agentsList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
+            return agentsList.subList(0, playersToBeAdded);
         }
 
     }
