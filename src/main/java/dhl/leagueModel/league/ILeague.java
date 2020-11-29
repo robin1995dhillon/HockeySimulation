@@ -55,6 +55,10 @@ public interface ILeague {
 //
 //    void setFreeAgents2(List<IFreeAgents> freeAgents2);
 
+    String getPlayerDraftDate();
+
+    void setPlayerDraftDate(String playerDraftDate);
+
     String getDate();
 
     void setDate(String startDateOfSeason);

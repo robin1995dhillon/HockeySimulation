@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PlayerDraft {
+public class PlayerDraft implements IPlayerDraft {
 
     List<String> firstNameList = Arrays.asList("Wayne", "Jonathan", "Connor", "Gordie", "Mario", "John", "Steven");
     List<String> lastNameList = Arrays.asList("Gretzky", "Toews", "McDavid", "Lemieux", "Stamkos", "Benn", "Richard");
@@ -233,6 +233,7 @@ public class PlayerDraft {
         return year;
     }
 
+    @Override
     public List<IPlayers> generateRandomPlayers(int numberOfTeams) {
         int numberOfPlayers = draftingRounds * numberOfTeams;
         int numberOfForwardPlayers = (int) Math.ceil(numberOfPlayers * 0.5);
@@ -307,14 +308,16 @@ public class PlayerDraft {
         return goaliePlayerList;
     }
 
+    @Override
     public List<ITeamStanding> getTeamStandingList() {
         List<ITeamStanding> teamStandingList = leagueModelAbstractFactory.getLeague().getTeamStandingList();
         teamStandingList.sort(((t1, t2) -> Double.compare(t1.getTotalPoints(), t2.getTotalPoints())));
         return teamStandingList;
     }
 
-    public void selectionOrder() {
-        List<ITeamStanding> teamStandingList = getTeamStandingList();
+    @Override
+    public List<ITeamStanding> selectionOrder(List<ITeamStanding> teamStandingList) {
+        teamStandingList = getTeamStandingList();
         List<IPlayers> playerDraft = this.draftingPlayerList;
 
         for(int i=0;i<draftingRounds;i++) {
@@ -322,6 +325,9 @@ public class PlayerDraft {
                 teamStandingList.get(j).getTeam().addPlayerToTeam(playerDraft.get((i*7)+j));
             }
         }
+
+        return teamStandingList;
+
     }
 
 

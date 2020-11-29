@@ -31,6 +31,7 @@ public class StateMachine {
     private IStateMachine aging;
     private IStateMachine advanceToNextSeason;
     private IStateMachine persist;
+    private IStateMachine playerDraft;
 
 
     private IStateMachine currentState;
@@ -63,6 +64,7 @@ public class StateMachine {
         advanceToNextSeason = new AdvanceToNextSeasonState(this, this.getTotalTeamList());
         persist = new PersistState();
         output = new UserOutput();
+        playerDraft = new PlayerDraftState(this);
         currentState = jsonImport;
     }
 
@@ -156,6 +158,14 @@ public class StateMachine {
 
     public void setGeneratePlayoffSchedule(IStateMachine generatePlayoffSchedule) {
         this.generatePlayoffSchedule = generatePlayoffSchedule;
+    }
+
+    public IStateMachine getPlayerDraft() {
+        return playerDraft;
+    }
+
+    public void setPlayerDraft(IStateMachine playerDraft) {
+        this.playerDraft = playerDraft;
     }
 
     public IStateMachine getTraining() {

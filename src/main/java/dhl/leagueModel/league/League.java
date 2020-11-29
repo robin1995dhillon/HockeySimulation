@@ -28,6 +28,7 @@ public class League implements ILeague {
     private IGamePlayConfig gamePlayConfig;
     private List<ITeamStanding> teamStandingList;
     private List<ISchedulerSeason> gameSchedules;
+    private String playerDraftDate;
 
     public League() {
 
@@ -145,6 +146,16 @@ public class League implements ILeague {
 
     public void setGeneralManagers(List<IGeneralManager> generalManagers) {
         this.generalManagers = generalManagers;
+    }
+
+    @Override
+    public String getPlayerDraftDate() {
+        return playerDraftDate;
+    }
+
+    @Override
+    public void setPlayerDraftDate(String playerDraftDate) {
+        this.playerDraftDate = playerDraftDate;
     }
 
 //    @Override

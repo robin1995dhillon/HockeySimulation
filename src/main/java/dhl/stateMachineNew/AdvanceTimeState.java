@@ -35,14 +35,14 @@ public class AdvanceTimeState implements IStateMachine{
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
         String regularSeasonEndDate = league.getLastDateOfSeason();
-//        String playerDraftDate = '15-07'
+        String playerDraftDate = league.getPlayerDraftDate();
         if(currentDate.equalsIgnoreCase(regularSeasonEndDate)){
             getLeagueAverages(league);
             return stateMachine.getGeneratePlayoffSchedule();
         }
-//        if(currentDate.equals(playerDraftDate)) {
-//
-//        }
+        else if(currentDate.equals(playerDraftDate)) {
+            return stateMachine.getPlayerDraft();
+        }
         else{
             return stateMachine.getTraining();
         }
@@ -71,13 +71,13 @@ public class AdvanceTimeState implements IStateMachine{
                 }
             }
         }
-        output.setOutput("Goals per game: " + goals / 82 / 32);
+        output.setOutput("Goals per game: " + goals);
         output.sendOutput();
-        output.setOutput("Penalties per game" + penalties / 82 / 32);
+        output.setOutput("Penalties per game: " + penalties);
         output.sendOutput();
-        output.setOutput("Shots: " + shots / 82 / 32);
+        output.setOutput("Shots: " + shots);
         output.sendOutput();
-        output.setOutput("Saves: " + saves / 82 / 32);
+        output.setOutput("Saves: " + saves);
         output.sendOutput();
     }
 }
