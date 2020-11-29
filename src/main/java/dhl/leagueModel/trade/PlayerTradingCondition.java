@@ -1,6 +1,5 @@
-package dhl.trade;
+package dhl.leagueModel.trade;
 
-import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
@@ -96,9 +95,9 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
                         }
                     }
                     if (finalTeam.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
-                        playerTrade.tradeAi(allTeams.get(i), finalTeam, gamePlayConfig);
+                        playerTrade.tradeAi(allTeams.get(i), finalTeam, gamePlayConfig, offeringTeamPositionPlayers, consideringTeamPlayers);
                     } else {
-                        playerTrade.tradeUser(allTeams.get(i), finalTeam, gamePlayConfig);
+                        playerTrade.tradeUser(allTeams.get(i), finalTeam, gamePlayConfig, offeringTeamPositionPlayers, consideringTeamPlayers);
                     }
                 }
             }

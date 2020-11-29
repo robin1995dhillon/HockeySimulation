@@ -1,4 +1,4 @@
-package dhl.trade;
+package dhl.leagueModel.trade;
 
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;

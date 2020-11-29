@@ -1,4 +1,4 @@
-package dhl.trade;
+package dhl.leagueModel.trade;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.IPlayers;

@@ -1,4 +1,4 @@
-package dhl.trade;
+package dhl.leagueModel.trade;
 
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
@@ -14,7 +14,6 @@ import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerTrade implements IPlayerTrade {
@@ -31,8 +30,8 @@ public class PlayerTrade implements IPlayerTrade {
     private IUserInput userInput;
 
     PlayerTrade() {
-        playerTradingCondition = new PlayerTradingCondition();
-        offeringTeamPlayers = new ArrayList<>();
+       // playerTradingCondition = new PlayerTradingCondition();
+        //offeringTeamPlayers = new ArrayList<>();
         addDrop = new AddDropPlayers();
         gamePlayConfig = new GamePlayConfig();
         trading = new Trading();
@@ -40,9 +39,9 @@ public class PlayerTrade implements IPlayerTrade {
         userOutput = new UserOutput();
         userInput = new UserInput();
     }
-    PlayerTrade(ITrading trading) {
-        this.trading = trading;
-    }
+//   // PlayerTrade(ITrading trading) {
+//        this. = trading;
+//    }
 
     @Override
     public int countTeamPlayers(ITeam team) {
@@ -54,9 +53,9 @@ public class PlayerTrade implements IPlayerTrade {
     }
 
     @Override
-    public void tradeAi(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig) {
-        this.offeringTeamPositionPlayers = playerTradingCondition.getOfferingTeamPositionPlayers();
-        this.consideringTeamPlayers = playerTradingCondition.getConsideringTeamPlayers();
+    public void tradeAi(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig, List<IPlayers> teamPositionPlayers, List<IPlayers> consideringTeamPlayers) {
+        this.offeringTeamPositionPlayers = teamPositionPlayers;
+        this.consideringTeamPlayers = consideringTeamPlayers;
         this.gamePlayConfig = gamePlayConfig;
         trading = this.gamePlayConfig.getTrading();
         double randomAcceptanceChance = trading.getRandomAcceptanceChance();
@@ -66,7 +65,7 @@ public class PlayerTrade implements IPlayerTrade {
         int totalPlayersOfConsideringTeam;
 
         outer:
-        for (IPlayers offeredPlayer : offeringTeamPositionPlayers) {
+        for (IPlayers offeredPlayer : this.offeringTeamPositionPlayers) {
             for (IPlayers tradePlayer : consideringTeamPlayers) {
 
                 if (offeredPlayer.getStrength() < tradePlayer.getStrength() && Math.random() < randomAcceptanceChance) {
@@ -76,9 +75,10 @@ public class PlayerTrade implements IPlayerTrade {
                 } else {
                     userOutput.setOutput("player eligible for trade");
                     userOutput.sendOutput();
-                    count++;
+                    //count++;
                 }
             }
+            count++;
         }
         if (count > 0 && count <= maxPlayersPerTrade) {
             offeringTeam.getPlayers().removeAll(offeringTeamPlayers);
@@ -97,17 +97,17 @@ public class PlayerTrade implements IPlayerTrade {
     }
 
     @Override
-    public void tradeUser(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig) {
+    public void tradeUser(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig, List<IPlayers> offeringTeamPositionPlayers, List<IPlayers> consideringTeamPlayers) {
         this.gamePlayConfig = gamePlayConfig;
         int totalPlayersOfOfferingTeam;
         int totalPlayersOfConsideringTeam;
         String response;
         userOutput.setOutput("User Players");
         userOutput.sendOutput();
-        prompt.userAcceptRejectTrade(consideringTeamPlayers);
+        prompt.userAcceptRejectTrade(this.consideringTeamPlayers);
         userOutput.setOutput("AI Players");
         userOutput.sendOutput();
-        prompt.userAcceptRejectTrade(offeringTeamPositionPlayers);
+        prompt.userAcceptRejectTrade(this.offeringTeamPositionPlayers);
 
         while (true) {
             userOutput.setOutput("Do you accept the trade?(y/n)");
@@ -116,8 +116,8 @@ public class PlayerTrade implements IPlayerTrade {
             response = userInput.getInput();
             if (response.equalsIgnoreCase(Configurables.YES.getAction())) {
                 offeringTeam.getPlayers().removeAll(offeringTeamPlayers);
-                offeringTeam.getPlayers().addAll(consideringTeamPlayers);
-                consideringTeam.getPlayers().removeAll(consideringTeamPlayers);
+                offeringTeam.getPlayers().addAll(this.consideringTeamPlayers);
+                consideringTeam.getPlayers().removeAll(this.consideringTeamPlayers);
                 consideringTeam.getPlayers().addAll(offeringTeamPlayers);
                 break;
 

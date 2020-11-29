@@ -1,4 +1,4 @@
-//package dhl.trade;
+//package dhl.leagueModel.trade;
 //
 //import dhl.Configurables;
 //import dhl.inputOutput.IUserOutput;

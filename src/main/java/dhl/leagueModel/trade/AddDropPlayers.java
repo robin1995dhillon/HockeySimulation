@@ -1,4 +1,4 @@
-package dhl.trade;
+package dhl.leagueModel.trade;
 
 import dhl.leagueModel.teams.ITeam;
 
@@ -7,7 +7,7 @@ public class AddDropPlayers implements IAddDropPlayers {
     private IFreeAgentListAdd freeAgentLists;
     private IFreeAgentListDrop freeAgentListsDrop;
 
-    AddDropPlayers() {
+    public AddDropPlayers() {
         freeAgentLists = new FreeAgentList();
         freeAgentListsDrop = new FreeAgentListDrop();
     }

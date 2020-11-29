@@ -1,4 +1,4 @@
-package dhl.trade;
+package dhl.leagueModel.trade;
 
 import dhl.Configurables;
 import dhl.inputOutput.IUserInput;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class FreeAgentListDrop implements IFreeAgentListDrop {
+public class FreeAgentListDrop implements IFreeAgentListDrop {
 
     private IPlayers playerStrength;
     private List<IFreeAgents> availableAgents;
@@ -31,7 +31,7 @@ class FreeAgentListDrop implements IFreeAgentListDrop {
     private StateMachine machine;
     private ILeague league;
 
-    FreeAgentListDrop() {
+    public FreeAgentListDrop() {
         league = new League();
         availableAgents = league.getFreeAgents();
         // availableAgents = new ArrayList<>();

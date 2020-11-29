@@ -1,7 +1,7 @@
 package dhl.stateMachineNew;
 
-import dhl.trade.IPlayerTradingCondition;
-import dhl.trade.PlayerTradingCondition;
+import dhl.leagueModel.trade.IPlayerTradingCondition;
+import dhl.leagueModel.trade.PlayerTradingCondition;
 
 public class ExecuteTradesState implements IStateMachine{
 

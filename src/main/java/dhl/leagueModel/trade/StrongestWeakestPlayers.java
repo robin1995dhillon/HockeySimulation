@@ -1,10 +1,9 @@
-package dhl.trade;
+package dhl.leagueModel.trade;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.Players;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
     IGamePlayConfig gamePlayConfig;
     ITrading trading;
 
-    StrongestWeakestPlayers() {
+    public StrongestWeakestPlayers() {
         trading = new Trading();
     }
 

@@ -7,7 +7,7 @@ import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
-import dhl.trade.IPlayerTradingCondition;
+import dhl.leagueModel.trade.*;
 
 public abstract class LeagueModelAbstractFactory {
 
@@ -63,4 +63,26 @@ public abstract class LeagueModelAbstractFactory {
     public abstract IPlayerTrainingCondition getPlayerTrainingCondition();
 
     public abstract void setPlayerTrainingCondition(IPlayerTrainingCondition playerTrainingCondition);
+
+
+    public abstract IAddDropPlayers getAddDropPlayers();
+
+    public abstract IFreeAgentListAdd getFreeAgentList();
+
+    public abstract IFreeAgentListDrop getFreeAgentListDrop();
+
+    public abstract IPlayerTradingCondition getPLayerTradingCondition();
+
+    public abstract IStrongestWeakestPlayers getStrongestWeakestPlayers();
+
+    public abstract void  setAddDropPlayers(IAddDropPlayers addDropPlayers);
+
+    public abstract void  setFreeAgentList(IFreeAgentListAdd freeAgentListAdd);
+
+    public abstract void  setFreeAgentListDrop(IFreeAgentListDrop freeAgentListDrop);
+
+    public abstract void  setPLayerTradingCondition(IPlayerTradingCondition playerTradingCondition);
+
+    public abstract void  setStrongestWeakestPlayers(IStrongestWeakestPlayers strongestWeakestPlayers);
+
 }
