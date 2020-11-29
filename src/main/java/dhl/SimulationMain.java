@@ -14,6 +14,7 @@ import dhl.simulationStateMachine.StateContext;
 import dhl.validator.JSONValidator;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SimulationMain {
@@ -47,9 +48,6 @@ public class SimulationMain {
                 ILeague league = IDeserializeJSONToModel.jsonToLeague(Path);
                 if (league.isValid(league)) {
                     output.setOutput("Valid JSON!\n");
-//                    IConference conference = league.getConferences().get(0);
-//                    IDivision division = conference.getDivisions().get(0);
-//                    ITeam team = division.getTeams().get(0);
 //                    team.createRoster();
 //                    output.sendOutput();
 //                    output.setOutput("\nWelcome to the matrix. We all live in simulation ;)");

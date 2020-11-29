@@ -75,4 +75,6 @@ public interface ITeam {
     void addPlayerToTeam(IPlayers players);
 
     void checkForInactiveRosterPlayerInjuryRecovery();
+
+    void dropTeamToThirty();
 }

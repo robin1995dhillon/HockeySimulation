@@ -31,9 +31,7 @@ public class AgingState implements IStateMachine{
                 player.agePlayer(1);
             }
         }
-        for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
-            //age free agent
-        }
+
         doTask();
 
         for(IAllPlayers agent: machine.getLeague().getFreeAgents2()) {
