@@ -5,8 +5,6 @@ import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.generalManager.IGeneralManager;
 import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.persistence.saving.FreeManagerPersistence;
-import dhl.persistence.saving.IFreeManagerPersistence;
 import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.ITeamStanding;
 
@@ -92,14 +90,6 @@ public class League implements ILeague {
     @Override
     public void setHeadCoach(List<IHeadCoach> coaches) {
         this.coaches = coaches;
-    }
-
-
-
-    @Override
-    public void saveManager(String name, int leagueID) {
-        IFreeManagerPersistence freeManagerPersistence = new FreeManagerPersistence();
-        freeManagerPersistence.saveFreeManagerToDB(name, leagueID);
     }
 
     @Override

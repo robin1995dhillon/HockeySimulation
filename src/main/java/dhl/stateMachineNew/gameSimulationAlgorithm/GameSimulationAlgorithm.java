@@ -240,7 +240,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
 
     @Override
     public void setSaveChance(double saveChance) {
-        this.shotChance = saveChance;
+        this.saveChance = saveChance;
     }
 
     @Override

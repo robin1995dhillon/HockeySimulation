@@ -31,8 +31,6 @@ public interface ILeague {
 
     void setGeneralManagers(List<IGeneralManager> generalManagers);
 
-    void saveManager(String name, int leagueID);
-
     IGamePlayConfig getGameplayConfig();
 
     void setGameplayConfig(IGamePlayConfig gameplayConfig);
