@@ -16,7 +16,7 @@ public class GameSimulation implements IGameSimulation {
         double offensiveGoals = 0;
         double defendingGoals = 0;
         algorithm.setPenaltyChance(0.05);
-        algorithm.setShotChance(0.3);
+        algorithm.setShotChance(0.4);
         algorithm.setSaveChance(0.5);
         algorithm.setSaveCoefficientOne(0.05);
         algorithm.setSaveCoefficientTwo(0.05);
