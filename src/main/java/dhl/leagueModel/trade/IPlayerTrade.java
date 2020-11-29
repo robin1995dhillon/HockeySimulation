@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface IPlayerTrade {
 
-    void tradeAi(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig, List<IPlayers> teamPositionPlayers, List<IPlayers> offeringTeamPositionPlayers);
+    void tradeAi(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig);
 
-    void tradeUser(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig, List<IPlayers> offeringTeamPositionPlayers, List<IPlayers> consideringTeamPlayers);
+    void tradeUser(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig);
 
     int countTeamPlayers(ITeam team);
 }

@@ -11,7 +11,7 @@ public class LeagueTimeConcept implements ITime{
 
     private IUserOutput output;
 
-    LeagueTimeConcept(){
+    public LeagueTimeConcept(){
         output = new UserOutput();
     }
 

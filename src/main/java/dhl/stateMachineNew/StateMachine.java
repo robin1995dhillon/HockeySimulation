@@ -2,11 +2,13 @@ package dhl.stateMachineNew;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
+import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.league.League;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
+import dhl.stateMachineNew.states.*;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -15,6 +17,8 @@ import java.util.List;
 public class StateMachine {
     private ILeague league;
     private LeagueModelAbstractFactory factory;
+    private List<IPlayers> consideringTeamPlayers;
+    private List<IPlayers> offeringTeamPositionPlayers;
     private List<ITeam> teamsForInjuryCheck;
     private IStateMachine jsonImport;
     private IStateMachine createTeam;
@@ -270,4 +274,20 @@ public class StateMachine {
     public void setPlayoffsYear(int playoffsYear){
         this.playoffsYear = playoffsYear;
     };
+
+    public List<IPlayers> getConsideringTeamPlayers() {
+        return consideringTeamPlayers;
+    }
+
+    public void setConsideringTeamPlayers(List<IPlayers> consideringTeamPlayers) {
+        this.consideringTeamPlayers = consideringTeamPlayers;
+    }
+
+    public List<IPlayers> getOfferingTeamPositionPlayers() {
+        return offeringTeamPositionPlayers;
+    }
+
+    public void setOfferingTeamPositionPlayers(List<IPlayers> offeringTeamPositionPlayers) {
+        this.offeringTeamPositionPlayers = offeringTeamPositionPlayers;
+    }
 }
