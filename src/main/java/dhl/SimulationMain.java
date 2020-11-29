@@ -1,6 +1,7 @@
 package dhl;
 
 import dhl.inputOutput.*;
+import dhl.leagueModel.Players;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.league.ILeague;
@@ -13,6 +14,7 @@ import dhl.simulationStateMachine.StateContext;
 import dhl.validator.JSONValidator;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SimulationMain {
@@ -46,23 +48,6 @@ public class SimulationMain {
                 ILeague league = IDeserializeJSONToModel.jsonToLeague(Path);
                 if (league.isValid(league)) {
                     output.setOutput("Valid JSON!\n");
-                    IConference conference = league.getConferences().get(0);
-                    IDivision division = conference.getDivisions().get(0);
-                    ITeam team = division.getTeams().get(0);
-                    team.createRoster();
-                    List<IPlayers> activeTeams = team.getActiveRoster();
-                    List<IPlayers> inActiveTeam = team.getInActiveRoster();
-                    System.out.println("Active Roster");
-                    for(IPlayers players: inActiveTeam) {
-                        System.out.println(players.getPlayerName());
-                    }
-                    System.out.println("Inactive Roster");
-                    for(IPlayers players: activeTeams) {
-                        System.out.println(players.getPlayerName());
-                    }
-//                    IConference conference = league.getConferences().get(0);
-//                    IDivision division = conference.getDivisions().get(0);
-//                    ITeam team = division.getTeams().get(0);
 //                    team.createRoster();
 //                    output.sendOutput();
 //                    output.setOutput("\nWelcome to the matrix. We all live in simulation ;)");
