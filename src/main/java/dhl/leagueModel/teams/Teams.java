@@ -226,6 +226,7 @@ public class Teams implements ITeam {
                         team.setHeadCoach(headCoach);
                         team.setTeamName(teamName);
                         team.setIsUser(true);
+                        team.setTeamType(Configurables.USER.getAction());
                         division.addTeam(team);
                     }
                 }
