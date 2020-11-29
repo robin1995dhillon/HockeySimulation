@@ -1,6 +1,7 @@
 package dhl.leagueModel.teams;
 
 import dhl.inputOutput.UserOutput;
+import dhl.leagueModel.IAllPlayers;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.generalManager.IGeneralManager;
@@ -8,10 +9,10 @@ import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.league.ILeague;
 import dhl.Configurables;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.Players;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Teams implements ITeam {
@@ -213,7 +214,6 @@ public class Teams implements ITeam {
         String conferenceName = locationAttributes[0];
         String divisionName = locationAttributes[1];
         String teamName = locationAttributes[2];
-        String managerName = locationAttributes[3];
         conferenceList = league.getConferences();
         for (IConference conference : conferenceList) {
             if (conference.getConferenceName().toLowerCase().equals(conferenceName.toLowerCase())) {
@@ -244,59 +244,27 @@ public class Teams implements ITeam {
     public void createRoster() throws Exception {
         List<IPlayers> allSkaters = new ArrayList<>();
         List<IPlayers> allGoalie = new ArrayList<>();
-        List<Double> allSkatersStrength = new ArrayList<>();
-        List<Double> allGoalieStrength = new ArrayList<>();
+
         if(this.players == null) {
             throw new Exception("Player Array is empty while creating roster.");
         } else {
             for (IPlayers players : this.players) {
                 players.calculateStrength();
-                System.out.println(players.getPlayerName());
                 if (players.getPosition().equals(Configurables.FORWARD.getAction()) || players.getPosition().equals(Configurables.DEFENSE.getAction())) {
                     allSkaters.add(players);
-                    allSkatersStrength.add(players.getStrength());
                 } else {
                     allGoalie.add(players);
-                    allGoalieStrength.add(players.getStrength());
                 }
             }
-            List<IPlayers> bestSkaters = bestSkatersInATeam(allSkaters, allSkatersStrength);
-            List<IPlayers> bestGoalie  = bestSkatersInATeam(allGoalie, allGoalieStrength);
+            List<IPlayers> bestSkaters = bestPlayersInATeamSorted(allSkaters);
+            List<IPlayers> bestGoalie  = bestPlayersInATeamSorted(allGoalie);
             setRoster(bestSkaters,bestGoalie);
         }
     }
 
-    private List<IPlayers> bestSkatersInATeam(List<IPlayers> skatingPlayers, List<Double> skatingPlayersStrength) {
-        List<IPlayers> bestSkaters = new ArrayList<>();
-        Collections.sort(skatingPlayersStrength, Collections.reverseOrder());
-//        for(Double val: skatingPlayersStrength) {
-//            for(IPlayers players: skatingPlayers) {
-//                if(val.equals(players.getStrength())) {
-//                    bestSkaters.add(players);
-//                }
-//            }
-//        }
-//        for(IPlayers players: skatingPlayers) {
-//            for(Double val: skatingPlayersStrength) {
-//                if(val.equals(players.getStrength())) {
-//                    bestSkaters.add(players);
-//                    skatingPlayers.remove(players);
-//                    skatingPlayersStrength.remove(val);
-//                    break;
-//                }
-//            }
-//        }
-
-        for(int i=0; i<skatingPlayers.size();i++) {
-            for(int j=0; j<skatingPlayersStrength.size();j++) {
-                if(skatingPlayersStrength.get(j).equals(skatingPlayers.get(i).getStrength())) {
-                    bestSkaters.add(skatingPlayers.get(i));
-                    skatingPlayers.remove(skatingPlayers.get(i));
-                    skatingPlayersStrength.remove(skatingPlayersStrength.get(j));
-                }
-            }
-        }
-        return bestSkaters;
+    private List<IPlayers> bestPlayersInATeamSorted(List<IPlayers> skatingPlayers) {
+        skatingPlayers.sort(Collections.reverseOrder(Comparator.comparingDouble(IAllPlayers::getStrength)));
+        return skatingPlayers;
     }
 
     private void setRoster(List<IPlayers> bestSkaters, List<IPlayers> bestGoalie) {
@@ -306,9 +274,9 @@ public class Teams implements ITeam {
         int goalieIndex = 0;
         for(IPlayers players: bestSkaters) {
             if(index>=18) {
-                activeRoster.add(players);
-            } else {
                 inActiveRoster.add(players);
+            } else {
+                activeRoster.add(players);
             }
             index = index + 1;
         }
@@ -351,8 +319,66 @@ public class Teams implements ITeam {
     }
 
     @Override
+    public void swapForPlayerInInactiveRoster(IPlayers players) throws Exception {
+        if(this.inActiveRoster == null) {
+            throw new Exception("In-active Roster is empty.");
+        } else {
+            for(IPlayers inActivePlayer: this.inActiveRoster) {
+                if(inActivePlayer.isInjured() == false && players.getPosition().equals(inActivePlayer.getPosition())) {
+                    addPlayerToInactiveRoster(players);
+                    addPlayerToActiveRoster(inActivePlayer);
+                    removePlayerFromInactiveRoster(inActivePlayer);
+                    removePlayerFromActiveRoster(players);
+                    break;
+                }
+            }
+            setInActiveRoster(bestPlayersInATeamSorted(this.inActiveRoster));
+            setActiveRoster(bestPlayersInATeamSorted(this.activeRoster));
+        }
+    }
+
+    public void removePlayerFromInactiveRoster(IPlayers players) {
+        this.inActiveRoster.remove(players);
+    }
+
+    public void addPlayerToInactiveRoster(IPlayers players) {
+        this.inActiveRoster.add(players);
+    }
+
+    public void addPlayerToActiveRoster(IPlayers players) {
+        this.activeRoster.add(players);
+    }
+
+    public void removePlayerFromActiveRoster(IPlayers players) {
+        this.activeRoster.remove(players);
+    }
+
+    @Override
     public void addPlayerToTeam(IPlayers players) {
         this.players.add(players);
+    }
+
+    @Override
+    public void checkForInactiveRosterPlayerInjuryRecovery() {
+        List<IPlayers> activeRoster;
+        List<IPlayers> inActiveRoster;
+        activeRoster = this.activeRoster;
+        inActiveRoster = this.inActiveRoster;
+
+        for(int i=0;i<inActiveRoster.size();i++) {
+            if(inActiveRoster.get(0).isInjured() == false) {
+                for (int j = 0; j < activeRoster.size(); j++) {
+                    if(inActiveRoster.get(i).getPosition().equals(activeRoster.get(j).getPosition()) && inActiveRoster.get(i).getStrength() > activeRoster.get(j).getStrength()) {
+                        addPlayerToActiveRoster(inActiveRoster.get(i));
+                        removePlayerFromActiveRoster(activeRoster.get(j));
+                        addPlayerToInactiveRoster(activeRoster.get(j));
+                        removePlayerFromInactiveRoster(inActiveRoster.get(i));
+                    }
+                }
+            }
+            setInActiveRoster(bestPlayersInATeamSorted(this.inActiveRoster));
+            setActiveRoster(bestPlayersInATeamSorted(this.activeRoster));
+        }
     }
 
 }
