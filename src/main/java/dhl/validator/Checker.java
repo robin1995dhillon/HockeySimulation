@@ -1,5 +1,6 @@
 package dhl.validator;
 
+import dhl.Configurables;
 import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.IFreeAgents;
@@ -42,12 +43,13 @@ public class Checker implements IChecker {
         List<IDivision> divisionList;
         List<ITeam> teamList;
         conferenceList = league.getConferences();
-        for (IConference c : conferenceList) {
-            divisionList = c.getDivisions();
-            for (IDivision d : divisionList) {
-                teamList = d.getTeams();
-                for (ITeam t : teamList) {
-                    if (t.getTeamName().toLowerCase().equals(team.toLowerCase())) {
+        for (IConference conference : conferenceList) {
+            divisionList = conference.getDivisions();
+            for (IDivision division : divisionList) {
+                teamList = division.getTeams();
+                for (ITeam teams : teamList) {
+                    if (teams.getTeamName().toLowerCase().equals(team.toLowerCase())) {
+                        teams.setTeamType(Configurables.USER.getAction());
                         return true;
                     }
                 }

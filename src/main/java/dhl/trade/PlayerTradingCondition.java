@@ -17,6 +17,9 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
     IPlayers playerStrength;
     IStrongestWeakestPlayers strongestWeakestPlayers;
     ITrading trading;
+
+
+
     IGamePlayConfig gamePlayConfig;
     private double strongestPlayersStrength = 0.0;
     private String positionToTrade = "";
@@ -35,7 +38,22 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
         strongestWeakestPlayers = new StrongestWeakestPlayers();
         playerTrade = new PlayerTrade();
         trading = new Trading();
-        gamePlayConfig = new GamePlayConfig();
+    }
+
+    public List<IPlayers> getConsideringTeamPlayers() {
+        return consideringTeamPlayers;
+    }
+
+    public void setConsideringTeamPlayers(List<IPlayers> consideringTeamPlayers) {
+        this.consideringTeamPlayers = consideringTeamPlayers;
+    }
+
+    public List<IPlayers> getOfferingTeamPositionPlayers() {
+        return offeringTeamPositionPlayers;
+    }
+
+    public void setOfferingTeamPositionPlayers(List<IPlayers> offeringTeamPositionPlayers) {
+        this.offeringTeamPositionPlayers = offeringTeamPositionPlayers;
     }
 
     @Override
@@ -52,31 +70,35 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
     }
 
     @Override
-    public void tradeCondition(List<ITeam> allTeams) {
+    public void tradeCondition(List<ITeam> allTeams, IGamePlayConfig gamePlayConfiguration) {
+        this.gamePlayConfig = gamePlayConfiguration;
         trading = gamePlayConfig.getTrading();
         int lossPoints = trading.getLossPoint();
         double randomTradeOfferChance = trading.getRandomTradeOfferChance();
         for (int i = 0; i < allTeams.size(); i++) {
-
-            if (allTeams.get(i).getTeamType().toLowerCase().equals(Configurables.AI.getAction()) && allTeams.get(i).getLossPoints() == lossPoints) {
+            System.out.println(allTeams.get(i).getLossPoints()+" ----loss point fot team :"+allTeams.get(i).getTeamName());
+            if (allTeams.get(i).getTeamType().toLowerCase().equals(Configurables.AI.getAction()) && allTeams.get(i).getLossPoints() >= lossPoints) {
                 if (randomTradeOfferChance > Math.random()) {
                     offeringTeamPlayers = strongestWeakestPlayers.checkWeakestPlayer(allTeams.get(i), gamePlayConfig);
                     offeringTeamPositionPlayers = getPositionTypesOffering(offeringTeamPlayers);
+                    setOfferingTeamPositionPlayers(offeringTeamPositionPlayers);
                     positionToTrade = offeringTeamPositionPlayers.get(0).getPosition();
                     for (int j = 0; j < allTeams.size(); j++) {
                         if (i == j) {
                             continue;
                         } else {
                             consideringTeamPlayers = strongestWeakestPlayers.checkStrongestPlayer(allTeams.get(j), positionToTrade);
+                            setConsideringTeamPlayers(consideringTeamPlayers);
                             if (strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers) > strongestPlayersStrength) {
+                                strongestPlayersStrength = strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers);
                                 finalTeam = allTeams.get(j);
                             }
                         }
                     }
                     if (finalTeam.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
-                        playerTrade.tradeAi(allTeams.get(i), finalTeam);
+                        playerTrade.tradeAi(allTeams.get(i), finalTeam, gamePlayConfig);
                     } else {
-                        playerTrade.tradeUser(allTeams.get(i), finalTeam);
+                        playerTrade.tradeUser(allTeams.get(i), finalTeam, gamePlayConfig);
                     }
                 }
             }

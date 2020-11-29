@@ -67,6 +67,7 @@ public class GameSimulation implements IGameSimulation {
 
     public void teamLost(ITeam team, ITeamStanding teamStanding){
         teamStanding.setGamesPlayed(teamStanding.getGamesPlayed() + 1);
+        team.setLossPoints(team.getLossPoints() + 1);
     }
 
     public void teamDraw(ITeam team, ITeamStanding teamStanding){

@@ -58,6 +58,7 @@ public class SimulateState implements IStateMachine {
         }
         System.out.println("count of matches played = "+count);
         machine.setTeamsForInjuryCheck(teamsInjuryCheck);
+        System.out.println(teamsInjuryCheck.get(0).getTeamName()+"-----team injury check");
         if (teamsInjuryCheck == null) {
             output.setOutput("injury check list is empty");
             output.sendOutput();
