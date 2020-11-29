@@ -1,9 +1,6 @@
 package dhl.leagueModel.headCoach;
 
-import dhl.persistence.saving.FreeCoachPersistence;
-import dhl.persistence.saving.HeadCoachPersistence;
-import dhl.persistence.saving.IFreeCoachPersistence;
-import dhl.persistence.saving.IHeadCoachPersistence;
+
 
 import java.util.List;
 
@@ -82,21 +79,5 @@ public class HeadCoach implements IHeadCoach {
             }
         }
         return null;
-    }
-
-    @Override
-    public void saveHeadCoach(int teamID) {
-        IHeadCoachPersistence headCoachPersistence = new HeadCoachPersistence();
-        String headCoachName = this.getName();
-        double[] headCoachAttributes = {this.getSkating(), this.getShooting(), this.getChecking(), this.getSaving()};
-        headCoachPersistence.saveHeadCoachToDB(headCoachName, headCoachAttributes, teamID);
-    }
-
-    @Override
-    public void saveFreeCoach(int leagueID) {
-        IFreeCoachPersistence freeCoachPersistence = new FreeCoachPersistence();
-        String freeCoachName = this.getName();
-        double[] headCoachAttributes = {this.getSkating(), this.getShooting(), this.getChecking(), this.getSaving()};
-        freeCoachPersistence.saveFreeCoachToDB(freeCoachName, headCoachAttributes, leagueID);
     }
 }

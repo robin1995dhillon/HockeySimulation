@@ -1,5 +1,6 @@
 package dhl.stateMachineNew;
 
+import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulation;
 import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
 import dhl.stateMachineNew.gameSimulationAlgorithm.IShiftTime;
 
@@ -31,7 +32,6 @@ public abstract class StateMachineAbstractFactory {
 
     public abstract IShiftTime getShiftTime();
 
-
     public abstract void setGameSimulation(IGameSimulation gameSimulation);
 
     public abstract void setSchedulerSeason(ISchedulerSeason schedulerSeason);
@@ -47,4 +47,5 @@ public abstract class StateMachineAbstractFactory {
     public abstract void setGameSimulationAlgorithm(IGameSimulationAlgorithm gameSimulationAlgorithm);
 
     public abstract void getShiftTime(IShiftTime shiftTime);
+
 }
