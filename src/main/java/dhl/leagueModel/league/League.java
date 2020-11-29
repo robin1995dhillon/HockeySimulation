@@ -20,7 +20,7 @@ public class League implements ILeague {
     private int numberSeason;
     private int totalSeasons;
     private String lastDateOfSeason;
-    private List<IFreeAgents> freeAgents2;
+    //private List<IFreeAgents> freeAgents2;
     private List<IConference> conferences;
     private List<IFreeAgents> freeAgents;
     private List<IHeadCoach> coaches;
@@ -147,15 +147,15 @@ public class League implements ILeague {
         this.generalManagers = generalManagers;
     }
 
-    @Override
-    public List<IFreeAgents> getFreeAgents2() {
-        return freeAgents2;
-    }
-
-    @Override
-    public void setFreeAgents2(List<IFreeAgents> freeAgents2) {
-        this.freeAgents2 = freeAgents2;
-    }
+//    @Override
+//    public List<IFreeAgents> getFreeAgents2() {
+//        return freeAgents2;
+//    }
+//
+//    @Override
+//    public void setFreeAgents2(List<IFreeAgents> freeAgents2) {
+//        this.freeAgents2 = freeAgents2;
+//    }
 
 //    @Override
 //    public void storeLeague() {

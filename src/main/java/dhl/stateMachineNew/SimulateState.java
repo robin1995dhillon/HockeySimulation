@@ -30,7 +30,7 @@ public class SimulateState implements IStateMachine {
     }
 
     public IStateMachine entry() throws ParseException {
-
+        System.out.println("We are in Simulate State");
 
         return doTask();
     }
@@ -58,6 +58,7 @@ public class SimulateState implements IStateMachine {
         }
         System.out.println("count of matches played = "+count);
         machine.setTeamsForInjuryCheck(teamsInjuryCheck);
+        System.out.println(teamsInjuryCheck.get(0).getTeamName()+"-----team injury check");
         if (teamsInjuryCheck == null) {
             output.setOutput("injury check list is empty");
             output.sendOutput();
@@ -87,14 +88,11 @@ public class SimulateState implements IStateMachine {
         String currentDate = league.getDate();
         boolean isLastDayOfTrade = season.isLastDayOfTrade(currentDate, machine.getPlayoffsYear());
         if (isLastDayOfTrade) {
-            return machine.getExecuteTrades();
-
-        } else {
-
-
             return machine.getAging();
+        } else {
+            return machine.getExecuteTrades();
         }
-//interchange above states when final
+
     }
 
     public void exit() {

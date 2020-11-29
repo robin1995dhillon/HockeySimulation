@@ -11,7 +11,7 @@ public class GeneratePlayoffScheduleState implements IStateMachine{
     }
 
     public IStateMachine entry() throws ParseException {
-
+        System.out.println("We are in Game Play Off Schedule State");
         return doTask();
     }
 

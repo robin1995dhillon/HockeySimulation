@@ -4,6 +4,7 @@ import dhl.leagueModel.*;
 import dhl.leagueModel.gamePlayConfig.IAging;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
+import dhl.leagueModel.trade.IAddDropPlayers;
 import dhl.mock.MockFreeAgent;
 import dhl.stateMachineNew.PlayerDraft;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,10 @@ public class random {
     IAging aging;
     ITrading trading;
     ITrading trading2;
+
+    IAddDropPlayers addDropPlayers;
+    IAddDropPlayers addDropPlayers2;
+
 
     @Test
     void randomTest() {
@@ -24,6 +29,11 @@ public class random {
 //        System.out.println(trading2);
         trading2 = leagueModelAbstractFactory.getGamePlayConfig().getTrading();
         System.out.println(trading2);
+
+        addDropPlayers = leagueModelAbstractFactory.getAddDropPlayers();
+        addDropPlayers2 = leagueModelAbstractFactory.getAddDropPlayers();
+        System.out.println(addDropPlayers);
+        System.out.println(addDropPlayers2);
     }
 
 //    @Test

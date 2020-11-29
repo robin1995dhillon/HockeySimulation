@@ -19,10 +19,11 @@ public class InjuryCheckState implements IStateMachine {
     }
 
     public IStateMachine entry() {
+        System.out.println("We are in Injury Check State");
         this.checkInjuryTeam = this.machine.getTeamsForInjuryCheck();
         System.out.println("in injury state "+machine.getLeague().getLeagueName());
-//        checkInjuryTeam is empty.
-        System.out.println("teams for injury check "+machine.getTeamsForInjuryCheck().get(0).getTeamName());
+        System.out.println("teams for injury check "+this.machine.getTeamsForInjuryCheck());
+        System.out.println("teams for injury checksssss "+this.checkInjuryTeam);
         System.out.println("bla bla bla "+this.checkInjuryTeam.get(0).getTeamName());
         for (ITeam team : checkInjuryTeam) {
             for (IPlayers player : team.getPlayers()) {

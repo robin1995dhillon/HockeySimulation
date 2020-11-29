@@ -4,8 +4,8 @@ import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITraining;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.training.IPlayerTrainingCondition;
-import dhl.leagueModel.training.PlayerTrainingCondition;
+import dhl.leagueModel.IPlayerTrainingCondition;
+import dhl.leagueModel.PlayerTrainingCondition;
 
 public class TrainingState implements IStateMachine{
 
@@ -19,6 +19,7 @@ public class TrainingState implements IStateMachine{
         this.machine = machine;
     }
     public IStateMachine entry() {
+        System.out.println("We are in Training State");
         trainingCondition = new PlayerTrainingCondition();
         ILeague league = machine.getLeague();
         config = league.getGameplayConfig();

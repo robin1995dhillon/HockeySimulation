@@ -29,4 +29,6 @@ public class UserOutput implements IUserOutput {
         System.err.println(this.outValue);
         return this.outValue;
     }
+
+
 }

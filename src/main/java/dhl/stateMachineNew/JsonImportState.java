@@ -12,10 +12,10 @@ public class JsonImportState implements IStateMachine {
     private JsonImport json;
 
 
-    JsonImportState(StateMachine machine, String filePath) {
+    JsonImportState(StateMachine machine) {
 
         this.stateMachine = machine;
-        this.filePath = filePath;
+        this.filePath = this.stateMachine.getFilePath();
         league = new League();
         json = new JsonImport();
 
@@ -28,7 +28,8 @@ public class JsonImportState implements IStateMachine {
 
     public IStateMachine doTask() {
 
-        if (filePath == null || filePath.isEmpty()) {
+        if (this.filePath == null || this.filePath.isEmpty()) {
+            System.out.println("filepath is null");
             return stateMachine.getLoadTeam();
         } else {
 

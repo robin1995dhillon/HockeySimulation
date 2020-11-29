@@ -12,7 +12,7 @@ public class InitializeSeasonState implements IStateMachine {
     }
 
     public IStateMachine entry() throws ParseException {
-
+        System.out.println("We are in Initialize Season State");
 
         return doTask();
     }

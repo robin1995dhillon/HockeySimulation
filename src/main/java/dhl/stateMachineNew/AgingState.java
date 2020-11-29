@@ -24,6 +24,7 @@ public class AgingState implements IStateMachine{
     }
 
     public IStateMachine entry() throws ParseException {
+        System.out.println("We are in Aging State");
         for(ITeam team : this.machine.getTotalTeamList()){
             for(IPlayers player : team.getPlayers()){
                 player.agePlayer(1,this.machine.getLeague().getGameplayConfig());
@@ -32,7 +33,7 @@ public class AgingState implements IStateMachine{
 //        for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
 //            //age free agent
 //        }
-        for(IAllPlayers agent: machine.getLeague().getFreeAgents2()) {
+        for(IAllPlayers agent: machine.getLeague().getFreeAgents()) {
             agent.agePlayer(1, this.machine.getLeague().getGameplayConfig());
         }
 

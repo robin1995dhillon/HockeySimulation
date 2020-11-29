@@ -22,7 +22,7 @@ public class AdvanceTimeState implements IStateMachine{
     }
 
     public IStateMachine entry() throws ParseException {
-
+        System.out.println("We are in Advance Time State");
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
         league.setDate(leagueTimeConcept.nextDate(currentDate));
@@ -71,13 +71,13 @@ public class AdvanceTimeState implements IStateMachine{
                 }
             }
         }
-        output.setOutput("Goals per game: " + goals / 82);
+        output.setOutput("Goals per game: " + goals / 82 / 32);
         output.sendOutput();
-        output.setOutput("Penalties per game" + penalties / 82);
+        output.setOutput("Penalties per game" + penalties / 82 / 32);
         output.sendOutput();
-        output.setOutput("Shots: " + shots / 82);
+        output.setOutput("Shots: " + shots / 82 / 32);
         output.sendOutput();
-        output.setOutput("Saves: " + saves / 82);
+        output.setOutput("Saves: " + saves / 82 / 32);
         output.sendOutput();
     }
 }

@@ -37,15 +37,16 @@ public class StateMachine {
     private IUserOutput output;
     private ITeam team;
     private int playoffsYear;
+    private String filePath;
     private List<ITeam> totalTeamList;
 
-    public StateMachine(String filePath) {
+    public StateMachine() {
 
         totalTeamList = new ArrayList<>();
         league = new League();
 //        league = factory.getLeague();
         team = new Teams();
-        jsonImport = new JsonImportState(this, filePath);
+        jsonImport = new JsonImportState(this);
         createTeam = new CreateTeamState(this);
         loadTeam = new LoadTeamState(this);
         playerChoice = new PlayerChoiceState(this);
@@ -65,7 +66,12 @@ public class StateMachine {
         currentState = jsonImport;
     }
 
-    public StateMachine() {
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String getFilePath() {
+        return this.filePath;
     }
 
     public void startMachine() throws ParseException {

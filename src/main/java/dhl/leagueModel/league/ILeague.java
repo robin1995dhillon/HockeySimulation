@@ -51,9 +51,9 @@ public interface ILeague {
 
 //    void storeLeague();
 
-    List<IFreeAgents> getFreeAgents2();
-
-    void setFreeAgents2(List<IFreeAgents> freeAgents2);
+//    List<IFreeAgents> getFreeAgents2();
+//
+//    void setFreeAgents2(List<IFreeAgents> freeAgents2);
 
     String getDate();
 

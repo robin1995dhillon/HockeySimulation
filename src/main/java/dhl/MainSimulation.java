@@ -15,7 +15,9 @@ public class MainSimulation {
             filePath = null;
         }
 
-        StateMachine stateMachine = new StateMachine(filePath);
+
+        StateMachine stateMachine = new StateMachine();
+        stateMachine.setFilePath(filePath);
         stateMachine.startMachine();
 
     }

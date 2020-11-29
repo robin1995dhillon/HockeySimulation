@@ -14,10 +14,9 @@ import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.league.League;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
-import dhl.trade.IPlayerTradingCondition;
-import dhl.trade.PlayerTradingCondition;
+import dhl.leagueModel.trade.*;
 
-public class LeagueModelConcrete extends LeagueModelAbstractFactory{
+public class LeagueModelConcrete extends LeagueModelAbstractFactory {
 
     private ILeague league;
     private IConference conference;
@@ -28,7 +27,13 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
     private IGeneralManager generalManager;
     private IFreeAgents freeAgents;
     private IGamePlayConfig gamePlayConfig;
+    private IPlayerTrainingCondition playerTrainingCondition;
+
+    private IAddDropPlayers addDropPlayers;
+    private IFreeAgentListAdd freeAgentListAdd;
+    private IFreeAgentListDrop freeAgentListDrop;
     private IPlayerTradingCondition playerTradingCondition;
+    private IStrongestWeakestPlayers strongestWeakestPlayers;
 
 
     public LeagueModelConcrete() {
@@ -36,7 +41,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public ILeague getLeague() {
-        if(league == null) {
+        if (league == null) {
             league = new League();
         }
         return league;
@@ -49,7 +54,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public IConference getConference() {
-        if(conference == null) {
+        if (conference == null) {
             conference = new Conference();
         }
         return conference;
@@ -62,7 +67,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public IDivision getDivision() {
-        if(division == null) {
+        if (division == null) {
             division = new Division();
         }
         return division;
@@ -75,7 +80,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public ITeam getTeam() {
-        if(team == null) {
+        if (team == null) {
             team = new Teams();
         }
         return team;
@@ -88,7 +93,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public IPlayers getPlayers() {
-        if(players == null) {
+        if (players == null) {
             players = new Players();
         }
         return players;
@@ -106,7 +111,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public IHeadCoach getHeadCoach() {
-        if(headCoach == null) {
+        if (headCoach == null) {
             headCoach = new HeadCoach();
         }
         return headCoach;
@@ -119,7 +124,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public IGeneralManager getGeneralManager() {
-        if(generalManager == null) {
+        if (generalManager == null) {
             generalManager = new GeneralManager();
         }
         return generalManager;
@@ -132,7 +137,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public IFreeAgents getFreeAgents() {
-        if(freeAgents == null) {
+        if (freeAgents == null) {
             freeAgents = new FreeAgents();
         }
         return freeAgents;
@@ -145,8 +150,8 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
 
     @Override
     public IGamePlayConfig getGamePlayConfig() {
-        if(gamePlayConfig == null) {
-            gamePlayConfig =  new GamePlayConfig();
+        if (gamePlayConfig == null) {
+            gamePlayConfig = new GamePlayConfig();
         }
         return gamePlayConfig;
     }
@@ -157,15 +162,78 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
     }
 
     @Override
-    public IPlayerTradingCondition getPlayerTradingCondition() {
-        if(playerTradingCondition == null)  {
+    public IPlayerTrainingCondition getPlayerTrainingCondition() {
+        if (playerTrainingCondition == null) {
+            playerTrainingCondition = new PlayerTrainingCondition();
+        }
+        return playerTrainingCondition;
+    }
+
+    @Override
+    public void setPlayerTrainingCondition(IPlayerTrainingCondition playerTrainingCondition) {
+        this.playerTrainingCondition = playerTrainingCondition;
+    }
+
+    public IAddDropPlayers getAddDropPlayers() {
+        if (addDropPlayers == null) {
+            addDropPlayers = new AddDropPlayers();
+        }
+        return addDropPlayers;
+    }
+
+    public IFreeAgentListAdd getFreeAgentList() {
+        if (freeAgentListAdd == null) {
+            freeAgentListAdd = new FreeAgentList();
+        }
+        return freeAgentListAdd;
+    }
+
+    public IFreeAgentListDrop getFreeAgentListDrop() {
+        if (freeAgentListDrop == null) {
+            freeAgentListDrop = new FreeAgentListDrop();
+        }
+        return freeAgentListDrop;
+    }
+
+    public IPlayerTradingCondition getPLayerTradingCondition() {
+        if (playerTradingCondition == null) {
             playerTradingCondition = new PlayerTradingCondition();
         }
         return playerTradingCondition;
     }
 
-    @Override
-    public void setPlayerTradingCondition(IPlayerTradingCondition playerTradingCondition) {
+    public IStrongestWeakestPlayers getStrongestWeakestPlayers() {
+        if (strongestWeakestPlayers == null) {
+            strongestWeakestPlayers = new StrongestWeakestPlayers();
+        }
+        return strongestWeakestPlayers;
+    }
+
+    public void setAddDropPlayers(IAddDropPlayers addDropPlayers) {
+        this.addDropPlayers = addDropPlayers;
+
+    }
+
+    public void setFreeAgentList(IFreeAgentListAdd freeAgentListAdd) {
+
+        this.freeAgentListAdd = freeAgentListAdd;
+    }
+
+    public void setFreeAgentListDrop(IFreeAgentListDrop freeAgentListDrop) {
+
+        this.freeAgentListDrop = freeAgentListDrop;
+
+    }
+
+    public void setPLayerTradingCondition(IPlayerTradingCondition playerTradingCondition) {
+
         this.playerTradingCondition = playerTradingCondition;
+
+    }
+
+    public void setStrongestWeakestPlayers(IStrongestWeakestPlayers strongestWeakestPlayers) {
+
+        this.strongestWeakestPlayers = strongestWeakestPlayers;
+
     }
 }

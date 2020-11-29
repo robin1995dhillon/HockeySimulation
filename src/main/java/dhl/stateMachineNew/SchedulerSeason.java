@@ -143,12 +143,19 @@ public class SchedulerSeason implements ISchedulerSeason {
      * Stanley Playoffs start date: Second Wednesday in April
      **/
     public String getFirstDayOfStanleyPlayoffs() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
         calendar.set(Calendar.DAY_OF_WEEK_IN_MONTH, 2);
         calendar.set(Calendar.MONTH, Calendar.APRIL);
         calendar.set(Calendar.YEAR, playoffsYear);
-
-        return String.valueOf(calendar.get(Calendar.DATE));
+        String seasonDay = String.valueOf(calendar.get(Calendar.DATE));
+        String lastDay = seasonDay + "-04-" + String.valueOf(playoffsYear);
+        try {
+            lastDay = dateFormat.format(dateFormat.parse(lastDay));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return lastDay;
     }
 
     /**
@@ -440,6 +447,7 @@ public class SchedulerSeason implements ISchedulerSeason {
     }
 
     public void playoffSchedule(StateMachine machine) throws ParseException {
+        this.playoffsYear = machine.getPlayoffsYear();
         sortedTeamListPlayoff = new ArrayList<>();
         scheduleList = new ArrayList<>();
         Map<ITeam, Integer> teamListPlayoff = new HashMap<>();
