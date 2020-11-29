@@ -60,7 +60,7 @@ public abstract class LeagueModelAbstractFactory {
 
     public abstract void setGamePlayConfig(IGamePlayConfig gamePlayConfig);
 
-    public abstract IPlayerTradingCondition getPlayerTradingCondition();
+    public abstract IPlayerTrainingCondition getPlayerTrainingCondition();
 
-    public abstract void setPlayerTradingCondition(IPlayerTradingCondition playerTradingCondition);
+    public abstract void setPlayerTrainingCondition(IPlayerTrainingCondition playerTrainingCondition);
 }

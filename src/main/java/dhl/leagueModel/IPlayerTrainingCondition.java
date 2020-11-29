@@ -1,4 +1,4 @@
-package dhl.leagueModel.training;
+package dhl.leagueModel;
 
 import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.leagueModel.IPlayers;

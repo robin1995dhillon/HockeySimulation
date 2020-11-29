@@ -28,7 +28,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
     private IGeneralManager generalManager;
     private IFreeAgents freeAgents;
     private IGamePlayConfig gamePlayConfig;
-    private IPlayerTradingCondition playerTradingCondition;
+    private IPlayerTrainingCondition playerTrainingCondition;
 
 
     public LeagueModelConcrete() {
@@ -157,15 +157,15 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory{
     }
 
     @Override
-    public IPlayerTradingCondition getPlayerTradingCondition() {
-        if(playerTradingCondition == null)  {
-            playerTradingCondition = new PlayerTradingCondition();
+    public IPlayerTrainingCondition getPlayerTrainingCondition() {
+        if(playerTrainingCondition == null)  {
+            playerTrainingCondition = new PlayerTrainingCondition();
         }
-        return playerTradingCondition;
+        return playerTrainingCondition;
     }
 
     @Override
-    public void setPlayerTradingCondition(IPlayerTradingCondition playerTradingCondition) {
-        this.playerTradingCondition = playerTradingCondition;
+    public void setPlayerTrainingCondition(IPlayerTrainingCondition playerTrainingCondition) {
+        this.playerTrainingCondition = playerTrainingCondition;
     }
 }
