@@ -1,10 +1,10 @@
 package dhl;
 
-import dhl.leagueModel.LeagueModelAbstractFactory;
-import dhl.leagueModel.LeagueModelConcrete;
+import dhl.leagueModel.*;
 import dhl.leagueModel.gamePlayConfig.IAging;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
+import dhl.mock.MockFreeAgent;
 import org.junit.jupiter.api.Test;
 
 public class random {
@@ -24,4 +24,20 @@ public class random {
         trading2 = leagueModelAbstractFactory.getGamePlayConfig().getTrading();
         System.out.println(trading2);
     }
+
+//    @Test
+//    void ageFreeAgent() {
+//
+//        IFreeAgents freeAgents = new FreeAgents();
+//        freeAgents.setPlayerName("Play1");
+//        freeAgents.setPosition("forward");
+//        freeAgents.setBirthDay(28);
+//        freeAgents.setBirthMonth(6);
+//        freeAgents.setBirthYear(1997);
+//        freeAgents.agePlayer(10);
+//        System.out.println(freeAgents.getPlayerCurrentDate());
+//        System.out.println(freeAgents.getAge());
+//    }
+
+
 }

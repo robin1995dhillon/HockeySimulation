@@ -47,41 +47,6 @@ public class SimulationMain {
                 ILeague league = IDeserializeJSONToModel.jsonToLeague(Path);
                 if (league.isValid(league)) {
                     output.setOutput("Valid JSON!\n");
-                    IConference conference = league.getConferences().get(0);
-                    IDivision division = conference.getDivisions().get(0);
-                    ITeam team = division.getTeams().get(0);
-                    team.createRoster();
-                    List<IPlayers> activeTeams = team.getActiveRoster();
-                    List<IPlayers> inActiveTeam = team.getInActiveRoster();
-                    System.out.println("Active Roster before swapping");
-                    for(IPlayers players: activeTeams) {
-                        System.out.println(players.getPlayerName());
-                        System.out.println(players.getStrength());
-                        System.out.println(players.getPosition());
-                    }
-                    System.out.println("Inactive Roster before swapping");
-                    for(IPlayers players1: inActiveTeam) {
-                        System.out.println(players1.getPlayerName());
-                        System.out.println(players1.getStrength());
-                        System.out.println(players1.getPosition());
-                    }
-                    IPlayers players1 = activeTeams.get(0);
-                    team.swapForPlayerInInactiveRoster(players1);
-
-                    System.out.println("Active Roster after swapping");
-                    for(IPlayers players: team.getActiveRoster()) {
-                        System.out.println(players.getPlayerName());
-                        System.out.println(players.getStrength());
-                        System.out.println(players.getPosition());
-                    }
-
-                    System.out.println("Inactive Roster after swapping");
-                    for(IPlayers players: team.getInActiveRoster()) {
-                        System.out.println(players.getPlayerName());
-                        System.out.println(players.getStrength());
-                        System.out.println(players.getPosition());
-                    }
-
 //                    IConference conference = league.getConferences().get(0);
 //                    IDivision division = conference.getDivisions().get(0);
 //                    ITeam team = division.getTeams().get(0);

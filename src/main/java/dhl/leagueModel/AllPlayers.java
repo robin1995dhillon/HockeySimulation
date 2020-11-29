@@ -209,12 +209,12 @@ public class AllPlayers implements IAllPlayers {
         System.out.println(this.playerCurrentDate);
         System.out.println(nextBirthDay);
         if (nextBirthDay.isBefore(this.playerCurrentDate)) {
-            this.setAge(this.playerCurrentDate.getYear() - year);
+            this.setAge(this.playerCurrentDate.getYear() - year + 1);
         } else {
-            this.setAge(this.playerCurrentDate.getYear() - year - 1);
+            this.setAge(this.playerCurrentDate.getYear() - year);
         }
 
-        if (this.isInjured()) {
+        if(this.isInjured()) {
             this.setInjuredDays(this.getInjuredDays() - daysToAge);
             this.playerStillInjured();
             this.checkIfRetired();

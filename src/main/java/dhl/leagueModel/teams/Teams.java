@@ -358,8 +358,27 @@ public class Teams implements ITeam {
         this.players.add(players);
     }
 
+    @Override
     public void checkForInactiveRosterPlayerInjuryRecovery() {
+        List<IPlayers> activeRoster;
+        List<IPlayers> inActiveRoster;
+        activeRoster = this.activeRoster;
+        inActiveRoster = this.inActiveRoster;
 
+        for(int i=0;i<inActiveRoster.size();i++) {
+            if(inActiveRoster.get(0).isInjured() == false) {
+                for (int j = 0; j < activeRoster.size(); j++) {
+                    if(inActiveRoster.get(i).getPosition().equals(activeRoster.get(j).getPosition()) && inActiveRoster.get(i).getStrength() > activeRoster.get(j).getStrength()) {
+                        addPlayerToActiveRoster(inActiveRoster.get(i));
+                        removePlayerFromActiveRoster(activeRoster.get(j));
+                        addPlayerToInactiveRoster(activeRoster.get(j));
+                        removePlayerFromInactiveRoster(inActiveRoster.get(i));
+                    }
+                }
+            }
+            setInActiveRoster(bestPlayersInATeamSorted(this.inActiveRoster));
+            setActiveRoster(bestPlayersInATeamSorted(this.activeRoster));
+        }
     }
 
 }
