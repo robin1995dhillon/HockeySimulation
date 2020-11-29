@@ -63,14 +63,18 @@ public class SimulateState implements IStateMachine {
             output.sendOutput();
 
         } else {
+            System.out.println("Checking for Injury Teams.");
+            for(ITeam team: teamsInjuryCheck) {
+                System.out.println(team.getTeamName());
+            }
             int counter = 0;
             for (ISchedulerSeason scheduler : league.getGameSchedules()) {
-
                 if(scheduler.getStatus().equalsIgnoreCase(Configurables.PLAYED.getAction())){
                     counter++;
                 }
             }
             System.out.println("playedddddd "+counter);
+//            Calling function which is causing error
             machine.setCurrentState(machine.getInjuryCheck());
             IStateMachine state = machine.getCurrentState().entry();
             if(state == machine.getSimulate()){

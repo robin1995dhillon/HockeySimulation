@@ -35,10 +35,14 @@ public class AdvanceTimeState implements IStateMachine{
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
         String regularSeasonEndDate = league.getLastDateOfSeason();
+//        String playerDraftDate = '15-07'
         if(currentDate.equalsIgnoreCase(regularSeasonEndDate)){
             getLeagueAverages(league);
             return stateMachine.getGeneratePlayoffSchedule();
         }
+//        if(currentDate.equals(playerDraftDate)) {
+//
+//        }
         else{
             return stateMachine.getTraining();
         }
