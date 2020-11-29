@@ -307,6 +307,8 @@ public class SchedulerSeason implements ISchedulerSeason {
                 for (int k = 0; k < retrievedTeams.size(); k++) {
                     ITeam teamName = retrievedTeams.get(k);
 
+                      //  System.out.println(teamName.getPlayers().size()+"!!!_!_!SIZE IS__!__!_!__!_!__!_!_");
+
                     this.teamList.add(teamName);
                     scheduledMatches.put(teamName, 0);
                 }

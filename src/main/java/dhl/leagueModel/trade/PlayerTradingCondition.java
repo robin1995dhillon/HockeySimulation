@@ -64,7 +64,7 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
         int lossPoints = trading.getLossPoint();
         double randomTradeOfferChance = trading.getRandomTradeOfferChance();
         for (int i = 0; i < allTeams.size(); i++) {
-            System.out.println(allTeams.get(i).getLossPoints()+" ----loss point fot team :"+allTeams.get(i).getTeamName());
+            System.out.println(allTeams.get(i).getLossPoints()+" ----loss point for team :"+allTeams.get(i).getTeamName());
             if (allTeams.get(i).getTeamType().toLowerCase().equals(Configurables.AI.getAction()) && allTeams.get(i).getLossPoints() >= lossPoints) {
                 if (randomTradeOfferChance > Math.random()) {
                     offeringTeamPlayers = strongestWeakestPlayers.checkWeakestPlayer(allTeams.get(i), gamePlayConfig);
@@ -75,6 +75,8 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
                         if (i == j) {
                             continue;
                         } else {
+                            System.out.println("size of team is : "+allTeams.get(j).getPlayers().size());
+                            System.out.println("size of offering team is : "+offeringTeamPositionPlayers.size());
                             consideringTeamPlayers = strongestWeakestPlayers.checkStrongestPlayer(allTeams.get(j), positionToTrade, offeringTeamPositionPlayers.size());
                             stateMachine.setConsideringTeamPlayers(consideringTeamPlayers);
                             if (strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers) > strongestPlayersStrength) {
