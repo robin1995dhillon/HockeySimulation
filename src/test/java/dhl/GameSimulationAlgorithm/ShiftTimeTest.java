@@ -1,10 +1,9 @@
 package dhl.GameSimulationAlgorithm;
 
-import dhl.gameSimulationAlgorithm.GameSimulationAlgorithm;
-import dhl.gameSimulationAlgorithm.IGameSimulationAlgorithm;
-import dhl.gameSimulationAlgorithm.IShiftTime;
-import dhl.gameSimulationAlgorithm.ShiftTime;
-import dhl.leagueModel.IPlayers;
+import dhl.stateMachineNew.gameSimulationAlgorithm.GameSimulationAlgorithm;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IShiftTime;
+import dhl.stateMachineNew.gameSimulationAlgorithm.ShiftTime;
 import dhl.leagueModel.teams.ITeam;
 import dhl.mock.MockTeam;
 import org.junit.jupiter.api.Test;

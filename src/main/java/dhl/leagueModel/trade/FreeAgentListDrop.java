@@ -14,6 +14,7 @@ import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
 import dhl.stateMachineNew.StateMachine;
+import dhl.stateMachineNew.StateMachineAbstractFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,9 +31,11 @@ public class FreeAgentListDrop implements IFreeAgentListDrop {
     private IUserInput userInput;
     private StateMachine machine;
     private ILeague league;
+    private StateMachine stateMachine;
 
     public FreeAgentListDrop() {
-        league = new League();
+        stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
+        league = stateMachine.getLeague();
         availableAgents = league.getFreeAgents();
         // availableAgents = new ArrayList<>();
         playerToDrop = new Players();

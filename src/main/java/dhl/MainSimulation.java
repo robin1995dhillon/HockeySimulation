@@ -1,6 +1,7 @@
 package dhl;
 
 import dhl.stateMachineNew.StateMachine;
+import dhl.stateMachineNew.StateMachineAbstractFactory;
 
 import java.text.ParseException;
 
@@ -16,7 +17,7 @@ public class MainSimulation {
         }
 
 
-        StateMachine stateMachine = new StateMachine();
+        StateMachine stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
         stateMachine.setFilePath(filePath);
         stateMachine.startMachine();
 

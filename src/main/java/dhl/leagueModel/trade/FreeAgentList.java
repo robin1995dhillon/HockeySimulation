@@ -13,6 +13,8 @@ import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
+import dhl.stateMachineNew.StateMachine;
+import dhl.stateMachineNew.StateMachineAbstractFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,9 +29,12 @@ public class FreeAgentList implements IFreeAgentListAdd {
     private ITradePrompt prompt;
     private IUserOutput userOutput;
     private IUserInput userInput;
+    private StateMachine stateMachine;
 
 
     public FreeAgentList() {
+        stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
+        league = stateMachine.getLeague();
         agents = new FreeAgents();
         playerToAdd = new Players();
         playerStrength = new Players();

@@ -10,7 +10,7 @@ import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
 import dhl.validator.JSONValidator;
 import org.json.simple.JSONObject;
 
-public class JsonImport {
+public class JsonImport implements IJsonImport{
 
     private final IUserOutput output;
 
