@@ -206,6 +206,7 @@ public class AllPlayers implements IAllPlayers {
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
         this.setPlayerCurrentDate(this.getPlayerCurrentDate().plusDays(daysToAge));
+        System.out.println("-------------"+month);
         LocalDate nextBirthDay = LocalDate.of(this.playerCurrentDate.getYear(), month, days);
         System.out.println(this.playerCurrentDate);
         System.out.println(nextBirthDay);
