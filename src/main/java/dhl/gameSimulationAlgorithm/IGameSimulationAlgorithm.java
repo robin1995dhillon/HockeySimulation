@@ -6,6 +6,7 @@ import dhl.leagueModel.teams.ITeam;
 import java.util.List;
 
 public interface IGameSimulationAlgorithm {
+    void resetAlgorithm(double penaltyChance, double saveChance, double shotChance);
     List<IPlayers> getPlayerForShift(ITeam team);
     IPlayers getPlayerWithLeastShift(List<IPlayers> playersList);
     IPlayers shots(List<IPlayers> teamOnePlayers, List<IPlayers> teamTwoPlayers);

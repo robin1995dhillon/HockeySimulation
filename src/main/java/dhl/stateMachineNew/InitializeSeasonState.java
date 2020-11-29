@@ -11,9 +11,10 @@ public class InitializeSeasonState implements IStateMachine {
 
     }
 
-    public void entry() throws ParseException {
-        doTask();
+    public IStateMachine entry() throws ParseException {
+        System.out.println("We are in Initialize Season State");
 
+        return doTask();
     }
 
     public IStateMachine doTask() throws ParseException {

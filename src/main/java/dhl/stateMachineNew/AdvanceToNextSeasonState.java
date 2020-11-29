@@ -2,7 +2,6 @@ package dhl.stateMachineNew;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import dhl.Configurables;
-import dhl.Main;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IFreeAgents;
@@ -19,7 +18,6 @@ import java.text.ParseException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdvanceToNextSeasonState implements IStateMachine{
@@ -38,9 +36,9 @@ public class AdvanceToNextSeasonState implements IStateMachine{
         serialize = new SerializeModelToJSON();
     }
 
-    public void entry() throws ParseException {
-        doTask();
+    public IStateMachine entry() throws ParseException {
 
+        return doTask();
     }
 
     public IStateMachine doTask() throws ParseException {
@@ -71,7 +69,7 @@ public class AdvanceToNextSeasonState implements IStateMachine{
 
             for(ITeam team : allTeams){
                 for(IPlayers player : team.getPlayers()){
-                    player.agePlayer(daysBetweenDates);
+                    player.agePlayer(daysBetweenDates, this.machine.getLeague().getGameplayConfig());
                     if(player.isRetired()){
                         output.setOutput("Player "+player.getPlayerName()+" retired from team "+team.getTeamName());
                         output.sendOutput();

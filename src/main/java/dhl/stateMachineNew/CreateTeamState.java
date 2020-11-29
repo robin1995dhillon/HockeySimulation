@@ -28,27 +28,27 @@ public class CreateTeamState implements IStateMachine{
     private final StateMachine stateMachine;
     private final IUserOutput output;
     private final IUserInput input;
-    private ILeague league;
+//    private ILeague league;
     private ITeam team;
 
     CreateTeamState(StateMachine machine){
 
         this.stateMachine = machine;
         output = new UserOutput();
-        this.league = machine.getLeague();
+//        this.league = this.stateMachine.getLeague();
         input = new UserInput();
         team = new Teams();
 
     }
 
-    public void entry() {
-        doTask();
+    public IStateMachine entry() {
 
+        return doTask();
     }
 
     public IStateMachine doTask() {
-
-        IStateMachine nextState = createTeam(league);
+        System.out.println("-------------"+this.stateMachine.getLeague().getLeagueName());
+        IStateMachine nextState = createTeam(this.stateMachine.getLeague());
         return nextState;
     }
 
@@ -68,6 +68,7 @@ public class CreateTeamState implements IStateMachine{
         output.sendOutput();
         input.setInput();
         conferenceName = input.getInput();
+        System.out.println(league.getLeagueName());
         IChecker CC = new Checker();
         while (CC.conferenceChecker(conferenceName, league) == false) {
             output.setOutput("Invalid input! Please enter the conference you imported:");
@@ -135,7 +136,7 @@ public class CreateTeamState implements IStateMachine{
                     IDisplayFreeAgentList freeAgentDisplayer = new DisplayFreeAgentList();
                     output.setOutput("Please choose two goalies: ");
                     output.sendOutput();
-                    for (int i = 1; i <= 2; ) {
+                    for (int i = 1; i <= 2; ) {   // change done here
                         freeAgentDisplayer.displayFreeAgent(freeAgentList);
                         output.setOutput("Enter Goalie: " + i);
                         output.sendOutput();
@@ -162,7 +163,7 @@ public class CreateTeamState implements IStateMachine{
                     }
                     output.setOutput("Please choose eighteen skaters(forward and defense):");
                     output.sendOutput();
-                    for (int i = 1; i <= 18; ) {
+                    for (int i = 1; i <= 18; ) {    // change done here
                         freeAgentDisplayer.displayFreeAgent(freeAgentList);
                         output.setOutput("Enter Skaters (Forward and Defense) " + i);
                         output.sendOutput();

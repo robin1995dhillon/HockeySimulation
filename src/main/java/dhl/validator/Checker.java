@@ -48,18 +48,18 @@ public class Checker implements IChecker {
                 teamList = d.getTeams();
                 for (ITeam t : teamList) {
                     if (t.getTeamName().toLowerCase().equals(team.toLowerCase())) {
-                        return false;
+                        return true;
                     }
                 }
             }
         }
-        return true;
+        return false;
     }
 
     @Override
     public boolean managerChecker(List<IGeneralManager> managerList, String managerName) {
         for (IGeneralManager manager : managerList) {
-            if (manager.getName().equals(managerName)) {
+            if (manager.getName().equalsIgnoreCase(managerName)) {
                 return true;
             }
         }
@@ -69,7 +69,7 @@ public class Checker implements IChecker {
     @Override
     public boolean coachChecker(List<IHeadCoach> coachList, String coachName) {
         for (IHeadCoach headCoach : coachList) {
-            if (headCoach.getName().equals(coachName)) {
+            if (headCoach.getName().equalsIgnoreCase(coachName)) {
                 return true;
             }
         }
@@ -79,7 +79,7 @@ public class Checker implements IChecker {
     @Override
     public boolean freeAgentChecker(List<IFreeAgents> freeAgentList, String freeAgentName) {
         for (IFreeAgents freeAgent : freeAgentList) {
-            if (freeAgent.getPlayerName().equals(freeAgentName)) {
+            if (freeAgent.getPlayerName().equalsIgnoreCase(freeAgentName)) {
                 return true;
             }
         }

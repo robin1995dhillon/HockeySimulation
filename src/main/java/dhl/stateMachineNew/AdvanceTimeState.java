@@ -7,9 +7,7 @@ import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
 
-import java.sql.SQLOutput;
 import java.text.ParseException;
-import java.util.logging.SocketHandler;
 
 public class AdvanceTimeState implements IStateMachine{
 
@@ -23,13 +21,13 @@ public class AdvanceTimeState implements IStateMachine{
         output = new UserOutput();
     }
 
-    public void entry() throws ParseException {
-
+    public IStateMachine entry() throws ParseException {
+        System.out.println("We are in Advance Time State");
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
         league.setDate(leagueTimeConcept.nextDate(currentDate));
-        doTask();
 
+        return doTask();
     }
 
     public IStateMachine doTask() {
@@ -69,13 +67,13 @@ public class AdvanceTimeState implements IStateMachine{
                 }
             }
         }
-        output.setOutput("Goals per game: " + goals / 82);
+        output.setOutput("Goals per game: " + goals / 82 / 32);
         output.sendOutput();
-        output.setOutput("Penalties per game" + penalties / 82);
+        output.setOutput("Penalties per game" + penalties / 82 / 32);
         output.sendOutput();
-        output.setOutput("Shots: " + shots / 82);
+        output.setOutput("Shots: " + shots / 82 / 32);
         output.sendOutput();
-        output.setOutput("Saves: " + saves / 82);
+        output.setOutput("Saves: " + saves / 82 / 32);
         output.sendOutput();
     }
 }

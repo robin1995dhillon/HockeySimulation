@@ -5,10 +5,13 @@ import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.league.League;
 import dhl.persistence.database.CheckTeam;
 import dhl.persistence.database.ICheckStoredProcedure;
 import dhl.persistence.loading.ILoadLeague;
+import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
 import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
+import dhl.validator.Checker;
 import dhl.validator.IChecker;
 //import dhl.persistence.loading.LoadLeague;
 
@@ -21,8 +24,8 @@ public class LoadTeamState implements IStateMachine{
     private final IUserInput input;
     //private ILoadLeague loadLeague;
     private final StateMachine stateMachine;
-    private IDeserializeJSONToModel deserializeJSONToModel;
-    private IChecker checker;
+    private IDeserializeJSONToModel deserializeJSONToModel = new DeserializeJSONToModel();
+    private IChecker checker = new Checker();
 
     LoadTeamState(StateMachine machine){
         this.stateMachine = machine;
@@ -30,10 +33,11 @@ public class LoadTeamState implements IStateMachine{
         input = new UserInput();
     }
 
-    public void entry() {
+    public IStateMachine entry() {
 
-        doTask();
 
+
+        return doTask();
     }
 
     public IStateMachine doTask() {
@@ -43,7 +47,12 @@ public class LoadTeamState implements IStateMachine{
         output.sendOutput();
         input.setInput();
         teamName = input.getInput();
-        ILeague league = deserializeJSONToModel.jsonToLeague("src\\saveFile.json");
+        ILeague league;
+        try {
+            league = deserializeJSONToModel.jsonToLeague("src\\saveFile.json");
+        } catch (Exception e) {
+            throw e;
+        }
         if(checker.teamChecker(teamName, league)){
             output.setOutput("Found the team. Loading...");
             output.sendOutput();
@@ -54,6 +63,7 @@ public class LoadTeamState implements IStateMachine{
             output.sendOutput();
             System.exit(0);
         }
+        return null;
 //        ICheckStoredProcedure storedProcedure = new CheckTeam(teamName);
 //        boolean isExist = false;
 //        try {
@@ -77,7 +87,6 @@ public class LoadTeamState implements IStateMachine{
 //            System.exit(0);
 //        }
 
-        return null;
     }
 
     public void exit() {

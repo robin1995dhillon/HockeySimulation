@@ -9,6 +9,7 @@ import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
+import dhl.simulationStateMachine.IState;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -28,14 +29,16 @@ public class SimulateState implements IStateMachine {
 
     }
 
-    public void entry() throws ParseException {
-        doTask();
+    public IStateMachine entry() throws ParseException {
+        System.out.println("We are in Simulate State");
 
+        return doTask();
     }
 
     public IStateMachine doTask() throws ParseException {
 
         ILeague league = machine.getLeague();
+        int count = 0; //remove it
         List<ITeam> teamsInjuryCheck = new ArrayList<>();
         IGameSimulation simulate = new GameSimulation();
         IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm();
@@ -49,26 +52,40 @@ public class SimulateState implements IStateMachine {
                 scheduler.setStatus(Configurables.PLAYED.getAction());
                 teamsInjuryCheck.add(scheduler.getFirstTeam());
                 teamsInjuryCheck.add(scheduler.getSecondTeam());
-                machine.setTeamsForInjuryCheck(teamsInjuryCheck);
+                count++;
+              //  machine.setTeamsForInjuryCheck(teamsInjuryCheck);
             }
         }
+        System.out.println("count of matches played = "+count);
+        machine.setTeamsForInjuryCheck(teamsInjuryCheck);
         if (teamsInjuryCheck == null) {
             output.setOutput("injury check list is empty");
             output.sendOutput();
 
         } else {
+            int counter = 0;
+            for (ISchedulerSeason scheduler : league.getGameSchedules()) {
+
+                if(scheduler.getStatus().equalsIgnoreCase(Configurables.PLAYED.getAction())){
+                    counter++;
+                }
+            }
+            System.out.println("playedddddd "+counter);
             machine.setCurrentState(machine.getInjuryCheck());
-            machine.getCurrentState().entry();
+            IStateMachine state = machine.getCurrentState().entry();
+            if(state == machine.getSimulate()){
+                machine.setCurrentState(machine.getSimulate());
+                machine.getCurrentState().entry();
+
+            }
         }
 
         String currentDate = league.getDate();
-        boolean isLastDayOfTrade = season.isLastDayOfTrade(currentDate);
+        boolean isLastDayOfTrade = season.isLastDayOfTrade(currentDate, machine.getPlayoffsYear());
         if (isLastDayOfTrade) {
-
-            return machine.getExecuteTrades();
-        } else {
-
             return machine.getAging();
+        } else {
+            return machine.getExecuteTrades();
         }
 
     }

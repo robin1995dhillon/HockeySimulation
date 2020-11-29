@@ -106,7 +106,7 @@ class FreeAgentListDrop implements IFreeAgentListDrop {
                 }
 
             } else {
-                if (player.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction())) {
+                if (player.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || player.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
                     playerList.add(player);
                 } else {
                     continue;
@@ -171,7 +171,7 @@ class FreeAgentListDrop implements IFreeAgentListDrop {
                         break;
                     }
                 } else if (players.getPlayerName().equalsIgnoreCase(playerDropName) && goalieCount == 2) {
-                    if (players.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction())) {
+                    if (players.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || players.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
                         dropPlayerToAgentList(players, player);
 //                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(players);
 //                        player.remove(players);

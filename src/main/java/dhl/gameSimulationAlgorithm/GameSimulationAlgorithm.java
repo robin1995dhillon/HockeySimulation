@@ -28,6 +28,15 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         this.saveChance = saveChance;
     }
 
+
+    @Override
+    public void resetAlgorithm(double penaltyChance, double saveChance, double shotChance){
+        this.saveChance = saveChance;
+        this.shotChance = shotChance;
+        this.penaltyChance = penaltyChance;
+    }
+
+
     @Override
     public IPlayers getPlayerWithLeastShift(List<IPlayers> playersList){
         List<Integer> shiftList = new ArrayList<>();
@@ -79,7 +88,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
         }
         List<IPlayers> forwardList = teamOnePlayers.subList(0,3);
         List<IPlayers> defenseList = teamTwoPlayers.subList(3,5);
-        shotChance += shotCoefficientOne * (totalSkatingOne - totalSkatingTwo) + shotCoefficientTwo;
+        shotChance += shotCoefficientOne * (totalSkatingOne - totalSkatingTwo) / totalSkatingOne + shotCoefficientTwo;
         if(Math.random() < shotChance){
             return shotForward(forwardList);
         }
@@ -103,7 +112,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
 
     @Override
     public void saves(IPlayers goalie, IPlayers forward) {
-        saveChance += saveCoefficientOne * (goalie.getSaving() - forward.getShooting()) + saveCoefficientTwo;
+        saveChance += saveCoefficientOne * (goalie.getSaving() - forward.getShooting()) / goalie.getSaving() + saveCoefficientTwo;
         if(Math.random() < saveChance){
             goalie.setSaves(goalie.getSaves() + 1);
         }
@@ -122,6 +131,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
             player.setShifts(0);
         }
     }
+
 
     @Override
     public IPlayers shotForward(List<IPlayers> forwardList){

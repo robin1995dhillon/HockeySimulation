@@ -36,6 +36,7 @@ public class StateMachine {
     private IStateMachine currentState;
     private IUserOutput output;
     private ITeam team;
+    private int playoffsYear;
     private List<ITeam> totalTeamList;
 
     public StateMachine(String filePath) {
@@ -54,9 +55,10 @@ public class StateMachine {
         generatePlayoffSchedule = new GeneratePlayoffScheduleState(this);
         training = new TrainingState(this);
         simulateGame = new SimulateGame();
-        injuryCheck = new InjuryCheckState(this, this.getTeamsForInjuryCheck());
+       // injuryCheck = new InjuryCheckState(this, this.getTeamsForInjuryCheck());
+        injuryCheck = new InjuryCheckState(this);
         executeTrades = new ExecuteTradesState(this);
-        aging = new AgingState(this, this.getTotalTeamList());
+        aging = new AgingState(this);
         advanceToNextSeason = new AdvanceToNextSeasonState(this, this.getTotalTeamList());
         persist = new PersistState();
         output = new UserOutput();
@@ -69,7 +71,7 @@ public class StateMachine {
     public void startMachine() throws ParseException {
 
         while (currentState != null) {
-            IStateMachine nextState = currentState.doTask();
+            IStateMachine nextState = currentState.entry();
             if (nextState != currentState) {
                 goToNextState(nextState);
             }
@@ -254,4 +256,12 @@ public class StateMachine {
     public void setTeamsForInjuryCheck(List<ITeam> teamsForInjuryCheck) {
         this.teamsForInjuryCheck = teamsForInjuryCheck;
     }
+
+    public int getPlayoffsYear(){
+        return playoffsYear;
+    };
+
+    public void setPlayoffsYear(int playoffsYear){
+        this.playoffsYear = playoffsYear;
+    };
 }

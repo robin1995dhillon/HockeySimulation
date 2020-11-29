@@ -1,4 +1,6 @@
-package dhl.stateMachineNew;
+package dhl;
+
+import dhl.stateMachineNew.StateMachine;
 
 import java.text.ParseException;
 

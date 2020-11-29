@@ -10,8 +10,9 @@ public class GeneratePlayoffScheduleState implements IStateMachine{
         this.machine = stateMachine;
     }
 
-    public void entry() throws ParseException {
-        doTask();
+    public IStateMachine entry() throws ParseException {
+        System.out.println("We are in Game Play Off Schedule State");
+        return doTask();
     }
 
     public IStateMachine doTask() throws ParseException {
