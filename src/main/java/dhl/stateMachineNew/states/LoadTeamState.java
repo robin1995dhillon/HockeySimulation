@@ -1,24 +1,20 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.league.League;
-import dhl.persistence.database.CheckTeam;
-import dhl.persistence.database.ICheckStoredProcedure;
-import dhl.persistence.loading.ILoadLeague;
 import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
 import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.StateMachine;
 import dhl.validator.Checker;
 import dhl.validator.IChecker;
 //import dhl.persistence.loading.LoadLeague;
 
-import java.io.IOException;
-import java.sql.SQLException;
 
-public class LoadTeamState implements IStateMachine{
+public class LoadTeamState implements IStateMachine {
 
     private final IUserOutput output;
     private final IUserInput input;
@@ -27,7 +23,7 @@ public class LoadTeamState implements IStateMachine{
     private IDeserializeJSONToModel deserializeJSONToModel = new DeserializeJSONToModel();
     private IChecker checker = new Checker();
 
-    LoadTeamState(StateMachine machine){
+    public LoadTeamState(StateMachine machine){
         this.stateMachine = machine;
         output = new UserOutput();
         input = new UserInput();

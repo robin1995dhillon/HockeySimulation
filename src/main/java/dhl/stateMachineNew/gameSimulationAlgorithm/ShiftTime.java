@@ -1,11 +1,10 @@
-package dhl.gameSimulationAlgorithm;
+package dhl.stateMachineNew.gameSimulationAlgorithm;
 
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
-import dhl.stateMachineNew.AdvanceToNextSeasonState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

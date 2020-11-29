@@ -1,12 +1,14 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.league.ILeague;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.StateMachine;
 
-public class PlayerChoiceState implements IStateMachine{
+public class PlayerChoiceState implements IStateMachine {
 
     private final IUserOutput output;
     private final IUserInput input;
@@ -15,7 +17,7 @@ public class PlayerChoiceState implements IStateMachine{
     private int currentSeason = 0;
     private ILeague machineLeague;
 
-    PlayerChoiceState(StateMachine machine){
+    public PlayerChoiceState(StateMachine machine){
 
         this.stateMachine = machine;
         output = new UserOutput();

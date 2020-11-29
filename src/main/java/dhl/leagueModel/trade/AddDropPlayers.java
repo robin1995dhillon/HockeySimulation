@@ -1,5 +1,6 @@
 package dhl.leagueModel.trade;
 
+import dhl.Configurables;
 import dhl.leagueModel.teams.ITeam;
 
 public class AddDropPlayers implements IAddDropPlayers {
@@ -17,14 +18,15 @@ public class AddDropPlayers implements IAddDropPlayers {
 
         int playersToBeAdded;
         int playersToBeDropped;
+        int totalNumberOfPlayers = Integer.parseInt(Configurables.TOTAL_PLAYERS.getAction());
 
-        if (totalPlayers < 20) {
-            playersToBeAdded = 20 - totalPlayers;
+        if (totalPlayers < totalNumberOfPlayers) {
+            playersToBeAdded = totalNumberOfPlayers - totalPlayers;
 
             freeAgentLists.aiAgentListAdd(team, playersToBeAdded);
-        } else if (totalPlayers > 20) {
+        } else if (totalPlayers > totalNumberOfPlayers) {
 
-            playersToBeDropped = totalPlayers - 20;
+            playersToBeDropped = totalPlayers - totalNumberOfPlayers;
             freeAgentListsDrop.agentListDrop(team, playersToBeDropped);
         }
     }

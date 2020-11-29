@@ -1,23 +1,24 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
+import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.league.League;
+import dhl.stateMachineNew.*;
 
 public class JsonImportState implements IStateMachine {
 
-    private final StateMachine stateMachine;
-    private final String filePath;
+    private  StateMachine stateMachine;
+    private  String filePath;
 
     private ILeague league;
-    private JsonImport json;
+    private IJsonImport json;
 
 
-    JsonImportState(StateMachine machine) {
+    public JsonImportState(StateMachine machine) {
 
         this.stateMachine = machine;
-        this.filePath = this.stateMachine.getFilePath();
-        league = new League();
-        json = new JsonImport();
+
+        league = LeagueModelAbstractFactory.instance().getLeague();
+        json = StateMachineAbstractFactory.instance().getJsonImport();
 
     }
 
@@ -27,7 +28,7 @@ public class JsonImportState implements IStateMachine {
     }
 
     public IStateMachine doTask() {
-
+        this.filePath = this.stateMachine.getFilePath();
         if (this.filePath == null || this.filePath.isEmpty()) {
             System.out.println("filepath is null");
             return stateMachine.getLoadTeam();

@@ -1,4 +1,4 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITraining;
@@ -6,8 +6,10 @@ import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.IPlayerTrainingCondition;
 import dhl.leagueModel.PlayerTrainingCondition;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.StateMachine;
 
-public class TrainingState implements IStateMachine{
+public class TrainingState implements IStateMachine {
 
     StateMachine machine;
     IPlayerTrainingCondition trainingCondition;

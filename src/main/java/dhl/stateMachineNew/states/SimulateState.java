@@ -1,15 +1,15 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import dhl.Configurables;
-import dhl.gameSimulationAlgorithm.GameSimulationAlgorithm;
-import dhl.gameSimulationAlgorithm.IGameSimulationAlgorithm;
-import dhl.gameSimulationAlgorithm.IShiftTime;
-import dhl.gameSimulationAlgorithm.ShiftTime;
+import dhl.stateMachineNew.gameSimulationAlgorithm.GameSimulationAlgorithm;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IShiftTime;
+import dhl.stateMachineNew.gameSimulationAlgorithm.ShiftTime;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
-import dhl.simulationStateMachine.IState;
+import dhl.stateMachineNew.*;
 
 import java.text.ParseException;
 import java.util.ArrayList;

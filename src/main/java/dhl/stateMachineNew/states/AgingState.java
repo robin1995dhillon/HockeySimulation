@@ -1,22 +1,26 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IAllPlayers;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
+import dhl.stateMachineNew.ISchedulerSeason;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.SchedulerSeason;
+import dhl.stateMachineNew.StateMachine;
 
 import java.text.ParseException;
 import java.util.Collections;
 
-public class AgingState implements IStateMachine{
+public class AgingState implements IStateMachine {
 
     StateMachine machine;
     ISchedulerSeason schedulerSeason;
     private IUserOutput output;
    // private List<ITeam> allTeams;
 
-    AgingState(StateMachine stateMachine){
+    public AgingState(StateMachine stateMachine){
         this.machine = stateMachine;
         schedulerSeason = new SchedulerSeason();
         output = new UserOutput();

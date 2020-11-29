@@ -1,4 +1,4 @@
-package dhl.gameSimulationAlgorithm;
+package dhl.stateMachineNew.gameSimulationAlgorithm;
 
 
 import dhl.Configurables;

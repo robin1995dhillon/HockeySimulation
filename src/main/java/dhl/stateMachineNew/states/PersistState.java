@@ -1,6 +1,8 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
-public class PersistState implements IStateMachine{
+import dhl.stateMachineNew.IStateMachine;
+
+public class PersistState implements IStateMachine {
     public IStateMachine entry() {
 
         return doTask();

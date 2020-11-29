@@ -1,4 +1,4 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
@@ -6,10 +6,14 @@ import dhl.leagueModel.conference.IConference;
 import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.ITime;
+import dhl.stateMachineNew.LeagueTimeConcept;
+import dhl.stateMachineNew.StateMachine;
 
 import java.text.ParseException;
 
-public class AdvanceTimeState implements IStateMachine{
+public class AdvanceTimeState implements IStateMachine {
 
     StateMachine stateMachine;
     ITime leagueTimeConcept;

@@ -1,6 +1,6 @@
 package dhl.stateMachineNew;
 
-public class SimulateGame implements IStateMachine{
+public class SimulateGame implements IStateMachine {
     public IStateMachine entry() {
 
         return doTask();

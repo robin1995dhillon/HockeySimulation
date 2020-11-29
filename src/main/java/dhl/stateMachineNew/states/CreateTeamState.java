@@ -1,4 +1,4 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import dhl.Configurables;
 import dhl.inputOutput.IUserInput;
@@ -17,13 +17,15 @@ import dhl.leagueModel.Players;
 import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.teams.Teams;
 import dhl.presentation.*;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.StateMachine;
 import dhl.validator.Checker;
 import dhl.validator.IChecker;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateTeamState implements IStateMachine{
+public class CreateTeamState implements IStateMachine {
 
     private final StateMachine stateMachine;
     private final IUserOutput output;
@@ -31,7 +33,7 @@ public class CreateTeamState implements IStateMachine{
 //    private ILeague league;
     private ITeam team;
 
-    CreateTeamState(StateMachine machine){
+    public CreateTeamState(StateMachine machine){
 
         this.stateMachine = machine;
         output = new UserOutput();

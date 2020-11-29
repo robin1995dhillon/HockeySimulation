@@ -1,6 +1,9 @@
 package dhl.stateMachineNew;
 
-import dhl.leagueModel.league.League;
+import dhl.stateMachineNew.gameSimulationAlgorithm.GameSimulationAlgorithm;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IShiftTime;
+import dhl.stateMachineNew.gameSimulationAlgorithm.ShiftTime;
 
 public class StateMachineConcrete extends StateMachineAbstractFactory{
 
@@ -9,6 +12,9 @@ public class StateMachineConcrete extends StateMachineAbstractFactory{
     private StateMachine stateMachine;
     private ITeamStanding teamStanding;
     private ITime time;
+    private IJsonImport jsonImport;
+    private IShiftTime shiftTime;
+    private IGameSimulationAlgorithm gameSimulationAlgorithm;
 
     public StateMachineConcrete() {
     }
@@ -55,27 +61,73 @@ public class StateMachineConcrete extends StateMachineAbstractFactory{
     }
 
     @Override
+    public IJsonImport getJsonImport() {
+        if (jsonImport == null) {
+            jsonImport = new JsonImport();
+        }
+        return jsonImport;
+    }
+
+    @Override
+    public IGameSimulationAlgorithm getGameSimulationAlgorithm() {
+        if (gameSimulationAlgorithm == null) {
+            gameSimulationAlgorithm = new GameSimulationAlgorithm();
+        }
+        return gameSimulationAlgorithm;
+    }
+
+    @Override
+    public IShiftTime getShiftTime() {
+        if (shiftTime == null) {
+            shiftTime = new ShiftTime();
+        }
+        return shiftTime;
+    }
+
+    @Override
     public void setGameSimulation(IGameSimulation gameSimulation) {
+        this.gameSimulation = gameSimulation;
 
     }
 
     @Override
     public void setSchedulerSeason(ISchedulerSeason schedulerSeason) {
+        this.schedulerSeason = schedulerSeason;
 
     }
 
     @Override
-    public void setStateMachine(IStateMachine stateMachine) {
+    public void setStateMachine(StateMachine stateMachine) {
+        this.stateMachine = stateMachine;
 
     }
 
     @Override
     public void setTeamStanding(ITeamStanding teamStanding) {
+        this.teamStanding = teamStanding;
 
     }
 
     @Override
     public void setTime(ITime time) {
+        this.time = time;
 
+    }
+
+    @Override
+    public void setJsonImport(IJsonImport jsonImport) {
+        this.jsonImport = jsonImport;
+
+    }
+
+    @Override
+    public void setGameSimulationAlgorithm(IGameSimulationAlgorithm gameSimulationAlgorithm) {
+        this.gameSimulationAlgorithm = gameSimulationAlgorithm;
+
+    }
+
+    @Override
+    public void getShiftTime(IShiftTime shiftTime) {
+        this.shiftTime = shiftTime;
     }
 }

@@ -1,4 +1,4 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import dhl.Configurables;
@@ -10,6 +10,10 @@ import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
 import dhl.serializeAndDeserialize.serialize.ISerializeModelToJSON;
 import dhl.serializeAndDeserialize.serialize.SerializeModelToJSON;
+import dhl.stateMachineNew.ISchedulerSeason;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.SchedulerSeason;
+import dhl.stateMachineNew.StateMachine;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +24,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class AdvanceToNextSeasonState implements IStateMachine{
+public class AdvanceToNextSeasonState implements IStateMachine {
 
     StateMachine machine;
     IUserOutput output;

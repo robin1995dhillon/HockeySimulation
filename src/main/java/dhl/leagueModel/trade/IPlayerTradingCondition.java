@@ -18,11 +18,11 @@ public interface IPlayerTradingCondition {
 
     List<IPlayers> consideringTeamPlayersList();
 
-     List<IPlayers> getConsideringTeamPlayers();
-
-     void setConsideringTeamPlayers(List<IPlayers> consideringTeamPlayers);
-
-     List<IPlayers> getOfferingTeamPositionPlayers();
-
-     void setOfferingTeamPositionPlayers(List<IPlayers> offeringTeamPositionPlayers);
+//     List<IPlayers> getConsideringTeamPlayers();
+//
+//     void setConsideringTeamPlayers(List<IPlayers> consideringTeamPlayers);
+//
+//     List<IPlayers> getOfferingTeamPositionPlayers();
+//
+//     void setOfferingTeamPositionPlayers(List<IPlayers> offeringTeamPositionPlayers);
 }
