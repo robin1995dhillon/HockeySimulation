@@ -196,7 +196,8 @@ public class AllPlayers implements IAllPlayers {
     }
 
     @Override
-    public void agePlayer(int daysToAge) {
+    public void agePlayer(int daysToAge, IGamePlayConfig gamePlayConfig) {
+        this.gamePlayConfig = gamePlayConfig;
         int year = this.getBirthYear();
         int month = this.getBirthMonth();
         int days = this.getBirthDay();
@@ -205,6 +206,7 @@ public class AllPlayers implements IAllPlayers {
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
         this.setPlayerCurrentDate(this.getPlayerCurrentDate().plusDays(daysToAge));
+        System.out.println("-------------"+month);
         LocalDate nextBirthDay = LocalDate.of(this.playerCurrentDate.getYear(), month, days);
         System.out.println(this.playerCurrentDate);
         System.out.println(nextBirthDay);
@@ -370,7 +372,7 @@ public class AllPlayers implements IAllPlayers {
     }
 
     @Override
-    public void checkForPlayerInjury() {
+    public void checkForPlayerInjury(IGamePlayConfig gamePlayConfig) {
         if (isInjured){
             return;
         }

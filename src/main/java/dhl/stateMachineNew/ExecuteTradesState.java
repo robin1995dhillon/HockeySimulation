@@ -11,12 +11,13 @@ public class ExecuteTradesState implements IStateMachine{
         this.stateMachine = stateMachine;
 
     }
-    public void entry() {
+    public IStateMachine entry() {
 
         IPlayerTradingCondition trading = new PlayerTradingCondition();
         trading.tradeCondition(stateMachine.getTotalTeamList());
-        doTask();
 
+
+        return doTask();
     }
 
     public IStateMachine doTask() {

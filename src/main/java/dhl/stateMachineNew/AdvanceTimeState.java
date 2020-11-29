@@ -7,9 +7,7 @@ import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.teams.ITeam;
 
-import java.sql.SQLOutput;
 import java.text.ParseException;
-import java.util.logging.SocketHandler;
 
 public class AdvanceTimeState implements IStateMachine{
 
@@ -23,13 +21,13 @@ public class AdvanceTimeState implements IStateMachine{
         output = new UserOutput();
     }
 
-    public void entry() throws ParseException {
+    public IStateMachine entry() throws ParseException {
 
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
         league.setDate(leagueTimeConcept.nextDate(currentDate));
-        doTask();
 
+        return doTask();
     }
 
     public IStateMachine doTask() {

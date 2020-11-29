@@ -70,7 +70,7 @@ public interface IAllPlayers {
 
     void setSaving(int saving);
 
-    void agePlayer(int daysToAge);
+    void agePlayer(int daysToAge, IGamePlayConfig gameplayConfig);
 
     void checkIfRetired();
 
@@ -90,5 +90,5 @@ public interface IAllPlayers {
 
     IFreeAgents replacePlayerWithFreeAgent(IPlayers player, List<IFreeAgents> freeAgents);
 
-    void checkForPlayerInjury();
+    void checkForPlayerInjury(IGamePlayConfig gamePlayConfig);
 }

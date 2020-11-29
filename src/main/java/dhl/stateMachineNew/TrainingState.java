@@ -18,13 +18,14 @@ public class TrainingState implements IStateMachine{
     public TrainingState(StateMachine machine){
         this.machine = machine;
     }
-    public void entry() {
+    public IStateMachine entry() {
         trainingCondition = new PlayerTrainingCondition();
         ILeague league = machine.getLeague();
         config = league.getGameplayConfig();
         training = config.getTraining();
         training.setDaysTrained(training.getDaysTrained()+1);
-        doTask();
+        return doTask();
+
 
 
     }
@@ -35,7 +36,7 @@ public class TrainingState implements IStateMachine{
         int daysUntilStatCheck = config.getTraining().getDaysUntilStatIncreaseCheck();
         if(daysTrained == daysUntilStatCheck){
             for(ITeam team : machine.getTotalTeamList()) {
-                trainingCondition.receiveTraining(team.getPlayers(), team.getHeadCoach());
+                trainingCondition.receiveTraining(team.getPlayers(), team.getHeadCoach(), machine.getLeague().getGameplayConfig());
             }
 
         }
