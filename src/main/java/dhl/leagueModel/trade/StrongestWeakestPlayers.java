@@ -20,7 +20,7 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
     }
 
     @Override
-    public List<IPlayers> checkStrongestPlayer(ITeam tradingTeam, String positionToTrade) {
+    public List<IPlayers> checkStrongestPlayer(ITeam tradingTeam, String positionToTrade, int sizeOfList) {
         List<IPlayers> players;
         List<IPlayers> playersStrong = new ArrayList<>();
         players = tradingTeam.getPlayers();
@@ -32,7 +32,7 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
         }
         playersStrong.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
 
-        return playersStrong;
+        return playersStrong.subList(0,sizeOfList);
 
     }
 

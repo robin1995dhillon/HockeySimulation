@@ -32,8 +32,10 @@ public class FreeAgentListDrop implements IFreeAgentListDrop {
     private StateMachine machine;
     private ILeague league;
     private StateMachine stateMachine;
+    private int totalGoalies;
 
     public FreeAgentListDrop() {
+        totalGoalies = Integer.parseInt(Configurables.TOTAL_GOALIES.getAction());
         stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
         league = stateMachine.getLeague();
         availableAgents = league.getFreeAgents();
@@ -66,7 +68,7 @@ public class FreeAgentListDrop implements IFreeAgentListDrop {
 
     @Override
     public void dropAi(List<IPlayers> players, int playersToBeDropped, int goalieCount) {
-        int goaliesToBeDropped = goalieCount - 2;
+        int goaliesToBeDropped = goalieCount - totalGoalies;
         IFreeAgents playerToAgent;
         List<IPlayers> playerList;
         playerList = sortedPlayerList(players, playersToBeDropped, goaliesToBeDropped);
@@ -158,7 +160,7 @@ public class FreeAgentListDrop implements IFreeAgentListDrop {
             userInput.setInput();
             playerDropName = userInput.getInput();
             for (IPlayers players : playerList) {
-                if (players.getPlayerName().equalsIgnoreCase(playerDropName) && goalieCount > 2) {
+                if (players.getPlayerName().equalsIgnoreCase(playerDropName) && goalieCount > totalGoalies) {
                     if (players.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
                         dropPlayerToAgentList(players, player);
 //                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(players);
@@ -173,7 +175,7 @@ public class FreeAgentListDrop implements IFreeAgentListDrop {
                         userOutput.sendOutput();
                         break;
                     }
-                } else if (players.getPlayerName().equalsIgnoreCase(playerDropName) && goalieCount == 2) {
+                } else if (players.getPlayerName().equalsIgnoreCase(playerDropName) && goalieCount == totalGoalies) {
                     if (players.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || players.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
                         dropPlayerToAgentList(players, player);
 //                        playerToAgent = playerToDrop.convertPlayerToFreeAgent(players);

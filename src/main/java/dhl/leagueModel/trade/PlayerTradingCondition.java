@@ -75,8 +75,8 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
                         if (i == j) {
                             continue;
                         } else {
-                            consideringTeamPlayers = strongestWeakestPlayers.checkStrongestPlayer(allTeams.get(j), positionToTrade);
-//                            stateMachine.setConsideringTeamPlayers(consideringTeamPlayers);
+                            consideringTeamPlayers = strongestWeakestPlayers.checkStrongestPlayer(allTeams.get(j), positionToTrade, offeringTeamPositionPlayers.size());
+                            stateMachine.setConsideringTeamPlayers(consideringTeamPlayers);
                             if (strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers) > strongestPlayersStrength) {
                                 strongestPlayersStrength = strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers);
                                 finalTeam = allTeams.get(j);
