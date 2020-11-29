@@ -28,8 +28,5 @@ public interface IHeadCoach {
     void setSaving(double saving);
 
     IHeadCoach getCoachFromList(List<IHeadCoach> coachList, String coachName);
-
-    void saveHeadCoach(int teamID);
-
-    void saveFreeCoach(int leagueID);
+    
 }
