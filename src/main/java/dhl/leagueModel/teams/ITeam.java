@@ -70,5 +70,9 @@ public interface ITeam {
 
     void saveTeams(List<Integer> id);
 
+    void swapForPlayerInInactiveRoster(IPlayers players) throws Exception;
+
     void addPlayerToTeam(IPlayers players);
+
+    void checkForInactiveRosterPlayerInjuryRecovery();
 }
