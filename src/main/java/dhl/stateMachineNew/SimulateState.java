@@ -41,7 +41,7 @@ public class SimulateState implements IStateMachine {
         int count = 0; //remove it
         List<ITeam> teamsInjuryCheck = new ArrayList<>();
         IGameSimulation simulate = new GameSimulation();
-        IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm();
+        IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm(0.04,0.907,0.433);
         IShiftTime shiftTime = new ShiftTime();
 
         for (ISchedulerSeason scheduler : league.getGameSchedules()) {

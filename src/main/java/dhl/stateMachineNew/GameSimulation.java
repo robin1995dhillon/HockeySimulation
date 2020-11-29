@@ -15,13 +15,10 @@ public class GameSimulation implements IGameSimulation {
 
         double offensiveGoals = 0;
         double defendingGoals = 0;
-        algorithm.setPenaltyChance(0.05);
-        algorithm.setShotChance(0.4);
-        algorithm.setSaveChance(0.5);
-        algorithm.setSaveCoefficientOne(0.05);
-        algorithm.setSaveCoefficientTwo(0.05);
-        algorithm.setShotCoefficientOne(0.3);
-        algorithm.setShotCoefficientTwo(0.05);
+        algorithm.setSaveCoefficientOne(0.001);
+        algorithm.setSaveCoefficientTwo(0.001);
+        algorithm.setShotCoefficientOne(0.001);
+        algorithm.setShotCoefficientTwo(0);
         shiftTime.setAlgorithm(algorithm);
         ITeamStanding offensiveTeamStanding = new TeamStandings();
         ITeamStanding defendingTeamStanding = new TeamStandings();
@@ -54,7 +51,7 @@ public class GameSimulation implements IGameSimulation {
             teamDraw(offensiveTeam, offensiveTeamStanding);
             teamDraw(defendingTeam, defendingTeamStanding);
         }
-        algorithm.resetAlgorithm(0.05,0.2,0.5);
+        algorithm.resetAlgorithm(0.04,0.907,0.433);
         algorithm.reset(offensiveTeam);
         algorithm.reset(defendingTeam);
     }
