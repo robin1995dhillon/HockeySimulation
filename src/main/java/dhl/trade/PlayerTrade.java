@@ -25,14 +25,14 @@ public class PlayerTrade implements IPlayerTrade {
     IGamePlayConfig gamePlayConfig;
     ITrading trading;
     private IAddDropPlayers addDrop;
+    IPlayerTradingCondition playerTradingCondition;
     ITradePrompt prompt;
     private IUserOutput userOutput;
     private IUserInput userInput;
 
     PlayerTrade() {
+        playerTradingCondition = new PlayerTradingCondition();
         offeringTeamPlayers = new ArrayList<>();
-        consideringTeamPlayers = new ArrayList<>();
-        offeringTeamPositionPlayers = new ArrayList<>();
         addDrop = new AddDropPlayers();
         gamePlayConfig = new GamePlayConfig();
         trading = new Trading();
@@ -54,8 +54,11 @@ public class PlayerTrade implements IPlayerTrade {
     }
 
     @Override
-    public void tradeAi(ITeam offeringTeam, ITeam consideringTeam) {
-        trading = gamePlayConfig.getTrading();
+    public void tradeAi(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig) {
+        this.offeringTeamPositionPlayers = playerTradingCondition.getOfferingTeamPositionPlayers();
+        this.consideringTeamPlayers = playerTradingCondition.getConsideringTeamPlayers();
+        this.gamePlayConfig = gamePlayConfig;
+        trading = this.gamePlayConfig.getTrading();
         double randomAcceptanceChance = trading.getRandomAcceptanceChance();
         double maxPlayersPerTrade = trading.getMaxPlayersPerTrade();
         int count = 0;
@@ -94,8 +97,8 @@ public class PlayerTrade implements IPlayerTrade {
     }
 
     @Override
-    public void tradeUser(ITeam offeringTeam, ITeam consideringTeam) {
-
+    public void tradeUser(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig) {
+        this.gamePlayConfig = gamePlayConfig;
         int totalPlayersOfOfferingTeam;
         int totalPlayersOfConsideringTeam;
         String response;
