@@ -4,6 +4,7 @@ import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
+import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
@@ -16,6 +17,7 @@ import dhl.presentation.TradePrompt;
 import dhl.stateMachineNew.StateMachine;
 import dhl.stateMachineNew.StateMachineAbstractFactory;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class PlayerTrade implements IPlayerTrade {
 
     List<IPlayers> offeringTeamPositionPlayers;
     List<IPlayers> consideringTeamPlayers;
+    private IStrongestWeakestPlayers strongestWeakestPlayers;
     IGamePlayConfig gamePlayConfig;
     ITrading trading;
     private IAddDropPlayers addDrop;
@@ -36,6 +39,7 @@ public class PlayerTrade implements IPlayerTrade {
        // playerTradingCondition = new PlayerTradingCondition();
         //offeringTeamPlayers = new ArrayList<>();
         stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
+        strongestWeakestPlayers = LeagueModelAbstractFactory.instance().getStrongestWeakestPlayers();
         addDrop = new AddDropPlayers();
         gamePlayConfig = new GamePlayConfig();
         trading = new Trading();
@@ -58,6 +62,16 @@ public class PlayerTrade implements IPlayerTrade {
     public void tradeAi(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig) {
         this.offeringTeamPositionPlayers = stateMachine.getOfferingTeamPositionPlayers();
         this.consideringTeamPlayers = stateMachine.getConsideringTeamPlayers();
+
+        for(IPlayers player : offeringTeamPositionPlayers){
+            System.out.println("offering pos players : "+player.getPlayerName());
+        }
+        for(IPlayers player : consideringTeamPlayers){
+            System.out.println("considering pos players : "+player.getPlayerName());
+        }
+
+        double consideringTeamPlayersStrength = strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers);
+        double offeringTeamPositionPlayersStrength = strongestWeakestPlayers.strongestPlayersStrength(offeringTeamPositionPlayers);
         this.gamePlayConfig = gamePlayConfig;
         trading = this.gamePlayConfig.getTrading();
         double randomAcceptanceChance = trading.getRandomAcceptanceChance();
@@ -66,36 +80,44 @@ public class PlayerTrade implements IPlayerTrade {
         int totalPlayersOfOfferingTeam;
         int totalPlayersOfConsideringTeam;
 
-        outer:
-        for (IPlayers offeredPlayer : this.offeringTeamPositionPlayers) {
-            for (IPlayers tradePlayer : this.consideringTeamPlayers) {
-
-                if (offeredPlayer.getStrength() < tradePlayer.getStrength() && Math.random() < randomAcceptanceChance) {
-                    userOutput.setOutput("Rejected");
-                    userOutput.sendOutput();
-                    break outer;
-                } else {
-                    userOutput.setOutput("player eligible for trade");
-                    userOutput.sendOutput();
-                    //count++;
-                }
-            }
-            count++;
-
-        }
-        count = 1;
-        if (count > 0 && count <= maxPlayersPerTrade) {
+//        outer:
+//        for (IPlayers offeredPlayer : this.offeringTeamPositionPlayers) {
+//            for (IPlayers tradePlayer : this.consideringTeamPlayers) {
+//
+//                if (offeredPlayer.getStrength() < tradePlayer.getStrength() && Math.random() < randomAcceptanceChance) {
+//                    userOutput.setOutput("Rejected");
+//                    userOutput.sendOutput();
+//                    break outer;
+//                } else {
+//                    userOutput.setOutput("player eligible for trade");
+//                    userOutput.sendOutput();
+//                    //count++;
+//                }
+//            }
+//            count++;
+//
+//        }
+       // count = 1;
+        //&& Math.random() < randomAcceptanceChance
+        if (consideringTeamPlayersStrength > offeringTeamPositionPlayersStrength ) {
 //            Iterator<IPlayers> iterator = this.offeringTeamPositionPlayers.iterator();
 //            while (iterator.hasNext()) {
 //                IPlayers player = iterator.next();
 //                iterator.remove();
 //            }
-            addPlayersToTeam(consideringTeam.getPlayers() , this.offeringTeamPositionPlayers, this.consideringTeamPlayers);
-            addPlayersToTeam(offeringTeam.getPlayers() , this.consideringTeamPlayers, this.offeringTeamPositionPlayers);
+            addPlayersToTeam(consideringTeam.getPlayers() , new ArrayList<>(this.offeringTeamPositionPlayers), new ArrayList<>(this.consideringTeamPlayers));
+            addPlayersToTeam(offeringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers), new ArrayList<>(this.offeringTeamPositionPlayers));
             //consideringTeam.getPlayers().addAll(this.offeringTeamPositionPlayers);
             //consideringTeam.getPlayers().removeAll(this.consideringTeamPlayers);
             //offeringTeam.getPlayers().removeAll(this.offeringTeamPositionPlayers);
             //offeringTeam.getPlayers().addAll(this.consideringTeamPlayers);
+            for(IPlayers player : consideringTeam.getPlayers()){
+                System.out.println("considering players are : "+player.getPlayerName());
+            }
+
+            for(IPlayers player : offeringTeam.getPlayers()){
+                System.out.println("offering players are : "+player.getPlayerName());
+            }
 
         }
         offeringTeam.setLossPoints(0);

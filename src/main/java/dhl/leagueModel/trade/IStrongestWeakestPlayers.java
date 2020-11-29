@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IStrongestWeakestPlayers {
 
-    List<IPlayers> checkStrongestPlayer(ITeam tradingTeam, String positionToTrade);
+    List<IPlayers> checkStrongestPlayer(ITeam tradingTeam, String positionToTrade, int gamePlayConfig);
 
     double strongestPlayersStrength(List<IPlayers> selectedPLayers);
 

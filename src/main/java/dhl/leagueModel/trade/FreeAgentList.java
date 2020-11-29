@@ -30,9 +30,11 @@ public class FreeAgentList implements IFreeAgentListAdd {
     private IUserOutput userOutput;
     private IUserInput userInput;
     private StateMachine stateMachine;
+    int totalGoalies;
 
 
     public FreeAgentList() {
+        totalGoalies = Integer.parseInt(Configurables.TOTAL_GOALIES.getAction());
         stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
         league = stateMachine.getLeague();
         agents = new FreeAgents();
@@ -94,9 +96,10 @@ public class FreeAgentList implements IFreeAgentListAdd {
 //    }
 
     public List<IFreeAgents> sortedAgentsList(int playersToBeAdded, int goalieCount) {
+
         List<IFreeAgents> agentList = new ArrayList<>();
         for (IFreeAgents agent : league.getFreeAgents()) {
-            if (goalieCount == 2) {
+            if (goalieCount == totalGoalies) {
                 if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || agent.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
                     agentList.add(agent);
                 } else {
@@ -107,7 +110,7 @@ public class FreeAgentList implements IFreeAgentListAdd {
                 if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
                     agentList.add(agent);
                     goalieCount++;
-                    if (goalieCount == 2) {
+                    if (goalieCount == totalGoalies) {
                         break;
                     }
                 } else {
@@ -117,7 +120,7 @@ public class FreeAgentList implements IFreeAgentListAdd {
         }
         if (agentList.get(0).getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
             Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
-            return agentList.subList(0, goalieCount);
+            return agentList.subList(0, playersToBeAdded);
         } else {
             Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
             return agentList.subList(0, playersToBeAdded);
@@ -161,7 +164,7 @@ public class FreeAgentList implements IFreeAgentListAdd {
             agentAddName = userInput.getInput();
 
             for (IFreeAgents agent : agentList) {
-                if (agent.getPlayerName().equalsIgnoreCase(agentAddName) && goalieCount < 2) {
+                if (agent.getPlayerName().equalsIgnoreCase(agentAddName) && goalieCount < totalGoalies) {
                     if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
                         addPlayer(agent, player);
 //                        agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
@@ -177,7 +180,7 @@ public class FreeAgentList implements IFreeAgentListAdd {
 
                     }
 
-                } else if (agent.getPlayerName().equalsIgnoreCase(agentAddName) && goalieCount >= 2) {
+                } else if (agent.getPlayerName().equalsIgnoreCase(agentAddName) && goalieCount >= totalGoalies) {
                     if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || agent.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
                         addPlayer(agent, player);
                         //agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);

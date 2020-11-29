@@ -61,6 +61,7 @@ public enum Configurables {
     PLAYED("played"),
     START_DAY_OF_SEASON("30-09-"),
     TOTAL_PLAYERS("30"),
+    TOTAL_GOALIES("4"),
     PLAYOFF("Playoff");
 
 
