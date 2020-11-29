@@ -82,7 +82,10 @@ public class StateMachine {
 
         while (currentState != null) {
             IStateMachine nextState = currentState.entry();
-            if (nextState != currentState) {
+            if (nextState == currentState) {
+                continue;
+            }
+            else {
                 goToNextState(nextState);
             }
         }
