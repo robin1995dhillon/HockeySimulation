@@ -234,6 +234,7 @@ public class SchedulerSeason implements ISchedulerSeason {
     }
 
     public void generateSchedule(StateMachine machine) throws ParseException {
+        this.teamList = new ArrayList<>();
         this.machine = machine;
         this.calendar = Calendar.getInstance();
         this.currentSeason = machine.getLeague().getSeason();
@@ -258,7 +259,7 @@ public class SchedulerSeason implements ISchedulerSeason {
             for (IDivision division : conference.getDivisions()) {
                 for (ITeam team : division.getTeams()) {
                     ITeamStanding teamStanding = new TeamStandings();
-                    // teamList.add(team);
+                    teamList.add(team);
                     teamStanding.setDivision(division.getDivisionName());
                     teamStanding.setConference(conference.getConferenceName());
                     teamStanding.setTeam(team);
@@ -294,14 +295,14 @@ public class SchedulerSeason implements ISchedulerSeason {
         scheduledMatches = new HashMap<>();
 
         for(IConference conference : league.getConferences()){
-            List<ITeam> teamList = new ArrayList<>();
+            List<ITeam> teamLists = new ArrayList<>();
             for(IDivision division : conference.getDivisions()){
                 for(ITeam team : division.getTeams()){
-                    teamList.add(team);
+                    teamLists.add(team);
                     scheduledMatches.put(team, 0);
                 }
                 teamsInDivision.put(division, division.getTeams());
-                teamsInConference.put(conference, teamList);
+                teamsInConference.put(conference, teamLists);
             }
             divisionsInConference.put(conference, conference.getDivisions());
         }
