@@ -603,7 +603,25 @@ public class MockTeam {
         playersList.add(player21);
         team.setPlayers(playersList);
         return team;
+    }
 
+    public static ITeam MockTeamWithThirtyPlayers(){
+        ITeam team = new Teams();
+        List<IPlayers> playersList = new ArrayList<>();
+        for(int i = 0; i < 30; i++){
+            IPlayers players = new Players();
+            players.setPlayerName("player" + Integer.toString(i));
+            if(i < 16){
+                players.setPosition("forward");
+            } else if(16 <= i && i < 26){
+                players.setPosition("defense");
+            } else{
+                players.setPosition("goalie");
+            }
+            playersList.add(players);
+        }
+        team.setPlayers(playersList);
+        return team;
     }
 
 

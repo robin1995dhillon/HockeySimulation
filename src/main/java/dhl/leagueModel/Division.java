@@ -1,9 +1,12 @@
 package dhl.leagueModel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.List;
 
 public class Division implements IDivision {
-
+    private static final Logger logger = LogManager.getLogger(Division.class);
     private String divisionName;
     private List<ITeam> teams;
 
@@ -41,6 +44,7 @@ public class Division implements IDivision {
 
     public void addTeam(ITeam team) {
         teams.add(team);
+        logger.info("Add " + team.getTeamName() + " to division.");
     }
 
 

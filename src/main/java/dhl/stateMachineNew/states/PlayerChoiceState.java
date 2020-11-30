@@ -44,7 +44,6 @@ public class PlayerChoiceState implements IStateMachine {
         machineLeague.setTotalSeasons(totalSeasons);
         machineLeague.setSeason(0);
         return stateMachine.getInitializeSeason();
-
     }
 
     public void exit() {

@@ -38,17 +38,14 @@ public class InjuryCheckState implements IStateMachine {
     }
 
     public IStateMachine doTask() {
-        int count = 0;
         for (ISchedulerSeason schedule : machine.getLeague().getGameSchedules()) {
             if (schedule.getStatus().equalsIgnoreCase(Configurables.SCHEDULED.getAction()) && machine.getLeague().getDate().equalsIgnoreCase(schedule.getDateOfMatch())) {
                 System.out.println(schedule.getFirstTeam().getTeamName());
                 System.out.println(schedule.getSecondTeam().getTeamName());
-                //return machine.getSimulate();
-                count++;
+                return machine.getSimulate();
             }
         }
-        System.out.println("count is : "+count);
-        return machine.getSimulate();
+        return null;
     }
 
     public void exit() {

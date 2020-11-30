@@ -2,6 +2,8 @@ package dhl.leagueModel;
 
 import dhl.inputOutput.UserOutput;
 import dhl.Configurables;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Teams implements ITeam {
-
+    private static final Logger logger = LogManager.getLogger(Teams.class);
     public String teamName;
     public IGeneralManager generalManager;
     public IHeadCoach headCoach;
@@ -60,7 +62,6 @@ public class Teams implements ITeam {
     @Override
     public void setTeamName(String teamName) {
         this.teamName = teamName;
-
     }
 
     @Override
@@ -71,7 +72,6 @@ public class Teams implements ITeam {
     @Override
     public void setGeneralManager(IGeneralManager generalManager) {
         this.generalManager = generalManager;
-
     }
 
     @Override
@@ -92,7 +92,6 @@ public class Teams implements ITeam {
     @Override
     public void setHeadCoach(IHeadCoach headCoach) {
         this.headCoach = headCoach;
-
     }
 
     @Override
@@ -180,12 +179,12 @@ public class Teams implements ITeam {
         List<IPlayers> players;
         players = team.getPlayers();
         double teamStrength = 0;
-
         for (IPlayers player : players) {
             double playerStrength = player.calculateStrength();
             teamStrength += playerStrength;
         }
         team.setTeamStrength(teamStrength);
+        logger.info(team.getTeamName() + "'s strength is" + team.getTeamStrength());
         return teamStrength;
     }
 
@@ -201,7 +200,6 @@ public class Teams implements ITeam {
 
     @Override
     public ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager) {
-
         List<IConference> conferenceList;
         List<IDivision> divisionList;
         String conferenceName = locationAttributes[0];
@@ -221,25 +219,20 @@ public class Teams implements ITeam {
                         team.setIsUser(true);
                         team.setTeamType(Configurables.USER.getAction());
                         division.addTeam(team);
+                        logger.info(teamName + "is created in " + divisionName + " in " + conferenceName);
                     }
                 }
             }
         }
         return league;
     }
-//    @Override
-//    public ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList) {
-//
-//        // Remove this method when general Manager thing is solved.
-//        return league;
-//    }
 
     @Override
     public void createRoster() throws Exception {
         List<IPlayers> allSkaters = new ArrayList<>();
         List<IPlayers> allGoalie = new ArrayList<>();
-
         if(this.players == null) {
+            logger.error("Player Array is empty while creating roster.");
             throw new Exception("Player Array is empty while creating roster.");
         } else {
             for (IPlayers players : this.players) {
@@ -253,6 +246,7 @@ public class Teams implements ITeam {
             List<IPlayers> bestSkaters = bestPlayersInATeamSorted(allSkaters);
             List<IPlayers> bestGoalie  = bestPlayersInATeamSorted(allGoalie);
             setRoster(bestSkaters,bestGoalie);
+            logger.info("Active and inactive player rosters for " + this.teamName + " is created.");
         }
     }
 
@@ -274,7 +268,6 @@ public class Teams implements ITeam {
             }
             index = index + 1;
         }
-
         for(IPlayers players : bestGoalie) {
             if(goalieIndex>=2) {
                 inActiveRoster.add(players);
@@ -289,32 +282,10 @@ public class Teams implements ITeam {
         this.setInActiveRoster(inActiveRoster);
     }
 
-
-
-
-    @Override
-    public void saveTeams(List<Integer> id) {
-//        ITeamPersistence teamPersistence = new TeamPersistence();
-//        String headCoach = this.headCoach.getName();
-//        JSONObject resultObject = teamPersistence.saveTeamToDB(this.teamName, this.generalManager, headCoach, this.isUser);
-//        int teamID = (int) resultObject.get(Configurables.ID.getAction());
-//        userOutput.setOutput("Saving Team " + teamID + ": " + this.getTeamName());
-//        userOutput.sendOutput();
-//        id.add(3, teamID);
-//        IDHLPersistence idhlPersistence = new DHLPersistence();
-//        idhlPersistence.saveDHLTable(id.get(0), id.get(1), id.get(2), id.get(3));
-//        List<IPlayers> playersArray = getPlayers();
-//        IHeadCoach iHeadCoach = getHeadCoach();
-//        iHeadCoach.saveHeadCoach(teamID);
-//
-//        for (IPlayers player : playersArray) {
-//            player.savePlayer(teamID);
-//        }
-    }
-
     @Override
     public void swapForPlayerInInactiveRoster(IPlayers players) throws Exception {
         if(this.inActiveRoster == null) {
+            logger.error("In-active Roster is empty.");
             throw new Exception("In-active Roster is empty.");
         } else {
             for(IPlayers inActivePlayer: this.inActiveRoster) {
@@ -329,6 +300,7 @@ public class Teams implements ITeam {
             setInActiveRoster(bestPlayersInATeamSorted(this.inActiveRoster));
             setActiveRoster(bestPlayersInATeamSorted(this.activeRoster));
         }
+        logger.info("Swapping completed for inactive roster players for " + this.teamName);
     }
 
     public void removePlayerFromInactiveRoster(IPlayers players) {
@@ -358,7 +330,6 @@ public class Teams implements ITeam {
         List<IPlayers> inActiveRoster;
         activeRoster = this.activeRoster;
         inActiveRoster = this.inActiveRoster;
-
         for(int i=0;i<inActiveRoster.size();i++) {
             if(inActiveRoster.get(0).isInjured() == false) {
                 for (int j = 0; j < activeRoster.size(); j++) {
@@ -367,6 +338,8 @@ public class Teams implements ITeam {
                         removePlayerFromActiveRoster(activeRoster.get(j));
                         addPlayerToInactiveRoster(activeRoster.get(j));
                         removePlayerFromInactiveRoster(inActiveRoster.get(i));
+                        logger.info("Player swapped in" + inActiveRoster.get(i).getPlayerName() + "to active roster of " + this.teamName);
+                        logger.info("Player swapped out" + activeRoster.get(j).getPlayerName() + "to inactive roster of " + this.teamName);
                     }
                 }
             }
@@ -382,10 +355,10 @@ public class Teams implements ITeam {
         List<IPlayers> defensePlayerList = new ArrayList<>();
         List<IPlayers> goaliePlayerList = new ArrayList<>();
         for(IPlayers players: playerList) {
-            if(players.getPosition().equals("forward")) {
+            if(players.getPosition().equals(Configurables.FORWARD.getAction())) {
                 forwardPlayerList.add(players);
             }
-            else if (players.getPosition().equals("defense")) {
+            else if (players.getPosition().equals(Configurables.DEFENSE.getAction())) {
                 defensePlayerList.add(players);
             }
             else {
@@ -401,6 +374,7 @@ public class Teams implements ITeam {
         finalTeamList = setPlayersOfAPositionInTeam(defensePlayerList, finalTeamList, 10);
         finalTeamList = setPlayersOfAPositionInTeam(goaliePlayerList, finalTeamList, 4);
         this.setPlayers(finalTeamList);
+        logger.info(this.teamName + "has been dropped down to 30 players.");
     }
 
     public List<IPlayers> setPlayersOfAPositionInTeam(List<IPlayers> playerList, List<IPlayers> finalTeamList, int maxPlayersOfAPosition) {
@@ -413,6 +387,4 @@ public class Teams implements ITeam {
         }
         return finalTeamList;
     }
-
-
 }
