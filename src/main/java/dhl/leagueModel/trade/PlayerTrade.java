@@ -152,7 +152,7 @@ public class PlayerTrade implements IPlayerTrade {
     private void dropPlayersFromTeam(List<IPlayers> players, ArrayList<IPlayers> playersRemove) {
         OUTER:
         for(IPlayers removePlayer : playersRemove){
-        for(Iterator<IPlayers> iterator = players.iterator(); iterator.hasNext();) {
+            for(Iterator<IPlayers> iterator = players.iterator(); iterator.hasNext();) {
 
                 System.out.println("name of player to be removed : "+removePlayer.getPlayerName()+"--- position "+removePlayer.getPosition());
                 IPlayers player = iterator.next();
