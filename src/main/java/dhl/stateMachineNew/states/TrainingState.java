@@ -41,7 +41,8 @@ public class TrainingState implements IStateMachine {
                 logger.info("The players in " + team.getTeamName() + " have finished their training.");
             }
         }
-        return machine.getSimulate();
+      //  return machine.getSimulate();
+        return machine.getExecuteTrades();
     }
 
     public void exit() {
