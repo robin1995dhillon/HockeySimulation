@@ -112,11 +112,11 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
 
     @Override
     public void saves(IPlayers goalie, IPlayers forward) {
-        System.out.println("-------"+saveChance);
-        System.out.println(saveCoefficientOne);
-        //System.out.println(goalie.getSaving());
-        System.out.println(forward.getShooting());
-        System.out.println(saveCoefficientTwo);
+//        System.out.println("-------"+saveChance);
+//        System.out.println(saveCoefficientOne);
+//        //System.out.println(goalie.getSaving());
+//        System.out.println(forward.getShooting());
+//        System.out.println(saveCoefficientTwo);
         saveChance += saveCoefficientOne * (goalie.getSaving() - forward.getShooting()) / goalie.getSaving() + saveCoefficientTwo;
         if(Math.random() < saveChance){
             goalie.setSaves(goalie.getSaves() + 1);
