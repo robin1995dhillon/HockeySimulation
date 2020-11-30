@@ -29,6 +29,5 @@ public class LeagueTimeConceptTest {
         String currentDay = dateFormat.format(calendar.getTime());
 
         assertEquals(expectedDate,currentDay);
-
     }
 }

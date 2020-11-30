@@ -48,7 +48,7 @@ public class InjuryCheckState implements IStateMachine {
             }
         }
         System.out.println("count is : "+count);
-        return null;
+        return machine.getSimulate();
     }
 
     public void exit() {
