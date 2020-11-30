@@ -30,10 +30,15 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
                 playersStrong.add(weakPlayer);
             }
         }
+        System.out.println("size of playerstrong is : "+playersStrong.size());
         playersStrong.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
 
-        return playersStrong.subList(0,sizeOfList);
-
+        if(playersStrong.size() > sizeOfList) {
+            return playersStrong.subList(0, sizeOfList);
+        }
+        else{
+            return playersStrong.subList(0, playersStrong.size());
+        }
     }
 
     @Override

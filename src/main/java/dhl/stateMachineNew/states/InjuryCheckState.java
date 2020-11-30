@@ -1,8 +1,11 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
 
 import dhl.Configurables;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
+import dhl.stateMachineNew.ISchedulerSeason;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.StateMachine;
 
 import java.util.List;
 
