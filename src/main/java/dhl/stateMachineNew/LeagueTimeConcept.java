@@ -33,6 +33,5 @@ public class LeagueTimeConcept implements ITime{
         calendar.add(Calendar.DAY_OF_MONTH, 1);
         String currentDay = dateFormat.format(calendar.getTime());
         return currentDay;
-
     }
 }

@@ -143,6 +143,7 @@ public class SchedulerSeason implements ISchedulerSeason {
     /**
      * Stanley Playoffs start date: Second Wednesday in April
      **/
+    @Override
     public String getFirstDayOfStanleyPlayoffs() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
@@ -459,11 +460,12 @@ public class SchedulerSeason implements ISchedulerSeason {
                     continue;
                 } else {
                     addSchedule(firstTeam, opponentTeam, playoffStartDate, Configurables.PLAYOFF.getAction());
-                    boolean isLateDate = incrementCurrentDay(playoffStartDate, playoffEndDate);
-                    if (isLateDate) {
-                        playoffStartDate = getFirstDayOfStanleyPlayoffs();
-                    } else {
+                    boolean isNotLateDate = incrementCurrentDay(playoffStartDate, playoffEndDate);
+                    if (isNotLateDate) {
+                        playoffStartDate = timeConcept.nextDate(playoffStartDate);
                         continue;
+                    } else {
+                        playoffStartDate = getFirstDayOfStanleyPlayoffs();
                     }
                 }
             }

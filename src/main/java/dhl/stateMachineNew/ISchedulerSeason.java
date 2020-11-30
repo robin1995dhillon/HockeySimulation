@@ -44,6 +44,6 @@ public interface ISchedulerSeason {
 
     void initialize(ILeague league);
 
-
+    String getFirstDayOfStanleyPlayoffs();
 
 }
