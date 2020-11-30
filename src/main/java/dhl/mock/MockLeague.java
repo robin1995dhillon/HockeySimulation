@@ -1,26 +1,25 @@
 package dhl.mock;
 
-import dhl.leagueModel.Conference;
-import dhl.leagueModel.IConference;
-import dhl.leagueModel.Division;
-import dhl.leagueModel.IDivision;
-import dhl.leagueModel.FreeAgents;
-import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.*;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.GeneralManager;
-import dhl.leagueModel.IGeneralManager;
-import dhl.leagueModel.HeadCoach;
-import dhl.leagueModel.IHeadCoach;
-import dhl.leagueModel.ILeague;
-import dhl.leagueModel.League;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.Players;
-import dhl.leagueModel.ITeam;
-import dhl.leagueModel.Teams;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MockLeague {
+    ILeague league;
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    MockFreeAgent mockFreeAgent;
+    MockGamePlayConfig mockGamePlayConfig;
+    IFreeAgents freeAgents;
+    IGamePlayConfig gamePlayConfig;
+
+    public MockLeague() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        league = leagueModelAbstractFactory.getLeague();
+        mockFreeAgent = new MockFreeAgent();
+        mockGamePlayConfig = new MockGamePlayConfig();
+    }
 
     public static ILeague createMock() {
         ILeague league = new League();
@@ -78,6 +77,17 @@ public class MockLeague {
         league.setGeneralManagers(managerList);
         IGamePlayConfig iGamePlayConfig = MockGamePlayConfig.createMock();
         league.setGameplayConfig(iGamePlayConfig);
+        return league;
+    }
+
+    public ILeague createLeagueMock() {
+        gamePlayConfig = mockGamePlayConfig.createGamePlayConfig();
+        freeAgents = mockFreeAgent.createFreeAgentMockOne();
+        List<IFreeAgents> freeAgentsList = new ArrayList<>();
+        freeAgentsList.add(freeAgents);
+        league.setLeagueName("League1");
+        league.setFreeAgents(freeAgentsList);
+        league.setGameplayConfig(gamePlayConfig);
         return league;
     }
 }

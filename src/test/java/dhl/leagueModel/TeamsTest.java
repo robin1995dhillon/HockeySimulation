@@ -1,46 +1,55 @@
-package dhl.leagueModel;
-
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-class TeamsTest {
-    @Test
-    void swapForPlayerInInactiveRoster() {
-
-    }
-
+//package dhl.leagueModel;
+//
+//import dhl.mock.MockGamePlayConfig;
+//import dhl.mock.MockTeam;
+//import org.junit.jupiter.api.Test;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//
+//class TeamsTest {
+//    ITeam team;
+//    MockTeam mockTeam;
+//    MockGamePlayConfig mockGamePlayConfig;
+//    IGeneralManager generalManager;
+//
+//
+//    public TeamsTest() {
+//        mockTeam = new MockTeam();
+//        mockGamePlayConfig = new MockGamePlayConfig();
+//    }
+//
+//    @Test
+//    void swapForPlayerInInactiveRoster() {
+//
+//    }
+//
 //    @Test
 //    void getPlayers() {
-//        IPlayers players = MockPlayer.createMock();
-//        ArrayList<IPlayers> playerArray = new ArrayList<>();
-//        ITeam team2 = new Teams();
-//        playerArray.add(players);
-//        team2.setPlayers(playerArray);
-//        assertEquals(playerArray, team2.getPlayers());
+//        team = mockTeam.createTeamMockOne();
+//        List<IPlayers> playerList = mockTeam.createTeamMockOne().getPlayers();
+//        assertEquals(playerList, team.getPlayers());
 //    }
 //
 //    @Test
 //    void setPlayers() {
-//        IPlayers players = MockPlayer.createMock();
-//        ArrayList<IPlayers> playerArray = new ArrayList<>();
-//        ITeam team2 = new Teams();
-//        playerArray.add(players);
-//        team2.setPlayers(playerArray);
-//        assertEquals(playerArray, team2.getPlayers());
+//        team = mockTeam.createTeamMockOne();
+//        List<IPlayers> playerList = mockTeam.createTeamMockTwo().getPlayers();
+//        team.setPlayers(playerList);
+//        assertEquals(playerList, team.getPlayers());
 //    }
 //
 //    @Test
 //    void getTeamName() {
-//        ITeam team = new Teams();
-//        team.setTeamName("Team1");
+//        team = mockTeam.createTeamMockOne();
 //        assertEquals("Team1", team.getTeamName());
 //    }
 //
 //    @Test
 //    void setTeamName() {
-//        ITeam team = new Teams();
-//        team.setTeamName("Team1");
+//        team = mockTeam.createTeamMockOne();
 //        team.setTeamName("Team2");
 //        assertEquals("Team2", team.getTeamName());
 //    }
@@ -132,15 +141,12 @@ class TeamsTest {
 //        ITeam team = new Teams("Team1", "Manager1", headCoach, playerArray);
 //        assertEquals(74, team.calculateTeamStrength(team));
 //    }
-
+//
 //    @Test
 //    void checkForInjury() {
 //    }
 //
-//    @Test
-//    void saveTeams() {
-//    }
-
-
-
-}
+//
+//
+//
+//}

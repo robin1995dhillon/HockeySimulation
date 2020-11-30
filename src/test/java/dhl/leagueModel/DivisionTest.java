@@ -9,6 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DivisionTest {
 
+    IDivision division;
+
+
+    public DivisionTest() {
+    }
+
     @Test
     void getTeams() {
         ArrayList<ITeam> team_array = new ArrayList<>();
@@ -46,16 +52,7 @@ class DivisionTest {
 
     @Test
     void addTeam() {
-        ITeam team = MockTeam.MockTeam();
-        ITeam team2 = MockTeam.MockTeamTwo();
-        ArrayList<ITeam> teamArray = new ArrayList<>();
-        teamArray.add(team);
-        IDivision division = new Division("Metro", teamArray);
-        division.addTeam(team2);
-        assertEquals(team2, division.getTeams().get(1));
+
     }
 
-    @Test
-    void saveDivision() {
-    }
 }

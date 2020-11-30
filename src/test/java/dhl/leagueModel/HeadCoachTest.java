@@ -9,80 +9,84 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HeadCoachTest {
 
+    MockHeadCoach mockHeadCoach;
+    IHeadCoach headCoach;
+
+    public HeadCoachTest() {
+        mockHeadCoach = new MockHeadCoach();
+    }
+
     @Test
     void getName() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
+        headCoach = mockHeadCoach.createHeadCoachMock();
         assertEquals("Head1", headCoach.getName());
     }
 
     @Test
     void setName() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
+        headCoach = mockHeadCoach.createHeadCoachMock();
         headCoach.setName("Head2");
         assertEquals("Head2", headCoach.getName());
     }
 
     @Test
     void getSkating() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
-        assertEquals(0.6, headCoach.getSkating());
+        headCoach = mockHeadCoach.createHeadCoachMock();
+        assertEquals(17, headCoach.getSkating());
     }
 
     @Test
     void setSkating() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
-        headCoach.setSkating(0.6);
-        assertEquals(0.6, headCoach.getSkating());
+        headCoach = mockHeadCoach.createHeadCoachMock();
+        headCoach.setSkating(18);
+        assertEquals(18, headCoach.getSkating());
     }
 
     @Test
     void getShooting() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
-        assertEquals(0.5, headCoach.getShooting());
+        headCoach = mockHeadCoach.createHeadCoachMock();
+        assertEquals(15, headCoach.getShooting());
     }
 
     @Test
     void setShooting() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
-        headCoach.setShooting(0.6);
-        assertEquals(0.6, headCoach.getShooting());
+        headCoach = mockHeadCoach.createHeadCoachMock();
+        headCoach.setShooting(20);
+        assertEquals(20, headCoach.getShooting());
     }
 
     @Test
     void getChecking() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
-        assertEquals(0.5, headCoach.getChecking());
+        headCoach = mockHeadCoach.createHeadCoachMock();
+        assertEquals(16, headCoach.getChecking());
     }
 
     @Test
     void setChecking() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
-        headCoach.setChecking(0.6);
-        assertEquals(0.6, headCoach.getChecking());
+        headCoach = mockHeadCoach.createHeadCoachMock();
+        headCoach.setChecking(20);
+        assertEquals(20, headCoach.getChecking());
     }
 
     @Test
     void getSaving() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
-        assertEquals(0.5, headCoach.getSaving());
+        headCoach = mockHeadCoach.createHeadCoachMock();
+        assertEquals(14, headCoach.getSaving());
     }
 
     @Test
     void setSaving() {
-        IHeadCoach headCoach = MockHeadCoach.createMock();
-        headCoach.setSaving(0.6);
-        assertEquals(0.6, headCoach.getSaving());
+        headCoach = mockHeadCoach.createHeadCoachMock();
+        headCoach.setSaving(15);
+        assertEquals(15, headCoach.getSaving());
     }
 
     @Test
     void getCoachFromList() {
         ArrayList<IHeadCoach> coachList = new ArrayList<>();
-        IHeadCoach headCoach = MockHeadCoach.createMock();
+        headCoach = MockHeadCoach.createMock();
         coachList.add(headCoach);
         assertEquals(headCoach, headCoach.getCoachFromList(coachList, "Head1"));
     }
 
-    @Test
-    void saveHeadCoach() {
-    }
 }

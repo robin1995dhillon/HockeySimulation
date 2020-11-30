@@ -26,17 +26,6 @@ public class FreeAgents extends AllPlayers implements IFreeAgents {
         return null;
     }
 
-    @Override
-    public List<IFreeAgents> retireFreeAgents(List<IFreeAgents> freeAgentList) {
-        for(int i = 0; i < freeAgentList.size(); i++) {
-            if(this.isRetired()) {
-                System.out.println("FreeAgent " + this.getPlayerName() + " has retired and been removed from freeAgent list.");
-                freeAgentList.remove(this);
-                logger.info(freeAgentList.get(i).getPlayerName() + " has retired and is removed from free agent list.");
-            }
-        }
-        return freeAgentList;
-    }
 
     @Override
     public List<IFreeAgents> removeFreeAgents(List<IFreeAgents> freeAgentsList) {
@@ -53,8 +42,4 @@ public class FreeAgents extends AllPlayers implements IFreeAgents {
         return newFreeAgentList;
     }
 
-    public List<IFreeAgents> removeFreeAgentBasedOnObject(IFreeAgents freeAgents, List<IFreeAgents> freeAgentsList) {
-
-        return freeAgentsList;
-    }
 }

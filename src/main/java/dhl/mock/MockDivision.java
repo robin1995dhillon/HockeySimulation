@@ -9,6 +9,7 @@ public class MockDivision {
 
     LeagueModelAbstractFactory leagueModelAbstractFactory;
     IDivision division;
+    IDivision division2;
     MockTeam mockTeam;
 
     public MockDivision() {
@@ -39,10 +40,26 @@ public class MockDivision {
         return division;
     }
 
-    public IDivision createDivisionMock() {
+    public IDivision createDivisionMockOne() {
         List<ITeam> teamList = mockTeam.createTeamMockList();
         division.setDivisionName("Division1");
         division.setTeams(teamList);
         return division;
+    }
+
+    public IDivision createDivisionMockTwo() {
+        List<ITeam> teamList = mockTeam.createTeamMockList();
+        division.setDivisionName("Division2");
+        division.setTeams(teamList);
+        return division;
+    }
+
+    public List<IDivision> createDivisionMockList() {
+        division = createDivisionMockOne();
+        division2 = createDivisionMockTwo();
+        List<IDivision> divisionList = new ArrayList<>();
+        divisionList.add(division);
+        divisionList.add(division2);
+        return divisionList;
     }
 }
