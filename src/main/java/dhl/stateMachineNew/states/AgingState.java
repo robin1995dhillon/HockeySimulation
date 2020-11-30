@@ -43,6 +43,18 @@ public class AgingState implements IStateMachine {
                 }
             }
         }
+        List<ITeam> allTeams = machine.getTotalTeamList();
+        for(int i=0;i<this.machine.getTotalTeamList().size();i++) {
+            List<IPlayers> players = this.machine.getTeam().getPlayers();
+            for(int j=0;j<players.size();j++) {
+                players.get(j).agePlayer(1,this.machine.getLeague().getGameplayConfig());
+                if(players.get(j).isRetired()) {
+                    IFreeAgents convertedFreeAgent = players.get(j).replacePlayerWithFreeAgent(players.get(j),machine.getLeague().getFreeAgents());
+                    IPlayers playerToBeAdded = players.get(j).convertFreeAgentToPlayer(convertedFreeAgent);
+                    allTeams.get(i).addPlayerToTeam(playerToBeAdded);
+                }
+            }
+        }
         for(IFreeAgents agent: machine.getLeague().getFreeAgents()) {
             agent.agePlayer(1, this.machine.getLeague().getGameplayConfig());
             if(agent.isRetired()) {
