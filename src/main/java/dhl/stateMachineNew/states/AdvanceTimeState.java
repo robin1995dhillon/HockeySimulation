@@ -74,13 +74,13 @@ public class AdvanceTimeState implements IStateMachine {
                 }
             }
         }
-        output.setOutput("Goals per game: " + goals);
+        output.setOutput("Goals per game: " + goals / 32 / 82);
         output.sendOutput();
-        output.setOutput("Penalties per game: " + penalties);
+        output.setOutput("Penalties per game: " + penalties / 32 / 82);
         output.sendOutput();
-        output.setOutput("Shots: " + shots);
+        output.setOutput("Shots: " + shots / 32 / 82);
         output.sendOutput();
-        output.setOutput("Saves: " + saves);
+        output.setOutput("Saves: " + saves / 32 / 82);
         output.sendOutput();
     }
 }

@@ -3,8 +3,6 @@ package dhl.serializeAndDeserialize;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import dhl.leagueModel.ILeague;
 import dhl.mock.MockLeague;
-import dhl.serializeAndDeserialize.serialize.ISerializeModelToJSON;
-import dhl.serializeAndDeserialize.serialize.SerializeModelToJSON;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

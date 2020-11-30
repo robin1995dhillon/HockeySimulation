@@ -1,5 +1,6 @@
 package dhl.stateMachineNew;
 
+import dhl.leagueModel.ILeague;
 import dhl.leagueModel.ITeam;
 
 import java.text.ParseException;
@@ -39,8 +40,9 @@ public interface ISchedulerSeason {
 
     String getStartDayOfSeason();
 
-   String schedule(List<ITeam> teamsInFormat, ITeam teamName, String currentDate) throws ParseException;
+    String schedule(List<ITeam> teamsInFormat, ITeam teamName, String currentDate) throws ParseException;
 
+    void initialize(ILeague league);
 
 
 

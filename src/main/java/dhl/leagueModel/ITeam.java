@@ -58,6 +58,8 @@ public interface ITeam {
     double getShots();
     void setPenalties(double penalties);
     double getPenalties();
+    void setGameCount(int count);
+    int getGameCount();
 
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager);
 

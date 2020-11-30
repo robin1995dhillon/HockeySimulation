@@ -27,6 +27,7 @@ public class Teams implements ITeam {
     private double penalties;
     private double goals;
     UserOutput userOutput = new UserOutput();
+    private int gameCount;
 
     public Teams() {
     }
@@ -172,6 +173,16 @@ public class Teams implements ITeam {
     @Override
     public double getPenalties() {
         return this.penalties;
+    }
+
+    @Override
+    public void setGameCount(int count) {
+        this.gameCount = count;
+    }
+
+    @Override
+    public int getGameCount() {
+        return this.gameCount;
     }
 
     @Override

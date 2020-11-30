@@ -3,11 +3,15 @@ package dhl.stateMachineNewTest;
 import dhl.Configurables;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
+import dhl.leagueModel.ILeague;
 import dhl.leagueModel.ITeam;
 import dhl.mock.MockStandingTeam;
+import dhl.serializeAndDeserialize.DeserializeJSONToModel;
+import dhl.serializeAndDeserialize.IDeserializeJSONToModel;
 import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.ITeamStanding;
 import dhl.stateMachineNew.SchedulerSeason;
+import dhl.stateMachineNew.StateMachineAbstractFactory;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
@@ -17,6 +21,8 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SchedulerSeasonTest {
+    IDeserializeJSONToModel deserializeJSONToModel = new DeserializeJSONToModel();
+    ISchedulerSeason schedulerSeason = StateMachineAbstractFactory.instance().getSchedulerSeason();
 
     @Test
     public void playoffScheduleTest() {

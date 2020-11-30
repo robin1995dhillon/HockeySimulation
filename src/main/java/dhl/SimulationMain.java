@@ -2,8 +2,8 @@ package dhl;
 
 import dhl.inputOutput.*;
 import dhl.leagueModel.ILeague;
-import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
-import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
+import dhl.serializeAndDeserialize.DeserializeJSONToModel;
+import dhl.serializeAndDeserialize.IDeserializeJSONToModel;
 //import dhl.simulationStateMachine.LoadTeamState;
 import dhl.simulationStateMachine.StateContext;
 import dhl.validator.JSONValidator;
