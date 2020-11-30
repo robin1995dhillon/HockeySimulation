@@ -2,10 +2,10 @@ package dhl.stateMachineNew;
 
 import dhl.Configurables;
 import dhl.inputOutput.IUserOutput;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.IConference;
+import dhl.leagueModel.IDivision;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,6 +44,7 @@ public class SchedulerSeason implements ISchedulerSeason {
     private ITeam firstTeam;
     private ITeam secondTeam;
     private String matchDate;
+    private String playerDraftDate;
     private List<ISchedulerSeason> scheduleList;
     private List<ITeamStanding> listTeamStanding;
     private List<ITeamStanding> sortedTeamListPlayoff;
@@ -167,6 +168,12 @@ public class SchedulerSeason implements ISchedulerSeason {
         return lastDay;
     }
 
+    public String enterIntoPlayerDraft() {
+        String playerDraftDate = "15-07-" + String.valueOf(playoffsYear);
+
+        return playerDraftDate;
+    }
+
 
     /**
      * Trade deadline: Last Monday in February
@@ -179,6 +186,7 @@ public class SchedulerSeason implements ISchedulerSeason {
 
         return String.valueOf(calendar.get(Calendar.DATE));
     }
+
 
     public boolean isLastDayOfTrade(String currentDate, int playoffsYear) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -240,8 +248,10 @@ public class SchedulerSeason implements ISchedulerSeason {
         String startDateOfSeason = getStartDayOfSeason();
         currentDay = getStartDayOfSeason(); //check krvaa
         lastDay = getLastDayOfSeason();
+        playerDraftDate = enterIntoPlayerDraft();
         machine.getLeague().setDate(startDateOfSeason);
         machine.getLeague().setLastDateOfSeason(lastDay);
+        machine.getLeague().setPlayerDraftDate(playerDraftDate);
         initialize(machine.getLeague());
         for (IConference conference : machine.getLeague().getConferences()) {
             for (IDivision division : conference.getDivisions()) {

@@ -1,21 +1,13 @@
 package dhl;
 
 import dhl.inputOutput.*;
-import dhl.leagueModel.Players;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ILeague;
 import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
 import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
 //import dhl.simulationStateMachine.LoadTeamState;
 import dhl.simulationStateMachine.StateContext;
 import dhl.validator.JSONValidator;
 import org.json.simple.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SimulationMain {
     public static void main(String[] args) throws Exception {

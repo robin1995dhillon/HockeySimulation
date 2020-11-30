@@ -1,16 +1,21 @@
 package dhl.mock;
 
-import dhl.leagueModel.headCoach.HeadCoach;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.Players;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
+import dhl.leagueModel.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MockTeam {
+
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    ITeam team;
+    MockPlayer mockPlayer;
+
+    public MockTeam() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        team = leagueModelAbstractFactory.getTeam();
+        mockPlayer = new MockPlayer();
+    }
 
     public static ITeam MockTeam() {
         IHeadCoach headCoach = new HeadCoach();
@@ -57,6 +62,35 @@ public class MockTeam {
         return team;
     }
 
+    public ITeam createTeamMockOne() {
+        List<IPlayers> players = mockPlayer.createPlayerListMock();
+        team.setTeamName("Team1");
+        team.setPlayers(players);
+        return team;
+    }
+
+    public ITeam createTeamMockTwo() {
+        List<IPlayers> players = mockPlayer.createPlayerListMock();
+        team.setTeamName("Team2");
+        team.setPlayers(players);
+        return team;
+    }
+
+    public ITeam createTeamMockThree() {
+        List<IPlayers> players = mockPlayer.createPlayerListMock();
+        team.setTeamName("Team3");
+        team.setPlayers(players);
+        return team;
+    }
+
+    public List<ITeam> createTeamMockList() {
+        List<ITeam> teamList = new ArrayList<>();
+        teamList.add(createTeamMockOne());
+        teamList.add(createTeamMockTwo());
+        teamList.add(createTeamMockThree());
+
+        return teamList;
+    }
     public static ITeam MockOffensiveTeam() {
         ITeam team = new Teams();
         team.setTeamName("Offensive Team");
@@ -569,7 +603,25 @@ public class MockTeam {
         playersList.add(player21);
         team.setPlayers(playersList);
         return team;
+    }
 
+    public static ITeam MockTeamWithThirtyPlayers(){
+        ITeam team = new Teams();
+        List<IPlayers> playersList = new ArrayList<>();
+        for(int i = 0; i < 30; i++){
+            IPlayers players = new Players();
+            players.setPlayerName("player" + Integer.toString(i));
+            if(i < 16){
+                players.setPosition("forward");
+            } else if(16 <= i && i < 26){
+                players.setPosition("defense");
+            } else{
+                players.setPosition("goalie");
+            }
+            playersList.add(players);
+        }
+        team.setPlayers(playersList);
+        return team;
     }
 
 

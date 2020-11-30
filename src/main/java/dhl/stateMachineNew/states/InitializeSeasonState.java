@@ -25,8 +25,9 @@ public class InitializeSeasonState implements IStateMachine {
     public IStateMachine doTask() throws ParseException {
 
         ISchedulerSeason schedule = new SchedulerSeason();
-        schedule.generateSchedule(machine);
-        return machine.getAdvanceTime();
+        //schedule.generateSchedule(machine);
+        //return machine.getAdvanceTime();
+        return machine.getPlayerDraft();
     }
 
     public void exit() {

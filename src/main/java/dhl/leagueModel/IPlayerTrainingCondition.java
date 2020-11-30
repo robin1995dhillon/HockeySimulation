@@ -1,8 +1,6 @@
 package dhl.leagueModel;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.IPlayers;
 
 import java.util.List;
 

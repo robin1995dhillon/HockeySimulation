@@ -4,7 +4,7 @@ import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.ILeague;
 import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.StateMachine;
 
@@ -44,7 +44,6 @@ public class PlayerChoiceState implements IStateMachine {
         machineLeague.setTotalSeasons(totalSeasons);
         machineLeague.setSeason(0);
         return stateMachine.getInitializeSeason();
-
     }
 
     public void exit() {

@@ -90,18 +90,15 @@ public class GamePlayConfig implements IGamePlayConfig {
         ITraining training = new Training();
         ITrading trading = new Trading();
         results.add(aging.agingValidator(gamePlayConfigObject));
-//        results.add(gameResolver.gameResolverValidator(gamePlayConfigObject));
         results.add(injuries.injuriesValidator(gamePlayConfigObject));
         results.add(training.trainingValidator(gamePlayConfigObject));
         results.add(trading.tradingValidator(gamePlayConfigObject));
-
         if (results.contains(false)) {
             return false;
         } else {
             return true;
         }
     }
-
 }
 
 

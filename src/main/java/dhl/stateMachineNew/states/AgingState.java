@@ -3,15 +3,18 @@ package dhl.stateMachineNew.states;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IAllPlayers;
+import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.SchedulerSeason;
 import dhl.stateMachineNew.StateMachine;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class AgingState implements IStateMachine {
 
@@ -29,17 +32,25 @@ public class AgingState implements IStateMachine {
 
     public IStateMachine entry() throws ParseException {
         System.out.println("We are in Aging State");
+        List<IFreeAgents> newFreeAgentList = new ArrayList<>();
         for(ITeam team : this.machine.getTotalTeamList()){
             for(IPlayers player : team.getPlayers()){
                 player.agePlayer(1,this.machine.getLeague().getGameplayConfig());
+                if(player.isRetired()) {
+                    IFreeAgents freeAgents = player.replacePlayerWithFreeAgent(player,machine.getLeague().getFreeAgents());
+                    IPlayers players = player.convertFreeAgentToPlayer(freeAgents);
+                    team.addPlayerToTeam(players);
+                }
             }
         }
-//        for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
-//            //age free agent
-//        }
-        for(IAllPlayers agent: machine.getLeague().getFreeAgents()) {
+        for(IFreeAgents agent: machine.getLeague().getFreeAgents()) {
             agent.agePlayer(1, this.machine.getLeague().getGameplayConfig());
+            if(agent.isRetired()) {
+                newFreeAgentList = agent.retireFreeAgents(machine.getLeague().getFreeAgents());
+            }
         }
+
+        machine.getLeague().setFreeAgents(newFreeAgentList);
 
         return doTask();
     }

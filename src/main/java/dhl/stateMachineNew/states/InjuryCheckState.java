@@ -2,7 +2,7 @@ package dhl.stateMachineNew.states;
 
 import dhl.Configurables;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.StateMachine;
@@ -38,16 +38,13 @@ public class InjuryCheckState implements IStateMachine {
     }
 
     public IStateMachine doTask() {
-        int count = 0;
         for (ISchedulerSeason schedule : machine.getLeague().getGameSchedules()) {
             if (schedule.getStatus().equalsIgnoreCase(Configurables.SCHEDULED.getAction()) && machine.getLeague().getDate().equalsIgnoreCase(schedule.getDateOfMatch())) {
                 System.out.println(schedule.getFirstTeam().getTeamName());
                 System.out.println(schedule.getSecondTeam().getTeamName());
-                //return machine.getSimulate();
-                count++;
+                return machine.getSimulate();
             }
         }
-        System.out.println("count is : "+count);
         return null;
     }
 

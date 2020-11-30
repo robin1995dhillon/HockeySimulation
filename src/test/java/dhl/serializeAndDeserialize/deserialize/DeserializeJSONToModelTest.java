@@ -1,7 +1,7 @@
 package dhl.serializeAndDeserialize.deserialize;
 
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.league.League;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.League;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

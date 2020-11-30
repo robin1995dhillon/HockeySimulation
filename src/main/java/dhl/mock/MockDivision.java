@@ -1,13 +1,21 @@
 package dhl.mock;
 
-import dhl.leagueModel.division.Division;
-import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
+import dhl.leagueModel.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MockDivision {
+
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    IDivision division;
+    MockTeam mockTeam;
+
+    public MockDivision() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        division = leagueModelAbstractFactory.getDivision();
+        mockTeam = new MockTeam();
+    }
 
     public static IDivision createMock() {
         ArrayList<ITeam> teamArray = new ArrayList<>();
@@ -28,6 +36,13 @@ public class MockDivision {
         teamArray.add(team);
         teamArray.add(team2);
         division.setTeams(teamArray);
+        return division;
+    }
+
+    public IDivision createDivisionMock() {
+        List<ITeam> teamList = mockTeam.createTeamMockList();
+        division.setDivisionName("Division1");
+        division.setTeams(teamList);
         return division;
     }
 }

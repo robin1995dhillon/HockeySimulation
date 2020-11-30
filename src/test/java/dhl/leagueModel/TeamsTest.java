@@ -1,12 +1,6 @@
 package dhl.leagueModel;
 
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.IPlayers;
-import dhl.mock.MockHeadCoach;
-import dhl.mock.MockPlayer;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

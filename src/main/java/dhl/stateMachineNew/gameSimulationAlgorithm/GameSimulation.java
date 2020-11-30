@@ -2,9 +2,9 @@ package dhl.stateMachineNew.gameSimulationAlgorithm;
 
 import dhl.stateMachineNew.ITeamStanding;
 import dhl.stateMachineNew.TeamStandings;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.ILeague;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 
 
 public class GameSimulation implements IGameSimulation {

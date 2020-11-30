@@ -1,6 +1,6 @@
 package dhl.leagueModel.trade;
 
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 
 public interface IAddDropPlayers {
 

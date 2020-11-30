@@ -3,7 +3,7 @@ package dhl.stateMachineNewTest.GameSimulationAlgorithm;
 import dhl.stateMachineNew.StateMachineAbstractFactory;
 import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.mock.MockPlayer;
 import dhl.mock.MockTeam;
 import org.junit.Test;

@@ -1,6 +1,5 @@
 package dhl.leagueModel;
 
-import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.mock.MockHeadCoach;
 import org.junit.jupiter.api.Test;
 

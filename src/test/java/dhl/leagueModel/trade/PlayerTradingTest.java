@@ -1,8 +1,8 @@
 package dhl.leagueModel.trade;
 
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
+import dhl.leagueModel.ITeam;
+import dhl.leagueModel.Teams;
 import dhl.mock.MockLeague;
 import dhl.mock.MockPlayer;
 import org.junit.Test;

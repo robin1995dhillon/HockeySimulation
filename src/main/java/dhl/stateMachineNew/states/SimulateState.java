@@ -4,8 +4,8 @@ import dhl.Configurables;
 import dhl.stateMachineNew.gameSimulationAlgorithm.*;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.*;
 
 import java.text.ParseException;
@@ -54,28 +54,32 @@ public class SimulateState implements IStateMachine {
               //  machine.setTeamsForInjuryCheck(teamsInjuryCheck);
             }
         }
-        System.out.println("count of matches played = "+count);
+        System.out.println(teamsInjuryCheck);
+        System.out.println("count of matches played = " + count);
         machine.setTeamsForInjuryCheck(teamsInjuryCheck);
-        System.out.println(teamsInjuryCheck.get(0).getTeamName()+"-----team injury check");
+        System.out.println(teamsInjuryCheck.get(0).getTeamName() + "-----team injury check");
         if (teamsInjuryCheck == null) {
             output.setOutput("injury check list is empty");
             output.sendOutput();
 
         } else {
+            System.out.println("Checking for Injury Teams.");
+            for(ITeam team: teamsInjuryCheck) {
+                System.out.println(team.getTeamName());
+            }
             int counter = 0;
             for (ISchedulerSeason scheduler : league.getGameSchedules()) {
-
                 if(scheduler.getStatus().equalsIgnoreCase(Configurables.PLAYED.getAction())){
                     counter++;
                 }
             }
             System.out.println("playedddddd "+counter);
+//            Calling function which is causing error
             machine.setCurrentState(machine.getInjuryCheck());
             IStateMachine state = machine.getCurrentState().entry();
             if(state == machine.getSimulate()){
                 machine.setCurrentState(machine.getSimulate());
                 machine.getCurrentState().entry();
-
             }
         }
 

@@ -1,6 +1,6 @@
 package dhl.mock;
 
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.ITeamStanding;
 import dhl.stateMachineNew.TeamStandings;
 
@@ -36,9 +36,24 @@ public class MockStandingTeam {
         list.add(teamStanding2);
         for(ITeamStanding teamStandings: list){
             System.out.println(teamStandings.getTotalPoints());
-
-
         }
         return list;
+    }
+
+    public static List<ITeamStanding> createTeamStandingTwoMock(){
+        List<ITeamStanding> standingList = new ArrayList<>();
+        for(int i = 0; i < 32; i++){
+            ITeam team = MockTeam.MockTeamWithThirtyPlayers();
+            ITeamStanding teamStanding = new TeamStandings();
+            teamStanding.setTeam(team);
+            teamStanding.setGamesLost(4);
+            teamStanding.setTotalPoints(i + 2);
+            teamStanding.setGamesWon(i + 1);
+            teamStanding.setGamesPlayed(5);
+            teamStanding.setDivision("ABC");
+            teamStanding.setConference("DEF");
+            standingList.add(teamStanding);
+        }
+        return standingList;
     }
 }

@@ -4,7 +4,7 @@ import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 
 import java.util.ArrayList;
 import java.util.Collections;
