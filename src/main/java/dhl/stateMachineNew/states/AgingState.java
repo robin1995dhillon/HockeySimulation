@@ -22,13 +22,11 @@ public class AgingState implements IStateMachine {
     StateMachine machine;
     ISchedulerSeason schedulerSeason;
     private IUserOutput output;
-   // private List<ITeam> allTeams;
 
     public AgingState(StateMachine stateMachine){
         this.machine = stateMachine;
         schedulerSeason = new SchedulerSeason();
         output = new UserOutput();
-       // this.allTeams = this.machine.getTotalTeamList();
     }
 
     public IStateMachine entry() throws ParseException {
@@ -40,21 +38,28 @@ public class AgingState implements IStateMachine {
             for(int j = 0; j < players.size(); j++) {
                 players.get(j).agePlayer(1, this.machine.getLeague().getGameplayConfig());
                 if(players.get(j).isRetired()) {
+                    System.out.println("Player to be retired is" + players.get(j).getPlayerName());
+                    System.out.println("Player Age is" + players.get(j).getAge());
+                    System.out.println("Player position is" + players.get(j).getPosition());
                     IFreeAgents convertedFreeAgent = players.get(j).replacePlayerWithFreeAgent(players.get(j),machine.getLeague().getFreeAgents());
+                    System.out.println("Selected Free Agent is " + convertedFreeAgent.getPlayerName());
                     IPlayers playerToBeAdded = players.get(j).convertFreeAgentToPlayer(convertedFreeAgent);
                     allTeams.get(i).addPlayerToTeam(playerToBeAdded);
+                    allTeams.get(i).removePlayerFromTeam(players.get(j));
+                    machine.getLeague().setFreeAgents(convertedFreeAgent.removeFreeAgents(machine.getLeague().getFreeAgents()));
                 }
             }
         }
-        for(IFreeAgents agent: machine.getLeague().getFreeAgents()) {
-            agent.agePlayer(1, this.machine.getLeague().getGameplayConfig());
-            if(agent.isRetired()) {
-                newFreeAgentList = agent.retireFreeAgents(machine.getLeague().getFreeAgents());
+        List<IFreeAgents> freeAgentList = machine.getLeague().getFreeAgents();
+        System.out.println("FreeAgent Size after Aging of Players: " + freeAgentList.size());
+        for(int i=0;i<freeAgentList.size();i++) {
+            freeAgentList.get(i).agePlayer(1, this.machine.getLeague().getGameplayConfig());
+            if(freeAgentList.get(i).isRetired()) {
+//                newFreeAgentList = agent.retireFreeAgents(machine.getLeague().getFreeAgents());
             }
         }
 
-        machine.getLeague().setFreeAgents(newFreeAgentList);
-
+        System.out.println("Size is: " + machine.getLeague().getFreeAgents().size());
         return doTask();
     }
 

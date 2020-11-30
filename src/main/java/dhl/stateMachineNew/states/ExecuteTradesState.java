@@ -16,10 +16,10 @@ public class ExecuteTradesState implements IStateMachine {
     }
     public IStateMachine entry() {
         System.out.println("We are in Execute Trades State");
-        IPlayerTradingCondition trading = LeagueModelAbstractFactory.instance().getPLayerTradingCondition();
-        System.out.println("league is : "+stateMachine.getLeague().getLeagueName());
-        System.out.println("total team list is : "+stateMachine.getTotalTeamList());
-        trading.tradeCondition(stateMachine.getTotalTeamList(),stateMachine.getLeague().getGameplayConfig());
+//        IPlayerTradingCondition trading = LeagueModelAbstractFactory.instance().getPLayerTradingCondition();
+//        System.out.println("league is : "+stateMachine.getLeague().getLeagueName());
+//        System.out.println("total team list is : "+stateMachine.getTotalTeamList());
+//        trading.tradeCondition(stateMachine.getTotalTeamList(),stateMachine.getLeague().getGameplayConfig());
 
         return doTask();
     }

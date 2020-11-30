@@ -336,6 +336,11 @@ public class Teams implements ITeam {
     }
 
     @Override
+    public void removePlayerFromTeam(IPlayers players) {
+        this.players.remove(players);
+    }
+
+    @Override
     public void checkForInactiveRosterPlayerInjuryRecovery() {
         List<IPlayers> activeRoster;
         List<IPlayers> inActiveRoster;

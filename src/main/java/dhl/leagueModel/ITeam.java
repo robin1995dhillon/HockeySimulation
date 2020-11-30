@@ -69,6 +69,8 @@ public interface ITeam {
 
     void addPlayerToTeam(IPlayers players);
 
+    void removePlayerFromTeam(IPlayers players);
+
     void checkForInactiveRosterPlayerInjuryRecovery();
 
     void dropTeamToThirty();
