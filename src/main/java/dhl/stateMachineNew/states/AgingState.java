@@ -14,6 +14,7 @@ import dhl.stateMachineNew.StateMachine;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class AgingState implements IStateMachine {
@@ -33,13 +34,15 @@ public class AgingState implements IStateMachine {
     public IStateMachine entry() throws ParseException {
         System.out.println("We are in Aging State");
         List<IFreeAgents> newFreeAgentList = new ArrayList<>();
-        for(ITeam team : this.machine.getTotalTeamList()){
-            for(IPlayers player : team.getPlayers()){
-                player.agePlayer(1,this.machine.getLeague().getGameplayConfig());
-                if(player.isRetired()) {
-                    IFreeAgents freeAgents = player.replacePlayerWithFreeAgent(player,machine.getLeague().getFreeAgents());
-                    IPlayers players = player.convertFreeAgentToPlayer(freeAgents);
-                    team.addPlayerToTeam(players);
+        List<ITeam> allTeams = machine.getTotalTeamList();
+        for(int i = 0; i < allTeams.size(); i++) {
+            List<IPlayers> players = allTeams.get(i).getPlayers();
+            for(int j = 0; j < players.size(); j++) {
+                players.get(j).agePlayer(1, this.machine.getLeague().getGameplayConfig());
+                if(players.get(j).isRetired()) {
+                    IFreeAgents convertedFreeAgent = players.get(j).replacePlayerWithFreeAgent(players.get(j),machine.getLeague().getFreeAgents());
+                    IPlayers playerToBeAdded = players.get(j).convertFreeAgentToPlayer(convertedFreeAgent);
+                    allTeams.get(i).addPlayerToTeam(playerToBeAdded);
                 }
             }
         }

@@ -1,4 +1,9 @@
-package dhl.stateMachineNew;
+package dhl.stateMachineNew.states;
+
+import dhl.stateMachineNew.ISchedulerSeason;
+import dhl.stateMachineNew.IStateMachine;
+import dhl.stateMachineNew.SchedulerSeason;
+import dhl.stateMachineNew.StateMachine;
 
 import java.text.ParseException;
 
