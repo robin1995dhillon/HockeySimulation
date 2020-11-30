@@ -1,2 +1,0 @@
-02:54:02.363 [main] WARN  dhl.Main  - This log level is a warning, you might keep this in production if the module is very important.
-02:54:02.364 [main] ERROR dhl.Main  - This log level is an error, you never want to filter those.
