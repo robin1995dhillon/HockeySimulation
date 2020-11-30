@@ -201,19 +201,14 @@ public class AllPlayers implements IAllPlayers {
         int year = this.getBirthYear();
         int month = this.getBirthMonth();
         int days = this.getBirthDay();
-        System.out.println("Month is:" + month);
-        System.out.println(year);
 
         if(this.age == 0) {
             this.playerCurrentDate = LocalDate.now();
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
-        System.out.println(this.age);
         this.setPlayerCurrentDate(this.getPlayerCurrentDate().plusDays(daysToAge));
-        //System.out.println("-------------"+month);
         LocalDate nextBirthDay = LocalDate.of(this.playerCurrentDate.getYear(), month, days);
-        //System.out.println(this.playerCurrentDate);
-        //System.out.println(nextBirthDay);
+
         if (nextBirthDay.isBefore(this.playerCurrentDate)) {
             this.setAge(this.playerCurrentDate.getYear() - year + 1);
         } else {
@@ -254,7 +249,6 @@ public class AllPlayers implements IAllPlayers {
         int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
         System.out.println(randomNumber);
         if (randomNumber >= 0 && randomNumber <= retirementArray[index]) {
-            System.out.println(this.playerName+" is retired----------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             this.setRetired(true);
         } else {
             this.setRetired(false);
