@@ -22,6 +22,7 @@ public class ShiftTime implements IShiftTime{
     public void oneShot(List<IPlayers> playersListOne, List<IPlayers> playersListTwo){
         IPlayers forward = algorithm.shots(playersListOne, playersListTwo);
         IPlayers goalie = algorithm.getGoalie(playersListTwo);
+//        System.out.println("Goalie Name is" + goalie.getPlayerName());
         if(forward == null){
             return;
         }

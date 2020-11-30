@@ -231,8 +231,9 @@ public class AllPlayers implements IAllPlayers {
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = this.getAge();
-        Integer[] retirementAge = {average,average+1,average+2,average+3,average+4,average+5,average+6,max};
-        Integer[] retirementArray = {5,6,7,8,9,10,15,100};
+        Integer[] retirementAge = {average - 4, average - 3, average - 2, average - 1, average, average + 1, average + 4, average + 5, max};
+        Integer[] retirementArray = {1, 2, 3, 10, 15, 25, 35, 50, 100};
+
         int minDistance = Math.abs(retirementAge[0] - playerAge);
         int minIndex = 0;
         for (int i = 1; i < retirementAge.length; i++) {
@@ -242,7 +243,7 @@ public class AllPlayers implements IAllPlayers {
                 minDistance = currentDistance;
             }
         }
-        if(age>=retirementAge[minIndex]) {
+        if(age>retirementAge[0]) {
             int closestBracket = retirementAge[minIndex];
             int index = Arrays.asList(retirementAge).indexOf(closestBracket);
             int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
@@ -253,6 +254,7 @@ public class AllPlayers implements IAllPlayers {
                 this.setRetired(false);
             }
         }
+
     }
 
     @Override

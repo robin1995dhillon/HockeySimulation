@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonDeserialize(as = FreeAgents.class)
@@ -35,5 +36,25 @@ public class FreeAgents extends AllPlayers implements IFreeAgents {
             }
         }
         return freeAgentList;
+    }
+
+    @Override
+    public List<IFreeAgents> removeFreeAgents(List<IFreeAgents> freeAgentsList) {
+        ArrayList<IFreeAgents> newFreeAgentList = new ArrayList<>();
+
+        for(IFreeAgents freeAgents: freeAgentsList) {
+            if(this.equals(freeAgents)) {
+                System.out.println("Inside Removing FreeAgents");
+                continue;
+            } else {
+                newFreeAgentList.add(freeAgents);
+            }
+        }
+        return newFreeAgentList;
+    }
+
+    public List<IFreeAgents> removeFreeAgentBasedOnObject(IFreeAgents freeAgents, List<IFreeAgents> freeAgentsList) {
+
+        return freeAgentsList;
     }
 }
