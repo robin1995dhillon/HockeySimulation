@@ -71,8 +71,10 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
                     offeringTeamPositionPlayers = getPositionTypesOffering(offeringTeamPlayers);
                     stateMachine.setOfferingTeamPositionPlayers(offeringTeamPositionPlayers);
                     positionToTrade = offeringTeamPositionPlayers.get(0).getPosition();
+                    System.out.println("offering team sizessssssss is : "+allTeams.get(i).getPlayers().size());
                     for (int j = 0; j < allTeams.size(); j++) {
                         if (i == j) {
+                            System.out.println("offering team size is : "+allTeams.get(i).getPlayers().size());
                             continue;
                         } else {
                             System.out.println("size of team is : "+allTeams.get(j).getPlayers().size());

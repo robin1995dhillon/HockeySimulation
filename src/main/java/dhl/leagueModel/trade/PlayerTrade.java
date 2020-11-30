@@ -36,8 +36,6 @@ public class PlayerTrade implements IPlayerTrade {
     private StateMachine stateMachine;
 
     PlayerTrade() {
-       // playerTradingCondition = new PlayerTradingCondition();
-        //offeringTeamPlayers = new ArrayList<>();
         stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
         strongestWeakestPlayers = LeagueModelAbstractFactory.instance().getStrongestWeakestPlayers();
         addDrop = new AddDropPlayers();
@@ -68,7 +66,7 @@ public class PlayerTrade implements IPlayerTrade {
         for(IPlayers player : offeringTeamPositionPlayers){
             System.out.println("offering pos players : "+player.getPlayerName()+"---"+player.getPosition());
         }
-        for(IPlayers player : consideringTeamPlayers){
+        for(IPlayers player : this.consideringTeamPlayers){
             System.out.println("considering pos players : "+player.getPlayerName()+"---"+player.getPosition());
         }
 
@@ -105,6 +103,15 @@ public class PlayerTrade implements IPlayerTrade {
 //
 //        }
        // count = 1;
+        for(IPlayers player : consideringTeam.getPlayers()){
+            System.out.println("considering players before swap are : "+player.getPlayerName());
+        }
+
+        for(IPlayers player : offeringTeam.getPlayers()){
+            System.out.println("offering players before swap are : "+player.getPlayerName());
+        }
+
+
         //&& Math.random() < randomAcceptanceChance
         if (consideringTeamPlayersStrength > offeringTeamPositionPlayersStrength ) {
 //            Iterator<IPlayers> iterator = this.offeringTeamPositionPlayers.iterator();
