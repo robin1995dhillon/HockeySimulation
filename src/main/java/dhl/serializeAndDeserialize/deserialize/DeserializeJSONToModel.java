@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.league.League;
+import dhl.leagueModel.IConference;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.League;
 
 import java.io.IOException;
 import java.nio.file.Files;

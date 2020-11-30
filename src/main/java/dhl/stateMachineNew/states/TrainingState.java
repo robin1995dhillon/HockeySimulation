@@ -2,8 +2,8 @@ package dhl.stateMachineNew.states;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITraining;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 import dhl.leagueModel.IPlayerTrainingCondition;
 import dhl.leagueModel.PlayerTrainingCondition;
 import dhl.stateMachineNew.IStateMachine;

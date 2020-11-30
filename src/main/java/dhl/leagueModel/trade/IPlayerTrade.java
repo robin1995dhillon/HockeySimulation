@@ -1,10 +1,7 @@
 package dhl.leagueModel.trade;
 
-import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.teams.ITeam;
-
-import java.util.List;
+import dhl.leagueModel.ITeam;
 
 public interface IPlayerTrade {
 

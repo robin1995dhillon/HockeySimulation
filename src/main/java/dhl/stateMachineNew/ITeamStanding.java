@@ -1,6 +1,6 @@
 package dhl.stateMachineNew;
 
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 
 public interface ITeamStanding {
 

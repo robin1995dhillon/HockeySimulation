@@ -2,7 +2,6 @@ package dhl.stateMachineNew;
 
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.LeagueModelAbstractFactory;
-import dhl.leagueModel.teams.ITeam;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

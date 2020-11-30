@@ -3,7 +3,7 @@ package dhl.stateMachineNew.gameSimulationAlgorithm;
 
 import dhl.Configurables;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -112,6 +112,11 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
 
     @Override
     public void saves(IPlayers goalie, IPlayers forward) {
+//        System.out.println("-------"+saveChance);
+//        System.out.println(saveCoefficientOne);
+//        //System.out.println(goalie.getSaving());
+//        System.out.println(forward.getShooting());
+//        System.out.println(saveCoefficientTwo);
         saveChance += saveCoefficientOne * (goalie.getSaving() - forward.getShooting()) / goalie.getSaving() + saveCoefficientTwo;
         if(Math.random() < saveChance){
             goalie.setSaves(goalie.getSaves() + 1);
@@ -240,7 +245,7 @@ public class GameSimulationAlgorithm implements IGameSimulationAlgorithm{
 
     @Override
     public void setSaveChance(double saveChance) {
-        this.shotChance = saveChance;
+        this.saveChance = saveChance;
     }
 
     @Override

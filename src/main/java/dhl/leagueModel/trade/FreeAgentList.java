@@ -9,8 +9,8 @@ import dhl.leagueModel.FreeAgents;
 import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.Players;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
 import dhl.stateMachineNew.StateMachine;
@@ -53,31 +53,64 @@ public class FreeAgentList implements IFreeAgentListAdd {
     @Override
     public void aiAgentListAdd(ITeam team, int playersToBeAdded) {
 
-        int goalieCount = 0;
-        for (IPlayers player : team.getPlayers()) {
-            if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-                goalieCount++;
+        int noOfGoalies = 0;
+        int noOfForwards = 0;
+        int noOfDefense = 0;
+
+        for (IPlayers player: team.getPlayers()){
+            if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())){
+                noOfGoalies++;
+            }
+            else if (player.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction())){
+                noOfForwards++;
+            }
+            else if (player.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())){
+                noOfDefense++;
+            }
+
+            if (noOfGoalies > totalGoalies){
+//                hireFreeAgents(noOfGoalies - totalGoalies, Configurables.GOALIE.getAction());
+            }
+            else if (noOfGoalies < totalGoalies){
+//                dropToFreeAgents(totalGoalies - noOfGoalies, Configurables.GOALIE.getAction());
             }
         }
-        if (team.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
-            addPlayer(team.getPlayers(), playersToBeAdded, goalieCount);
-        } else if (team.getTeamType().equalsIgnoreCase(Configurables.USER.getAction())) {
-            addPlayerUser(team.getPlayers(), playersToBeAdded, goalieCount);
-        }
+
+
+
+
+
+
+
+
+
+//        int goalieCount = 0;
+//        for (IPlayers player : team.getPlayers()) {
+//            if (player.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+//                goalieCount++;
+//            }
+//        }
+//        if (team.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
+//            addPlayer(team.getPlayers(), playersToBeAdded, goalieCount);
+//        } else if (team.getTeamType().equalsIgnoreCase(Configurables.USER.getAction())) {
+//            addPlayerUser(team.getPlayers(), playersToBeAdded, goalieCount);
+//        }
 
     }
 
     public void addPlayer(List<IPlayers> player, int playersToBeAdded, int goalieCount) {
-        IPlayers agentToPlayer;
-        List<IFreeAgents> agentList;
-        agentList = sortedAgentsList(playersToBeAdded, goalieCount);
 
-        for (IFreeAgents agent : agentList) {
-            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
-            player.add(agentToPlayer);
-            league.getFreeAgents().remove(agent);
-
-        }
+//        IPlayers agentToPlayer;
+//        List<IFreeAgents> agentList;
+//        agentList = sortedAgentsList(playersToBeAdded, goalieCount);
+//
+//        for (IFreeAgents agent : agentList) {
+//            agentToPlayer = playerToAdd.convertFreeAgentToPlayer(agent);
+//            player.add(agentToPlayer);
+//            league.getFreeAgents().remove(agent);
+//
+//        }
+//        System.out.println("--------------team size is------------- "+player.size());
 
     }
 
@@ -95,35 +128,55 @@ public class FreeAgentList implements IFreeAgentListAdd {
 //
 //    }
 
-    public List<IFreeAgents> sortedAgentsList(int playersToBeAdded, int goalieCount) {
+    public List<IFreeAgents> sortedAgentsList(int playersToBeAdded, int pla) {
 
-        List<IFreeAgents> agentList = new ArrayList<>();
+
+
+
+
+
+
+
+
+
+
+
+
+//        System.out.println("------------------------------------goaliessssss count: "+goalieCount);
+        List<IFreeAgents> agentsList = new ArrayList<>();
         for (IFreeAgents agent : league.getFreeAgents()) {
-            if (goalieCount == totalGoalies) {
-                if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || agent.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
-                    agentList.add(agent);
-                } else {
-                    continue;
-                }
-
-            } else {
-                if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-                    agentList.add(agent);
-                    goalieCount++;
-                    if (goalieCount == totalGoalies) {
-                        break;
-                    }
-                } else {
-                    continue;
-                }
-            }
+//            if (goalieCount == totalGoalies) {
+//                if (agent.getPosition().equalsIgnoreCase(Configurables.FORWARD.getAction()) || agent.getPosition().equalsIgnoreCase(Configurables.DEFENSE.getAction())) {
+//                    agentsList.add(agent);
+//                } else {
+//                    continue;
+//                }
+//
+//            } else {
+//                if (agent.getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+//                    agentsList.add(agent);
+//                    goalieCount++;
+//                    System.out.println("goalie added, count is : "+goalieCount);
+//                    if (goalieCount == totalGoalies) {
+//                        System.out.println("inside adding goalie");
+//                        //continue;  //changed from break
+//                        break;
+//                    }
+//                } else {
+//                    continue;
+//                }
+//            }
         }
-        if (agentList.get(0).getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
-            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
-            return agentList.subList(0, playersToBeAdded);
+//        System.out.println("------------------------------------goalie count: "+goalieCount);
+        System.out.println("------------------------------------players to be added are: "+playersToBeAdded);
+        System.out.println("------------------------------------agents are: "+agentsList.size());
+        System.out.println("------------------------------------actual agents are: "+league.getFreeAgents().size());
+        if (agentsList.get(0).getPosition().equalsIgnoreCase(Configurables.GOALIE.getAction())) {
+            Collections.sort(agentsList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
+            return agentsList.subList(0, playersToBeAdded);
         } else {
-            Collections.sort(agentList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
-            return agentList.subList(0, playersToBeAdded);
+            Collections.sort(agentsList, Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
+            return agentsList.subList(0, playersToBeAdded);
         }
 
     }

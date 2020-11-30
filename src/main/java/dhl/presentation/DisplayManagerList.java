@@ -1,6 +1,6 @@
 package dhl.presentation;
 
-import dhl.leagueModel.generalManager.IGeneralManager;
+import dhl.leagueModel.IGeneralManager;
 
 import java.util.List;
 

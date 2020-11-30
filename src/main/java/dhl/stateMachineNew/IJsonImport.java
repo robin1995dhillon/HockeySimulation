@@ -1,6 +1,6 @@
 package dhl.stateMachineNew;
 
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.ILeague;
 
 public interface IJsonImport {
 

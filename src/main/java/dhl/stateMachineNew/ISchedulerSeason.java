@@ -1,6 +1,6 @@
 package dhl.stateMachineNew;
 
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 
 import java.text.ParseException;
 import java.util.List;

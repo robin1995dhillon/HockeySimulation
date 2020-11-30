@@ -2,10 +2,10 @@ package dhl.stateMachineNew;
 
 import dhl.Configurables;
 import dhl.inputOutput.IUserOutput;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.IConference;
+import dhl.leagueModel.IDivision;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -316,6 +316,8 @@ public class SchedulerSeason implements ISchedulerSeason {
 
                 for (int k = 0; k < retrievedTeams.size(); k++) {
                     ITeam teamName = retrievedTeams.get(k);
+
+                      //  System.out.println(teamName.getPlayers().size()+"!!!_!_!SIZE IS__!__!_!__!_!__!_!_");
 
                     this.teamList.add(teamName);
                     scheduledMatches.put(teamName, 0);

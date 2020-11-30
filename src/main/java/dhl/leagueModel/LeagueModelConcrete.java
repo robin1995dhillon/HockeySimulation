@@ -1,19 +1,7 @@
 package dhl.leagueModel;
 
-import dhl.leagueModel.conference.Conference;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.Division;
-import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.generalManager.GeneralManager;
-import dhl.leagueModel.generalManager.IGeneralManager;
-import dhl.leagueModel.headCoach.HeadCoach;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.league.League;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
 import dhl.leagueModel.trade.*;
 
 public class LeagueModelConcrete extends LeagueModelAbstractFactory {

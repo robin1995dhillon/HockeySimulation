@@ -1,7 +1,7 @@
 package dhl.stateMachineNew.states;
 
 import dhl.leagueModel.LeagueModelAbstractFactory;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.ILeague;
 import dhl.stateMachineNew.*;
 
 public class JsonImportState implements IStateMachine {

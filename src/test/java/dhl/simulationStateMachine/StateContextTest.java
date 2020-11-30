@@ -4,7 +4,7 @@
 //import dhl.inputOutput.IUserOutput;
 //import dhl.inputOutput.UserInput;
 //import dhl.inputOutput.UserOutput;
-//import dhl.leagueModel.league.ILeague;
+//import dhl.leagueModel.ILeague;
 //import dhl.mock.MockLeague;
 //import org.junit.Before;
 //import org.junit.Test;

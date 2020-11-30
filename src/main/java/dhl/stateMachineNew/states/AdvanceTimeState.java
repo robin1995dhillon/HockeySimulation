@@ -2,10 +2,10 @@ package dhl.stateMachineNew.states;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.IConference;
+import dhl.leagueModel.IDivision;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.ITime;
 import dhl.stateMachineNew.LeagueTimeConcept;

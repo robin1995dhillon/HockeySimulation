@@ -2,7 +2,7 @@ package dhl.simulationStateMachine;
 
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.ILeague;
 
 public class CreateTeamState implements IState {
     private ILeague league;

@@ -1,9 +1,6 @@
 package dhl.stateMachineNew;
 
-import dhl.stateMachineNew.gameSimulationAlgorithm.GameSimulationAlgorithm;
-import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
-import dhl.stateMachineNew.gameSimulationAlgorithm.IShiftTime;
-import dhl.stateMachineNew.gameSimulationAlgorithm.ShiftTime;
+import dhl.stateMachineNew.gameSimulationAlgorithm.*;
 
 public class StateMachineConcrete extends StateMachineAbstractFactory{
 

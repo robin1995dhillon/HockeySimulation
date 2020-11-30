@@ -4,10 +4,10 @@ import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.LeagueModelAbstractFactory;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.league.League;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.League;
+import dhl.leagueModel.ITeam;
+import dhl.leagueModel.Teams;
 import dhl.stateMachineNew.states.*;
 
 

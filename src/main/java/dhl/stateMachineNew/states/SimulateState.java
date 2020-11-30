@@ -1,14 +1,11 @@
 package dhl.stateMachineNew.states;
 
 import dhl.Configurables;
-import dhl.stateMachineNew.gameSimulationAlgorithm.GameSimulationAlgorithm;
-import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
-import dhl.stateMachineNew.gameSimulationAlgorithm.IShiftTime;
-import dhl.stateMachineNew.gameSimulationAlgorithm.ShiftTime;
+import dhl.stateMachineNew.gameSimulationAlgorithm.*;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.*;
 
 import java.text.ParseException;
@@ -20,13 +17,14 @@ public class SimulateState implements IStateMachine {
     StateMachine machine;
     IUserOutput output;
     ISchedulerSeason season;
+    StateMachineAbstractFactory abstractFactory;
 
     public SimulateState(StateMachine stateMachine) {
 
         this.machine = stateMachine;
         output = new UserOutput();
         season = new SchedulerSeason();
-
+        abstractFactory = StateMachineAbstractFactory.instance();
     }
 
     public IStateMachine entry() throws ParseException {
@@ -40,9 +38,9 @@ public class SimulateState implements IStateMachine {
         ILeague league = machine.getLeague();
         int count = 0; //remove it
         List<ITeam> teamsInjuryCheck = new ArrayList<>();
-        IGameSimulation simulate = new GameSimulation();
-        IGameSimulationAlgorithm algorithm = new GameSimulationAlgorithm(0.04,0.907,0.433);
-        IShiftTime shiftTime = new ShiftTime();
+        IGameSimulation simulate = abstractFactory.getGameSimulation();
+        IGameSimulationAlgorithm algorithm = abstractFactory.getGameSimulationAlgorithm();
+        IShiftTime shiftTime = abstractFactory.getShiftTime();
 
         for (ISchedulerSeason scheduler : league.getGameSchedules()) {
             String currentDate = league.getDate();

@@ -202,11 +202,13 @@ public class AllPlayers implements IAllPlayers {
         int month = this.getBirthMonth();
         int days = this.getBirthDay();
         System.out.println("Month is:" + month);
-        System.out.println(this.playerName);
+        System.out.println(year);
+
         if(this.age == 0) {
             this.playerCurrentDate = LocalDate.now();
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
+        System.out.println(this.age);
         this.setPlayerCurrentDate(this.getPlayerCurrentDate().plusDays(daysToAge));
         //System.out.println("-------------"+month);
         LocalDate nextBirthDay = LocalDate.of(this.playerCurrentDate.getYear(), month, days);
@@ -234,6 +236,7 @@ public class AllPlayers implements IAllPlayers {
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = this.getAge();
+        System.out.println("Player Age" + playerAge);
         Integer[] retirementAge = {average - 5, average - 4, average - 3, average - 2, average - 1, average, average + 1, average + 4, average + 5, max};
         Integer[] retirementArray = {5, 10, 15, 20, 25, 30, 50, 70, 80, 100};
 
@@ -249,11 +252,14 @@ public class AllPlayers implements IAllPlayers {
         int closestBracket = retirementAge[minIndex];
         int index = Arrays.asList(retirementAge).indexOf(closestBracket);
         int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
+        System.out.println(randomNumber);
         if (randomNumber >= 0 && randomNumber <= retirementArray[index]) {
+            System.out.println(this.playerName+" is retired----------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             this.setRetired(true);
         } else {
             this.setRetired(false);
         }
+
         System.out.println(this.isRetired);
     }
 
@@ -296,6 +302,9 @@ public class AllPlayers implements IAllPlayers {
         player.setBirthDay(agent.getBirthDay());
         player.setBirthYear(agent.getBirthYear());
         player.setCaptain(false);
+        player.setBirthMonth(agent.getBirthMonth());
+        player.setBirthDay(agent.getBirthDay());
+        player.setBirthYear(agent.getBirthYear());
         return player;
     }
 
@@ -313,7 +322,6 @@ public class AllPlayers implements IAllPlayers {
         agent.setBirthMonth(player.getBirthMonth());
         agent.setBirthDay(player.getBirthDay());
         agent.setBirthYear(player.getBirthYear());
-
         return agent;
     }
 

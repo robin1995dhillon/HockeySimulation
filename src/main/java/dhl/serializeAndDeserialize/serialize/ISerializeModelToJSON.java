@@ -1,7 +1,7 @@
 package dhl.serializeAndDeserialize.serialize;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.ILeague;
 
 import java.io.IOException;
 

@@ -4,7 +4,7 @@ import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.internalStateMachine.NestedStartState;
 import dhl.internalStateMachine.NestedStateContext;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.ILeague;
 
 public class SimulateLeagueState implements IState {
     private ILeague league;

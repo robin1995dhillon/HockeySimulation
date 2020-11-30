@@ -2,7 +2,7 @@ package dhl.internalStateMachine;
 
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.ILeague;
 
 import java.util.List;
 import java.util.Map;

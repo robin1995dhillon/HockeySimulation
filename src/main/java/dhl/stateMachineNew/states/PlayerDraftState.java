@@ -1,13 +1,10 @@
 package dhl.stateMachineNew.states;
 
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
-import dhl.simulationStateMachine.IState;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.*;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerDraftState implements IStateMachine {
@@ -21,7 +18,6 @@ public class PlayerDraftState implements IStateMachine {
     }
 
     public IStateMachine entry() throws ParseException {
-
         return doTask();
     }
 

@@ -4,7 +4,7 @@ package dhl.stateMachineNew.gameSimulationAlgorithm;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,11 +48,11 @@ public class ShiftTime implements IShiftTime{
         for(int i = 0; i < 36; i++){
             oneShift(teamOne, teamTwo);
         }
-        output.setOutput(teamOne.getTeamName() + ": Goals: " + algorithm.getGoals(teamOne) + "\tPenalties: " + algorithm.getPenalties(teamOne) + "\tShots: " + algorithm.getShots(teamOne) + "\tSaves: " + algorithm.getSaves(teamOne));
-        output.sendOutput();
-        output.setOutput(teamTwo.getTeamName() + ": Goals: " + algorithm.getGoals(teamTwo) + "\tPenalties: " + algorithm.getPenalties(teamTwo) + "\tShots: " + algorithm.getShots(teamTwo) + "\tSaves: " + algorithm.getSaves(teamTwo));
-        output.sendOutput();
-        logger.info("The game between " + teamOne.getTeamName() + " " + teamTwo.getTeamName() + " is over.");
+//        output.setOutput(teamOne.getTeamName() + ": Goals: " + algorithm.getGoals(teamOne) + "\tPenalties: " + algorithm.getPenalties(teamOne) + "\tShots: " + algorithm.getShots(teamOne) + "\tSaves: " + algorithm.getSaves(teamOne));
+//        output.sendOutput();
+//        output.setOutput(teamTwo.getTeamName() + ": Goals: " + algorithm.getGoals(teamTwo) + "\tPenalties: " + algorithm.getPenalties(teamTwo) + "\tShots: " + algorithm.getShots(teamTwo) + "\tSaves: " + algorithm.getSaves(teamTwo));
+//        output.sendOutput();
+//        logger.info("The game between " + teamOne.getTeamName() + " " + teamTwo.getTeamName() + " is over.");
         algorithm.getTeamStatistic(teamOne);
         algorithm.getTeamStatistic(teamTwo);
     }
