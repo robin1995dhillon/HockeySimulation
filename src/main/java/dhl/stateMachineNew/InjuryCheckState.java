@@ -2,7 +2,6 @@ package dhl.stateMachineNew;
 
 import dhl.Configurables;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.teams.ITeam;
 
 import java.util.List;

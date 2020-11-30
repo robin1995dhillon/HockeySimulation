@@ -25,7 +25,7 @@ public class AllPlayers implements IAllPlayers {
     private int injuredDays = 0;
     private boolean isRetired = false;
     private boolean isInjured = false;
-    private LocalDate playerCurrentDate;
+    private LocalDate playerCurrentDate = LocalDate.now();
     private IGamePlayConfig gamePlayConfig;
     private int skating;
     private int shooting;
@@ -201,6 +201,8 @@ public class AllPlayers implements IAllPlayers {
         int year = this.getBirthYear();
         int month = this.getBirthMonth();
         int days = this.getBirthDay();
+        System.out.println("Month is:" + month);
+        System.out.println(this.playerName);
         if(this.age == 0) {
             this.playerCurrentDate = LocalDate.now();
             this.setAge(this.playerCurrentDate.getYear() - year);
@@ -232,7 +234,6 @@ public class AllPlayers implements IAllPlayers {
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = this.getAge();
-        System.out.println(playerAge);
         Integer[] retirementAge = {average - 5, average - 4, average - 3, average - 2, average - 1, average, average + 1, average + 4, average + 5, max};
         Integer[] retirementArray = {5, 10, 15, 20, 25, 30, 50, 70, 80, 100};
 
@@ -291,6 +292,9 @@ public class AllPlayers implements IAllPlayers {
         player.setChecking(agent.getChecking());
         player.setSaving(agent.getSaving());
         player.setStrength(agent.getStrength());
+        player.setBirthMonth(agent.getBirthMonth());
+        player.setBirthDay(agent.getBirthDay());
+        player.setBirthYear(agent.getBirthYear());
         player.setCaptain(false);
         return player;
     }
@@ -306,6 +310,9 @@ public class AllPlayers implements IAllPlayers {
         agent.setChecking(player.getChecking());
         agent.setSaving(player.getSaving());
         agent.setStrength(player.getStrength());
+        agent.setBirthMonth(player.getBirthMonth());
+        agent.setBirthDay(player.getBirthDay());
+        agent.setBirthYear(player.getBirthYear());
 
         return agent;
     }

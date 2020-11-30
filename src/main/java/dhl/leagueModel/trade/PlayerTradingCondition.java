@@ -7,6 +7,8 @@ import dhl.Configurables;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.Players;
 import dhl.leagueModel.teams.ITeam;
+import dhl.stateMachineNew.StateMachine;
+import dhl.stateMachineNew.StateMachineAbstractFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +29,10 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
     private List<IPlayers> offeringTeamPositionPlayers;
     private ITeam finalTeam = null;
     private IPlayerTrade playerTrade;
+    private StateMachine stateMachine;
 
     public PlayerTradingCondition() {
-
+        stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
         consideringTeamPlayers = new ArrayList<>();
         offeringTeamPlayers = new ArrayList<>();
         offeringTeamPositionPlayers = new ArrayList<>();
@@ -39,21 +42,6 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
         trading = new Trading();
     }
 
-    public List<IPlayers> getConsideringTeamPlayers() {
-        return consideringTeamPlayers;
-    }
-
-    public void setConsideringTeamPlayers(List<IPlayers> consideringTeamPlayers) {
-        this.consideringTeamPlayers = consideringTeamPlayers;
-    }
-
-    public List<IPlayers> getOfferingTeamPositionPlayers() {
-        return offeringTeamPositionPlayers;
-    }
-
-    public void setOfferingTeamPositionPlayers(List<IPlayers> offeringTeamPositionPlayers) {
-        this.offeringTeamPositionPlayers = offeringTeamPositionPlayers;
-    }
 
     @Override
     public List<IPlayers> getPositionTypesOffering(List<IPlayers> players) {
@@ -70,6 +58,7 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
 
     @Override
     public void tradeCondition(List<ITeam> allTeams, IGamePlayConfig gamePlayConfiguration) {
+
         this.gamePlayConfig = gamePlayConfiguration;
         trading = gamePlayConfig.getTrading();
         int lossPoints = trading.getLossPoint();
@@ -80,14 +69,14 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
                 if (randomTradeOfferChance > Math.random()) {
                     offeringTeamPlayers = strongestWeakestPlayers.checkWeakestPlayer(allTeams.get(i), gamePlayConfig);
                     offeringTeamPositionPlayers = getPositionTypesOffering(offeringTeamPlayers);
-                    setOfferingTeamPositionPlayers(offeringTeamPositionPlayers);
+                    stateMachine.setOfferingTeamPositionPlayers(offeringTeamPositionPlayers);
                     positionToTrade = offeringTeamPositionPlayers.get(0).getPosition();
                     for (int j = 0; j < allTeams.size(); j++) {
                         if (i == j) {
                             continue;
                         } else {
-                            consideringTeamPlayers = strongestWeakestPlayers.checkStrongestPlayer(allTeams.get(j), positionToTrade);
-                            setConsideringTeamPlayers(consideringTeamPlayers);
+                            consideringTeamPlayers = strongestWeakestPlayers.checkStrongestPlayer(allTeams.get(j), positionToTrade, offeringTeamPositionPlayers.size());
+                            stateMachine.setConsideringTeamPlayers(consideringTeamPlayers);
                             if (strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers) > strongestPlayersStrength) {
                                 strongestPlayersStrength = strongestWeakestPlayers.strongestPlayersStrength(consideringTeamPlayers);
                                 finalTeam = allTeams.get(j);
@@ -95,9 +84,9 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
                         }
                     }
                     if (finalTeam.getTeamType().equalsIgnoreCase(Configurables.AI.getAction())) {
-                        playerTrade.tradeAi(allTeams.get(i), finalTeam, gamePlayConfig, offeringTeamPositionPlayers, consideringTeamPlayers);
+                        playerTrade.tradeAi(allTeams.get(i), finalTeam, gamePlayConfig);
                     } else {
-                        playerTrade.tradeUser(allTeams.get(i), finalTeam, gamePlayConfig, offeringTeamPositionPlayers, consideringTeamPlayers);
+                        playerTrade.tradeUser(allTeams.get(i), finalTeam, gamePlayConfig);
                     }
                 }
             }

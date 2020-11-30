@@ -8697,7 +8697,7 @@
               ]
             },
             {
-              "teamName": "Winnipeg Hound Dogs",
+                "teamName": "Winnipeg Hound Dogs",
               "generalManager": {
                 "name": "Prashant Patel",
                 "personality": "normal"

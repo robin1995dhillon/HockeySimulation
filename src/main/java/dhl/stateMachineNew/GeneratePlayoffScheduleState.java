@@ -2,7 +2,7 @@ package dhl.stateMachineNew;
 
 import java.text.ParseException;
 
-public class GeneratePlayoffScheduleState implements IStateMachine{
+public class GeneratePlayoffScheduleState implements IStateMachine {
 
     StateMachine machine;
 

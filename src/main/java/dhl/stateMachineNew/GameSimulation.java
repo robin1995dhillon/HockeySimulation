@@ -1,7 +1,7 @@
 package dhl.stateMachineNew;
 
-import dhl.gameSimulationAlgorithm.IGameSimulationAlgorithm;
-import dhl.gameSimulationAlgorithm.IShiftTime;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IShiftTime;
 import dhl.leagueModel.league.ILeague;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.teams.ITeam;
