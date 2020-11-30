@@ -51,7 +51,7 @@ public class MockDivision {
         List<ITeam> teamList =new ArrayList<>();
         teamList.add(MockTeam.MockOffensiveTeam());
         teamList.add(MockTeam.MockTeam());
-        division.setDivisionName("Division1");
+        division.setDivisionName("Metro");
         division.setTeams(teamList);
         return division;
     }

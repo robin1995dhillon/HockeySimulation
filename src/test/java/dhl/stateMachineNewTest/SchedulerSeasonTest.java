@@ -86,60 +86,7 @@ public class SchedulerSeasonTest {
 
     }
 
-//    @Test
-//    public void regularScheduleTest() throws ParseException {
-//        ISchedulerSeason season = new SchedulerSeason();
-//        IUserOutput userOutput = new UserOutput();
-//        List<ITeam> listTeam = new ArrayList<>();
-//        List<ISchedulerSeason> scheduleList = new ArrayList<>();
-//        listTeam.add(MockTeam.MockTeamTwo());
-//        listTeam.add(MockTeam.MockTeam());
-//        listTeam.add(MockTeam.MockOffensiveTeam());
-//        for(ITeam team : listTeam){
-//            System.out.println(team.getTeamName());
-//        }
-//        ITeam teamName = MockTeam.MockTeamTwo();
-////        String playoffStartDate = "01-01-2020";
-////        String playoffEndDate = "05-01-2020";
-//        season.schedule(listTeam,teamName);
-//
-//
-////        int gameCounter = 0;
-////        for (ITeam team : listTeam) {
-////            if (gameCounter < 50) {
-////                if (team.getTeamName().equalsIgnoreCase(teamName.getTeamName())) {
-////                    continue;
-////                } else {
-////                    ISchedulerSeason schedulerSeason = new SchedulerSeason();
-////                    schedulerSeason.setFirstTeam(teamName);
-////                    schedulerSeason.setSecondTeam(team);
-////                    schedulerSeason.setDateOfMatch(playoffStartDate);
-////                    schedulerSeason.setGameType(Configurables.REGULAR.getAction());
-////                    schedulerSeason.setStatus(Configurables.SCHEDULED.getAction());
-////                    scheduleList.add(schedulerSeason);
-////                    playoffStartDate = nextDate(playoffStartDate);
-////                    if (playoffStartDate.equalsIgnoreCase(playoffEndDate)) {
-////                        playoffStartDate = "01-01-2020";
-////                        gameCounter++;
-////                    }
-////                    else {
-////                        gameCounter++;
-////                        continue;
-////                    }
-////                }
-////            } else {
-////                break;
-////            }
-////        }
-//       // System.out.println("game counter: "+gameCounter);
-//        for(ISchedulerSeason schedule : scheduleList){
-//            System.out.println(schedule.getFirstTeam().getTeamName()+" "+schedule.getSecondTeam().getTeamName()+" "+schedule.getDateOfMatch());
-//
-//        }
-//        assertEquals(teamName.getTeamName(),scheduleList.get(0).getFirstTeam().getTeamName());
-//        assertEquals(MockTeam.MockTeam().getTeamName(),scheduleList.get(0).getSecondTeam().getTeamName());
-//
-//    }
+
 
     public String nextDate(String playoffStartDate) {
 
@@ -298,7 +245,7 @@ public class SchedulerSeasonTest {
     }
 
     @Test
-    public void scheduleInterConfGames() throws ParseException {
+    public void scheduleInterConfGamesTest() throws ParseException {
 
         IConference conference = MockConference.mockConference();
 
@@ -318,39 +265,65 @@ public class SchedulerSeasonTest {
 
     }
 
-//    @Test
-//    public void scheduleInterDivGames() throws ParseException{
-//
-//        IConference conference = LeagueModelAbstractFactory.instance().getConference();
-//                conference = MockConference.mockConferenceTwo();
-//        IDivision divisions = MockDivision.createMock();
-//
-//        Map<IConference, List<IDivision>> divisionInConference;
-//        List<IDivision> divisionList = new ArrayList<>();
-//        Map<IConference, List<IDivision>> divisionMap = new HashMap<>();
-//        for (IDivision division : conference.getDivisions()) {
-//            divisionList.add(division);
-//        }
-//        divisionMap.put(conference,divisionList);
-//
-//        System.out.println(divisionInConference.get(conference));
-//
-//        Map<IDivision, List<ITeam>> teamInDivision = MockConference.mockMapTeamsInDivision();
-//        ITeam team = MockTeam.MockDefendingTeam();
-//        schedulerSeason.setDivisionsInConference(divisionInConference);
-//        schedulerSeason.setScheduleList(new ArrayList<>());
-//        schedulerSeason.setTeamsInDivision(teamInDivision);
-//        String date = "30-11-2020";
-//        String dateOutput = "";
-//        try {
-//            dateOutput = schedulerSeason.scheduleInterDivGames(conference, divisions, team, date);
-//        }
-//        catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//       // assertEquals("01-12-2020",dateOutput);
-//
-//    }
+    @Test
+    public void scheduleInterDivGamesTest() throws ParseException{
+
+        IConference conference = MockConference.mockConferenceTwo();
+        IDivision divisions = MockDivision.createMock();
+
+        List<IDivision> divisionList = new ArrayList<>();
+        Map<IConference, List<IDivision>> divisionMap = new HashMap<>();
+        for (IDivision division : conference.getDivisions()) {
+            divisionList.add(division);
+        }
+
+        divisionMap.put(conference,divisionList);
+
+        Map<IDivision, List<ITeam>> teamInDivision = MockConference.mockMapTeamsInDivision();
+        ITeam team = MockTeam.MockDefendingTeam();
+        schedulerSeason.setDivisionsInConference(divisionMap);
+        schedulerSeason.setScheduleList(new ArrayList<>());
+        schedulerSeason.setTeamsInDivision(teamInDivision);
+        String date = "30-11-2020";
+        String dateOutput = "";
+        try {
+            dateOutput = schedulerSeason.scheduleInterDivGames(conference, divisions, team, date);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assertEquals(date,dateOutput);
+
+    }
+
+    @Test
+    public void scheduleIntraDivGamesTest() throws ParseException {
+
+        ITeam teams = MockTeam.MockDefendingTeam();
+        IDivision divisions = MockDivision.divisionMock();
+        String date = "30-11-2020";
+        String dateOutput = "";
+        List<ITeam> teamList = new ArrayList<>();
+        Map<IDivision, List<ITeam>> teamMap = new HashMap<>();
+        IDivision division = divisions;
+
+        for (ITeam team : division.getTeams()) {
+            teamList.add(team);
+        }
+        teamMap.put(division,teamList);
+        schedulerSeason.setTeamsInDivision(teamMap);
+        schedulerSeason.setScheduleList(new ArrayList<>());
+        try {
+            dateOutput = schedulerSeason.scheduleIntraDivGames(divisions, teams, date);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assertEquals("02-12-2020",dateOutput);
+
+    }
+
+
 
 
 

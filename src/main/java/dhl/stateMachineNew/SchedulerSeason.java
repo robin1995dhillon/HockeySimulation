@@ -329,7 +329,7 @@ public class SchedulerSeason implements ISchedulerSeason {
 //        }
 //    }
 
-    private void createSchedule() throws ParseException {
+    public void createSchedule() throws ParseException {
 
         String startDate = getFirstDayOfSeason();
 

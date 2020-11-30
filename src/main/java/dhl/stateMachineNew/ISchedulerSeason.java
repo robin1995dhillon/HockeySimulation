@@ -77,12 +77,14 @@ public interface ISchedulerSeason {
 
     String scheduleInterDivGames(IConference conferenceName, IDivision divisionName, ITeam teamName, String currentDate) throws ParseException;
 
-    public Map<IConference, List<IDivision>> getDivisionsInConference();
+    Map<IConference, List<IDivision>> getDivisionsInConference();
 
-    public void setDivisionsInConference(Map<IConference, List<IDivision>> divisionsInConference);
+    void setDivisionsInConference(Map<IConference, List<IDivision>> divisionsInConference);
 
-    public Map<IDivision, List<ITeam>> getTeamsInDivision();
+    Map<IDivision, List<ITeam>> getTeamsInDivision();
 
-    public void setTeamsInDivision(Map<IDivision, List<ITeam>> teamsInDivision);
+    void setTeamsInDivision(Map<IDivision, List<ITeam>> teamsInDivision);
+
+    String scheduleIntraDivGames(IDivision divisionName, ITeam teamName, String currentDate) throws ParseException;
 
 }

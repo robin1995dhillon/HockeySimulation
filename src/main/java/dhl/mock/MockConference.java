@@ -113,8 +113,10 @@ public class MockConference {
     public static Map<IDivision, List<ITeam>> mockMapTeamsInDivision(){
 
         List<ITeam> teamList = new ArrayList<>();
+        IConference conference = MockConference.mockConferenceTwo();
         Map<IDivision, List<ITeam>> teamMap = new HashMap<>();
-        IDivision division = MockDivision.divisionMock();
+//        IDivision division = conference.getDivisions().get(0);
+        IDivision division = MockDivision.createMock();
         for (ITeam team : division.getTeams()) {
             teamList.add(team);
         }
