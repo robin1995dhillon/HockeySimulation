@@ -1,708 +1,188 @@
-20:06:12.244 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Greenbaum is injured for 48 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Greenbaum is injured for 30 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Marley is injured for 40 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Liu is injured for 44 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Patel is injured for 59 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Smith is injured for 57 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hawkins is injured for 99 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Thomson is injured for 45 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Hawkey is injured for 71 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Williamson is injured for 114 days.
-20:06:12.247 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Plant is injured for 91 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Wu is injured for 34 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Smith is injured for 80 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Burbchuk is injured for 29 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Williamson is injured for 88 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Rogers is injured for 3 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Liu is injured for 63 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Nelson is injured for 26 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Khatri is injured for 24 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Hawkins is injured for 7 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Bonham is injured for 120 days.
-20:06:12.248 [main] INFO  dhl.leagueModel.AllPlayers  - Don Patel is injured for 14 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Halen is injured for 69 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Plant is injured for 114 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Page is injured for 123 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Williamson is injured for 120 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Marley is injured for 90 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - John Samson is injured for 17 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Burbchuk is injured for 93 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Plant is injured for 103 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Bonham is injured for 6 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Smith is injured for 77 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Rogers is injured for 122 days.
-20:06:12.249 [main] INFO  dhl.leagueModel.AllPlayers  - Don Hendrix is injured for 119 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Wu is injured for 62 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Smith is injured for 79 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Singh is injured for 87 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Liu is injured for 81 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Bishop is injured for 94 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Samson is injured for 113 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Morrison is injured for 4 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Wu is injured for 57 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Bonham is injured for 51 days.
-20:06:12.250 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Hawkins is injured for 67 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Burbchuk is injured for 9 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith is injured for 14 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Bonham is injured for 1 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Nelson is injured for 100 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Rogers is injured for 76 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Singh is injured for 55 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Liu is injured for 29 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Hawkey is injured for 102 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Nelson is injured for 106 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Jones is injured for 94 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Khatri is injured for 107 days.
-20:06:12.251 [main] INFO  dhl.leagueModel.AllPlayers  - John Samson is injured for 67 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Patel is injured for 77 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Page is injured for 106 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Jones is injured for 122 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Hawkins is injured for 53 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Chang is injured for 116 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Fei is injured for 123 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchuk is injured for 77 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hendrix is injured for 60 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Khatri is injured for 60 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patel is injured for 19 days.
-20:06:12.252 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Fei is injured for 11 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Thomson is injured for 23 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Williamson is injured for 44 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Fei is injured for 52 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Hendrix is injured for 33 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Cherry is injured for 28 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu is injured for 7 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Khatri is injured for 43 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Samson is injured for 112 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchuk is injured for 55 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Jones is injured for 55 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Samson is injured for 117 days.
-20:06:12.253 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Plant is injured for 90 days.
-20:06:12.254 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Bonham is injured for 61 days.
-20:06:12.254 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Plant is injured for 25 days.
-20:06:12.254 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Hawkey is injured for 122 days.
-20:06:12.254 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Liu is injured for 109 days.
-20:06:12.254 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Patel is injured for 94 days.
-20:06:12.254 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Nelson is injured for 79 days.
-20:06:12.254 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Cherry is injured for 80 days.
-20:06:12.254 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Chang is injured for 6 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Thomson is injured for 61 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Morrison is injured for 31 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Samson is injured for 78 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Bonham is injured for 45 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Singh is injured for 52 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Rogers is injured for 117 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Greenbaum is injured for 68 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Patel is injured for 96 days.
-20:06:12.255 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Chang is injured for 105 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Singh is injured for 14 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Rogers is injured for 47 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Bishop is injured for 60 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Morrison is injured for 19 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Patel is injured for 80 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Hendrix is injured for 7 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Jones is injured for 121 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Smith is injured for 3 days.
-20:06:12.256 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Wu is injured for 112 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Burbchuk is injured for 36 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Greenbaum is injured for 113 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Chang is injured for 94 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - John Halen is injured for 111 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Cherry is injured for 52 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Rogers is injured for 64 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Burbchuk is injured for 44 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Wu is injured for 116 days.
-20:06:12.257 [main] INFO  dhl.leagueModel.AllPlayers  - Don Patel is injured for 32 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Hawkey is injured for 59 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Thomson is injured for 57 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Morrison is injured for 106 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Halen is injured for 50 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Wu is injured for 100 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Bishop is injured for 84 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Williamson is injured for 97 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Nelson is injured for 7 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Chang is injured for 76 days.
-20:06:12.258 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Hendrix is injured for 35 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patel is injured for 69 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Plant is injured for 7 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Williamson is injured for 7 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Fei is injured for 65 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Thomson is injured for 113 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Plant is injured for 5 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - Don Marley is injured for 106 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Plant is injured for 18 days.
-20:06:12.259 [main] INFO  dhl.leagueModel.AllPlayers  - John Morrison is injured for 104 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Plant is injured for 93 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Williamson is injured for 33 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Samson is injured for 61 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Samson is injured for 66 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith is injured for 116 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Page is injured for 94 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Chang is injured for 101 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Hawkins is injured for 15 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Thomson is injured for 52 days.
-20:06:12.260 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Fei is injured for 89 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Hendrix is injured for 124 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Hawkey is injured for 89 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Greenbaum is injured for 67 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Smith is injured for 59 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Rogers is injured for 64 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Plant is injured for 43 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Hawkins is injured for 26 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Bishop is injured for 82 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Khatri is injured for 21 days.
-20:06:12.261 [main] INFO  dhl.leagueModel.AllPlayers  - John Thomson is injured for 25 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Jones is injured for 70 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Halen is injured for 79 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Bishop is injured for 32 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Page is injured for 82 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Bonham is injured for 17 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Rogers is injured for 88 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Patel is injured for 38 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Plant is injured for 78 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones is injured for 56 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Nelson is injured for 107 days.
-20:06:12.262 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Plant is injured for 99 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Chang is injured for 6 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Singh is injured for 21 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Singh is injured for 100 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Marley is injured for 42 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Smith is injured for 67 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Bishop is injured for 85 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Singh is injured for 98 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Plant is injured for 31 days.
-20:06:12.263 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Patelis already injured. He still needs 77to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Pageis already injured. He still needs 106to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Jonesis already injured. He still needs 122to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Patel is injured for 110 days.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Hawkinsis already injured. He still needs 53to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Changis already injured. He still needs 116to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Feiis already injured. He still needs 123to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 77to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hendrixis already injured. He still needs 60to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Plant is injured for 118 days.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Khatriis already injured. He still needs 60to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patelis already injured. He still needs 19to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Feiis already injured. He still needs 11to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Thomsonis already injured. He still needs 23to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Williamsonis already injured. He still needs 44to recover.
-20:06:12.264 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Halen is injured for 123 days.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Greenbaum is injured for 28 days.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Feiis already injured. He still needs 52to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Hendrixis already injured. He still needs 33to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Cherryis already injured. He still needs 28to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liuis already injured. He still needs 7to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Khatriis already injured. He still needs 43to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Samsonis already injured. He still needs 112to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 55to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Greenbaumis already injured. He still needs 48to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Greenbaumis already injured. He still needs 30to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Hawkins is injured for 26 days.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Marleyis already injured. He still needs 40to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - John Smith is injured for 22 days.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Liuis already injured. He still needs 44to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Patelis already injured. He still needs 59to recover.
-20:06:12.265 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Smithis already injured. He still needs 57to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Marley is injured for 115 days.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hawkinsis already injured. He still needs 99to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Thomsonis already injured. He still needs 45to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Hawkeyis already injured. He still needs 71to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Williamsonis already injured. He still needs 114to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Plantis already injured. He still needs 91to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Singh is injured for 119 days.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Wuis already injured. He still needs 34to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Williamson is injured for 27 days.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu is injured for 98 days.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Smithis already injured. He still needs 80to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Burbchukis already injured. He still needs 29to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Williamsonis already injured. He still needs 88to recover.
-20:06:12.266 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Marley is injured for 29 days.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Rogersis already injured. He still needs 3to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Liuis already injured. He still needs 63to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Nelsonis already injured. He still needs 26to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh is injured for 82 days.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Khatriis already injured. He still needs 24to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Burbchuk is injured for 57 days.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Hawkinsis already injured. He still needs 7to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Bonhamis already injured. He still needs 120to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Liu is injured for 115 days.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Don Patelis already injured. He still needs 14to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Halenis already injured. He still needs 69to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Plantis already injured. He still needs 114to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Pageis already injured. He still needs 123to recover.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Plant is injured for 42 days.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Greenbaum is injured for 51 days.
-20:06:12.267 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Williamsonis already injured. He still needs 120to recover.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Marleyis already injured. He still needs 90to recover.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Thomson is injured for 108 days.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - John Samsonis already injured. He still needs 17to recover.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Bishop is injured for 50 days.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Bonham is injured for 17 days.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Hawkey is injured for 81 days.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Williamson is injured for 35 days.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Burbchukis already injured. He still needs 93to recover.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Plantis already injured. He still needs 103to recover.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Wu is injured for 36 days.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Jones is injured for 71 days.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Bonhamis already injured. He still needs 6to recover.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Smithis already injured. He still needs 77to recover.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Rogersis already injured. He still needs 122to recover.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Smith is injured for 122 days.
-20:06:12.268 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Hendrix is injured for 6 days.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Don Hendrixis already injured. He still needs 119to recover.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Wuis already injured. He still needs 62to recover.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Burbchuk is injured for 93 days.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Smithis already injured. He still needs 79to recover.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Marley is injured for 96 days.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Singhis already injured. He still needs 87to recover.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Halen is injured for 122 days.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Liuis already injured. He still needs 81to recover.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Bishopis already injured. He still needs 94to recover.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Don Hendrix is injured for 34 days.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Samsonis already injured. He still needs 113to recover.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - John Wu is injured for 62 days.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Marley is injured for 85 days.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Nelson is injured for 123 days.
-20:06:12.269 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Nelson is injured for 64 days.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Morrisonis already injured. He still needs 4to recover.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Wuis already injured. He still needs 57to recover.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Bonhamis already injured. He still needs 51to recover.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Greenbaum is injured for 35 days.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Nelson is injured for 14 days.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Hawkinsis already injured. He still needs 67to recover.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Burbchukis already injured. He still needs 9to recover.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Don Page is injured for 11 days.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smithis already injured. He still needs 14to recover.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Smith is injured for 92 days.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Bonhamis already injured. He still needs 1to recover.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Burbchuk is injured for 77 days.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Wu is injured for 116 days.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Nelsonis already injured. He still needs 100to recover.
-20:06:12.270 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Rogersis already injured. He still needs 76to recover.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Singhis already injured. He still needs 55to recover.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Liuis already injured. He still needs 29to recover.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Hawkeyis already injured. He still needs 102to recover.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Nelsonis already injured. He still needs 106to recover.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Jonesis already injured. He still needs 94to recover.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Khatriis already injured. He still needs 107to recover.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Jones is injured for 7 days.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - John Greenbaum is injured for 40 days.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - John Samsonis already injured. He still needs 67to recover.
-20:06:12.271 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Patelis already injured. He still needs 77to recover.
-20:06:12.272 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Pageis already injured. He still needs 106to recover.
-20:06:12.272 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Jonesis already injured. He still needs 122to recover.
-20:06:12.272 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Patelis already injured. He still needs 110to recover.
-20:06:12.272 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Hawkins is injured for 87 days.
-20:06:12.272 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Hawkinsis already injured. He still needs 53to recover.
-20:06:12.272 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Changis already injured. He still needs 116to recover.
-20:06:12.272 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Feiis already injured. He still needs 123to recover.
-20:06:12.272 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 77to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hendrixis already injured. He still needs 60to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Plantis already injured. He still needs 118to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Khatriis already injured. He still needs 60to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patelis already injured. He still needs 19to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Feiis already injured. He still needs 11to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Thomsonis already injured. He still needs 23to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Williamsonis already injured. He still needs 44to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Halenis already injured. He still needs 123to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Greenbaumis already injured. He still needs 28to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Feiis already injured. He still needs 52to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Hendrixis already injured. He still needs 33to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Cherryis already injured. He still needs 28to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patel is injured for 66 days.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liuis already injured. He still needs 7to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Rogers is injured for 15 days.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Khatriis already injured. He still needs 43to recover.
-20:06:12.273 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Samsonis already injured. He still needs 112to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 55to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Plant is injured for 21 days.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Jonesis already injured. He still needs 55to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Samsonis already injured. He still needs 117to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Wu is injured for 112 days.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Plantis already injured. He still needs 90to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Bonhamis already injured. He still needs 61to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Plantis already injured. He still needs 25to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Hawkeyis already injured. He still needs 122to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Nelson is injured for 27 days.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Thomson is injured for 44 days.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Bishop is injured for 90 days.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Liuis already injured. He still needs 109to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Patelis already injured. He still needs 94to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Nelsonis already injured. He still needs 79to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Cherryis already injured. He still needs 80to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Changis already injured. He still needs 6to recover.
-20:06:12.274 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Thomsonis already injured. He still needs 61to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Morrisonis already injured. He still needs 31to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Smith is injured for 27 days.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Samsonis already injured. He still needs 78to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Bonhamis already injured. He still needs 45to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Singhis already injured. He still needs 52to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Rogersis already injured. He still needs 117to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Greenbaumis already injured. He still needs 68to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Marley is injured for 30 days.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Patelis already injured. He still needs 96to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Changis already injured. He still needs 105to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Rogers is injured for 96 days.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Singhis already injured. He still needs 14to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Rogersis already injured. He still needs 47to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Hawkey is injured for 104 days.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Bishopis already injured. He still needs 60to recover.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Plant is injured for 112 days.
-20:06:12.275 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Morrisonis already injured. He still needs 19to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Patelis already injured. He still needs 80to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Greenbaum is injured for 90 days.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Hendrixis already injured. He still needs 7to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Jonesis already injured. He still needs 121to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Smithis already injured. He still needs 3to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Wuis already injured. He still needs 112to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Burbchukis already injured. He still needs 36to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Halen is injured for 71 days.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Page is injured for 54 days.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Greenbaumis already injured. He still needs 113to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Bishop is injured for 34 days.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Nelson is injured for 40 days.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Changis already injured. He still needs 94to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - John Halenis already injured. He still needs 111to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Plant is injured for 49 days.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Cherryis already injured. He still needs 52to recover.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Smith is injured for 75 days.
-20:06:12.276 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Rogersis already injured. He still needs 64to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - John Patel is injured for 43 days.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Bishop is injured for 56 days.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Burbchukis already injured. He still needs 44to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Wuis already injured. He still needs 116to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Don Patelis already injured. He still needs 32to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Bonham is injured for 85 days.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Hawkeyis already injured. He still needs 59to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Thomsonis already injured. He still needs 57to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Morrisonis already injured. He still needs 106to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson is injured for 48 days.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Halenis already injured. He still needs 50to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Hawkins is injured for 100 days.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchuk is injured for 89 days.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Wuis already injured. He still needs 100to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Bishopis already injured. He still needs 84to recover.
-20:06:12.277 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Williamsonis already injured. He still needs 97to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Nelsonis already injured. He still needs 7to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Changis already injured. He still needs 76to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Chang is injured for 63 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Cherry is injured for 60 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Bonham is injured for 99 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley is injured for 11 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Williamson is injured for 61 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Cherry is injured for 91 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Hendrixis already injured. He still needs 35to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patelis already injured. He still needs 69to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Plantis already injured. He still needs 7to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Patel is injured for 60 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Nelson is injured for 9 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Marley is injured for 24 days.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Williamsonis already injured. He still needs 7to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Feiis already injured. He still needs 65to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Thomsonis already injured. He still needs 113to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Plantis already injured. He still needs 5to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Don Marleyis already injured. He still needs 106to recover.
-20:06:12.278 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Plantis already injured. He still needs 18to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - John Morrisonis already injured. He still needs 104to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Plantis already injured. He still needs 93to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Hendrix is injured for 64 days.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Hendrix is injured for 96 days.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Williamsonis already injured. He still needs 33to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Chang is injured for 74 days.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Samsonis already injured. He still needs 61to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Samsonis already injured. He still needs 66to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smithis already injured. He still needs 116to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - John Bonham is injured for 92 days.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Rogers is injured for 60 days.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Singh is injured for 94 days.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Pageis already injured. He still needs 94to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Changis already injured. He still needs 101to recover.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Thomson is injured for 104 days.
-20:06:12.279 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Hawkinsis already injured. He still needs 15to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Thomsonis already injured. He still needs 52to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Feiis already injured. He still needs 89to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Hendrixis already injured. He still needs 124to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Hawkeyis already injured. He still needs 89to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Greenbaumis already injured. He still needs 67to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Plant is injured for 102 days.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Chang is injured for 71 days.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Smithis already injured. He still needs 59to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Rogersis already injured. He still needs 64to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hawkey is injured for 23 days.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Plantis already injured. He still needs 43to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Hawkinsis already injured. He still needs 26to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Bishopis already injured. He still needs 82to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Khatriis already injured. He still needs 21to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - John Thomsonis already injured. He still needs 25to recover.
-20:06:12.280 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Halen is injured for 37 days.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Jonesis already injured. He still needs 70to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Halenis already injured. He still needs 79to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Bishopis already injured. He still needs 32to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Pageis already injured. He still needs 82to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Wu is injured for 75 days.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Singh is injured for 8 days.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Bonhamis already injured. He still needs 17to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Rogersis already injured. He still needs 88to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Patelis already injured. He still needs 38to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Plantis already injured. He still needs 78to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Rogers is injured for 10 days.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jonesis already injured. He still needs 56to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Nelsonis already injured. He still needs 107to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Rogers is injured for 108 days.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Morrison is injured for 59 days.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Plantis already injured. He still needs 99to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Changis already injured. He still needs 6to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Williamson is injured for 101 days.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Singhis already injured. He still needs 21to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Singhis already injured. He still needs 100to recover.
-20:06:12.281 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Marleyis already injured. He still needs 42to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Smithis already injured. He still needs 67to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Bishopis already injured. He still needs 85to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Singhis already injured. He still needs 98to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Plantis already injured. He still needs 31to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Patelis already injured. He still needs 77to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Pageis already injured. He still needs 106to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Jonesis already injured. He still needs 122to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Patelis already injured. He still needs 110to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Bishop is injured for 77 days.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Hawkinsis already injured. He still needs 87to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Hawkinsis already injured. He still needs 53to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Changis already injured. He still needs 116to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Feiis already injured. He still needs 123to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 77to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Singh is injured for 100 days.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hendrixis already injured. He still needs 60to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Plantis already injured. He still needs 118to recover.
-20:06:12.282 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Khatriis already injured. He still needs 60to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patelis already injured. He still needs 19to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Feiis already injured. He still needs 11to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Thomsonis already injured. He still needs 23to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Williamsonis already injured. He still needs 44to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Halenis already injured. He still needs 123to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Greenbaumis already injured. He still needs 28to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Feiis already injured. He still needs 52to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Hendrixis already injured. He still needs 33to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Cherryis already injured. He still needs 28to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Page is injured for 70 days.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patelis already injured. He still needs 66to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liuis already injured. He still needs 7to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Rogersis already injured. He still needs 15to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Khatriis already injured. He still needs 43to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Samsonis already injured. He still needs 112to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 55to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Greenbaumis already injured. He still needs 48to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Greenbaumis already injured. He still needs 30to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Hawkinsis already injured. He still needs 26to recover.
-20:06:12.283 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Marleyis already injured. He still needs 40to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - John Smithis already injured. He still needs 22to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Liuis already injured. He still needs 44to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Patelis already injured. He still needs 59to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Smithis already injured. He still needs 57to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Marleyis already injured. He still needs 115to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hawkinsis already injured. He still needs 99to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Thomsonis already injured. He still needs 45to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Hawkeyis already injured. He still needs 71to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Williamsonis already injured. He still needs 114to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Plantis already injured. He still needs 91to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Singhis already injured. He still needs 119to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Wuis already injured. He still needs 34to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Thomson is injured for 113 days.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Williamsonis already injured. He still needs 27to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Hendrix is injured for 83 days.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liuis already injured. He still needs 98to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Smithis already injured. He still needs 80to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Burbchukis already injured. He still needs 29to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Williamsonis already injured. He still needs 88to recover.
-20:06:12.284 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Marleyis already injured. He still needs 29to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Rogersis already injured. He still needs 3to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Liuis already injured. He still needs 63to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Nelsonis already injured. He still needs 26to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singhis already injured. He still needs 82to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Khatriis already injured. He still needs 24to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Burbchukis already injured. He still needs 57to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Hawkinsis already injured. He still needs 7to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Bonhamis already injured. He still needs 120to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Liuis already injured. He still needs 115to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Rogers is injured for 37 days.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Don Patelis already injured. He still needs 14to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Halenis already injured. He still needs 69to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Plantis already injured. He still needs 114to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Pageis already injured. He still needs 123to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Plantis already injured. He still needs 42to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Greenbaumis already injured. He still needs 51to recover.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Singh is injured for 63 days.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Chang is injured for 102 days.
-20:06:12.285 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Williamsonis already injured. He still needs 120to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Burbchuk is injured for 57 days.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Marleyis already injured. He still needs 90to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Thomsonis already injured. He still needs 108to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - John Samsonis already injured. He still needs 17to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Bishopis already injured. He still needs 50to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Bonhamis already injured. He still needs 17to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Hawkeyis already injured. He still needs 81to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Fei is injured for 43 days.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Williamsonis already injured. He still needs 35to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Burbchukis already injured. He still needs 93to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Liu is injured for 81 days.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Plantis already injured. He still needs 103to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Wuis already injured. He still needs 36to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Jonesis already injured. He still needs 71to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Bonhamis already injured. He still needs 6to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Smithis already injured. He still needs 77to recover.
-20:06:12.286 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Rogersis already injured. He still needs 122to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Smithis already injured. He still needs 122to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Hendrixis already injured. He still needs 6to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Don Hendrixis already injured. He still needs 119to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Wuis already injured. He still needs 62to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Halen is injured for 58 days.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Burbchukis already injured. He still needs 93to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Smithis already injured. He still needs 79to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Marleyis already injured. He still needs 96to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Singhis already injured. He still needs 87to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Halenis already injured. He still needs 122to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Liuis already injured. He still needs 81to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Bishopis already injured. He still needs 94to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Don Hendrixis already injured. He still needs 34to recover.
-20:06:12.287 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Samsonis already injured. He still needs 113to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Don Plant is injured for 72 days.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - John Wuis already injured. He still needs 62to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Marleyis already injured. He still needs 85to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Liu is injured for 81 days.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Nelsonis already injured. He still needs 123to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Nelsonis already injured. He still needs 64to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Morrisonis already injured. He still needs 4to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Wuis already injured. He still needs 57to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Bonhamis already injured. He still needs 51to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Greenbaumis already injured. He still needs 35to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Nelsonis already injured. He still needs 14to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Hawkinsis already injured. He still needs 67to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Burbchukis already injured. He still needs 9to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Don Pageis already injured. He still needs 11to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smithis already injured. He still needs 14to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Smithis already injured. He still needs 92to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Bonhamis already injured. He still needs 1to recover.
-20:06:12.288 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Burbchukis already injured. He still needs 77to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Wuis already injured. He still needs 116to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Khatri is injured for 91 days.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Nelsonis already injured. He still needs 100to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Rogersis already injured. He still needs 76to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Singhis already injured. He still needs 55to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Liuis already injured. He still needs 29to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Hawkeyis already injured. He still needs 102to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Nelsonis already injured. He still needs 106to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Jonesis already injured. He still needs 94to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Khatriis already injured. He still needs 107to recover.
-20:06:12.289 [main] INFO  dhl.leagueModel.AllPlayers  - John Burbchuk is injured for 27 days.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Jonesis already injured. He still needs 7to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - John Greenbaumis already injured. He still needs 40to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - John Samsonis already injured. He still needs 67to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Patelis already injured. He still needs 77to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Pageis already injured. He still needs 106to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Jonesis already injured. He still needs 122to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Patelis already injured. He still needs 110to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Bishopis already injured. He still needs 77to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Hawkinsis already injured. He still needs 87to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Hawkinsis already injured. He still needs 53to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Changis already injured. He still needs 116to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Feiis already injured. He still needs 123to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 77to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Singhis already injured. He still needs 100to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Hendrixis already injured. He still needs 60to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Plantis already injured. He still needs 118to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Khatriis already injured. He still needs 60to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patelis already injured. He still needs 19to recover.
-20:06:12.290 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Feiis already injured. He still needs 11to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Thomsonis already injured. He still needs 23to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Williamsonis already injured. He still needs 44to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Halenis already injured. He still needs 123to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Greenbaumis already injured. He still needs 28to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Feiis already injured. He still needs 52to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Hendrixis already injured. He still needs 33to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Cherryis already injured. He still needs 28to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Pageis already injured. He still needs 70to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Patelis already injured. He still needs 66to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liuis already injured. He still needs 7to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Rogersis already injured. He still needs 15to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Khatriis already injured. He still needs 43to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Samsonis already injured. He still needs 112to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 55to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Plantis already injured. He still needs 21to recover.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Samson is injured for 42 days.
-20:06:12.291 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Jonesis already injured. He still needs 55to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Samsonis already injured. He still needs 117to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Wuis already injured. He still needs 112to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Plantis already injured. He still needs 90to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Bonhamis already injured. He still needs 61to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Plantis already injured. He still needs 25to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Hawkeyis already injured. He still needs 122to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Nelsonis already injured. He still needs 27to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Thomsonis already injured. He still needs 44to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Bonham is injured for 108 days.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Mohammed Bishopis already injured. He still needs 90to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Liuis already injured. He still needs 109to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Walter Patelis already injured. He still needs 94to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Nelsonis already injured. He still needs 79to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Cherryis already injured. He still needs 80to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Changis already injured. He still needs 6to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Thomsonis already injured. He still needs 61to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Morrisonis already injured. He still needs 31to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Smithis already injured. He still needs 27to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Samsonis already injured. He still needs 78to recover.
-20:06:12.292 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Bonhamis already injured. He still needs 45to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Singhis already injured. He still needs 52to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Rogersis already injured. He still needs 117to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Greenbaumis already injured. He still needs 68to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Marleyis already injured. He still needs 30to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Rogers is injured for 12 days.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Patelis already injured. He still needs 96to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Changis already injured. He still needs 105to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Thomson is injured for 32 days.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Rogersis already injured. He still needs 96to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Singhis already injured. He still needs 14to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Rogersis already injured. He still needs 47to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Hawkeyis already injured. He still needs 104to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Bishopis already injured. He still needs 60to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Plantis already injured. He still needs 112to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Morrisonis already injured. He still needs 19to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Patelis already injured. He still needs 80to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Greenbaumis already injured. He still needs 90to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Hendrixis already injured. He still needs 7to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Jonesis already injured. He still needs 121to recover.
-20:06:12.293 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Smithis already injured. He still needs 3to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Wuis already injured. He still needs 112to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Burbchukis already injured. He still needs 36to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Halenis already injured. He still needs 71to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Pageis already injured. He still needs 54to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Greenbaumis already injured. He still needs 113to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Bishopis already injured. He still needs 34to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Bonnie Nelsonis already injured. He still needs 40to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Changis already injured. He still needs 94to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - John Halenis already injured. He still needs 111to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Plantis already injured. He still needs 49to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Cherryis already injured. He still needs 52to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Smithis already injured. He still needs 75to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Sammy Rogersis already injured. He still needs 64to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - John Patelis already injured. He still needs 43to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Khatri is injured for 30 days.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Shakuntala Bishopis already injured. He still needs 56to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Burbchukis already injured. He still needs 44to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Wen Wuis already injured. He still needs 116to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Patel is injured for 118 days.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Don Patelis already injured. He still needs 32to recover.
-20:06:12.294 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Bonhamis already injured. He still needs 85to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Marley is injured for 46 days.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Rashita Hawkeyis already injured. He still needs 59to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Thomsonis already injured. He still needs 57to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Mozhgan Morrisonis already injured. He still needs 106to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelsonis already injured. He still needs 48to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Rob Halenis already injured. He still needs 50to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Hawkinsis already injured. He still needs 100to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Mike Burbchukis already injured. He still needs 89to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Wuis already injured. He still needs 100to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Bishopis already injured. He still needs 84to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Williamsonis already injured. He still needs 97to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Nelsonis already injured. He still needs 7to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Nelson is injured for 75 days.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Changis already injured. He still needs 76to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Don Page is injured for 45 days.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Chris Changis already injured. He still needs 63to recover.
-20:06:12.295 [main] INFO  dhl.leagueModel.AllPlayers  - Mary Cherryis already injured. He still needs 60to recover.
+20:22:18.671 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+20:22:18.679 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+20:22:18.687 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+20:22:18.695 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+20:22:19.034 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+20:22:19.034 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+20:22:19.034 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+20:22:19.034 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+20:22:19.034 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+20:22:19.034 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+20:22:19.034 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is injured for 0 days.
+20:22:19.034 [main] INFO  dhl.leagueModel.AllPlayers  - Player1is already injured. He still needs 0to recover.
+20:22:19.034 [main] INFO  dhl.leagueModel.AllPlayers  - Player1is already injured. He still needs 0to recover.
+20:22:19.034 [main] INFO  dhl.leagueModel.AllPlayers  - Player1is already injured. He still needs 0to recover.
+20:22:19.034 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+20:22:19.141 [main] INFO  dhl.stateMachineNew.PlayerDraft  - Random players have been generated for player draft.
+20:22:19.149 [main] INFO  dhl.leagueModel.Division  - Add Team2 to division.
+20:22:19.157 [main] INFO  dhl.leagueModel.Division  - Add Random1 to division.
+20:22:19.243 [main] INFO  dhl.leagueModel.AllPlayers  - Player3 is aged by 50 days.
+20:22:19.243 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is aged by 25 days.
+20:22:19.243 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is injured for 74 days.
+20:22:19.243 [main] INFO  dhl.leagueModel.AllPlayers  - Player4's stats has been decreased by one due to stats decay on birthday.
+20:22:19.251 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is retired.
+20:22:19.259 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
+20:22:19.259 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
+20:22:19.259 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
