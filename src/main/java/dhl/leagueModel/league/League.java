@@ -177,10 +177,10 @@ public class League implements ILeague {
 //        }
 //    }
 
-@Override
-public String getDate() {
-    return startDateOfSeason;
-}
+    @Override
+    public String getDate() {
+        return startDateOfSeason;
+    }
 
     @Override
     public void setDate(String startDateOfSeason) {

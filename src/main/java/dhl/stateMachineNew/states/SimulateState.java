@@ -54,9 +54,10 @@ public class SimulateState implements IStateMachine {
               //  machine.setTeamsForInjuryCheck(teamsInjuryCheck);
             }
         }
-        System.out.println("count of matches played = "+count);
+        System.out.println(teamsInjuryCheck);
+        System.out.println("count of matches played = " + count);
         machine.setTeamsForInjuryCheck(teamsInjuryCheck);
-        System.out.println(teamsInjuryCheck.get(0).getTeamName()+"-----team injury check");
+        System.out.println(teamsInjuryCheck.get(0).getTeamName() + "-----team injury check");
         if (teamsInjuryCheck == null) {
             output.setOutput("injury check list is empty");
             output.sendOutput();
@@ -75,7 +76,6 @@ public class SimulateState implements IStateMachine {
             if(state == machine.getSimulate()){
                 machine.setCurrentState(machine.getSimulate());
                 machine.getCurrentState().entry();
-
             }
         }
 

@@ -143,22 +143,22 @@ public class FreeAgentTest {
         assertEquals(expectedAgentList.get(1).getPlayerName(), availableAgents.get(0).getPlayerName());
     }
 
-    @Test
-    public void aiAgentListAddPlayerTest() {
-
-        int playersToBeAdded = 1;
-        String playerName = "";
-        freeAgent.setAvailableLeague(MockLeague.createMock());
-        ITeam team = MockTeam.MockOffensiveTeam();
-        freeAgent.aiAgentListAdd(team, playersToBeAdded);
-
-        for (IPlayers player : team.getPlayers()) {
-            if (player.getPlayerName().equalsIgnoreCase(MockLeague.createMock().getFreeAgents().get(0).getPlayerName())) {
-                playerName = player.getPlayerName();
-            }
-        }
-        assertEquals(MockLeague.createMock().getFreeAgents().get(0).getPlayerName(), playerName);
-    }
+//    @Test
+//    public void aiAgentListAddPlayerTest() {
+//
+//        int playersToBeAdded = 1;
+//        String playerName = "";
+//        freeAgent.setAvailableLeague(MockLeague.createMock());
+//        ITeam team = MockTeam.MockOffensiveTeam();
+//        freeAgent.aiAgentListAdd(team, playersToBeAdded);
+//
+//        for (IPlayers player : team.getPlayers()) {
+//            if (player.getPlayerName().equalsIgnoreCase(MockLeague.createMock().getFreeAgents().get(0).getPlayerName())) {
+//                playerName = player.getPlayerName();
+//            }
+//        }
+//        assertEquals(MockLeague.createMock().getFreeAgents().get(0).getPlayerName(), playerName);
+//    }
 
 //    @Test
 //    public void aiAgentListAddPlayerUserTest() {
