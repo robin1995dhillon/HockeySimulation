@@ -63,7 +63,6 @@ public class League implements ILeague {
     @Override
     public void setLeagueName(String leagueName) {
         this.leagueName = leagueName;
-
     }
 
     @Override
@@ -122,7 +121,6 @@ public class League implements ILeague {
 
     public void setTeamStandingList(List<ITeamStanding> teamStandingList) {
         this.teamStandingList = teamStandingList;
-
     }
 
     @Override
@@ -144,45 +142,6 @@ public class League implements ILeague {
         this.playerDraftDate = playerDraftDate;
     }
 
-//    @Override
-//    public List<IFreeAgents> getFreeAgents2() {
-//        return freeAgents2;
-//    }
-//
-//    @Override
-//    public void setFreeAgents2(List<IFreeAgents> freeAgents2) {
-//        this.freeAgents2 = freeAgents2;
-//    }
-
-//    @Override
-//    public void storeLeague() {
-//        String leagueName = this.leagueName;
-//        ILeaguePersistence leaguePersistence = new LeaguePersistence();
-//        JSONObject resultObject = leaguePersistence.saveLeagueToDB(leagueName);
-//        List<IConference> conferenceArray = this.getConferences();
-//        List<IFreeAgents> freeAgentsArray = this.getFreeAgents();
-//        IGamePlayConfig gamePlayConfig = this.getGameplayConfig();
-//        List<IHeadCoach> headCoachArray = this.getCoaches();
-//        IGeneralManager = this.getGeneralManagers();
-//
-//        List<Integer> ID = new ArrayList<>();
-//        int leagueID = (int) resultObject.get(Configurables.ID.getAction());
-//        ID.add(0, leagueID);
-//        for (IConference c : conferenceArray) {
-//            c.saveConference(ID);
-//        }
-//        for (IFreeAgents freeAgents : freeAgentsArray) {
-//            freeAgents.saveFreeAgent(leagueID);
-//        }
-//        gamePlayConfig.saveGamePlayConfigToDB(leagueID);
-//        for (IHeadCoach headCoach : headCoachArray) {
-//            headCoach.saveFreeCoach(leagueID);
-//        }
-//        for (String name : managerName) {
-//            this.saveManager(name, leagueID);
-//        }
-//    }
-
     @Override
     public String getDate() {
         return startDateOfSeason;
@@ -201,7 +160,6 @@ public class League implements ILeague {
     @Override
     public void setLastDateOfSeason(String lastDateOfSeason) {
         this.lastDateOfSeason = lastDateOfSeason;
-
     }
 
     @Override
@@ -212,7 +170,6 @@ public class League implements ILeague {
     @Override
     public void setSeason(int season) {
         this.numberSeason = season;
-
     }
 
     @Override
@@ -223,7 +180,6 @@ public class League implements ILeague {
     @Override
     public void setTotalSeasons(int numberOfSeasons) {
         this.totalSeasons = numberOfSeasons;
-
     }
 
 }

@@ -2,6 +2,8 @@ package dhl.stateMachineNew;
 
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.LeagueModelAbstractFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PlayerDraft implements IPlayerDraft {
-
+    private static final Logger logger = LogManager.getLogger(PlayerDraft.class);
     List<String> firstNameList = Arrays.asList("Wayne", "Jonathan", "Connor", "Gordie", "Mario", "John", "Steven");
     List<String> lastNameList = Arrays.asList("Gretzky", "Toews", "McDavid", "Lemieux", "Stamkos", "Benn", "Richard");
     private String firstName;
@@ -238,11 +240,11 @@ public class PlayerDraft implements IPlayerDraft {
         int numberOfForwardPlayers = (int) Math.ceil(numberOfPlayers * 0.5);
         int numberOfDefensePlayers = (int) Math.ceil(numberOfPlayers * 0.4);
         int numberOfGoaliePlayers = numberOfPlayers - numberOfForwardPlayers - numberOfDefensePlayers;
-
         draftingPlayerList.addAll(generateForwardPlayers(numberOfForwardPlayers));
         draftingPlayerList.addAll(generateDefensePlayers(numberOfDefensePlayers));
         draftingPlayerList.addAll(generateGoaliePlayers(numberOfGoaliePlayers));
-
+        logger.info("Random players have been generated for player draft.");
+        this.setDraftingPlayerList(draftingPlayerList);
         return draftingPlayerList;
     }
 
@@ -316,18 +318,14 @@ public class PlayerDraft implements IPlayerDraft {
 
     @Override
     public List<ITeamStanding> selectionOrder(List<ITeamStanding> teamStandingList) {
-        teamStandingList = getTeamStandingList();
+        //teamStandingList = getTeamStandingList();
         List<IPlayers> playerDraft = this.draftingPlayerList;
-
-        for(int i=0;i<draftingRounds;i++) {
+        for(int i = 0; i < draftingRounds; i++) {
             for(int j=0;j<teamStandingList.size();j++) {
-                teamStandingList.get(j).getTeam().addPlayerToTeam(playerDraft.get((i*7)+j));
+                teamStandingList.get(j).getTeam().addPlayerToTeam(playerDraft.get((i * 7) + j));
             }
         }
-
+        logger.info("Player drafting is complete.");
         return teamStandingList;
-
     }
-
-
 }

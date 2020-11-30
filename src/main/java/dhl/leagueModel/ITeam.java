@@ -60,11 +60,8 @@ public interface ITeam {
     double getPenalties();
 
     ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList, IGeneralManager generalManager);
-//    ILeague createTeam(ILeague league, String[] locationAttributes, IHeadCoach headCoach, List<IPlayers> playerList);
 
     void createRoster() throws Exception;
-
-    void saveTeams(List<Integer> id);
 
     void swapForPlayerInInactiveRoster(IPlayers players) throws Exception;
 

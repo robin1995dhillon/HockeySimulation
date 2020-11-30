@@ -4,6 +4,8 @@ import dhl.Configurables;
 import dhl.leagueModel.gamePlayConfig.IAging;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IInjuries;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.stream.IntStream;
 
 public class AllPlayers implements IAllPlayers {
 
+    private static final Logger logger = LogManager.getLogger(AllPlayers.class);
     private String playerName;
     private String position;
     private int birthDay;
@@ -214,15 +217,12 @@ public class AllPlayers implements IAllPlayers {
         } else {
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
-
-        if(this.isInjured()) {
+        logger.info(this.playerName + " is aged by " + daysToAge + " days.");
+        if (this.isInjured()) {
             this.setInjuredDays(this.getInjuredDays() - daysToAge);
             this.playerStillInjured();
-            this.checkIfRetired();
-        } else {
-            this.checkIfRetired();
         }
-
+        this.checkIfRetired();
     }
 
     @Override
@@ -231,10 +231,8 @@ public class AllPlayers implements IAllPlayers {
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = this.getAge();
-        System.out.println("Player Age" + playerAge);
         Integer[] retirementAge = {average - 5, average - 4, average - 3, average - 2, average - 1, average, average + 1, average + 4, average + 5, max};
         Integer[] retirementArray = {5, 10, 15, 20, 25, 30, 50, 70, 80, 100};
-
         int minDistance = Math.abs(retirementAge[0] - playerAge);
         int minIndex = 0;
         for (int i = 1; i < retirementAge.length; i++) {
@@ -249,12 +247,11 @@ public class AllPlayers implements IAllPlayers {
         int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
         System.out.println(randomNumber);
         if (randomNumber >= 0 && randomNumber <= retirementArray[index]) {
+            logger.info(this.playerName + " is retired.");
             this.setRetired(true);
         } else {
             this.setRetired(false);
         }
-
-        System.out.println(this.isRetired);
     }
 
     @Override
@@ -277,6 +274,7 @@ public class AllPlayers implements IAllPlayers {
                 this.setSaving(this.getSaving() - 1);
                 this.setSkating(this.getSkating() - 1);
                 this.setSaving(this.getSaving() - 1);
+                logger.info(this.playerName + "'s stats has been decreased by one due to stats decay on birthday.");
             }
         }
     }
@@ -321,15 +319,12 @@ public class AllPlayers implements IAllPlayers {
 
     @Override
     public boolean checkPosition(String position) {
-        if (this.position.equals(position)) {
-            return true;
-        }
-        return false;
+        return this.position.equals(position);
     }
 
     @Override
     public double strengthCalculator(int[] forwardValues) {
-        double playerStrength = 0;
+        double playerStrength;
         playerStrength = IntStream.of(forwardValues).sum();
         return playerStrength;
     }
@@ -342,7 +337,6 @@ public class AllPlayers implements IAllPlayers {
         int checking = this.getChecking();
         int saving = this.getSaving();
         double strength;
-
         if (position.equals(Configurables.FORWARD.getAction())) {
             int[] forwardValues = {skating, shooting, checking / 2};
             strength = strengthCalculator(forwardValues);
@@ -361,7 +355,7 @@ public class AllPlayers implements IAllPlayers {
             this.setStrength(this.getStrength() / 2);
             strength = strength / 2;
         }
-
+        logger.info(this.playerName + "'s strength is " + this.getStrength());
         return strength;
     }
 
@@ -376,13 +370,13 @@ public class AllPlayers implements IAllPlayers {
         }
         double maxStrength = Collections.max(freeAgentStrengthList);
         int maxIndex = freeAgentStrengthList.indexOf(maxStrength);
-        IFreeAgents bestFreeAgent = freeAgents.get(maxIndex);
-        return bestFreeAgent;
+        return freeAgents.get(maxIndex);
     }
 
     @Override
     public void checkForPlayerInjury(IGamePlayConfig gamePlayConfig) {
         if (isInjured){
+            logger.info(this.playerName + "is already injured. He still needs " + this.getInjuredDays() + "to recover.");
             return;
         }
         IInjuries injuries = gamePlayConfig.getInjuries();
@@ -395,6 +389,7 @@ public class AllPlayers implements IAllPlayers {
             this.setInjured(true);
             int randomInjuryDays = ThreadLocalRandom.current().nextInt(injuryDaysLow, injuryDaysHigh + 1);
             this.setInjuredDays(randomInjuryDays);
+            logger.info(this.playerName + " is injured for " + this.getInjuredDays() + " days.");
         }
     }
 }

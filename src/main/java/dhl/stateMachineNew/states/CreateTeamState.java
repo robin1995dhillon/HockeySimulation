@@ -21,12 +21,15 @@ import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.StateMachine;
 import dhl.validator.Checker;
 import dhl.validator.IChecker;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CreateTeamState implements IStateMachine {
 
+    private static final Logger logger = LogManager.getLogger(CreateTeamState.class);
     private final StateMachine stateMachine;
     private final IUserOutput output;
     private final IUserInput input;
@@ -75,6 +78,7 @@ public class CreateTeamState implements IStateMachine {
         while (CC.conferenceChecker(conferenceName, league) == false) {
             output.setOutput("Invalid input! Please enter the conference you imported:");
             output.sendErrorOutput();
+            logger.warn("Invalid input for conference name.");
             input.setInput();
             conferenceName = input.getInput();
         }
@@ -86,6 +90,7 @@ public class CreateTeamState implements IStateMachine {
             while (CC.divisionChecker(divisionName, league) == false) {
                 output.setOutput("Invalid input! Please enter the division you imported:");
                 output.sendErrorOutput();
+                logger.warn("Invalid input for division name.");
                 input.setInput();
                 divisionName = input.getInput();
             }
@@ -107,6 +112,7 @@ public class CreateTeamState implements IStateMachine {
                     while (CC.managerChecker(managerList, managerName) == false) {
                         output.setOutput("Invalid input! Please enter one manager from the list:");
                         output.sendErrorOutput();
+                        logger.warn("Invalid input for manager name.");
                         input.setInput();
                         managerName = input.getInput();
                     }
@@ -125,6 +131,7 @@ public class CreateTeamState implements IStateMachine {
                     while (CC.coachChecker(coachList, coachName) == false) {
                         output.setOutput("Invalid input! Please choose one coach from the list:");
                         output.sendErrorOutput();
+                        logger.warn("Invalid input for head coach name.");
                         input.setInput();
                         coachName = input.getInput();
                     }
@@ -147,6 +154,7 @@ public class CreateTeamState implements IStateMachine {
                         while (CC.freeAgentChecker(freeAgentList, playerName) == false) {
                             output.setOutput("Invalid input! Please choose one free agent from the list:");
                             output.sendErrorOutput();
+                            logger.warn("Invalid input for free agent name.");
                             input.setInput();
                             playerName = input.getInput();
                         }
@@ -161,6 +169,7 @@ public class CreateTeamState implements IStateMachine {
                         } else {
                             output.setOutput("Invalid input! You need to pick a goalie!");
                             output.sendErrorOutput();
+                            logger.warn("You need to choose a goalie.");
                         }
                     }
                     output.setOutput("Please choose eighteen skaters(forward and defense):");
@@ -174,6 +183,7 @@ public class CreateTeamState implements IStateMachine {
                         while (CC.freeAgentChecker(freeAgentList, playerName) == false) {
                             output.setOutput("Invalid input! Please choose one free agent from the list:");
                             output.sendErrorOutput();
+                            logger.warn("Invalid input for free agent name.");
                             input.setInput();
                             playerName = input.getInput();
                         }
@@ -188,6 +198,7 @@ public class CreateTeamState implements IStateMachine {
                         } else {
                             output.setOutput("Invalid input! You need to pick a forward or defense!");
                             output.sendErrorOutput();
+                            logger.warn("You need to pick a forward or defense.");
                         }
                     }
                     String[] locationAttributes = {conferenceName, divisionName, teamName, managerName};
