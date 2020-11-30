@@ -3,9 +3,14 @@ package dhl.stateMachineNewTest;
 import dhl.Configurables;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.ILeague;
+import dhl.leagueModel.IConference;
+import dhl.leagueModel.IDivision;
 import dhl.leagueModel.ITeam;
+import dhl.leagueModel.LeagueModelAbstractFactory;
+import dhl.mock.MockConference;
+import dhl.mock.MockDivision;
 import dhl.mock.MockStandingTeam;
+import dhl.mock.MockTeam;
 import dhl.serializeAndDeserialize.DeserializeJSONToModel;
 import dhl.serializeAndDeserialize.IDeserializeJSONToModel;
 import dhl.stateMachineNew.ISchedulerSeason;
@@ -23,6 +28,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SchedulerSeasonTest {
     IDeserializeJSONToModel deserializeJSONToModel = new DeserializeJSONToModel();
     ISchedulerSeason schedulerSeason = StateMachineAbstractFactory.instance().getSchedulerSeason();
+    private int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    private int playoffsYear = currentYear + 1;
 
     @Test
     public void playoffScheduleTest() {
@@ -152,4 +159,203 @@ public class SchedulerSeasonTest {
         userOutput.sendOutput();
         return playoffStartDate;
     }
+
+    @Test
+    public void getStartDayOfSeasonTest() {
+        String startDay = "30-09-2020";
+        schedulerSeason.setCurrentYear(String.valueOf(currentYear));
+        String dateOutput = schedulerSeason.getStartDayOfSeason();
+        assertEquals(startDay, dateOutput);
+    }
+
+    @Test
+    public void getFirstDayOfSeasonTest() {
+        String startDay = "01-10-2020";
+        schedulerSeason.setCurrentYear(String.valueOf(currentYear));
+        String dateOutput = schedulerSeason.getFirstDayOfSeason();
+        assertEquals(startDay, dateOutput);
+    }
+
+    @Test
+    public void getLastDayOfSeasonTest() throws ParseException {
+        String lastDay = "03-04-2021";
+        String dateOutput = "";
+        schedulerSeason.setPlayoffsYear(playoffsYear);
+        try {
+            dateOutput = schedulerSeason.getLastDayOfSeason();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assertEquals(lastDay, dateOutput);
+    }
+
+    @Test
+    public void getFirstDayOfStanleyPlayoffsTest() {
+        String firstDay = "14-04-2021";
+        String dateOutput = "";
+        schedulerSeason.setPlayoffsYear(playoffsYear);
+        dateOutput = schedulerSeason.getFirstDayOfStanleyPlayoffs();
+        assertEquals(firstDay, dateOutput);
+    }
+
+    @Test
+    public void getLastDayOfStanleyPlayoffsTest() {
+        String lastDay = "01-06-2021";
+        String dateOutput = "";
+        schedulerSeason.setPlayoffsYear(playoffsYear);
+        dateOutput = schedulerSeason.getLastDayOfStanleyPlayoffs();
+        assertEquals(lastDay, dateOutput);
+    }
+
+    @Test
+    public void enterIntoPlayerDraftTest() {
+        String draftDate = "15-07-2021";
+        String dateOutput = "";
+        schedulerSeason.setPlayoffsYear(playoffsYear);
+        dateOutput = schedulerSeason.enterIntoPlayerDraft();
+        assertEquals(draftDate, dateOutput);
+
+    }
+
+    @Test
+    public void getLastDayOfTradeTest() {
+        String lastDate = "22";
+        String dateOutput = "";
+        schedulerSeason.setPlayoffsYear(playoffsYear);
+        dateOutput = schedulerSeason.getLastDayOfTrade();
+        assertEquals(lastDate, dateOutput);
+    }
+
+    @Test
+    public void isLastDayOfTradeTest() throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = new Date();
+        String presentDate = formatter.format(date).toString();
+        boolean isLastDay = true;
+        try {
+            isLastDay = schedulerSeason.isLastDayOfTrade(presentDate, playoffsYear);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assertEquals(false, isLastDay);
+    }
+
+    @Test
+    public void isLastDayOfTradeTrueTest() throws ParseException {
+        String lastDate = "28-02-2021";
+        boolean isLastDay = false;
+        try {
+            isLastDay = schedulerSeason.isLastDayOfTrade(lastDate, playoffsYear);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assertEquals(true, isLastDay);
+    }
+
+    @Test
+    public void isLastDayOfSeasonTest() {
+        String lastDay = "03-04-2021";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = new Date();
+        String presentDate = formatter.format(date).toString();
+        boolean isLastDay = true;
+        isLastDay = schedulerSeason.isLastDayOfSeason(presentDate, lastDay);
+        assertEquals(false, isLastDay);
+
+    }
+
+    @Test
+    public void scheduleTest() throws ParseException {
+        String currentScheduleDate = "30-11-2020";
+        String returningSchduleDate = "02-12-2020";
+        String dateOutput = "";
+        schedulerSeason.setLastDayOfSeason("03-04-2021");
+        schedulerSeason.setScheduleList(new ArrayList<>());
+        List<ITeam> teamList = new ArrayList<>();
+        ITeam team1 = MockTeam.MockTeam();
+        ITeam team2 = MockTeam.MockDefendingTeam();
+        ITeam team3 = MockTeam.MockOffensiveTeam();
+        teamList.add(team1);
+        teamList.add(team2);
+        try {
+            dateOutput = schedulerSeason.schedule(teamList,team3,currentScheduleDate);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assertEquals(returningSchduleDate,dateOutput);
+
+    }
+
+    @Test
+    public void addScheduleTest(){
+        schedulerSeason.setScheduleList(new ArrayList<>());
+        ITeam team1 = MockTeam.MockTeam();
+        ITeam team2 = MockTeam.MockDefendingTeam();
+        String date = "30-11-2020";
+        schedulerSeason.addSchedule(team1,team2,date,Configurables.REGULAR.getAction());
+        assertEquals(team2.getTeamName(),schedulerSeason.getScheduleList().get(0).getFirstTeam().getTeamName());
+    }
+
+    @Test
+    public void scheduleInterConfGames() throws ParseException {
+
+        IConference conference = MockConference.mockConference();
+
+        Map<IConference, List<ITeam>> teamsInConference = MockConference.mockMapConference();
+        ITeam team = MockTeam.MockDefendingTeam();
+        schedulerSeason.setTeamsInConference(teamsInConference);
+        schedulerSeason.setScheduleList(new ArrayList<>());
+        String date = "30-11-2020";
+        String dateOutput = "";
+        try {
+            dateOutput = schedulerSeason.scheduleInterConfGames(conference, team, date);
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        assertEquals("01-12-2020",dateOutput);
+
+    }
+
+//    @Test
+//    public void scheduleInterDivGames() throws ParseException{
+//
+//        IConference conference = LeagueModelAbstractFactory.instance().getConference();
+//                conference = MockConference.mockConferenceTwo();
+//        IDivision divisions = MockDivision.createMock();
+//
+//        Map<IConference, List<IDivision>> divisionInConference;
+//        List<IDivision> divisionList = new ArrayList<>();
+//        Map<IConference, List<IDivision>> divisionMap = new HashMap<>();
+//        for (IDivision division : conference.getDivisions()) {
+//            divisionList.add(division);
+//        }
+//        divisionMap.put(conference,divisionList);
+//
+//        System.out.println(divisionInConference.get(conference));
+//
+//        Map<IDivision, List<ITeam>> teamInDivision = MockConference.mockMapTeamsInDivision();
+//        ITeam team = MockTeam.MockDefendingTeam();
+//        schedulerSeason.setDivisionsInConference(divisionInConference);
+//        schedulerSeason.setScheduleList(new ArrayList<>());
+//        schedulerSeason.setTeamsInDivision(teamInDivision);
+//        String date = "30-11-2020";
+//        String dateOutput = "";
+//        try {
+//            dateOutput = schedulerSeason.scheduleInterDivGames(conference, divisions, team, date);
+//        }
+//        catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//       // assertEquals("01-12-2020",dateOutput);
+//
+//    }
+
+
+
+
 }
+
+
+

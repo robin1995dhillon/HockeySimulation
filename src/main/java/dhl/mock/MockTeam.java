@@ -30,6 +30,7 @@ public class MockTeam {
         team.setTeamName("Random1");
         team.setHeadCoach(headCoach);
         team.setTeamStrength(40);
+        team.setGameCount(0);
         return team;
     }
 
@@ -256,6 +257,7 @@ public class MockTeam {
         player20.setSaving(15);
         playersList.add(player20);
         team.setPlayers(playersList);
+        team.setGameCount(0);
         return team;
     }
 
@@ -425,6 +427,7 @@ public class MockTeam {
         player20.setSaving(8);
         playersList.add(player20);
         team.setPlayers(playersList);
+        team.setGameCount(0);
         return team;
     }
 

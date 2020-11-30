@@ -113,7 +113,7 @@ public class PlayerTrade implements IPlayerTrade {
 
 
         //&& Math.random() < randomAcceptanceChance
-        if (consideringTeamPlayersStrength > offeringTeamPositionPlayersStrength ) {
+        if (consideringTeamPlayersStrength > offeringTeamPositionPlayersStrength && Math.random() < randomAcceptanceChance) {
 //            Iterator<IPlayers> iterator = this.offeringTeamPositionPlayers.iterator();
 //            while (iterator.hasNext()) {
 //                IPlayers player = iterator.next();
@@ -121,6 +121,8 @@ public class PlayerTrade implements IPlayerTrade {
 //            }
             addPlayersToTeam(consideringTeam.getPlayers() , new ArrayList<>(playersList));
             dropPlayersFromTeam(consideringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers));
+            addPlayersToTeam(offeringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers));
+            dropPlayersFromTeam(offeringTeam.getPlayers() , new ArrayList<>(playersList));
            // addPlayersToTeam(offeringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers), new ArrayList<>(playersList));
             //consideringTeam.getPlayers().addAll(this.offeringTeamPositionPlayers);
             //consideringTeam.getPlayers().removeAll(this.consideringTeamPlayers);
@@ -173,12 +175,7 @@ public class PlayerTrade implements IPlayerTrade {
     }
 
     public void addPlayersToTeam(List<IPlayers> teamPlayers , List<IPlayers> playersAdd){
-       // List<IPlayers> team = new ArrayList<>();
-//        List<IPlayers> teamRemove = new ArrayList<>();
-//        teamRemove.addAll(playersRemove);
-//        for(IPlayers player :teamPlayers){
-//            team.add(player);
-//        }
+
         System.out.println(teamPlayers.size()+"size of team players before adding ");
          for(IPlayers players : playersAdd){
              teamPlayers.add(players);
@@ -186,20 +183,14 @@ public class PlayerTrade implements IPlayerTrade {
         }
         System.out.println(teamPlayers.size()+"size off team players after adding ");
 
-//        for(IPlayers players : teamRemove){
-////            team.remove(players);
-//        team.removeAll(teamRemove);
-           // System.out.println("player removed----------- : "+players.getPlayerName()+" for position: "+players.getPosition());
-
-      //  }
-//        System.out.println(team.size()+"size off team players after removing ");
-//        team.getPlayers().addAll(playersAdd);
-//        team.getPlayers().removeAll(playersRemove);
 
     }
 
     @Override
     public void tradeUser(ITeam offeringTeam, ITeam consideringTeam, IGamePlayConfig gamePlayConfig) {
+        this.offeringTeamPositionPlayers = stateMachine.getOfferingTeamPositionPlayers();
+        List<IPlayers> playersList = new ArrayList<>();
+        playersList.addAll(this.offeringTeamPositionPlayers);
         this.gamePlayConfig = gamePlayConfig;
         int totalPlayersOfOfferingTeam;
         int totalPlayersOfConsideringTeam;
@@ -217,10 +208,14 @@ public class PlayerTrade implements IPlayerTrade {
             userInput.setInput();
             response = userInput.getInput();
             if (response.equalsIgnoreCase(Configurables.YES.getAction())) {
-                offeringTeam.getPlayers().removeAll(this.offeringTeamPositionPlayers);
-                offeringTeam.getPlayers().addAll(this.consideringTeamPlayers);
-                consideringTeam.getPlayers().removeAll(this.consideringTeamPlayers);
-                consideringTeam.getPlayers().addAll(this.offeringTeamPositionPlayers);
+//                offeringTeam.getPlayers().removeAll(this.offeringTeamPositionPlayers);
+//                offeringTeam.getPlayers().addAll(this.consideringTeamPlayers);
+//                consideringTeam.getPlayers().removeAll(this.consideringTeamPlayers);
+//                consideringTeam.getPlayers().addAll(this.offeringTeamPositionPlayers);
+                addPlayersToTeam(consideringTeam.getPlayers() , new ArrayList<>(playersList));
+                dropPlayersFromTeam(consideringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers));
+                addPlayersToTeam(offeringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers));
+                dropPlayersFromTeam(offeringTeam.getPlayers() , new ArrayList<>(playersList));
                 break;
 
             } else if (response.equalsIgnoreCase(Configurables.NO.getAction())) {

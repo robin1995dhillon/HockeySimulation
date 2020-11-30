@@ -11,20 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * Implement a scheduling system:
- * At the start of a season the scheduling system determines the dates for most of the major events in a season of hockey in a major league like the NHL:
- * • October 1st: Regular season starts (the first games of the regular season can be scheduled on this date).
- * • Last Monday in February: Trade deadline. No trading is allowed after this date.
- * • First Saturday in April: End of the regular season, after all games are played on this date determine the round 1 seedings for the playoffs. We will assume that all leagues use the Stanley Cup playoff format.
- * • Second Wednesday in April: Playoffs begin.
- * • June 1st: Last possible day for the Stanley Cup final.
- * Also at the start of a season the scheduling system determines the dates for all regular season games between teams:
- * • Total games/team: 82.
- * • ~1/3rd Games: Intra-Division.
- * • ~1/3rd Games: Inter-Division.
- * • ~1/3rd Games: Inter-Conference.
- */
+
 public class SchedulerSeason implements ISchedulerSeason {
     private String currentYear;
     private int regSeasonYear;
@@ -103,6 +90,15 @@ public class SchedulerSeason implements ISchedulerSeason {
 //        this.playoffsYear = currentYear + 1;
 //    }
 
+    public void setCurrentYear(String currentYear){
+        this.currentYear = currentYear;
+    }
+
+    public void setPlayoffsYear(int playoffsYear){
+        this.playoffsYear = playoffsYear;
+    }
+
+
 
     public String getStartDayOfSeason() {
         String startDate = Configurables.START_DAY_OF_SEASON.getAction() + this.currentYear;
@@ -114,11 +110,14 @@ public class SchedulerSeason implements ISchedulerSeason {
      * Season start date: 1st October
      **/
     public String getFirstDayOfSeason() {
-        String firstDay = "01-10-" + this.currentYear;
+        String firstDay = Configurables.FIRST_DAY_OF_SEASON.getAction() + this.currentYear;
 
         return firstDay;
     }
 
+    public void setLastDayOfSeason(String lastDay){
+        this.lastDay = lastDay;
+    }
     /**
      * Season end date: First Saturday in April
      **/
@@ -130,7 +129,7 @@ public class SchedulerSeason implements ISchedulerSeason {
         calendar.set(Calendar.MONTH, Calendar.APRIL);
         calendar.set(Calendar.YEAR, playoffsYear);
         String seasonDay = String.valueOf(calendar.get(Calendar.DATE));
-        String lastDay = seasonDay + "-04-" + String.valueOf(playoffsYear);
+        String lastDay = seasonDay + Configurables.LAST_DAY_OF_SEASON_MONTH.getAction() + String.valueOf(playoffsYear);
         try {
             lastDay = dateFormat.format(dateFormat.parse(lastDay));
         } catch (ParseException e) {
@@ -163,13 +162,13 @@ public class SchedulerSeason implements ISchedulerSeason {
      * Stanley Playoffs end date: June 1st
      **/
     public String getLastDayOfStanleyPlayoffs() {
-        String lastDay = "01-06-" + String.valueOf(playoffsYear);
+        String lastDay = Configurables.LAST_DAY_OF_STANLEY_PLAYOFFS.getAction() + String.valueOf(playoffsYear);
 
         return lastDay;
     }
 
     public String enterIntoPlayerDraft() {
-        String playerDraftDate = "15-07-" + String.valueOf(playoffsYear);
+        String playerDraftDate = Configurables.PLAYER_DRAFT_DATE.getAction() + String.valueOf(playoffsYear);
 
         return playerDraftDate;
     }
@@ -191,7 +190,7 @@ public class SchedulerSeason implements ISchedulerSeason {
     public boolean isLastDayOfTrade(String currentDate, int playoffsYear) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         System.out.println(getLastDayOfTrade());
-        String lastDayOfTrade = getLastDayOfTrade() + "-02-" + String.valueOf(playoffsYear);
+        String lastDayOfTrade = getLastDayOfTrade() + Configurables.MONTH_OF_TRADE.getAction() + String.valueOf(playoffsYear);
         lastDayOfTrade = dateFormat.format(dateFormat.parse(lastDayOfTrade));
         try {
             Date start = new SimpleDateFormat("dd-MM-yyyy").parse(currentDate);
@@ -352,7 +351,7 @@ public class SchedulerSeason implements ISchedulerSeason {
         }
     }
 
-    private String scheduleRegularSeasonGames(IConference conferenceName, IDivision divisionName, ITeam teamName, String startDateOfSeason) throws ParseException {
+    public String scheduleRegularSeasonGames(IConference conferenceName, IDivision divisionName, ITeam teamName, String startDateOfSeason) throws ParseException {
         String currentDate = startDateOfSeason;
         currentDate = scheduleIntraDivGames(divisionName, teamName, currentDate);
         currentDate = scheduleInterDivGames(conferenceName, divisionName, teamName, currentDate);
@@ -360,18 +359,34 @@ public class SchedulerSeason implements ISchedulerSeason {
         return currentDate;
     }
 
-    private String scheduleIntraDivGames(IDivision divisionName, ITeam teamName, String currentDate) throws ParseException {
+    public String scheduleIntraDivGames(IDivision divisionName, ITeam teamName, String currentDate) throws ParseException {
         List<ITeam> teamsInDiv = teamsInDivision.get(divisionName);
         currentDate = schedule(teamsInDiv, teamName, currentDate);
         return currentDate;
     }
 
-    private String scheduleInterDivGames(IConference conferenceName, IDivision divisionName, ITeam teamName, String currentDate) throws ParseException {
+    public Map<IConference, List<IDivision>> getDivisionsInConference() {
+        return divisionsInConference;
+    }
+
+    public void setDivisionsInConference(Map<IConference, List<IDivision>> divisionsInConference) {
+        this.divisionsInConference = divisionsInConference;
+    }
+
+    public Map<IDivision, List<ITeam>> getTeamsInDivision() {
+        return teamsInDivision;
+    }
+
+    public void setTeamsInDivision(Map<IDivision, List<ITeam>> teamsInDivision) {
+        this.teamsInDivision = teamsInDivision;
+    }
+
+    public String scheduleInterDivGames(IConference conferenceName, IDivision divisionName, ITeam teamName, String currentDate) throws ParseException {
         List<ITeam> teamsInOtherDivision = new ArrayList<>();
-        List<IDivision> divisionsInConf = divisionsInConference.get(conferenceName);
+        List<IDivision> divisionInConference = divisionsInConference.get(conferenceName);
 
         for (Map.Entry<IDivision, List<ITeam>> entry : teamsInDivision.entrySet()) {
-            if (divisionsInConf.contains(entry.getKey())) {
+            if (divisionInConference.contains(entry.getKey())) {
                 if (entry.getKey().getDivisionName().equalsIgnoreCase(divisionName.getDivisionName())) {
                     continue;
                 }
@@ -382,7 +397,15 @@ public class SchedulerSeason implements ISchedulerSeason {
         return currentDate;
     }
 
-    private String scheduleInterConfGames(IConference conferenceName, ITeam teamName, String currentDate) throws ParseException {
+    public Map<IConference, List<ITeam>> getTeamsInConference() {
+        return teamsInConference;
+    }
+
+    public void setTeamsInConference(Map<IConference, List<ITeam>> teamsInConference) {
+        this.teamsInConference = teamsInConference;
+    }
+
+    public String scheduleInterConfGames(IConference conferenceName, ITeam teamName, String currentDate) throws ParseException {
         List<ITeam> teamsInOtherConferences = new ArrayList<>();
         for (Map.Entry<IConference, List<ITeam>> entry : teamsInConference.entrySet()) {
             if (entry.getKey().getConferenceName().equalsIgnoreCase(conferenceName.getConferenceName())) {
@@ -424,9 +447,17 @@ public class SchedulerSeason implements ISchedulerSeason {
 
     }
 
+    public void setScheduleList(List<ISchedulerSeason> list){
+        this.scheduleList = list;
+    }
+
+    public List<ISchedulerSeason> getScheduleList(){
+       return this.scheduleList;
+    }
+
     public void addSchedule(ITeam team, ITeam opponentTeam, String currentDay, String gameType) {
 
-        ISchedulerSeason schedulerSeason = new SchedulerSeason();
+        ISchedulerSeason schedulerSeason = StateMachineAbstractFactory.instance().getSchedulerSeason();
         schedulerSeason.setFirstTeam(opponentTeam);
         schedulerSeason.setSecondTeam(team);
         schedulerSeason.setDateOfMatch(currentDay);

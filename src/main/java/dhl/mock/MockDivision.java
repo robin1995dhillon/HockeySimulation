@@ -45,4 +45,14 @@ public class MockDivision {
         division.setTeams(teamList);
         return division;
     }
+
+    public static IDivision divisionMock(){
+        IDivision division = LeagueModelAbstractFactory.instance().getDivision();
+        List<ITeam> teamList =new ArrayList<>();
+        teamList.add(MockTeam.MockOffensiveTeam());
+        teamList.add(MockTeam.MockTeam());
+        division.setDivisionName("Division1");
+        division.setTeams(teamList);
+        return division;
+    }
 }

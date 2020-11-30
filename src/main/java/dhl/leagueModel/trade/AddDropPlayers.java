@@ -65,19 +65,6 @@ public class AddDropPlayers implements IAddDropPlayers {
                 dropToFreeAgents(team,totalForward - noOfForwards, Configurables.FORWARD.getAction());
             }
 
-//        int playersToBeAdded;
-//        int playersToBeDropped;
-//        int totalNumberOfPlayers = Integer.parseInt(Configurables.TOTAL_PLAYERS.getAction());
-//
-//        if (totalPlayers < totalNumberOfPlayers) {
-//            playersToBeAdded = totalNumberOfPlayers - totalPlayers;
-//
-//            freeAgentLists.aiAgentListAdd(team, playersToBeAdded);
-//        } else if (totalPlayers > totalNumberOfPlayers) {
-//
-//            playersToBeDropped = totalPlayers - totalNumberOfPlayers;
-//            freeAgentListsDrop.agentListDrop(team, playersToBeDropped);
-//        }
         }
 
 
