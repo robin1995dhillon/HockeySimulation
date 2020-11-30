@@ -152,11 +152,4 @@ public class SchedulerSeasonTest {
         userOutput.sendOutput();
         return playoffStartDate;
     }
-
-    @Test
-    public void initializeTest(){
-        ILeague league = deserializeJSONToModel.jsonToLeague("src\\saveFile.json");
-        schedulerSeason.initialize(league);
-
-    }
 }
