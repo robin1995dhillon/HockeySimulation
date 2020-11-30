@@ -204,12 +204,14 @@ public class AllPlayers implements IAllPlayers {
         int year = this.getBirthYear();
         int month = this.getBirthMonth();
         int days = this.getBirthDay();
+
         if(this.age == 0) {
             this.playerCurrentDate = LocalDate.now();
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
         this.setPlayerCurrentDate(this.getPlayerCurrentDate().plusDays(daysToAge));
         LocalDate nextBirthDay = LocalDate.of(this.playerCurrentDate.getYear(), month, days);
+
         if (nextBirthDay.isBefore(this.playerCurrentDate)) {
             this.setAge(this.playerCurrentDate.getYear() - year + 1);
         } else {
