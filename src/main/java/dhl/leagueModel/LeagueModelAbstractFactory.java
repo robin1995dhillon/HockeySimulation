@@ -48,6 +48,8 @@ public abstract class LeagueModelAbstractFactory {
 
     public abstract IFreeAgents getFreeAgents();
 
+    public abstract IFreeAgents getNewFreeAgents();
+
     public abstract void setFreeAgents(IFreeAgents freeAgents);
 
     public abstract IGamePlayConfig getGamePlayConfig();

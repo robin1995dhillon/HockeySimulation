@@ -131,6 +131,10 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory {
         return freeAgents;
     }
 
+    public IFreeAgents getNewFreeAgents() {
+        return new FreeAgents();
+    }
+
     @Override
     public void setFreeAgents(IFreeAgents freeAgents) {
         this.freeAgents = freeAgents;

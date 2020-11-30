@@ -76,5 +76,4 @@ public class Players extends AllPlayers implements IPlayers {
         this.captain = captain;
     }
 
-
 }
