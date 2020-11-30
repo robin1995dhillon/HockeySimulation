@@ -1,5 +1,6 @@
 package dhl.stateMachineNew.states;
 
+import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.trade.IPlayerTradingCondition;
 import dhl.leagueModel.trade.PlayerTradingCondition;
 import dhl.stateMachineNew.IStateMachine;
@@ -15,7 +16,9 @@ public class ExecuteTradesState implements IStateMachine {
     }
     public IStateMachine entry() {
         System.out.println("We are in Execute Trades State");
-        IPlayerTradingCondition trading = new PlayerTradingCondition();
+        IPlayerTradingCondition trading = LeagueModelAbstractFactory.instance().getPLayerTradingCondition();
+        System.out.println("league is : "+stateMachine.getLeague().getLeagueName());
+        System.out.println("total team list is : "+stateMachine.getTotalTeamList());
         trading.tradeCondition(stateMachine.getTotalTeamList(),stateMachine.getLeague().getGameplayConfig());
 
         return doTask();
