@@ -1,0 +1,4 @@
+22:16:20.228 [main] WARN  dhl.Main  - This log level is a warning, you might keep this in production if the module is very important.
+22:16:20.236 [main] ERROR dhl.Main  - This log level is an error, you never want to filter those.
+22:16:34.165 [main] WARN  dhl.Main  - This log level is a warning, you might keep this in production if the module is very important.
+22:16:34.165 [main] ERROR dhl.Main  - This log level is an error, you never want to filter those.

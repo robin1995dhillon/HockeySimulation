@@ -121,6 +121,8 @@ public class PlayerTrade implements IPlayerTrade {
 //            }
             addPlayersToTeam(consideringTeam.getPlayers() , new ArrayList<>(playersList));
             dropPlayersFromTeam(consideringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers));
+            addPlayersToTeam(offeringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers));
+            dropPlayersFromTeam(offeringTeam.getPlayers() , new ArrayList<>(playersList));
            // addPlayersToTeam(offeringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers), new ArrayList<>(playersList));
             //consideringTeam.getPlayers().addAll(this.offeringTeamPositionPlayers);
             //consideringTeam.getPlayers().removeAll(this.consideringTeamPlayers);
@@ -150,7 +152,7 @@ public class PlayerTrade implements IPlayerTrade {
     private void dropPlayersFromTeam(List<IPlayers> players, ArrayList<IPlayers> playersRemove) {
         OUTER:
         for(IPlayers removePlayer : playersRemove){
-        for(Iterator<IPlayers> iterator = players.iterator(); iterator.hasNext();) {
+            for(Iterator<IPlayers> iterator = players.iterator(); iterator.hasNext();) {
 
                 System.out.println("name of player to be removed : "+removePlayer.getPlayerName()+"--- position "+removePlayer.getPosition());
                 IPlayers player = iterator.next();
