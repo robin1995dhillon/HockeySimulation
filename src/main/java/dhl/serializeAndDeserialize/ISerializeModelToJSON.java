@@ -1,4 +1,4 @@
-package dhl.serializeAndDeserialize.serialize;
+package dhl.serializeAndDeserialize;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import dhl.leagueModel.ILeague;

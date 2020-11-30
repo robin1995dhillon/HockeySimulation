@@ -1,4 +1,4 @@
-package dhl.serializeAndDeserialize.deserialize;
+package dhl.serializeAndDeserialize;
 
 import dhl.leagueModel.ILeague;
 

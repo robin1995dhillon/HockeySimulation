@@ -5,8 +5,8 @@ import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.JSONReader;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.ILeague;
-import dhl.serializeAndDeserialize.deserialize.DeserializeJSONToModel;
-import dhl.serializeAndDeserialize.deserialize.IDeserializeJSONToModel;
+import dhl.serializeAndDeserialize.DeserializeJSONToModel;
+import dhl.serializeAndDeserialize.IDeserializeJSONToModel;
 import dhl.validator.JSONValidator;
 import org.json.simple.JSONObject;
 
