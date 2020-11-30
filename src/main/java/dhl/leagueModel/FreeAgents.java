@@ -8,7 +8,9 @@ import java.util.List;
 
 @JsonDeserialize(as = FreeAgents.class)
 public class FreeAgents extends AllPlayers implements IFreeAgents {
+
     private static final Logger logger = LogManager.getLogger(FreeAgents.class);
+
     public FreeAgents() {
         super();
     }
