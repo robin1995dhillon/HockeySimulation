@@ -231,8 +231,8 @@ public class AllPlayers implements IAllPlayers {
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = this.getAge();
-        Integer[] retirementAge = {average - 5, average - 4, average - 3, average - 2, average - 1, average, average + 1, average + 4, average + 5, max};
-        Integer[] retirementArray = {5, 10, 15, 20, 25, 30, 50, 70, 80, 100};
+        Integer[] retirementAge = {average,average+1,average+2,average+3,average+4,average+5,average+6,max};
+        Integer[] retirementArray = {5,6,7,8,9,10,15,100};
         int minDistance = Math.abs(retirementAge[0] - playerAge);
         int minIndex = 0;
         for (int i = 1; i < retirementAge.length; i++) {
@@ -242,15 +242,16 @@ public class AllPlayers implements IAllPlayers {
                 minDistance = currentDistance;
             }
         }
-        int closestBracket = retirementAge[minIndex];
-        int index = Arrays.asList(retirementAge).indexOf(closestBracket);
-        int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
-        System.out.println(randomNumber);
-        if (randomNumber >= 0 && randomNumber <= retirementArray[index]) {
-            logger.info(this.playerName + " is retired.");
-            this.setRetired(true);
-        } else {
-            this.setRetired(false);
+        if(age>=retirementAge[minIndex]) {
+            int closestBracket = retirementAge[minIndex];
+            int index = Arrays.asList(retirementAge).indexOf(closestBracket);
+            int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
+            if (randomNumber >= 0 && randomNumber <= retirementArray[index]) {
+                logger.info(this.playerName + " is retired.");
+                this.setRetired(true);
+            } else {
+                this.setRetired(false);
+            }
         }
     }
 
@@ -362,15 +363,19 @@ public class AllPlayers implements IAllPlayers {
     @Override
     public IFreeAgents replacePlayerWithFreeAgent(IPlayers player, List<IFreeAgents> freeAgents) {
         List<Double> freeAgentStrengthList = new ArrayList<>();
+        List<IFreeAgents> freeAgentOfAType = new ArrayList<>();
         for (IFreeAgents freeAgent : freeAgents) {
             if (player.getPosition().equals(freeAgent.getPosition())) {
                 double freeAgentStrength = freeAgent.calculateStrength();
+                freeAgent.setStrength(freeAgentStrength);
                 freeAgentStrengthList.add(freeAgentStrength);
+                freeAgentOfAType.add(freeAgent);
             }
         }
         double maxStrength = Collections.max(freeAgentStrengthList);
         int maxIndex = freeAgentStrengthList.indexOf(maxStrength);
-        return freeAgents.get(maxIndex);
+        freeAgents.remove(freeAgentOfAType.get(maxIndex));
+        return freeAgentOfAType.get(maxIndex);
     }
 
     @Override
