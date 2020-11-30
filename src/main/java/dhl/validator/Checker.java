@@ -8,11 +8,13 @@ import dhl.leagueModel.IGeneralManager;
 import dhl.leagueModel.IHeadCoach;
 import dhl.leagueModel.ILeague;
 import dhl.leagueModel.ITeam;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class Checker implements IChecker {
-
+    private static final Logger logger = LogManager.getLogger(Checker.class);
 
     public boolean conferenceChecker(String conference, ILeague league) {
         for (IConference c : league.getConferences()) {

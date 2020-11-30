@@ -7,9 +7,11 @@ import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.ILeague;
 import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.StateMachine;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class PlayerChoiceState implements IStateMachine {
-
+    private static final Logger logger = LogManager.getLogger(PlayerChoiceState.class);
     private final IUserOutput output;
     private final IUserInput input;
     private final StateMachine stateMachine;
@@ -18,7 +20,6 @@ public class PlayerChoiceState implements IStateMachine {
     private ILeague machineLeague;
 
     public PlayerChoiceState(StateMachine machine){
-
         this.stateMachine = machine;
         output = new UserOutput();
         input = new UserInput();
@@ -26,7 +27,6 @@ public class PlayerChoiceState implements IStateMachine {
     }
 
     public IStateMachine entry() {
-
         return doTask();
     }
 
@@ -35,14 +35,9 @@ public class PlayerChoiceState implements IStateMachine {
         output.sendOutput();
         input.setInput();
         totalSeasons = Integer.parseInt(input.getInput());
-//        for (int i = 0; i < totalSeasons; i++) {
-//            currentSeason = i;
-//            boolean seasonIncomplete = true;
-//            output.setOutput("Simulating season " + (i + 1) + " for " + machineLeague + " ...");
-//            output.sendOutput();
-//        }
         machineLeague.setTotalSeasons(totalSeasons);
         machineLeague.setSeason(0);
+        logger.info("You want to simulate " + totalSeasons + " seasons");
         return stateMachine.getInitializeSeason();
     }
 

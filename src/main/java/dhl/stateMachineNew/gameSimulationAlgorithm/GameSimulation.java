@@ -5,10 +5,12 @@ import dhl.stateMachineNew.TeamStandings;
 import dhl.leagueModel.ILeague;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.ITeam;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class GameSimulation implements IGameSimulation {
-
+    private static final Logger logger = LogManager.getLogger(GameSimulation.class);
 
     @Override
     public void simulateGame(ITeam offensiveTeam, ITeam defendingTeam, ILeague league, IGameSimulationAlgorithm algorithm, IShiftTime shiftTime) {
@@ -45,14 +47,17 @@ public class GameSimulation implements IGameSimulation {
         if(offensiveGoals > defendingGoals){
             teamWin(offensiveTeam, offensiveTeamStanding);
             teamLost(defendingTeam, defendingTeamStanding);
+            logger.info("Game between " + offensiveTeam.getTeamName() + " and " + defendingTeam.getTeamName() + " is over. " + offensiveTeam.getTeamName() + "won.");
         }
         else if(offensiveGoals < defendingGoals){
             teamWin(defendingTeam, offensiveTeamStanding);
             teamLost(offensiveTeam, defendingTeamStanding);
+            logger.info("Game between " + offensiveTeam.getTeamName() + " and " + defendingTeam.getTeamName() + " is over. " + defendingTeam.getTeamName() + "won.");
         }
         else{
             teamDraw(offensiveTeam, offensiveTeamStanding);
             teamDraw(defendingTeam, defendingTeamStanding);
+            logger.info("Game between " + offensiveTeam.getTeamName() + " and " + defendingTeam.getTeamName() + " is over. The two teams drew.");
         }
         algorithm.resetAlgorithm(0.04,0.907,0.433);
         algorithm.reset(offensiveTeam);
