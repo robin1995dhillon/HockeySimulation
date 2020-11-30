@@ -15,8 +15,8 @@ public class ExecuteTradesState implements IStateMachine {
     }
     public IStateMachine entry() {
         System.out.println("We are in Execute Trades State");
-//        IPlayerTradingCondition trading = new PlayerTradingCondition();
-//        trading.tradeCondition(stateMachine.getTotalTeamList(),stateMachine.getLeague().getGameplayConfig());
+        IPlayerTradingCondition trading = new PlayerTradingCondition();
+        trading.tradeCondition(stateMachine.getTotalTeamList(),stateMachine.getLeague().getGameplayConfig());
 
         return doTask();
     }

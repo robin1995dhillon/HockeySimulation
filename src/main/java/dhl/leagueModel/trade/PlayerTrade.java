@@ -18,6 +18,7 @@ import dhl.stateMachineNew.StateMachine;
 import dhl.stateMachineNew.StateMachineAbstractFactory;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PlayerTrade implements IPlayerTrade {
@@ -118,8 +119,9 @@ public class PlayerTrade implements IPlayerTrade {
 //                IPlayers player = iterator.next();
 //                iterator.remove();
 //            }
-            addPlayersToTeam(consideringTeam.getPlayers() , new ArrayList<>(playersList), new ArrayList<>(this.consideringTeamPlayers));
-            addPlayersToTeam(offeringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers), new ArrayList<>(playersList));
+            addPlayersToTeam(consideringTeam.getPlayers() , new ArrayList<>(playersList));
+            dropPlayersFromTeam(consideringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers));
+           // addPlayersToTeam(offeringTeam.getPlayers() , new ArrayList<>(this.consideringTeamPlayers), new ArrayList<>(playersList));
             //consideringTeam.getPlayers().addAll(this.offeringTeamPositionPlayers);
             //consideringTeam.getPlayers().removeAll(this.consideringTeamPlayers);
             //offeringTeam.getPlayers().removeAll(this.offeringTeamPositionPlayers);
@@ -145,13 +147,52 @@ public class PlayerTrade implements IPlayerTrade {
 
     }
 
-    public void addPlayersToTeam(List<IPlayers> teamPlayers , List<IPlayers> playersAdd, List<IPlayers> playersRemove){
+    private void dropPlayersFromTeam(List<IPlayers> players, ArrayList<IPlayers> playersRemove) {
+        OUTER:
+        for(IPlayers removePlayer : playersRemove){
+        for(Iterator<IPlayers> iterator = players.iterator(); iterator.hasNext();) {
+
+                System.out.println("name of player to be removed : "+removePlayer.getPlayerName()+"--- position "+removePlayer.getPosition());
+                IPlayers player = iterator.next();
+                System.out.println("name of player checking : "+removePlayer.getPlayerName()+"--- position "+removePlayer.getPosition());
+
+                if (player.getPlayerName().equalsIgnoreCase(removePlayer.getPlayerName())){
+                    iterator.remove();
+                    System.out.println("player removed : "+iterator.toString()+" --"+player.getPlayerName()+"---"+player.getPosition());
+                    continue OUTER;
+                }
+            }
+
+        }
+//        List<IPlayers> teamRemove = new ArrayList<>();
+//        teamRemove.addAll(playersRemove);
+//        players.removeAll(teamRemove);
+//         //System.out.println("player removed----------- : "+players.getPlayerName()+" for position: "+players.getPosition());
+       System.out.println(players.size()+"size off team players after removing ");
+
+    }
+
+    public void addPlayersToTeam(List<IPlayers> teamPlayers , List<IPlayers> playersAdd){
+       // List<IPlayers> team = new ArrayList<>();
+//        List<IPlayers> teamRemove = new ArrayList<>();
+//        teamRemove.addAll(playersRemove);
+//        for(IPlayers player :teamPlayers){
+//            team.add(player);
+//        }
+        System.out.println(teamPlayers.size()+"size of team players before adding ");
          for(IPlayers players : playersAdd){
-            teamPlayers.add(players);
+             teamPlayers.add(players);
+             System.out.println("player added----------- : "+players.getPlayerName()+" for position: "+players.getPosition());
         }
-        for(IPlayers players : playersRemove){
-            teamPlayers.remove(players);
-        }
+        System.out.println(teamPlayers.size()+"size off team players after adding ");
+
+//        for(IPlayers players : teamRemove){
+////            team.remove(players);
+//        team.removeAll(teamRemove);
+           // System.out.println("player removed----------- : "+players.getPlayerName()+" for position: "+players.getPosition());
+
+      //  }
+//        System.out.println(team.size()+"size off team players after removing ");
 //        team.getPlayers().addAll(playersAdd);
 //        team.getPlayers().removeAll(playersRemove);
 
