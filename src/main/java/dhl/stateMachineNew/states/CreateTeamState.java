@@ -33,37 +33,29 @@ public class CreateTeamState implements IStateMachine {
     private final StateMachine stateMachine;
     private final IUserOutput output;
     private final IUserInput input;
-//    private ILeague league;
     private ITeam team;
 
     public CreateTeamState(StateMachine machine){
-
         this.stateMachine = machine;
         output = new UserOutput();
-//        this.league = this.stateMachine.getLeague();
         input = new UserInput();
         team = new Teams();
-
     }
 
     public IStateMachine entry() {
-
         return doTask();
     }
 
     public IStateMachine doTask() {
-        System.out.println("-------------"+this.stateMachine.getLeague().getLeagueName());
         IStateMachine nextState = createTeam(this.stateMachine.getLeague());
         return nextState;
     }
 
 
     public void exit() {
-
     }
 
     public IStateMachine createTeam(ILeague league){
-
         String teamName;
         String conferenceName;
         String divisionName;
@@ -82,141 +74,140 @@ public class CreateTeamState implements IStateMachine {
             input.setInput();
             conferenceName = input.getInput();
         }
-        if (CC.conferenceChecker(conferenceName, league)) {
-            output.setOutput("Enter Division Name:");
-            output.sendOutput();
+        logger.info("You choose " + conferenceName + " as your conference.");
+        output.setOutput("Enter Division Name:");
+        output.sendOutput();
+        input.setInput();
+        divisionName = input.getInput();
+        while (CC.divisionChecker(divisionName, league) == false) {
+            output.setOutput("Invalid input! Please enter the division you imported:");
+            output.sendErrorOutput();
+            logger.warn("Invalid input for division name.");
             input.setInput();
             divisionName = input.getInput();
-            while (CC.divisionChecker(divisionName, league) == false) {
-                output.setOutput("Invalid input! Please enter the division you imported:");
+        }
+        logger.info("You choose " + divisionName + " as your conference.");
+        output.setOutput("Enter Your Team Name: ");
+        output.sendOutput();
+        input.setInput();
+        teamName = input.getInput();
+        if (CC.teamChecker(teamName, league)) {
+            output.setOutput("Team Already Exists!");
+            output.sendOutput();
+            logger.error(teamName + " already exists.");
+        } else {
+            logger.info("Your team name is " + teamName);
+            output.setOutput("Here are the general managers:");
+            output.sendOutput();
+            List<IGeneralManager> managerList = league.getGeneralManagers();
+            IDisplayManagerList managerDisplayer = new DisplayManagerList();
+            managerDisplayer.displayManager(managerList);
+            output.setOutput("Enter Manager Name: ");
+            output.sendOutput();
+            input.setInput();
+            String managerName = input.getInput();
+            while (CC.managerChecker(managerList, managerName) == false) {
+                output.setOutput("Invalid input! Please enter one manager from the list:");
                 output.sendErrorOutput();
-                logger.warn("Invalid input for division name.");
+                logger.warn("Invalid input for manager name.");
                 input.setInput();
-                divisionName = input.getInput();
+                managerName = input.getInput();
             }
-            if (CC.divisionChecker(divisionName, league)) {
-                output.setOutput("Enter Your Team Name: ");
+            IGeneralManager generalManager = new GeneralManager();
+            generalManager = generalManager.getManagerFromList(managerList, managerName);
+            managerList.remove(generalManager);
+            logger.info("You choose" + managerName + " as your conference.");
+            output.setOutput("Here are the head coaches:");
+            output.sendOutput();
+            List<IHeadCoach> coachList = league.getCoaches();
+            IDisplayCoachList coachDisplayer = new DisplayCoachList();
+            coachDisplayer.displayCoach(coachList);
+            output.setOutput("Enter Head Coach: ");
+            output.sendOutput();
+            input.setInput();
+            String coachName = input.getInput();
+            while (CC.coachChecker(coachList, coachName) == false) {
+                output.setOutput("Invalid input! Please choose one coach from the list:");
+                output.sendErrorOutput();
+                logger.warn("Invalid input for head coach name.");
+                input.setInput();
+                coachName = input.getInput();
+            }
+            IHeadCoach headCoach = new HeadCoach();
+            headCoach = headCoach.getCoachFromList(coachList, coachName);
+            coachList.remove(headCoach);
+            logger.info("You choose" + coachName + " as your conference.");
+            output.setOutput("Please choose your team players, here are the free agents:");
+            output.sendOutput();
+            List<IFreeAgents> freeAgentList = league.getFreeAgents();
+            ArrayList<IPlayers> playerList = new ArrayList<>();
+            IDisplayFreeAgentList freeAgentDisplayer = new DisplayFreeAgentList();
+            output.setOutput("Please choose two goalies: ");
+            output.sendOutput();
+            for (int i = 1; i <= 4; ) {
+                freeAgentDisplayer.displayFreeAgent(freeAgentList);
+                output.setOutput("Enter Goalie: " + i);
                 output.sendOutput();
                 input.setInput();
-                teamName = input.getInput();
-                if (CC.teamChecker(teamName, league)) {
-                    output.setOutput("Here are the general managers:");
-                    output.sendOutput();
-                    List<IGeneralManager> managerList = league.getGeneralManagers();
-                    IDisplayManagerList managerDisplayer = new DisplayManagerList();
-                    managerDisplayer.displayManager(managerList);
-                    output.setOutput("Enter Manager Name: ");
-                    output.sendOutput();
+                String playerName = input.getInput();
+                while (CC.freeAgentChecker(freeAgentList, playerName) == false) {
+                    output.setOutput("Invalid input! Please choose one free agent from the list:");
+                    output.sendErrorOutput();
+                    logger.warn("Invalid input for free agent name.");
                     input.setInput();
-                    String managerName = input.getInput();
-                    while (CC.managerChecker(managerList, managerName) == false) {
-                        output.setOutput("Invalid input! Please enter one manager from the list:");
-                        output.sendErrorOutput();
-                        logger.warn("Invalid input for manager name.");
-                        input.setInput();
-                        managerName = input.getInput();
-                    }
-                    IGeneralManager generalManager = new GeneralManager();
-                    generalManager = generalManager.getManagerFromList(managerList, managerName);
-                    managerList.remove(generalManager);
-                    output.setOutput("Here are the head coaches:");
-                    output.sendOutput();
-                    List<IHeadCoach> coachList = league.getCoaches();
-                    IDisplayCoachList coachDisplayer = new DisplayCoachList();
-                    coachDisplayer.displayCoach(coachList);
-                    output.setOutput("Enter Head Coach: ");
-                    output.sendOutput();
-                    input.setInput();
-                    String coachName = input.getInput();
-                    while (CC.coachChecker(coachList, coachName) == false) {
-                        output.setOutput("Invalid input! Please choose one coach from the list:");
-                        output.sendErrorOutput();
-                        logger.warn("Invalid input for head coach name.");
-                        input.setInput();
-                        coachName = input.getInput();
-                    }
-                    IHeadCoach headCoach = new HeadCoach();
-                    headCoach = headCoach.getCoachFromList(coachList, coachName);
-                    coachList.remove(headCoach);
-                    output.setOutput("Please choose your team players, here are the free agents:");
-                    output.sendOutput();
-                    List<IFreeAgents> freeAgentList = league.getFreeAgents();
-                    ArrayList<IPlayers> playerList = new ArrayList<>();
-                    IDisplayFreeAgentList freeAgentDisplayer = new DisplayFreeAgentList();
-                    output.setOutput("Please choose two goalies: ");
-                    output.sendOutput();
-                    for (int i = 1; i <= 2; ) {   // change done here
-                        freeAgentDisplayer.displayFreeAgent(freeAgentList);
-                        output.setOutput("Enter Goalie: " + i);
-                        output.sendOutput();
-                        input.setInput();
-                        String playerName = input.getInput();
-                        while (CC.freeAgentChecker(freeAgentList, playerName) == false) {
-                            output.setOutput("Invalid input! Please choose one free agent from the list:");
-                            output.sendErrorOutput();
-                            logger.warn("Invalid input for free agent name.");
-                            input.setInput();
-                            playerName = input.getInput();
-                        }
-                        IFreeAgents freeAgent = new FreeAgents();
-                        freeAgent = freeAgent.getFreeAgentFromList(freeAgentList, playerName);
-                        if (freeAgent.checkPosition(Configurables.GOALIE.getAction())) {
-                            IPlayers player = new Players();
-                            player = player.convertFreeAgentToPlayer(freeAgent);
-                            playerList.add(player);
-                            freeAgentList.remove(freeAgent);
-                            i++;
-                        } else {
-                            output.setOutput("Invalid input! You need to pick a goalie!");
-                            output.sendErrorOutput();
-                            logger.warn("You need to choose a goalie.");
-                        }
-                    }
-                    output.setOutput("Please choose eighteen skaters(forward and defense):");
-                    output.sendOutput();
-                    for (int i = 1; i <= 18; ) {    // change done here
-                        freeAgentDisplayer.displayFreeAgent(freeAgentList);
-                        output.setOutput("Enter Skaters (Forward and Defense) " + i);
-                        output.sendOutput();
-                        input.setInput();
-                        String playerName = input.getInput();
-                        while (CC.freeAgentChecker(freeAgentList, playerName) == false) {
-                            output.setOutput("Invalid input! Please choose one free agent from the list:");
-                            output.sendErrorOutput();
-                            logger.warn("Invalid input for free agent name.");
-                            input.setInput();
-                            playerName = input.getInput();
-                        }
-                        IFreeAgents freeAgent = new FreeAgents();
-                        freeAgent = freeAgent.getFreeAgentFromList(freeAgentList, playerName);
-                        if (freeAgent.checkPosition(Configurables.FORWARD.getAction()) || freeAgent.checkPosition(Configurables.DEFENSE.getAction())) {
-                            IPlayers player = new Players();
-                            player = player.convertFreeAgentToPlayer(freeAgent);
-                            playerList.add(player);
-                            freeAgentList.remove(freeAgent);
-                            i++;
-                        } else {
-                            output.setOutput("Invalid input! You need to pick a forward or defense!");
-                            output.sendErrorOutput();
-                            logger.warn("You need to pick a forward or defense.");
-                        }
-                    }
-                    String[] locationAttributes = {conferenceName, divisionName, teamName, managerName};
-
-                    ILeague updatedLeague = team.createTeam(league, locationAttributes, headCoach, playerList, generalManager);
-                   //context.setState(new CreateTeamState(updated_league, context, input, output, teamName));
-//                    updatedLeague.storeLeague();
-                    stateMachine.setLeague(updatedLeague);
-                    output.setOutput("Saving the team. Please wait...");
-                    output.sendOutput();
-//                    context.runState();
-//                    context.forward();
-//                    context.runState();
+                    playerName = input.getInput();
+                }
+                IFreeAgents freeAgent = new FreeAgents();
+                freeAgent = freeAgent.getFreeAgentFromList(freeAgentList, playerName);
+                if (freeAgent.checkPosition(Configurables.GOALIE.getAction())) {
+                    IPlayers player = new Players();
+                    player = player.convertFreeAgentToPlayer(freeAgent);
+                    playerList.add(player);
+                    freeAgentList.remove(freeAgent);
+                    i++;
+                    logger.info("You pick out a goalie.");
                 } else {
-                    output.setOutput("Team Already Exists!");
-                    output.sendOutput();
+                    output.setOutput("Invalid input! You need to pick a goalie!");
+                    output.sendErrorOutput();
+                    logger.warn("You need to choose a goalie.");
                 }
             }
+            output.setOutput("Please choose eighteen skaters(forward and defense):");
+            output.sendOutput();
+            for (int i = 1; i <= 26; ) {
+                freeAgentDisplayer.displayFreeAgent(freeAgentList);
+                output.setOutput("Enter Skaters (Forward and Defense) " + i);
+                output.sendOutput();
+                input.setInput();
+                String playerName = input.getInput();
+                while (CC.freeAgentChecker(freeAgentList, playerName) == false) {
+                    output.setOutput("Invalid input! Please choose one free agent from the list:");
+                    output.sendErrorOutput();
+                    logger.warn("Invalid input for free agent name.");
+                    input.setInput();
+                    playerName = input.getInput();
+                }
+                IFreeAgents freeAgent = new FreeAgents();
+                freeAgent = freeAgent.getFreeAgentFromList(freeAgentList, playerName);
+                if (freeAgent.checkPosition(Configurables.FORWARD.getAction()) || freeAgent.checkPosition(Configurables.DEFENSE.getAction())) {
+                    IPlayers player = new Players();
+                    player = player.convertFreeAgentToPlayer(freeAgent);
+                    playerList.add(player);
+                    freeAgentList.remove(freeAgent);
+                    i++;
+                    logger.info("You choose a " + player.getPosition());
+                } else {
+                    output.setOutput("Invalid input! You need to pick a forward or defense!");
+                    output.sendErrorOutput();
+                    logger.warn("You need to pick a forward or defense.");
+                }
+            }
+            String[] locationAttributes = {conferenceName, divisionName, teamName, managerName};
+            ILeague updatedLeague = team.createTeam(league, locationAttributes, headCoach, playerList, generalManager);
+            stateMachine.setLeague(updatedLeague);
+            output.setOutput("Saving the team. Please wait...");
+            output.sendOutput();
+            logger.info(teamName + " is successfully created.");
         }
         return stateMachine.getPlayerChoice();
     }

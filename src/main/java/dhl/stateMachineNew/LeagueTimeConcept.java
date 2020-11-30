@@ -2,13 +2,15 @@ package dhl.stateMachineNew;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class LeagueTimeConcept implements ITime{
-
+    private static final Logger logger = LogManager.getLogger(LeagueTimeConcept.class);
     private IUserOutput output;
 
     public LeagueTimeConcept(){
@@ -23,6 +25,7 @@ public class LeagueTimeConcept implements ITime{
         try {
             calendar.setTime(dateFormat.parse(currentDate));
         } catch (ParseException e) {
+            logger.error("You set the wrong date.");
             output.setOutput("Exception while getting current date");
             output.sendOutput();
         }
