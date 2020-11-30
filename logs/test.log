@@ -1,180 +1,219 @@
-02:54:18.866 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.870 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.871 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.871 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
-02:54:18.871 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.872 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
-02:54:18.872 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
-02:54:18.872 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.872 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.873 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.873 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
-02:54:18.873 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.873 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
-02:54:18.873 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
-02:54:18.873 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
-02:54:18.874 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
-02:54:18.874 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
-02:54:18.874 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
-02:54:18.874 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
-02:54:18.874 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
-02:54:18.874 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.875 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.875 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.875 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
-02:54:18.875 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.875 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
-02:54:18.875 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
-02:54:18.875 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.876 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.876 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.876 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
-02:54:18.876 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.876 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
-02:54:18.877 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
-02:54:18.877 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
-02:54:18.877 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
-02:54:18.877 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
-02:54:18.877 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
-02:54:18.877 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
-02:54:18.877 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
-02:54:18.878 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.878 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.878 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.878 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.879 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.880 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
-02:54:18.881 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
-02:54:18.881 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.881 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.881 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.881 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
-02:54:18.881 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.882 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.882 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.882 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.882 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.882 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.882 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.882 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.883 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
-02:54:18.884 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.884 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
-02:54:18.884 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.884 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
-02:54:18.884 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.884 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.884 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
-02:54:18.885 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
-02:54:18.886 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.886 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
-02:54:18.886 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.886 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
-02:54:18.886 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.886 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
-02:54:18.886 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.886 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
-02:54:18.887 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.887 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
-02:54:18.887 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
-02:54:18.887 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
-02:54:18.887 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.887 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
-02:54:18.887 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.887 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
-02:54:18.888 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.888 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
-02:54:18.888 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
-02:54:18.888 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
-02:54:18.888 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.888 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
-02:54:18.888 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.888 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
-02:54:18.889 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
-02:54:18.889 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
-02:54:18.889 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.889 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
-02:54:18.889 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.889 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
-02:54:18.889 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.889 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
-02:54:18.890 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.890 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
-02:54:18.890 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.890 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
-02:54:18.890 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
-02:54:18.890 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
-02:54:18.890 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.890 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
-02:54:18.891 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
-02:54:18.891 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
-02:54:18.891 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
-02:54:18.891 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
-02:54:18.891 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.891 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
-02:54:18.891 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
-02:54:18.891 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
-02:54:18.892 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
-02:54:18.893 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
-02:54:18.893 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
-02:54:18.893 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
-02:54:18.893 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
-02:54:18.893 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
-02:54:18.893 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
-02:54:19.071 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is injured for 0 days.
-02:54:19.072 [main] INFO  dhl.leagueModel.AllPlayers  - Player1is already injured. He still needs 0to recover.
-02:54:19.072 [main] INFO  dhl.leagueModel.AllPlayers  - Player1is already injured. He still needs 0to recover.
-02:54:19.244 [main] INFO  dhl.stateMachineNew.PlayerDraft  - Random players have been generated for player draft.
-02:54:19.256 [main] INFO  dhl.leagueModel.Division  - Add Team2 to division.
-02:54:19.260 [main] INFO  dhl.leagueModel.Division  - Add Random1 to division.
-02:54:19.463 [main] INFO  dhl.leagueModel.AllPlayers  - Player3 is aged by 50 days.
-02:54:19.465 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is aged by 25 days.
-02:54:19.465 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is injured for 34 days.
-02:54:19.466 [main] INFO  dhl.leagueModel.AllPlayers  - Player4's stats has been decreased by one due to stats decay on birthday.
-02:54:19.474 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is retired.
-02:54:19.477 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
-02:54:19.477 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
-02:54:19.477 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
+23:59:05.444 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.449 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.449 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.449 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+23:59:05.450 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.450 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+23:59:05.450 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+23:59:05.450 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.451 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.451 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.451 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+23:59:05.451 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.452 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+23:59:05.452 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+23:59:05.452 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+23:59:05.453 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+23:59:05.453 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+23:59:05.453 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+23:59:05.453 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+23:59:05.454 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+23:59:05.455 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.455 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.456 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.456 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+23:59:05.456 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.456 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+23:59:05.457 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+23:59:05.457 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.457 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.457 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.457 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+23:59:05.457 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.458 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+23:59:05.458 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+23:59:05.458 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+23:59:05.458 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+23:59:05.458 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+23:59:05.458 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+23:59:05.459 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+23:59:05.459 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+23:59:05.460 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.460 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.460 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.460 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.460 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.460 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.461 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.461 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.461 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+23:59:05.461 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.461 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+23:59:05.462 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.462 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.462 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.462 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.462 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.463 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+23:59:05.463 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.463 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+23:59:05.463 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.463 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+23:59:05.463 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.464 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+23:59:05.464 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.464 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+23:59:05.464 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Plant's strength is 13.0
+23:59:05.464 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.465 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.465 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.465 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+23:59:05.465 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.465 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.465 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.466 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.466 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.466 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.466 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.466 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.466 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.467 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.467 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.467 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.467 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.468 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+23:59:05.468 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+23:59:05.468 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.468 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+23:59:05.468 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.468 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+23:59:05.468 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.468 [main] INFO  dhl.leagueModel.AllPlayers  - Abraham Singh's strength is 27.0
+23:59:05.469 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.469 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.469 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.469 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.469 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.469 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.469 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+23:59:05.469 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.470 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.470 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+23:59:05.470 [main] INFO  dhl.leagueModel.AllPlayers  - Hardik Morrison's strength is 27.0
+23:59:05.470 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+23:59:05.470 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.470 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+23:59:05.470 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.470 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+23:59:05.471 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.471 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+23:59:05.471 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.471 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+23:59:05.471 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.471 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+23:59:05.471 [main] INFO  dhl.leagueModel.AllPlayers  - Nancy Burbchuk's strength is 13.0
+23:59:05.471 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+23:59:05.472 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.472 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+23:59:05.472 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.472 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+23:59:05.472 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.472 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+23:59:05.472 [main] INFO  dhl.leagueModel.AllPlayers  - Rahul Liu's strength is 22.0
+23:59:05.472 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+23:59:05.473 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.473 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+23:59:05.473 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.473 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+23:59:05.473 [main] INFO  dhl.leagueModel.AllPlayers  - Pat Chang's strength is 28.0
+23:59:05.473 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+23:59:05.473 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.473 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+23:59:05.474 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.474 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+23:59:05.474 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.474 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+23:59:05.474 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.474 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+23:59:05.474 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.474 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+23:59:05.475 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Page's strength is 41.0
+23:59:05.475 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+23:59:05.475 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.475 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+23:59:05.475 [main] INFO  dhl.leagueModel.AllPlayers  - Fred Hendrix's strength is 22.0
+23:59:05.475 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+23:59:05.476 [main] INFO  dhl.leagueModel.AllPlayers  - Karan Marley's strength is 14.0
+23:59:05.476 [main] INFO  dhl.leagueModel.AllPlayers  - Jimmy Nelson's strength is 14.0
+23:59:05.476 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.476 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+23:59:05.476 [main] INFO  dhl.leagueModel.AllPlayers  - Zongming Page's strength is 27.0
+23:59:05.476 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+23:59:05.476 [main] INFO  dhl.leagueModel.AllPlayers  - Roger Chang's strength is 16.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Raghav Jones's strength is 23.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Tami Jones's strength is 24.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Prashant Liu's strength is 25.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Sai Burbchuk's strength is 28.0
+23:59:05.477 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+23:59:05.478 [main] INFO  dhl.leagueModel.AllPlayers  - John Fei's strength is 34.0
+23:59:05.478 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+23:59:05.478 [main] INFO  dhl.leagueModel.AllPlayers  - Prabhjot Smith's strength is 31.0
+23:59:05.478 [main] INFO  dhl.leagueModel.AllPlayers  - Tina Halen's strength is 29.0
+23:59:05.478 [main] INFO  dhl.leagueModel.AllPlayers  - John Hendrix's strength is 30.0
+23:59:05.632 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.632 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.633 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.633 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.633 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.633 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.633 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.633 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.633 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.634 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.634 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.634 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.634 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.634 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.635 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.635 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.635 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.635 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.635 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.635 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.636 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.636 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.636 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.636 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.636 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.636 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.637 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.637 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.637 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.637 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.637 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.637 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.637 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.637 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.638 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.638 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.638 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.638 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is injured for 0 days.
+23:59:05.638 [main] INFO  dhl.leagueModel.AllPlayers  - Player1is already injured. He still needs 0to recover.
+23:59:05.638 [main] INFO  dhl.leagueModel.AllPlayers  - Player1is already injured. He still needs 0to recover.
+23:59:05.638 [main] INFO  dhl.leagueModel.AllPlayers  - Player1is already injured. He still needs 0to recover.
+23:59:05.639 [main] INFO  dhl.leagueModel.PlayerTrainingCondition  - Complete the training.
+23:59:05.801 [main] INFO  dhl.stateMachineNew.PlayerDraft  - Random players have been generated for player draft.
+23:59:05.816 [main] INFO  dhl.leagueModel.Division  - Add Team2 to division.
+23:59:05.820 [main] INFO  dhl.leagueModel.Division  - Add Random1 to division.
+23:59:06.007 [main] INFO  dhl.leagueModel.AllPlayers  - Player3 is aged by 50 days.
+23:59:06.010 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is aged by 25 days.
+23:59:06.010 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is injured for 128 days.
+23:59:06.012 [main] INFO  dhl.leagueModel.AllPlayers  - Player4's stats has been decreased by one due to stats decay on birthday.
+23:59:06.025 [main] INFO  dhl.leagueModel.AllPlayers  - Player1 is retired.
+23:59:06.029 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
+23:59:06.029 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
+23:59:06.029 [main] INFO  dhl.leagueModel.AllPlayers  - FreeAgent3's strength is 47.0
