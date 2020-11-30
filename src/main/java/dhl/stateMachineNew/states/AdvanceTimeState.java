@@ -10,11 +10,13 @@ import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.ITime;
 import dhl.stateMachineNew.LeagueTimeConcept;
 import dhl.stateMachineNew.StateMachine;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 
 public class AdvanceTimeState implements IStateMachine {
-
+    private static final Logger logger = LogManager.getLogger(AdvanceTimeState.class);
     StateMachine stateMachine;
     ITime leagueTimeConcept;
     IUserOutput output;
@@ -34,9 +36,9 @@ public class AdvanceTimeState implements IStateMachine {
     }
 
     public IStateMachine doTask() {
-
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
+        logger.info("Today is " + currentDate);
         String regularSeasonEndDate = league.getLastDateOfSeason();
         String playerDraftDate = league.getPlayerDraftDate();
         if(currentDate.equalsIgnoreCase(regularSeasonEndDate)){
@@ -82,5 +84,6 @@ public class AdvanceTimeState implements IStateMachine {
         output.sendOutput();
         output.setOutput("Saves: " + saves / 32 / 82);
         output.sendOutput();
+        logger.info("League average statistics(Goals, Penalties, Shots, Saves): " + goals/32/82 + ", " + penalties/32/82 + ", " + shots/32/82 + ", " + saves/32/82);
     }
 }

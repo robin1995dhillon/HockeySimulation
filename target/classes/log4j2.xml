@@ -18,16 +18,16 @@
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>          
                 <TimeBasedTriggeringPolicy interval="1"/>
-                <SizeBasedTriggeringPolicy size="10MB"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
             </Policies>
-			<DefaultRolloverStrategy max="15"/>
+			<DefaultRolloverStrategy max="20"/>
         </RollingFile>
 		<RollingFile name="RollingFileWarn" fileName="${FILE_PATH}/${FILE_NAME}/warn.log" filePattern="${FILE_PATH}/${FILE_NAME}-WARN-%d{yyyy-MM-dd}_%i.log.gz">
             <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>
-                <SizeBasedTriggeringPolicy size="10MB"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
             </Policies>
             <DefaultRolloverStrategy max="15"/>
         </RollingFile>
@@ -36,7 +36,7 @@
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>
-                <SizeBasedTriggeringPolicy size="10MB"/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
             </Policies>
             <DefaultRolloverStrategy max="15"/>
         </RollingFile>
