@@ -7,7 +7,7 @@ import dhl.leagueModel.FreeAgents;
 import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.Players;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.mock.MockFreeAgent;
 import dhl.mock.MockLeague;
 import dhl.mock.MockPlayer;

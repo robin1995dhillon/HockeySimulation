@@ -4,11 +4,12 @@ import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.LeagueModelAbstractFactory;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.league.League;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.League;
+import dhl.leagueModel.ITeam;
+import dhl.leagueModel.Teams;
 import dhl.stateMachineNew.states.*;
+
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class StateMachine {
     private IStateMachine aging;
     private IStateMachine advanceToNextSeason;
     private IStateMachine persist;
+    private IStateMachine playerDraft;
 
 
     private IStateMachine currentState;
@@ -67,6 +69,7 @@ public class StateMachine {
         advanceToNextSeason = new AdvanceToNextSeasonState(this, this.getTotalTeamList());
         persist = new PersistState();
         output = new UserOutput();
+        playerDraft = new PlayerDraftState(this);
         currentState = jsonImport;
     }
 
@@ -163,6 +166,14 @@ public class StateMachine {
 
     public void setGeneratePlayoffSchedule(IStateMachine generatePlayoffSchedule) {
         this.generatePlayoffSchedule = generatePlayoffSchedule;
+    }
+
+    public IStateMachine getPlayerDraft() {
+        return playerDraft;
+    }
+
+    public void setPlayerDraft(IStateMachine playerDraft) {
+        this.playerDraft = playerDraft;
     }
 
     public IStateMachine getTraining() {

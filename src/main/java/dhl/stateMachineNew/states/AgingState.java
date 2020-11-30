@@ -4,7 +4,7 @@ import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IAllPlayers;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.SchedulerSeason;
@@ -34,9 +34,6 @@ public class AgingState implements IStateMachine {
                 player.agePlayer(1,this.machine.getLeague().getGameplayConfig());
             }
         }
-//        for(IFreeAgents agent : machine.getLeague().getFreeAgents()){
-//            //age free agent
-//        }
         for(IAllPlayers agent: machine.getLeague().getFreeAgents()) {
             agent.agePlayer(1, this.machine.getLeague().getGameplayConfig());
         }

@@ -1,9 +1,9 @@
 package dhl.validator;
 
 import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.generalManager.IGeneralManager;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.IGeneralManager;
+import dhl.leagueModel.IHeadCoach;
+import dhl.leagueModel.ILeague;
 
 import java.util.List;
 

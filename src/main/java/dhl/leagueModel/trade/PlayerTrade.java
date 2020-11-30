@@ -11,14 +11,13 @@ import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
 import dhl.Configurables;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
 import dhl.stateMachineNew.StateMachine;
 import dhl.stateMachineNew.StateMachineAbstractFactory;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class PlayerTrade implements IPlayerTrade {

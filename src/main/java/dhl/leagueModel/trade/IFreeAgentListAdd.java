@@ -2,8 +2,8 @@ package dhl.leagueModel.trade;
 
 import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 
 import java.util.List;
 

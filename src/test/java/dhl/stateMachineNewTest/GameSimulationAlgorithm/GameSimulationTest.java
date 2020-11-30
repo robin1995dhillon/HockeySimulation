@@ -1,6 +1,6 @@
 package dhl.stateMachineNewTest.GameSimulationAlgorithm;
 
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.mock.MockStandingTeam;
 import dhl.mock.MockTeam;
 import dhl.stateMachineNew.ITeamStanding;

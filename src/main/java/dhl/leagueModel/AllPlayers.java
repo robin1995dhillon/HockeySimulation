@@ -201,10 +201,14 @@ public class AllPlayers implements IAllPlayers {
         int year = this.getBirthYear();
         int month = this.getBirthMonth();
         int days = this.getBirthDay();
+        System.out.println("Month is:" + month);
+        System.out.println(year);
+
         if(this.age == 0) {
             this.playerCurrentDate = LocalDate.now();
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
+        System.out.println(this.age);
         this.setPlayerCurrentDate(this.getPlayerCurrentDate().plusDays(daysToAge));
         //System.out.println("-------------"+month);
         LocalDate nextBirthDay = LocalDate.of(this.playerCurrentDate.getYear(), month, days);
@@ -216,13 +220,13 @@ public class AllPlayers implements IAllPlayers {
             this.setAge(this.playerCurrentDate.getYear() - year);
         }
 
-//        if(this.isInjured()) {
-//            this.setInjuredDays(this.getInjuredDays() - daysToAge);
-//            this.playerStillInjured();
-//           // this.checkIfRetired();
-//        } else {
-//          //  this.checkIfRetired();
-//        }
+        if(this.isInjured()) {
+            this.setInjuredDays(this.getInjuredDays() - daysToAge);
+            this.playerStillInjured();
+            this.checkIfRetired();
+        } else {
+            this.checkIfRetired();
+        }
 
     }
 
@@ -232,7 +236,7 @@ public class AllPlayers implements IAllPlayers {
         int average = aging.getAverageRetirementAge();
         int max = aging.getMaximumAge();
         int playerAge = this.getAge();
-        System.out.println(playerAge);
+        System.out.println("Player Age" + playerAge);
         Integer[] retirementAge = {average - 5, average - 4, average - 3, average - 2, average - 1, average, average + 1, average + 4, average + 5, max};
         Integer[] retirementArray = {5, 10, 15, 20, 25, 30, 50, 70, 80, 100};
 
@@ -248,6 +252,7 @@ public class AllPlayers implements IAllPlayers {
         int closestBracket = retirementAge[minIndex];
         int index = Arrays.asList(retirementAge).indexOf(closestBracket);
         int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
+        System.out.println(randomNumber);
         if (randomNumber >= 0 && randomNumber <= retirementArray[index]) {
             System.out.println(this.playerName+" is retired----------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             this.setRetired(true);
@@ -293,6 +298,9 @@ public class AllPlayers implements IAllPlayers {
         player.setChecking(agent.getChecking());
         player.setSaving(agent.getSaving());
         player.setStrength(agent.getStrength());
+        player.setBirthMonth(agent.getBirthMonth());
+        player.setBirthDay(agent.getBirthDay());
+        player.setBirthYear(agent.getBirthYear());
         player.setCaptain(false);
         player.setBirthMonth(agent.getBirthMonth());
         player.setBirthDay(agent.getBirthDay());

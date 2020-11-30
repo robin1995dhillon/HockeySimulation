@@ -1,14 +1,92 @@
 package dhl.mock;
 
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.Players;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
+import dhl.leagueModel.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MockPlayer {
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    IPlayers players;
+
+    public MockPlayer() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        players = leagueModelAbstractFactory.getNewPlayers();
+    }
+
+    public IPlayers createPlayerMockOne() {
+
+        players.setPlayerName("Player1");
+        players.setPosition("forward");
+        players.setCaptain(false);
+        players.setBirthDay(28);
+        players.setBirthMonth(6);
+        players.setBirthYear(1997);
+        players.setSaving(15);
+        players.setShooting(15);
+        players.setChecking(16);
+        players.setSkating(17);
+        players.setRetired(false);
+        return players;
+    }
+
+    public IPlayers createPlayerMockTwo() {
+        players.setPlayerName("Player2");
+        players.setPosition("defense");
+        players.setCaptain(false);
+        players.setBirthDay(15);
+        players.setBirthMonth(9);
+        players.setBirthDay(28);
+        players.setSaving(15);
+        players.setShooting(18);
+        players.setChecking(19);
+        players.setSkating(20);
+        return players;
+    }
+
+    public IPlayers createInjuredPlayerMock() {
+        players.setPlayerName("Player3");
+        players.setPosition("defense");
+        players.setCaptain(false);
+        players.setBirthDay(15);
+        players.setBirthMonth(9);
+        players.setBirthYear(1997);
+        players.setSaving(15);
+        players.setShooting(18);
+        players.setChecking(19);
+        players.setSkating(20);
+        players.setInjured(true);
+        players.setInjuredDays(40);
+        return players;
+    }
+
+    public List<IPlayers> createPlayerListMock() {
+        IPlayers players = createPlayerMockOne();
+        IPlayers players2 = createPlayerMockTwo();
+        List<IPlayers> playersList = new ArrayList<>();
+        playersList.add(players);
+        playersList.add(players2);
+
+        return playersList;
+    }
+
+    public IPlayers createPlayerMockForStatsDecay() {
+        LocalDate playerCurrentDate = LocalDate.of(2020, 8,20);
+        players.setPlayerName("Player4");
+        players.setPosition("forward");
+        players.setCaptain(false);
+        players.setBirthDay(28);
+        players.setBirthMonth(6);
+        players.setBirthYear(1997);
+        players.setSaving(15);
+        players.setShooting(15);
+        players.setChecking(16);
+        players.setSkating(17);
+        players.setRetired(false);
+        players.setPlayerCurrentDate(playerCurrentDate);
+        return players;
+    }
 
     public static IPlayers createMock() {
         IPlayers players = new Players();

@@ -1,12 +1,6 @@
 package dhl.leagueModel;
 
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.IDivision;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.generalManager.IGeneralManager;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
 import dhl.leagueModel.trade.*;
 
 public abstract class LeagueModelAbstractFactory {

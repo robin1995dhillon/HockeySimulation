@@ -1,13 +1,13 @@
 package dhl.validator;
 
 import dhl.Configurables;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.IDivision;
+import dhl.leagueModel.IConference;
+import dhl.leagueModel.IDivision;
 import dhl.leagueModel.IFreeAgents;
-import dhl.leagueModel.generalManager.IGeneralManager;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.IGeneralManager;
+import dhl.leagueModel.IHeadCoach;
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.ITeam;
 
 import java.util.List;
 

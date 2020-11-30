@@ -1,9 +1,7 @@
 package dhl.leagueModel;
 
-import dhl.leagueModel.conference.Conference;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.IDivision;
 import dhl.mock.MockDivision;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,6 +9,13 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ConferenceTest {
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    IConference conference;
+
+    public ConferenceTest() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        conference = leagueModelAbstractFactory.getConference();
+    }
 
     @Test
     void getConferenceName() {
@@ -45,19 +50,5 @@ class ConferenceTest {
         conference.setDivisions(div_array);
         assertEquals(division2, conference.getDivisions().get(1));
 
-    }
-
-    @Test
-    void saveConference() {
-//        List<Integer> idList = new ArrayList<>();
-//        IDivision division = new Division();
-//        ArrayList<IDivision> divArray = new ArrayList<>();
-//        divArray.add(division);
-//        idList.add(1);
-//        idList.add(2);
-//        Conference conference = new Conference();
-//        conference.setConferenceName("Conf1");
-//        conference.setDivisions(divArray);
-//        conference.saveConference(idList);
     }
 }

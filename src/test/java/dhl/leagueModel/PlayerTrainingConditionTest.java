@@ -1,10 +1,6 @@
 package dhl.leagueModel;
 
-import dhl.leagueModel.IPlayerTrainingCondition;
-import dhl.leagueModel.LeagueModelAbstractFactory;
-import dhl.leagueModel.PlayerTrainingCondition;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.headCoach.IHeadCoach;
 import dhl.mock.MockGamePlayConfig;
 import dhl.mock.MockHeadCoach;
 import dhl.mock.MockPlayer;

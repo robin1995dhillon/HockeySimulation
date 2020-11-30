@@ -1,6 +1,6 @@
 package dhl.presentation;
 
-import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.IHeadCoach;
 
 import java.util.List;
 

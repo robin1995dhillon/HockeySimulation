@@ -2,7 +2,7 @@ package dhl.leagueModel.trade;
 
 import dhl.Configurables;
 import dhl.leagueModel.*;
-import dhl.leagueModel.teams.ITeam;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.StateMachine;
 import dhl.stateMachineNew.StateMachineAbstractFactory;
 

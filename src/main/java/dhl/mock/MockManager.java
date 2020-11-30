@@ -1,7 +1,7 @@
 package dhl.mock;
 
-import dhl.leagueModel.generalManager.GeneralManager;
-import dhl.leagueModel.generalManager.IGeneralManager;
+import dhl.leagueModel.GeneralManager;
+import dhl.leagueModel.IGeneralManager;
 
 import java.util.ArrayList;
 import java.util.List;

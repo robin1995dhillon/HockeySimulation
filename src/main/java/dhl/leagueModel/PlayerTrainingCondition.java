@@ -1,7 +1,6 @@
 package dhl.leagueModel;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.headCoach.IHeadCoach;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
