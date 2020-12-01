@@ -1,60 +1,57 @@
 package dhl.leagueModel.trade;
 
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.ITeam;
-import dhl.leagueModel.Teams;
+import dhl.leagueModel.*;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.mock.MockLeague;
 import dhl.mock.MockPlayer;
+import dhl.mock.MockTeam;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerTradingTest {
 
+    IPlayerTradingCondition condition = LeagueModelAbstractFactory.instance().getPLayerTradingCondition();
+    IGamePlayConfig gamePlayConfig = LeagueModelAbstractFactory.instance().getGamePlayConfig();
+
     @Test
     public void strengthTestForward() {
 
         IPlayers player;
         player = MockPlayer.createMock();
-        double strength = player.getShooting() + player.getSkating() + player.getChecking() / 2.0;
-        assertEquals(player.getShooting() + player.getSkating() + player.getChecking() / 2.0, strength);
+        double strength = player.calculateStrength();
+        assertEquals(37.0, strength);
     }
 
     @Test
     public void strengthTestDefense() {
         IPlayers player;
-        player = MockPlayer.createMock();
-        double strength = player.getSkating() + player.getChecking() + player.getShooting() / 2.0;
-        assertEquals(player.getSkating() + player.getChecking() + player.getShooting() / 2.0, strength);
+        player = MockPlayer.createMockDefense();
+        double strength = player.calculateStrength();
+        assertEquals(37.0, strength);
 
     }
 
     @Test
     public void strengthTestGoalie() {
         IPlayers player;
-        player = MockPlayer.createMock();
+        player = MockPlayer.createMockGoalie();
         double strength = player.getSkating() + player.getSaving();
-        assertEquals(player.getSkating() + player.getSaving(), strength);
+        assertEquals(31, strength);
     }
 
     @Test
     public void getPositionTypesOfferingTest() {
 
-        IFreeAgentListAdd freeAgentListAdd = new FreeAgentList();
-        freeAgentListAdd.setAvailableLeague(MockLeague.createMock());
-        IPlayerTradingCondition condition = new PlayerTradingCondition();
-        List<IPlayers> players;
-        players = MockPlayer.createMockPlayerList();
+        List<IPlayers> players = MockTeam.MockTeamWithThirtyPlayers().getPlayers();
+        String position = players.get(0).getPosition();
+        List<IPlayers> listOutput = condition.getPositionTypesOffering(players);
+        assertEquals(position,listOutput.get(0).getPosition());
 
-        List<IPlayers> expectedList;
-        expectedList = MockPlayer.getPositionTypesOfferingExpectedList();
-        condition.getPositionTypesOffering(players);
-
-        assertEquals(players.get(0).getPosition(), expectedList.get(0).getPosition());
     }
-
 
 
     @Test

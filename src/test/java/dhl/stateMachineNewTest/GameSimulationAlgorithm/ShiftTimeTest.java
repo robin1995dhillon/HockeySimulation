@@ -48,27 +48,4 @@ public class ShiftTimeTest {
         assertEquals(1.0, playersListOne.get(0).getGoals());
         assertEquals(0.0, playersListTwo.get(5).getSaves());
     }
-
-
-//    @Test
-//    public void oneGameTest(){
-//        algorithm.setPenaltyChance(0.04);
-//        algorithm.setSaveChance(0.907);
-//        algorithm.setShotChance(0.433);
-//        algorithm.setSaveCoefficientOne(0.001);
-//        algorithm.setSaveCoefficientTwo(0);
-//        algorithm.setShotCoefficientOne(0.001);
-//        algorithm.setShotCoefficientTwo(0);
-//        algorithm.setSaveCoefficientOne(0.001);
-//        algorithm.setSaveCoefficientTwo(0);
-//        algorithm.setShotCoefficientOne(0.06);
-//        algorithm.setShotCoefficientTwo(0.01);
-//        shiftTime.setAlgorithm(algorithm);
-//        ITeam teamOne = MockTeam.MockOffensiveTeam();
-//        ITeam teamTwo = MockTeam.MockDefendingTeam();
-//        shiftTime.oneGame(teamOne, teamTwo);
-//    }
-
-
-
 }

@@ -436,4 +436,33 @@ public class MockPlayer {
         return playersList;
     }
 
+    public static IPlayers createMockDefense() {
+        IPlayers players = new Players();
+        players.setPlayerName("Player2");
+        players.setPosition("defense");
+        players.setSkating(15);
+        players.setShooting(15);
+        players.setChecking(15);
+        players.setSaving(15);
+        players.setBirthDay(28);
+        players.setBirthYear(1997);
+        players.setBirthMonth(6);
+        return players;
+    }
+
+    public static IPlayers createMockGoalie() {
+        IPlayers players = new Players();
+        players.setPlayerName("Player1");
+        players.setPosition("goalie");
+        players.setSkating(16);
+        players.setShooting(13);
+        players.setChecking(14);
+        players.setSaving(15);
+        players.setBirthDay(28);
+        players.setBirthYear(1997);
+        players.setBirthMonth(6);
+        players.setCaptain(true);
+        return players;
+    }
+
 }

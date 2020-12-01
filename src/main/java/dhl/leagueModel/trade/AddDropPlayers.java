@@ -2,6 +2,7 @@ package dhl.leagueModel.trade;
 
 import dhl.Configurables;
 import dhl.leagueModel.*;
+import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.StateMachine;
 import dhl.stateMachineNew.StateMachineAbstractFactory;
 
@@ -11,8 +12,6 @@ import java.util.List;
 
 public class AddDropPlayers implements IAddDropPlayers {
 
-    private IFreeAgentListAdd freeAgentLists;
-    private IFreeAgentListDrop freeAgentListsDrop;
     private int totalGoalies;
     private int totalForward;
     private int totalDefense;
@@ -20,14 +19,12 @@ public class AddDropPlayers implements IAddDropPlayers {
     private IAllPlayers allPlayers;
 
     public AddDropPlayers() {
-        allPlayers = new AllPlayers();
+        allPlayers = LeagueModelAbstractFactory.instance().getAllPlayers();
         stateMachine = StateMachineAbstractFactory.instance().getStateMachine();
         totalGoalies = Integer.parseInt(Configurables.TOTAL_GOALIES.getAction());
         totalDefense = Integer.parseInt(Configurables.TOTAL_DEFENSE.getAction());
         totalForward = Integer.parseInt(Configurables.TOTAL_FORWARD.getAction());
 
-        freeAgentLists = new FreeAgentList();
-        freeAgentListsDrop = new FreeAgentListDrop();
     }
 
     @Override
@@ -48,55 +45,47 @@ public class AddDropPlayers implements IAddDropPlayers {
             }
         }
 
-            if (noOfGoalies > totalGoalies) {
-                hireFreeAgents(team, noOfGoalies - totalGoalies, Configurables.GOALIE.getAction());
-            } else if (noOfGoalies < totalGoalies) {
-                dropToFreeAgents(team,totalGoalies - noOfGoalies, Configurables.GOALIE.getAction());
-            }
-            if (noOfDefense > totalDefense) {
-                hireFreeAgents(team, noOfDefense - totalDefense, Configurables.DEFENSE.getAction());
-            } else if (noOfDefense < totalDefense) {
-                dropToFreeAgents(team,totalDefense - noOfDefense, Configurables.DEFENSE.getAction());
-            }
-            if (noOfForwards > totalForward) {
-                hireFreeAgents(team, noOfForwards - totalForward, Configurables.FORWARD.getAction());
-            } else if (noOfForwards < totalForward) {
-                dropToFreeAgents(team,totalForward - noOfForwards, Configurables.FORWARD.getAction());
-            }
-
-//        int playersToBeAdded;
-//        int playersToBeDropped;
-//        int totalNumberOfPlayers = Integer.parseInt(Configurables.TOTAL_PLAYERS.getAction());
-//
-//        if (totalPlayers < totalNumberOfPlayers) {
-//            playersToBeAdded = totalNumberOfPlayers - totalPlayers;
-//
-//            freeAgentLists.aiAgentListAdd(team, playersToBeAdded);
-//        } else if (totalPlayers > totalNumberOfPlayers) {
-//
-//            playersToBeDropped = totalPlayers - totalNumberOfPlayers;
-//            freeAgentListsDrop.agentListDrop(team, playersToBeDropped);
-//        }
+        if (noOfGoalies > totalGoalies) {
+            hireFreeAgents(team, noOfGoalies - totalGoalies, Configurables.GOALIE.getAction());
+        } else if (noOfGoalies < totalGoalies) {
+            dropToFreeAgents(team, totalGoalies - noOfGoalies, Configurables.GOALIE.getAction());
+        }
+        if (noOfDefense > totalDefense) {
+            hireFreeAgents(team, noOfDefense - totalDefense, Configurables.DEFENSE.getAction());
+        } else if (noOfDefense < totalDefense) {
+            dropToFreeAgents(team, totalDefense - noOfDefense, Configurables.DEFENSE.getAction());
+        }
+        if (noOfForwards > totalForward) {
+            hireFreeAgents(team, noOfForwards - totalForward, Configurables.FORWARD.getAction());
+        } else if (noOfForwards < totalForward) {
+            dropToFreeAgents(team, totalForward - noOfForwards, Configurables.FORWARD.getAction());
         }
 
+    }
+
+    public IAllPlayers getAllPlayers(){
+        return allPlayers;
+    }
+    public void setAllPlayers(IAllPlayers allPlayers){
+        this.allPlayers = allPlayers;
+    }
 
     public void dropToFreeAgents(ITeam team, int count, String position) {
         List<IPlayers> players = new ArrayList<>(team.getPlayers());
         List<IPlayers> playersToBeDropped = new ArrayList<>();
         players.sort(Comparator.comparingDouble(IPlayers::calculateStrength));
         int playersCount = 0;
-        for (IPlayers player: players){
-            if (player.getPosition().equalsIgnoreCase(position)){
+        for (IPlayers player : players) {
+            if (player.getPosition().equalsIgnoreCase(position)) {
                 playersCount++;
                 playersToBeDropped.add(player);
-                if (playersCount == count){
+                if (playersCount == count) {
                     break;
                 }
             }
         }
-        for (int i=0; i< playersToBeDropped.size(); i++){
-            stateMachine.getLeague().getFreeAgents()
-                    .add(allPlayers.convertPlayerToFreeAgent(playersToBeDropped.get(i)));
+        for (int i = 0; i < playersToBeDropped.size(); i++) {
+            stateMachine.getLeague().getFreeAgents().add(allPlayers.convertPlayerToFreeAgent(playersToBeDropped.get(i)));
         }
         team.getPlayers().removeAll(playersToBeDropped);
     }
@@ -107,16 +96,16 @@ public class AddDropPlayers implements IAddDropPlayers {
         List<IFreeAgents> freeAgentsToBeHired = new ArrayList<>();
         freeAgents.sort(Comparator.comparingDouble(IFreeAgents::calculateStrength).reversed());
         int freeAgentsCount = 0;
-        for (IFreeAgents freeAgent: freeAgents){
-            if (freeAgent.getPosition().equalsIgnoreCase(position)){
+        for (IFreeAgents freeAgent : freeAgents) {
+            if (freeAgent.getPosition().equalsIgnoreCase(position)) {
                 freeAgentsCount++;
                 freeAgentsToBeHired.add(freeAgent);
-                if (freeAgentsCount == count){
+                if (freeAgentsCount == count) {
                     break;
                 }
             }
         }
-        for (int i=0; i< freeAgentsToBeHired.size(); i++){
+        for (int i = 0; i < freeAgentsToBeHired.size(); i++) {
             team.addPlayerToTeam(allPlayers.convertFreeAgentToPlayer(freeAgentsToBeHired.get(i)));
         }
         stateMachine.getLeague().getFreeAgents().removeAll(freeAgentsToBeHired);

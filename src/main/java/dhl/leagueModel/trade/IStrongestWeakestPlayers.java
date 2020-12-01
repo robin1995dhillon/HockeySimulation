@@ -1,8 +1,8 @@
 package dhl.leagueModel.trade;
 
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.ITeam;
-import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 
 import java.util.List;
 

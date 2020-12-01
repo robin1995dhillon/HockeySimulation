@@ -2,9 +2,9 @@ package dhl.leagueModel.trade;
 
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.ITeam;
+import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
-import dhl.leagueModel.gamePlayConfig.Trading;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,11 +12,11 @@ import java.util.List;
 
 public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
 
-    IGamePlayConfig gamePlayConfig;
     ITrading trading;
 
     public StrongestWeakestPlayers() {
-        trading = new Trading();
+        trading = LeagueModelAbstractFactory.instance().getGamePlayConfig().getTrading();
+
     }
 
     @Override
@@ -30,13 +30,11 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
                 playersStrong.add(weakPlayer);
             }
         }
-        System.out.println("size of playerstrong is : "+playersStrong.size());
         playersStrong.sort(Collections.reverseOrder((p1, p2) -> Double.compare(p1.calculateStrength(), p2.calculateStrength())));
 
-        if(playersStrong.size() > sizeOfList) {
+        if (playersStrong.size() > sizeOfList) {
             return playersStrong.subList(0, sizeOfList);
-        }
-        else{
+        } else {
             return playersStrong.subList(0, playersStrong.size());
         }
     }
@@ -46,7 +44,6 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
 
         double strength = 0;
         for (IPlayers player : selectedPLayers) {
-            //strength += player.getStrength();
             strength += player.calculateStrength();
         }
         return strength;

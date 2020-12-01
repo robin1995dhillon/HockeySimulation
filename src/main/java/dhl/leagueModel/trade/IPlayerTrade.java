@@ -1,7 +1,7 @@
 package dhl.leagueModel.trade;
 
-import dhl.leagueModel.ITeam;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
+import dhl.leagueModel.ITeam;
 
 public interface IPlayerTrade {
 

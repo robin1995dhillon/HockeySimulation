@@ -16,10 +16,10 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory {
     private IFreeAgents freeAgents;
     private IGamePlayConfig gamePlayConfig;
     private IPlayerTrainingCondition playerTrainingCondition;
+    private IPlayerTrade playerTrade;
+    private IAllPlayers allPlayers;
 
     private IAddDropPlayers addDropPlayers;
-    private IFreeAgentListAdd freeAgentListAdd;
-    private IFreeAgentListDrop freeAgentListDrop;
     private IPlayerTradingCondition playerTradingCondition;
     private IStrongestWeakestPlayers strongestWeakestPlayers;
 
@@ -173,20 +173,6 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory {
         return addDropPlayers;
     }
 
-    public IFreeAgentListAdd getFreeAgentList() {
-        if (freeAgentListAdd == null) {
-            freeAgentListAdd = new FreeAgentList();
-        }
-        return freeAgentListAdd;
-    }
-
-    public IFreeAgentListDrop getFreeAgentListDrop() {
-        if (freeAgentListDrop == null) {
-            freeAgentListDrop = new FreeAgentListDrop();
-        }
-        return freeAgentListDrop;
-    }
-
     public IPlayerTradingCondition getPLayerTradingCondition() {
         if (playerTradingCondition == null) {
             playerTradingCondition = new PlayerTradingCondition();
@@ -206,16 +192,6 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory {
 
     }
 
-    public void setFreeAgentList(IFreeAgentListAdd freeAgentListAdd) {
-
-        this.freeAgentListAdd = freeAgentListAdd;
-    }
-
-    public void setFreeAgentListDrop(IFreeAgentListDrop freeAgentListDrop) {
-
-        this.freeAgentListDrop = freeAgentListDrop;
-
-    }
 
     public void setPLayerTradingCondition(IPlayerTradingCondition playerTradingCondition) {
 
@@ -227,5 +203,33 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory {
 
         this.strongestWeakestPlayers = strongestWeakestPlayers;
 
+    }
+
+    @Override
+    public void setPlayerTrade(IPlayerTrade playerTrade) {
+        this.playerTrade = playerTrade;
+    }
+
+    @Override
+    public IPlayerTrade getPlayerTrade() {
+
+        if (playerTrade == null) {
+            playerTrade = new PlayerTrade();
+        }
+
+        return this.playerTrade;
+    }
+
+    @Override
+    public void setAllPlayers(IAllPlayers allPlayers) {
+        this.allPlayers = allPlayers;
+    }
+
+    @Override
+    public IAllPlayers getAllPlayers() {
+        if (allPlayers == null) {
+            allPlayers = new AllPlayers();
+        }
+        return allPlayers;
     }
 }

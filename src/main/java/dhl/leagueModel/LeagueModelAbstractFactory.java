@@ -63,22 +63,22 @@ public abstract class LeagueModelAbstractFactory {
 
     public abstract IAddDropPlayers getAddDropPlayers();
 
-    public abstract IFreeAgentListAdd getFreeAgentList();
-
-    public abstract IFreeAgentListDrop getFreeAgentListDrop();
-
     public abstract IPlayerTradingCondition getPLayerTradingCondition();
 
     public abstract IStrongestWeakestPlayers getStrongestWeakestPlayers();
 
     public abstract void  setAddDropPlayers(IAddDropPlayers addDropPlayers);
 
-    public abstract void  setFreeAgentList(IFreeAgentListAdd freeAgentListAdd);
-
-    public abstract void  setFreeAgentListDrop(IFreeAgentListDrop freeAgentListDrop);
-
     public abstract void  setPLayerTradingCondition(IPlayerTradingCondition playerTradingCondition);
 
     public abstract void  setStrongestWeakestPlayers(IStrongestWeakestPlayers strongestWeakestPlayers);
+
+    public abstract void setPlayerTrade(IPlayerTrade playerTrade);
+
+    public abstract IPlayerTrade getPlayerTrade();
+
+    public abstract void setAllPlayers(IAllPlayers allPlayers);
+
+    public abstract IAllPlayers getAllPlayers();
 
 }
