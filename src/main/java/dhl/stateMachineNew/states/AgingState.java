@@ -62,12 +62,7 @@ public class AgingState implements IStateMachine {
                 machine.getLeague().setFreeAgents(freeAgentList.get(i).removeFreeAgents(machine.getLeague().getFreeAgents()));
             }
         }
-<<<<<<< HEAD
-        System.out.println("FreeAgent Size after Aging of FreeAgents: " + freeAgentList.size());
 
-=======
-        System.out.println("Size is: " + machine.getLeague().getFreeAgents().size());
->>>>>>> 4930e8c490369becba4dc48aa5970bce4cf2de67
         return doTask();
     }
 
