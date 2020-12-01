@@ -20,7 +20,7 @@ public class JsonImport implements IJsonImport{
         output = new UserOutput();
     }
 
-    public ILeague importJson(String filePath, ILeague league) {
+    public ILeague importJson(String filePath, ILeague league) throws Exception {
         JSONObject Object = JSONReader.readJSON(filePath);
         output.setOutput("Loaded JSON:");
         output.sendOutput();

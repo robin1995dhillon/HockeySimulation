@@ -81,7 +81,7 @@ public class StateMachine {
         return this.filePath;
     }
 
-    public void startMachine() throws ParseException {
+    public void startMachine() throws Exception {
 
         while (currentState != null) {
             IStateMachine nextState = currentState.entry();

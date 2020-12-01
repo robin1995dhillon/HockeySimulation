@@ -4,7 +4,7 @@ import java.text.ParseException;
 
 public interface IStateMachine {
 
-    IStateMachine entry() throws ParseException;
-    IStateMachine doTask() throws ParseException;
+    IStateMachine entry() throws Exception;
+    IStateMachine doTask() throws Exception;
     void exit();
 }

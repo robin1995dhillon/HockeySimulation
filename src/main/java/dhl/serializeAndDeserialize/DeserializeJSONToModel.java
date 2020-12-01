@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.IConference;
 import dhl.leagueModel.ILeague;
@@ -16,7 +17,7 @@ import java.nio.file.Paths;
 public class DeserializeJSONToModel implements IDeserializeJSONToModel {
     static ObjectMapper objectMapper;
     public ILeague league;
-    UserOutput userOutput;
+    IUserOutput userOutput;
 
     public DeserializeJSONToModel() {
         objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

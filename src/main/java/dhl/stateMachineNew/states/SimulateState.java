@@ -29,13 +29,13 @@ public class SimulateState implements IStateMachine {
         abstractFactory = StateMachineAbstractFactory.instance();
     }
 
-    public IStateMachine entry() throws ParseException {
+    public IStateMachine entry() throws Exception {
         System.out.println("We are in Simulate State");
 
         return doTask();
     }
 
-    public IStateMachine doTask() throws ParseException {
+    public IStateMachine doTask() throws Exception {
 
         ILeague league = machine.getLeague();
         int count = 0; //remove it

@@ -7,7 +7,7 @@ import java.text.ParseException;
 
 public class MainSimulation {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws Exception {
 
         String filePath = null;
         try {

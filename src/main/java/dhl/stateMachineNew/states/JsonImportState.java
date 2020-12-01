@@ -22,12 +22,12 @@ public class JsonImportState implements IStateMachine {
 
     }
 
-    public IStateMachine entry() {
+    public IStateMachine entry() throws Exception {
 
         return doTask();
     }
 
-    public IStateMachine doTask() {
+    public IStateMachine doTask() throws Exception {
         this.filePath = this.stateMachine.getFilePath();
         if (this.filePath == null || this.filePath.isEmpty()) {
             System.out.println("filepath is null");
