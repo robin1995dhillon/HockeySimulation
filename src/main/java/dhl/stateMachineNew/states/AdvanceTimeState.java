@@ -47,6 +47,7 @@ public class AdvanceTimeState implements IStateMachine {
             String year = String.valueOf(stateMachine.getPlayoffsYear());
             playOffDay = day + "-" + month + "-" + year;
             stateMachine.getLeague().setDate(playOffDay);
+            logger.info("Regular season is over. Playoff season will start on " + playOffDay);
             return stateMachine.getGeneratePlayoffSchedule();
         }
         else if(currentDate.equals(playerDraftDate)) {

@@ -10,6 +10,8 @@ import dhl.stateMachineNew.ISchedulerSeason;
 import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.SchedulerSeason;
 import dhl.stateMachineNew.StateMachine;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class AgingState implements IStateMachine {
-
+    private static final Logger logger = LogManager.getLogger(AgingState.class);
     StateMachine machine;
     ISchedulerSeason schedulerSeason;
     private IUserOutput output;
@@ -41,24 +43,25 @@ public class AgingState implements IStateMachine {
                     System.out.println("Player to be retired is" + players.get(j).getPlayerName());
                     System.out.println("Player Age is" + players.get(j).getAge());
                     System.out.println("Player position is" + players.get(j).getPosition());
+                    logger.info(players.get(j).getPlayerName() + " is going to retire.");
                     IFreeAgents convertedFreeAgent = players.get(j).replacePlayerWithFreeAgent(players.get(j),machine.getLeague().getFreeAgents());
                     System.out.println("Selected Free Agent is " + convertedFreeAgent.getPlayerName());
                     IPlayers playerToBeAdded = players.get(j).convertFreeAgentToPlayer(convertedFreeAgent);
                     allTeams.get(i).addPlayerToTeam(playerToBeAdded);
                     allTeams.get(i).removePlayerFromTeam(players.get(j));
                     machine.getLeague().setFreeAgents(convertedFreeAgent.removeFreeAgents(machine.getLeague().getFreeAgents()));
+                    logger.info(players.get(j).getPlayerName() + " is going to retire. He will be replaced by " + playerToBeAdded.getPlayerName());
                 }
             }
         }
         List<IFreeAgents> freeAgentList = machine.getLeague().getFreeAgents();
         System.out.println("FreeAgent Size after Aging of Players: " + freeAgentList.size());
-        for(int i=0;i<freeAgentList.size();i++) {
+        for(int i = 0; i < freeAgentList.size(); i++) {
             freeAgentList.get(i).agePlayer(1, this.machine.getLeague().getGameplayConfig());
             if(freeAgentList.get(i).isRetired()) {
 //                newFreeAgentList = agent.retireFreeAgents(machine.getLeague().getFreeAgents());
             }
         }
-
         System.out.println("Size is: " + machine.getLeague().getFreeAgents().size());
         return doTask();
     }
@@ -73,6 +76,7 @@ public class AgingState implements IStateMachine {
             output.sendOutput();
 //            machine.setCurrentState(machine.getAdvanceToNextSeason());
 //            machine.getCurrentState().entry();
+            logger.info("Winner of Stanley cup season " + (machine.getLeague().getSeason() + 1) + " is " + machine.getLeague().getTeamStandingList().get(0).getTeam().getTeamName());
             return machine.getAdvanceToNextSeason();
         }
         else{

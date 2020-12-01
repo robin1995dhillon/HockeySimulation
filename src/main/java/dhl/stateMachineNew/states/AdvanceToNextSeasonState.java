@@ -33,7 +33,6 @@ public class AdvanceToNextSeasonState implements IStateMachine {
     private static final Logger logger = LogManager.getLogger(AdvanceToNextSeasonState.class);
 
     public AdvanceToNextSeasonState(StateMachine stateMachine, List<ITeam> allTeams){
-
         this.machine = stateMachine;
         this.allTeams = allTeams;
         output = new UserOutput();
@@ -41,7 +40,6 @@ public class AdvanceToNextSeasonState implements IStateMachine {
     }
 
     public IStateMachine entry() throws ParseException {
-
         return doTask();
     }
 
@@ -52,19 +50,18 @@ public class AdvanceToNextSeasonState implements IStateMachine {
         LocalDate currentDate =LocalDate.parse(date,formatter);
         String[] dateSimulationStart = season.getStartDayOfSeason().split("-");
         int year = Integer.parseInt(dateSimulationStart[2]);
-        LocalDate nextSeasonDate = LocalDate.parse(Configurables.START_DAY_OF_SEASON.getAction()+String.valueOf(year+1),formatter);
+        LocalDate nextSeasonDate = LocalDate.parse(Configurables.START_DAY_OF_SEASON.getAction() + String.valueOf(year+1), formatter);
         int daysBetweenDates = (int) Duration.between(currentDate,nextSeasonDate).toDays();
         if(machine.getLeague().getSeason() == machine.getLeague().getTotalSeasons()){
             output.setOutput("end of simulation!");
             output.sendOutput();
+            logger.info("End of simulation. Ready to save the game.");
             saveGame(machine.getLeague());
             System.exit(0);
         }
         else{
             List<IFreeAgents> oldFreeAgentList = machine.getLeague().getFreeAgents();
-
-//            If the freeAgent is retired -> remove from freeAgentList
-            for(int i=0;i<oldFreeAgentList.size();i++) {
+            for(int i = 0; i < oldFreeAgentList.size(); i++) {
                 if(oldFreeAgentList.get(i).isRetired()) {
                     oldFreeAgentList.remove(oldFreeAgentList.get(i));
                 }
@@ -75,8 +72,9 @@ public class AdvanceToNextSeasonState implements IStateMachine {
                 for(IPlayers player : team.getPlayers()){
                     player.agePlayer(daysBetweenDates, this.machine.getLeague().getGameplayConfig());
                     if(player.isRetired()){
-                        output.setOutput("Player "+player.getPlayerName()+" retired from team "+team.getTeamName());
+                        output.setOutput("Player " + player.getPlayerName() + " retired from team " + team.getTeamName());
                         output.sendOutput();
+                        logger.info(player.getPlayerName() + " retired from "+team.getTeamName());
                         IFreeAgents agent = player.replacePlayerWithFreeAgent(player, machine.getLeague().getFreeAgents());
                         IPlayers convertPlayer = player.convertFreeAgentToPlayer(agent);
                         //add player to team
@@ -84,8 +82,8 @@ public class AdvanceToNextSeasonState implements IStateMachine {
                     }
                 }
             }
-
         }
+        logger.info("End of season. Save game and ready to simulate next season.");
         saveGame(machine.getLeague());
         return machine.getInitializeSeason();
     }

@@ -50,6 +50,11 @@ public class StateMachineConcrete extends StateMachineAbstractFactory{
     }
 
     @Override
+    public ITeamStanding getNewTeamStanding() {
+        return new TeamStandings();
+    }
+
+    @Override
     public ITime getTime() {
         if (time == null) {
             time = new LeagueTimeConcept();

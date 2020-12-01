@@ -24,6 +24,8 @@ public abstract class StateMachineAbstractFactory {
 
     public abstract ITeamStanding getTeamStanding();
 
+    public abstract ITeamStanding getNewTeamStanding();
+
     public abstract ITime getTime();
 
     public abstract IJsonImport getJsonImport();

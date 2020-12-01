@@ -24,7 +24,6 @@ public class GeneratePlayoffScheduleState implements IStateMachine {
 
         ISchedulerSeason scheduler = new SchedulerSeason();
         scheduler.playoffSchedule(machine);
-
         return machine.getTraining();
     }
 
