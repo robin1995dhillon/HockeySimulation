@@ -6,10 +6,7 @@ import dhl.leagueModel.IConference;
 import dhl.leagueModel.IDivision;
 import dhl.leagueModel.ILeague;
 import dhl.leagueModel.ITeam;
-import dhl.stateMachineNew.IStateMachine;
-import dhl.stateMachineNew.ITime;
-import dhl.stateMachineNew.LeagueTimeConcept;
-import dhl.stateMachineNew.StateMachine;
+import dhl.stateMachineNew.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,6 +33,7 @@ public class AdvanceTimeState implements IStateMachine {
     }
 
     public IStateMachine doTask() {
+        ISchedulerSeason scheduler = StateMachineAbstractFactory.instance().getSchedulerSeason();
         ILeague league = stateMachine.getLeague();
         String currentDate = league.getDate();
         logger.info("Today is " + currentDate);
@@ -43,6 +41,12 @@ public class AdvanceTimeState implements IStateMachine {
         String playerDraftDate = league.getPlayerDraftDate();
         if(currentDate.equalsIgnoreCase(regularSeasonEndDate)){
             getLeagueAverages(league);
+            String playOffDay = scheduler.getFirstDayOfStanleyPlayoffs();
+            String day  = playOffDay.split("-")[0];
+            String month  = playOffDay.split("-")[1];
+            String year = String.valueOf(stateMachine.getPlayoffsYear());
+            playOffDay = day + "-" + month + "-" + year;
+            stateMachine.getLeague().setDate(playOffDay);
             return stateMachine.getGeneratePlayoffSchedule();
         }
         else if(currentDate.equals(playerDraftDate)) {

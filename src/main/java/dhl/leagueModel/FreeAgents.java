@@ -10,8 +10,6 @@ import java.util.List;
 @JsonDeserialize(as = FreeAgents.class)
 public class FreeAgents extends AllPlayers implements IFreeAgents {
 
-    private static final Logger logger = LogManager.getLogger(FreeAgents.class);
-
     public FreeAgents() {
         super();
     }
@@ -33,7 +31,6 @@ public class FreeAgents extends AllPlayers implements IFreeAgents {
 
         for(IFreeAgents freeAgents: freeAgentsList) {
             if(this.equals(freeAgents)) {
-                System.out.println("Inside Removing FreeAgents");
                 continue;
             } else {
                 newFreeAgentList.add(freeAgents);

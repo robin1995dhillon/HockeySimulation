@@ -2,12 +2,23 @@ package dhl.mock;
 
 import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.ITeamStanding;
+import dhl.stateMachineNew.StateMachineAbstractFactory;
 import dhl.stateMachineNew.TeamStandings;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MockStandingTeam {
+
+    StateMachineAbstractFactory stateMachineAbstractFactory;
+    ITeamStanding teamStanding;
+    ITeam team;
+    MockTeam mockTeam;
+    public MockStandingTeam() {
+        stateMachineAbstractFactory = StateMachineAbstractFactory.instance();
+        teamStanding = stateMachineAbstractFactory.getTeamStanding();
+        mockTeam = new MockTeam();
+    }
 
     public static List<ITeamStanding> createTeamStandingMock() {
 
@@ -56,4 +67,23 @@ public class MockStandingTeam {
         }
         return standingList;
     }
+
+    public List<ITeamStanding> createTeamStandingThreeMock(){
+        List<ITeamStanding> standingList = new ArrayList<>();
+        for(int i = 0; i < 32; i++){
+            team = MockTeam.MockTeamWithThirtyPlayers();
+            ITeamStanding teamStanding = new TeamStandings();
+            teamStanding.setTeam(team);
+            teamStanding.setGamesLost(4);
+            teamStanding.setTotalPoints(i + 2);
+            teamStanding.setGamesWon(i + 1);
+            teamStanding.setGamesPlayed(5);
+            teamStanding.setDivision("ABC");
+            teamStanding.setConference("DEF");
+            standingList.add(teamStanding);
+        }
+        return standingList;
+    }
+
+
 }

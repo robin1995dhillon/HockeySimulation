@@ -1,5 +1,6 @@
 package dhl.leagueModel;
 
+import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 
 import java.util.List;
@@ -8,7 +9,6 @@ public class Conference implements IConference {
 
     private String conferenceName;
     private List<IDivision> divisions;
-    private UserOutput userOutput = new UserOutput();
 
     public Conference() {
     }

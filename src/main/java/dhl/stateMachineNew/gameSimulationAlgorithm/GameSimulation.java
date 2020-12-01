@@ -17,13 +17,13 @@ public class GameSimulation implements IGameSimulation {
 
         double offensiveGoals = 0;
         double defendingGoals = 0;
-        algorithm.setPenaltyChance(0.04);
+        algorithm.setPenaltyChance(0.025);
         algorithm.setSaveChance(0.907);
         algorithm.setShotChance(0.433);
         algorithm.setSaveCoefficientOne(0.001);
         algorithm.setSaveCoefficientTwo(0.001);
         algorithm.setShotCoefficientOne(0.001);
-        algorithm.setShotCoefficientTwo(0);
+        algorithm.setShotCoefficientTwo(-0.00275);
         shiftTime.setAlgorithm(algorithm);
         ITeamStanding offensiveTeamStanding = new TeamStandings();
         ITeamStanding defendingTeamStanding = new TeamStandings();

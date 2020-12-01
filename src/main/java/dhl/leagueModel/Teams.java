@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Teams implements ITeam {
     private static final Logger logger = LogManager.getLogger(Teams.class);
+
     public String teamName;
     public IGeneralManager generalManager;
     public IHeadCoach headCoach;
@@ -26,7 +27,6 @@ public class Teams implements ITeam {
     private double saves;
     private double penalties;
     private double goals;
-    UserOutput userOutput = new UserOutput();
     private int gameCount;
 
     public Teams() {
