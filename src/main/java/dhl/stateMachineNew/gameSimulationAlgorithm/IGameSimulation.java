@@ -1,8 +1,8 @@
 package dhl.stateMachineNew.gameSimulationAlgorithm;
 
-import dhl.stateMachineNew.ITeamStanding;
 import dhl.leagueModel.ILeague;
 import dhl.leagueModel.ITeam;
+import dhl.stateMachineNew.ITeamStanding;
 
 public interface IGameSimulation {
 

@@ -1,17 +1,17 @@
 package dhl.leagueModel.trade;
 
+import dhl.Configurables;
 import dhl.inputOutput.IUserInput;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserInput;
 import dhl.inputOutput.UserOutput;
+import dhl.leagueModel.IPlayers;
+import dhl.leagueModel.ITeam;
 import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.leagueModel.gamePlayConfig.Trading;
-import dhl.Configurables;
-import dhl.leagueModel.IPlayers;
-import dhl.leagueModel.ITeam;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
 import dhl.stateMachineNew.StateMachine;

@@ -2,7 +2,6 @@ package dhl.mock;
 
 import dhl.leagueModel.HeadCoach;
 import dhl.leagueModel.IHeadCoach;
-import dhl.leagueModel.League;
 import dhl.leagueModel.LeagueModelAbstractFactory;
 
 public class MockHeadCoach {

@@ -4,7 +4,6 @@ import dhl.inputOutput.*;
 import dhl.leagueModel.ILeague;
 import dhl.serializeAndDeserialize.DeserializeJSONToModel;
 import dhl.serializeAndDeserialize.IDeserializeJSONToModel;
-//import dhl.simulationStateMachine.LoadTeamState;
 import dhl.simulationStateMachine.StateContext;
 import dhl.validator.JSONValidator;
 import org.json.simple.JSONObject;

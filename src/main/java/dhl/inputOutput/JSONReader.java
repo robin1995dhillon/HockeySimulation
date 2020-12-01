@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class JSONReader {
+    IUserOutput userOutput = new UserOutput();
 
     public static JSONObject readJSON(String Path) {
         JSONParser jsonParser = new JSONParser();
@@ -17,7 +18,7 @@ public class JSONReader {
             Object obj = jsonParser.parse(reader);
             jsonObject = (JSONObject) obj;
         } catch (JsonProcessingException jp) {
-            UserOutput userOutput = new UserOutput();
+            IUserOutput userOutput = new UserOutput();
             userOutput.setOutput("Invalid JSON - Parsing");
             userOutput.sendOutput();
         } catch (ParseException | IOException e) {

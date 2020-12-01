@@ -1,12 +1,14 @@
 package dhl.stateMachineNew.states;
 
 import dhl.Configurables;
-import dhl.stateMachineNew.gameSimulationAlgorithm.*;
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.ILeague;
 import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.*;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulation;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IGameSimulationAlgorithm;
+import dhl.stateMachineNew.gameSimulationAlgorithm.IShiftTime;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

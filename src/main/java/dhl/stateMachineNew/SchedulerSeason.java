@@ -362,13 +362,13 @@ public class SchedulerSeason implements ISchedulerSeason {
         return currentDate;
     }
 
-    private String scheduleIntraDivGames(IDivision divisionName, ITeam teamName, String currentDate) throws ParseException {
+    public String scheduleIntraDivGames(IDivision divisionName, ITeam teamName, String currentDate) throws ParseException {
         List<ITeam> teamsInDiv = teamsInDivision.get(divisionName);
         currentDate = schedule(teamsInDiv, teamName, currentDate);
         return currentDate;
     }
 
-    private String scheduleInterDivGames(IConference conferenceName, IDivision divisionName, ITeam teamName, String currentDate) throws ParseException {
+    public String scheduleInterDivGames(IConference conferenceName, IDivision divisionName, ITeam teamName, String currentDate) throws ParseException {
         List<ITeam> teamsInOtherDivision = new ArrayList<>();
         List<IDivision> divisionsInConf = divisionsInConference.get(conferenceName);
 
@@ -384,7 +384,7 @@ public class SchedulerSeason implements ISchedulerSeason {
         return currentDate;
     }
 
-    private String scheduleInterConfGames(IConference conferenceName, ITeam teamName, String currentDate) throws ParseException {
+    public String scheduleInterConfGames(IConference conferenceName, ITeam teamName, String currentDate) throws ParseException {
         List<ITeam> teamsInOtherConferences = new ArrayList<>();
         for (Map.Entry<IConference, List<ITeam>> entry : teamsInConference.entrySet()) {
             if (entry.getKey().getConferenceName().equalsIgnoreCase(conferenceName.getConferenceName())) {
@@ -526,6 +526,50 @@ public class SchedulerSeason implements ISchedulerSeason {
     @Override
     public void setStatus(String status) {
         this.matchStatus = status;
+    }
+
+    public void setCurrentYear(String currentYear){
+        this.currentYear = currentYear;
+    }
+
+    public void setPlayoffsYear(int playoffsYear){
+        this.playoffsYear = playoffsYear;
+    }
+
+    public void setLastDayOfSeason(String lastDay){
+        this.lastDay = lastDay;
+    }
+
+    public Map<IConference, List<IDivision>> getDivisionsInConference() {
+        return divisionsInConference;
+    }
+
+    public void setDivisionsInConference(Map<IConference, List<IDivision>> divisionsInConference) {
+        this.divisionsInConference = divisionsInConference;
+    }
+
+    public Map<IDivision, List<ITeam>> getTeamsInDivision() {
+        return teamsInDivision;
+    }
+
+    public void setTeamsInDivision(Map<IDivision, List<ITeam>> teamsInDivision) {
+        this.teamsInDivision = teamsInDivision;
+    }
+
+    public Map<IConference, List<ITeam>> getTeamsInConference() {
+        return teamsInConference;
+    }
+
+    public void setTeamsInConference(Map<IConference, List<ITeam>> teamsInConference) {
+        this.teamsInConference = teamsInConference;
+    }
+
+    public void setScheduleList(List<ISchedulerSeason> list){
+        this.scheduleList = list;
+    }
+
+    public List<ISchedulerSeason> getScheduleList(){
+        return this.scheduleList;
     }
 
 }

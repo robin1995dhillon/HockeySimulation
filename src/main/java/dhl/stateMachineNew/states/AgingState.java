@@ -2,7 +2,6 @@ package dhl.stateMachineNew.states;
 
 import dhl.inputOutput.IUserOutput;
 import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.IAllPlayers;
 import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.ITeam;
@@ -16,7 +15,6 @@ import org.apache.logging.log4j.Logger;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class AgingState implements IStateMachine {

@@ -247,7 +247,7 @@ class FreeAgentsTest {
         gamePlayConfig = mockGamePlayConfig.createGamePlayConfig();
         freeAgents = mockFreeAgent.createFreeAgentMockOne();
         freeAgents.agePlayer(10, gamePlayConfig);
-        assertEquals(10, freeAgents.getPlayerCurrentDate().getDayOfMonth());
+        assertEquals(11, freeAgents.getPlayerCurrentDate().getDayOfMonth());
     }
 
     @Test

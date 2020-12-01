@@ -241,7 +241,7 @@ class PlayersTest {
         gamePlayConfig = mockGamePlayConfig.createGamePlayConfig();
         players = mockPlayer.createPlayerMockOne();
         players.agePlayer(10, gamePlayConfig);
-        assertEquals(10, players.getPlayerCurrentDate().getDayOfMonth());
+        assertEquals(11, players.getPlayerCurrentDate().getDayOfMonth());
     }
 
     @Test

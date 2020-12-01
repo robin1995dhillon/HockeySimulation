@@ -1,11 +1,11 @@
 package dhl.stateMachineNew.states;
 
+import dhl.leagueModel.ILeague;
+import dhl.leagueModel.IPlayerTrainingCondition;
+import dhl.leagueModel.ITeam;
+import dhl.leagueModel.PlayerTrainingCondition;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITraining;
-import dhl.leagueModel.ILeague;
-import dhl.leagueModel.ITeam;
-import dhl.leagueModel.IPlayerTrainingCondition;
-import dhl.leagueModel.PlayerTrainingCondition;
 import dhl.stateMachineNew.IStateMachine;
 import dhl.stateMachineNew.StateMachine;
 import org.apache.logging.log4j.LogManager;
