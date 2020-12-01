@@ -12,6 +12,7 @@ public class StateMachineConcrete extends StateMachineAbstractFactory{
     private IJsonImport jsonImport;
     private IShiftTime shiftTime;
     private IGameSimulationAlgorithm gameSimulationAlgorithm;
+    private IPlayerDraft playerDraft;
 
     public StateMachineConcrete() {
     }
@@ -31,6 +32,21 @@ public class StateMachineConcrete extends StateMachineAbstractFactory{
             schedulerSeason = new SchedulerSeason();
         }
         return schedulerSeason;
+    }
+
+
+    @Override
+    public IPlayerDraft getPlayerDraft() {
+        if (playerDraft == null) {
+            playerDraft = new PlayerDraft();
+        }
+        return playerDraft;
+    }
+
+
+    @Override
+    public void setPlayerDraft(IPlayerDraft playerDraft) {
+        this.playerDraft = playerDraft;
     }
 
     @Override

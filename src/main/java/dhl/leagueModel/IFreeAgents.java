@@ -8,7 +8,5 @@ import java.util.List;
 public interface IFreeAgents extends IAllPlayers {
     IFreeAgents getFreeAgentFromList(List<IFreeAgents> freeAgentList, String freeAgentName);
 
-    List<IFreeAgents> retireFreeAgents(List<IFreeAgents> freeAgentList);
-
     List<IFreeAgents> removeFreeAgents(List<IFreeAgents> freeAgentsList);
 }

@@ -237,6 +237,14 @@ class PlayersTest {
     }
 
     @Test
+    void agePlayer() {
+        gamePlayConfig = mockGamePlayConfig.createGamePlayConfig();
+        players = mockPlayer.createPlayerMockOne();
+        players.agePlayer(10, gamePlayConfig);
+        assertEquals(10, players.getPlayerCurrentDate().getDayOfMonth());
+    }
+
+    @Test
     void statsDecayDueToBirthDay() {
         players = mockPlayer.createPlayerMockForStatsDecay();
         gamePlayConfig = mockGamePlayConfig.createGamePlayConfig();

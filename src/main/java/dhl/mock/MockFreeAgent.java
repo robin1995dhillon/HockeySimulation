@@ -104,6 +104,23 @@ public class MockFreeAgent {
         return freeAgents;
     }
 
+    public IFreeAgents createFreeAgentInjuredMock() {
+        freeAgents.setPlayerName("FreeAgent3");
+        freeAgents.setPosition("forward");
+        freeAgents.setBirthDay(28);
+        freeAgents.setBirthMonth(6);
+        freeAgents.setBirthYear(1997);
+        freeAgents.setSaving(12);
+        freeAgents.setShooting(19);
+        freeAgents.setChecking(18);
+        freeAgents.setSkating(19);
+        freeAgents.setRetired(false);
+        freeAgents.setInjured(true);
+        freeAgents.setInjuredDays(30);
+
+        return freeAgents;
+    }
+
     public static List<IFreeAgents> createMockAgentList() {
 
         List<IFreeAgents> availableAgents = new ArrayList<>();

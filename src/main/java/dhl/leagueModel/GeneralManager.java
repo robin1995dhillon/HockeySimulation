@@ -7,10 +7,6 @@ public class GeneralManager implements IGeneralManager {
     private String name;
     private String personality;
 
-    public GeneralManager(String name, String personality) {
-        this.name = name;
-        this.personality = personality;
-    }
 
     public GeneralManager() {
 

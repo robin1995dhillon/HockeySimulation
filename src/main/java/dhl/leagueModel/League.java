@@ -14,7 +14,6 @@ public class League implements ILeague {
     private int numberSeason;
     private int totalSeasons;
     private String lastDateOfSeason;
-    //private List<IFreeAgents> freeAgents2;
     private List<IConference> conferences;
     private List<IFreeAgents> freeAgents;
     private List<IHeadCoach> coaches;
@@ -25,7 +24,6 @@ public class League implements ILeague {
     private String playerDraftDate;
 
     public League() {
-
     }
 
     public League(String leagueName, List<IConference> conferences) {
@@ -70,12 +68,10 @@ public class League implements ILeague {
         return freeAgents;
     }
 
-
     @Override
     public List<IHeadCoach> getCoaches() {
         return coaches;
     }
-
 
     @Override
     public void setFreeAgents(List<IFreeAgents> freeAgents) {

@@ -14,25 +14,20 @@ public class InjuryCheckState implements IStateMachine {
     StateMachine machine;
     List<ITeam> checkInjuryTeam;
 
-    //    public InjuryCheckState(StateMachine machine, List<ITeam> checkInjury){
     public InjuryCheckState(StateMachine machine) {
         this.machine = machine;
-        //this.checkInjuryTeam = this.machine.getTeamsForInjuryCheck();
+
     }
 
     public IStateMachine entry() {
         System.out.println("We are in Injury Check State");
         this.checkInjuryTeam = this.machine.getTeamsForInjuryCheck();
-        System.out.println("in injury state "+machine.getLeague().getLeagueName());
-        System.out.println("teams for injury check "+this.machine.getTeamsForInjuryCheck());
-        System.out.println("teams for injury checksssss "+this.checkInjuryTeam);
-        System.out.println("bla bla bla "+this.checkInjuryTeam.get(0).getTeamName());
         for (ITeam team : checkInjuryTeam) {
+            System.out.println("Injury Check for " + team.getTeamName());
             for (IPlayers player : team.getPlayers()) {
                 player.checkForPlayerInjury(machine.getLeague().getGameplayConfig());
             }
         }
-
 
         return doTask();
     }

@@ -20,6 +20,10 @@ public abstract class StateMachineAbstractFactory {
 
     public abstract ISchedulerSeason getSchedulerSeason();
 
+    public abstract IPlayerDraft getPlayerDraft();
+
+    public abstract void setPlayerDraft(IPlayerDraft playerDraft);
+
     public abstract StateMachine getStateMachine();
 
     public abstract ITeamStanding getTeamStanding();

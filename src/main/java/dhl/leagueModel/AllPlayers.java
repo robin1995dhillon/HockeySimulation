@@ -393,6 +393,7 @@ public class AllPlayers implements IAllPlayers {
         double endRange = randomInjuryChance * 100;
         int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
         if (randomNumber <= endRange) {
+            System.out.println(this.playerName + " Is Injured");
             this.setInjured(true);
             int randomInjuryDays = ThreadLocalRandom.current().nextInt(injuryDaysLow, injuryDaysHigh + 1);
             this.setInjuredDays(randomInjuryDays);

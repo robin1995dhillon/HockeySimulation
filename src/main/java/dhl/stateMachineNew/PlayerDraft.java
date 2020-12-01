@@ -318,7 +318,6 @@ public class PlayerDraft implements IPlayerDraft {
 
     @Override
     public List<ITeamStanding> selectionOrder(List<ITeamStanding> teamStandingList) {
-        //teamStandingList = getTeamStandingList();
         List<IPlayers> playerDraft = this.draftingPlayerList;
         for(int i = 0; i < draftingRounds; i++) {
             for(int j=0;j<teamStandingList.size();j++) {

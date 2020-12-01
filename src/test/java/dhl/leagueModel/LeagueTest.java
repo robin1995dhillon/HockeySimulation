@@ -1,64 +1,74 @@
 package dhl.leagueModel;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.mock.MockFreeAgent;
-import dhl.mock.MockGamePlayConfig;
-import dhl.mock.MockHeadCoach;
+import dhl.mock.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LeagueTest {
 
+    MockLeague mockLeague;
+    MockHeadCoach mockHeadCoach;
+    MockGeneralManager mockGeneralManager;
+    ILeague league;
+
+
+    public LeagueTest() {
+        mockLeague = new MockLeague();
+        mockHeadCoach = new MockHeadCoach();
+        mockGeneralManager = new MockGeneralManager();
+    }
+
     @Test
     void getConferences() {
-        ArrayList<IConference> conf_array = new ArrayList<>();
-        ILeague leagueTest = new League("Dalhousie Hockey League", conf_array);
-        assertEquals(conf_array.getClass(), leagueTest.getConferences().getClass());
+        List<IConference> conferenceList;
+        league = mockLeague.createLeagueMock();
+        conferenceList = league.getConferences();
+        assertEquals(conferenceList,league.getConferences());
     }
 
     @Test
     void setConferences() {
-        ArrayList<IConference> conf_array = new ArrayList<>();
-        IConference conference = new Conference("Eastern");
-        conf_array.add(conference);
-        ILeague league = new League("Dalhousie Hockey League", conf_array);
-        league.setConferences(conf_array);
-        assertEquals(conference, league.getConferences().get(0));
+        List<IConference> conferenceListTwo = new ArrayList<>();
+        league = mockLeague.createLeagueMock();
+        league.setConferences(conferenceListTwo);
+        assertEquals(conferenceListTwo,league.getConferences());
     }
 
     @Test
     void getLeagueName() {
-        ILeague leagueTest = new League("Dalhousie Hockey League");
-        assertEquals("Dalhousie Hockey League", leagueTest.getLeagueName());
+        league = mockLeague.createLeagueMock();
+        assertEquals("League1", league.getLeagueName());
     }
 
     @Test
     void setLeagueName() {
-        ILeague leagueTest = new League("Dalhousie Hockey League");
-        leagueTest.setLeagueName("DHL");
-        assertEquals("DHL", leagueTest.getLeagueName());
+        league = mockLeague.createLeagueMock();
+        league.setLeagueName("League2");
+        assertEquals("League2", league.getLeagueName());
     }
 
     @Test
     void getFreeAgents() {
-        IFreeAgents freeAgents = MockFreeAgent.createMock();
-        ArrayList<IFreeAgents> freeAgentsArray = new ArrayList<>();
-        freeAgentsArray.add(freeAgents);
-        ILeague league = new League("DHL");
-        league.setFreeAgents(freeAgentsArray);
-        assertEquals(freeAgentsArray, league.getFreeAgents());
+        league = mockLeague.createLeagueMock();
+        List<IFreeAgents> freeAgentsList = league.getFreeAgents();
+        league.setFreeAgents(freeAgentsList);
+        assertEquals(freeAgentsList, league.getFreeAgents());
     }
 
-//    @Test
-//    void getGeneralManagers() {
-//        ArrayList<String> generalManagerArray = MockManager.createMock();
-//        ILeague league = new League("DHL");
-//        league.setGeneralManager(generalManagerArray);
-//        assertEquals(generalManagerArray, league.getGeneralManagers());
-//    }
+    @Test
+    void getGeneralManagers() {
+        List<IGeneralManager> generalManagerArray = new ArrayList<>();
+        IGeneralManager generalManager = mockGeneralManager.createGeneralManager();
+        generalManagerArray.add(generalManager);
+        league = mockLeague.createLeagueMock();
+        league.setGeneralManagers(generalManagerArray);
+        assertEquals(generalManager, league.getGeneralManagers().get(0));
+    }
 
     @Test
     void getCoaches() {
@@ -82,12 +92,10 @@ class LeagueTest {
 
     @Test
     void setFreeAgents() {
-        ArrayList<IFreeAgents> freeAgentsList = new ArrayList<>();
-        IFreeAgents freeAgents = MockFreeAgent.createMock();
-        ILeague league = new League("DHL");
-        freeAgentsList.add(freeAgents);
-        league.setFreeAgents(freeAgentsList);
-        assertEquals(freeAgentsList, league.getFreeAgents());
+        league = mockLeague.createLeagueMock();
+        ArrayList<IFreeAgents> freeAgentsList2 = new ArrayList<>();
+        league.setFreeAgents(freeAgentsList2);
+        assertEquals(freeAgentsList2, league.getFreeAgents());
     }
 
     @Test
@@ -100,46 +108,43 @@ class LeagueTest {
         assertEquals(headCoachList, league.getCoaches());
     }
 
-//    @Test
-//    void setGeneralManager() {
-//        ArrayList<String> generalManagerArray = MockManager.createMock();
-//        ILeague league = new League("DHL");
-//        league.setGeneralManager(generalManagerArray);
-//        assertEquals(generalManagerArray, league.getGeneralManagers());
-//    }
+    @Test
+    void setGeneralManager() {
+        league = mockLeague.createLeagueMock();
+        IGeneralManager generalManager = mockGeneralManager.createGeneralManager();
+        ArrayList<IGeneralManager> generalManagerArrayList = new ArrayList<>();
+        generalManagerArrayList.add(generalManager);
+        league.setGeneralManagers(generalManagerArrayList);
+        assertEquals(generalManagerArrayList, league.getGeneralManagers());
+    }
 
     @Test
     void getGameplayConfig() {
-        IGamePlayConfig gamePlayConfig = MockGamePlayConfig.createMock();
-        ILeague league = new League("DHL");
-        league.setGameplayConfig(gamePlayConfig);
+        league = mockLeague.createLeagueMock();
+        IGamePlayConfig gamePlayConfig = league.getGameplayConfig();
         assertEquals(gamePlayConfig, league.getGameplayConfig());
     }
 
     @Test
     void setGameplayConfig() {
-        IGamePlayConfig gamePlayConfig = MockGamePlayConfig.createMock();
-        ILeague league = new League("DHL");
-        league.setGameplayConfig(gamePlayConfig);
+        league = mockLeague.createLeagueMock();
+        IGamePlayConfig gamePlayConfig = league.getGameplayConfig();
         assertEquals(gamePlayConfig, league.getGameplayConfig());
     }
 
     @Test
     void isValid() {
-        ILeague league = new League("DHL");
+        league = mockLeague.createLeagueMock();
         boolean result = league.isValid(league);
         assertEquals(true, result);
     }
 
     @Test
     void isLeagueNamePresent() {
-        ILeague league = new League("DHL");
+        league = mockLeague.createLeagueMock();
         boolean result = league.isLeagueNamePresent();
         assertEquals(true, result);
     }
 
-    @Test
-    void storeLeague() {
 
-    }
 }
