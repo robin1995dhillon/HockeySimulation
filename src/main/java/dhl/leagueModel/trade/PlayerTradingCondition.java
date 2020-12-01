@@ -6,8 +6,9 @@ import dhl.leagueModel.ITeam;
 import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
-import dhl.stateMachineNew.StateMachine;
-import dhl.stateMachineNew.StateMachineAbstractFactory;
+import dhl.stateMachine.StateMachine;
+import dhl.stateMachine.StateMachineAbstractFactory;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +51,6 @@ public class PlayerTradingCondition implements IPlayerTradingCondition {
             if (positionOfferingList.get(0).getPosition().equalsIgnoreCase(positionOfferingList.get(i).getPosition())) {
                 continue;
             } else {
-                System.out.println(" position removed are : " + positionOfferingList.get(i).getPosition() + "--- name is : " + positionOfferingList.get(i).getPlayerName());
-
                 positionOfferingList.remove(i);
                 i -= 1;
             }

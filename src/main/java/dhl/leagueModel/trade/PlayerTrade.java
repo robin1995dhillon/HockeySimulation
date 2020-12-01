@@ -1,10 +1,10 @@
 package dhl.leagueModel.trade;
 
 import dhl.Configurables;
-import dhl.inputOutput.IUserInput;
-import dhl.inputOutput.IUserOutput;
-import dhl.inputOutput.UserInput;
-import dhl.inputOutput.UserOutput;
+import dhl.presentation.inputOutput.IUserInput;
+import dhl.presentation.inputOutput.IUserOutput;
+import dhl.presentation.inputOutput.UserInput;
+import dhl.presentation.inputOutput.UserOutput;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.ITeam;
 import dhl.leagueModel.LeagueModelAbstractFactory;
@@ -12,15 +12,17 @@ import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.ITrading;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
-import dhl.stateMachineNew.StateMachine;
-import dhl.stateMachineNew.StateMachineAbstractFactory;
+import dhl.stateMachine.StateMachine;
+import dhl.stateMachine.StateMachineAbstractFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class PlayerTrade implements IPlayerTrade {
-
+    private static final Logger logger = LogManager.getLogger(PlayerTrade.class);
     List<IPlayers> offeringTeamPositionPlayers;
     List<IPlayers> consideringTeamPlayers;
     private IStrongestWeakestPlayers strongestWeakestPlayers;
@@ -105,7 +107,6 @@ public class PlayerTrade implements IPlayerTrade {
 
         for (IPlayers players : playersAdd) {
             teamPlayers.add(players);
-            System.out.println("player added----------- : " + players.getPlayerName() + " for position: " + players.getPosition());
         }
 
 

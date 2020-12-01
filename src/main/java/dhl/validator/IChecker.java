@@ -19,5 +19,4 @@ public interface IChecker {
     boolean coachChecker(List<IHeadCoach> coachList, String coachName);
 
     boolean freeAgentChecker(List<IFreeAgents> freeAgentList, String freeAgentName);
-//    boolean positionChecker(IFreeAgents freeAgent, String position);
 }

@@ -6,10 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ValidatorTest {
 
+    ValidatorAbstractFactory validatorAbstractFactory;
+    IValidator validator;
+
+    public ValidatorTest() {
+        validatorAbstractFactory = ValidatorAbstractFactory.instance();
+        validator = validatorAbstractFactory.getValidator();
+    }
+
     @Test
     void valueIsPresent() {
         String val = "Eastern";
-        Validator validator = new Validator();
         boolean result = validator.valueIsPresent(val);
         assertEquals(true, result);
     }
@@ -17,7 +24,6 @@ class ValidatorTest {
     @Test
     void falseValueIsPresent() {
         String val = "";
-        Validator validator = new Validator();
         boolean result = validator.valueIsPresent(val);
         assertEquals(false, result);
     }

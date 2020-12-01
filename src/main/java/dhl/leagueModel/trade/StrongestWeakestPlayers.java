@@ -16,7 +16,6 @@ public class StrongestWeakestPlayers implements IStrongestWeakestPlayers {
 
     public StrongestWeakestPlayers() {
         trading = LeagueModelAbstractFactory.instance().getGamePlayConfig().getTrading();
-
     }
 
     @Override
