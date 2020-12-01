@@ -1,9 +1,29 @@
 package dhl.mock;
 
-import dhl.leagueModel.headCoach.HeadCoach;
-import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.HeadCoach;
+import dhl.leagueModel.IHeadCoach;
+import dhl.leagueModel.LeagueModelAbstractFactory;
 
 public class MockHeadCoach {
+
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    IHeadCoach headCoach;
+
+    public MockHeadCoach() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        headCoach = leagueModelAbstractFactory.getHeadCoach();
+    }
+
+    public IHeadCoach createHeadCoachMock() {
+        headCoach.setName("Head1");
+        headCoach.setSaving(14);
+        headCoach.setShooting(15);
+        headCoach.setChecking(16);
+        headCoach.setSkating(17);
+        return headCoach;
+
+    }
+
     public static IHeadCoach createMock() {
         IHeadCoach headCoach = new HeadCoach();
         headCoach.setName("Head1");

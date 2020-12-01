@@ -1,10 +1,11 @@
 package dhl.presentation;
 
-import dhl.leagueModel.headCoach.IHeadCoach;
+import dhl.leagueModel.IHeadCoach;
 
 import java.util.List;
 
 public class DisplayCoachList implements IDisplayCoachList {
+
     @Override
     public void displayCoach(List<IHeadCoach> coachList) {
         System.out.printf("%-20s\t%-10s\t%-10s\t%-10s%-10s%n", "name", "skating", "shooting", "checking", "saving");

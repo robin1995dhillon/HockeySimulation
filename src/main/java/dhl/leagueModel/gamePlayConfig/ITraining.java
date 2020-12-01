@@ -12,4 +12,10 @@ public interface ITraining {
     boolean trainingValidator(JSONObject Obj);
 
     boolean checkRange(int[] trainingAttribute);
+
+    int getDaysTrained();
+
+    void setDaysTrained(int daysTrained);
+
+
 }

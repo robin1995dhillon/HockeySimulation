@@ -1,17 +1,14 @@
 package dhl.validator;
 
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.teams.ITeam;
+import dhl.Configurables;
+import dhl.leagueModel.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Checker implements IChecker {
-
+    private static final Logger logger = LogManager.getLogger(Checker.class);
 
     public boolean conferenceChecker(String conference, ILeague league) {
         for (IConference c : league.getConferences()) {
@@ -23,8 +20,8 @@ public class Checker implements IChecker {
     }
 
     public boolean divisionChecker(String division, ILeague league) {
-        ArrayList<IConference> conferenceList;
-        ArrayList<IDivision> divisionList;
+        List<IConference> conferenceList;
+        List<IDivision> divisionList;
         conferenceList = league.getConferences();
         for (IConference c : conferenceList) {
             divisionList = c.getDivisions();
@@ -38,28 +35,29 @@ public class Checker implements IChecker {
     }
 
     public boolean teamChecker(String team, ILeague league) {
-        ArrayList<IConference> conferenceList;
-        ArrayList<IDivision> divisionList;
-        ArrayList<ITeam> teamList;
+        List<IConference> conferenceList;
+        List<IDivision> divisionList;
+        List<ITeam> teamList;
         conferenceList = league.getConferences();
-        for (IConference c : conferenceList) {
-            divisionList = c.getDivisions();
-            for (IDivision d : divisionList) {
-                teamList = d.getTeams();
-                for (ITeam t : teamList) {
-                    if (t.getTeamName().toLowerCase().equals(team.toLowerCase())) {
-                        return false;
+        for (IConference conference : conferenceList) {
+            divisionList = conference.getDivisions();
+            for (IDivision division : divisionList) {
+                teamList = division.getTeams();
+                for (ITeam teams : teamList) {
+                    if (teams.getTeamName().toLowerCase().equals(team.toLowerCase())) {
+                        teams.setTeamType(Configurables.USER.getAction());
+                        return true;
                     }
                 }
             }
         }
-        return true;
+        return false;
     }
 
     @Override
-    public boolean managerChecker(List<String> managerList, String managerName) {
-        for (String s : managerList) {
-            if (s.equals(managerName)) {
+    public boolean managerChecker(List<IGeneralManager> managerList, String managerName) {
+        for (IGeneralManager manager : managerList) {
+            if (manager.getName().equalsIgnoreCase(managerName)) {
                 return true;
             }
         }
@@ -69,7 +67,7 @@ public class Checker implements IChecker {
     @Override
     public boolean coachChecker(List<IHeadCoach> coachList, String coachName) {
         for (IHeadCoach headCoach : coachList) {
-            if (headCoach.getName().equals(coachName)) {
+            if (headCoach.getName().equalsIgnoreCase(coachName)) {
                 return true;
             }
         }
@@ -79,7 +77,7 @@ public class Checker implements IChecker {
     @Override
     public boolean freeAgentChecker(List<IFreeAgents> freeAgentList, String freeAgentName) {
         for (IFreeAgents freeAgent : freeAgentList) {
-            if (freeAgent.getPlayerName().equals(freeAgentName)) {
+            if (freeAgent.getPlayerName().equalsIgnoreCase(freeAgentName)) {
                 return true;
             }
         }
