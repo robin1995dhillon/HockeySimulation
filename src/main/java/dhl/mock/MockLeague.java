@@ -1,37 +1,38 @@
 package dhl.mock;
 
-import dhl.leagueModel.conference.Conference;
-import dhl.leagueModel.conference.IConference;
-import dhl.leagueModel.division.Division;
-import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.*;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.leagueModel.headCoach.HeadCoach;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.league.ILeague;
-import dhl.leagueModel.league.League;
-import dhl.leagueModel.players.IPlayers;
-import dhl.leagueModel.players.Players;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MockLeague {
+    ILeague league;
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    MockFreeAgent mockFreeAgent;
+    MockGamePlayConfig mockGamePlayConfig;
+    IFreeAgents freeAgents;
+    IGamePlayConfig gamePlayConfig;
+
+    public MockLeague() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        league = leagueModelAbstractFactory.getLeague();
+        mockFreeAgent = new MockFreeAgent();
+        mockGamePlayConfig = new MockGamePlayConfig();
+    }
 
     public static ILeague createMock() {
-        ILeague l = new League();
-        IConference c = new Conference();
-        IPlayers p = new Players();
-        ITeam t = new Teams();
-        IDivision d = new Division("Metro");
+        ILeague league = new League();
+        IConference conference = new Conference();
+        IPlayers player = new Players();
+        ITeam team = new Teams();
+        IDivision division = new Division("Metro");
         ArrayList<IPlayers> players = new ArrayList<>();
-        p.setCaptain(true);
-        p.setPosition("goalie");
-        p.setPlayerName("Roger");
-        players.add(p);
-        t.setPlayers(players);
+        player.setCaptain(true);
+        player.setPosition("goalie");
+        player.setPlayerName("Roger");
+        players.add(player);
+        team.setPlayers(players);
         IHeadCoach coach = new HeadCoach();
         coach.setName("Random1");
         coach.setChecking(5);
@@ -39,20 +40,19 @@ public class MockLeague {
         coach.setShooting(5);
         coach.setSkating(5);
         ArrayList<ITeam> teams = new ArrayList<>();
-        t.setHeadCoach(coach);
-        t.setGeneralManager("John");
-        t.setTeamName("HalifaxTigers");
-        teams.add(t);
-        d.setTeams(teams);
+        team.setHeadCoach(coach);
+        team.setTeamName("HalifaxTigers");
+        teams.add(team);
+        division.setTeams(teams);
         ArrayList<IDivision> IDivision = new ArrayList<>();
-        d.setDivisionName("American");
-        IDivision.add(d);
+        division.setDivisionName("American");
+        IDivision.add(division);
         ArrayList<IConference> IConference = new ArrayList<>();
-        c.setConferenceName("Eastern Conference");
-        c.setDivisions(IDivision);
-        IConference.add(c);
-        l.setLeagueName("Dalhousie League");
-        l.setConferences(IConference);
+        conference.setConferenceName("Eastern Conference");
+        conference.setDivisions(IDivision);
+        IConference.add(conference);
+        league.setLeagueName("Dalhousie League");
+        league.setConferences(IConference);
         ArrayList<IFreeAgents> freeAgentsList = new ArrayList<>();
         IFreeAgents freeAgents = new FreeAgents();
         freeAgents.setPlayerName("Free1");
@@ -64,17 +64,30 @@ public class MockLeague {
         freeAgents.setStrength(50);
         freeAgents.setPosition("forward");
         freeAgentsList.add(freeAgents);
-        l.setFreeAgents(freeAgentsList);
+        league.setFreeAgents(freeAgentsList);
         IHeadCoach headCoach = MockHeadCoach.createMock();
         ArrayList<IHeadCoach> headCoachArrayList = new ArrayList<>();
         headCoachArrayList.add(headCoach);
-        l.setHeadCoach(headCoachArrayList);
-        ArrayList<String> managerList = new ArrayList<>();
-        managerList.add("Hey1");
-        managerList.add("Hey2");
-        l.setGeneralManager(managerList);
+        league.setHeadCoach(headCoachArrayList);
+        ArrayList<IGeneralManager> managerList = new ArrayList<>();
+        IGeneralManager manager = new GeneralManager();
+        manager.setName("Hey1");
+        manager.setPersonality("gambler");
+        managerList.add(manager);
+        league.setGeneralManagers(managerList);
         IGamePlayConfig iGamePlayConfig = MockGamePlayConfig.createMock();
-        l.setGameplayConfig(iGamePlayConfig);
-        return l;
+        league.setGameplayConfig(iGamePlayConfig);
+        return league;
+    }
+
+    public ILeague createLeagueMock() {
+        gamePlayConfig = mockGamePlayConfig.createGamePlayConfig();
+        freeAgents = mockFreeAgent.createFreeAgentMockOne();
+        List<IFreeAgents> freeAgentsList = new ArrayList<>();
+        freeAgentsList.add(freeAgents);
+        league.setLeagueName("League1");
+        league.setFreeAgents(freeAgentsList);
+        league.setGameplayConfig(gamePlayConfig);
+        return league;
     }
 }

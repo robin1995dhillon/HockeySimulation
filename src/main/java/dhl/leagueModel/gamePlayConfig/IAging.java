@@ -13,6 +13,10 @@ public interface IAging {
 
     void setMaximumAge(int maximumAge);
 
+    double getStatDecayChance();
+
+    void setStatDecayChance(double statDecayChance);
+
     boolean agingValidator(JSONObject Obj);
 
     boolean checkRange(int[] ageAttribute);

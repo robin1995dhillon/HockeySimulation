@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 
 public class Training implements ITraining {
     private int daysUntilStatIncreaseCheck;
+    private int daysTrained;
 
     @Override
     public int getDaysUntilStatIncreaseCheck() {
@@ -35,6 +36,16 @@ public class Training implements ITraining {
             }
         }
         return true;
+    }
+
+    @Override
+    public int getDaysTrained() {
+        return daysTrained;
+    }
+
+    @Override
+    public void setDaysTrained(int daysTrained) {
+        this.daysTrained = daysTrained;
     }
 
 }

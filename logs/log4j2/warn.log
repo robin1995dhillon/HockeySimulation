@@ -1,0 +1,18 @@
+11:54:35.111 [main] FATAL dhl.GlobalHandler  - Uncaught exception
+java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65) ~[?:1.8.0_102]
+	at java.lang.Integer.parseInt(Integer.java:580) ~[?:1.8.0_102]
+	at java.lang.Integer.parseInt(Integer.java:615) ~[?:1.8.0_102]
+	at dhl.stateMachine.states.AdvanceToNextSeasonState.doTask(AdvanceToNextSeasonState.java:55) ~[classes/:?]
+	at dhl.stateMachine.states.AdvanceToNextSeasonState.entry(AdvanceToNextSeasonState.java:46) ~[classes/:?]
+	at dhl.stateMachine.StateMachine.startMachine(StateMachine.java:78) ~[classes/:?]
+	at dhl.MainSimulation.main(MainSimulation.java:23) ~[classes/:?]
+11:58:46.282 [main] FATAL dhl.GlobalHandler  - Uncaught exception
+java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65) ~[?:1.8.0_102]
+	at java.lang.Integer.parseInt(Integer.java:580) ~[?:1.8.0_102]
+	at java.lang.Integer.parseInt(Integer.java:615) ~[?:1.8.0_102]
+	at dhl.stateMachine.states.AdvanceToNextSeasonState.doTask(AdvanceToNextSeasonState.java:55) ~[classes/:?]
+	at dhl.stateMachine.states.AdvanceToNextSeasonState.entry(AdvanceToNextSeasonState.java:46) ~[classes/:?]
+	at dhl.stateMachine.StateMachine.startMachine(StateMachine.java:78) ~[classes/:?]
+	at dhl.MainSimulation.main(MainSimulation.java:23) ~[classes/:?]

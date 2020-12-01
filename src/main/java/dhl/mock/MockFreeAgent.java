@@ -1,12 +1,24 @@
 package dhl.mock;
 
-import dhl.leagueModel.freeAgents.FreeAgents;
-import dhl.leagueModel.freeAgents.IFreeAgents;
+import dhl.leagueModel.FreeAgents;
+import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.LeagueModelAbstractFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MockFreeAgent {
+
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    IFreeAgents freeAgents;
+
+
+
+
+    public MockFreeAgent() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        freeAgents = leagueModelAbstractFactory.getNewFreeAgents();
+    }
 
     public static IFreeAgents createMock() {
         IFreeAgents freeAgents = new FreeAgents();
@@ -42,6 +54,68 @@ public class MockFreeAgent {
         freeAgents.setShooting(25);
         freeAgents.setChecking(25);
         freeAgents.setSaving(20);
+        return freeAgents;
+    }
+
+    public IFreeAgents createFreeAgentMockOne() {
+        freeAgents.setPlayerName("FreeAgent1");
+        freeAgents.setPosition("forward");
+        freeAgents.setBirthDay(28);
+        freeAgents.setBirthMonth(6);
+        freeAgents.setBirthYear(1997);
+        freeAgents.setSaving(14);
+        freeAgents.setShooting(15);
+        freeAgents.setChecking(16);
+        freeAgents.setSkating(17);
+        freeAgents.setRetired(false);
+
+        return freeAgents;
+    }
+
+    public IFreeAgents createFreeAgentMockTwo() {
+        freeAgents.setPlayerName("FreeAgent2");
+        freeAgents.setPosition("defense");
+        freeAgents.setBirthDay(28);
+        freeAgents.setBirthMonth(6);
+        freeAgents.setBirthYear(1997);
+        freeAgents.setSaving(12);
+        freeAgents.setShooting(18);
+        freeAgents.setChecking(15);
+        freeAgents.setSkating(19);
+        freeAgents.setRetired(false);
+
+        return freeAgents;
+    }
+
+    public IFreeAgents createFreeAgentMockThree() {
+        freeAgents.setPlayerName("FreeAgent3");
+        freeAgents.setPosition("forward");
+        freeAgents.setBirthDay(28);
+        freeAgents.setBirthMonth(6);
+        freeAgents.setBirthYear(1997);
+        freeAgents.setSaving(12);
+        freeAgents.setShooting(19);
+        freeAgents.setChecking(18);
+        freeAgents.setSkating(19);
+        freeAgents.setRetired(false);
+
+        return freeAgents;
+    }
+
+    public IFreeAgents createFreeAgentInjuredMock() {
+        freeAgents.setPlayerName("FreeAgent3");
+        freeAgents.setPosition("forward");
+        freeAgents.setBirthDay(28);
+        freeAgents.setBirthMonth(6);
+        freeAgents.setBirthYear(1997);
+        freeAgents.setSaving(12);
+        freeAgents.setShooting(19);
+        freeAgents.setChecking(18);
+        freeAgents.setSkating(19);
+        freeAgents.setRetired(false);
+        freeAgents.setInjured(true);
+        freeAgents.setInjuredDays(30);
+
         return freeAgents;
     }
 
@@ -139,5 +213,20 @@ public class MockFreeAgent {
         expectedAgentList.add(player1);
 
         return expectedAgentList;
+    }
+
+    public List<IFreeAgents> retireFreeAgentMockList() {
+        List<IFreeAgents> agentList = new ArrayList<>();
+        IFreeAgents freeAgents = createFreeAgentMockOne();
+        freeAgents.setRetired(true);
+        IFreeAgents freeAgents2 = createFreeAgentMockTwo();
+        IFreeAgents freeAgents3 = createFreeAgentMockThree();
+
+        agentList.add(freeAgents);
+        agentList.add(freeAgents2);
+        agentList.add(freeAgents3);
+
+        return agentList;
+
     }
 }

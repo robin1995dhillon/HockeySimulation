@@ -1,8 +1,8 @@
 package dhl.validator;
 
-import dhl.leagueModel.freeAgents.IFreeAgents;
-import dhl.leagueModel.headCoach.IHeadCoach;
-import dhl.leagueModel.league.ILeague;
+import dhl.leagueModel.IFreeAgents;
+import dhl.leagueModel.IHeadCoach;
+import dhl.leagueModel.ILeague;
 import dhl.mock.MockFreeAgent;
 import dhl.mock.MockHeadCoach;
 import dhl.mock.MockLeague;
@@ -53,25 +53,18 @@ class CheckerTest {
         Checker c = new Checker();
         String MockStringName = "halifax";
         ILeague ILeague = MockLeague.createMock();
-        assertTrue(c.teamChecker(MockStringName, ILeague));
+        assertFalse(c.teamChecker(MockStringName, ILeague));
 
     }
-
+    @Test
     void falseTeamChecker() {
         Checker c = new Checker();
         String MockStringName = "HalifaxTigers";
         ILeague ILeague = MockLeague.createMock();
-        assertFalse(c.teamChecker(MockStringName, ILeague));
+        assertTrue(c.teamChecker(MockStringName, ILeague));
 
     }
 
-    @Test
-    public void managerCheckerTest() {
-        ArrayList<String> managerList = MockManager.createMock();
-        IChecker c = new Checker();
-        assertTrue(c.managerChecker(managerList, "Manager1"));
-        assertFalse(c.managerChecker(managerList, "def"));
-    }
 
     @Test
     public void coachCheckerTest() {

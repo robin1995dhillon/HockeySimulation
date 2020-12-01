@@ -1,13 +1,22 @@
 package dhl.mock;
 
-import dhl.leagueModel.division.Division;
-import dhl.leagueModel.division.IDivision;
-import dhl.leagueModel.teams.ITeam;
-import dhl.leagueModel.teams.Teams;
+import dhl.leagueModel.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MockDivision {
+
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    IDivision division;
+    IDivision division2;
+    MockTeam mockTeam;
+
+    public MockDivision() {
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        division = leagueModelAbstractFactory.getDivision();
+        mockTeam = new MockTeam();
+    }
 
     public static IDivision createMock() {
         ArrayList<ITeam> teamArray = new ArrayList<>();
@@ -28,6 +37,46 @@ public class MockDivision {
         teamArray.add(team);
         teamArray.add(team2);
         division.setTeams(teamArray);
+        return division;
+    }
+
+    public IDivision createDivisionMockOne() {
+        List<ITeam> teamList = mockTeam.createTeamMockList();
+        division.setDivisionName("Division1");
+        division.setTeams(teamList);
+        return division;
+    }
+
+    public IDivision createDivisionMockTwo() {
+        List<ITeam> teamList = mockTeam.createTeamMockList();
+        division.setDivisionName("Division2");
+        division.setTeams(teamList);
+        return division;
+    }
+
+    public List<IDivision> createDivisionMockList() {
+        division = createDivisionMockOne();
+        division2 = createDivisionMockTwo();
+        List<IDivision> divisionList = new ArrayList<>();
+        divisionList.add(division);
+        divisionList.add(division2);
+        return divisionList;
+    }
+
+    public IDivision createDivisionMock() {
+        List<ITeam> teamList = mockTeam.createTeamMockList();
+        division.setDivisionName("Division1");
+        division.setTeams(teamList);
+        return division;
+    }
+
+    public static IDivision divisionMock(){
+        IDivision division = LeagueModelAbstractFactory.instance().getDivision();
+        List<ITeam> teamList =new ArrayList<>();
+        teamList.add(MockTeam.MockOffensiveTeam());
+        teamList.add(MockTeam.MockTeam());
+        division.setDivisionName("Metro");
+        division.setTeams(teamList);
         return division;
     }
 }

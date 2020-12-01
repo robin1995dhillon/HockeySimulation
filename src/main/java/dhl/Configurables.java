@@ -4,6 +4,7 @@ public enum Configurables {
     FORWARD("forward"),
     DEFENSE("defense"),
     GOALIE("goalie"),
+    SKATER("skater"),
     LEAGUENAME("leagueName"),
     CONFERENCES("conferences"),
     CONFERENCENAME("conferenceName"),
@@ -47,8 +48,28 @@ public enum Configurables {
     NAME("name"),
     POSITION("position"),
     AI("ai"),
-    USER("user");
-
+    USER("user"),
+    BIRTHDAY("birthDay"),
+    BIRTHYEAR("birthYear"),
+    BIRTHMONTH("birthMonth"),
+    PERSONALITY("personality"),
+    STATDECAYCHANCE("statDecayChance"),
+    ISVALID("isValid"),
+    TRUE("True"),
+    REGULAR("Regular"),
+    SCHEDULED("Scheduled"),
+    PLAYED("played"),
+    START_DAY_OF_SEASON("30-09-"),
+    FIRST_DAY_OF_SEASON( "01-10-"),
+    TOTAL_PLAYERS("30"),
+    LAST_DAY_OF_SEASON_MONTH("-04-"),
+    LAST_DAY_OF_STANLEY_PLAYOFFS("01-06-"),
+    TOTAL_GOALIES("4"),
+    TOTAL_DEFENSE("10"),
+    TOTAL_FORWARD("16"),
+    PLAYER_DRAFT_DATE("15-07-"),
+    MONTH_OF_TRADE("-02-"),
+    PLAYOFF("Playoff");
 
     private String action;
 

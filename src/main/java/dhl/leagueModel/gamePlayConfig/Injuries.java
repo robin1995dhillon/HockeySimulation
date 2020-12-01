@@ -4,6 +4,7 @@ import dhl.Configurables;
 import org.json.simple.JSONObject;
 
 public class Injuries implements IInjuries {
+
     private double randomInjuryChance;
     private int injuryDaysLow;
     int injuryDaysHigh;

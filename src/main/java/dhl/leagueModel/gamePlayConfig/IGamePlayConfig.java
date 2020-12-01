@@ -26,6 +26,5 @@ public interface IGamePlayConfig {
     void setTraining(ITraining training);
 
     boolean gamePlayConfigValidator(JSONObject Obj);
-
-    boolean saveGamePlayConfigToDB(int leagueID);
+    
 }

@@ -22,6 +22,14 @@ public class GamePlayConfig implements IGamePlayConfig {
         training = new Training();
     }
 
+    public GamePlayConfig(IAging aging, IGameResolver gameResolver, IInjuries injuries, ITrading trading, ITraining training) {
+        this.aging = aging;
+        this.gameResolver = gameResolver;
+        this.injuries = injuries;
+        this.trading = trading;
+        this.training = training;
+    }
+
     @Override
     public IAging getAging() {
         return aging;
@@ -82,41 +90,15 @@ public class GamePlayConfig implements IGamePlayConfig {
         ITraining training = new Training();
         ITrading trading = new Trading();
         results.add(aging.agingValidator(gamePlayConfigObject));
-        results.add(gameResolver.gameResolverValidator(gamePlayConfigObject));
         results.add(injuries.injuriesValidator(gamePlayConfigObject));
         results.add(training.trainingValidator(gamePlayConfigObject));
         results.add(trading.tradingValidator(gamePlayConfigObject));
-
         if (results.contains(false)) {
             return false;
         } else {
             return true;
         }
     }
-
-    @Override
-    public boolean saveGamePlayConfigToDB(int leagueID) {
-        int maximumAge = this.aging.getMaximumAge();
-        int averageRetirementAge = this.aging.getAverageRetirementAge();
-        double randomWinChance = this.gameResolver.getRandomWinChance();
-        int injuryDaysHigh = this.injuries.getInjuryDaysHigh();
-        int injuryDaysLow = this.injuries.getInjuryDaysLow();
-        double randomInjuryChance = this.injuries.getRandomInjuryChance();
-        int lossPoint = this.trading.getLossPoint();
-        int maxPlayersPerTrade = this.trading.getMaxPlayersPerTrade();
-        double randomAcceptanceChance = this.trading.getRandomAcceptanceChance();
-        double randomTradeOfferChance = this.trading.getRandomTradeOfferChance();
-        int daysUntilStatIncreaseCheck = this.training.getDaysUntilStatIncreaseCheck();
-
-        int[] gamePlayAttributesInteger = {averageRetirementAge, maximumAge, injuryDaysLow, injuryDaysHigh, daysUntilStatIncreaseCheck, lossPoint, maxPlayersPerTrade, leagueID};
-        double[] gamePlayAttributesDouble = {randomInjuryChance, randomWinChance, randomAcceptanceChance, randomTradeOfferChance};
-
-        IGamePlayConfigPersistence gamePlayConfigPersistence = new GamePlayConfigPersistence();
-        gamePlayConfigPersistence.saveConfigToDB(gamePlayAttributesInteger, gamePlayAttributesDouble);
-        return true;
-    }
-
-
 }
 
 
