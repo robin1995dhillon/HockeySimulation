@@ -62,4 +62,21 @@ public class MockDivision {
         divisionList.add(division2);
         return divisionList;
     }
+
+    public IDivision createDivisionMock() {
+        List<ITeam> teamList = mockTeam.createTeamMockList();
+        division.setDivisionName("Division1");
+        division.setTeams(teamList);
+        return division;
+    }
+
+    public static IDivision divisionMock(){
+        IDivision division = LeagueModelAbstractFactory.instance().getDivision();
+        List<ITeam> teamList =new ArrayList<>();
+        teamList.add(MockTeam.MockOffensiveTeam());
+        teamList.add(MockTeam.MockTeam());
+        division.setDivisionName("Metro");
+        division.setTeams(teamList);
+        return division;
+    }
 }

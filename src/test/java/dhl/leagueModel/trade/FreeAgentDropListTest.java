@@ -1,8 +1,8 @@
 //package dhl.leagueModel.trade;
 //
 //import dhl.Configurables;
-//import dhl.inputOutput.IUserOutput;
-//import dhl.inputOutput.UserOutput;
+//import dhl.presentation.inputOutput.IUserOutput;
+//import dhl.presentation.inputOutput.UserOutput;
 //import dhl.leagueModel.IFreeAgents;
 //import dhl.leagueModel.IPlayers;
 //import dhl.leagueModel.Players;

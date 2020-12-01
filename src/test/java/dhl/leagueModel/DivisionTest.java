@@ -11,7 +11,6 @@ class DivisionTest {
 
     IDivision division;
 
-
     public DivisionTest() {
     }
 

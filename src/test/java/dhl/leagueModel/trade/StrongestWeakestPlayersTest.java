@@ -25,17 +25,17 @@ public class StrongestWeakestPlayersTest {
         assertEquals(playersWeak.get(0).getStrength(), 13.0);
     }
 
-//    @Test
-//    public void checkStrongestPlayerTest() {
-//
-//        int count = 1;
-//        String positionToTrade = "forward";
-//        List<IPlayers> playersStrong;
-//        ITeam team = MockTeam.MockOffensiveTeam();
-//        playersStrong = strongestWeakestPlayers.checkStrongestPlayer(team, positionToTrade, gamePlayConfig);
-//        playersStrong.subList(0,count);
-//        assertEquals(playersStrong.get(0).getStrength(), 41.0);
-//    }
+    @Test
+    public void checkStrongestPlayerTest() {
+
+        int count = 1;
+        String positionToTrade = "forward";
+        List<IPlayers> playersStrong;
+        ITeam team = MockTeam.MockOffensiveTeam();
+        playersStrong = strongestWeakestPlayers.checkStrongestPlayer(team, positionToTrade, count);
+        playersStrong.subList(0,count);
+        assertEquals(playersStrong.get(0).getStrength(), 41.0);
+    }
 
     @Test
     public void strongestPlayersStrengthTest() {

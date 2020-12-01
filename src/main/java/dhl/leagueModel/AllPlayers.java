@@ -4,6 +4,8 @@ import dhl.Configurables;
 import dhl.leagueModel.gamePlayConfig.IAging;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import dhl.leagueModel.gamePlayConfig.IInjuries;
+import dhl.presentation.inputOutput.IUserOutput;
+import dhl.presentation.inputOutput.InputOutputAbstractFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,8 +36,12 @@ public class AllPlayers implements IAllPlayers {
     private int shooting;
     private int checking;
     private int saving;
+    IUserOutput userOutput;
+    InputOutputAbstractFactory inputOutputAbstractFactory;
 
     public AllPlayers() {
+        inputOutputAbstractFactory = InputOutputAbstractFactory.instance();
+        userOutput = inputOutputAbstractFactory.createUserOutput();
     }
 
     @Override
@@ -243,6 +249,7 @@ public class AllPlayers implements IAllPlayers {
                 minDistance = currentDistance;
             }
         }
+
         if(age>retirementAge[0]) {
             int closestBracket = retirementAge[minIndex];
             int index = Arrays.asList(retirementAge).indexOf(closestBracket);
@@ -393,7 +400,8 @@ public class AllPlayers implements IAllPlayers {
         double endRange = randomInjuryChance * 100;
         int randomNumber = ThreadLocalRandom.current().nextInt(0, 101);
         if (randomNumber <= endRange) {
-            System.out.println(this.playerName + " Is Injured");
+            userOutput.setOutput(this.playerName + " Is Injured");
+            userOutput.sendOutput();
             this.setInjured(true);
             int randomInjuryDays = ThreadLocalRandom.current().nextInt(injuryDaysLow, injuryDaysHigh + 1);
             this.setInjuredDays(randomInjuryDays);

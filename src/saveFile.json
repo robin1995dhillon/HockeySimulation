@@ -12,7 +12,7 @@
       "injuryDaysHigh": 124
     },
     "training": {
-      "daysUntilStatIncreaseCheck": 261
+      "daysUntilStatIncreaseCheck": 10
     },
     "trading": {
       "lossPoint": 10,

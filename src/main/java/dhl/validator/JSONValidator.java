@@ -1,31 +1,35 @@
 package dhl.validator;
 
-import dhl.inputOutput.IUserOutput;
-import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.LeagueModelAbstractFactory;
-import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
-import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
+import dhl.presentation.inputOutput.IUserOutput;
 import dhl.Configurables;
+import dhl.presentation.inputOutput.InputOutputAbstractFactory;
+import dhl.presentation.inputOutput.UserOutput;
+import dhl.leagueModel.LeagueModelAbstractFactory;
+import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.Iterator;
 import java.util.Stack;
 
-public class JSONValidator {
+public class JSONValidator implements IJSONValidator {
 
-    Validator validator;
+    IValidator validator;
     private IUserOutput userOutput;
     private IGamePlayConfig gamePlayConfig;
     LeagueModelAbstractFactory leagueModelAbstractFactory;
+    InputOutputAbstractFactory inputOutputAbstractFactory;
+    ValidatorAbstractFactory validatorAbstractFactory;
 
     public JSONValidator() {
+        inputOutputAbstractFactory = InputOutputAbstractFactory.instance();
         leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
-        validator = new Validator();
-        userOutput = new UserOutput();
+        validator = validatorAbstractFactory.getValidator();
+        userOutput = inputOutputAbstractFactory.createUserOutput();
         gamePlayConfig = leagueModelAbstractFactory.getGamePlayConfig();
     }
 
+    @Override
     public JSONObject mainValidator(JSONObject Obj) throws Exception {
         Stack<String> stack = new Stack<>();
         JSONObject returnObject = new JSONObject();
@@ -41,6 +45,7 @@ public class JSONValidator {
         }
     }
 
+    @Override
     public boolean leagueValidator(JSONObject Obj, Stack stack) throws Exception {
         if (validator.valueIsPresent((String) Obj.get(Configurables.LEAGUENAME.getAction()))) {
             conferenceValidator(Obj, stack);
@@ -56,8 +61,6 @@ public class JSONValidator {
     }
 
     private boolean generalManagersValidator(JSONObject Obj, Stack stack) throws Exception {
-
-
         JSONArray generalManagersArray = (JSONArray) Obj.get(Configurables.GENERALMANAGERS.getAction());
         Iterator generalManagerIter = generalManagersArray.iterator();
         if (generalManagerIter == null) {
@@ -80,6 +83,7 @@ public class JSONValidator {
         return true;
     }
 
+    @Override
     public Boolean conferenceValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray conferenceArray = (JSONArray) (Obj.get(Configurables.CONFERENCES.getAction()));
         Iterator confArrIter = conferenceArray.iterator();
@@ -100,6 +104,7 @@ public class JSONValidator {
         return true;
     }
 
+    @Override
     public Boolean freeAgentValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray freeAgentArray = (JSONArray) (Obj.get(Configurables.FREEAGENTS.getAction()));
         if (freeAgentArray == null) {
@@ -140,6 +145,7 @@ public class JSONValidator {
         return true;
     }
 
+    @Override
     public Boolean coachValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray coachArray = (JSONArray) (Obj.get(Configurables.COACHES.getAction()));
         if (coachArray == null) {
@@ -153,6 +159,7 @@ public class JSONValidator {
         return true;
     }
 
+    @Override
     public Boolean divisionValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray divisionArray = (JSONArray) (Obj.get(Configurables.DIVISIONS.getAction()));
         if (divisionArray == null) {
@@ -171,6 +178,7 @@ public class JSONValidator {
         return true;
     }
 
+    @Override
     public Boolean teamValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray teamArray = (JSONArray) (Obj.get(Configurables.TEAMS.getAction()));
         Iterator teamArrIter = teamArray.iterator();
@@ -194,12 +202,14 @@ public class JSONValidator {
         return true;
     }
 
+    @Override
     public Boolean headCoachValidator(JSONObject Obj, Stack stack) {
         JSONObject headCoach = (JSONObject) Obj.get(Configurables.HEADCOACH.getAction());
         attributesValidator(headCoach, stack);
         return true;
     }
 
+    @Override
     public Boolean playerValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray playersArray = (JSONArray) (Obj.get(Configurables.PLAYERS.getAction()));
 
@@ -268,6 +278,7 @@ public class JSONValidator {
         return false;
     }
 
+    @Override
     public Boolean attributesValidator(JSONObject Obj, Stack stack) {
         String name = (String) Obj.get(Configurables.NAME.getAction());
         Double skating = (Double) Obj.get(Configurables.SKATING.getAction());

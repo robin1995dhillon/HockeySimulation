@@ -1,9 +1,9 @@
 package dhl.mock;
 
 import dhl.leagueModel.ITeam;
-import dhl.stateMachineNew.ITeamStanding;
-import dhl.stateMachineNew.StateMachineAbstractFactory;
-import dhl.stateMachineNew.TeamStandings;
+import dhl.stateMachine.ITeamStanding;
+import dhl.stateMachine.StateMachineAbstractFactory;
+import dhl.stateMachine.TeamStandings;
 
 import java.util.ArrayList;
 import java.util.List;
