@@ -1,6 +1,7 @@
 package dhl.stateMachineNew.gameSimulationAlgorithm;
 
 import dhl.stateMachineNew.ITeamStanding;
+import dhl.stateMachineNew.StateMachineAbstractFactory;
 import dhl.stateMachineNew.TeamStandings;
 import dhl.leagueModel.ILeague;
 import dhl.leagueModel.IPlayers;
@@ -25,8 +26,8 @@ public class GameSimulation implements IGameSimulation {
         algorithm.setShotCoefficientOne(0.001);
         algorithm.setShotCoefficientTwo(-0.00275);
         shiftTime.setAlgorithm(algorithm);
-        ITeamStanding offensiveTeamStanding = new TeamStandings();
-        ITeamStanding defendingTeamStanding = new TeamStandings();
+        ITeamStanding offensiveTeamStanding = StateMachineAbstractFactory.instance().getNewTeamStanding();
+        ITeamStanding defendingTeamStanding = StateMachineAbstractFactory.instance().getNewTeamStanding();
 
         for(ITeamStanding teamStanding : league.getTeamStandingList()){
             if(teamStanding.getTeam().getTeamName().equals(offensiveTeam.getTeamName())){

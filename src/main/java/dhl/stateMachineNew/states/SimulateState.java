@@ -7,13 +7,15 @@ import dhl.inputOutput.UserOutput;
 import dhl.leagueModel.ILeague;
 import dhl.leagueModel.ITeam;
 import dhl.stateMachineNew.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SimulateState implements IStateMachine {
-
+    private static final Logger logger = LogManager.getLogger(SimulateState.class);
     StateMachine machine;
     IUserOutput output;
     ISchedulerSeason season;
