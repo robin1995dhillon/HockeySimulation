@@ -187,10 +187,10 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory {
         return freeAgentListDrop;
     }
 
-    public IPlayerTradingCondition getPLayerTradingCondition() {
-        if (playerTradingCondition == null) {
+    public IPlayerTradingCondition getPlayerTradingCondition() {
+       // if (playerTradingCondition == null) {
             playerTradingCondition = new PlayerTradingCondition();
-        }
+      //  }
         return playerTradingCondition;
     }
 
@@ -217,7 +217,7 @@ public class LeagueModelConcrete extends LeagueModelAbstractFactory {
 
     }
 
-    public void setPLayerTradingCondition(IPlayerTradingCondition playerTradingCondition) {
+    public void setPlayerTradingCondition(IPlayerTradingCondition playerTradingCondition) {
 
         this.playerTradingCondition = playerTradingCondition;
 

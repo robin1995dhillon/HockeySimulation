@@ -27,8 +27,8 @@ public class AddDropPlayers implements IAddDropPlayers {
         totalDefense = Integer.parseInt(Configurables.TOTAL_DEFENSE.getAction());
         totalForward = Integer.parseInt(Configurables.TOTAL_FORWARD.getAction());
 
-        freeAgentLists = new FreeAgentList();
-        freeAgentListsDrop = new FreeAgentListDrop();
+        freeAgentLists = LeagueModelAbstractFactory.instance().getFreeAgentList();
+        freeAgentListsDrop = LeagueModelAbstractFactory.instance().getFreeAgentListDrop();
     }
 
     @Override
