@@ -2,8 +2,8 @@ package dhl.leagueModel.trade;
 
 import dhl.Configurables;
 import dhl.leagueModel.*;
-import dhl.stateMachineNew.StateMachine;
-import dhl.stateMachineNew.StateMachineAbstractFactory;
+import dhl.stateMachine.StateMachine;
+import dhl.stateMachine.StateMachineAbstractFactory;
 
 import java.util.ArrayList;
 import java.util.Comparator;

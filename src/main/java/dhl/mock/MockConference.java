@@ -35,6 +35,7 @@ public class MockConference {
         ITeam team = new Teams();
         IDivision division = new Division("Metro");
         List<IPlayers> players = new ArrayList<>();
+
         player.setCaptain(true);
         player.setPosition("goalie");
         player.setPlayerName("Roger");
@@ -120,7 +121,6 @@ public class MockConference {
         List<ITeam> teamList = new ArrayList<>();
         IConference conference = MockConference.mockConferenceTwo();
         Map<IDivision, List<ITeam>> teamMap = new HashMap<>();
-//        IDivision division = conference.getDivisions().get(0);
         IDivision division = MockDivision.createMock();
         for (ITeam team : division.getTeams()) {
             teamList.add(team);

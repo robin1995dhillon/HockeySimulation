@@ -1,17 +1,14 @@
 package dhl.leagueModel.trade;
 
 import dhl.Configurables;
-import dhl.inputOutput.IUserOutput;
-import dhl.inputOutput.UserOutput;
+import dhl.presentation.inputOutput.IUserOutput;
+import dhl.presentation.inputOutput.UserOutput;
 import dhl.leagueModel.FreeAgents;
 import dhl.leagueModel.IFreeAgents;
 import dhl.leagueModel.IPlayers;
 import dhl.leagueModel.Players;
-import dhl.leagueModel.ITeam;
 import dhl.mock.MockFreeAgent;
-import dhl.mock.MockLeague;
 import dhl.mock.MockPlayer;
-import dhl.mock.MockTeam;
 import dhl.presentation.TradePrompt;
 import org.junit.Test;
 

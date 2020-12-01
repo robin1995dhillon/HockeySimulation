@@ -1,13 +1,14 @@
 package dhl;
 
-import dhl.stateMachineNew.StateMachine;
-import dhl.stateMachineNew.StateMachineAbstractFactory;
-
-import java.text.ParseException;
+import dhl.stateMachine.StateMachine;
+import dhl.stateMachine.StateMachineAbstractFactory;
 
 public class MainSimulation {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws Exception {
+
+        GlobalHandler handler = new GlobalHandler();
+        Thread.setDefaultUncaughtExceptionHandler(handler);
 
         String filePath = null;
         try {

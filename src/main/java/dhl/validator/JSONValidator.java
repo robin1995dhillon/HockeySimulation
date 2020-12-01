@@ -1,8 +1,10 @@
 package dhl.validator;
 
+import dhl.presentation.inputOutput.IUserOutput;
 import dhl.Configurables;
-import dhl.inputOutput.UserOutput;
-import dhl.leagueModel.gamePlayConfig.GamePlayConfig;
+import dhl.presentation.inputOutput.InputOutputAbstractFactory;
+import dhl.presentation.inputOutput.UserOutput;
+import dhl.leagueModel.LeagueModelAbstractFactory;
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,17 +12,25 @@ import org.json.simple.JSONObject;
 import java.util.Iterator;
 import java.util.Stack;
 
-public class JSONValidator {
+public class JSONValidator implements IJSONValidator {
 
-    Validator validator;
-    private UserOutput userOutput;
+    IValidator validator;
+    private IUserOutput userOutput;
+    private IGamePlayConfig gamePlayConfig;
+    LeagueModelAbstractFactory leagueModelAbstractFactory;
+    InputOutputAbstractFactory inputOutputAbstractFactory;
+    ValidatorAbstractFactory validatorAbstractFactory;
 
     public JSONValidator() {
-        validator = new Validator();
-        userOutput = new UserOutput();
+        inputOutputAbstractFactory = InputOutputAbstractFactory.instance();
+        leagueModelAbstractFactory = LeagueModelAbstractFactory.instance();
+        validator = validatorAbstractFactory.getValidator();
+        userOutput = inputOutputAbstractFactory.createUserOutput();
+        gamePlayConfig = leagueModelAbstractFactory.getGamePlayConfig();
     }
 
-    public JSONObject mainValidator(JSONObject Obj) {
+    @Override
+    public JSONObject mainValidator(JSONObject Obj) throws Exception {
         Stack<String> stack = new Stack<>();
         JSONObject returnObject = new JSONObject();
         leagueValidator(Obj, stack);
@@ -35,9 +45,9 @@ public class JSONValidator {
         }
     }
 
-    public boolean leagueValidator(JSONObject Obj, Stack stack) {
+    @Override
+    public boolean leagueValidator(JSONObject Obj, Stack stack) throws Exception {
         if (validator.valueIsPresent((String) Obj.get(Configurables.LEAGUENAME.getAction()))) {
-            IGamePlayConfig gamePlayConfig = new GamePlayConfig();
             conferenceValidator(Obj, stack);
             freeAgentValidator(Obj, stack);
             coachValidator(Obj, stack);
@@ -50,10 +60,12 @@ public class JSONValidator {
         return true;
     }
 
-    private boolean generalManagersValidator(JSONObject Obj, Stack stack) {
+    private boolean generalManagersValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray generalManagersArray = (JSONArray) Obj.get(Configurables.GENERALMANAGERS.getAction());
-
         Iterator generalManagerIter = generalManagersArray.iterator();
+        if (generalManagerIter == null) {
+            throw new Exception("General Manager is missing");
+        }
         while (generalManagerIter.hasNext()) {
             JSONObject managerObject = (JSONObject) generalManagerIter.next();
             String managerName = (String) managerObject.get(Configurables.NAME.getAction());
@@ -71,9 +83,13 @@ public class JSONValidator {
         return true;
     }
 
-    public Boolean conferenceValidator(JSONObject Obj, Stack stack) {
+    @Override
+    public Boolean conferenceValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray conferenceArray = (JSONArray) (Obj.get(Configurables.CONFERENCES.getAction()));
         Iterator confArrIter = conferenceArray.iterator();
+        if (conferenceArray == null) {
+            throw new Exception("Conference is missing");
+        }
         while (confArrIter.hasNext()) {
             JSONObject conferenceObject = (JSONObject) confArrIter.next();
             String conferenceName = (String) conferenceObject.get(Configurables.CONFERENCENAME.getAction());
@@ -88,10 +104,11 @@ public class JSONValidator {
         return true;
     }
 
-    public Boolean freeAgentValidator(JSONObject Obj, Stack stack) {
+    @Override
+    public Boolean freeAgentValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray freeAgentArray = (JSONArray) (Obj.get(Configurables.FREEAGENTS.getAction()));
         if (freeAgentArray == null) {
-            return false;
+            throw new Exception("Free Agent is Missing");
         }
         Iterator freeAgentIter = freeAgentArray.iterator();
         while (freeAgentIter.hasNext()) {
@@ -128,10 +145,11 @@ public class JSONValidator {
         return true;
     }
 
-    public Boolean coachValidator(JSONObject Obj, Stack stack) {
+    @Override
+    public Boolean coachValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray coachArray = (JSONArray) (Obj.get(Configurables.COACHES.getAction()));
         if (coachArray == null) {
-            return false;
+            throw new Exception("Coach is missing");
         }
         Iterator coach_iter = coachArray.iterator();
         while (coach_iter.hasNext()) {
@@ -141,9 +159,12 @@ public class JSONValidator {
         return true;
     }
 
-    public Boolean divisionValidator(JSONObject Obj, Stack stack) {
+    @Override
+    public Boolean divisionValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray divisionArray = (JSONArray) (Obj.get(Configurables.DIVISIONS.getAction()));
-
+        if (divisionArray == null) {
+            throw new Exception("Free Agent is Missing");
+        }
         Iterator divArrIter = divisionArray.iterator();
         while (divArrIter.hasNext()) {
             JSONObject divisionObject = (JSONObject) divArrIter.next();
@@ -157,7 +178,8 @@ public class JSONValidator {
         return true;
     }
 
-    public Boolean teamValidator(JSONObject Obj, Stack stack) {
+    @Override
+    public Boolean teamValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray teamArray = (JSONArray) (Obj.get(Configurables.TEAMS.getAction()));
         Iterator teamArrIter = teamArray.iterator();
         while (teamArrIter.hasNext()) {
@@ -180,14 +202,20 @@ public class JSONValidator {
         return true;
     }
 
+    @Override
     public Boolean headCoachValidator(JSONObject Obj, Stack stack) {
         JSONObject headCoach = (JSONObject) Obj.get(Configurables.HEADCOACH.getAction());
         attributesValidator(headCoach, stack);
         return true;
     }
 
-    public Boolean playerValidator(JSONObject Obj, Stack stack) {
+    @Override
+    public Boolean playerValidator(JSONObject Obj, Stack stack) throws Exception {
         JSONArray playersArray = (JSONArray) (Obj.get(Configurables.PLAYERS.getAction()));
+
+        if (playersArray == null) {
+            throw new Exception("Players is missing");
+        }
 
         for (Object o : playersArray) {
             JSONObject playerObject = (JSONObject) o;
@@ -250,6 +278,7 @@ public class JSONValidator {
         return false;
     }
 
+    @Override
     public Boolean attributesValidator(JSONObject Obj, Stack stack) {
         String name = (String) Obj.get(Configurables.NAME.getAction());
         Double skating = (Double) Obj.get(Configurables.SKATING.getAction());
@@ -258,14 +287,17 @@ public class JSONValidator {
         Double saving = (Double) Obj.get(Configurables.SAVING.getAction());
         Double[] detailsValue = {skating, shooting, checking, saving};
         String[] detailsName = {"skating", "shooting", "checking", "saving"};
-        if (!validator.valueIsPresent(name)) {
+        if (validator.valueIsPresent(name)) {
+        } else {
             stack.push("Name is Missing");
             userOutput.setOutput("Name is Missing");
             userOutput.sendOutput();
             return false;
         }
         for (int i = 0; i < detailsValue.length; i++) {
-            if (!validator.valueIsPresent(detailsValue[i])) {
+            if (validator.valueIsPresent(detailsValue[i])) {
+            }
+            else {
                 stack.push(detailsName[i] + "is Missing");
                 return false;
             }

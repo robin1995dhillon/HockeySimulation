@@ -1,15 +1,15 @@
 package dhl.leagueModel.trade;
 
 import dhl.Configurables;
-import dhl.inputOutput.IUserInput;
-import dhl.inputOutput.IUserOutput;
-import dhl.inputOutput.UserInput;
-import dhl.inputOutput.UserOutput;
+import dhl.presentation.inputOutput.IUserInput;
+import dhl.presentation.inputOutput.IUserOutput;
+import dhl.presentation.inputOutput.UserInput;
+import dhl.presentation.inputOutput.UserOutput;
 import dhl.leagueModel.*;
 import dhl.presentation.ITradePrompt;
 import dhl.presentation.TradePrompt;
-import dhl.stateMachineNew.StateMachine;
-import dhl.stateMachineNew.StateMachineAbstractFactory;
+import dhl.stateMachine.StateMachine;
+import dhl.stateMachine.StateMachineAbstractFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;

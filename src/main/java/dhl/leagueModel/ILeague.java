@@ -1,8 +1,8 @@
 package dhl.leagueModel;
 
 import dhl.leagueModel.gamePlayConfig.IGamePlayConfig;
-import dhl.stateMachineNew.ISchedulerSeason;
-import dhl.stateMachineNew.ITeamStanding;
+import dhl.stateMachine.ISchedulerSeason;
+import dhl.stateMachine.ITeamStanding;
 
 import java.util.List;
 
